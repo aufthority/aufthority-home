@@ -65,6 +65,7 @@
       letter-spacing: 0.01em;
       color: var(--ink);
       text-decoration: none;
+      flex-shrink: 0; /* REVISION 1: prevent logo from being squished */
     }
 
     .nav-links {
@@ -209,15 +210,54 @@
       justify-content: center;
       flex-shrink: 0;
       font-size: 1.3rem;
+      overflow: hidden; /* REVISION 3 & 4: for image icons */
+    }
+
+    /* REVISION 3 & 4: image-based app icons */
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* REVISION 4: CerminDiri icon — SVG is white, needs dark background */
+    .app-icon.cermindiri-icon {
+      background: #1a1a18;
+      padding: 6px;
+    }
+
+    .app-icon.cermindiri-icon img {
+      object-fit: contain;
     }
 
     .app-info { flex: 1; }
+
+    .app-name-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
 
     .app-name {
       font-family: 'DM Serif Display', serif;
       font-size: 1.1rem;
       color: var(--ink);
-      margin-bottom: 4px;
+    }
+
+    /* REVISION 3: Beta badge for Neurohabit */
+    .beta-badge {
+      font-size: 0.6rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 2px 7px;
+      border-radius: 20px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      line-height: 1.6;
     }
 
     .app-desc {
@@ -251,9 +291,9 @@
       transform: translateX(3px);
     }
 
-    /* ── Newsletter ── */
+    /* ── Newsletter — REVISION 2: Substack brand colours ── */
     .newsletter-card {
-      background: var(--accent);
+      background: #FF6719;
       border-radius: var(--radius);
       padding: 36px 32px;
       color: #fff;
@@ -267,7 +307,7 @@
 
     .newsletter-card p {
       font-size: 0.92rem;
-      opacity: 0.85;
+      opacity: 0.9;
       margin-bottom: 24px;
       line-height: 1.6;
     }
@@ -277,7 +317,7 @@
       align-items: center;
       gap: 8px;
       background: #fff;
-      color: var(--accent);
+      color: #FF6719;
       text-decoration: none;
       padding: 11px 20px;
       font-size: 0.82rem;
@@ -416,10 +456,20 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── REVISION 1: Mobile nav fix ── */
     @media (max-width: 500px) {
-      .nav-links { gap: 12px; }
-      .nav-links a { font-size: 0.68rem; }
-      .hero { padding: 56px 0 48px; }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding-bottom: 20px;
+      }
+      .nav-links {
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .nav-links a { font-size: 0.7rem; }
+      .hero { padding: 48px 0 40px; }
       .newsletter-card { padding: 28px 22px; }
       .support-card { flex-direction: column; align-items: flex-start; gap: 16px; }
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -468,20 +518,31 @@
       <p class="section-label">Apps</p>
       <div class="apps-grid">
 
+        <!-- REVISION 4: CerminDiri with SVG logo -->
         <a href="https://cermindiri.aufthority.com" class="app-card" target="_blank" rel="noopener">
-          <div class="app-icon">🪞</div>
+          <div class="app-icon cermindiri-icon">
+            <img src="cermindiri_logo_3.svg" alt="CerminDiri logo" />
+          </div>
           <div class="app-info">
-            <p class="app-name">CerminDiri</p>
+            <div class="app-name-row">
+              <p class="app-name">CerminDiri</p>
+            </div>
             <p class="app-desc">A self-reflection tool to help you understand yourself better and make more intentional decisions.</p>
             <span class="app-tag">Live</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
 
+        <!-- REVISION 3: Neurohabit with icon + Beta badge -->
         <a href="https://neurohabitapp.aufthority.com" class="app-card" target="_blank" rel="noopener">
-          <div class="app-icon">🧠</div>
+          <div class="app-icon">
+            <img src="icon-512.png" alt="Neurohabit icon" />
+          </div>
           <div class="app-info">
-            <p class="app-name">Neurohabit</p>
+            <div class="app-name-row">
+              <p class="app-name">Neurohabit</p>
+              <span class="beta-badge">Beta</span>
+            </div>
             <p class="app-desc">A science-backed habit-building app rooted in neuroscience and behavioural psychology.</p>
             <span class="app-tag">Live</span>
           </div>
@@ -491,7 +552,7 @@
       </div>
     </section>
 
-    <!-- Newsletter -->
+    <!-- Newsletter — REVISION 2: Substack brand colours -->
     <section class="section" id="newsletter">
       <p class="section-label">Newsletter</p>
       <div class="newsletter-card">
