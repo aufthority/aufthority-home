@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aufthority — Evidence-Based Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --ink: #1a1a18;
+      --muted: #6b6b62;
+      --accent: #2d6a4f;
+      --accent-light: #e8f5ee;
+      --rule: #e0ddd5;
+      --card-bg: #ffffff;
+      --radius: 2px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 28px 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 64px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.7s ease forwards 0.1s;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-body {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 22px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .hero-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    /* ── Section header ── */
+    .section {
+      padding: 64px 0;
+      border-top: 1px solid var(--rule);
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .section:nth-of-type(2) { animation-delay: 0.2s; }
+    .section:nth-of-type(3) { animation-delay: 0.35s; }
+    .section:nth-of-type(4) { animation-delay: 0.5s; }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    /* ── Bio ── */
+    .bio-text {
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    .bio-text p + p { margin-top: 16px; }
+
+    /* ── Apps ── */
+    .apps-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .app-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+      position: relative;
+    }
+
+    .app-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(45,106,79,0.08);
+      transform: translateY(-2px);
+    }
+
+    .app-card.coming-soon {
+      opacity: 0.55;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .app-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.3rem;
+    }
+
+    .app-info { flex: 1; }
+
+    .app-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .app-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .app-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 3px 8px;
+      border-radius: 20px;
+      background: var(--accent-light);
+      color: var(--accent);
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .app-tag.soon {
+      background: #f0f0ec;
+      color: var(--muted);
+    }
+
+    .app-arrow {
+      font-size: 1.1rem;
+      color: var(--rule);
+      transition: color 0.2s, transform 0.2s;
+      margin-top: 2px;
+    }
+
+    .app-card:hover .app-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* ── Newsletter ── */
+    .newsletter-card {
+      background: var(--accent);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      color: #fff;
+    }
+
+    .newsletter-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-card p {
+      font-size: 0.92rem;
+      opacity: 0.85;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .newsletter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 11px 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .newsletter-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-tagline {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 500px) {
+      .nav-links { gap: 16px; }
+      .hero { padding: 56px 0 48px; }
+      .newsletter-card { padding: 28px 22px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Nav -->
+    <nav>
+      <a href="#" class="logo">Aufthority</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+      <p class="hero-eyebrow">Evidence-Based Health</p>
+      <h1>Helping you make <em>informed</em> health decisions.</h1>
+      <p class="hero-body">
+        I'm Auf. Through Aufthority, I share evidence-based health information and build tools that put the power of informed personal healthcare in your hands.
+      </p>
+      <a href="#apps" class="hero-cta">Explore My Work →</a>
+    </header>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <p class="section-label">About</p>
+      <div class="bio-text">
+        <p>
+          I believe that access to clear, accurate health information is a right — not a privilege. Too often, people make healthcare decisions based on incomplete or misleading information.
+        </p>
+        <p>
+          Aufthority is my attempt to change that. I research, write, and build — creating content and tools grounded in science, designed for real people navigating their own health journeys.
+        </p>
+      </div>
+    </section>
+
+    <!-- Apps -->
+    <section class="section" id="apps">
+      <p class="section-label">Apps</p>
+      <div class="apps-grid">
+
+        <a href="https://cermindiri.aufthority.com" class="app-card" target="_blank" rel="noopener">
+          <div class="app-icon">🪞</div>
+          <div class="app-info">
+            <p class="app-name">CerminDiri</p>
+            <p class="app-desc">A self-reflection tool to help you understand yourself better and make more intentional decisions.</p>
+            <span class="app-tag">Live</span>
+          </div>
+          <span class="app-arrow">→</span>
+        </a>
+
+        <div class="app-card coming-soon">
+          <div class="app-icon">🧠</div>
+          <div class="app-info">
+            <p class="app-name">Neurohabit</p>
+            <p class="app-desc">A science-backed habit-building app rooted in neuroscience and behavioural psychology.</p>
+            <span class="app-tag soon">Coming Soon</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section" id="newsletter">
+      <p class="section-label">Newsletter</p>
+      <div class="newsletter-card">
+        <h3>The Aufthority Letter</h3>
+        <p>Evidence-based health insights, straight to your inbox. No fluff — just clear, actionable information to help you take charge of your health.</p>
+        <a href="https://aufthority.substack.com" class="newsletter-btn" target="_blank" rel="noopener">Subscribe on Substack →</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span class="footer-copy">© 2026 Aufthority</span>
+      <span class="footer-tagline">Informed decisions, better health.</span>
+    </footer>
+
+  </div>
+</body>
+</html>
