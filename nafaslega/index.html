@@ -41,7 +41,6 @@
     overflow: hidden;
   }
 
-  /* ── SCREENS ── */
   .screen {
     position: fixed;
     inset: 0;
@@ -56,7 +55,7 @@
   }
 
   /* ════════════════════════════════
-     SPLASH SCREEN
+     SPLASH
   ════════════════════════════════ */
   #splash {
     background: var(--bg);
@@ -72,7 +71,6 @@
     align-items: center;
   }
 
-  /* Breadcrumb */
   .breadcrumb {
     width: 100%;
     display: flex;
@@ -98,7 +96,6 @@
     font-weight: 400;
   }
 
-  /* Splash orb */
   .splash-orb-wrap {
     position: relative;
     width: 140px;
@@ -135,15 +132,14 @@
     z-index: 2;
   }
   @keyframes orbPulse {
-    0%,100% { transform: scale(1);    box-shadow: 0 8px 36px rgba(45,106,79,0.22); }
+    0%,100% { transform: scale(1);     box-shadow: 0 8px 36px rgba(45,106,79,0.22); }
     50%      { transform: scale(1.18); box-shadow: 0 12px 52px rgba(45,106,79,0.3); }
   }
   @keyframes ringPulse {
     0%,100% { transform: scale(1);    opacity: 0.6; }
-    50%      { transform: scale(1.2);  opacity: 0.15; }
+    50%      { transform: scale(1.2); opacity: 0.15; }
   }
 
-  /* Text */
   .splash-text {
     text-align: center;
     margin-bottom: 22px;
@@ -182,7 +178,6 @@
     margin: 0 auto;
   }
 
-  /* Phase pills */
   .phase-pills {
     display: flex;
     align-items: center;
@@ -216,7 +211,6 @@
   }
   .pill-dot { font-size: 0.75rem; color: var(--rule); }
 
-  /* Begin CTA */
   .splash-bottom {
     width: 100%;
     display: flex;
@@ -251,16 +245,13 @@
   }
 
   /* ════════════════════════════════
-     TOOL SCREEN
-     Layout: topbar | orb-stage (flex:1) | bottom-panel (fixed height)
-     Orb uses transform:scale — never affects layout flow
+     TOOL
   ════════════════════════════════ */
   #tool {
     background: var(--bg);
     justify-content: space-between;
   }
 
-  /* Top bar */
   .tool-topbar {
     display: flex;
     align-items: center;
@@ -275,6 +266,31 @@
     color: var(--ink);
   }
   .tool-brand em { font-style: italic; color: var(--accent); }
+
+  /* Top-right controls: mute + exit */
+  .topbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-mute {
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-mute:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-mute.muted { opacity: 0.4; }
+
   .btn-exit {
     background: none;
     border: 1px solid var(--rule);
@@ -291,22 +307,15 @@
   }
   .btn-exit:hover { border-color: var(--ink); color: var(--ink); }
 
-  /* Orb stage — flex:1, orb centred, NEVER grows beyond its container */
   .orb-stage {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* safety net */
+    overflow: hidden;
     position: relative;
   }
 
-  /*
-    The orb-wrap is a fixed 160×160 box.
-    The SVG ring sits exactly inside it.
-    The ball (80×80) lives in the centre and scales via transform.
-    transform:scale does NOT affect layout — no overflow, no collision.
-  */
   .orb-wrap {
     position: relative;
     width: 160px;
@@ -333,12 +342,10 @@
     box-shadow: 0 6px 28px rgba(45,106,79,0.18);
     position: relative;
     z-index: 2;
-    /* Scale animates here — layout unaffected */
     transform: scale(1);
     will-change: transform;
   }
 
-  /* ── Bottom panel: phase label + timer + stats + guide + stop ── */
   .tool-bottom {
     flex-shrink: 0;
     border-top: 1px solid var(--rule);
@@ -348,7 +355,6 @@
     gap: 0;
   }
 
-  /* Phase row: label left, timer right — in one clean line */
   .phase-timer-row {
     display: flex;
     align-items: baseline;
@@ -389,7 +395,6 @@
     margin-bottom: 16px;
   }
 
-  /* Stats */
   .stats-row {
     display: flex;
     justify-content: space-between;
@@ -413,7 +418,6 @@
     color: var(--muted);
   }
 
-  /* Phase guide */
   .phase-guide {
     display: flex;
     margin-bottom: 14px;
@@ -450,7 +454,6 @@
   .guide-item.active .guide-phase-lbl { color: var(--accent); }
   .guide-item.active .guide-dur-val   { color: var(--accent); }
 
-  /* Stop button */
   .btn-stop {
     width: 100%;
     padding: 12px;
@@ -473,7 +476,6 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* Short screens */
   @media (max-height: 680px) {
     #splash { padding: 32px 28px 28px; }
     .breadcrumb { margin-bottom: 20px; }
@@ -485,7 +487,6 @@
     .tool-bottom { padding: 14px 24px 20px; }
   }
 
-  /* Narrow screens */
   @media (max-width: 360px) {
     .pill { min-width: 56px; padding: 8px 10px; }
     .splash-title { font-size: 2.2rem; }
@@ -494,11 +495,8 @@
 </head>
 <body>
 
-<!-- ══════════════════
-     SPLASH
-══════════════════ -->
+<!-- SPLASH -->
 <div class="screen" id="splash">
-
   <div class="splash-top">
     <div class="breadcrumb">
       <a href="https://aufthority.com">Aufthority</a>
@@ -541,23 +539,24 @@
   </div>
 
   <div class="splash-bottom">
-    <button class="btn-begin" id="btnBegin">Begin →</button>
+    <button class="btn-begin" id="btnBegin"
+      data-umami-event="NafasLega - Begin">Begin →</button>
     <p class="splash-footnote">Free · No account needed</p>
   </div>
-
 </div>
 
-<!-- ══════════════════
-     TOOL
-══════════════════ -->
+<!-- TOOL -->
 <div class="screen hidden" id="tool">
 
   <div class="tool-topbar">
     <div class="tool-brand">Nafas<em>Lega</em></div>
-    <button class="btn-exit" id="btnExit">← Exit</button>
+    <div class="topbar-controls">
+      <button class="btn-mute" id="btnMute" title="Toggle sound">🔊</button>
+      <button class="btn-exit" id="btnExit"
+        data-umami-event="NafasLega - Exit">← Exit</button>
+    </div>
   </div>
 
-  <!-- Orb lives here — fixed 160×160 box, scales via transform only -->
   <div class="orb-stage">
     <div class="orb-wrap">
       <svg class="orb-ring-svg" id="ringSvg" viewBox="0 0 160 160">
@@ -572,9 +571,7 @@
     </div>
   </div>
 
-  <!-- Everything textual is DOWN HERE — no overlap possible -->
   <div class="tool-bottom">
-
     <div class="phase-timer-row">
       <span class="phase-name"  id="phaseName">Ready</span>
       <div class="timer-block">
@@ -614,33 +611,141 @@
       </div>
     </div>
 
-    <button class="btn-stop" id="btnStop">Stop Session</button>
+    <button class="btn-stop" id="btnStop"
+      data-umami-event="NafasLega - Stop Session">Stop Session</button>
   </div>
 
 </div>
 
 <script>
+  /* ══════════════════════════════════════════
+     PHASES
+  ══════════════════════════════════════════ */
   const PHASES = [
     { label: "Inhale",  instr: "breathe in slowly",  dur: 4, ease: "ease-in"  },
     { label: "Hold",    instr: "retain the breath",   dur: 7, ease: "linear"   },
     { label: "Exhale",  instr: "release completely",  dur: 8, ease: "ease-out" },
   ];
 
-  // Scale values — orb-ball is 80px, these are multipliers
-  // Peak scale = fills most of the 160px container (≈ 152/80 = 1.9)
   const SCALE_BASE = 1, SCALE_PEAK = 1.85;
-
-  // SVG ring: r=72, circumference = 2π×72
-  const C = +(2 * Math.PI * 72).toFixed(2); // 452.39
+  const C = +(2 * Math.PI * 72).toFixed(2);
 
   let raf, phaseStart, sessionInterval;
   let phaseIdx = 0, cycles = 0, sessionSec = 0, running = false;
 
+  /* ══════════════════════════════════════════
+     AUDIO ENGINE (Web Audio API)
+     - Soft sine tones, faded in/out smoothly
+     - inhale: ascending tone 220→330 Hz
+     - hold:   sustained gentle hum at 330 Hz
+     - exhale: descending tone 330→220 Hz
+     - ambient: very quiet low drone underneath
+  ══════════════════════════════════════════ */
+  let audioCtx = null;
+  let muted = false;
+
+  // Active nodes we need to stop between phases
+  let toneOsc = null, toneGain = null;
+  let ambOsc  = null, ambGain  = null;
+
+  function getCtx() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+  }
+
+  function stopTone() {
+    if (toneGain) {
+      try {
+        toneGain.gain.cancelScheduledValues(getCtx().currentTime);
+        toneGain.gain.setTargetAtTime(0, getCtx().currentTime, 0.1);
+      } catch(e) {}
+    }
+    setTimeout(() => {
+      try { toneOsc && toneOsc.stop(); } catch(e) {}
+      toneOsc = null; toneGain = null;
+    }, 400);
+  }
+
+  function playTone(freqStart, freqEnd, duration) {
+    if (muted) return;
+    const ctx = getCtx();
+    const now = ctx.currentTime;
+
+    stopTone();
+
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freqStart, now);
+    osc.frequency.linearRampToValueAtTime(freqEnd, now + duration);
+
+    // Fade in over 0.3s, hold, fade out last 0.5s
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.12, now + 0.3);
+    gain.gain.setValueAtTime(0.12, now + duration - 0.5);
+    gain.gain.linearRampToValueAtTime(0, now + duration);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + duration + 0.1);
+
+    toneOsc  = osc;
+    toneGain = gain;
+  }
+
+  function startAmbient() {
+    if (muted || ambOsc) return;
+    const ctx = getCtx();
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(96, ctx.currentTime); // very low sub-bass hum
+
+    gain.gain.setValueAtTime(0, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.04, ctx.currentTime + 2); // barely perceptible
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+
+    ambOsc  = osc;
+    ambGain = gain;
+  }
+
+  function stopAmbient() {
+    if (!ambOsc) return;
+    try {
+      ambGain.gain.setTargetAtTime(0, getCtx().currentTime, 0.3);
+      setTimeout(() => { try { ambOsc.stop(); } catch(e) {} ambOsc = null; ambGain = null; }, 600);
+    } catch(e) {}
+  }
+
+  function playPhaseAudio(idx, dur) {
+    // Frequencies per phase
+    // Inhale: 220→330 (ascending, open)
+    // Hold:   330→330 (steady)
+    // Exhale: 330→220 (descending, release)
+    const configs = [
+      { start: 220, end: 330 },
+      { start: 330, end: 330 },
+      { start: 330, end: 196 },
+    ];
+    const c = configs[idx];
+    playTone(c.start, c.end, dur);
+  }
+
+  /* ══════════════════════════════════════════
+     DOM REFS
+  ══════════════════════════════════════════ */
   const splash       = document.getElementById('splash');
   const tool         = document.getElementById('tool');
   const btnBegin     = document.getElementById('btnBegin');
   const btnExit      = document.getElementById('btnExit');
   const btnStop      = document.getElementById('btnStop');
+  const btnMute      = document.getElementById('btnMute');
   const orbBall      = document.getElementById('orbBall');
   const arcPath      = document.getElementById('arcPath');
   const phaseName    = document.getElementById('phaseName');
@@ -655,6 +760,9 @@
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
   }
 
+  /* ══════════════════════════════════════════
+     PHASE LOGIC
+  ══════════════════════════════════════════ */
   function activatePhase(idx) {
     phaseIdx = idx;
     const p = PHASES[idx];
@@ -662,7 +770,7 @@
     phaseName.textContent  = p.label;
     phaseInstr.textContent = p.instr;
 
-    // Scale: inhale→peak, hold→stay peak, exhale→back to base
+    // Orb scale
     const targetScale = (idx === 2) ? SCALE_BASE : SCALE_PEAK;
     orbBall.style.transition = `transform ${p.dur}s ${p.ease}, box-shadow ${p.dur}s ease`;
     orbBall.style.transform  = `scale(${targetScale})`;
@@ -683,6 +791,9 @@
     for (let i = 0; i < 3; i++) {
       document.getElementById('g' + i).classList.toggle('active', i === idx);
     }
+
+    // Audio
+    playPhaseAudio(idx, p.dur);
   }
 
   function tick(now) {
@@ -713,12 +824,15 @@
     statBreath.textContent   = '0s';
     statDuration.textContent = '0:00';
 
-    // Snap orb back to base instantly
     orbBall.style.transition = 'none';
     orbBall.style.transform  = `scale(${SCALE_BASE})`;
     orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
     void orbBall.getBoundingClientRect();
 
+    // Resume audio context if suspended (iOS policy)
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+
+    startAmbient();
     phaseStart = performance.now();
     activatePhase(0);
     raf = requestAnimationFrame(tick);
@@ -733,6 +847,8 @@
     running = false;
     cancelAnimationFrame(raf);
     clearInterval(sessionInterval);
+    stopTone();
+    stopAmbient();
 
     orbBall.style.transition = 'transform 0.7s ease, box-shadow 0.7s ease';
     orbBall.style.transform  = `scale(${SCALE_BASE})`;
@@ -748,6 +864,37 @@
     for (let i = 0; i < 3; i++) document.getElementById('g' + i).classList.remove('active');
   }
 
+  /* ══════════════════════════════════════════
+     MUTE TOGGLE
+  ══════════════════════════════════════════ */
+  btnMute.addEventListener('click', () => {
+    muted = !muted;
+    btnMute.textContent = muted ? '🔇' : '🔊';
+    btnMute.classList.toggle('muted', muted);
+
+    if (muted) {
+      // Fade out ambient if running
+      if (ambGain && audioCtx) {
+        ambGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.2);
+      }
+      stopTone();
+    } else {
+      // Restore ambient and replay current phase tone if session active
+      if (running) {
+        if (ambGain && audioCtx) {
+          ambGain.gain.setTargetAtTime(0.04, audioCtx.currentTime, 0.5);
+        } else {
+          startAmbient();
+        }
+        const remaining = PHASES[phaseIdx].dur - ((performance.now() - phaseStart) / 1000);
+        if (remaining > 0.5) playPhaseAudio(phaseIdx, remaining);
+      }
+    }
+  });
+
+  /* ══════════════════════════════════════════
+     NAVIGATION
+  ══════════════════════════════════════════ */
   function goToTool() {
     splash.classList.add('hidden');
     tool.classList.remove('hidden');
