@@ -63,14 +63,12 @@
     justify-content: space-between;
     padding: 44px 28px 36px;
   }
-
   .splash-top {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   .breadcrumb {
     width: 100%;
     display: flex;
@@ -95,7 +93,6 @@
     color: var(--ink);
     font-weight: 400;
   }
-
   .splash-orb-wrap {
     position: relative;
     width: 140px;
@@ -139,7 +136,6 @@
     0%,100% { transform: scale(1);    opacity: 0.6; }
     50%      { transform: scale(1.2); opacity: 0.15; }
   }
-
   .splash-text {
     text-align: center;
     margin-bottom: 22px;
@@ -177,7 +173,6 @@
     max-width: 280px;
     margin: 0 auto;
   }
-
   .phase-pills {
     display: flex;
     align-items: center;
@@ -210,7 +205,6 @@
     color: var(--muted);
   }
   .pill-dot { font-size: 0.75rem; color: var(--rule); }
-
   .splash-bottom {
     width: 100%;
     display: flex;
@@ -247,10 +241,7 @@
   /* ════════════════════════════════
      TOOL
   ════════════════════════════════ */
-  #tool {
-    background: var(--bg);
-    justify-content: space-between;
-  }
+  #tool { background: var(--bg); justify-content: space-between; }
 
   .tool-topbar {
     display: flex;
@@ -266,13 +257,7 @@
     color: var(--ink);
   }
   .tool-brand em { font-style: italic; color: var(--accent); }
-
-  .topbar-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
+  .topbar-controls { display: flex; align-items: center; gap: 8px; }
   .btn-mute {
     background: none;
     border: 1px solid var(--rule);
@@ -289,7 +274,6 @@
   }
   .btn-mute:hover { border-color: var(--ink); color: var(--ink); }
   .btn-mute.muted { opacity: 0.4; }
-
   .btn-exit {
     background: none;
     border: 1px solid var(--rule);
@@ -312,9 +296,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    position: relative;
   }
-
   .orb-wrap {
     position: relative;
     width: 160px;
@@ -324,7 +306,6 @@
     justify-content: center;
     flex-shrink: 0;
   }
-
   .orb-ring-svg {
     position: absolute;
     top: 0; left: 0;
@@ -332,7 +313,6 @@
     transform: rotate(-90deg);
     overflow: visible;
   }
-
   .orb-ball {
     width: 80px;
     height: 80px;
@@ -351,9 +331,7 @@
     padding: 20px 24px 28px;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
-
   .phase-timer-row {
     display: flex;
     align-items: baseline;
@@ -367,11 +345,7 @@
     color: var(--accent);
     line-height: 1;
   }
-  .timer-block {
-    display: flex;
-    align-items: baseline;
-    gap: 3px;
-  }
+  .timer-block { display: flex; align-items: baseline; gap: 3px; }
   .timer-num {
     font-family: 'DM Serif Display', serif;
     font-size: 1.6rem;
@@ -384,7 +358,6 @@
     font-weight: 300;
     letter-spacing: 0.05em;
   }
-
   .phase-instr {
     font-size: 0.65rem;
     font-weight: 500;
@@ -393,7 +366,6 @@
     color: var(--muted);
     margin-bottom: 16px;
   }
-
   .stats-row {
     display: flex;
     justify-content: space-between;
@@ -416,11 +388,7 @@
     letter-spacing: 0.12em;
     color: var(--muted);
   }
-
-  .phase-guide {
-    display: flex;
-    margin-bottom: 14px;
-  }
+  .phase-guide { display: flex; margin-bottom: 14px; }
   .guide-item {
     flex: 1;
     text-align: center;
@@ -452,7 +420,6 @@
   }
   .guide-item.active .guide-phase-lbl { color: var(--accent); }
   .guide-item.active .guide-dur-val   { color: var(--accent); }
-
   .btn-stop {
     width: 100%;
     padding: 12px;
@@ -474,7 +441,6 @@
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   @media (max-height: 680px) {
     #splash { padding: 32px 28px 28px; }
     .breadcrumb { margin-bottom: 20px; }
@@ -501,13 +467,11 @@
       <span class="breadcrumb-sep">/</span>
       <strong>NafasLega</strong>
     </div>
-
     <div class="splash-orb-wrap">
       <div class="splash-ring-outer"></div>
       <div class="splash-ring-inner"></div>
       <div class="splash-orb"></div>
     </div>
-
     <div class="splash-text">
       <p class="splash-eyebrow">Evidence-Based Breathwork</p>
       <h1 class="splash-title">Nafas<em>Lega</em></h1>
@@ -517,7 +481,6 @@
         calming your heart rate and cortisol in minutes.
       </p>
     </div>
-
     <div class="phase-pills">
       <div class="pill">
         <span class="pill-num">4</span>
@@ -535,7 +498,6 @@
       </div>
     </div>
   </div>
-
   <div class="splash-bottom">
     <button class="btn-begin" id="btnBegin"
       data-umami-event="NafasLega - Begin">Begin →</button>
@@ -613,30 +575,70 @@
   </div>
 </div>
 
-<!-- Preload audio -->
-<audio id="sndChime"   src="./421829__dersinnsspace__tibetan-bowl_center-hit.mp3" preload="auto"></audio>
-<audio id="sndAmbient" src="./416227__rasunter255__gentle-rainfall.mp3" preload="auto" loop></audio>
+<!-- Rainfall ambient only — no chime file needed -->
+<audio id="sndAmbient" src="./416227__rasunter255__gentle-rainfall.mp3"
+  preload="auto" loop></audio>
 
 <script>
   /* ══════════════════════════════════════
-     AUDIO
+     WEB AUDIO — CHIME GENERATOR
+     Produces a meditative bell-like tone using
+     two sine oscillators (fundamental + harmonic)
+     with a sharp attack and long natural decay,
+     mimicking a struck bowl or chime bar.
   ══════════════════════════════════════ */
-  const sndChime   = document.getElementById('sndChime');
-  const sndAmbient = document.getElementById('sndAmbient');
+  let audioCtx = null;
+  let muted    = false;
 
-  // Ambient volume — rain should sit quietly under the breathing
-  sndAmbient.volume = 0.25;
-  // Chime volume — present but not startling
-  sndChime.volume   = 0.7;
-
-  let muted = false;
+  function getCtx() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    // Resume if suspended (iOS requires this after user gesture)
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
 
   function playChime() {
     if (muted) return;
-    // Restart from beginning each time so it always plays fully
-    sndChime.currentTime = 0;
-    sndChime.play().catch(() => {});
+    const ctx = getCtx();
+    const now = ctx.currentTime;
+
+    // Master gain for this chime instance
+    const master = ctx.createGain();
+    master.connect(ctx.destination);
+
+    // Two partials — fundamental + soft octave harmonic
+    // 528 Hz is often used in meditation ("love frequency")
+    const partials = [
+      { freq: 528,  gain: 0.22 },
+      { freq: 1056, gain: 0.06 },
+    ];
+
+    partials.forEach(({ freq, gain }) => {
+      const osc  = ctx.createOscillator();
+      const gNode = ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+
+      // Sharp attack (5ms), then exponential decay over ~2.2s
+      gNode.gain.setValueAtTime(0, now);
+      gNode.gain.linearRampToValueAtTime(gain, now + 0.005);
+      gNode.gain.exponentialRampToValueAtTime(0.0001, now + 2.2);
+
+      osc.connect(gNode);
+      gNode.connect(master);
+      osc.start(now);
+      osc.stop(now + 2.3);
+    });
   }
+
+  /* ══════════════════════════════════════
+     RAINFALL AMBIENT (mp3 file)
+  ══════════════════════════════════════ */
+  const sndAmbient = document.getElementById('sndAmbient');
+  sndAmbient.volume = 0.28;
 
   function startAmbient() {
     if (muted) return;
@@ -649,13 +651,19 @@
     sndAmbient.currentTime = 0;
   }
 
+  /* ══════════════════════════════════════
+     MUTE
+  ══════════════════════════════════════ */
+  const btnMute = document.getElementById('btnMute');
+
   function setMuted(val) {
     muted = val;
-    sndChime.muted   = val;
     sndAmbient.muted = val;
     btnMute.textContent = muted ? '🔇' : '🔊';
     btnMute.classList.toggle('muted', muted);
   }
+
+  btnMute.addEventListener('click', () => setMuted(!muted));
 
   /* ══════════════════════════════════════
      PHASES
@@ -672,15 +680,11 @@
   let raf, phaseStart, sessionInterval;
   let phaseIdx = 0, cycles = 0, sessionSec = 0, running = false;
 
-  /* ══════════════════════════════════════
-     DOM REFS
-  ══════════════════════════════════════ */
   const splash       = document.getElementById('splash');
   const tool         = document.getElementById('tool');
   const btnBegin     = document.getElementById('btnBegin');
   const btnExit      = document.getElementById('btnExit');
   const btnStop      = document.getElementById('btnStop');
-  const btnMute      = document.getElementById('btnMute');
   const orbBall      = document.getElementById('orbBall');
   const arcPath      = document.getElementById('arcPath');
   const phaseName    = document.getElementById('phaseName');
@@ -695,9 +699,6 @@
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
   }
 
-  /* ══════════════════════════════════════
-     PHASE LOGIC
-  ══════════════════════════════════════ */
   function activatePhase(idx) {
     phaseIdx = idx;
     const p = PHASES[idx];
@@ -705,7 +706,6 @@
     phaseName.textContent  = p.label;
     phaseInstr.textContent = p.instr;
 
-    // Orb
     const targetScale = (idx === 2) ? SCALE_BASE : SCALE_PEAK;
     orbBall.style.transition = `transform ${p.dur}s ${p.ease}, box-shadow ${p.dur}s ease`;
     orbBall.style.transform  = `scale(${targetScale})`;
@@ -715,19 +715,17 @@
         ? '0 10px 40px rgba(45,106,79,0.2)'
         : '0 4px 18px rgba(45,106,79,0.1)';
 
-    // Arc ring
     arcPath.style.transition = 'none';
     arcPath.setAttribute('stroke-dashoffset', C);
     void arcPath.getBoundingClientRect();
     arcPath.style.transition = `stroke-dashoffset ${p.dur}s linear`;
     arcPath.setAttribute('stroke-dashoffset', '0');
 
-    // Guide
     for (let i = 0; i < 3; i++) {
       document.getElementById('g' + i).classList.toggle('active', i === idx);
     }
 
-    // Chime on every phase transition
+    // Generated chime marks every phase change
     playChime();
   }
 
@@ -795,14 +793,6 @@
     for (let i = 0; i < 3; i++) document.getElementById('g' + i).classList.remove('active');
   }
 
-  /* ══════════════════════════════════════
-     MUTE TOGGLE
-  ══════════════════════════════════════ */
-  btnMute.addEventListener('click', () => setMuted(!muted));
-
-  /* ══════════════════════════════════════
-     NAVIGATION
-  ══════════════════════════════════════ */
   function goToTool() {
     splash.classList.add('hidden');
     tool.classList.remove('hidden');
