@@ -157,6 +157,8 @@
     .section:nth-of-type(4) { animation-delay: 0.44s; }
     .section:nth-of-type(5) { animation-delay: 0.56s; }
     .section:nth-of-type(6) { animation-delay: 0.68s; }
+    .section:nth-of-type(7) { animation-delay: 0.76s; }
+    .section:nth-of-type(8) { animation-delay: 0.84s; }
 
     .section-label {
       font-size: 0.68rem;
@@ -230,7 +232,6 @@
       object-fit: contain;
     }
 
-    /* NafasLega icon — orb inside the icon box */
     .app-icon.nafaslega-icon {
       background: var(--accent-light);
       position: relative;
@@ -347,6 +348,113 @@
     }
 
     .newsletter-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ── Posts widget ── */
+    .spost-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .spost-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      text-decoration: none;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .spost-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .spost-thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius);
+      background: var(--rule);
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .spost-thumb-placeholder {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius);
+      background: var(--accent-light);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .spost-body { flex: 1; min-width: 0; }
+
+    .spost-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .spost-excerpt {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+
+    .spost-date {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .spost-arrow {
+      font-size: 1rem;
+      color: var(--rule);
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .spost-card:hover .spost-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .spost-loading {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .spost-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: var(--bg);
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      margin-top: 20px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .spost-more:hover { background: var(--accent); transform: translateY(-1px); }
 
     /* ── Support ── */
     .support-card {
@@ -474,7 +582,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── Mobile nav fix ── */
+    /* ── Mobile ── */
     @media (max-width: 500px) {
       nav {
         flex-direction: column;
@@ -482,15 +590,13 @@
         gap: 16px;
         padding-bottom: 20px;
       }
-      .nav-links {
-        gap: 14px;
-        flex-wrap: wrap;
-      }
+      .nav-links { gap: 14px; flex-wrap: wrap; }
       .nav-links a { font-size: 0.7rem; }
       .hero { padding: 48px 0 40px; }
       .newsletter-card { padding: 28px 22px; }
       .support-card { flex-direction: column; align-items: flex-start; gap: 16px; }
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .spost-thumb, .spost-thumb-placeholder { width: 56px; height: 56px; }
     }
   </style>
 </head>
@@ -504,6 +610,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#apps">Apps</a></li>
         <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#posts">Posts</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://courses.aufthority.com">Courses</a></li>
       </ul>
@@ -597,6 +704,16 @@
       </div>
     </section>
 
+    <!-- Recent Posts -->
+    <section class="section" id="posts">
+      <p class="section-label">Recent Posts</p>
+      <div class="spost-grid" id="spost-grid">
+        <p class="spost-loading">Loading posts…</p>
+      </div>
+      <a href="https://aufthority.substack.com" target="_blank" rel="noopener" class="spost-more"
+         data-umami-event="Posts - Read all click">Read all posts →</a>
+    </section>
+
     <!-- Support -->
     <section class="section" id="support">
       <p class="section-label">Support</p>
@@ -653,5 +770,57 @@
     </footer>
 
   </div>
+
+  <!-- Substack RSS feed widget -->
+  <script>
+    (function () {
+      var FEED = "https://api.rss2json.com/v1/api.json?rss_url=https://aufthority.substack.com/feed&count=3";
+      var grid = document.getElementById('spost-grid');
+
+      function fmtDate(iso) {
+        try {
+          return new Intl.DateTimeFormat('en-MY', { year: 'numeric', month: 'short', day: 'numeric' }).format(new Date(iso));
+        } catch (e) { return ''; }
+      }
+
+      function extractImg(html) {
+        var m = html.match(/<img[^>]+src="([^"]+)"/);
+        return m ? m[1] : null;
+      }
+
+      function stripHtml(html) {
+        return html.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#\d+;/g, '').trim();
+      }
+
+      fetch(FEED)
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (!data.items || !data.items.length) {
+            grid.innerHTML = '<p class="spost-loading">No posts yet.</p>';
+            return;
+          }
+          grid.innerHTML = data.items.map(function (post) {
+            var img = extractImg(post.content || post.description || '');
+            var excerpt = stripHtml(post.description || post.content || '').slice(0, 130);
+            var thumb = img
+              ? '<img class="spost-thumb" src="' + img + '" alt="" loading="lazy" />'
+              : '<div class="spost-thumb-placeholder">📄</div>';
+            return '<a href="' + post.link + '" target="_blank" rel="noopener" class="spost-card" data-umami-event="Post click - ' + post.title + '">'
+              + thumb
+              + '<div class="spost-body">'
+              + '<p class="spost-title">' + post.title + '</p>'
+              + '<p class="spost-excerpt">' + excerpt + '…</p>'
+              + '<p class="spost-date">' + fmtDate(post.pubDate) + '</p>'
+              + '</div>'
+              + '<span class="spost-arrow">→</span>'
+              + '</a>';
+          }).join('');
+        })
+        .catch(function () {
+          grid.innerHTML = '<p class="spost-loading">Could not load posts.</p>';
+        });
+    })();
+  </script>
+
 </body>
 </html>
