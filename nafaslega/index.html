@@ -267,7 +267,6 @@
   }
   .tool-brand em { font-style: italic; color: var(--accent); }
 
-  /* Top-right controls: mute + exit */
   .topbar-controls {
     display: flex;
     align-items: center;
@@ -283,7 +282,7 @@
     line-height: 1;
     cursor: pointer;
     color: var(--muted);
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, opacity 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -486,7 +485,6 @@
     .splash-text { margin-bottom: 16px; }
     .tool-bottom { padding: 14px 24px 20px; }
   }
-
   @media (max-width: 360px) {
     .pill { min-width: 56px; padding: 8px 10px; }
     .splash-title { font-size: 2.2rem; }
@@ -547,7 +545,6 @@
 
 <!-- TOOL -->
 <div class="screen hidden" id="tool">
-
   <div class="tool-topbar">
     <div class="tool-brand">Nafas<em>Lega</em></div>
     <div class="topbar-controls">
@@ -559,7 +556,7 @@
 
   <div class="orb-stage">
     <div class="orb-wrap">
-      <svg class="orb-ring-svg" id="ringSvg" viewBox="0 0 160 160">
+      <svg class="orb-ring-svg" viewBox="0 0 160 160">
         <circle cx="80" cy="80" r="72"
           fill="none" stroke="#e0ddd5" stroke-width="1"/>
         <circle id="arcPath" cx="80" cy="80" r="72"
@@ -573,7 +570,7 @@
 
   <div class="tool-bottom">
     <div class="phase-timer-row">
-      <span class="phase-name"  id="phaseName">Ready</span>
+      <span class="phase-name" id="phaseName">Ready</span>
       <div class="timer-block">
         <span class="timer-num"  id="timerNum">—</span>
         <span class="timer-unit" id="timerUnit"></span>
@@ -614,13 +611,55 @@
     <button class="btn-stop" id="btnStop"
       data-umami-event="NafasLega - Stop Session">Stop Session</button>
   </div>
-
 </div>
 
+<!-- Preload audio -->
+<audio id="sndChime"   src="./421829__dersinnsspace__tibetan-bowl_center-hit.mp3" preload="auto"></audio>
+<audio id="sndAmbient" src="./416227__rasunter255__gentle-rainfall.mp3" preload="auto" loop></audio>
+
 <script>
-  /* ══════════════════════════════════════════
+  /* ══════════════════════════════════════
+     AUDIO
+  ══════════════════════════════════════ */
+  const sndChime   = document.getElementById('sndChime');
+  const sndAmbient = document.getElementById('sndAmbient');
+
+  // Ambient volume — rain should sit quietly under the breathing
+  sndAmbient.volume = 0.25;
+  // Chime volume — present but not startling
+  sndChime.volume   = 0.7;
+
+  let muted = false;
+
+  function playChime() {
+    if (muted) return;
+    // Restart from beginning each time so it always plays fully
+    sndChime.currentTime = 0;
+    sndChime.play().catch(() => {});
+  }
+
+  function startAmbient() {
+    if (muted) return;
+    sndAmbient.currentTime = 0;
+    sndAmbient.play().catch(() => {});
+  }
+
+  function stopAmbient() {
+    sndAmbient.pause();
+    sndAmbient.currentTime = 0;
+  }
+
+  function setMuted(val) {
+    muted = val;
+    sndChime.muted   = val;
+    sndAmbient.muted = val;
+    btnMute.textContent = muted ? '🔇' : '🔊';
+    btnMute.classList.toggle('muted', muted);
+  }
+
+  /* ══════════════════════════════════════
      PHASES
-  ══════════════════════════════════════════ */
+  ══════════════════════════════════════ */
   const PHASES = [
     { label: "Inhale",  instr: "breathe in slowly",  dur: 4, ease: "ease-in"  },
     { label: "Hold",    instr: "retain the breath",   dur: 7, ease: "linear"   },
@@ -633,113 +672,9 @@
   let raf, phaseStart, sessionInterval;
   let phaseIdx = 0, cycles = 0, sessionSec = 0, running = false;
 
-  /* ══════════════════════════════════════════
-     AUDIO ENGINE (Web Audio API)
-     - Soft sine tones, faded in/out smoothly
-     - inhale: ascending tone 220→330 Hz
-     - hold:   sustained gentle hum at 330 Hz
-     - exhale: descending tone 330→220 Hz
-     - ambient: very quiet low drone underneath
-  ══════════════════════════════════════════ */
-  let audioCtx = null;
-  let muted = false;
-
-  // Active nodes we need to stop between phases
-  let toneOsc = null, toneGain = null;
-  let ambOsc  = null, ambGain  = null;
-
-  function getCtx() {
-    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    return audioCtx;
-  }
-
-  function stopTone() {
-    if (toneGain) {
-      try {
-        toneGain.gain.cancelScheduledValues(getCtx().currentTime);
-        toneGain.gain.setTargetAtTime(0, getCtx().currentTime, 0.1);
-      } catch(e) {}
-    }
-    setTimeout(() => {
-      try { toneOsc && toneOsc.stop(); } catch(e) {}
-      toneOsc = null; toneGain = null;
-    }, 400);
-  }
-
-  function playTone(freqStart, freqEnd, duration) {
-    if (muted) return;
-    const ctx = getCtx();
-    const now = ctx.currentTime;
-
-    stopTone();
-
-    const osc  = ctx.createOscillator();
-    const gain = ctx.createGain();
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(freqStart, now);
-    osc.frequency.linearRampToValueAtTime(freqEnd, now + duration);
-
-    // Fade in over 0.3s, hold, fade out last 0.5s
-    gain.gain.setValueAtTime(0, now);
-    gain.gain.linearRampToValueAtTime(0.12, now + 0.3);
-    gain.gain.setValueAtTime(0.12, now + duration - 0.5);
-    gain.gain.linearRampToValueAtTime(0, now + duration);
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start(now);
-    osc.stop(now + duration + 0.1);
-
-    toneOsc  = osc;
-    toneGain = gain;
-  }
-
-  function startAmbient() {
-    if (muted || ambOsc) return;
-    const ctx = getCtx();
-    const osc  = ctx.createOscillator();
-    const gain = ctx.createGain();
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(96, ctx.currentTime); // very low sub-bass hum
-
-    gain.gain.setValueAtTime(0, ctx.currentTime);
-    gain.gain.linearRampToValueAtTime(0.04, ctx.currentTime + 2); // barely perceptible
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start();
-
-    ambOsc  = osc;
-    ambGain = gain;
-  }
-
-  function stopAmbient() {
-    if (!ambOsc) return;
-    try {
-      ambGain.gain.setTargetAtTime(0, getCtx().currentTime, 0.3);
-      setTimeout(() => { try { ambOsc.stop(); } catch(e) {} ambOsc = null; ambGain = null; }, 600);
-    } catch(e) {}
-  }
-
-  function playPhaseAudio(idx, dur) {
-    // Frequencies per phase
-    // Inhale: 220→330 (ascending, open)
-    // Hold:   330→330 (steady)
-    // Exhale: 330→220 (descending, release)
-    const configs = [
-      { start: 220, end: 330 },
-      { start: 330, end: 330 },
-      { start: 330, end: 196 },
-    ];
-    const c = configs[idx];
-    playTone(c.start, c.end, dur);
-  }
-
-  /* ══════════════════════════════════════════
+  /* ══════════════════════════════════════
      DOM REFS
-  ══════════════════════════════════════════ */
+  ══════════════════════════════════════ */
   const splash       = document.getElementById('splash');
   const tool         = document.getElementById('tool');
   const btnBegin     = document.getElementById('btnBegin');
@@ -760,9 +695,9 @@
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
   }
 
-  /* ══════════════════════════════════════════
+  /* ══════════════════════════════════════
      PHASE LOGIC
-  ══════════════════════════════════════════ */
+  ══════════════════════════════════════ */
   function activatePhase(idx) {
     phaseIdx = idx;
     const p = PHASES[idx];
@@ -770,7 +705,7 @@
     phaseName.textContent  = p.label;
     phaseInstr.textContent = p.instr;
 
-    // Orb scale
+    // Orb
     const targetScale = (idx === 2) ? SCALE_BASE : SCALE_PEAK;
     orbBall.style.transition = `transform ${p.dur}s ${p.ease}, box-shadow ${p.dur}s ease`;
     orbBall.style.transform  = `scale(${targetScale})`;
@@ -787,13 +722,13 @@
     arcPath.style.transition = `stroke-dashoffset ${p.dur}s linear`;
     arcPath.setAttribute('stroke-dashoffset', '0');
 
-    // Guide highlight
+    // Guide
     for (let i = 0; i < 3; i++) {
       document.getElementById('g' + i).classList.toggle('active', i === idx);
     }
 
-    // Audio
-    playPhaseAudio(idx, p.dur);
+    // Chime on every phase transition
+    playChime();
   }
 
   function tick(now) {
@@ -829,9 +764,6 @@
     orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
     void orbBall.getBoundingClientRect();
 
-    // Resume audio context if suspended (iOS policy)
-    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
-
     startAmbient();
     phaseStart = performance.now();
     activatePhase(0);
@@ -847,7 +779,6 @@
     running = false;
     cancelAnimationFrame(raf);
     clearInterval(sessionInterval);
-    stopTone();
     stopAmbient();
 
     orbBall.style.transition = 'transform 0.7s ease, box-shadow 0.7s ease';
@@ -864,37 +795,14 @@
     for (let i = 0; i < 3; i++) document.getElementById('g' + i).classList.remove('active');
   }
 
-  /* ══════════════════════════════════════════
+  /* ══════════════════════════════════════
      MUTE TOGGLE
-  ══════════════════════════════════════════ */
-  btnMute.addEventListener('click', () => {
-    muted = !muted;
-    btnMute.textContent = muted ? '🔇' : '🔊';
-    btnMute.classList.toggle('muted', muted);
+  ══════════════════════════════════════ */
+  btnMute.addEventListener('click', () => setMuted(!muted));
 
-    if (muted) {
-      // Fade out ambient if running
-      if (ambGain && audioCtx) {
-        ambGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.2);
-      }
-      stopTone();
-    } else {
-      // Restore ambient and replay current phase tone if session active
-      if (running) {
-        if (ambGain && audioCtx) {
-          ambGain.gain.setTargetAtTime(0.04, audioCtx.currentTime, 0.5);
-        } else {
-          startAmbient();
-        }
-        const remaining = PHASES[phaseIdx].dur - ((performance.now() - phaseStart) / 1000);
-        if (remaining > 0.5) playPhaseAudio(phaseIdx, remaining);
-      }
-    }
-  });
-
-  /* ══════════════════════════════════════════
+  /* ══════════════════════════════════════
      NAVIGATION
-  ══════════════════════════════════════════ */
+  ══════════════════════════════════════ */
   function goToTool() {
     splash.classList.add('hidden');
     tool.classList.remove('hidden');
