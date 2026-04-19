@@ -230,6 +230,26 @@
       object-fit: contain;
     }
 
+    /* NafasLega icon — orb inside the icon box */
+    .app-icon.nafaslega-icon {
+      background: var(--accent-light);
+      position: relative;
+    }
+
+    .nafaslega-orb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 2px 10px rgba(45,106,79,0.35);
+      animation: orbBreath 4s ease-in-out infinite;
+    }
+
+    @keyframes orbBreath {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.18); }
+    }
+
     .app-info { flex: 1; }
 
     .app-name-row {
@@ -548,6 +568,21 @@
           <span class="app-arrow">→</span>
         </a>
 
+        <a href="/breathe" class="app-card" data-umami-event="App click - NafasLega">
+          <div class="app-icon nafaslega-icon">
+            <div class="nafaslega-orb"></div>
+          </div>
+          <div class="app-info">
+            <div class="app-name-row">
+              <p class="app-name">NafasLega</p>
+              <span class="beta-badge">New</span>
+            </div>
+            <p class="app-desc">A 4-7-8 guided breathing tool that activates your parasympathetic nervous system — calming your heart rate and cortisol in minutes.</p>
+            <span class="app-tag">Live</span>
+          </div>
+          <span class="app-arrow">→</span>
+        </a>
+
       </div>
     </section>
 
@@ -592,7 +627,7 @@
       <div class="socials">
         <a href="https://www.threads.net/@theaufthority" class="social-link" target="_blank" rel="noopener"
            data-umami-event="Social - Threads">
-          <svg viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.028-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.018 5.143.822 6.927 2.328 1.7 1.44 2.796 3.4 3.263 5.836l-2.334.421c-.36-1.97-1.176-3.535-2.426-4.583-1.248-1.05-2.992-1.62-5.12-1.635-2.833.018-4.98.879-6.375 2.56-1.364 1.64-2.062 4.018-2.085 7.072.023 3.053.72 5.43 2.085 7.07 1.394 1.68 3.54 2.54 6.375 2.56 1.993-.012 3.608-.43 4.802-1.244 1.464-.985 2.259-2.512 2.464-4.667H12.19v-2.34h9.004c.028.365.042.73.042 1.088 0 3.3-1.002 5.88-2.98 7.666C16.443 23.29 14.012 24 12.186 24z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.028-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.018 5.143.822 6.927 2.328 1.7 1.44 2.796 3.4 3.263 5.836l-2.334.421c-.36-1.97-1.176-3.535-2.426-4.583-1.248-1.05-2.992-1.62-5.12-1.635-2.833.018-4.98.879-6.375 2.56-1.364 1.64-2.062 4.018-2.085 7.072.023 3.053.72 5.43 2.085 7.07 1.394 1.68 3.54 2.56 6.375 2.56 1.993-.012 3.608-.43 4.802-1.244 1.464-.985 2.259-2.512 2.464-4.667H12.19v-2.34h9.004c.028.365.042.73.042 1.088 0 3.3-1.002 5.88-2.98 7.666C16.443 23.29 14.012 24 12.186 24z"/></svg>
           Threads
         </a>
         <a href="https://www.instagram.com/theaufthority" class="social-link" target="_blank" rel="noopener"
