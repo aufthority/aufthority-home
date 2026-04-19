@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aluminium Dalam Vaksin — Aufthority</title>
+  <meta name="description" content="Kajian Denmark yang mengkaji 1.2 juta kanak-kanak untuk melihat kesan aluminium dalam vaksin terhadap autisme, ADHD, dan penyakit kronik.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #f7f5f0;
+      --ink:          #1a1a18;
+      --muted:        #6b6b62;
+      --accent:       #2d6a4f;
+      --accent-light: #e8f5ee;
+      --rule:         #e0ddd5;
+      --card-bg:      #ffffff;
+      --radius:       2px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:           #141412;
+        --ink:          #f0ede6;
+        --muted:        #9a9a8e;
+        --accent:       #52b788;
+        --accent-light: #1a2e24;
+        --rule:         #2a2a26;
+        --card-bg:      #1e1e1a;
+      }
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    #shell {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    nav {
+      padding: 28px 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    #progress-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    #progress-track {
+      height: 2px;
+      background: var(--rule);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    #progress-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    #slides-wrap {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      overflow-y: auto;
+      padding: 48px 0 16px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .slide::-webkit-scrollbar { display: none; }
+    .slide.active { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .slide.exit-up { opacity: 0; transform: translateY(-18px); pointer-events: none; }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .slide-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .slide-headline em { font-style: italic; color: var(--accent); }
+
+    .slide-body {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 24px;
+    }
+    .slide-body p + p { margin-top: 14px; }
+
+    strong, b { color: var(--ink); font-weight: 500; }
+    em.red   { color: #c0392b;       font-style: normal; font-weight: 500; }
+    em.green { color: var(--accent); font-style: normal; font-weight: 500; }
+    em.gold  { color: #b5832a;       font-style: normal; font-weight: 500; }
+
+    .divider { height: 1px; background: var(--rule); margin: 24px 0; }
+
+    .big-stat {
+      margin: 28px 0;
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
+    }
+    .big-stat .number {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 10vw, 4rem);
+      color: var(--ink);
+      line-height: 1;
+      display: block;
+    }
+    .big-stat .label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .pill-list { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+    .pill {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: border-color 0.2s;
+    }
+    .pill:hover { border-color: var(--accent); }
+    .pill-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      min-width: 22px;
+      line-height: 1.5;
+      flex-shrink: 0;
+    }
+    .pill-text { font-size: 0.9rem; line-height: 1.55; color: var(--muted); }
+    .pill-text strong { color: var(--ink); }
+
+    .callout {
+      border-left: 2px solid var(--accent);
+      padding: 16px 20px;
+      margin: 20px 0;
+      background: var(--accent-light);
+    }
+    .callout p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .callout small {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-style: normal;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .chart-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 24px 20px 18px;
+      margin: 20px 0;
+    }
+    .chart-title {
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .bar-chart { display: flex; flex-direction: column; gap: 13px; }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 46px;
+      align-items: center;
+      gap: 12px;
+    }
+    .bar-label { font-size: 0.78rem; color: var(--muted); text-align: right; line-height: 1.3; }
+    .bar-track {
+      background: var(--accent-light);
+      height: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bar-track .danger-zone {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 30%;
+      background: rgba(192,57,43,0.08);
+    }
+    .bar-track .baseline {
+      position: absolute;
+      left: 40%;
+      top: 0; bottom: 0;
+      width: 1.5px;
+      background: var(--rule);
+      z-index: 2;
+    }
+    .bar-fill {
+      height: 100%;
+      background: var(--accent);
+      position: relative;
+      z-index: 3;
+      width: 0%;
+      transition: width 0.9s cubic-bezier(0.4,0,0.2,1);
+    }
+    .bar-value { font-size: 0.78rem; font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .chart-legend { display: flex; gap: 18px; margin-top: 14px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--muted); }
+    .legend-dot { width: 8px; height: 8px; flex-shrink: 0; }
+    .chart-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.55;
+      border-top: 1px solid var(--rule);
+      padding-top: 10px;
+    }
+
+    .flatline-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .fl-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .conclusion-row { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+    .conclusion-box {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .conclusion-box:hover { border-color: var(--accent); }
+    .conclusion-marker {
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 3px 8px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+    .conclusion-text { font-size: 0.9rem; line-height: 1.6; color: var(--muted); }
+    .conclusion-text strong { color: var(--ink); }
+
+    .source-box {
+      border-top: 1px solid var(--rule);
+      padding-top: 16px;
+      margin-top: 20px;
+    }
+    .source-box p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .source-box a { color: var(--accent); text-decoration: none; word-break: break-all; }
+    .source-box a:hover { text-decoration: underline; }
+
+    #nav {
+      display: flex;
+      gap: 10px;
+      padding: 16px 0 20px;
+      flex-shrink: 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    #nav-back {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 20px;
+      background: transparent;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    #nav-back:hover { border-color: var(--ink); color: var(--ink); }
+    #nav-back:disabled { opacity: 0.25; cursor: default; }
+
+    #nav-next {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      background: var(--ink);
+      border: none;
+      border-radius: var(--radius);
+      color: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    #nav-next:hover { background: var(--accent); transform: translateY(-1px); }
+    #nav-next:active { transform: scale(0.98); }
+
+    #brand { text-align: center; padding-bottom: 14px; flex-shrink: 0; }
+    #brand span {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    @media (max-width: 500px) {
+      #shell { padding: 0 20px; }
+      .bar-row { grid-template-columns: 90px 1fr 40px; gap: 8px; }
+      .bar-label { font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+<div id="shell">
+
+  <nav>
+    <a href="https://www.aufthority.com" class="logo" data-umami-event="Vaksin - Logo click">Aufthority</a>
+    <span id="progress-label">1 / 9</span>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <div id="slides-wrap">
+
+    <!-- S0 -->
+    <div class="slide" id="s0">
+      <p class="eyebrow">Sains Vaksin</p>
+      <h1 class="slide-headline">Aluminium dalam vaksin —<br><em>bahaya atau mitos?</em></h1>
+      <div class="slide-body">
+        <p>Anda mungkin pernah dengar dakwaan bahawa aluminium dalam vaksin boleh menyebabkan autisme, ADHD, atau penyakit autoimun.</p>
+        <p>Denmark baru-baru ini menjalankan kajian <strong>paling besar</strong> yang pernah dilakukan untuk menjawab persoalan ini.</p>
+        <p>Hasilnya mengejutkan — tapi bukan seperti yang disangkakan.</p>
+      </div>
+      <div class="divider"></div>
+      <div class="big-stat">
+        <span class="number">1.2 juta</span>
+        <span class="label">kanak-kanak dikaji</span>
+      </div>
+    </div>
+
+    <!-- S1 -->
+    <div class="slide" id="s1">
+      <p class="eyebrow">Penyelidik</p>
+      <h1 class="slide-headline">Siapa yang jalankan kajian ini?</h1>
+      <div class="slide-body">
+        <p>Semua penyelidik adalah dari <strong>Statens Serum Institut (SSI)</strong> — institusi kerajaan Denmark yang bertanggungjawab memantau keselamatan vaksin negara.</p>
+        <p><em class="green">Tiada syarikat farmaseutikal. Tiada pembuat vaksin.</em></p>
+        <p>Kajian bebas. Data kerajaan. Institusi awam.</p>
+      </div>
+      <div class="callout">
+        <p>"Ini bukan kajian syarikat ubat. Ini kerja kerajaan Denmark sendiri."</p>
+        <small>Statens Serum Institut (SSI) — Copenhagen, Denmark</small>
+      </div>
+    </div>
+
+    <!-- S2 -->
+    <div class="slide" id="s2">
+      <p class="eyebrow">Skala Kajian</p>
+      <h1 class="slide-headline">Skala kajian ini <em>luar biasa.</em></h1>
+      <div class="slide-body">
+        <p>Kanak-kanak yang lahir dari <strong>1997 hingga 2018</strong> dipantau dari umur 2 tahun sehingga 5 dan 10 tahun. Lima kategori penyakit dikaji:</p>
+      </div>
+      <div class="pill-list">
+        <div class="pill"><div class="pill-num">①</div><div class="pill-text">Autisme</div></div>
+        <div class="pill"><div class="pill-num">②</div><div class="pill-text">ADHD dan masalah perkembangan</div></div>
+        <div class="pill"><div class="pill-num">③</div><div class="pill-text">Penyakit autoimun</div></div>
+        <div class="pill"><div class="pill-num">④</div><div class="pill-text">Alahan dan asma</div></div>
+        <div class="pill"><div class="pill-num">⑤</div><div class="pill-text">50 penyakit kronik lain</div></div>
+      </div>
+    </div>
+
+    <!-- S3 -->
+    <div class="slide" id="s3">
+      <p class="eyebrow">Kekuatan Kajian</p>
+      <h1 class="slide-headline">Kenapa kajian ini <em>kukuh?</em></h1>
+      <div class="pill-list">
+        <div class="pill"><div class="pill-num">1</div><div class="pill-text"><strong>Data seluruh negara</strong> — bukan sampel kecil. Setiap kanak-kanak di Denmark.</div></div>
+        <div class="pill"><div class="pill-num">2</div><div class="pill-text"><strong>Tempoh lama</strong> — dipantau bertahun-tahun, bukan sekadar selepas vaksin.</div></div>
+        <div class="pill"><div class="pill-num">3</div><div class="pill-text"><strong>Registri kebangsaan</strong> — setiap vaksin dan diagnosis direkod secara rasmi.</div></div>
+        <div class="pill"><div class="pill-num">4</div><div class="pill-text"><strong>Analisis statistik ketat</strong> — bukan anekdot atau kes terpencil.</div></div>
+        <div class="pill"><div class="pill-num">5</div><div class="pill-text"><strong>Tiada konflik kepentingan</strong> — bukan syarikat farmaseutikal.</div></div>
+      </div>
+    </div>
+
+    <!-- S4 -->
+    <div class="slide" id="s4">
+      <p class="eyebrow">Metodologi</p>
+      <h1 class="slide-headline">Macam mana mereka buat kajian ini?</h1>
+      <div class="slide-body">
+        <p>Setiap kanak-kanak menerima <strong>jumlah aluminium yang berbeza</strong> bergantung pada jadual vaksin mereka.</p>
+        <p>Penyelidik kemudian bertanya satu soalan mudah:</p>
+      </div>
+      <div class="callout">
+        <p>Lebih banyak aluminium = lebih tinggi risiko penyakit?</p>
+      </div>
+      <div class="slide-body">
+        <p>Mereka bandingkan kanak-kanak dengan dos aluminium tinggi versus rendah, dan lihat siapa yang mendapat penyakit kronik.</p>
+      </div>
+    </div>
+
+    <!-- S5 -->
+    <div class="slide" id="s5">
+      <p class="eyebrow">Keputusan</p>
+      <h1 class="slide-headline">Angka-angkanya.</h1>
+      <div class="slide-body">
+        <p><strong>Hazard Ratio (HR)</strong> mengukur risiko. HR 1.00 bermaksud tiada kesan. <em class="red">HR melebihi 1.20</em> bermaksud risiko meningkat.</p>
+      </div>
+      <div class="chart-wrap">
+        <p class="chart-title">Hazard Ratio — Aluminium Vaksin vs Penyakit</p>
+        <div class="bar-chart" id="bar-chart"></div>
+        <div class="chart-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Keputusan kajian</div>
+          <div class="legend-item"><div class="legend-dot" style="background:rgba(192,57,43,0.35)"></div>Zon risiko bahaya</div>
+        </div>
+        <p class="chart-note">Garis tegak = risiko neutral (HR 1.00). Sumber: Annals of Internal Medicine, 2025.</p>
+      </div>
+    </div>
+
+    <!-- S6 -->
+    <div class="slide" id="s6">
+      <p class="eyebrow">Interpretasi</p>
+      <h1 class="slide-headline">Semua 50 penyakit. Pola yang <em>sama.</em></h1>
+      <div class="slide-body">
+        <p>Dalam <strong>setiap satu</strong> daripada 50 penyakit yang dikaji, angka berlegar sekitar 1.00. Kalau aluminium betul-betul berbahaya, kita patut nampak pola ini:</p>
+      </div>
+      <div class="flatline-wrap">
+        <div>
+          <div class="fl-label">
+            <span>Kalau berbahaya</span>
+            <span style="color:#c0392b">Risiko naik</span>
+          </div>
+          <svg width="100%" height="40" viewBox="0 0 400 40" preserveAspectRatio="none">
+            <polyline points="0,36 90,30 200,18 300,8 400,3" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="divider" style="margin:0"></div>
+        <div>
+          <div class="fl-label">
+            <span>Kajian Denmark</span>
+            <span style="color:var(--accent)">Neutral — flatline</span>
+          </div>
+          <svg width="100%" height="40" viewBox="0 0 400 40" preserveAspectRatio="none">
+            <line x1="0" y1="20" x2="400" y2="20" stroke="var(--rule)" stroke-width="1" stroke-dasharray="5,5"/>
+            <polyline points="0,20 80,21 160,19 240,20 320,21 400,20" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="slide-body">
+        <p><em class="gold">Flatline. Neutral. Kosong.</em> Itulah yang dimaksudkan dengan "tiada kaitan."</p>
+      </div>
+    </div>
+
+    <!-- S7 -->
+    <div class="slide" id="s7">
+      <p class="eyebrow">Konteks Politik</p>
+      <h1 class="slide-headline">Satu trivia <em>tambahan.</em></h1>
+      <div class="slide-body">
+        <p>Setiausaha Kesihatan Amerika Syarikat, <strong>Robert F. Kennedy Jr.</strong>, telah meminta jurnal ini ditarik semula.</p>
+        <p>Sebabnya? Kajian ini <em class="red">bercanggah dengan manifesto politik</em> beliau mengenai vaksin.</p>
+        <p>Jurnal tersebut menolak permintaan itu.</p>
+      </div>
+      <div class="callout">
+        <p>Apabila seseorang mahu kajian saintifik dipadamkan kerana ia tidak menyokong agenda mereka — itu sendiri adalah jawapan.</p>
+      </div>
+    </div>
+
+    <!-- S8 -->
+    <div class="slide" id="s8">
+      <p class="eyebrow">Kesimpulan</p>
+      <h1 class="slide-headline">Apa yang perlu anda tahu.</h1>
+      <div class="conclusion-row">
+        <div class="conclusion-box">
+          <span class="conclusion-marker">01</span>
+          <div class="conclusion-text"><strong>Jika aluminium betul-betul berbahaya,</strong> kajian sebesar ini pasti nampak "signal" dalam sekurang-kurangnya satu daripada 50 penyakit.</div>
+        </div>
+        <div class="conclusion-box">
+          <span class="conclusion-marker">02</span>
+          <div class="conclusion-text"><strong>Tapi dalam semua 50 penyakit,</strong> tiada satu pun menunjukkan peningkatan risiko — walaupun dos aluminium berbeza dalam kalangan 1.2 juta kanak-kanak.</div>
+        </div>
+        <div class="conclusion-box">
+          <span class="conclusion-marker">03</span>
+          <div class="conclusion-text"><strong>Sains bukan percaya buta.</strong> Sains adalah kumpulan bukti terbaik yang ada — dan bukti terbaik berkata: selamat.</div>
+        </div>
+      </div>
+      <div class="source-box">
+        <p><strong>Rujukan:</strong> Annals of Internal Medicine, 2025<br>
+        <a href="https://www.acpjournals.org/doi/10.7326/ANNALS-25-00997" target="_blank" rel="noopener" data-umami-event="Vaksin - Source click">acpjournals.org/doi/10.7326/ANNALS-25-00997</a></p>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrap -->
+
+  <div id="nav">
+    <button id="nav-back" data-umami-event="Vaksin - Back">← Balik</button>
+    <button id="nav-next" data-umami-event="Vaksin - Next">Seterusnya →</button>
+  </div>
+
+  <div id="brand"><span>Informed decisions, better health.</span></div>
+
+</div>
+
+<script>
+  const TOTAL = 9;
+  let current = 0;
+  let animating = false;
+
+  const slides   = document.querySelectorAll('.slide');
+  const btnBack  = document.getElementById('nav-back');
+  const btnNext  = document.getElementById('nav-next');
+  const progFill = document.getElementById('progress-fill');
+  const progLbl  = document.getElementById('progress-label');
+
+  // Slide titles for Umami per-slide tracking
+  const slideTitles = [
+    'Intro', 'Penyelidik', 'Skala', 'Kekuatan',
+    'Metodologi', 'Keputusan', 'Interpretasi', 'Politik', 'Kesimpulan'
+  ];
+
+  // Build bar chart
+  const barData = [
+    { label: 'Autoimun',      hr: 0.98 },
+    { label: 'Alahan / Asma', hr: 1.00 },
+    { label: 'Autisme',       hr: 0.98 },
+    { label: 'ADHD',          hr: 0.98 },
+    { label: 'Perkembangan',  hr: 0.99 },
+  ];
+  const MIN_HR = 0.8, MAX_HR = 1.3;
+  const chartEl = document.getElementById('bar-chart');
+  barData.forEach(d => {
+    const pct = ((d.hr - MIN_HR) / (MAX_HR - MIN_HR)) * 100;
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    row.innerHTML = `
+      <span class="bar-label">${d.label}</span>
+      <div class="bar-track">
+        <div class="danger-zone"></div>
+        <div class="baseline"></div>
+        <div class="bar-fill" data-pct="${pct.toFixed(1)}"></div>
+      </div>
+      <span class="bar-value">${d.hr.toFixed(2)}</span>`;
+    chartEl.appendChild(row);
+  });
+
+  function animateBars() {
+    document.querySelectorAll('.bar-fill[data-pct]').forEach((el, i) => {
+      setTimeout(() => { el.style.width = el.dataset.pct + '%'; }, i * 100);
+    });
+  }
+
+  function trackSlide(idx) {
+    if (typeof umami !== 'undefined') {
+      umami.track(`Vaksin - Slide ${idx + 1}: ${slideTitles[idx]}`);
+    }
+  }
+
+  function updateUI() {
+    progFill.style.width = ((current + 1) / TOTAL * 100) + '%';
+    progLbl.textContent  = `${current + 1} / ${TOTAL}`;
+    btnBack.disabled     = current === 0;
+    const isLast = current === TOTAL - 1;
+    btnNext.textContent  = isLast ? 'Selesai' : 'Seterusnya →';
+    btnNext.setAttribute('data-umami-event', isLast ? 'Vaksin - Selesai' : 'Vaksin - Next');
+  }
+
+  function goTo(idx, dir = 1) {
+    if (animating || idx < 0 || idx >= TOTAL) return;
+    animating = true;
+    const prev = current;
+
+    slides[prev].classList.add('exit-up');
+    slides[prev].classList.remove('active');
+
+    current = idx;
+    slides[current].style.transform = dir > 0 ? 'translateY(18px)' : 'translateY(-18px)';
+    slides[current].style.opacity   = '0';
+    slides[current].classList.add('active');
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      slides[current].style.transform = '';
+      slides[current].style.opacity   = '';
+    }));
+
+    setTimeout(() => {
+      slides[prev].classList.remove('exit-up');
+      animating = false;
+    }, 420);
+
+    slides[current].scrollTop = 0;
+    if (current === 5) setTimeout(animateBars, 250);
+    trackSlide(current);
+    updateUI();
+  }
+
+  // Init
+  slides[0].classList.add('active');
+  updateUI();
+  trackSlide(0);
+
+  btnNext.addEventListener('click', () => { if (current < TOTAL - 1) goTo(current + 1, 1); });
+  btnBack.addEventListener('click', () => { if (current > 0)         goTo(current - 1, -1); });
+
+  // Swipe
+  let tx = 0;
+  const wrap = document.getElementById('slides-wrap');
+  wrap.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) {
+      if (dx < 0 && current < TOTAL - 1) goTo(current + 1,  1);
+      if (dx > 0 && current > 0)         goTo(current - 1, -1);
+    }
+  }, { passive: true });
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1,  1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(current - 1, -1);
+  });
+</script>
+</body>
+</html>
