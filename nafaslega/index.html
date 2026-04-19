@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>NafasLega — 4·7·8 Breathing · Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f5f0;
+    --ink: #1a1a18;
+    --muted: #6b6b62;
+    --accent: #2d6a4f;
+    --accent-light: #e8f5ee;
+    --rule: #e0ddd5;
+    --card-bg: #ffffff;
+    --radius: 2px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141412;
+      --ink: #f0ede6;
+      --muted: #9a9a8e;
+      --accent: #52b788;
+      --accent-light: #1a2e24;
+      --rule: #2a2a26;
+      --card-bg: #1e1e1a;
+    }
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  /* ── SCREENS ── */
+  .screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+  }
+
+  /* ════════════════════════════════
+     SPLASH SCREEN
+  ════════════════════════════════ */
+  #splash {
+    background: var(--bg);
+    align-items: center;
+    justify-content: space-between;
+    padding: 44px 28px 36px;
+  }
+
+  .splash-top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.5s ease forwards 0.1s;
+  }
+  .breadcrumb a {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb-sep { font-size: 0.75rem; color: var(--rule); }
+  .breadcrumb strong {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* Splash orb */
+  .splash-orb-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+  .splash-ring-outer {
+    position: absolute;
+    inset: -16px;
+    border-radius: 50%;
+    border: 1px solid rgba(45,106,79,0.1);
+    animation: ringPulse 4s ease-in-out infinite 0.3s;
+  }
+  .splash-ring-inner {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(45,106,79,0.18);
+    animation: ringPulse 4s ease-in-out infinite;
+  }
+  .splash-orb {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 8px 36px rgba(45,106,79,0.22);
+    animation: orbPulse 4s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+  }
+  @keyframes orbPulse {
+    0%,100% { transform: scale(1);    box-shadow: 0 8px 36px rgba(45,106,79,0.22); }
+    50%      { transform: scale(1.18); box-shadow: 0 12px 52px rgba(45,106,79,0.3); }
+  }
+  @keyframes ringPulse {
+    0%,100% { transform: scale(1);    opacity: 0.6; }
+    50%      { transform: scale(1.2);  opacity: 0.15; }
+  }
+
+  /* Text */
+  .splash-text {
+    text-align: center;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.32s;
+  }
+  .splash-eyebrow {
+    font-size: 0.64rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .splash-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.6rem;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+  .splash-title em { font-style: italic; color: var(--accent); }
+  .splash-tagline {
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .splash-desc {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  /* Phase pills */
+  .phase-pills {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.46s;
+  }
+  .pill {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    min-width: 66px;
+  }
+  .pill-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .pill-label {
+    font-size: 0.56rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .pill-dot { font-size: 0.75rem; color: var(--rule); }
+
+  /* Begin CTA */
+  .splash-bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.6s;
+  }
+  .btn-begin {
+    width: 100%;
+    max-width: 320px;
+    padding: 14px;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-begin:hover  { background: var(--accent); transform: translateY(-1px); }
+  .btn-begin:active { transform: translateY(0); }
+  .splash-footnote {
+    font-size: 0.68rem;
+    color: var(--rule);
+    letter-spacing: 0.05em;
+  }
+
+  /* ════════════════════════════════
+     TOOL SCREEN
+     Layout: topbar | orb-stage (flex:1) | bottom-panel (fixed height)
+     Orb uses transform:scale — never affects layout flow
+  ════════════════════════════════ */
+  #tool {
+    background: var(--bg);
+    justify-content: space-between;
+  }
+
+  /* Top bar */
+  .tool-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px 16px;
+    border-bottom: 1px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .tool-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .tool-brand em { font-style: italic; color: var(--accent); }
+  .btn-exit {
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 6px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-exit:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* Orb stage — flex:1, orb centred, NEVER grows beyond its container */
+  .orb-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* safety net */
+    position: relative;
+  }
+
+  /*
+    The orb-wrap is a fixed 160×160 box.
+    The SVG ring sits exactly inside it.
+    The ball (80×80) lives in the centre and scales via transform.
+    transform:scale does NOT affect layout — no overflow, no collision.
+  */
+  .orb-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .orb-ring-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 160px; height: 160px;
+    transform: rotate(-90deg);
+    overflow: visible;
+  }
+
+  .orb-ball {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 6px 28px rgba(45,106,79,0.18);
+    position: relative;
+    z-index: 2;
+    /* Scale animates here — layout unaffected */
+    transform: scale(1);
+    will-change: transform;
+  }
+
+  /* ── Bottom panel: phase label + timer + stats + guide + stop ── */
+  .tool-bottom {
+    flex-shrink: 0;
+    border-top: 1px solid var(--rule);
+    padding: 20px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Phase row: label left, timer right — in one clean line */
+  .phase-timer-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .phase-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .timer-block {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+  }
+  .timer-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .timer-unit {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  .phase-instr {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  /* Stats */
+  .stats-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 14px;
+  }
+  .stat { text-align: center; flex: 1; }
+  .stat-val {
+    display: block;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+  }
+  .stat-label {
+    font-size: 0.58rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  /* Phase guide */
+  .phase-guide {
+    display: flex;
+    margin-bottom: 14px;
+  }
+  .guide-item {
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    border-right: 1px solid var(--rule);
+  }
+  .guide-item:last-child { border-right: none; }
+  .guide-phase-lbl {
+    font-size: 0.56rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--rule);
+    margin-bottom: 3px;
+    transition: color 0.3s;
+  }
+  .guide-dur-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    transition: color 0.3s;
+  }
+  .guide-dur-val small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 300;
+    color: var(--muted);
+    margin-left: 1px;
+  }
+  .guide-item.active .guide-phase-lbl { color: var(--accent); }
+  .guide-item.active .guide-dur-val   { color: var(--accent); }
+
+  /* Stop button */
+  .btn-stop {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-stop:hover { border-color: var(--ink); color: var(--ink); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Short screens */
+  @media (max-height: 680px) {
+    #splash { padding: 32px 28px 28px; }
+    .breadcrumb { margin-bottom: 20px; }
+    .splash-orb-wrap { width: 110px; height: 110px; margin-bottom: 20px; }
+    .splash-orb { width: 52px; height: 52px; }
+    .splash-title { font-size: 2.2rem; }
+    .splash-desc { font-size: 0.82rem; }
+    .splash-text { margin-bottom: 16px; }
+    .tool-bottom { padding: 14px 24px 20px; }
+  }
+
+  /* Narrow screens */
+  @media (max-width: 360px) {
+    .pill { min-width: 56px; padding: 8px 10px; }
+    .splash-title { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════
+     SPLASH
+══════════════════ -->
+<div class="screen" id="splash">
+
+  <div class="splash-top">
+    <div class="breadcrumb">
+      <a href="https://aufthority.com">Aufthority</a>
+      <span class="breadcrumb-sep">/</span>
+      <strong>NafasLega</strong>
+    </div>
+
+    <div class="splash-orb-wrap">
+      <div class="splash-ring-outer"></div>
+      <div class="splash-ring-inner"></div>
+      <div class="splash-orb"></div>
+    </div>
+
+    <div class="splash-text">
+      <p class="splash-eyebrow">Evidence-Based Breathwork</p>
+      <h1 class="splash-title">Nafas<em>Lega</em></h1>
+      <p class="splash-tagline">4 · 7 · 8 Breathing Technique</p>
+      <p class="splash-desc">
+        Activates your parasympathetic nervous system —
+        calming your heart rate and cortisol in minutes.
+      </p>
+    </div>
+
+    <div class="phase-pills">
+      <div class="pill">
+        <span class="pill-num">4</span>
+        <span class="pill-label">Inhale</span>
+      </div>
+      <span class="pill-dot">·</span>
+      <div class="pill">
+        <span class="pill-num">7</span>
+        <span class="pill-label">Hold</span>
+      </div>
+      <span class="pill-dot">·</span>
+      <div class="pill">
+        <span class="pill-num">8</span>
+        <span class="pill-label">Exhale</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="splash-bottom">
+    <button class="btn-begin" id="btnBegin">Begin →</button>
+    <p class="splash-footnote">Free · No account needed</p>
+  </div>
+
+</div>
+
+<!-- ══════════════════
+     TOOL
+══════════════════ -->
+<div class="screen hidden" id="tool">
+
+  <div class="tool-topbar">
+    <div class="tool-brand">Nafas<em>Lega</em></div>
+    <button class="btn-exit" id="btnExit">← Exit</button>
+  </div>
+
+  <!-- Orb lives here — fixed 160×160 box, scales via transform only -->
+  <div class="orb-stage">
+    <div class="orb-wrap">
+      <svg class="orb-ring-svg" id="ringSvg" viewBox="0 0 160 160">
+        <circle cx="80" cy="80" r="72"
+          fill="none" stroke="#e0ddd5" stroke-width="1"/>
+        <circle id="arcPath" cx="80" cy="80" r="72"
+          fill="none" stroke="#2d6a4f" stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-dasharray="452.39" stroke-dashoffset="452.39"/>
+      </svg>
+      <div class="orb-ball" id="orbBall"></div>
+    </div>
+  </div>
+
+  <!-- Everything textual is DOWN HERE — no overlap possible -->
+  <div class="tool-bottom">
+
+    <div class="phase-timer-row">
+      <span class="phase-name"  id="phaseName">Ready</span>
+      <div class="timer-block">
+        <span class="timer-num"  id="timerNum">—</span>
+        <span class="timer-unit" id="timerUnit"></span>
+      </div>
+    </div>
+    <div class="phase-instr" id="phaseInstr">session will begin shortly</div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-val"   id="statDuration">0:00</span>
+        <span class="stat-label">Duration</span>
+      </div>
+      <div class="stat">
+        <span class="stat-val"   id="statCycles">0</span>
+        <span class="stat-label">Cycles</span>
+      </div>
+      <div class="stat">
+        <span class="stat-val"   id="statBreath">0s</span>
+        <span class="stat-label">Breathwork</span>
+      </div>
+    </div>
+
+    <div class="phase-guide">
+      <div class="guide-item" id="g0">
+        <div class="guide-phase-lbl">Inhale</div>
+        <div class="guide-dur-val">4<small>s</small></div>
+      </div>
+      <div class="guide-item" id="g1">
+        <div class="guide-phase-lbl">Hold</div>
+        <div class="guide-dur-val">7<small>s</small></div>
+      </div>
+      <div class="guide-item" id="g2">
+        <div class="guide-phase-lbl">Exhale</div>
+        <div class="guide-dur-val">8<small>s</small></div>
+      </div>
+    </div>
+
+    <button class="btn-stop" id="btnStop">Stop Session</button>
+  </div>
+
+</div>
+
+<script>
+  const PHASES = [
+    { label: "Inhale",  instr: "breathe in slowly",  dur: 4, ease: "ease-in"  },
+    { label: "Hold",    instr: "retain the breath",   dur: 7, ease: "linear"   },
+    { label: "Exhale",  instr: "release completely",  dur: 8, ease: "ease-out" },
+  ];
+
+  // Scale values — orb-ball is 80px, these are multipliers
+  // Peak scale = fills most of the 160px container (≈ 152/80 = 1.9)
+  const SCALE_BASE = 1, SCALE_PEAK = 1.85;
+
+  // SVG ring: r=72, circumference = 2π×72
+  const C = +(2 * Math.PI * 72).toFixed(2); // 452.39
+
+  let raf, phaseStart, sessionInterval;
+  let phaseIdx = 0, cycles = 0, sessionSec = 0, running = false;
+
+  const splash       = document.getElementById('splash');
+  const tool         = document.getElementById('tool');
+  const btnBegin     = document.getElementById('btnBegin');
+  const btnExit      = document.getElementById('btnExit');
+  const btnStop      = document.getElementById('btnStop');
+  const orbBall      = document.getElementById('orbBall');
+  const arcPath      = document.getElementById('arcPath');
+  const phaseName    = document.getElementById('phaseName');
+  const phaseInstr   = document.getElementById('phaseInstr');
+  const timerNum     = document.getElementById('timerNum');
+  const timerUnit    = document.getElementById('timerUnit');
+  const statDuration = document.getElementById('statDuration');
+  const statCycles   = document.getElementById('statCycles');
+  const statBreath   = document.getElementById('statBreath');
+
+  function fmt(s) {
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  function activatePhase(idx) {
+    phaseIdx = idx;
+    const p = PHASES[idx];
+
+    phaseName.textContent  = p.label;
+    phaseInstr.textContent = p.instr;
+
+    // Scale: inhale→peak, hold→stay peak, exhale→back to base
+    const targetScale = (idx === 2) ? SCALE_BASE : SCALE_PEAK;
+    orbBall.style.transition = `transform ${p.dur}s ${p.ease}, box-shadow ${p.dur}s ease`;
+    orbBall.style.transform  = `scale(${targetScale})`;
+    orbBall.style.boxShadow  = idx === 1
+      ? '0 14px 56px rgba(45,106,79,0.32)'
+      : idx === 0
+        ? '0 10px 40px rgba(45,106,79,0.2)'
+        : '0 4px 18px rgba(45,106,79,0.1)';
+
+    // Arc ring
+    arcPath.style.transition = 'none';
+    arcPath.setAttribute('stroke-dashoffset', C);
+    void arcPath.getBoundingClientRect();
+    arcPath.style.transition = `stroke-dashoffset ${p.dur}s linear`;
+    arcPath.setAttribute('stroke-dashoffset', '0');
+
+    // Guide highlight
+    for (let i = 0; i < 3; i++) {
+      document.getElementById('g' + i).classList.toggle('active', i === idx);
+    }
+  }
+
+  function tick(now) {
+    if (!running) return;
+    const elapsed   = (now - phaseStart) / 1000;
+    const p         = PHASES[phaseIdx];
+    const remaining = Math.ceil(p.dur - elapsed);
+    timerNum.textContent  = remaining > 0 ? remaining : 1;
+    timerUnit.textContent = 'sec';
+
+    if (elapsed >= p.dur) {
+      phaseStart = now;
+      const next = (phaseIdx + 1) % PHASES.length;
+      if (next === 0) {
+        cycles++;
+        statCycles.textContent = cycles;
+        statBreath.textContent = (cycles * 19) + 's';
+      }
+      activatePhase(next);
+    }
+    raf = requestAnimationFrame(tick);
+  }
+
+  function startSession() {
+    running = true;
+    phaseIdx = 0; cycles = 0; sessionSec = 0;
+    statCycles.textContent   = '0';
+    statBreath.textContent   = '0s';
+    statDuration.textContent = '0:00';
+
+    // Snap orb back to base instantly
+    orbBall.style.transition = 'none';
+    orbBall.style.transform  = `scale(${SCALE_BASE})`;
+    orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
+    void orbBall.getBoundingClientRect();
+
+    phaseStart = performance.now();
+    activatePhase(0);
+    raf = requestAnimationFrame(tick);
+
+    sessionInterval = setInterval(() => {
+      sessionSec++;
+      statDuration.textContent = fmt(sessionSec);
+    }, 1000);
+  }
+
+  function stopSession() {
+    running = false;
+    cancelAnimationFrame(raf);
+    clearInterval(sessionInterval);
+
+    orbBall.style.transition = 'transform 0.7s ease, box-shadow 0.7s ease';
+    orbBall.style.transform  = `scale(${SCALE_BASE})`;
+    orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
+
+    arcPath.style.transition = 'none';
+    arcPath.setAttribute('stroke-dashoffset', C);
+
+    phaseName.textContent  = 'Ready';
+    phaseInstr.textContent = 'session will begin shortly';
+    timerNum.textContent   = '—';
+    timerUnit.textContent  = '';
+    for (let i = 0; i < 3; i++) document.getElementById('g' + i).classList.remove('active');
+  }
+
+  function goToTool() {
+    splash.classList.add('hidden');
+    tool.classList.remove('hidden');
+    startSession();
+  }
+
+  function goToSplash() {
+    stopSession();
+    tool.classList.add('hidden');
+    splash.classList.remove('hidden');
+  }
+
+  btnBegin.addEventListener('click', goToTool);
+  btnExit.addEventListener('click',  goToSplash);
+  btnStop.addEventListener('click',  goToSplash);
+</script>
+</body>
+</html>
