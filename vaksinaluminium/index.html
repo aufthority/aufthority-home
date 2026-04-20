@@ -693,18 +693,6 @@
   btnNext.addEventListener('click', () => { if (current < TOTAL - 1) goTo(current + 1, 1); });
   btnBack.addEventListener('click', () => { if (current > 0)         goTo(current - 1, -1); });
 
-  // Swipe
-  let tx = 0;
-  const wrap = document.getElementById('slides-wrap');
-  wrap.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  wrap.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 50) {
-      if (dx < 0 && current < TOTAL - 1) goTo(current + 1,  1);
-      if (dx > 0 && current > 0)         goTo(current - 1, -1);
-    }
-  }, { passive: true });
-
   // Keyboard
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1,  1);
