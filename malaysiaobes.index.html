@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apa Yang Sebenarnya Menggemukkan Kita — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:           #f7f5f0;
+  --ink:          #1a1a18;
+  --muted:        #6b6b62;
+  --accent:       #2d6a4f;
+  --accent-light: #e8f5ee;
+  --rule:         #e0ddd5;
+  --card-bg:      #ffffff;
+  --radius:       2px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:           #141412;
+    --ink:          #f0ede6;
+    --muted:        #9a9a8e;
+    --accent:       #52b788;
+    --accent-light: #1a2e24;
+    --rule:         #2a2a26;
+    --card-bg:      #1e1e1a;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+#shell {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 28px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+#progress-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+#progress-track { height: 2px; background: var(--rule); }
+#progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.42s ease;
+  width: 0%;
+}
+#slides-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  padding: 36px 0 12px;
+}
+.slide {
+  display: none;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.38s ease, transform 0.38s ease;
+}
+.slide.active { display: block; opacity: 1; transform: translateY(0); }
+.slide.exit-up {
+  display: block; opacity: 0; transform: translateY(-14px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.eyebrow {
+  font-size: 0.72rem; font-weight: 500; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px;
+}
+.slide-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.65rem, 4.5vw, 2.15rem);
+  line-height: 1.18; color: var(--ink); margin-bottom: 20px;
+}
+.slide-headline em { font-style: italic; color: var(--accent); }
+.slide-body { font-size: 0.97rem; line-height: 1.72; color: var(--ink); font-weight: 300; }
+.slide-body p + p { margin-top: 14px; }
+
+/* CALLOUT */
+.callout {
+  border-left: 2px solid var(--accent);
+  background: var(--accent-light);
+  padding: 16px 20px; border-radius: var(--radius); margin: 22px 0;
+}
+.callout p {
+  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-size: 1.08rem; line-height: 1.5; color: var(--ink);
+}
+.callout small { display: block; margin-top: 8px; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; }
+
+/* BIG STAT */
+.big-stat {
+  border-left: 2px solid var(--accent);
+  padding: 14px 20px; margin: 22px 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.big-stat .number { font-family: 'DM Serif Display', serif; font-size: 2.6rem; color: var(--ink); line-height: 1; }
+.big-stat .label { font-size: 0.72rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* STAT ROW */
+.stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 22px 0; }
+.stat-row.two-col { grid-template-columns: 1fr 1fr; }
+.stat-box {
+  border: 1px solid var(--rule); background: var(--card-bg);
+  border-radius: var(--radius); padding: 14px 12px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.stat-box.hi { border-color: #c0392b; background: #fdf2f2; }
+.stat-box.lo { border-color: var(--accent); background: var(--accent-light); }
+@media (prefers-color-scheme: dark) {
+  .stat-box.hi { background: #2a1a1a; }
+  .stat-box.lo { background: var(--accent-light); }
+}
+.stat-box .s-num { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--ink); line-height: 1; }
+.stat-box.hi .s-num { color: #c0392b; }
+.stat-box.lo .s-num { color: var(--accent); }
+.stat-box .s-label { font-size: 0.68rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+.stat-box .s-sub { font-size: 0.76rem; color: var(--muted); font-weight: 300; margin-top: 3px; }
+
+/* PILL LIST */
+.pill-list { display: flex; flex-direction: column; gap: 10px; margin: 22px 0; }
+.pill {
+  display: flex; gap: 14px; align-items: flex-start;
+  border: 1px solid var(--rule); background: var(--card-bg);
+  border-radius: var(--radius); padding: 14px 16px; transition: border-color 0.2s;
+}
+.pill:hover { border-color: var(--accent); }
+.pill-num { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+.pill-text { font-size: 0.9rem; line-height: 1.6; color: var(--ink); font-weight: 300; }
+.pill-text strong { font-weight: 500; color: var(--ink); }
+
+/* CHART WRAP */
+.chart-wrap {
+  border: 1px solid var(--rule); background: var(--card-bg);
+  border-radius: var(--radius); padding: 20px; margin: 22px 0;
+}
+.chart-title { font-size: 0.72rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.chart-subtitle { font-size: 0.85rem; color: var(--ink); margin-bottom: 18px; font-weight: 300; }
+.chart-note { font-size: 0.73rem; color: var(--muted); margin-top: 12px; }
+
+/* HORIZONTAL BAR */
+.bar-rows { display: flex; flex-direction: column; gap: 11px; }
+.bar-row { display: flex; flex-direction: column; gap: 4px; }
+.bar-label-row { display: flex; justify-content: space-between; align-items: baseline; }
+.bar-country { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+.bar-val { font-size: 0.78rem; color: var(--muted); font-family: 'DM Serif Display', serif; }
+.bar-track { height: 7px; background: var(--rule); border-radius: 1px; overflow: hidden; }
+.bar-fill {
+  height: 100%; background: var(--accent); border-radius: 1px;
+  width: 0%; transition: width 0.85s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.bar-fill.red  { background: #c0392b; }
+.bar-fill.muted-fill { background: var(--muted); opacity: 0.5; }
+
+/* STEP CARDS */
+.step-list { display: flex; flex-direction: column; gap: 10px; margin: 22px 0; }
+.step-card {
+  display: flex; gap: 14px; align-items: flex-start;
+  border: 1px solid var(--rule); background: var(--card-bg);
+  border-radius: var(--radius); padding: 14px 16px;
+}
+.step-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent-light); color: var(--accent);
+  font-size: 0.78rem; font-weight: 500;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.step-body { font-size: 0.9rem; line-height: 1.6; color: var(--ink); font-weight: 300; }
+.step-body strong { font-weight: 500; }
+
+/* CONCLUSION */
+.conclusion-row { display: flex; flex-direction: column; gap: 10px; margin: 22px 0; }
+.conclusion-box {
+  display: flex; gap: 14px; align-items: flex-start;
+  border: 1px solid var(--rule); background: var(--card-bg);
+  border-radius: var(--radius); padding: 14px 16px;
+}
+.conclusion-marker {
+  font-family: 'DM Serif Display', serif; font-size: 0.9rem; font-weight: 500;
+  background: var(--accent-light); color: var(--accent);
+  padding: 3px 8px; border-radius: var(--radius); flex-shrink: 0; margin-top: 1px;
+}
+.conclusion-text { font-size: 0.9rem; line-height: 1.6; color: var(--ink); font-weight: 300; }
+.conclusion-text strong { font-weight: 500; }
+
+/* SOURCE BOX */
+.source-box { border-top: 1px solid var(--rule); margin-top: 28px; padding-top: 16px; }
+.source-box p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.source-box a { color: var(--accent); text-decoration: none; }
+.source-box a:hover { text-decoration: underline; }
+
+.divider { height: 1px; background: var(--rule); margin: 20px 0; }
+
+/* SVG */
+.svg-wrap { width: 100%; overflow: hidden; }
+svg.linechart { width: 100%; height: auto; display: block; }
+
+/* NAV */
+#nav { display: flex; gap: 10px; padding: 20px 0; border-top: 1px solid var(--rule); }
+#nav-back {
+  padding: 12px 22px; border: 1px solid var(--rule); background: transparent;
+  color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+  font-weight: 500; cursor: pointer; border-radius: var(--radius);
+  transition: border-color 0.2s; letter-spacing: 0.04em;
+}
+#nav-back:hover:not(:disabled) { border-color: var(--ink); }
+#nav-back:disabled { opacity: 0.3; cursor: default; }
+#nav-next {
+  flex: 1; padding: 12px 22px; border: none; background: var(--ink); color: var(--bg);
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500;
+  cursor: pointer; border-radius: var(--radius); transition: background 0.2s;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+#nav-next:hover { background: var(--accent); }
+#brand { text-align: center; padding: 10px 0 24px; font-size: 0.73rem; color: var(--muted); letter-spacing: 0.04em; }
+
+/* COUNTRY COMPARISON TABLE */
+.compare-table { margin: 22px 0; }
+.compare-row {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 0; border-bottom: 1px solid var(--rule); padding: 10px 0;
+  align-items: center;
+}
+.compare-row.header { border-bottom: 2px solid var(--rule); padding-bottom: 8px; }
+.compare-row.header span { font-size: 0.68rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.compare-row .c-country { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+.compare-row .c-val { font-size: 0.88rem; color: var(--ink); font-weight: 300; text-align: right; }
+.compare-row .c-val.hi { color: #c0392b; font-weight: 500; }
+.compare-row .c-val.lo { color: var(--accent); font-weight: 500; }
+.compare-row .c-ob { font-family: 'DM Serif Display', serif; font-size: 1rem; text-align: right; }
+.compare-row .c-ob.hi { color: #c0392b; }
+.compare-row .c-ob.lo { color: var(--accent); }
+
+/* INLINE NOTE */
+.inline-note {
+  font-size: 0.8rem; color: var(--muted); font-style: italic;
+  border-top: 1px solid var(--rule); margin-top: 8px; padding-top: 8px;
+}
+</style>
+</head>
+<body>
+<div id="shell">
+
+  <nav>
+    <a class="logo" href="https://aufthority.com" data-umami-event="Obesiti Asia - Logo click">Aufthority</a>
+    <span id="progress-label">1 / 10</span>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <div id="slides-wrap">
+
+    <!-- S0: HOOK -->
+    <div class="slide" id="s0">
+      <p class="eyebrow">Obesiti</p>
+      <h1 class="slide-headline">Jepun dan Korea makan <em>lebih banyak</em> daging — tapi jauh lebih kurus dari Malaysia.</h1>
+      <div class="slide-body">
+        <p>Pada 2023, negara Jepun memakan 213 kalori daripada protein haiwan setiap hari. Korea Selatan makan 253 kalori. Malaysia? 219 kalori — hampir sama.</p>
+        <p>Namun kadar obesiti dewasa Malaysia adalah 22.4%. Jepun 4.9%. Korea 6.7%.</p>
+      </div>
+      <div class="callout">
+        <p>"Tiga negara. Protein haiwan yang hampir sama. Obesiti yang berbeza sehingga lima kali ganda. Sesuatu yang aneh sedang berlaku di sini."</p>
+        <small>Analisis komparatif, Our World in Data — 2022–2023</small>
+      </div>
+      <div class="slide-body">
+        <p>Data daripada tujuh set data OWID merentas enam negara mendedahkan titik persilangan yang menerangkan paradoks ini — dan mengapa trajektori Malaysia perlu difahami sebelum terlambat.</p>
+      </div>
+    </div>
+
+    <!-- S1: THE SHARED TREND — all rising -->
+    <div class="slide" id="s1">
+      <p class="eyebrow">Trend Bersama</p>
+      <h1 class="slide-headline">Semua negara semakin gemuk — <em>tetapi pada kadar yang sangat berbeza.</em></h1>
+      <div class="slide-body">
+        <p>Sejak 1990, kadar obesiti dewasa meningkat di kesemua enam negara tanpa pengecualian. Ini mengesahkan bahawa ada kuasa struktural — bukan sekadar pilihan individu — yang mendorong trend ini secara global.</p>
+      </div>
+      <div class="chart-wrap">
+        <p class="chart-title">KADAR OBESITI DEWASA 2022 & PERTUMBUHAN SEJAK 1990</p>
+        <p class="chart-subtitle">% populasi dewasa BMI ≥ 30, disusun mengikut kadar semasa</p>
+        <div class="bar-rows" id="chart-obesity-2022">
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Amerika Syarikat</span><span class="bar-val">42.9% &nbsp;(dari 18.5%)</span></div>
+            <div class="bar-track"><div class="bar-fill red" data-w="100"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Malaysia</span><span class="bar-val">22.4% &nbsp;(dari 4.8%)</span></div>
+            <div class="bar-track"><div class="bar-fill red" data-w="52"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">India</span><span class="bar-val">7.2% &nbsp;(dari 0.7%)</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="17"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Korea Selatan</span><span class="bar-val">6.7% &nbsp;(dari 1.4%)</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="16"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Jepun</span><span class="bar-val">4.9% &nbsp;(dari 2.0%)</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="11"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Vietnam</span><span class="bar-val">2.1% &nbsp;(dari 0.2%)</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="5"></div></div>
+          </div>
+        </div>
+        <p class="chart-note">Sumber: WHO / Our World in Data, 2022</p>
+      </div>
+      <div class="slide-body">
+        <p>Pertumbuhan ini berlaku walaupun di negara dengan diet yang sangat berbeza — dari yang tinggi karbohidrat (Vietnam, India) hingga yang tinggi lemak (AS, Malaysia). Ini menunjukkan masalahnya bukan pada jenis makanan, tetapi masalah yang lain.</p>
+      </div>
+    </div>
+
+    <!-- S2: CALORIC SUPPLY — the shared driver -->
+    <div class="slide" id="s2">
+      <p class="eyebrow">Pemandu Bersama</p>
+      <h1 class="slide-headline">Bekalan kalori naik di semua negara — <em>tapi Jepun adalah pengecualian menakjubkan.</em></h1>
+      <div class="slide-body">
+        <p>Apabila kita membandingkan trajektori kalori harian per kapita dari 1990 hingga 2020, satu pola menarik muncul: hampir semua negara meningkat — kecuali Jepun.</p>
+      </div>
+      <div class="chart-wrap">
+        <p class="chart-title">PERUBAHAN BEKALAN KALORI HARIAN — 1990 vs 2020</p>
+        <p class="chart-subtitle">Kalori per kapita sehari</p>
+        <div class="bar-rows" id="chart-cal-change">
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Vietnam</span><span class="bar-val">2,004 → 2,966 (+48%)</span></div>
+            <div class="bar-track"><div class="bar-fill red" data-w="91"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Korea Selatan</span><span class="bar-val">2,882 → 3,375 (+17%)</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="62"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Malaysia</span><span class="bar-val">2,704 → 2,933 (+8%)</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="45"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Amerika Syarikat</span><span class="bar-val">~3,600 → 3,847 (+7%)</span></div>
+            <div class="bar-track"><div class="bar-fill red" data-w="40"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Jepun</span><span class="bar-val">2,921 → 2,652 (-9%)</span></div>
+            <div class="bar-track"><div class="bar-fill muted-fill" data-w="15"></div></div>
+          </div>
+        </div>
+        <p class="chart-note">Sumber: FAO / Our World in Data, 1990–2020</p>
+      </div>
+      <div class="slide-body">
+        <p>Jepun adalah satu-satunya negara yang <em>menurunkan</em> jumlah kalori hariannya sambil menjadi lebih kaya. Ini bertentangan dengan norma global di mana kekayaan biasanya membawa kepada peningkatan pengambilan kalori. Kenapa mereka lain dari yang lain?</p>
+      </div>
+    </div>
+
+    <!-- S3: ANIMAL PROTEIN — the great paradox -->
+    <div class="slide" id="s3">
+      <p class="eyebrow">Paradoks Utama</p>
+      <h1 class="slide-headline">Protein haiwan <em>tidak menerangkan</em> perbezaan obesiti antara negara-negara Asia ini.</h1>
+      <div class="slide-body">
+        <p>Ini adalah dapatan paling mengejutkan dalam data. Jepun, Malaysia, dan Korea Selatan mempunyai nisbah protein haiwan yang hampir identik dalam diet mereka — namun kadar obesiti mereka berbeza dengan dramatik.</p>
+      </div>
+      <div class="compare-table">
+        <div class="compare-row header">
+          <span>Negara</span>
+          <span style="text-align:right">Protein haiwan</span>
+          <span style="text-align:right">Gula (kg/thn)</span>
+          <span style="text-align:right">Obesiti</span>
+        </div>
+        <div class="compare-row">
+          <span class="c-country">Korea Selatan</span>
+          <span class="c-val">7.2%</span>
+          <span class="c-val lo">24 kg</span>
+          <span class="c-ob lo">6.7%</span>
+        </div>
+        <div class="compare-row">
+          <span class="c-country">Jepun</span>
+          <span class="c-val">7.7%</span>
+          <span class="c-val lo">20 kg</span>
+          <span class="c-ob lo">4.9%</span>
+        </div>
+        <div class="compare-row">
+          <span class="c-country">Malaysia</span>
+          <span class="c-val">7.1%</span>
+          <span class="c-val hi">52 kg</span>
+          <span class="c-ob hi">22.4%</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <p>Tiga negara. Nisbah protein haiwan yang hampir sama (7.1–7.7%). Tetapi gula yang diambil Malaysia adalah <strong>lebih dari dua kali ganda</strong> Jepun dan Korea. Dan kadar obesitinya empat kali lebih tinggi.</p>
+        <p>Ini menunjukkan bahawa protein haiwan bukan pemandu obesiti di sini — <em>ambilan gula berlebihan adalah pemandunya.</em></p>
+      </div>
+    </div>
+
+    <!-- S4: SUGAR — the r=0.97 finding -->
+    <div class="slide" id="s4">
+      <p class="eyebrow">Penemuan Utama</p>
+      <h1 class="slide-headline">Pengambilan gula berlebihan mempunyai korelasi <em>r = 0.97</em> dengan obesiti — hampir sempurna.</h1>
+      <div class="slide-body">
+        <p>Daripada semua pemboleh ubah yang dianalisis merentas enam negara, pengambilan gula mempunyai hubungan yang paling kuat dengan kadar obesiti — jauh melebihi kalori total, lemak, atau protein.</p>
+      </div>
+      <div class="big-stat">
+        <span class="number">r = 0.97</span>
+        <span class="label">Korelasi gula (kg/tahun) vs kadar obesiti dewasa — 6 negara</span>
+      </div>
+      <div class="chart-wrap">
+        <p class="chart-title">PENGAMBILAN GULA PER KAPITA vs KADAR OBESITI</p>
+        <p class="chart-subtitle">Kilogram gula per orang setahun</p>
+        <div class="bar-rows" id="chart-sugar">
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Amerika Syarikat</span><span class="bar-val">65 kg/thn — obesiti 42.9%</span></div>
+            <div class="bar-track"><div class="bar-fill red" data-w="100"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Malaysia</span><span class="bar-val">52 kg/thn — obesiti 22.4%</span></div>
+            <div class="bar-track"><div class="bar-fill red" data-w="80"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Korea Selatan</span><span class="bar-val">24 kg/thn — obesiti 6.7%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="37"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">India</span><span class="bar-val">20 kg/thn — obesiti 7.2%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="31"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Jepun</span><span class="bar-val">20 kg/thn — obesiti 4.9%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="31"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Vietnam</span><span class="bar-val">18 kg/thn — obesiti 2.1%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="28"></div></div>
+          </div>
+        </div>
+        <p class="chart-note">Sumber: FAO Sugar Supply / WHO Obesity Data / Our World in Data, 2022</p>
+      </div>
+      <div class="slide-body">
+        <p>Urutan ini hampir sempurna — dari pengambilan gula tertinggi (AS: 65 kg) hingga terendah (Vietnam: 18 kg), kadar obesiti mengikuti pola yang sama. Ini adalah hubungan yang jarang ditemui dengan kekuatan sebegini dalam epidemiologi pemakanan.</p>
+      </div>
+    </div>
+
+    <!-- S5: VEGETABLES — the protective factor -->
+    <div class="slide" id="s5">
+      <p class="eyebrow">Faktor Perlindungan</p>
+      <h1 class="slide-headline">Pemakanan sayuran yang tinggi <em>melindungi</em> Korea dan Jepun — walaupun kalori mereka tinggi.</h1>
+      <div class="slide-body">
+        <p>Korea Selatan mempunyai bekalan kalori tertinggi di kalangan negara Asia dalam dataset ini (3,375 kcal/hari) — lebih tinggi daripada Malaysia. Tetapi kadar obesitinya hanya 6.7%. Perbezaannya terletak sebahagian besar pada budaya pemakanan sayuran mereka.</p>
+      </div>
+      <div class="chart-wrap">
+        <p class="chart-title">PENGAMBILAN SAYURAN HARIAN PER KAPITA</p>
+        <p class="chart-subtitle">Gram per orang sehari (anggaran)</p>
+        <div class="bar-rows" id="chart-veg">
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Korea Selatan</span><span class="bar-val">~360 g/hari</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="100"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Jepun</span><span class="bar-val">~280 g/hari</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="78"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Vietnam</span><span class="bar-val">~240 g/hari</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="67"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">India</span><span class="bar-val">~200 g/hari</span></div>
+            <div class="bar-track"><div class="bar-fill muted-fill" data-w="56"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Amerika Syarikat</span><span class="bar-val">~190 g/hari</span></div>
+            <div class="bar-track"><div class="bar-fill muted-fill" data-w="53"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label-row"><span class="bar-country">Malaysia</span><span class="bar-val">~170 g/hari</span></div>
+            <div class="bar-track"><div class="bar-fill red" data-w="47"></div></div>
+          </div>
+        </div>
+        <p class="chart-note">Sumber: OWID Vegetable Intake Explorer / FAO Food Balance Sheets, 2022</p>
+      </div>
+      <div class="slide-body">
+        <p>Korea makan lebih dari dua kali ganda sayuran berbanding Malaysia. Kimchi, banchan, dan budaya fermentasi Korea menghasilkan pengambilan serat dan mikro-nutrien yang tinggi — yang meningkatkan rasa kenyang dan mengawal selera makan walaupun jumlah kalori total adalah tinggi.</p>
+      </div>
+    </div>
+
+    <!-- S6: FOOD GROUP COMPOSITION — where calories come from -->
+    <div class="slide" id="s6">
+      <p class="eyebrow">Sumber Kalori</p>
+      <h1 class="slide-headline">Malaysia mendapat kalorinya dari <em>kumpulan makanan yang paling berbahaya.</em></h1>
+      <div class="slide-body">
+        <p>Bukan sekadar berapa banyak kalori yang dimakan — tetapi dari mana kalori itu datang yang membezakan negara berisiko tinggi daripada yang rendah. Data sumber kalori mengikut kumpulan makanan mendedahkan pola yang ketara.</p>
+      </div>
+      <div class="pill-list">
+        <div class="pill">
+          <div class="pill-num">①</div>
+          <div class="pill-text"><strong>Makanan bergoreng adalah rutin — Malaysia unik.</strong> = Kalori daripada minyak masak menyumbang sebahagian besar daripada 31% lemak dalam diet Malaysia — berbeza dengan Jepun yang mendapat lemaknya terutama daripada ikan dan kacang soya.</div>
+        </div>
+        <div class="pill">
+          <div class="pill-num">②</div>
+          <div class="pill-text"><strong>Minuman manis dan teh tarik.</strong> Malaysia merupakan salah satu pengguna gula tertinggi di Asia Tenggara (52 kg/orang/tahun). Teh tarik, milo ais, dan minuman berkarbonat menyumbang kalori cecair yang tidak memberi rasa kenyang tetapi menambah beban glycemic harian.</div>
+        </div>
+        <div class="pill">
+          <div class="pill-num">③</div>
+          <div class="pill-text"><strong>Nasi putih + lauk bergoreng = kalori padat tanpa serat.</strong> Diet asas Malaysia — nasi putih dengan lauk yang digoreng dalam minyak — menyediakan kalori yang tinggi dengan serat dan mikro-nutrien yang rendah, berbanding nasi Jepun yang disajikan dengan miso, ikan, dan pelbagai sayuran kecil.</div>
+        </div>
+        <div class="pill">
+          <div class="pill-num">④</div>
+          <div class="pill-text"><strong>Korea: kalori tinggi tapi berkualiti.</strong> Walaupun Korea mengambil 3,375 kcal/hari, diet mereka dibina atas asas doenjang (sos fermentasi), kimchi, bibimbap dengan pelbagai sayuran, dan sup berasaskan sayuran — semua menyumbang serat dan rasa kenyang yang mengawal pengambilan kalori berlebihan.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S7: VIETNAM WARNING — the leading indicator -->
+    <div class="slide" id="s7">
+      <p class="eyebrow">Amaran Tersembunyi</p>
+      <h1 class="slide-headline">Vietnam kelihatan selamat sekarang — <em>tetapi kanak-kanaknya membentuk masa depan yang berbeza.</em></h1>
+      <div class="slide-body">
+        <p>Vietnam adalah kes yang paling menarik dalam keseluruhan dataset. Kadar obesiti dewasanya masih rendah pada 2.1% — tetapi data kanak-kanak menunjukkan gambaran yang sangat berbeza dan membimbangkan.</p>
+      </div>
+      <div class="stat-row two-col">
+        <div class="stat-box lo">
+          <div class="s-num">2.1%</div>
+          <div class="s-label">Obesiti dewasa</div>
+          <div class="s-sub">Vietnam 2022 — kelihatan rendah</div>
+        </div>
+        <div class="stat-box hi">
+          <div class="s-num">10.5%</div>
+          <div class="s-label">Kanak-kanak berlebihan berat</div>
+          <div class="s-sub">Vietnam 2024 — dari 2.2% pada tahun 2000</div>
+        </div>
+      </div>
+      <div class="slide-body">
+        <p>Dalam masa 24 tahun, kadar kanak-kanak berlebihan berat badan di Vietnam meningkat hampir 5 kali ganda. Ini berlaku serentak dengan urbanisasi pesat, peningkatan kalori (dari 2,004 ke 2,966 kcal/hari), dan peningkatan pengambilan gula dan makanan diproses di bandar-bandar besar.</p>
+        <p>Angka kanak-kanak hari ini adalah angka dewasa dalam 20 tahun. Vietnam sedang berjalan di landasan yang sama dengan Malaysia — hanya 15 tahun di belakang.</p>
+      </div>
+      <div class="callout">
+        <p>"Obesiti dewasa yang rendah hari ini tidak menjamin masa depan yang sihat jika generasi kanak-kanak sudah berada di landasan yang salah."</p>
+        <small>Analisis trajektori kanak-kanak, WHO / Our World in Data, 2000–2024</small>
+      </div>
+    </div>
+
+    <!-- S8: THE INTERSECTION — what all data points to -->
+    <div class="slide" id="s8">
+      <p class="eyebrow">Titik Persilangan</p>
+      <h1 class="slide-headline">Tiga faktor yang bersilang untuk menerangkan <em>semua pengecualian.</em></h1>
+      <div class="slide-body">
+        <p>Apabila kesemua tujuh set data digabungkan, tiga pemboleh ubah muncul sebagai penjelas terkuat untuk perbezaan antara negara — dan menerangkan kenapa Jepun, Korea, dan Vietnam kekal kurus berbanding Malaysia.</p>
+      </div>
+      <div class="step-list">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-body"><strong>Gula — r = 0.97 dengan obesiti.</strong> Ini adalah korelasi terkuat dalam keseluruhan analisis. Malaysia (52 kg/orang/tahun) vs Jepun (20 kg) vs Korea (24 kg). Pengurangan gula adalah satu-satunya perubahan tunggal yang akan memberi impak terbesar kepada Malaysia.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-body"><strong>Pengambilan sayuran — faktor perlindungan.</strong> Korea (360g/hari) dan Jepun (280g/hari) vs Malaysia (170g/hari). Sayuran menyediakan serat yang meningkatkan rasa kenyang, mengurangkan pengambilan kalori berlebihan, dan menstabilkan paras gula darah.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-body"><strong>Jumlah kalori yang terkawal.</strong> Jepun adalah contoh terbaik — kalori turun walaupun GDP naik. Malaysia adalah sebaliknya. Ini mencerminkan norma budaya dan persekitaran makanan—masalah sistemik bukan salah individu semata-mata.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-body"><strong>Sumber protein haiwan, bukan jumlahnya.</strong> Jepun dan Korea mendapat protein haiwan mereka terutama dari ikan dan hasil laut. Malaysia lebih banyak dari daging merah dan ayam yang digoreng. Sumber yang berbeza membawa profil lemak dan kesan metabolik yang berbeza.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S9: CONCLUSION -->
+    <div class="slide" id="s9">
+      <p class="eyebrow">Kesimpulan</p>
+      <h1 class="slide-headline">Malaysia bukan gemuk kerana makan banyak — <em>tetapi kerana makan salah.</em></h1>
+      <div class="slide-body">
+        <p>Jumlah kalori Malaysia (2,927 kcal/hari) sebenarnya lebih rendah daripada Korea Selatan (3,375 kcal) dan hampir sama dengan Vietnam (2,966 kcal). Namun Malaysia jauh lebih gemuk daripada kedua-duanya. Ini membuktikan bahawa bukan jumlah kalori sahaja yang menentukan nasib kita.</p>
+      </div>
+      <div class="conclusion-row">
+        <div class="conclusion-box">
+          <span class="conclusion-marker">01</span>
+          <div class="conclusion-text"><strong>Gula adalah pemacu nombor satu yang boleh dikawal.</strong> Dengan korelasi r = 0.97, pengurangan gula — terutama dalam minuman — adalah intervensi tunggal yang paling berkesan yang Malaysia boleh lakukan. Negara seperti Mexico dan Chile telah membuktikan cukai minuman manis mampu menurunkan pengambilan secara ketara.</div>
+        </div>
+        <div class="conclusion-box">
+          <span class="conclusion-marker">02</span>
+          <div class="conclusion-text"><strong>Sayuran adalah pelindung yang diabaikan.</strong> Malaysia memerlukan 2× lebih banyak sayuran dalam diet hariannya untuk menghampiri paras Korea dan Jepun. Ini bukan tentang menghapuskan nasi atau lauk — tetapi menambah separuh pinggan sayuran kepada setiap hidangan.</div>
+        </div>
+        <div class="conclusion-box">
+          <span class="conclusion-marker">03</span>
+          <div class="conclusion-text"><strong>Vietnam adalah cermin masa depan Malaysia.</strong> Data kanak-kanak Vietnam hari ini mencerminkan Malaysia 15–20 tahun lalu. Jika tiada intervensi, Vietnam akan menyertai Malaysia dalam krisis obesiti dalam satu generasi — dan Malaysia perlu belajar dari ini sebelum ia juga terlambat untuk generasi seterusnya.</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="slide-body">
+        <p>Pelajaran dari Korea dan Jepun bukan untuk meniru diet mereka sepenuhnya — tetapi untuk memahami prinsip di sebaliknya: kawalan gula, pengambilan sayuran yang mencukupi, dan sumber kalori yang berkualiti. Ini boleh dilakukan dalam konteks masakan Malaysia.</p>
+      </div>
+      <div class="source-box">
+        <p><strong>Rujukan:</strong> Our World in Data — Caloric Supply, Animal Protein vs GDP, Dietary Composition, Vegetable Intake, Calorie Supply by Food Group, Child Overweight, Adult Obesity datasets; FAO Food Balance Sheets; WHO Global Health Observatory, 2022–2023.<br>
+        <a href="https://ourworldindata.org/obesity" data-umami-event="Obesiti Asia - Source click">ourworldindata.org/obesity</a> &nbsp;·&nbsp;
+        <a href="https://ourworldindata.org/diet-compositions" data-umami-event="Obesiti Asia - Source click">ourworldindata.org/diet-compositions</a></p>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrap -->
+
+  <div id="nav">
+    <button id="nav-back" data-umami-event="Obesiti Asia - Back">← Balik</button>
+    <button id="nav-next" data-umami-event="Obesiti Asia - Next">Seterusnya →</button>
+  </div>
+  <div id="brand"><span>Informed decisions, better health.</span></div>
+
+</div><!-- /shell -->
+
+<script>
+const TOTAL = 10;
+let current = 0, animating = false;
+const built = {};
+
+const slides   = document.querySelectorAll('.slide');
+const btnBack  = document.getElementById('nav-back');
+const btnNext  = document.getElementById('nav-next');
+const progFill = document.getElementById('progress-fill');
+const progLbl  = document.getElementById('progress-label');
+
+const slideTitles = [
+  'Hook — Paradoks Protein',
+  'Trend Bersama — Semua Naik',
+  'Kalori — Pengecualian Jepun',
+  'Paradoks Protein Haiwan',
+  'Penemuan Utama — Gula r=0.97',
+  'Faktor Perlindungan — Sayuran',
+  'Sumber Kalori — Kumpulan Makanan',
+  'Amaran Vietnam',
+  'Titik Persilangan — Tiga Faktor',
+  'Kesimpulan'
+];
+
+function trackSlide(idx) {
+  if (typeof umami !== 'undefined') {
+    umami.track(`Obesiti Asia - Slide ${idx + 1}: ${slideTitles[idx]}`);
+  }
+}
+
+function updateUI() {
+  progFill.style.width = ((current + 1) / TOTAL * 100) + '%';
+  progLbl.textContent  = `${current + 1} / ${TOTAL}`;
+  btnBack.disabled     = current === 0;
+  const last = current === TOTAL - 1;
+  btnNext.textContent  = last ? 'Selesai' : 'Seterusnya →';
+  btnNext.setAttribute('data-umami-event', last ? 'Obesiti Asia - Selesai' : 'Obesiti Asia - Next');
+}
+
+function goTo(idx, dir = 1) {
+  if (animating || idx < 0 || idx >= TOTAL) return;
+  animating = true;
+  const prev = current;
+  slides[prev].classList.add('exit-up');
+  slides[prev].classList.remove('active');
+  current = idx;
+  slides[current].style.transform = dir > 0 ? 'translateY(18px)' : 'translateY(-18px)';
+  slides[current].style.opacity   = '0';
+  slides[current].classList.add('active');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    slides[current].style.transform = '';
+    slides[current].style.opacity   = '';
+  }));
+  setTimeout(() => { slides[prev].classList.remove('exit-up'); animating = false; }, 420);
+  slides[current].scrollTop = 0;
+  onEnter(current);
+  trackSlide(current);
+  updateUI();
+}
+
+function animateBars(el) {
+  el.querySelectorAll('.bar-fill').forEach(f => {
+    const w = f.getAttribute('data-w');
+    setTimeout(() => { f.style.width = w + '%'; }, 80);
+  });
+}
+
+function onEnter(idx) {
+  if (built[idx]) return;
+  built[idx] = true;
+  const chartSlides = [1, 2, 4, 5];
+  if (chartSlides.includes(idx)) animateBars(slides[idx]);
+}
+
+slides[0].classList.add('active');
+trackSlide(0);
+updateUI();
+
+btnNext.addEventListener('click', () => { if (current < TOTAL - 1) goTo(current + 1,  1); });
+btnBack.addEventListener('click', () => { if (current > 0)         goTo(current - 1, -1); });
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1,  1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(current - 1, -1);
+});
+</script>
+</body>
+</html>
