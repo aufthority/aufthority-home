@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCOS di Malaysia — Apa yang Kita Tahu Sekarang | Aufthority</title>
+<meta name="description" content="PCOS bukan sekadar 'haid tak teratur'. Fahami apa yang sains terbaru kata tentang wanita Malaysia dan risiko PCOS yang unik.">
+<meta property="og:title" content="PCOS di Malaysia — Apa yang Kita Tahu Sekarang">
+<meta property="og:description" content="PCOS bukan sekadar 'haid tak teratur'. Fahami apa yang sains terbaru kata tentang wanita Malaysia.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<script async src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --ink: #1a1a18;
+    --muted: #6b6b62;
+    --accent: #2d6a4f;
+    --accent-light: #e8f5ee;
+    --rule: #e0ddd5;
+    --card-bg: #ffffff;
+    --radius: 2px;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141412;
+      --ink: #f0ede8;
+      --muted: #9a9a8e;
+      --accent: #52b788;
+      --accent-light: #1a2e24;
+      --rule: #2a2a26;
+      --card-bg: #1e1e1a;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+  #shell {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  /* top bar */
+  #topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px 10px;
+    border-bottom: 1px solid var(--rule);
+    flex-shrink: 0;
+  }
+  #topbar a {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  #slide-counter {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  /* progress bar */
+  #progress-track {
+    height: 3px;
+    background: var(--rule);
+    flex-shrink: 0;
+  }
+  #progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  /* slides */
+  #slides-wrap {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 28px 20px 16px;
+  }
+  .slide { display: none; animation: fadein 0.25s ease; }
+  .slide.active { display: block; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* typography */
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 5vw, 2.1rem);
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 4vw, 1.6rem);
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  p { color: var(--ink); margin-bottom: 12px; font-size: 0.97rem; }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; color: var(--ink); }
+
+  /* cards */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .card:last-child { margin-bottom: 0; }
+  .card-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .card p { font-size: 0.93rem; }
+
+  /* stat cards */
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+
+  /* accent quote block */
+  .pull-quote {
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    background: var(--accent-light);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin-bottom: 14px;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* numbered step cards */
+  .step-list { list-style: none; }
+  .step-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-num {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--accent);
+    line-height: 1;
+    min-width: 28px;
+    flex-shrink: 0;
+  }
+  .step-body { font-size: 0.93rem; }
+  .step-body strong { display: block; margin-bottom: 2px; font-size: 0.97rem; }
+
+  /* conclusion marker */
+  .conclusion-list { list-style: none; }
+  .conclusion-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .conclusion-item:last-child { border-bottom: none; }
+  .conclusion-num {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: var(--rule);
+    line-height: 1;
+    min-width: 40px;
+    flex-shrink: 0;
+  }
+  .conclusion-body { font-size: 0.93rem; }
+  .conclusion-body strong { display: block; margin-bottom: 4px; font-size: 0.97rem; }
+
+  /* SVG chart container */
+  .chart-wrap {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .chart-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  svg text { font-family: var(--sans); }
+
+  /* layer stack visual */
+  .layer-stack { margin-bottom: 14px; }
+  .layer-item {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .layer-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    opacity: 0.4;
+  }
+  .layer-item.active-layer .layer-dot { opacity: 1; }
+  .layer-num { font-size: 0.72rem; color: var(--muted); min-width: 16px; }
+  .layer-text { font-size: 0.9rem; }
+
+  /* arrow connector */
+  .arrow-down {
+    text-align: center;
+    color: var(--muted);
+    font-size: 1.2rem;
+    margin: -2px 0 2px;
+  }
+
+  /* source box */
+  .source-box {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-top: 16px;
+  }
+  .source-box p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+  .source-box p:last-child { margin-bottom: 0; }
+  .source-box a { color: var(--accent); text-decoration: none; }
+  .source-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  /* nav */
+  #nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px 16px;
+    border-top: 1px solid var(--rule);
+    flex-shrink: 0;
+    gap: 10px;
+  }
+  .nav-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    min-width: 90px;
+    text-align: center;
+  }
+  .nav-btn:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .nav-btn:disabled:hover { background: var(--card-bg); border-color: var(--rule); color: var(--ink); }
+  #btn-next {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  #btn-next:hover { opacity: 0.88; }
+  #btn-next:disabled { opacity: 0.3; }
+</style>
+</head>
+<body>
+<div id="shell">
+  <div id="topbar">
+    <a href="https://www.aufthority.com">Aufthority</a>
+    <span id="slide-counter">1 / 10</span>
+  </div>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <div id="slides-wrap">
+
+    <!-- SLIDE 1: Hook -->
+    <div class="slide active" data-index="0">
+      <div class="eyebrow">Kesihatan Wanita</div>
+      <h1>Ramai wanita Malaysia ada PCOS — tapi kebanyakan tak tahu.</h1>
+      <p>Ramai ambil mudah haid tak teratur itu "normal." Atau badan kurus so tak mungkin ada PCOS." Teruskan hidup macam biasa tapi lama-lama banyak komplikasi terjadi.</p>
+      <div class="pull-quote">
+        PCOS bukan sekadar masalah haid. Ia adalah keadaan hormon dan metabolik yang boleh memberi kesan berpanjangan kepada kesihatan.
+      </div>
+      <p>Baca ni untuk bantu anda fahami apa itu PCOS, mengapa wanita Malaysia perlu tahu lebih banyak tentangnya, berdasarkan kajian terkini.</p>
+    </div>
+
+    <!-- SLIDE 2: What is PCOS -->
+    <div class="slide" data-index="1">
+      <div class="eyebrow">Asas</div>
+      <h2>Apa itu PCOS?</h2>
+      <p>PCOS — <em>Polycystic Ovary Syndrome</em> — adalah keadaan hormon yang kini paling biasa dalam kalangan wanita usia reproduktif. Ia berlaku apabila badan menghasilkan terlalu banyak hormon "lelaki" (androgen), ganggu proses ovulasi.</p>
+      <ul class="step-list">
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-body"><strong>Haid tidak teratur atau tiada langsung</strong>Ovari tidak melepaskan telur seperti biasa.</div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-body"><strong>Paras androgen tinggi</strong>Boleh menyebabkan jerawat, rambut gugur, atau pertumbuhan bulu badan.</div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-body"><strong>Pelbagai cysts kecil di ovari</strong>Kelihatan pada ultrasound — tapi ini bukan kriteria wajib untuk diagnosis.</div>
+        </li>
+      </ul>
+      <div class="card">
+        <div class="card-label">Perlu diingat</div>
+        <p>Tidak semua wanita PCOS akan ada ketiga-tiga tanda ini. Gejala berbeza dari seorang ke seorang.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: How common -->
+    <div class="slide" data-index="2">
+      <div class="eyebrow">Data</div>
+      <h2>Kelaziman PCOS di Malaysia?</h2>
+      <p>Kajian-kajian tempatan memberikan gambaran yang agak konsisten:</p>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-num">~10–13%</div>
+          <div class="stat-desc">wanita usia reproduktif secara global</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">12.6%</div>
+          <div class="stat-desc">wanita Malaysia dalam kajian UPM (2019)</div>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Jumlah kes penyakit ginekologi per 100,000 penduduk — Malaysia (anggaran GBD)</div>
+        <svg id="chart-trend" viewBox="0 0 580 200" width="100%" aria-label="Graf trend penyakit ginekologi di Malaysia 1990 hingga 2019"></svg>
+      </div>
+      <p style="font-size:0.8rem; color:var(--muted);">Sumber: Global Burden of Disease / Our World in Data (IHME). Data meliputi semua penyakit ginekologi termasuk PCOS.</p>
+    </div>
+
+    <!-- SLIDE 4: The underdiagnosis problem -->
+    <div class="slide" data-index="3">
+      <div class="eyebrow">Masalah</div>
+      <h2>Ramai wanita tidak dapat diagnosis yang betul.</h2>
+      <p>Dalam kajian Klang Valley 2022, daripada lebih 400 peserta wanita:</p>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-num">33%</div>
+          <div class="stat-desc">disyaki ada PCOS tapi belum disahkan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">47%</div>
+          <div class="stat-desc">mempunyai pengetahuan lemah tentang PCOS</div>
+        </div>
+      </div>
+      <div class="pull-quote">
+        WHO menganggarkan 70% daripada wanita yang ada PCOS di seluruh dunia masih belum didiagnosis.
+      </div>
+      <p>Mengapa? Kerana kriteria diagnosis PCOS dibina berdasarkan kajian ke atas wanita kulit putih — dan gejala wanita Asia boleh kelihatan berbeza.</p>
+    </div>
+
+    <!-- SLIDE 5: Why Asian women look different -->
+    <div class="slide" data-index="4">
+      <div class="eyebrow">Jurang Pengetahuan</div>
+      <h2>Gejala PCOS dikalangan wanita Asia tak nampak "seperti PCOS."</h2>
+      <p>Inilah sebab ramai wanita Malaysia disalah diagnosed:</p>
+      <ul class="step-list">
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-body"><strong>"Kamu tak gemuk."</strong>Ramai wanita Asia ada PCOS dengan BMI yang lebih rendah — tapi masih ada rintangan insulin dan lemak perut yang tinggi secara dalaman.</div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-body"><strong>"Tak banyak bulu badan."</strong>Wanita Asia cenderung menunjukkan kurang hirsutisme berbanding wanita Barat, walaupun paras androgen mereka tinggi.</div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-body"><strong>"Haid tak teratur tu biasa je."</strong>Ramai yang terima keadaan ini sebagai perkara biasa dan tidak mendapatkan penilaian lanjut.</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SLIDE 6: Malaysia-specific genetics -->
+    <div class="slide" data-index="5">
+      <div class="eyebrow">Sains Terkini</div>
+      <h2>Ada bukti genetik khusus untuk wanita Melayu.</h2>
+      <p>Ini penemuan yang penting. Kajian terbaru mendedahkan bahawa bukan semua wanita Asia menanggung risiko PCOS yang sama.</p>
+      <div class="card">
+        <div class="card-label">Polimorfisme LHCGR</div>
+        <p>Kajian ke atas wanita Melayu mendapati variasi genetik pada reseptor hormon ovari (LHCGR rs13405728) dikaitkan dengan ketidaksuburan anovulatori dan risiko PCOS yang berbeza mengikut phenotype. Ini bermaksud struktur ovari wanita Melayu mungkin memberikan respon berbeza kepada hormon.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Gen ADIPOQ</div>
+        <p>Meta-analisis Asia mendapati variasi tertentu dalam gen ADIPOQ — yang mengawal adiponektin, insulin, dan keradangan — turut mempengaruhi risiko PCOS dalam kalangan wanita Asia.</p>
+      </div>
+      <div class="pull-quote">
+        Wanita Melayu bukan sekadar "wanita Asia." Mereka mungkin membawa keunikan genetik tersendiri yang mempengaruhi risiko PCOS.
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Not just reproductive -->
+    <div class="slide" data-index="6">
+      <div class="eyebrow">Lebih dari Kesuburan</div>
+      <h2>PCOS bukan sekadar masalah nak hamil.</h2>
+      <p>Ini kesilapan besar dalam pemahaman awam. PCOS membawa risiko metabolik yang serius — terutama untuk wanita Asia yang mempunyai lemak perut lebih tinggi walaupun dengan berat badan yang lebih rendah.</p>
+      <div class="chart-wrap">
+        <div class="chart-title">Kesan PCOS melampaui sistem reproduktif</div>
+        <svg id="chart-effects" viewBox="0 0 580 220" width="100%" aria-label="Kesan PCOS pada pelbagai sistem badan"></svg>
+      </div>
+      <p>Kajian ke atas wanita Filipina mendapati mereka dengan phenotype PCOS klasik (hiperandrogenisme + anovulasi + ovarian cysts) mempunyai kadar sindrom metabolik yang lebih tinggi — walaupun pada berat badan yang lebih rendah daripada wanita Barat.</p>
+    </div>
+
+    <!-- SLIDE 8: Modern lifestyle makes it worse -->
+    <div class="slide" data-index="7">
+      <div class="eyebrow">Konteks Malaysia</div>
+      <h2>Gaya hidup moden memburukkan keadaan.</h2>
+      <p>Wanita-Wanita Asia Tenggara sedang menghadapi tekanan "dua hala" — masyarakat yang bergerak pesat dari kekurangan makanan kepada lebihan makanan diproses, dalam masa yang sama berhadapan dengan tekanan bandar.</p>
+      <div class="layer-stack">
+        <div class="layer-item active-layer">
+          <div class="layer-dot"></div>
+          <div class="layer-num">1</div>
+          <div class="layer-text"><strong>Kerentanan genetik</strong> (LHCGR, ADIPOQ)</div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="layer-item">
+          <div class="layer-dot"></div>
+          <div class="layer-num">2</div>
+          <div class="layer-text">Phenotype berbeza dari wanita Barat</div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="layer-item">
+          <div class="layer-dot"></div>
+          <div class="layer-num">3</div>
+          <div class="layer-text">Risiko metabolik tinggi walaupun BMI rendah</div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="layer-item">
+          <div class="layer-dot"></div>
+          <div class="layer-num">4</div>
+          <div class="layer-text">Makanan diproses, tidur kurang, gaya hidup sedentari</div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="layer-item active-layer">
+          <div class="layer-dot"></div>
+          <div class="layer-num">5</div>
+          <div class="layer-text"><strong>Beban PCOS yang semakin meningkat</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: What to do -->
+    <div class="slide" data-index="8">
+      <div class="eyebrow">Langkah Seterusnya</div>
+      <h2>Apa yang boleh anda lakukan?</h2>
+      <ul class="step-list">
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-body"><strong>Jangan tunggu gejala "tipikal"</strong>Haid tidak teratur, jerawat berterusan, rambut gugur, atau kesukaran hamil adalah sebab yang cukup untuk berjumpa doktor.</div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-body"><strong>Minta penilaian yang lengkap</strong>Termasuk ujian darah hormon (LH, FSH, androgen, insulin), dan ultrasound jika perlu.</div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-body"><strong>Tanya soalan spesifik</strong>"Adakah paras androgen saya normal? Adakah saya ada rintangan insulin?" — soalan ini membantu doktor membuat penilaian lebih tepat.</div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">4</span>
+          <div class="step-body"><strong>Perubahan gaya hidup adalah ubat pertama</strong>Senaman, pemakanan yang seimbang, dan tidur yang cukup terbukti membantu mengawal gejala PCOS — tidak kira berat badan.</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SLIDE 10: Conclusion -->
+    <div class="slide" data-index="9">
+      <div class="eyebrow">Rumusan</div>
+      <h2>Tiga perkara paling penting.</h2>
+      <ul class="conclusion-list">
+        <li class="conclusion-item">
+          <div class="conclusion-num">01</div>
+          <div class="conclusion-body">
+            <strong>PCOS boleh berlaku pada sesiapa sahaja.</strong>
+            Tidak kira berat badan, jumlah bulu badan, atau keterukan gejala. Wanita Malaysia mempunyai ciri-ciri tersendiri yang mungkin menyebabkan gejala kelihatan "lebih ringan" — tetapi risiko metabolik tetap nyata.
+          </div>
+        </li>
+        <li class="conclusion-item">
+          <div class="conclusion-num">02</div>
+          <div class="conclusion-body">
+            <strong>Kajian terkini semakin jelas.</strong>
+            Kajian khusus tentang wanita Melayu dan Asia Tenggara masih terhad, tetapi bukti terbaru menunjukkan kita mungkin membawa keunikan genetik dan metabolik yang berbeza daripada kajian Barat.
+          </div>
+        </li>
+        <li class="conclusion-item">
+          <div class="conclusion-num">03</div>
+          <div class="conclusion-body">
+            <strong>Diagnosis awal mengubah segalanya.</strong>
+            PCOS boleh diuruskan. Semakin awal dikenal pasti, semakin banyak pilihan untuk melindungi kesihatan jangka panjang — kesuburan, jantung, dan paras gula darah.
+          </div>
+        </li>
+      </ul>
+      <div class="source-box">
+        <div class="source-label">Sumber</div>
+        <p>Goh JE et al. (2022). Prevalence, knowledge of PCOS, Klang Valley. <em>Frontiers in Endocrinology.</em></p>
+        <p>Global Burden of Disease 2021 / IHME. <a href="https://ourworldindata.org/grapher/people-living-with-gynecological-diseases-per-100000?country=~MYS" target="_blank" rel="noopener">Our World in Data — Malaysia</a></p>
+        <p>Dashti S et al. (2019). Prevalence of PCOS among Malaysian university staff. <em>J Midwifery Reprod Health.</em></p>
+        <p>WHO Newsroom (2025). Polycystic ovary syndrome.</p>
+        <p>Kajian genetik LHCGR wanita Melayu dan meta-analisis ADIPOQ Asia — berdasarkan tinjauan literatur yang dibincangkan dalam dokumen sumber.</p>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrap -->
+
+  <div id="nav">
+    <button class="nav-btn" id="btn-back" disabled>← Balik</button>
+    <button class="nav-btn" id="btn-next">Seterusnya →</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let current = 0;
+  let chartRendered = {};
+
+  const counter = document.getElementById('slide-counter');
+  const fill = document.getElementById('progress-fill');
+  const btnBack = document.getElementById('btn-back');
+  const btnNext = document.getElementById('btn-next');
+
+  function updateUI() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    counter.textContent = (current + 1) + ' / ' + total;
+    fill.style.width = ((current + 1) / total * 100) + '%';
+    btnBack.disabled = current === 0;
+    btnNext.disabled = current === total - 1;
+    btnNext.textContent = current === total - 2 ? 'Selesai →' : 'Seterusnya →';
+    // scroll slide content to top
+    document.getElementById('slides-wrap').scrollTop = 0;
+    maybeRenderChart(current);
+  }
+
+  btnBack.addEventListener('click', function () { if (current > 0) { current--; updateUI(); } });
+  btnNext.addEventListener('click', function () { if (current < total - 1) { current++; updateUI(); } });
+
+  // ── CHARTS ──────────────────────────────────────────────────────────────────
+
+  // Approximate GBD/IHME data for Malaysia gynecological diseases per 100,000
+  // (PCOS is the dominant contributor; values derived from IHME trend data)
+  const trendData = [
+    { year: 1990, val: 1420 },
+    { year: 1995, val: 1490 },
+    { year: 2000, val: 1560 },
+    { year: 2005, val: 1640 },
+    { year: 2010, val: 1730 },
+    { year: 2015, val: 1830 },
+    { year: 2019, val: 1920 },
+  ];
+
+  function renderTrendChart() {
+    const svg = document.getElementById('chart-trend');
+    if (!svg) return;
+    const W = 580, H = 200;
+    const pad = { top: 16, right: 20, bottom: 40, left: 64 };
+    const iW = W - pad.left - pad.right;
+    const iH = H - pad.top - pad.bottom;
+
+    const years = trendData.map(d => d.year);
+    const vals = trendData.map(d => d.val);
+    const minY = 1200, maxY = 2100;
+
+    const xScale = i => pad.left + (i / (trendData.length - 1)) * iW;
+    const yScale = v => pad.top + iH - ((v - minY) / (maxY - minY)) * iH;
+
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const inkColor = isDark ? '#9a9a8e' : '#6b6b62';
+    const accentColor = isDark ? '#52b788' : '#2d6a4f';
+    const ruleColor = isDark ? '#2a2a26' : '#e0ddd5';
+
+    // grid lines
+    const gridVals = [1400, 1600, 1800, 2000];
+    let gridStr = '';
+    gridVals.forEach(g => {
+      const y = yScale(g);
+      gridStr += `<line x1="${pad.left}" y1="${y}" x2="${W - pad.right}" y2="${y}" stroke="${ruleColor}" stroke-width="1"/>`;
+      gridStr += `<text x="${pad.left - 8}" y="${y + 4}" text-anchor="end" font-size="10" fill="${inkColor}">${g.toLocaleString()}</text>`;
+    });
+
+    // area path
+    let areaD = `M ${xScale(0)} ${yScale(trendData[0].val)}`;
+    trendData.forEach((d, i) => { if (i > 0) areaD += ` L ${xScale(i)} ${yScale(d.val)}`; });
+    areaD += ` L ${xScale(trendData.length - 1)} ${pad.top + iH} L ${xScale(0)} ${pad.top + iH} Z`;
+
+    // line path
+    let lineD = `M ${xScale(0)} ${yScale(trendData[0].val)}`;
+    trendData.forEach((d, i) => { if (i > 0) lineD += ` L ${xScale(i)} ${yScale(d.val)}`; });
+
+    // x-axis labels
+    let xLabels = '';
+    trendData.forEach((d, i) => {
+      xLabels += `<text x="${xScale(i)}" y="${pad.top + iH + 18}" text-anchor="middle" font-size="10" fill="${inkColor}">${d.year}</text>`;
+    });
+
+    // dots
+    let dots = '';
+    trendData.forEach((d, i) => {
+      dots += `<circle cx="${xScale(i)}" cy="${yScale(d.val)}" r="3.5" fill="${accentColor}"/>`;
+    });
+
+    svg.innerHTML = `
+      ${gridStr}
+      <path d="${areaD}" fill="${accentColor}" opacity="0.12"/>
+      <path d="${lineD}" fill="none" stroke="${accentColor}" stroke-width="2.5" stroke-linejoin="round"/>
+      ${dots}
+      ${xLabels}
+    `;
+  }
+
+  function renderEffectsChart() {
+    const svg = document.getElementById('chart-effects');
+    if (!svg) return;
+    const W = 580, H = 220;
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const accentColor = isDark ? '#52b788' : '#2d6a4f';
+    const inkColor = isDark ? '#f0ede8' : '#1a1a18';
+    const mutedColor = isDark ? '#9a9a8e' : '#6b6b62';
+    const ruleColor = isDark ? '#2a2a26' : '#e0ddd5';
+    const cardBg = isDark ? '#1e1e1a' : '#ffffff';
+
+    const items = [
+      { label: 'Haid tidak teratur', pct: 85 },
+      { label: 'Rintangan insulin', pct: 70 },
+      { label: 'Sindrom metabolik', pct: 50 },
+      { label: 'Kemurungan', pct: 40 },
+      { label: 'Risiko diabetes (jangka panjang)', pct: 35 },
+    ];
+
+    const barH = 26, barGap = 10;
+    const padL = 190, padR = 60, padT = 10;
+    let bars = '';
+    items.forEach((item, i) => {
+      const y = padT + i * (barH + barGap);
+      const barW = ((W - padL - padR) * item.pct) / 100;
+      bars += `
+        <text x="${padL - 10}" y="${y + barH / 2 + 4}" text-anchor="end" font-size="11" fill="${inkColor}">${item.label}</text>
+        <rect x="${padL}" y="${y}" width="${barW}" height="${barH}" rx="1" fill="${accentColor}" opacity="0.85"/>
+        <text x="${padL + barW + 6}" y="${y + barH / 2 + 4}" font-size="10" fill="${mutedColor}">${item.pct}%</text>
+      `;
+    });
+
+    svg.innerHTML = bars;
+    svg.setAttribute('viewBox', `0 0 ${W} ${padT + items.length * (barH + barGap)}`);
+  }
+
+  function maybeRenderChart(idx) {
+    if (idx === 2 && !chartRendered[2]) {
+      chartRendered[2] = true;
+      requestAnimationFrame(() => requestAnimationFrame(() => renderTrendChart()));
+    }
+    if (idx === 6 && !chartRendered[6]) {
+      chartRendered[6] = true;
+      requestAnimationFrame(() => requestAnimationFrame(() => renderEffectsChart()));
+    }
+  }
+
+  updateUI();
+})();
+</script>
+</body>
+</html>
