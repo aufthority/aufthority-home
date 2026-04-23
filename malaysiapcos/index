@@ -345,22 +345,22 @@
     <div class="slide active" data-index="0">
       <div class="eyebrow">Kesihatan Wanita</div>
       <h1>Ramai wanita Malaysia ada PCOS — tapi kebanyakan tak tahu.</h1>
-      <p>Ramai ambil mudah haid tak teratur itu "normal." Atau badan kurus so tak mungkin ada PCOS." Teruskan hidup macam biasa tapi lama-lama banyak komplikasi terjadi.</p>
+      <p>Mungkin doktor kata haid tak teratur itu "normal." Atau tubuh badan dianggap "terlalu kurus untuk ada PCOS." Atau gejala yang dirasai dilepaskan begitu sahaja.</p>
       <div class="pull-quote">
         PCOS bukan sekadar masalah haid. Ia adalah keadaan hormon dan metabolik yang boleh memberi kesan berpanjangan kepada kesihatan.
       </div>
-      <p>Baca ni untuk bantu anda fahami apa itu PCOS, mengapa wanita Malaysia perlu tahu lebih banyak tentangnya, berdasarkan kajian terkini.</p>
+      <p>Explainer ini akan bantu anda fahami apa itu PCOS, mengapa wanita Malaysia perlu tahu lebih banyak tentangnya, dan apa yang sains terbaru sedang dedahkan.</p>
     </div>
 
     <!-- SLIDE 2: What is PCOS -->
     <div class="slide" data-index="1">
       <div class="eyebrow">Asas</div>
       <h2>Apa itu PCOS?</h2>
-      <p>PCOS — <em>Polycystic Ovary Syndrome</em> — adalah keadaan hormon yang kini paling biasa dalam kalangan wanita usia reproduktif. Ia berlaku apabila badan menghasilkan terlalu banyak hormon "lelaki" (androgen), ganggu proses ovulasi.</p>
+      <p>PCOS — <em>Polycystic Ovary Syndrome</em> — adalah keadaan hormon yang paling biasa dalam kalangan wanita usia reproduktif. Ia berlaku apabila badan menghasilkan terlalu banyak hormon "lelaki" (androgen), mengganggu proses ovulasi.</p>
       <ul class="step-list">
         <li class="step-item">
           <span class="step-num">1</span>
-          <div class="step-body"><strong>Haid tidak teratur atau tiada langsung</strong>Ovari tidak melepaskan telur seperti biasa.</div>
+          <div class="step-body"><strong>Haid tidak teratur atau tiada</strong>Ovari tidak melepaskan telur seperti biasa.</div>
         </li>
         <li class="step-item">
           <span class="step-num">2</span>
@@ -368,7 +368,7 @@
         </li>
         <li class="step-item">
           <span class="step-num">3</span>
-          <div class="step-body"><strong>Pelbagai cysts kecil di ovari</strong>Kelihatan pada ultrasound — tapi ini bukan kriteria wajib untuk diagnosis.</div>
+          <div class="step-body"><strong>Pelbagai kista kecil di ovari</strong>Kelihatan pada ultrasound — tetapi ini bukan obligatori untuk diagnosis.</div>
         </li>
       </ul>
       <div class="card">
@@ -380,7 +380,7 @@
     <!-- SLIDE 3: How common -->
     <div class="slide" data-index="2">
       <div class="eyebrow">Data</div>
-      <h2>Kelaziman PCOS di Malaysia?</h2>
+      <h2>Seberapa biasa PCOS di Malaysia?</h2>
       <p>Kajian-kajian tempatan memberikan gambaran yang agak konsisten:</p>
       <div class="stat-row">
         <div class="stat-card">
@@ -403,7 +403,7 @@
     <div class="slide" data-index="3">
       <div class="eyebrow">Masalah</div>
       <h2>Ramai wanita tidak dapat diagnosis yang betul.</h2>
-      <p>Dalam kajian Klang Valley 2022, daripada lebih 400 peserta wanita:</p>
+      <p>Dalam kajian Klang Valley 2022, daripada lebih 400 wanita yang menyertai:</p>
       <div class="stat-row">
         <div class="stat-card">
           <div class="stat-num">33%</div>
@@ -423,8 +423,8 @@
     <!-- SLIDE 5: Why Asian women look different -->
     <div class="slide" data-index="4">
       <div class="eyebrow">Jurang Pengetahuan</div>
-      <h2>Gejala PCOS dikalangan wanita Asia tak nampak "seperti PCOS."</h2>
-      <p>Inilah sebab ramai wanita Malaysia disalah diagnosed:</p>
+      <h2>Wanita Asia mungkin nampak "tidak seperti PCOS."</h2>
+      <p>Ini sebab ramai wanita Malaysia terlepas pandang:</p>
       <ul class="step-list">
         <li class="step-item">
           <span class="step-num">1</span>
@@ -448,7 +448,7 @@
       <p>Ini penemuan yang penting. Kajian terbaru mendedahkan bahawa bukan semua wanita Asia menanggung risiko PCOS yang sama.</p>
       <div class="card">
         <div class="card-label">Polimorfisme LHCGR</div>
-        <p>Kajian ke atas wanita Melayu mendapati variasi genetik pada reseptor hormon ovari (LHCGR rs13405728) dikaitkan dengan ketidaksuburan anovulatori dan risiko PCOS yang berbeza mengikut phenotype. Ini bermaksud struktur ovari wanita Melayu mungkin memberikan respon berbeza kepada hormon.</p>
+        <p>Kajian ke atas wanita Melayu mendapati variasi genetik pada reseptor hormon ovari (LHCGR rs13405728) dikaitkan dengan infertiliti anovulatori dan risiko PCOS yang berbeza mengikut fenotip. Ini bermaksud struktur ovari wanita Melayu mungkin memberikan respon berbeza kepada hormon.</p>
       </div>
       <div class="card">
         <div class="card-label">Gen ADIPOQ</div>
@@ -468,14 +468,14 @@
         <div class="chart-title">Kesan PCOS melampaui sistem reproduktif</div>
         <svg id="chart-effects" viewBox="0 0 580 220" width="100%" aria-label="Kesan PCOS pada pelbagai sistem badan"></svg>
       </div>
-      <p>Kajian ke atas wanita Filipina mendapati mereka dengan phenotype PCOS klasik (hiperandrogenisme + anovulasi + ovarian cysts) mempunyai kadar sindrom metabolik yang lebih tinggi — walaupun pada berat badan yang lebih rendah daripada wanita Barat.</p>
+      <p>Kajian ke atas wanita Filipina mendapati mereka dengan fenotip PCOS klasik (hiperandrogenisme + anovulasi + kista ovari) mempunyai kadar sindrom metabolik yang lebih tinggi — walaupun pada berat badan yang lebih rendah daripada wanita Barat.</p>
     </div>
 
     <!-- SLIDE 8: Modern lifestyle makes it worse -->
     <div class="slide" data-index="7">
       <div class="eyebrow">Konteks Malaysia</div>
       <h2>Gaya hidup moden memburukkan keadaan.</h2>
-      <p>Wanita-Wanita Asia Tenggara sedang menghadapi tekanan "dua hala" — masyarakat yang bergerak pesat dari kekurangan makanan kepada lebihan makanan diproses, dalam masa yang sama berhadapan dengan tekanan bandar.</p>
+      <p>Asia Tenggara sedang menghadapi tekanan "dua hala" — masyarakat yang bergerak pesat dari kekurangan makanan kepada lebihan makanan diproses, dalam masa yang sama berhadapan dengan tekanan bandar.</p>
       <div class="layer-stack">
         <div class="layer-item active-layer">
           <div class="layer-dot"></div>
@@ -486,7 +486,7 @@
         <div class="layer-item">
           <div class="layer-dot"></div>
           <div class="layer-num">2</div>
-          <div class="layer-text">Phenotype berbeza dari wanita Barat</div>
+          <div class="layer-text">Fenotip berbeza dari wanita Barat</div>
         </div>
         <div class="arrow-down">↓</div>
         <div class="layer-item">
@@ -548,7 +548,7 @@
         <li class="conclusion-item">
           <div class="conclusion-num">02</div>
           <div class="conclusion-body">
-            <strong>Kajian terkini semakin jelas.</strong>
+            <strong>Sains sedang mengejar ketertinggalan.</strong>
             Kajian khusus tentang wanita Melayu dan Asia Tenggara masih terhad, tetapi bukti terbaru menunjukkan kita mungkin membawa keunikan genetik dan metabolik yang berbeza daripada kajian Barat.
           </div>
         </li>
@@ -693,7 +693,7 @@
       { label: 'Haid tidak teratur', pct: 85 },
       { label: 'Rintangan insulin', pct: 70 },
       { label: 'Sindrom metabolik', pct: 50 },
-      { label: 'Kemurungan', pct: 40 },
+      { label: 'Kemurungan / Kecemasan', pct: 40 },
       { label: 'Risiko diabetes (jangka panjang)', pct: 35 },
     ];
 
