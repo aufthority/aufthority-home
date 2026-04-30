@@ -152,26 +152,7 @@
       animation: fadeUp 0.7s ease forwards 0.1s;
     }
 
-    /* On mobile, show the photo inline below hero text */
-    .hero-photo-mobile {
-      display: block;
-      width: 100%;
-      max-width: 380px;
-      margin: 0 auto 40px;
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
 
-    .hero-photo-mobile img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    @media (min-width: 820px) {
-      .hero-photo-mobile { display: none; }
-      .hero { padding: 88px 0 72px; }
-    }
 
     .hero-eyebrow {
       font-size: 0.72rem;
@@ -599,10 +580,7 @@
         </p>
         <a href="#apps" class="hero-cta" data-umami-event="Hero - Explore My Work click">Explore My Work →</a>
 
-        <!-- Mobile photo (inline, below CTA) -->
-        <div class="hero-photo-mobile">
-          <img src="hero_image.png" alt="Auf" />
-        </div>
+
       </header>
 
       <!-- About -->
