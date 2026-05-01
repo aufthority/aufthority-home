@@ -20,13 +20,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f7f5f0;
+      --bg: #E2DFD2;
       --ink: #1a1a18;
       --muted: #6b6b62;
       --accent: #2d6a4f;
       --accent-light: #e8f5ee;
-      --rule: #e0ddd5;
-      --card-bg: #ffffff;
+      --rule: #ccc9bb;
+      --card-bg: #f0ead6;
       --radius: 2px;
       --photo-w: 42vw;
     }
@@ -43,17 +43,13 @@
     }
 
     /* ── Layout shell ── */
-    /* On desktop: fixed photo on right, scrollable content on left */
-    .photo-panel {
-      display: none; /* hidden on mobile */
-    }
+    .photo-panel { display: none; }
 
     @media (min-width: 820px) {
       .photo-panel {
         display: block;
         position: fixed;
-        top: 0;
-        right: 0;
+        top: 0; right: 0;
         width: var(--photo-w);
         height: 100vh;
         overflow: hidden;
@@ -61,38 +57,22 @@
         z-index: 10;
         pointer-events: none;
       }
-
       .photo-panel img {
         position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        bottom: 0;
+        right: 0;
         width: auto;
-        height: 100vh;
+        height: 92vh;
         max-width: none;
         object-fit: contain;
-        object-position: top center;
+        object-position: bottom right;
         display: block;
       }
-
-      /* Content area only uses the left portion */
-      .content-wrap {
-        max-width: calc(58vw);
-        padding-right: 0;
-      }
+      .content-wrap { max-width: calc(58vw); padding-right: 0; }
     }
 
-    .content-wrap {
-      /* default (mobile): full width */
-    }
+    .container { max-width: 680px; margin: 0 auto; padding: 0 28px; }
 
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    /* On desktop, container is left-aligned within the scrollable column */
     @media (min-width: 820px) {
       .container {
         margin: 0 0 0 auto;
@@ -103,9 +83,7 @@
 
     @media (min-width: 1200px) {
       :root { --photo-w: 40vw; }
-      .container {
-        max-width: min(680px, calc(60vw - 24px));
-      }
+      .container { max-width: min(680px, calc(60vw - 24px)); }
     }
 
     /* ── Nav ── */
@@ -126,11 +104,7 @@
       flex-shrink: 0;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
 
     .nav-links a {
       font-size: 0.76rem;
@@ -152,8 +126,6 @@
       animation: fadeUp 0.7s ease forwards 0.1s;
     }
 
-
-
     .hero-eyebrow {
       font-size: 0.72rem;
       font-weight: 500;
@@ -172,10 +144,7 @@
       margin-bottom: 24px;
     }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
 
     .hero-body {
       font-size: 1.05rem;
@@ -216,6 +185,8 @@
     .section:nth-of-type(4) { animation-delay: 0.44s; }
     .section:nth-of-type(5) { animation-delay: 0.56s; }
     .section:nth-of-type(6) { animation-delay: 0.68s; }
+    .section:nth-of-type(7) { animation-delay: 0.76s; }
+    .section:nth-of-type(8) { animation-delay: 0.84s; }
 
     .section-label {
       font-size: 0.68rem;
@@ -227,20 +198,69 @@
     }
 
     /* ── Bio ── */
-    .bio-text {
-      font-size: 1.05rem;
-      color: var(--ink);
-      line-height: 1.8;
-    }
-
+    .bio-text { font-size: 1.05rem; color: var(--ink); line-height: 1.8; }
     .bio-text p + p { margin-top: 16px; }
 
-    /* ── Apps ── */
-    .apps-grid {
+    /* ── Carousels ── */
+    .carousels-grid { display: flex; flex-direction: column; gap: 12px; }
+
+    .carousel-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      text-decoration: none;
       display: flex;
-      flex-direction: column;
-      gap: 16px;
+      align-items: center;
+      gap: 18px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
     }
+
+    .carousel-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(45,106,79,0.08);
+      transform: translateY(-2px);
+    }
+
+    .carousel-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--rule);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 26px;
+      text-align: right;
+      transition: color 0.2s;
+    }
+
+    .carousel-card:hover .carousel-num { color: var(--accent); }
+
+    .carousel-info { flex: 1; }
+
+    .carousel-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .carousel-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .carousel-arrow {
+      font-size: 1rem;
+      color: var(--rule);
+      transition: color 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .carousel-card:hover .carousel-arrow { color: var(--accent); transform: translateX(3px); }
+
+    /* ── Apps ── */
+    .apps-grid { display: flex; flex-direction: column; gap: 16px; }
 
     .app-card {
       background: var(--card-bg);
@@ -269,7 +289,6 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 1.3rem;
       overflow: hidden;
     }
 
@@ -280,19 +299,11 @@
       border-radius: 10px;
     }
 
-    .app-icon.cermindiri-icon {
-      background: #1a1a18;
-      padding: 6px;
-    }
+    /* CerminDiri */
+    .app-icon.cermindiri-icon { background: var(--accent-light); }
 
-    .app-icon.cermindiri-icon img {
-      object-fit: contain;
-    }
-
-    .app-icon.nafaslega-icon {
-      background: var(--accent-light);
-      position: relative;
-    }
+    /* NafasLega */
+    .app-icon.nafaslega-icon { background: var(--accent-light); position: relative; }
 
     .nafaslega-orb {
       width: 22px;
@@ -303,6 +314,9 @@
       animation: orbBreath 4s ease-in-out infinite;
     }
 
+    /* MakanLah */
+    .app-icon.makanlah-icon { background: #fff4e6; }
+
     @keyframes orbBreath {
       0%, 100% { transform: scale(1); }
       50%       { transform: scale(1.18); }
@@ -310,18 +324,9 @@
 
     .app-info { flex: 1; }
 
-    .app-name-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
+    .app-name-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
 
-    .app-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      color: var(--ink);
-    }
+    .app-name { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--ink); }
 
     .beta-badge {
       font-size: 0.6rem;
@@ -336,11 +341,7 @@
       line-height: 1.6;
     }
 
-    .app-desc {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
+    .app-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
 
     .app-tag {
       font-size: 0.65rem;
@@ -362,10 +363,7 @@
       margin-top: 2px;
     }
 
-    .app-card:hover .app-arrow {
-      color: var(--accent);
-      transform: translateX(3px);
-    }
+    .app-card:hover .app-arrow { color: var(--accent); transform: translateX(3px); }
 
     /* ── Newsletter ── */
     .newsletter-card {
@@ -375,18 +373,9 @@
       color: #fff;
     }
 
-    .newsletter-card h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
+    .newsletter-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 10px; }
 
-    .newsletter-card p {
-      font-size: 0.92rem;
-      opacity: 0.9;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
+    .newsletter-card p { font-size: 0.92rem; opacity: 0.9; margin-bottom: 24px; line-height: 1.6; }
 
     .newsletter-btn {
       display: inline-flex;
@@ -405,7 +394,6 @@
     }
 
     .newsletter-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
     .newsletter-feed { margin-top: 28px; }
 
     /* ── Support ── */
@@ -421,18 +409,9 @@
 
     .support-text { flex: 1; }
 
-    .support-text h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
+    .support-text h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--ink); margin-bottom: 6px; }
 
-    .support-text p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
+    .support-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
 
     .support-btn {
       display: inline-flex;
@@ -468,27 +447,17 @@
 
     .contact-link:hover { opacity: 0.7; }
 
-    .contact-note {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 14px;
-      line-height: 1.6;
-    }
+    .contact-note { font-size: 0.85rem; color: var(--muted); margin-top: 14px; line-height: 1.6; }
 
     /* ── Footer ── */
     footer {
       padding: 40px 0 48px;
       border-top: 1px solid var(--rule);
       opacity: 0;
-      animation: fadeUp 0.7s ease forwards 0.8s;
+      animation: fadeUp 0.7s ease forwards 0.9s;
     }
 
-    .socials {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
-    }
+    .socials { display: flex; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
 
     .social-link {
       display: inline-flex;
@@ -504,20 +473,9 @@
     }
 
     .social-link:hover { color: var(--accent); }
+    .social-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
 
-    .social-link svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-      flex-shrink: 0;
-    }
-
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
     .footer-copy { font-size: 0.78rem; color: var(--muted); }
 
     .footer-tagline {
@@ -527,18 +485,11 @@
       color: var(--muted);
     }
 
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
     /* ── Mobile ── */
     @media (max-width: 500px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        padding-bottom: 20px;
-      }
+      nav { flex-direction: column; align-items: flex-start; gap: 16px; padding-bottom: 20px; }
       .nav-links { gap: 14px; flex-wrap: wrap; }
       .nav-links a { font-size: 0.7rem; }
       .hero { padding: 48px 0 40px; }
@@ -550,12 +501,10 @@
 </head>
 <body>
 
-  <!-- Fixed hero photo — desktop only -->
   <div class="photo-panel" aria-hidden="true">
     <img src="hero_image.png" alt="" />
   </div>
 
-  <!-- Scrollable content -->
   <div class="content-wrap">
     <div class="container">
 
@@ -564,10 +513,10 @@
         <a href="#" class="logo">Aufthority</a>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
+          <li><a href="#carousels">Carousels</a></li>
           <li><a href="#apps">Apps</a></li>
           <li><a href="#newsletter">Newsletter</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="https://courses.aufthority.com">Courses</a></li>
         </ul>
       </nav>
 
@@ -579,8 +528,6 @@
           I'm Auf. Through Aufthority, I share evidence-based health information and build tools that put the power of informed personal healthcare in your hands.
         </p>
         <a href="#apps" class="hero-cta" data-umami-event="Hero - Explore My Work click">Explore My Work →</a>
-
-
       </header>
 
       <!-- About -->
@@ -596,15 +543,73 @@
         </div>
       </section>
 
+      <!-- Carousels -->
+      <section class="section" id="carousels">
+        <p class="section-label">Carousels</p>
+        <div class="carousels-grid">
+
+          <a href="https://www.aufthority.com/malaysiaobes/" class="carousel-card" target="_blank" rel="noopener"
+             data-umami-event="Carousel click - Obesity Malaysia 1">
+            <span class="carousel-num">01</span>
+            <div class="carousel-info">
+              <p class="carousel-title">Obesiti di Malaysia</p>
+              <p class="carousel-desc">Statistik, punca, dan impak obesiti dalam konteks Malaysia.</p>
+            </div>
+            <span class="carousel-arrow">→</span>
+          </a>
+
+          <a href="https://www.aufthority.com/malaysiaobes2/" class="carousel-card" target="_blank" rel="noopener"
+             data-umami-event="Carousel click - Obesity Malaysia 2">
+            <span class="carousel-num">02</span>
+            <div class="carousel-info">
+              <p class="carousel-title">Obesiti di Malaysia — Bahagian 2</p>
+              <p class="carousel-desc">Kesan kesihatan jangka panjang dan strategi pengurusan berat badan yang terbukti berkesan.</p>
+            </div>
+            <span class="carousel-arrow">→</span>
+          </a>
+
+          <a href="https://www.aufthority.com/malaysiapcos/" class="carousel-card" target="_blank" rel="noopener"
+             data-umami-event="Carousel click - PCOS Malaysia">
+            <span class="carousel-num">03</span>
+            <div class="carousel-info">
+              <p class="carousel-title">PCOS di Malaysia</p>
+              <p class="carousel-desc">Apa itu PCOS, bagaimana ia didiagnos, dan pilihan rawatan berdasarkan bukti.</p>
+            </div>
+            <span class="carousel-arrow">→</span>
+          </a>
+
+          <a href="https://www.aufthority.com/vaksinaluminium/" class="carousel-card" target="_blank" rel="noopener"
+             data-umami-event="Carousel click - Vaksin Aluminium">
+            <span class="carousel-num">04</span>
+            <div class="carousel-info">
+              <p class="carousel-title">Aluminium dalam Vaksin</p>
+              <p class="carousel-desc">Adakah aluminium dalam vaksin berbahaya? Fakta sains menjelaskan.</p>
+            </div>
+            <span class="carousel-arrow">→</span>
+          </a>
+
+        </div>
+      </section>
+
       <!-- Apps -->
       <section class="section" id="apps">
         <p class="section-label">Apps</p>
         <div class="apps-grid">
 
+          <!-- CerminDiri — mirror SVG -->
           <a href="https://cermindiri.aufthority.com" class="app-card" target="_blank" rel="noopener"
              data-umami-event="App click - CerminDiri">
             <div class="app-icon cermindiri-icon">
-              <img src="cermindiri_logo_3.png" alt="CerminDiri logo" />
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Oval mirror frame -->
+                <ellipse cx="13" cy="11" rx="7.5" ry="9" stroke="#2d6a4f" stroke-width="1.5"/>
+                <!-- Stand stem -->
+                <line x1="13" y1="20" x2="13" y2="24" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Stand base -->
+                <line x1="9" y1="24" x2="17" y2="24" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Glare highlight -->
+                <path d="M8.5 7.5 Q9.5 5.5 11.5 5" stroke="#2d6a4f" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+              </svg>
             </div>
             <div class="app-info">
               <div class="app-name-row">
@@ -616,7 +621,8 @@
             <span class="app-arrow">→</span>
           </a>
 
-          <a href="https://aufthority.github.io/neurohabitbeta/" class="app-card" target="_blank" rel="noopener"
+          <!-- Neurohabit -->
+          <a href="https://aufthority.substack.com/p/neurohabit-a-habit-tracker-app-for?r=ewqnk" class="app-card" target="_blank" rel="noopener"
              data-umami-event="App click - Neurohabit">
             <div class="app-icon">
               <img src="icon-512.png" alt="Neurohabit icon" />
@@ -632,6 +638,7 @@
             <span class="app-arrow">→</span>
           </a>
 
+          <!-- NafasLega -->
           <a href="/nafaslega" class="app-card" data-umami-event="App click - NafasLega">
             <div class="app-icon nafaslega-icon">
               <div class="nafaslega-orb"></div>
@@ -642,6 +649,36 @@
                 <span class="beta-badge">New</span>
               </div>
               <p class="app-desc">A 4-7-8 guided breathing tool that activates your parasympathetic nervous system — calming your heart rate and cortisol in minutes.</p>
+              <span class="app-tag">Live</span>
+            </div>
+            <span class="app-arrow">→</span>
+          </a>
+
+          <!-- MakanLah — cutlery SVG -->
+          <a href="https://makanlah.aufthority.com/onboarding.html" class="app-card" target="_blank" rel="noopener"
+             data-umami-event="App click - MakanLah">
+            <div class="app-icon makanlah-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Fork tines -->
+                <line x1="7.5" y1="2.5" x2="7.5" y2="7" stroke="#b85c2a" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="6" y1="2.5" x2="6" y2="5.5" stroke="#b85c2a" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="9" y1="2.5" x2="9" y2="5.5" stroke="#b85c2a" stroke-width="1.3" stroke-linecap="round"/>
+                <!-- Fork tine connector -->
+                <path d="M6 5.5 Q6 7.5 7.5 7.5 Q9 7.5 9 5.5" stroke="#b85c2a" stroke-width="1.3" fill="none"/>
+                <!-- Fork handle -->
+                <line x1="7.5" y1="7.5" x2="7.5" y2="21.5" stroke="#b85c2a" stroke-width="1.3" stroke-linecap="round"/>
+                <!-- Knife blade -->
+                <path d="M15.5 2.5 C15.5 2.5 17.5 4.5 17.5 8 L15.5 9" stroke="#b85c2a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <!-- Knife handle -->
+                <line x1="15.5" y1="9" x2="15.5" y2="21.5" stroke="#b85c2a" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <div class="app-name-row">
+                <p class="app-name">MakanLah</p>
+                <span class="beta-badge">New</span>
+              </div>
+              <p class="app-desc">A Malaysian food and nutrition guide to help you make smarter, healthier eating decisions based on what you actually eat.</p>
               <span class="app-tag">Live</span>
             </div>
             <span class="app-arrow">→</span>
