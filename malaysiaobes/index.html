@@ -33,25 +33,14 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:           #f7f5f0;
+  --bg:           #E2DFD2;
   --ink:          #1a1a18;
   --muted:        #6b6b62;
   --accent:       #2d6a4f;
   --accent-light: #e8f5ee;
-  --rule:         #e0ddd5;
-  --card-bg:      #ffffff;
+  --rule:         #ccc9bb;
+  --card-bg:      #f0ead6;
   --radius:       2px;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:           #141412;
-    --ink:          #f0ede6;
-    --muted:        #9a9a8e;
-    --accent:       #52b788;
-    --accent-light: #1a2e24;
-    --rule:         #2a2a26;
-    --card-bg:      #1e1e1a;
-  }
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
@@ -158,10 +147,6 @@ nav {
 }
 .stat-box.hi { border-color: #c0392b; background: #fdf2f2; }
 .stat-box.lo { border-color: var(--accent); background: var(--accent-light); }
-@media (prefers-color-scheme: dark) {
-  .stat-box.hi { background: #2a1a1a; }
-  .stat-box.lo { background: var(--accent-light); }
-}
 .stat-box .s-num { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--ink); line-height: 1; }
 .stat-box.hi .s-num { color: #c0392b; }
 .stat-box.lo .s-num { color: var(--accent); }
