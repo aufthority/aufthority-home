@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenapa Usaha Keras Boleh Menjadi Perangkap — Aufthority</title>
+
+<!-- ── Umami Analytics ── -->
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+
+<!-- ── SEO ── -->
+<meta name="description" content="Diet terlalu ketat, senaman berlebihan, tidur tidak cukup — tiga kesilapan yang menjadikan usaha penurunan berat badan lebih sukar, bukan lebih mudah.">
+
+<!-- ── Open Graph ── -->
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Kenapa Usaha Keras Boleh Menjadi Perangkap">
+<meta property="og:description"  content="Diet terlalu ketat, senaman berlebihan, tidur tidak cukup — tiga kesilapan yang menjadikan usaha penurunan berat badan lebih sukar, bukan lebih mudah.">
+<meta property="og:url"          content="https://www.aufthority.com/usahaextreme/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="ms_MY">
+
+<!-- ── Twitter / X ── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Kenapa Usaha Keras Boleh Menjadi Perangkap">
+<meta name="twitter:description" content="Tiga kesilapan yang menjadikan usaha penurunan berat badan lebih sukar, bukan lebih mudah.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ── */
+:root {
+  --bg:           #E2DFD2;
+  --ink:          #1a1a18;
+  --muted:        #6b6b62;
+  --accent:       #2d6a4f;
+  --accent-light: #e8f5ee;
+  --rule:         #ccc9bb;
+  --card-bg:      #f0ead6;
+  --radius:       2px;
+  --red:          #b83232;
+  --red-light:    #f7e8e8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SHELL ── */
+#shell {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 28px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── STICKY HEADER ── */
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  margin: 0 -28px;
+  padding: 0 28px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+#progress-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── PROGRESS BAR ── */
+#progress-track { height: 2px; background: var(--rule); }
+#progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.42s ease;
+  width: 0%;
+}
+
+/* ── SLIDES ── */
+#slides-wrap { flex: 1; }
+
+.slide {
+  display: none;
+  padding: 40px 0 24px;
+  animation: fadeUp 0.38s ease forwards;
+}
+.slide.active { display: block; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SLIDE TYPOGRAPHY ── */
+.slide-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.slide-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.slide-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.slide-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.slide-body p + p { margin-top: 12px; }
+
+/* ── CALLOUT ── */
+.callout {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-light);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.callout.red {
+  border-left-color: var(--red);
+  background: var(--red-light);
+}
+
+/* ── STAT PAIR ── */
+.stat-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+.stat-item {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  text-align: center;
+}
+.stat-item .number {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.stat-item .number.red { color: var(--red); }
+.stat-item .label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.stat-item .sublabel {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── CONTRAST CARDS ── */
+.contrast-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 20px 0;
+}
+.contrast-card {
+  border-radius: var(--radius);
+  padding: 16px 14px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.contrast-card .cc-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.contrast-card.red {
+  background: var(--red-light);
+  border: 1px solid #e8c4c4;
+}
+.contrast-card.red .cc-label { color: var(--red); }
+.contrast-card.green {
+  background: var(--accent-light);
+  border: 1px solid #b8ddc8;
+}
+.contrast-card.green .cc-label { color: var(--accent); }
+
+/* ── NUMBERED ITEMS ── */
+.numbered-items { margin: 20px 0; }
+.numbered-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.numbered-item:last-child { border-bottom: none; }
+.num-circle {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.num-text {
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ── CONCLUSION CARDS ── */
+.conclusion-cards { margin: 20px 0; }
+.conclusion-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.conclusion-card:last-child { border-bottom: none; }
+.cc-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 36px;
+}
+.conclusion-card p {
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ── TOOLTIP ── */
+.tooltip-anchor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 4px 0 0 6px;
+  vertical-align: middle;
+}
+.tooltip-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  background: transparent;
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.tooltip-btn:hover,
+.tooltip-btn.active { border-color: var(--accent); color: var(--accent); }
+.tooltip-box {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  background: var(--ink);
+  color: #f0ead6;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  padding: 12px 14px;
+  border-radius: 4px;
+  z-index: 200;
+  pointer-events: none;
+}
+.tooltip-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--ink);
+}
+.tooltip-box.open {
+  display: block;
+  pointer-events: auto;
+}
+
+/* ── SOURCE BOX ── */
+.source-box {
+  margin-top: 28px;
+  padding: 16px 18px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.source-box strong { color: var(--ink); }
+.source-box a { color: var(--accent); text-decoration: none; }
+.source-box a:hover { text-decoration: underline; }
+
+/* ── SVG CHART WRAP ── */
+.chart-wrap { margin: 20px 0; }
+.chart-title {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.chart-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+/* ── CYCLE DIAGRAM ── */
+#cycle-svg-wrap {
+  margin: 20px 0;
+  overflow: visible;
+}
+
+/* ── NAV BUTTONS ── */
+#nav-wrap {
+  display: flex;
+  gap: 12px;
+  padding: 20px 0 16px;
+  border-top: 1px solid var(--rule);
+}
+.nav-btn {
+  flex: 1;
+  padding: 13px 0;
+  border: 1.5px solid var(--rule);
+  border-radius: 24px;
+  background: var(--card-bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+.nav-btn:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.nav-btn:disabled { opacity: 0.35; cursor: default; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 14px 0 28px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+</style>
+</head>
+<body>
+<div id="shell">
+
+  <div id="header">
+    <nav>
+      <a class="logo" href="https://www.aufthority.com">Aufthority</a>
+      <span id="progress-label">1 / 11</span>
+    </nav>
+    <div id="progress-track"><div id="progress-fill"></div></div>
+  </div>
+
+  <div id="slides-wrap">
+
+    <!-- SLIDE 1: HOOK -->
+    <div class="slide active" id="slide-1">
+      <p class="slide-label">Perangkap</p>
+      <h1 class="slide-title">Usaha lebih tak semestinya bermakna <em>hasil lebih baik.</em></h1>
+      <div class="slide-body">
+        <p>Ramai yang gagal dalam perjalanan penurunan berat badan bukan kerana mereka tak berusaha — tetapi kerana mereka berusaha terlalu keras, tak faham badan sendiri.</p>
+        <p>Badan manusia mempunyai mekanisme perlindungan yang kuat. Apabila kita paksa badan melebihi had dia — dia melawan.</p>
+      </div>
+      <div class="stat-pair">
+        <div class="stat-item">
+          <div class="number red">3</div>
+          <div class="label">kesilapan utama</div>
+          <div class="sublabel">yang menjadikan usaha lebih keras memberi hasil lebih sedikit</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">Semua</div>
+          <div class="label">berlaku tanpa disedari</div>
+          <div class="sublabel">dan sering dilakukan secara serentak</div>
+        </div>
+      </div>
+      <div class="callout">
+        Ketiga-tiga kesilapan ini mempunyai bukti saintifik yang kukuh — dan semuanya boleh dielakkan dengan memahami cara badan bekerja.
+      </div>
+    </div>
+
+    <!-- SLIDE 2: BADAN BUKAN MUSUH -->
+    <div class="slide" id="slide-2">
+      <p class="slide-label">Asas</p>
+      <h1 class="slide-title">Badan anda bukan buat halangan. Ia sedang <em>melindungi diri.</em></h1>
+      <div class="slide-body">
+        <p>Apabila berat badan turun, badan membaca ini sebagai isyarat bahaya — bukan kejayaan. Ia bertindak balas dengan memperlahankan metabolisme, meningkatkan rasa lapar, dan menyimpan tenaga sebanyak mungkin.</p>
+        <p>Ini bukan kelemahan. Ini adalah sistem keselamatan yang telah berkembang selama beribu-ribu tahun untuk menyelamatkan manusia daripada kelaparan.</p>
+      </div>
+      <div class="contrast-cards">
+        <div class="contrast-card red">
+          <div class="cc-label">Jangkaan</div>
+          Kurang makan + lebih bersenam = lebih banyak lemak terbakar secara konsisten.
+        </div>
+        <div class="contrast-card green">
+          <div class="cc-label">Realiti</div>
+          Badan menyesuaikan diri — metabolisme perlahan, hormon berubah, pergerakan harian berkurang tanpa kita sedar.
+        </div>
+      </div>
+      <div class="callout">
+        Memahami penyesuaian ini bukan alasan untuk berhenti — ia adalah asas untuk membuat keputusan yang lebih bijak.
+      </div>
+    </div>
+
+    <!-- SLIDE 3: BAHAYA 1 — DIET TERLALU KETAT -->
+    <div class="slide" id="slide-3">
+      <p class="slide-label">Bahaya 1 daripada 3</p>
+      <h1 class="slide-title">Makan terlalu sikit tidak mempercepatkan penurunan berat — ia <em>memecahkan otot.</em></h1>
+      <div class="slide-body">
+        <p>Apabila defisit kalori terlalu besar, badan tidak hanya membakar lemak — ia membakar otot juga. Otot adalah tisu yang memerlukan paling banyak tenaga untuk dikekalkan, jadi ia menjadi sasaran pertama semasa kelaparan.</p>
+        <p>Kehilangan otot bermakna metabolisme rehat turun — dan badan menjadi lebih cekap daripada yang dijangka, walaupun selepas mengambil kira kehilangan jisim badan.</p>
+      </div>
+      <div class="stat-pair">
+        <div class="stat-item">
+          <div class="number red">−499</div>
+          <div class="label">kcal/hari RMR tertekan</div>
+          <div class="sublabel">Pada peserta Biggest Loser, 6 tahun selepas pertandingan — Fothergill 2016</div>
+        </div>
+        <div class="stat-item">
+          <div class="number red">Lebih</div>
+          <div class="label">cekap daripada yang dijangka</div>
+          <div class="sublabel">Metabolisme turun melebihi apa yang komposisi badan boleh jelaskan — Falkenhain 2025</div>
+        </div>
+      </div>
+      <div class="callout red">
+        Diet yang ekstrem tidak hanya melambatkan penurunan berat badan — ia mencipta keadaan yang menjadikan penurunan berat badan lebih sukar dalam jangka panjang.
+      </div>
+      <p style="font-size:0.88rem;color:var(--muted);margin-top:4px;">
+        Julat selamat: 500–750 kcal/hari
+        <span class="tooltip-anchor">
+          <button class="tooltip-btn" data-label="diet-ekstrem-detail" aria-label="Maklumat lanjut">?</button>
+          <span class="tooltip-box">Kajian mengesyorkan defisit 500–750 kcal/hari sebagai julat yang menghasilkan penurunan berat bermakna sambil meminimumkan penyesuaian metabolik. Lebih daripada ini, badan mempercepatkan kehilangan otot dan melambatkan metabolisme secara agresif.</span>
+        </span>
+      </p>
+    </div>
+
+    <!-- SLIDE 4: AKIBAT DIET EKSTREM — HORMON -->
+    <div class="slide" id="slide-4">
+      <p class="slide-label">Bahaya 1 — Hormon</p>
+      <h1 class="slide-title">Badan tidak tahu anda sedang berdiet. Ia fikir anda <em>sedang kelaparan.</em></h1>
+      <div class="slide-body">
+        <p>Semasa defisit kalori yang besar, dua hormon utama bergerak ke arah yang bertentangan pada masa yang sama — menjadikan rasa lapar lebih kuat dan rasa kenyang lebih lemah.</p>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Tindak Balas Hormon Semasa Diet Terlalu Ketat</div>
+        <div class="chart-sub">Perubahan berbanding paras normal</div>
+        <div id="hormone-diet-svg"></div>
+      </div>
+      <div class="callout red">
+        Ini bukan soal kekuatan kehendak. Hormon-hormon ini beroperasi di luar kawalan sedar — menjadikan rasa lapar benar-benar lebih kuat secara biologi.
+      </div>
+    </div>
+
+    <!-- SLIDE 5: BAHAYA 2 — SENAMAN TERLALU KERAS -->
+    <div class="slide" id="slide-5">
+      <p class="slide-label">Bahaya 2 daripada 3</p>
+      <h1 class="slide-title">Senaman lebih intense tak bermaksud lebih banyak kalori terbakar. Badan <em>seimbangkan neraca biologi ni.</em></h1>
+      <div class="slide-body">
+        <p>Ini adalah penemuan yang paling mengejutkan dalam sains metabolisme terkini — mereka yang bersenam paling kuat alami penyesuaian metabolik yang paling besar.</p>
+        <p>Badan tak bertindak balas terhadap senaman seperti mesin. Apabila anda membakar lebih banyak kalori melalui senaman, ia seimbangkan dengan mengurangkan tenaga yang digunakan di tempat lain — terutamanya metabolisme rehat (pampasan).</p>
+      </div>
+      <div class="stat-pair">
+        <div class="stat-item">
+          <div class="number red">Tertinggi</div>
+          <div class="label">senaman = penyesuaian terbesar</div>
+          <div class="sublabel">Peserta dengan peningkatan aktiviti terbesar mengalami penurunan RMR paling banyak — Hall 2022</div>
+        </div>
+        <div class="stat-item">
+          <div class="number red">48%</div>
+          <div class="label">peserta alami "pampasan"</div>
+          <div class="sublabel">Daripada kajian senaman 24 minggu — 308 kcal/hari dikompensasikan tanpa disedari</div>
+        </div>
+      </div>
+      <div class="callout">
+        Ini bukan bermakna senaman ni tak berguna — ia amat penting untuk kesihatan. Tetapi senaman sahaja, tanpa strategi yang betul, jarang hasilkan trend penurunan berat badan.
+      </div>
+    </div>
+
+    <!-- SLIDE 6: PERANGKAP NEAT -->
+    <div class="slide" id="slide-6">
+      <p class="slide-label">Bahaya 2 — Pergerakan Harian</p>
+      <h1 class="slide-title">Selepas senaman yang intense, kita lebih cenderung untuk <em>berhenti bergerak</em> sepanjang hari.</h1>
+      <div class="slide-body">
+        <p>NEAT — Thermogenesis Aktiviti Bukan Senaman — merujuk kepada semua kalori yang dibakar melalui pergerakan harian biasa: berjalan ke kereta, berdiri, gelisah, turun tangga. Ia adalah komponen perbelanjaan tenaga yang paling tidak menentu dalam tubuh manusia.</p>
+        <p>Kajian menunjukkan bahawa senaman sengit secara akut menekan NEAT selepasnya — anda membakar kalori semasa senaman, kemudian menjadi lebih tidak aktif sepanjang hari selebihnya tanpa menyedarinya.</p>
+      </div>
+      <div class="contrast-cards">
+        <div class="contrast-card red">
+          <div class="cc-label">Yang berlaku</div>
+          Satu jam berlari pagi → badan perlahan-lahan mengurangkan pergerakan spontan sepanjang hari. Kalori bersih yang terbakar: lebih rendah daripada jangkaan.
+        </div>
+        <div class="contrast-card green">
+          <div class="cc-label">Pendekatan lebih berkesan</div>
+          Senaman sederhana yang konsisten + mengekalkan pergerakan harian yang aktif (berjalan, berdiri) = jumlah kalori terbakar yang lebih tinggi sepanjang hari.
+        </div>
+      </div>
+      <div class="callout red">
+        Penat selepas senaman bukan tanda kejayaan — ia boleh jadi tanda bahawa badan sedang memulihkan tenaga dengan mengurangkan pergerakan di tempat lain.
+      </div>
+    </div>
+
+    <!-- SLIDE 7: BAHAYA 3 — TIDUR -->
+    <div class="slide" id="slide-7">
+      <p class="slide-label">Bahaya 3 daripada 3</p>
+      <h1 class="slide-title">Tidur bukan rehat pasif. Ia adalah masa badan <em>membakar lemak dengan efficient.</em></h1>
+      <div class="slide-body">
+        <p>Kajian paling tentang tidur dan diet menunjukkan: orang yang berdiet dengan tidur cukup dan kurang kehilangan berat yang sama — tetapi komposisi penurunan itu sangat berbeza.</p>
+      </div>
+      <div class="stat-pair">
+        <div class="stat-item">
+          <div class="number red">−55%</div>
+          <div class="label">kurang lemak hilang</div>
+          <div class="sublabel">Orang yang tak cukup tidur lebih susah untuk hilangkan sehingga 55% lemak — Nedeltcheva 2010</div>
+        </div>
+        <div class="stat-item">
+          <div class="number red">+60%</div>
+          <div class="label">lebih otot hilang</div>
+          <div class="sublabel">Orang yang tak cukup tidur berisiko tinggi untuk hilang sehingga 60% jisim otot — Nedeltcheva 2010</div>
+        </div>
+      </div>
+      <div class="callout red">
+        Bukan soal berapa banyak berat yang turun — tetapi APA yang turun. Tidur kurang bermakna anda kehilangan otot, bukan lemak.
+      </div>
+      <p style="font-size:0.88rem;color:var(--muted);margin-top:4px;">
+        Kajian: Nedeltcheva et al. (2010)
+        <span class="tooltip-anchor">
+          <button class="tooltip-btn" data-label="tidur-detail" aria-label="Maklumat lanjut">?</button>
+          <span class="tooltip-box">Kajian crossover terkawal: 10 orang dewasa berlebihan berat menjalani defisit kalori sederhana yang sama, dengan dua keadaan berbeza — tidur 8.5 jam atau 5.5 jam selama 14 hari. Persekitaran klinikal terkawal memastikan perbezaan hanya pada tempoh tidur.</span>
+        </span>
+      </p>
+    </div>
+
+    <!-- SLIDE 8: HORMON TIDUR -->
+    <div class="slide" id="slide-8">
+      <p class="slide-label">Bahaya 3 — Hormon</p>
+      <h1 class="slide-title">Satu malam tidur kurang sudah cukup untuk <em>meningkatkan hormon lapar.</em></h1>
+      <div class="slide-body">
+        <p>Tidak perlu berminggu-minggu tidur kurang untuk merasai kesannya. Kajian menunjukkan perubahan hormon berlaku seawal satu malam selepas tidur terganggu.</p>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Tindak Balas Hormon Selepas Tidur Tidak Cukup</div>
+        <div class="chart-sub">Perubahan berbanding tidur 7–8 jam</div>
+        <div id="hormone-sleep-svg"></div>
+      </div>
+      <div class="callout red">
+        Apabila ghrelin naik dan leptin turun, otak menerima dua isyarat serentak: "Anda lapar" dan "Anda belum kenyang lagi." Ini adalah kombinasi yang sukar dilawan dengan kekuatan kehendak semata-mata.
+      </div>
+    </div>
+
+    <!-- SLIDE 9: PERANGKAP GABUNGAN — CYCLE -->
+    <div class="slide" id="slide-9">
+      <p class="slide-label">Perangkap Gabungan</p>
+      <h1 class="slide-title">Ketiga-tiga kesilapan ini sering berlaku <em>pada masa yang sama.</em></h1>
+      <div class="slide-body">
+        <p>Yang paling berbahaya bukan satu kesilapan sahaja — tetapi ketiga-tiganya mempengaruhi satu sama lain dalam kitaran yang sukar diputuskan.</p>
+      </div>
+      <div id="cycle-svg-wrap"></div>
+      <div class="callout red">
+        Kitaran ini bukan tanda kegagalan. Ia adalah tindak balas fisiologi yang boleh diramal — dan boleh diputuskan apabila anda tahu di mana ia bermula.
+      </div>
+    </div>
+
+    <!-- SLIDE 10: APA YANG PERLU DILAKUKAN -->
+    <div class="slide" id="slide-10">
+      <p class="slide-label">Pendekatan Bijak</p>
+      <h1 class="slide-title">Bukan lebih extreme. <em>Lebih bijak.</em></h1>
+      <div class="slide-body">
+        <p>Empat perkara berikut bukan senarai tugas yang perlu disempurnakan — ia adalah paras minimum yang sudah mencukupi untuk badan bekerjasama dengan anda, bukan melawan anda.</p>
+      </div>
+      <div class="numbered-items">
+        <div class="numbered-item">
+          <div class="num-circle">1</div>
+          <div class="num-text"><strong>Defisit sederhana: 500–750 kcal/hari sudah cukup.</strong> Lebih daripada ini, badan mula melindungi diri dengan memperlahankan metabolisme dan membakar otot. Defisit sederhana yang konsisten mengalahkan defisit besar yang tidak mampan.</div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-circle">2</div>
+          <div class="num-text"><strong>Protein: 1.6–2.0 g/kg berat badan sehari sebagai pelindung otot.</strong> Semasa defisit kalori, protein yang mencukupi adalah perisai yang menghalang badan daripada memecahkan otot untuk tenaga.</div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-circle">3</div>
+          <div class="num-text"><strong>Tidur 7–9 jam bukan pilihan — ia syarat.</strong> Tanpa tidur yang cukup, diet terbaik sekalipun akan membuang otot, bukan lemak. Tidur adalah sebahagian daripada proses, bukan tambahan kepadanya.</div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-circle">4</div>
+          <div class="num-text"><strong>Hari rehat senaman: sekurang-kurangnya 1–2 hari seminggu.</strong> Rehat bukan tanda kelemahan — ia adalah masa badan membina semula dan menyesuaikan diri. Tanpa rehat, senaman menjadi tekanan kronik, bukan rangsangan pertumbuhan.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: KESIMPULAN + SUMBER -->
+    <div class="slide" id="slide-11">
+      <p class="slide-label">Kesimpulan</p>
+      <h1 class="slide-title">Badan anda bukan penghalang. <em>Pendekatan yang salah</em> itulah penghalangnya.</h1>
+      <div class="slide-body">
+        <p>Sains tidak menyokong pendekatan "lebih extreme = lebih baik" dalam penurunan berat badan. Ia menyokong pendekatan yang bekerja bersama mekanisme badan — bukan menentangnya.</p>
+      </div>
+      <div class="conclusion-cards">
+        <div class="conclusion-card">
+          <div class="cc-num">01</div>
+          <p><strong>Diet terlalu ketat melawan diri sendiri.</strong> Defisit yang terlalu besar mempercepatkan kehilangan otot, melambatkan metabolisme, dan menjadikan penurunan berat lebih sukar dalam jangka panjang.</p>
+        </div>
+        <div class="conclusion-card">
+          <div class="cc-num">02</div>
+          <p><strong>Senaman berlebihan tanpa rehat mencukupi mengurangkan keberkesanannya.</strong> Badan seimbangkan senaman keras dengan memperlahankan pergerakan lain — dan tanpa rehat, ia berhenti bertindak balas kepada rangsangan latihan.</p>
+        </div>
+        <div class="conclusion-card">
+          <div class="cc-num">03</div>
+          <p><strong>Tidur adalah bahagian aktif dalam proses penurunan berat badan.</strong> Ia bukan masa rehat sahaja — ia menentukan sama ada yang anda hilangkan adalah lemak atau otot, dan mengawal hormon lapar yang mempengaruhi pilihan makan anda.</p>
+        </div>
+      </div>
+      <div class="source-box">
+        <p><strong>Rujukan:</strong> Fothergill E et al. (2016). Persistent metabolic adaptation 6 years after "The Biggest Loser" competition. <em>Obesity</em>. PMID: 27136388 ·
+        Falkenhain K et al. (2025). Effect of caloric restriction on organ size and its contribution to metabolic adaptation: an ancillary analysis of CALERIE 2. <em>Scientific Reports</em>. <a href="https://doi.org/10.1038/s41598-024-83762-0" target="_blank">doi.org/10.1038/s41598-024-83762-0</a> ·
+        Hall KD (2022). Energy compensation and metabolic adaptation: "The Biggest Loser" study reinterpreted. <em>Obesity</em>. <a href="https://doi.org/10.1002/oby.23308" target="_blank">doi.org/10.1002/oby.23308</a> ·
+        Nedeltcheva AV et al. (2010). Insufficient sleep undermines dietary efforts to reduce adiposity. <em>Annals of Internal Medicine</em>. 153(7):435–441 ·
+        Spiegel K et al. (2004). Brief communication: Sleep curtailment in healthy young men is associated with decreased leptin levels, elevated ghrelin levels, and increased hunger and appetite. <em>Annals of Internal Medicine</em>. 141(11):846–850 ·
+        Egmond LT et al. (2023). Effects of acute sleep loss on leptin, ghrelin, and adiponectin. <em>Obesity</em>. <a href="https://doi.org/10.1002/oby.23616" target="_blank">doi.org/10.1002/oby.23616</a> ·
+        Martínez-Gómez MG &amp; Roberts BM (2022). Metabolic adaptations to weight loss. <em>J Strength Cond Res</em>. <a href="https://doi.org/10.1519/JSC.0000000000003991" target="_blank">doi.org/10.1519/JSC.0000000000003991</a></p>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrap -->
+
+  <div id="nav-wrap">
+    <button id="btn-back" class="nav-btn" disabled data-umami-event="nav-back">← Balik</button>
+    <button id="btn-next" class="nav-btn" data-umami-event="nav-next">Seterusnya →</button>
+  </div>
+
+  <footer>Informed decisions, better health.</footer>
+
+</div><!-- /shell -->
+
+<script>
+(function () {
+  'use strict';
+
+  const TOTAL = 11;
+  let current = 1;
+
+  const fill    = document.getElementById('progress-fill');
+  const label   = document.getElementById('progress-label');
+  const btnBack = document.getElementById('btn-back');
+  const btnNext = document.getElementById('btn-next');
+
+  /* ── HORMONE DIET SVG (slide 4) ── */
+  // Fixed 560x170 viewBox — all coords in viewBox units, scales to any screen.
+  function buildHormoneDiet() {
+    const wrap = document.getElementById('hormone-diet-svg');
+    if (!wrap || wrap.dataset.built) return;
+    wrap.dataset.built = '1';
+
+    const VW = 560, VH = 170;
+    const LX = 148;   // left edge of arrows
+    const RX = 500;   // right edge of arrow body
+    const AH = 10;    // arrowhead half-height
+    const AW = 14;    // arrowhead tip projection
+    const BH = 11;    // arrow body half-height
+    const lf = 'font-family="DM Sans,sans-serif" font-size="13"';
+    const sf = 'font-family="DM Sans,sans-serif" font-size="11"';
+    const m1 = 52;    // Ghrelin row centre-y
+    const m2 = 118;   // Leptin row centre-y
+
+    let s = `<svg viewBox="0 0 ${VW} ${VH}" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">`;
+
+    // ── Ghrelin — NAIK (arrow points right) ──
+    s += `<text x="${LX - 8}" y="${m1 - 4}" text-anchor="end" fill="#1a1a18" ${lf} font-weight="500">Ghrelin</text>`;
+    s += `<text x="${LX - 8}" y="${m1 + 11}" text-anchor="end" fill="#6b6b62" ${sf}>(hormon lapar)</text>`;
+    s += `<rect x="${LX}" y="${m1 - BH}" width="${RX - LX}" height="${BH * 2}" fill="#b83232" rx="2"/>`;
+    s += `<polygon points="${RX},${m1 - AH} ${RX + AW},${m1} ${RX},${m1 + AH}" fill="#b83232"/>`;
+    s += `<text x="${RX - 10}" y="${m1 + 5}" text-anchor="end" fill="#ffffff" ${lf} font-weight="600">NAIK</text>`;
+
+    // ── Leptin — TURUN (arrow points left) ──
+    s += `<text x="${LX - 8}" y="${m2 - 4}" text-anchor="end" fill="#1a1a18" ${lf} font-weight="500">Leptin</text>`;
+    s += `<text x="${LX - 8}" y="${m2 + 11}" text-anchor="end" fill="#6b6b62" ${sf}>(hormon kenyang)</text>`;
+    s += `<rect x="${LX}" y="${m2 - BH}" width="${RX - LX}" height="${BH * 2}" fill="#2d6a4f" rx="2"/>`;
+    s += `<polygon points="${LX},${m2 - AH} ${LX - AW},${m2} ${LX},${m2 + AH}" fill="#2d6a4f"/>`;
+    s += `<text x="${LX + 10}" y="${m2 + 5}" text-anchor="start" fill="#ffffff" ${lf} font-weight="600">TURUN</text>`;
+
+    // annotation
+    s += `<text x="${VW / 2}" y="${VH - 6}" text-anchor="middle" fill="#6b6b62" ${sf}>Kedua-dua berlaku serentak semasa defisit kalori yang besar</text>`;
+
+    s += '</svg>';
+    wrap.innerHTML = s;
+  }
+
+  /* ── HORMONE SLEEP SVG (slide 8) ── */
+  // Fixed 560x230 viewBox — all coords in viewBox units, scales to any screen.
+  function buildHormoneSleep() {
+    const wrap = document.getElementById('hormone-sleep-svg');
+    if (!wrap || wrap.dataset.built) return;
+    wrap.dataset.built = '1';
+
+    const VW = 560, VH = 230;
+    const LX = 155;   // left edge of bars/arrows
+    const RX = 490;   // right edge of bar zone
+    const AH = 10;    // arrowhead half-height
+    const AW = 14;    // arrowhead tip projection
+    const BH = 10;    // bar/arrow body half-height
+    const lf = 'font-family="DM Sans,sans-serif" font-size="13"';
+    const sf = 'font-family="DM Sans,sans-serif" font-size="11"';
+    const m1 = 44;    // Ghrelin centre-y
+    const m2 = 110;   // Leptin centre-y
+    const m3 = 176;   // Kawalan centre-y
+
+    let s = `<svg viewBox="0 0 ${VW} ${VH}" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">`;
+
+    // ── Ghrelin — NAIK ──
+    s += `<text x="${LX - 8}" y="${m1 - 4}" text-anchor="end" fill="#1a1a18" ${lf} font-weight="500">Ghrelin</text>`;
+    s += `<text x="${LX - 8}" y="${m1 + 11}" text-anchor="end" fill="#6b6b62" ${sf}>(hormon lapar)</text>`;
+    s += `<rect x="${LX}" y="${m1 - BH}" width="${RX - LX}" height="${BH * 2}" fill="#b83232" rx="2"/>`;
+    s += `<polygon points="${RX},${m1 - AH} ${RX + AW},${m1} ${RX},${m1 + AH}" fill="#b83232"/>`;
+    // NAIK + stat inside body, right-aligned
+    s += `<text x="${RX - 10}" y="${m1 + 1}" text-anchor="end" fill="#ffffff" ${lf} font-weight="600">NAIK +22%*</text>`;
+
+    // ── Leptin — TURUN ──
+    s += `<text x="${LX - 8}" y="${m2 - 4}" text-anchor="end" fill="#1a1a18" ${lf} font-weight="500">Leptin</text>`;
+    s += `<text x="${LX - 8}" y="${m2 + 11}" text-anchor="end" fill="#6b6b62" ${sf}>(hormon kenyang)</text>`;
+    s += `<rect x="${LX}" y="${m2 - BH}" width="${RX - LX}" height="${BH * 2}" fill="#2d6a4f" rx="2"/>`;
+    s += `<polygon points="${LX},${m2 - AH} ${LX - AW},${m2} ${LX},${m2 + AH}" fill="#2d6a4f"/>`;
+    s += `<text x="${LX + 10}" y="${m2 + 5}" text-anchor="start" fill="#ffffff" ${lf} font-weight="600">TURUN</text>`;
+
+    // ── Kawalan kehendak — depleted bar ──
+    const barFull = RX - LX;
+    const barUsed = Math.round(barFull * 0.32);
+    s += `<text x="${LX - 8}" y="${m3 - 4}" text-anchor="end" fill="#1a1a18" ${lf} font-weight="500">Kawalan</text>`;
+    s += `<text x="${LX - 8}" y="${m3 + 11}" text-anchor="end" fill="#6b6b62" ${sf}>(kekuatan kehendak)</text>`;
+    // empty track
+    s += `<rect x="${LX}" y="${m3 - BH}" width="${barFull}" height="${BH * 2}" fill="#dedad0" rx="2"/>`;
+    // filled portion (low)
+    s += `<rect x="${LX}" y="${m3 - BH}" width="${barUsed}" height="${BH * 2}" fill="#b0ad9e" rx="2"/>`;
+    s += `<text x="${LX + barUsed + 8}" y="${m3 + 5}" text-anchor="start" fill="#6b6b62" ${lf} font-weight="500">LEMAH</text>`;
+
+    // annotation
+    s += `<text x="${VW / 2}" y="${VH - 6}" text-anchor="middle" fill="#6b6b62" ${sf}>*Selepas satu malam tanpa tidur — Schmid 2008, disahkan Egmond 2023</text>`;
+
+    s += '</svg>';
+    wrap.innerHTML = s;
+  }
+
+  /* ── CYCLE DIAGRAM (slide 9) ── */
+  function buildCycle() {
+    const wrap = document.getElementById('cycle-svg-wrap');
+    if (!wrap || wrap.dataset.built) return;
+    wrap.dataset.built = '1';
+
+    const W = wrap.clientWidth || 560;
+    // Nodes arranged in a vertical flow with connecting arrows
+    const nodes = [
+      { text: 'Diet terlalu ketat', color: '#b83232', bg: '#f7e8e8' },
+      { text: 'Otot hilang + metabolisme perlahan', color: '#b83232', bg: '#f7e8e8' },
+      { text: 'Penat kronik', color: '#6b6b62', bg: '#f0ead6' },
+      { text: 'Tidur berterabur', color: '#6b6b62', bg: '#f0ead6' },
+      { text: 'Hormon lapar meningkat', color: '#b83232', bg: '#f7e8e8' },
+      { text: 'Makan lebih / gagal kawalan', color: '#b83232', bg: '#f7e8e8' },
+      { text: 'Rasa gagal \u2192 cuba lebih extreme lagi', color: '#2d6a4f', bg: '#e8f5ee' },
+    ];
+
+    const NODE_H = 36;
+    const NODE_W = Math.min(W - 60, 380);
+    const nodeX = (W - NODE_W) / 2;
+    const GAP = 14;
+    const ARROW_H = 16;
+    const ROW_H = NODE_H + GAP + ARROW_H;
+    const totalH = nodes.length * ROW_H + 40;
+
+    let svg = `<svg viewBox="0 0 ${W} ${totalH}" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">`;
+
+    nodes.forEach((node, i) => {
+      const y = 16 + i * ROW_H;
+      const midX = W / 2;
+      const midY = y + NODE_H / 2;
+
+      // Node box
+      svg += `<rect x="${nodeX}" y="${y}" width="${NODE_W}" height="${NODE_H}" fill="${node.bg}" stroke="${node.color}" stroke-width="1.2" rx="3"/>`;
+      svg += `<text x="${midX}" y="${midY + 5}" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" font-weight="500" fill="${node.color}">${node.text}</text>`;
+
+      // Arrow down (except last)
+      if (i < nodes.length - 1) {
+        const arrowTopY = y + NODE_H;
+        const arrowBotY = arrowTopY + ARROW_H;
+        svg += `<line x1="${midX}" y1="${arrowTopY}" x2="${midX}" y2="${arrowBotY - 5}" stroke="#ccc9bb" stroke-width="1.5"/>`;
+        svg += `<polygon points="${midX - 5},${arrowBotY - 5} ${midX + 5},${arrowBotY - 5} ${midX},${arrowBotY + 2}" fill="#ccc9bb"/>`;
+      }
+    });
+
+    // Loop-back arrow: from last node back to first (curved, right side)
+    const lastNodeBottomY = 16 + (nodes.length - 1) * ROW_H + NODE_H;
+    const firstNodeMidY   = 16 + NODE_H / 2;
+    const loopX = nodeX + NODE_W + 22;
+    svg += `<path d="M ${nodeX + NODE_W} ${lastNodeBottomY - NODE_H / 2} Q ${loopX + 18} ${(lastNodeBottomY + firstNodeMidY) / 2} ${nodeX + NODE_W} ${firstNodeMidY}" fill="none" stroke="#b83232" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+    svg += `<polygon points="${nodeX + NODE_W - 5},${firstNodeMidY - 6} ${nodeX + NODE_W + 5},${firstNodeMidY - 6} ${nodeX + NODE_W},${firstNodeMidY + 4}" fill="#b83232"/>`;
+    // "Ulang" label
+    svg += `<text x="${loopX + 22}" y="${(lastNodeBottomY + firstNodeMidY) / 2 + 4}" text-anchor="start" font-family="DM Sans,sans-serif" font-size="11" fill="#b83232" font-weight="500">Ulang</text>`;
+
+    svg += '</svg>';
+    wrap.innerHTML = svg;
+  }
+
+  /* ── SHOW ── */
+  function show(n) {
+    document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+    const slide = document.getElementById('slide-' + n);
+    if (slide) slide.classList.add('active');
+
+    const pct = ((n - 1) / (TOTAL - 1)) * 100;
+    fill.style.width = pct + '%';
+    label.textContent = n + ' / ' + TOTAL;
+
+    btnBack.disabled = (n === 1);
+    btnNext.textContent = (n === TOTAL) ? 'Selesai' : 'Seterusnya →';
+
+    // Lazy SVG builds
+    if (n === 4) buildHormoneDiet();
+    if (n === 8) buildHormoneSleep();
+    if (n === 9) buildCycle();
+
+    if (window.umami) umami.track('slide-view', { slide: n });
+
+    // Scroll to top of header on slide change
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── NAV ── */
+  btnNext.addEventListener('click', () => {
+    if (current === TOTAL) {
+      if (window.umami) umami.track('carousel-selesai');
+      return;
+    }
+    current++;
+    show(current);
+  });
+
+  btnBack.addEventListener('click', () => {
+    if (current > 1) { current--; show(current); }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && current < TOTAL) { current++; show(current); }
+    if (e.key === 'ArrowLeft'  && current > 1)     { current--; show(current); }
+  });
+
+  /* ── TOOLTIPS ── */
+  document.querySelectorAll('.tooltip-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const box = btn.nextElementSibling;
+      const isOpen = box.classList.contains('open');
+      // Close all open tooltips first
+      document.querySelectorAll('.tooltip-box.open').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.tooltip-btn.active').forEach(b => b.classList.remove('active'));
+      if (!isOpen) {
+        box.classList.add('open');
+        btn.classList.add('active');
+        if (window.umami) umami.track('tooltip', { label: btn.dataset.label || '' });
+      }
+    });
+  });
+  // Close tooltip on outside tap
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.tooltip-box.open').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.tooltip-btn.active').forEach(b => b.classList.remove('active'));
+  });
+
+  show(1);
+})();
+</script>
+</body>
+</html>
