@@ -10,7 +10,7 @@
   data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
 
 <!-- SEO -->
-<meta name="description" content="Rancang Diri membantu anda bina pelan aktiviti dan pemakanan yang mudah diikuti — supaya anda tak perlu fikir on the spot setiap hari.">
+<meta name="description" content="RancangDiri membantu anda bina pelan aktiviti dan pemakanan yang mudah diikuti — supaya anda tak perlu fikir on the spot setiap hari.">
 
 <!-- Open Graph -->
 <meta property="og:type"         content="website">
@@ -26,7 +26,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:site"        content="@theaufthority">
-<meta name="twitter:title"       content="Rancang Diri — Aufthority">
+<meta name="twitter:title"       content="RancangDiri — Aufthority">
 <meta name="twitter:description" content="Satu sesi brainstorm. Pelan untuk seumur hidup.">
 <meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
 
@@ -44,7 +44,6 @@
   --card-bg:       #f0ead6;
   --radius:        2px;
   --radius-pill:   999px;
-  --photo-w:       42vw;
   --step-inactive: #bbb8a8;
 }
 
@@ -61,77 +60,11 @@ body {
   min-height: 100vh;
 }
 
-/* ── Photo panel ── */
-.photo-panel { display: none; }
-
-@media (min-width: 820px) {
-  .photo-panel {
-    display: block;
-    position: fixed;
-    top: 0; right: 0;
-    width: var(--photo-w);
-    height: 100vh;
-    overflow: hidden;
-    background: transparent;
-    z-index: 10;
-    pointer-events: none;
-  }
-  .photo-panel img {
-    position: absolute;
-    bottom: 0; right: 0;
-    width: auto;
-    height: 92vh;
-    max-width: none;
-    object-fit: contain;
-    object-position: bottom right;
-    display: block;
-  }
-  .photo-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .photo-placeholder-inner {
-    border: 1px dashed var(--rule);
-    border-radius: var(--radius);
-    padding: 28px 32px;
-    text-align: center;
-    max-width: 200px;
-  }
-  .photo-placeholder-inner .ph-label {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--step-inactive);
-    margin-bottom: 8px;
-  }
-  .photo-placeholder-inner p {
-    font-size: 0.75rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-}
-
-/* ── Layout ── */
+/* ── Layout — always centered ── */
 .container {
   max-width: 680px;
   margin: 0 auto;
-  padding: 0 28px;
-}
-
-@media (min-width: 820px) {
-  .container {
-    margin: 0 0 0 auto;
-    max-width: min(640px, calc(58vw - 24px));
-    padding: 0 40px 0 28px;
-  }
-}
-
-@media (min-width: 1200px) {
-  :root { --photo-w: 40vw; }
-  .container { max-width: min(680px, calc(60vw - 24px)); }
+  padding: 0 24px;
 }
 
 /* ── Nav ── */
@@ -141,7 +74,6 @@ nav {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--rule);
-  gap: 12px;
 }
 .logo {
   font-family: 'DM Serif Display', serif;
@@ -167,11 +99,11 @@ nav {
 }
 .nav-links a:hover { border-color: var(--accent); color: var(--accent); }
 
-@media (max-width: 540px) {
-  .nav-links a { font-size: 0.68rem; padding: 5px 11px; }
+@media (max-width: 400px) {
+  .nav-links a { font-size: 0.68rem; padding: 5px 10px; }
 }
 
-/* ── Brand header (logo block) ── */
+/* ── Brand header ── */
 .brand-header {
   display: flex;
   flex-direction: column;
@@ -188,17 +120,17 @@ nav {
 }
 .brand-name {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
   letter-spacing: -0.01em;
   color: var(--ink);
   line-height: 1;
   margin-bottom: 6px;
 }
 .brand-subtitle {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 400;
   color: var(--muted);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 /* ── Section label ── */
@@ -215,7 +147,7 @@ nav {
 #welcome { padding: 48px 0 56px; }
 #welcome h1 {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(2rem, 5.5vw, 3rem);
+  font-size: clamp(2rem, 6vw, 3rem);
   line-height: 1.1;
   color: var(--ink);
   margin-bottom: 16px;
@@ -226,7 +158,6 @@ nav {
   color: var(--muted);
   line-height: 1.65;
   margin-bottom: 14px;
-  max-width: 480px;
 }
 .welcome-meta {
   display: flex;
@@ -307,7 +238,7 @@ nav {
 }
 .step h2 {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-size: clamp(1.5rem, 5vw, 2rem);
   line-height: 1.15;
   color: var(--ink);
   margin-bottom: 8px;
@@ -373,6 +304,8 @@ nav {
   transition: border-color 0.15s;
   outline: none;
   -webkit-appearance: none;
+  /* Prevent iOS zoom on focus */
+  font-size: max(16px, 0.93rem);
 }
 .field textarea:focus,
 .field input[type="text"]:focus { border-color: var(--accent); }
@@ -382,15 +315,16 @@ nav {
 /* ── Chips ── */
 .chip-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
 .chip {
-  padding: 5px 14px;
+  padding: 6px 14px;
   border: 1px solid var(--rule);
   border-radius: var(--radius-pill);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--muted);
   cursor: pointer;
   background: var(--card-bg);
   transition: all 0.15s;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .chip:hover { border-color: var(--accent); color: var(--accent); }
 .chip.selected { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
@@ -419,6 +353,7 @@ nav {
   color: var(--muted);
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn-back:hover { border-color: var(--accent); color: var(--accent); }
 .btn-next {
@@ -434,6 +369,7 @@ nav {
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn-next:hover { opacity: 0.88; }
 
@@ -484,7 +420,7 @@ nav {
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  min-width: 100px;
+  min-width: 96px;
   padding-top: 2px;
   flex-shrink: 0;
 }
@@ -529,7 +465,7 @@ nav {
 }
 .btn-restart:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ── Buy Me a Coffee section ── */
+/* ── Buy Me a Coffee ── */
 .bmc-section {
   padding: 36px 0;
   border-top: 1px solid var(--rule);
@@ -564,7 +500,7 @@ nav {
 
 /* ── Footer ── */
 footer {
-  padding: 32px 0 28px;
+  padding: 32px 0 40px;
   border-top: 1px solid var(--rule);
   font-size: 0.8rem;
   color: var(--muted);
@@ -577,7 +513,7 @@ footer {
 
 /* ── Print ── */
 @media print {
-  .photo-panel, nav, .brand-header, #welcome, #tool-container, footer, .playbook-actions, .bmc-section { display: none !important; }
+  nav, .brand-header, #welcome, #tool-container, footer, .playbook-actions, .bmc-section { display: none !important; }
   #playbook { display: block !important; }
   body { background: #fff; color: #000; }
   .playbook-chip { border: 1px solid #ccc; }
@@ -586,17 +522,6 @@ footer {
 </style>
 </head>
 <body>
-
-<!-- Fixed photo panel (desktop only) -->
-<div class="photo-panel">
-  <div class="photo-placeholder">
-    <div class="photo-placeholder-inner">
-      <p class="ph-label">Foto</p>
-      <p>Placeholder — gantikan dengan gambar lifestyle pilihan anda</p>
-    </div>
-  </div>
-  <!-- Uncomment when ready: <img src="/rancangdiri/photo.png" alt=""> -->
-</div>
 
 <!-- NAV -->
 <div class="container">
@@ -611,25 +536,18 @@ footer {
 <!-- BRAND HEADER -->
 <div class="container">
   <div class="brand-header">
-    <!-- Premium notebook SVG icon -->
     <svg class="brand-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- Notebook cover -->
       <rect x="10" y="6" width="28" height="36" rx="3" fill="currentColor" opacity="0.12"/>
       <rect x="10" y="6" width="28" height="36" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/>
-      <!-- Spine line -->
       <line x1="17" y1="6" x2="17" y2="42" stroke="currentColor" stroke-width="1.8"/>
-      <!-- Binding dots -->
       <circle cx="17" cy="13" r="1.5" fill="currentColor"/>
       <circle cx="17" cy="21" r="1.5" fill="currentColor"/>
       <circle cx="17" cy="29" r="1.5" fill="currentColor"/>
       <circle cx="17" cy="37" r="1.5" fill="currentColor"/>
-      <!-- Page lines -->
       <line x1="22" y1="16" x2="33" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
       <line x1="22" y1="21" x2="33" y2="21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
       <line x1="22" y1="26" x2="33" y2="26" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      <!-- Pen accent -->
       <line x1="22" y1="31" x2="29" y2="31" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      <!-- Small checkmark on first line -->
       <polyline points="22,15.2 23.4,17 25.5,13.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
     </svg>
     <div class="brand-name">RancangDiri</div>
@@ -642,7 +560,7 @@ footer {
   <div class="container">
     <p class="section-label">Mula sini</p>
     <h1>Bina <em>autopilot</em> hidup sihat anda</h1>
-    <p class="hero-desc">Kebanyakan orang gagal bukan sebab kurang disiplin — tapi sebab terpaksa buat keputusan baru setiap hari. Bila penat, bila lapar, bila busy — pilihan yang buruk jadi mudah. Kita panggil ni decision fatigue</p>
+    <p class="hero-desc">Kebanyakan orang gagal bukan sebab kurang disiplin — tapi sebab terpaksa buat keputusan baru setiap hari. Bila penat, bila lapar, bila busy — pilihan yang buruk jadi mudah. Kita panggil ni decision fatigue.</p>
     <p class="hero-desc">RancangDiri bantu anda habiskan satu sesi brainstorm, bina pelan yang masuk akal untuk hidup anda, dan simpan sebagai rujukan harian.</p>
     <div class="welcome-meta">
       <div class="welcome-meta-item">
@@ -832,7 +750,7 @@ footer {
       <p class="step-intro">Dah brainstorm banyak benda. Sekarang, pilih yang paling penting dan konkrit.</p>
       <div class="why-card">
         <p class="why-label">Kenapa langkah ini penting</p>
-        <p>Brainstorm yang bagus tapi tak disempitkan jadi pelan konkrit (tak boleh adjust) akan tetap jadi sekadar idea. Langkah ini tukarkan semua tu jadi komitmen harian yang boleh anda ikut.</p>
+        <p>Brainstorm yang bagus tapi tak disempitkan jadi pelan konkrit akan tetap jadi sekadar idea. Langkah ini tukarkan semua tu jadi komitmen harian yang boleh anda ikut.</p>
       </div>
       <div class="field">
         <label>Pergerakan default anda (satu ayat)</label>
@@ -1004,7 +922,6 @@ footer {
   <div class="bmc-section">
     <p>Sokong projek Aufthority. Jadi penyokong kepada inisiatif berasaskan bukti kajian saintifik terkini yang memberi manfaat kepada orang ramai.</p>
     <a href="https://buymeacoffee.com/aufali" target="_blank" class="bmc-btn">
-      <!-- Coffee cup icon -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1" stroke="#1a1a18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" stroke="#1a1a18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
