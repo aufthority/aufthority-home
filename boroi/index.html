@@ -1,1 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why the Belly? — Aufthority</title>
+  <meta name="description" content="Find out what's really driving your weight gain. A 5-category audit built on Malaysian health evidence." />
+  <meta property="og:title" content="Why the Belly? — Aufthority" />
+  <meta property="og:description" content="Find out what's really driving your weight gain. 5 categories. 2 minutes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_MY" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@theaufthority" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="7c961c49-4871-4b9d-b031-d9b95d4e4a68"></script>
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────── */
+    :root {
+      --color-midnight-abyss:  #141414;
+      --color-ghost-white:     #fdf9f0;
+      --color-lime-squeeze:    #c7ff69;
+      --color-amethyst-glow:   #7a78ff;
+      --color-sunset-orange:   #ff6d38;
+      --color-emerald-sprint:  #00a652;
+      --color-skybound-blue:   #478bff;
+      --color-golden-rod:      #ffc412;
+
+      --font-display: 'Bebas Neue', ui-sans-serif, sans-serif;
+      --font-body:    'Inter', ui-sans-serif, sans-serif;
+
+      --radius-tags:    1000px;
+      --radius-cards:   43.2px;
+      --radius-buttons: 25.146px;
+
+      --cat-diet:     var(--color-sunset-orange);
+      --cat-sleep:    var(--color-amethyst-glow);
+      --cat-stress:   var(--color-golden-rod);
+      --cat-activity: var(--color-emerald-sprint);
+      --cat-hormones: var(--color-skybound-blue);
+    }
+
+    /* ── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--color-midnight-abyss);
+      color: var(--color-ghost-white);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1;
+      letter-spacing: 0.14px;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────── */
+    #shell {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0 14px;
+      position: sticky;
+      top: 0;
+      background: var(--color-midnight-abyss);
+      z-index: 100;
+      border-bottom: 1px solid rgba(253,249,240,0.08);
+    }
+    .nav-logo {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-ghost-white);
+      text-decoration: none;
+      letter-spacing: 0.14px;
+    }
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero {
+      padding: 64px 0 48px;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.165px;
+      text-transform: uppercase;
+      color: var(--color-midnight-abyss);
+      background: var(--color-lime-squeeze);
+      border-radius: var(--radius-tags);
+      padding: 5px 14px;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 16vw, 108px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--color-ghost-white);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-title .accent { color: var(--color-lime-squeeze); }
+    .hero-body {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      color: rgba(253,249,240,0.6);
+      max-width: 480px;
+      margin-bottom: 28px;
+    }
+    .hero-body strong { color: var(--color-ghost-white); font-weight: 500; }
+    .hero-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .hero-pill {
+      background: rgba(253,249,240,0.07);
+      border: 1px solid rgba(253,249,240,0.12);
+      border-radius: var(--radius-tags);
+      font-size: 11px;
+      letter-spacing: 0.165px;
+      color: rgba(253,249,240,0.45);
+      padding: 5px 14px;
+    }
+
+    /* ── DIVIDER ────────────────────────────────────── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid rgba(253,249,240,0.08);
+      margin: 0;
+    }
+
+    /* ── CHECKLIST SECTION ──────────────────────────── */
+    #checklist-section { padding: 48px 0; }
+
+    .category-block { margin-bottom: 36px; }
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .cat-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .cat-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--color-ghost-white);
+      flex: 1;
+    }
+    .cat-count {
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.165px;
+      color: rgba(253,249,240,0.3);
+    }
+
+    /* Items */
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(253,249,240,0.08);
+      background: rgba(253,249,240,0.03);
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .check-item:hover { border-color: rgba(253,249,240,0.18); background: rgba(253,249,240,0.055); }
+    .check-item.checked { border-color: rgba(253,249,240,0.22); background: rgba(253,249,240,0.07); }
+    .check-box {
+      width: 20px; height: 20px;
+      border-radius: 6px;
+      border: 1.5px solid rgba(253,249,240,0.2);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      margin-top: 1px;
+    }
+    .check-item.checked .check-box {
+      background: var(--color-lime-squeeze);
+      border-color: var(--color-lime-squeeze);
+    }
+    .check-tick { display: none; width: 10px; height: 7px; }
+    .check-item.checked .check-tick { display: block; }
+    .check-text {
+      font-size: 14px;
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+      color: rgba(253,249,240,0.65);
+    }
+    .check-item.checked .check-text { color: var(--color-ghost-white); }
+
+    /* Per-category checked colour */
+    .cat-diet     .check-item.checked .check-box { background: var(--cat-diet);     border-color: var(--cat-diet); }
+    .cat-sleep    .check-item.checked .check-box { background: var(--cat-sleep);    border-color: var(--cat-sleep); }
+    .cat-stress   .check-item.checked .check-box { background: var(--cat-stress);   border-color: var(--cat-stress); }
+    .cat-activity .check-item.checked .check-box { background: var(--cat-activity); border-color: var(--cat-activity); }
+    .cat-hormones .check-item.checked .check-box { background: var(--cat-hormones); border-color: var(--cat-hormones); }
+    .cat-stress   .check-item.checked .check-box svg path,
+    .cat-activity .check-item.checked .check-box svg path { stroke: var(--color-midnight-abyss); }
+
+    /* ── STICKY TALLY BAR ───────────────────────────── */
+    #tally-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(20,20,20,0.92);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(253,249,240,0.1);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    #tally-bar.visible { transform: translateY(0); }
+    .tally-left { flex: 1; }
+    .tally-count {
+      font-family: var(--font-display);
+      font-size: 36px;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: var(--color-lime-squeeze);
+    }
+    .tally-label {
+      font-size: 11px;
+      color: rgba(253,249,240,0.4);
+      letter-spacing: 0.165px;
+      margin-top: 3px;
+    }
+    .tally-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .tally-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      opacity: 0.2;
+      transition: opacity 0.2s;
+    }
+    .tally-dot.active { opacity: 1; }
+    #btn-see-results {
+      background: var(--color-lime-squeeze);
+      color: var(--color-midnight-abyss);
+      border: none;
+      border-radius: var(--radius-buttons);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 13px 22px;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+    #btn-see-results:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ── RESULTS ────────────────────────────────────── */
+    #results-section { display: none; padding: 48px 0 80px; }
+    #results-section.visible { display: block; }
+
+    .results-header { margin-bottom: 32px; }
+    .results-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.165px;
+      text-transform: uppercase;
+      color: var(--color-midnight-abyss);
+      background: var(--color-lime-squeeze);
+      border-radius: var(--radius-tags);
+      padding: 5px 14px;
+      margin-bottom: 20px;
+    }
+    .results-title {
+      font-family: var(--font-display);
+      font-size: clamp(54px, 12vw, 83px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--color-ghost-white);
+      margin-bottom: 12px;
+    }
+    .results-subtitle {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      color: rgba(253,249,240,0.55);
+    }
+
+    .result-cards { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .result-card {
+      border-radius: 20px;
+      padding: 20px 22px;
+      border: 1px solid rgba(253,249,240,0.08);
+      background: rgba(253,249,240,0.04);
+    }
+    .result-card.top-contributor {
+      border-color: rgba(253,249,240,0.18);
+      background: rgba(253,249,240,0.07);
+    }
+    .result-card.zero { opacity: 0.4; }
+    .top-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(253,249,240,0.12);
+      border-radius: var(--radius-tags);
+      padding: 3px 10px;
+      color: rgba(253,249,240,0.5);
+      margin-bottom: 10px;
+    }
+    .result-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .result-card-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--color-ghost-white);
+    }
+    .result-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .result-score {
+      font-family: var(--font-display);
+      font-size: 36px;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+    }
+    .result-bar-wrap {
+      background: rgba(253,249,240,0.08);
+      border-radius: 4px;
+      height: 6px;
+      margin-bottom: 12px;
+    }
+    .result-bar {
+      height: 6px;
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .result-insight {
+      font-size: 13px;
+      line-height: 1.6;
+      letter-spacing: 0.013em;
+      color: rgba(253,249,240,0.55);
+    }
+    .result-insight strong { color: var(--color-ghost-white); font-weight: 500; }
+
+    .summary-callout {
+      background: rgba(253,249,240,0.05);
+      border: 1px solid rgba(253,249,240,0.12);
+      border-left: 3px solid var(--color-lime-squeeze);
+      border-radius: 0 16px 16px 0;
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 15px;
+      color: rgba(253,249,240,0.75);
+      line-height: 1.65;
+      letter-spacing: -0.01em;
+    }
+    .summary-callout strong { color: var(--color-lime-squeeze); font-weight: 500; }
+    .summary-callout a { color: var(--color-lime-squeeze); text-decoration: none; font-weight: 500; }
+
+    .cta-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    @media (max-width: 480px) { .cta-strip { grid-template-columns: 1fr; } }
+    .cta-card {
+      background: rgba(253,249,240,0.04);
+      border: 1px solid rgba(253,249,240,0.1);
+      border-radius: var(--radius-cards);
+      padding: 22px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.15s ease;
+    }
+    .cta-card:hover { border-color: rgba(253,249,240,0.22); background: rgba(253,249,240,0.07); }
+    .cta-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(253,249,240,0.3);
+      margin-bottom: 8px;
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--color-ghost-white);
+      margin-bottom: 8px;
+    }
+    .cta-desc {
+      font-size: 12px;
+      line-height: 1.55;
+      color: rgba(253,249,240,0.45);
+      margin-bottom: 14px;
+    }
+    .cta-arrow { font-size: 12px; color: var(--color-lime-squeeze); font-weight: 600; }
+
+    .btn-reset {
+      background: transparent;
+      border: 1.5px solid rgba(253,249,240,0.15);
+      border-radius: var(--radius-buttons);
+      color: rgba(253,249,240,0.4);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 13px 22px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      width: 100%;
+      margin-top: 24px;
+    }
+    .btn-reset:hover { border-color: rgba(253,249,240,0.35); color: var(--color-ghost-white); }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(253,249,240,0.08);
+      padding: 36px 0 24px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-size: 13px;
+      color: rgba(253,249,240,0.35);
+      margin-bottom: 6px;
+    }
+    .footer-brand a { color: var(--color-ghost-white); text-decoration: none; font-weight: 600; }
+    .footer-note {
+      font-size: 11px;
+      color: rgba(253,249,240,0.2);
+      line-height: 1.7;
+      letter-spacing: 0.013em;
+    }
+
+    /* ── ANIMATION ──────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .anim    { animation: fadeUp 0.45s ease both; }
+    .anim-d1 { animation-delay: 0.05s; }
+    .anim-d2 { animation-delay: 0.10s; }
+    .anim-d3 { animation-delay: 0.15s; }
+    .anim-d4 { animation-delay: 0.20s; }
+    .anim-d5 { animation-delay: 0.25s; }
+
+    .bottom-spacer { height: 80px; }
+  </style>
+</head>
+<body>
+
+<div id="shell">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="https://www.aufthority.com">Aufthority</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero anim">
+    <div class="hero-tag">Weight Gain Audit</div>
+    <h1 class="hero-title">Why the<br><span class="accent">belly?</span></h1>
+    <p class="hero-body">Tick everything that applies to you. We'll show you which area of your life is likely driving the most weight gain — and what to do about it.</p>
+    <div class="hero-meta">
+      <span class="hero-pill">5 categories</span>
+      <span class="hero-pill">~2 minutes</span>
+      <span class="hero-pill">No sign-up needed</span>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- CHECKLIST -->
+  <div id="checklist-section">
+
+    <div class="category-block cat-diet anim anim-d1">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:var(--cat-diet)"></div>
+        <div class="cat-name">Diet &amp; Eating</div>
+        <div class="cat-count" id="count-diet">0 / 6</div>
+      </div>
+      <div id="items-diet"></div>
+    </div>
+
+    <div class="category-block cat-sleep anim anim-d2">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:var(--cat-sleep)"></div>
+        <div class="cat-name">Sleep</div>
+        <div class="cat-count" id="count-sleep">0 / 5</div>
+      </div>
+      <div id="items-sleep"></div>
+    </div>
+
+    <div class="category-block cat-stress anim anim-d3">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:var(--cat-stress)"></div>
+        <div class="cat-name">Stress &amp; Mental Load</div>
+        <div class="cat-count" id="count-stress">0 / 5</div>
+      </div>
+      <div id="items-stress"></div>
+    </div>
+
+    <div class="category-block cat-activity anim anim-d4">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:var(--cat-activity)"></div>
+        <div class="cat-name">Physical Activity</div>
+        <div class="cat-count" id="count-activity">0 / 5</div>
+      </div>
+      <div id="items-activity"></div>
+    </div>
+
+    <div class="category-block cat-hormones anim anim-d5">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:var(--cat-hormones)"></div>
+        <div class="cat-name">Hormones &amp; Medical</div>
+        <div class="cat-count" id="count-hormones">0 / 5</div>
+      </div>
+      <div id="items-hormones"></div>
+    </div>
+
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results-section">
+    <div class="results-header">
+      <div class="results-eyebrow">Your Audit Results</div>
+      <h2 class="results-title">Here's what's<br>driving it.</h2>
+      <p class="results-subtitle">Ranked from most to least signals flagged in each area.</p>
+    </div>
+    <div class="result-cards" id="resultCards"></div>
+    <div class="summary-callout" id="summaryCallout"></div>
+    <div class="cta-strip">
+      <a href="https://mytdee.aufthority.com" class="cta-card" target="_blank" rel="noopener">
+        <div class="cta-tag">Know your number</div>
+        <div class="cta-title">MyTDEE</div>
+        <div class="cta-desc">Find your real daily calorie target — built on Malaysian research.</div>
+        <div class="cta-arrow">Go →</div>
+      </a>
+      <a href="https://cermindiri.aufthority.com" class="cta-card" target="_blank" rel="noopener">
+        <div class="cta-tag">Check your risk</div>
+        <div class="cta-title">CerminDiri</div>
+        <div class="cta-desc">Screen for heart disease &amp; diabetes risk. No lab results needed.</div>
+        <div class="cta-arrow">Go →</div>
+      </a>
+    </div>
+    <button class="btn-reset" onclick="resetAudit()">← Start Over</button>
+  </div>
+
+  <div class="bottom-spacer"></div>
+
+  <footer>
+    <p class="footer-brand">A tool by <a href="https://www.aufthority.com" target="_blank">Aufthority</a> — evidence-based health for Malaysians</p>
+    <p class="footer-note">For informational purposes only. Not medical advice. Consult a registered dietitian or doctor for personalised guidance.</p>
+  </footer>
+
+</div>
+
+<!-- STICKY TALLY BAR -->
+<div id="tally-bar">
+  <div class="tally-left">
+    <div class="tally-count" id="tallyCount">0</div>
+    <div class="tally-label">items flagged</div>
+  </div>
+  <div class="tally-dots" id="tallyDots"></div>
+  <button id="btn-see-results" onclick="showResults()">See Results →</button>
+</div>
+
+<script>
+const CATEGORIES = [
+  {
+    id: 'diet', color: '#ff6d38',
+    name: 'Diet & Eating',
+    insight: '<strong>Eating patterns are the single biggest lever for weight change.</strong> Liquid calories (teh tarik, 100Plus, juices), hidden fats in fried lauk, and oversized portions are the most common culprits in the Malaysian diet. Small swaps — less sugar in drinks, more vegetables — create measurable long-term change.',
+    items: [
+      'I drink sweetened beverages daily — teh tarik, milo, kopi, cordials, or soft drinks',
+      'Most of my meals include at least one fried item',
+      'I often eat past 9 PM or just before bed',
+      'I eat quickly and rarely feel full until I\'ve overeaten',
+      'I skip meals, then eat a very large meal to compensate',
+      'My portions have gradually gotten bigger over the years',
+    ]
+  },
+  {
+    id: 'sleep', color: '#7a78ff',
+    name: 'Sleep',
+    insight: '<strong>Poor sleep directly raises hunger hormones (ghrelin) and lowers fullness signals (leptin).</strong> Sleeping less than 7 hours per night is independently associated with weight gain, even when diet stays the same. This is especially common in Malaysian adults balancing late-night routines with early work starts.',
+    items: [
+      'I regularly sleep less than 7 hours a night',
+      'I often feel hungry or crave sugary foods the morning after poor sleep',
+      'I stay awake past midnight most nights',
+      'My sleep is frequently interrupted or restless',
+      'I\'ve been told I snore loudly or stop breathing in my sleep',
+    ]
+  },
+  {
+    id: 'stress', color: '#ffc412',
+    name: 'Stress & Mental Load',
+    insight: '<strong>Chronic stress keeps cortisol elevated — which drives fat storage, especially around the abdomen.</strong> Stress also triggers emotional eating and reduces willpower for healthy choices. The combination of financial stress, work pressure, and family demands is a common backdrop for unexplained belly fat in Malaysian adults.',
+    items: [
+      'I often eat to cope with stress, boredom, or difficult emotions',
+      'I feel persistently stressed or overwhelmed most days',
+      'My appetite increases significantly when I\'m under pressure',
+      'I have difficulty relaxing or switching off after work',
+      'I\'ve experienced significant life changes or losses in the past 2 years',
+    ]
+  },
+  {
+    id: 'activity', color: '#00a652',
+    name: 'Physical Activity',
+    insight: '<strong>Physical inactivity reduces your total daily energy expenditure (TDEE) and accelerates muscle loss with age.</strong> The Malaysian average is largely sedentary — most people overestimate how active they are. Even non-exercise movement (walking, standing, housework) adds up significantly over time.',
+    items: [
+      'I sit for more than 8 hours a day (desk job, driving, TV, phone)',
+      'I exercise less than 2 times per week',
+      'I was more active in my 20s — my lifestyle has become significantly more sedentary',
+      'I rarely walk more than 15 minutes in a stretch during a normal day',
+      'I use a car or motorcycle for almost all trips, even short ones',
+    ]
+  },
+  {
+    id: 'hormones', color: '#478bff',
+    name: 'Hormones & Medical',
+    insight: '<strong>Hormonal and metabolic conditions can make weight gain much harder to reverse through diet and exercise alone.</strong> Thyroid disorders, insulin resistance, PCOS, and certain medications are under-diagnosed contributors. If this category scores highest, a visit to a doctor for blood tests is the most important next step.',
+    items: [
+      'My weight gain happened suddenly without obvious changes to my diet or activity',
+      'I feel persistently tired, cold, or experience constipation (possible thyroid signs)',
+      'I have irregular periods, excess hair growth, or acne (PCOS signs, for women)',
+      'I am currently taking medications (steroids, antidepressants, antipsychotics, insulin, contraceptives)',
+      'I have been diagnosed with diabetes, prediabetes, high cholesterol, or high blood pressure',
+    ]
+  }
+];
+
+let checked = {};
+
+function init() {
+  CATEGORIES.forEach(cat => {
+    checked[cat.id] = new Set();
+    const container = document.getElementById('items-' + cat.id);
+    container.innerHTML = cat.items.map((item, i) => `
+      <div class="check-item" id="item-${cat.id}-${i}" onclick="toggle('${cat.id}',${i})">
+        <div class="check-box">
+          <svg class="check-tick" viewBox="0 0 10 7" fill="none">
+            <path d="M1 3.5L3.8 6L9 1" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-text">${item}</div>
+      </div>
+    `).join('');
+  });
+
+  const wrap = document.getElementById('tallyDots');
+  wrap.innerHTML = CATEGORIES.map(c =>
+    `<div class="tally-dot" id="tdot-${c.id}" style="background:${c.color}"></div>`
+  ).join('');
+}
+
+function toggle(catId, idx) {
+  const el  = document.getElementById(`item-${catId}-${idx}`);
+  const set = checked[catId];
+  if (set.has(idx)) { set.delete(idx); el.classList.remove('checked'); }
+  else              { set.add(idx);    el.classList.add('checked'); }
+  const cat = CATEGORIES.find(c => c.id === catId);
+  document.getElementById('count-' + catId).textContent = `${set.size} / ${cat.items.length}`;
+  if (window.umami) umami.track('item-toggle', { cat: catId, idx });
+  updateTally();
+}
+
+function updateTally() {
+  const total = CATEGORIES.reduce((s, c) => s + checked[c.id].size, 0);
+  document.getElementById('tallyCount').textContent = total;
+  document.getElementById('tally-bar').classList.toggle('visible', total > 0);
+  CATEGORIES.forEach(c => {
+    document.getElementById('tdot-' + c.id).classList.toggle('active', checked[c.id].size > 0);
+  });
+}
+
+function showResults() {
+  const sorted = [...CATEGORIES]
+    .map(c => ({ ...c, score: checked[c.id].size, max: c.items.length }))
+    .sort((a, b) => b.score - a.score);
+
+  const topCat      = sorted[0];
+  const totalChecked = sorted.reduce((s, c) => s + c.score, 0);
+
+  document.getElementById('resultCards').innerHTML = sorted.map((s, i) => {
+    const isTop  = i === 0 && s.score > 0;
+    const isZero = s.score === 0;
+    return `
+      <div class="result-card ${isTop ? 'top-contributor' : ''} ${isZero ? 'zero' : ''}" id="rcard-${s.id}">
+        ${isTop ? '<div class="top-badge">Top contributor</div>' : ''}
+        <div class="result-card-top">
+          <div class="result-card-name">
+            <div class="result-dot" style="background:${s.color}"></div>
+            ${s.name}
+          </div>
+          <div class="result-score" style="color:${s.score > 0 ? s.color : 'rgba(253,249,240,0.2)'}">${s.score}/${s.max}</div>
+        </div>
+        <div class="result-bar-wrap">
+          <div class="result-bar" id="rbar-${s.id}" style="background:${s.color};width:0%"></div>
+        </div>
+        ${s.score > 0 ? `<div class="result-insight">${s.insight}</div>` : ''}
+      </div>`;
+  }).join('');
+
+  let summary;
+  if (totalChecked === 0) {
+    summary = "You didn't flag any items. If weight is still a concern, consider speaking to a doctor.";
+  } else if (topCat.score >= topCat.max * 0.5) {
+    summary = `<strong>${topCat.name}</strong> flagged the most signals. This is the most productive place to start — improvements here are most likely to move the needle. Try calculating <a href="https://mytdee.aufthority.com">your TDEE</a> as a next step.`;
+  } else {
+    summary = `Your signals are spread across multiple areas — suggesting <strong>multiple contributing factors</strong>. Small, consistent changes across these areas (diet, sleep, stress) tend to outperform one big change in a single area.`;
+  }
+  document.getElementById('summaryCallout').innerHTML = summary;
+
+  document.getElementById('checklist-section').style.display = 'none';
+  document.getElementById('tally-bar').classList.remove('visible');
+  const resEl = document.getElementById('results-section');
+  resEl.classList.add('visible');
+  resEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  requestAnimationFrame(() => setTimeout(() => {
+    sorted.forEach(s => {
+      const bar = document.getElementById('rbar-' + s.id);
+      if (bar) bar.style.width = (s.max > 0 ? ((s.score / s.max) * 100).toFixed(1) : 0) + '%';
+    });
+  }, 80));
+
+  if (window.umami) umami.track('results-shown', { total: totalChecked });
+}
+
+function resetAudit() {
+  CATEGORIES.forEach(cat => {
+    checked[cat.id] = new Set();
+    document.getElementById('items-' + cat.id).querySelectorAll('.check-item').forEach(el => el.classList.remove('checked'));
+    document.getElementById('count-' + cat.id).textContent = `0 / ${cat.items.length}`;
+  });
+  updateTally();
+  document.getElementById('results-section').classList.remove('visible');
+  document.getElementById('checklist-section').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+init();
+</script>
+</body>
+</html>
