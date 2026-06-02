@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apa Itu TDEE — Dan Kenapa Ia Penting — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="TDEE bukan sekadar nombor — ia titik tengah antara turun berat, kekal, atau naik berat. Faham cara ia dikira untuk rakyat Malaysia.">
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Apa Itu TDEE — Dan Kenapa Ia Penting">
+<meta property="og:description"  content="TDEE bukan sekadar nombor — ia titik tengah antara turun berat, kekal, atau naik berat.">
+<meta property="og:url"          content="https://www.aufthority.com/apatdee/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="ms_MY">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Apa Itu TDEE — Dan Kenapa Ia Penting">
+<meta name="twitter:description" content="TDEE bukan sekadar nombor — ia titik tengah antara turun berat, kekal, atau naik berat.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── NAVIGATE TOKENS ────────────────────────────────────── */
+:root {
+  --color-midnight-abyss:  #141414;
+  --color-ghost-white:     #fdf9f0;
+  --color-lime-squeeze:    #c7ff69;
+  --color-amethyst-glow:   #7a78ff;
+  --color-sunset-orange:   #ff6d38;
+  --color-emerald-sprint:  #00a652;
+  --color-skybound-blue:   #478bff;
+  --color-golden-rod:      #ffc412;
+  --color-lavender-mist:   #ccccff;
+
+  --font-display: 'Bebas Neue', ui-sans-serif, system-ui, sans-serif;
+  --font-body:    'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-tags:    1000px;
+  --radius-cards:   43.2px;
+  --radius-buttons: 25.146px;
+  --radius-links:   20.7px;
+
+  --section-gap:  27px;
+  --card-padding: 26px;
+  --element-gap:  18px;
+}
+
+/* ── RESET ─────────────────────────────────────────────── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-midnight-abyss);
+  color: var(--color-ghost-white);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.14px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SHELL ─────────────────────────────────────────────── */
+#shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0 14px;
+  position: sticky;
+  top: 0;
+  background: var(--color-midnight-abyss);
+  z-index: 10;
+  border-bottom: 1px solid rgba(253,249,240,0.08);
+}
+.logo {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-ghost-white);
+  text-decoration: none;
+  letter-spacing: 0.14px;
+}
+#progress-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: rgba(253,249,240,0.4);
+  font-weight: 400;
+  letter-spacing: 0.165px;
+  background: rgba(253,249,240,0.07);
+  border-radius: var(--radius-tags);
+  padding: 4px 12px;
+}
+
+/* ── PROGRESS BAR ──────────────────────────────────────── */
+#progress-track {
+  height: 2px;
+  background: rgba(253,249,240,0.08);
+  width: 100%;
+}
+#progress-fill {
+  height: 2px;
+  background: var(--color-lime-squeeze);
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── SLIDES ────────────────────────────────────────────── */
+#slides-wrap { flex: 1; }
+.slide { display: none; padding: 48px 0 40px; }
+.slide.active { display: block; }
+
+/* ── SLIDE TAG ─────────────────────────────────────────── */
+.slide-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.165px;
+  text-transform: uppercase;
+  color: var(--color-midnight-abyss);
+  background: var(--color-lime-squeeze);
+  border-radius: var(--radius-tags);
+  padding: 5px 14px;
+  margin-bottom: 28px;
+}
+
+/* ── SLIDE TITLE ───────────────────────────────────────── */
+.slide-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 10vw, 72px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--color-ghost-white);
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.slide-title .accent { color: var(--color-lime-squeeze); }
+.slide-title .accent-orange { color: var(--color-sunset-orange); }
+.slide-title .accent-purple { color: var(--color-amethyst-glow); }
+.slide-title .accent-blue { color: var(--color-skybound-blue); }
+
+/* ── BODY TEXT ─────────────────────────────────────────── */
+.slide-body {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: rgba(253,249,240,0.65);
+  margin-bottom: 20px;
+}
+.slide-body strong {
+  color: var(--color-ghost-white);
+  font-weight: 500;
+}
+
+/* ── CALLOUT ───────────────────────────────────────────── */
+.callout {
+  background: rgba(253,249,240,0.05);
+  border: 1px solid rgba(253,249,240,0.12);
+  border-left: 3px solid var(--color-lime-squeeze);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 20px;
+  margin: 28px 0;
+  font-size: 15px;
+  color: var(--color-ghost-white);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+.callout strong { font-weight: 500; color: var(--color-lime-squeeze); }
+.callout a {
+  color: var(--color-lime-squeeze);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ── BLOCK DIAGRAM ─────────────────────────────────────── */
+.block-diagram { margin: 32px 0; display: flex; flex-direction: column; gap: 4px; }
+.block-seg {
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.block-seg.bmr { background: var(--color-amethyst-glow); min-height: 80px; }
+.block-seg.pal { background: rgba(122,120,255,0.35); border: 1px solid rgba(122,120,255,0.5); min-height: 56px; }
+.block-seg-label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-midnight-abyss);
+  line-height: 1.2;
+}
+.block-seg.pal .block-seg-label { color: var(--color-amethyst-glow); }
+.block-seg-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(20,20,20,0.6);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+.block-seg.pal .block-seg-sub { color: rgba(204,204,255,0.7); }
+.block-seg-pct {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: rgba(20,20,20,0.5);
+  flex-shrink: 0;
+}
+.block-seg.pal .block-seg-pct { color: rgba(122,120,255,0.6); }
+.block-operator {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: rgba(253,249,240,0.2);
+  padding: 4px 0;
+  letter-spacing: -0.02em;
+}
+.block-total {
+  background: var(--color-lime-squeeze);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.block-total-label {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--color-midnight-abyss);
+}
+.block-total-sub {
+  font-size: 12px;
+  color: rgba(20,20,20,0.55);
+  margin-top: 5px;
+  font-weight: 400;
+}
+.block-total-formula {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: rgba(20,20,20,0.45);
+}
+
+/* ── CHART WRAP ────────────────────────────────────────── */
+.chart-wrap {
+  background: rgba(253,249,240,0.04);
+  border: 1px solid rgba(253,249,240,0.08);
+  border-radius: 20px;
+  padding: 20px 20px 16px;
+  margin: 20px 0;
+}
+.chart-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.165px;
+  text-transform: uppercase;
+  color: rgba(253,249,240,0.35);
+  margin-bottom: 18px;
+}
+
+/* ── STAT PAIR ─────────────────────────────────────────── */
+.stat-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 28px 0;
+}
+.stat-box {
+  background: rgba(253,249,240,0.05);
+  border: 1px solid rgba(253,249,240,0.1);
+  border-radius: var(--radius-cards);
+  padding: 24px 20px;
+  text-align: center;
+}
+.stat-box .stat-num {
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: var(--color-lime-squeeze);
+  display: block;
+  margin-bottom: 10px;
+}
+.stat-box .stat-label {
+  font-size: 12px;
+  color: rgba(253,249,240,0.45);
+  line-height: 1.4;
+  letter-spacing: 0.013em;
+}
+
+/* ── SPECTRUM ──────────────────────────────────────────── */
+.spectrum-wrap { margin: 32px 0; }
+.spectrum-bar {
+  display: flex;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 52px;
+}
+.spectrum-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-midnight-abyss);
+  flex: 1;
+  text-align: center;
+  padding: 4px 8px;
+  line-height: 1.3;
+}
+.spectrum-seg.loss { background: var(--color-sunset-orange); }
+.spectrum-seg.keep { background: var(--color-lime-squeeze); flex: 1.3; }
+.spectrum-seg.gain { background: var(--color-skybound-blue); }
+.spectrum-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+.spectrum-label {
+  font-size: 12px;
+  color: rgba(253,249,240,0.5);
+  text-align: center;
+  flex: 1;
+  line-height: 1.5;
+  letter-spacing: 0.013em;
+}
+.spectrum-label strong { color: var(--color-ghost-white); font-weight: 500; display: block; }
+
+/* ── NUMBERED ITEMS ────────────────────────────────────── */
+.numbered-items { margin: 28px 0; display: flex; flex-direction: column; gap: 12px; }
+.numbered-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: rgba(253,249,240,0.04);
+  border: 1px solid rgba(253,249,240,0.08);
+  border-radius: 16px;
+  padding: 18px;
+}
+.num-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-lime-squeeze);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--color-midnight-abyss);
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+.num-text {
+  font-size: 14px;
+  color: rgba(253,249,240,0.75);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  padding-top: 4px;
+}
+.num-text strong { color: var(--color-ghost-white); font-weight: 500; }
+
+/* ── STEP CARDS ────────────────────────────────────────── */
+.step-cards { margin: 28px 0; display: flex; flex-direction: column; gap: 8px; }
+.step-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: rgba(253,249,240,0.04);
+  border: 1px solid rgba(253,249,240,0.08);
+  border-radius: 16px;
+  padding: 16px 18px;
+}
+.step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-amethyst-glow);
+  color: var(--color-ghost-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 15px;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+  margin-top: 1px;
+}
+.step-text { font-size: 14px; color: rgba(253,249,240,0.75); line-height: 1.6; }
+.step-text strong { color: var(--color-ghost-white); font-weight: 500; }
+
+/* ── MYTH/FACT ─────────────────────────────────────────── */
+.mf-stack { margin: 20px 0; }
+.mf-card {
+  padding: 18px 20px;
+  border-radius: 16px;
+  margin-bottom: 4px;
+  border: 1px solid rgba(253,249,240,0.08);
+}
+.mf-card.myth { background: rgba(253,249,240,0.04); }
+.mf-card.fact  { background: rgba(199,255,105,0.08); border-color: rgba(199,255,105,0.2); }
+.mf-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(253,249,240,0.35);
+  margin-bottom: 8px;
+}
+.mf-card.fact .mf-tag { color: var(--color-lime-squeeze); }
+.mf-body { font-size: 14px; color: rgba(253,249,240,0.75); line-height: 1.6; letter-spacing: 0.01em; }
+.mf-card.fact .mf-body { color: var(--color-ghost-white); }
+
+/* ── CONCLUSION CARDS ──────────────────────────────────── */
+.conclusion-cards { margin: 28px 0; display: flex; flex-direction: column; gap: 8px; }
+.conclusion-card {
+  display: flex;
+  gap: 18px;
+  padding: 20px;
+  background: rgba(253,249,240,0.04);
+  border: 1px solid rgba(253,249,240,0.08);
+  border-radius: 16px;
+  align-items: flex-start;
+}
+.cc-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: rgba(253,249,240,0.15);
+  flex-shrink: 0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  min-width: 36px;
+}
+.cc-text { font-size: 14px; color: rgba(253,249,240,0.7); line-height: 1.65; letter-spacing: 0.01em; }
+.cc-text strong { color: var(--color-ghost-white); font-weight: 500; }
+
+/* ── DATA TABLE ────────────────────────────────────────── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 14px;
+}
+.data-table th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.165px;
+  text-transform: uppercase;
+  color: rgba(253,249,240,0.3);
+  padding: 0 12px 12px;
+  border-bottom: 1px solid rgba(253,249,240,0.08);
+}
+.data-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(253,249,240,0.06);
+  color: rgba(253,249,240,0.7);
+  vertical-align: middle;
+}
+.data-table tr.hl td {
+  color: var(--color-lime-squeeze);
+  font-weight: 500;
+  background: rgba(199,255,105,0.05);
+}
+.data-table td:last-child,
+.data-table th:last-child { text-align: right; }
+
+/* ── ACCENT CARD ───────────────────────────────────────── */
+.accent-card {
+  border-radius: var(--radius-cards);
+  padding: var(--card-padding);
+  margin: 24px 0;
+}
+.accent-card.purple { background: var(--color-amethyst-glow); }
+.accent-card.orange { background: var(--color-sunset-orange); }
+.accent-card.blue   { background: var(--color-skybound-blue); }
+.accent-card .ac-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.165px;
+  text-transform: uppercase;
+  color: rgba(20,20,20,0.55);
+  margin-bottom: 10px;
+}
+.accent-card .ac-body {
+  font-size: 15px;
+  color: var(--color-midnight-abyss);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+.accent-card .ac-body strong { font-weight: 700; }
+
+/* ── SOURCE BOX ────────────────────────────────────────── */
+.source-box {
+  font-size: 11px;
+  color: rgba(253,249,240,0.3);
+  line-height: 1.7;
+  border-top: 1px solid rgba(253,249,240,0.08);
+  padding-top: 24px;
+  margin-top: 32px;
+  letter-spacing: 0.013em;
+}
+.source-box a { color: rgba(199,255,105,0.7); text-decoration: none; }
+.source-box a:hover { color: var(--color-lime-squeeze); }
+.source-box strong {
+  display: block;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: rgba(253,249,240,0.4);
+}
+
+/* ── NAV BUTTONS ───────────────────────────────────────── */
+#nav-wrap {
+  display: flex;
+  gap: 10px;
+  padding: 24px 0 20px;
+  border-top: 1px solid rgba(253,249,240,0.08);
+}
+.nav-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: var(--radius-buttons);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1.5px solid rgba(253,249,240,0.15);
+  background: transparent;
+  color: rgba(253,249,240,0.5);
+  letter-spacing: 0.01em;
+}
+.nav-btn:hover:not(:disabled) {
+  border-color: rgba(253,249,240,0.4);
+  color: var(--color-ghost-white);
+}
+.nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+#btn-next {
+  background: var(--color-lime-squeeze);
+  color: var(--color-midnight-abyss);
+  border-color: var(--color-lime-squeeze);
+}
+#btn-next:hover { opacity: 0.88; }
+
+/* ── FOOTER ────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(253,249,240,0.2);
+  padding: 0 0 24px;
+  letter-spacing: 0.165px;
+}
+</style>
+</head>
+<body>
+<div id="shell">
+
+  <nav>
+    <a class="logo" href="https://www.aufthority.com">Aufthority</a>
+    <span id="progress-label">1 / 7</span>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <div id="slides-wrap">
+
+    <!-- ══ SLIDE 1 — HOOK ══════════════════════════════════════ -->
+    <div class="slide active" id="slide-1">
+      <span class="slide-tag">Asas</span>
+      <h1 class="slide-title">Badan anda bakar kalori <span class="accent">setiap saat.</span></h1>
+      <p class="slide-body">Ramai orang fikir kalori hanya terbakar bila kita berlari, berbasikal, atau pergi gym. Hakikatnya, badan anda menggunakan tenaga sepanjang masa — semasa tidur, semasa bernafas, semasa memproses makanan, malah semasa membaca ini.</p>
+      <p class="slide-body">Soalannya: <strong>berapa banyak tenaga yang badan anda perlukan dalam sehari?</strong> Nombor itu ada nama — TDEE.</p>
+      <div class="callout">
+        <strong>TDEE</strong> — Total Daily Energy Expenditure — adalah jumlah keseluruhan kalori yang badan anda guna setiap hari, dari tidur hingga tidur semula.
+      </div>
+      <p class="slide-body">Fahami nombor ini, dan anda ada alat yang paling asas untuk membuat keputusan makan yang betul.</p>
+    </div>
+
+    <!-- ══ SLIDE 2 — BMR + PAL = TDEE ═════════════════════════ -->
+    <div class="slide" id="slide-2">
+      <span class="slide-tag">Cara Pengiraan</span>
+      <h1 class="slide-title">Dua bahagian: <span class="accent-purple">enjin rehat</span> dan <span class="accent-purple">aktiviti harian.</span></h1>
+      <p class="slide-body">TDEE bukan satu nombor rawak. Ia hasil daripada dua komponen yang boleh diukur:</p>
+
+      <div class="block-diagram">
+        <div class="block-seg bmr">
+          <div>
+            <div class="block-seg-label">BMR — Kadar Metabolisme Rehat</div>
+            <div class="block-seg-sub">Jantung, paru-paru, otak, sel — beroperasi walaupun anda tidur</div>
+          </div>
+          <div class="block-seg-pct">60–70%</div>
+        </div>
+        <div class="block-operator">×</div>
+        <div class="block-seg pal">
+          <div>
+            <div class="block-seg-label">PAL — Tahap Aktiviti Fizikal</div>
+            <div class="block-seg-sub">Kerja, bersenam, berjalan, semua pergerakan harian</div>
+          </div>
+          <div class="block-seg-pct">30–40%</div>
+        </div>
+        <div class="block-operator">=</div>
+        <div class="block-total">
+          <div>
+            <div class="block-total-label">TDEE</div>
+            <div class="block-total-sub">Total Daily Energy Expenditure</div>
+          </div>
+          <div class="block-total-formula">BMR × PAL</div>
+        </div>
+      </div>
+
+      <p class="slide-body">BMR menyumbang majoriti kalori harian anda walaupun anda tidak bergerak langsung. PAL bergantung kepada seberapa aktif anda sepanjang hari.</p>
+    </div>
+
+    <!-- ══ SLIDE 3 — MALAYSIAN BMR ════════════════════════════ -->
+    <div class="slide" id="slide-3">
+      <span class="slide-tag">Kenapa Formula Malaysia</span>
+      <h1 class="slide-title">Formula Barat <span class="accent-orange">tersalah kira</span> BMR rakyat Malaysia.</h1>
+      <p class="slide-body">Kebanyakan kalkulator TDEE global menggunakan formula Mifflin-St Jeor — dibina berasaskan data orang Amerika. Kajian UKM (Ismail et al. 1998) mendapati BMR rakyat Malaysia adalah <strong>berbeza secara ketara.</strong></p>
+
+      <div class="chart-wrap">
+        <div class="chart-label">Lelaki — 35 tahun, 70 kg, 168 cm</div>
+        <div id="chart-bmr-male"></div>
+      </div>
+
+      <div class="chart-wrap">
+        <div class="chart-label">Perempuan — 35 tahun, 58 kg, 157 cm</div>
+        <div id="chart-bmr-female"></div>
+      </div>
+
+      <div class="accent-card orange" style="margin-top:24px">
+        <div class="ac-label">Kesan jangka panjang</div>
+        <div class="ac-body">Perbezaan ~90 kcal/hari mungkin nampak kecil. Tetapi dalam setahun, itu hampir <strong>33,000 kcal</strong> — bersamaan dengan kira-kira 4.5 kg lemak badan.</div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 4 — TDEE AS MIDPOINT ═════════════════════════ -->
+    <div class="slide" id="slide-4">
+      <span class="slide-tag">Cara Gunakannya</span>
+      <h1 class="slide-title">TDEE bukan had. Ia adalah <span class="accent">titik tengah.</span></h1>
+      <p class="slide-body">Ramai yang salah faham TDEE sebagai "had kalori harian." Sebenarnya, TDEE adalah titik keseimbangan — makan tepat pada TDEE bermakna berat badan anda kekal.</p>
+
+      <div class="spectrum-wrap">
+        <div class="spectrum-bar">
+          <div class="spectrum-seg loss">Kurang<br>dari TDEE</div>
+          <div class="spectrum-seg keep">= TDEE</div>
+          <div class="spectrum-seg gain">Lebih<br>dari TDEE</div>
+        </div>
+        <div class="spectrum-labels">
+          <div class="spectrum-label"><strong>Berat turun</strong>Defisit kalori</div>
+          <div class="spectrum-label"><strong>Berat kekal</strong>Seimbang</div>
+          <div class="spectrum-label"><strong>Berat naik</strong>Lebihan kalori</div>
+        </div>
+      </div>
+
+      <div class="numbered-items">
+        <div class="numbered-item">
+          <div class="num-circle">1</div>
+          <div class="num-text"><strong>Mahu turun berat?</strong> Makan sedikit di bawah TDEE anda — defisit 500 kcal/hari boleh menghasilkan penurunan ~0.5 kg seminggu.</div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-circle">2</div>
+          <div class="num-text"><strong>Mahu kekal?</strong> Makan pada paras TDEE anda. Ini bukan bermakna kiraan kalori yang ketat — ia bermakna tahu julat sasaran anda.</div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-circle">3</div>
+          <div class="num-text"><strong>Mahu bina otot?</strong> Makan sedikit di atas TDEE anda, dengan protein yang mencukupi untuk menyokong pertumbuhan otot.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 5 — NHMS BENCHMARK ═══════════════════════════ -->
+    <div class="slide" id="slide-5">
+      <span class="slide-tag">Data Malaysia</span>
+      <h1 class="slide-title">Berapa banyak rakyat Malaysia sebenarnya <span class="accent">makan sehari?</span></h1>
+      <p class="slide-body">NHMS 2024 mengukur pengambilan kalori harian sebenar rakyat Malaysia — dan hasilnya menarik apabila dibandingkan dengan TDEE anggaran bagi seseorang yang duduk sepanjang hari.</p>
+
+      <div class="chart-wrap">
+        <div class="chart-label">Lelaki — Pengambilan harian vs TDEE sedentari</div>
+        <div id="chart-nhms-male"></div>
+      </div>
+
+      <div class="chart-wrap">
+        <div class="chart-label">Perempuan — Pengambilan harian vs TDEE sedentari</div>
+        <div id="chart-nhms-female"></div>
+      </div>
+
+      <div class="accent-card purple">
+        <div class="ac-label">Apa ini bermakna</div>
+        <div class="ac-body">Purata rakyat Malaysia makan <strong>sedikit melebihi</strong> TDEE sedentari mereka — bermakna kebanyakan orang makan lebih daripada yang mereka bakar, walaupun pada tahap aktiviti paling rendah. Ini adalah salah satu penyumbang kepada kadar berat berlebihan 54.4% (NHMS 2023).</div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 6 — MISCONCEPTIONS ═══════════════════════════ -->
+    <div class="slide" id="slide-6">
+      <span class="slide-tag">Salah Faham Biasa</span>
+      <h1 class="slide-title">Tiga tanggapan <span class="accent-orange">salah</span> tentang kalori.</h1>
+
+      <div class="mf-stack">
+        <div class="mf-card myth">
+          <div class="mf-tag">Tanggapan 1</div>
+          <div class="mf-body">"Kalori sama untuk semua orang — 2,000 kcal sehari sudah cukup."</div>
+        </div>
+        <div class="mf-card fact">
+          <div class="mf-tag">Hakikat</div>
+          <div class="mf-body">TDEE berbeza berdasarkan jantina, umur, berat, tinggi, dan tahap aktiviti. Dua orang dengan berat yang sama boleh mempunyai TDEE berbeza sehingga 300–500 kcal/hari.</div>
+        </div>
+      </div>
+
+      <div class="mf-stack">
+        <div class="mf-card myth">
+          <div class="mf-tag">Tanggapan 2</div>
+          <div class="mf-body">"Saya bersenam banyak — boleh makan sesuka hati."</div>
+        </div>
+        <div class="mf-card fact">
+          <div class="mf-tag">Hakikat</div>
+          <div class="mf-body">Senaman menyumbang kira-kira 10–30% kepada TDEE sahaja. Satu jam berlari membakar ~400–500 kcal — setara dengan sebiji nasi lemak. Senaman penting, tetapi tidak boleh mengimbangi tabiat makan yang tidak terkawal.</div>
+        </div>
+      </div>
+
+      <div class="mf-stack">
+        <div class="mf-card myth">
+          <div class="mf-tag">Tanggapan 3</div>
+          <div class="mf-body">"Saya makan sikit tetapi berat tidak turun — metabolisme saya memang perlahan."</div>
+        </div>
+        <div class="mf-card fact">
+          <div class="mf-tag">Hakikat</div>
+          <div class="mf-body">Kajian mendapati manusia kerap terlebih anggaran pengambilan kalori sehingga 30–50%. "Makan sikit" yang dirasai berbeza dengan "makan sikit" yang diukur. Mengetahui TDEE anda membantu kalibrasi semula jangkaan ini.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 7 — KESIMPULAN + SOURCES ═════════════════════ -->
+    <div class="slide" id="slide-7">
+      <span class="slide-tag">Kesimpulan</span>
+      <h1 class="slide-title">TDEE adalah <span class="accent">permulaan,</span> bukan penamat.</h1>
+      <p class="slide-body">Nombor TDEE anda adalah titik rujukan — bukan arahan yang perlu diikuti secara tegar setiap hari. Tetapi mengetahui julat sasaran anda adalah langkah pertama yang paling penting.</p>
+
+      <div class="conclusion-cards">
+        <div class="conclusion-card">
+          <div class="cc-num">01</div>
+          <div class="cc-text"><strong>TDEE = BMR × Faktor Aktiviti.</strong> Majoriti kalori harian anda dibakar semasa rehat — bukan semasa bersenam.</div>
+        </div>
+        <div class="conclusion-card">
+          <div class="cc-num">02</div>
+          <div class="cc-text"><strong>Formula Malaysia (Ismail 1998) lebih tepat</strong> untuk rakyat Malaysia berbanding formula Barat — perbezaannya bermakna dalam jangka panjang.</div>
+        </div>
+        <div class="conclusion-card">
+          <div class="cc-num">03</div>
+          <div class="cc-text"><strong>TDEE adalah titik tengah.</strong> Kurang dari TDEE = turun berat. Lebih dari TDEE = naik berat. Tepat pada TDEE = kekal.</div>
+        </div>
+        <div class="conclusion-card">
+          <div class="cc-num">04</div>
+          <div class="cc-text"><strong>Purata rakyat Malaysia makan sedikit di atas TDEE sedentari mereka</strong> — konteks penting untuk memahami trend berat badan berlebihan negara.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        Sudah tahu konsepnya? Cuba kira TDEE anda yang sebenar di <a href="https://mytdee.aufthority.com">mytdee.aufthority.com</a> — menggunakan formula Ismail 1998 yang dikalibrasi untuk rakyat Malaysia.
+      </div>
+
+      <div class="source-box">
+        <strong>Rujukan</strong>
+        Ismail MN et al. (1998). Basal metabolic rate studies in Malaysians. <em>Malaysian Journal of Nutrition</em>, 4(1), 79–91 ·
+        Kementerian Kesihatan Malaysia. <em>National Health and Morbidity Survey (NHMS) 2023 &amp; 2024</em> ·
+        Mifflin MD et al. (1990). A new predictive equation for resting energy expenditure. <em>Am J Clin Nutr</em>, 51(2), 241–247 ·
+        FAO/WHO/UNU (2004). <em>Human Energy Requirements.</em>
+        <a href="https://www.fao.org/3/y5686e/y5686e.pdf" target="_blank" rel="noopener">fao.org/3/y5686e</a>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrap -->
+
+  <div id="nav-wrap">
+    <button class="nav-btn" id="btn-back" disabled data-umami-event="nav-back">← Balik</button>
+    <button class="nav-btn" id="btn-next" data-umami-event="nav-next">Seterusnya →</button>
+  </div>
+
+  <footer>Informed decisions, better health.</footer>
+
+</div><!-- /shell -->
+
+<script>
+(function(){
+  const TOTAL = 7;
+  let current = 1;
+
+  const slides   = document.querySelectorAll('.slide');
+  const btnBack  = document.getElementById('btn-back');
+  const btnNext  = document.getElementById('btn-next');
+  const progFill = document.getElementById('progress-fill');
+  const progLbl  = document.getElementById('progress-label');
+
+  /* ── BAR CHART BUILDER ─────────────────────────────────────── */
+  function buildBarChart(containerId, data, maxVal) {
+    const container = document.getElementById(containerId);
+    if (!container || container.dataset.built) return;
+    container.dataset.built = '1';
+
+    const W       = container.clientWidth || 560;
+    const BAR_H   = 28;
+    const GAP     = 12;
+    const LABEL_W = 150;
+    const VAL_W   = 72;
+    const PAD     = 4;
+    const plotW   = W - LABEL_W - VAL_W - PAD * 2;
+    const H       = data.length * (BAR_H + GAP) + PAD * 2 + 4;
+
+    let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;overflow:visible">`;
+    data.forEach((d, i) => {
+      const y      = PAD + i * (BAR_H + GAP);
+      const barW   = Math.max(4, Math.round((d.value / maxVal) * plotW));
+      const fill   = d.highlight ? '#c7ff69' : 'rgba(253,249,240,0.1)';
+      const tcolor = d.highlight ? '#c7ff69' : 'rgba(253,249,240,0.45)';
+      const vcolor = d.highlight ? '#c7ff69' : 'rgba(253,249,240,0.55)';
+      svg += `<text x="${LABEL_W - 10}" y="${y + BAR_H * 0.67}" text-anchor="end" font-size="12" fill="${tcolor}" font-family="'Inter',sans-serif" font-weight="${d.highlight ? '500' : '400'}">${d.label}</text>`;
+      svg += `<rect x="${LABEL_W}" y="${y}" width="${barW}" height="${BAR_H}" fill="${fill}" rx="4"/>`;
+      svg += `<text x="${LABEL_W + barW + 8}" y="${y + BAR_H * 0.67}" font-size="12" fill="${vcolor}" font-family="'Inter',sans-serif" font-weight="${d.highlight ? '600' : '400'}">${d.display}</text>`;
+    });
+    svg += '</svg>';
+    container.innerHTML = svg;
+  }
+
+  /* ── SHOW ──────────────────────────────────────────────────── */
+  function show(n) {
+    slides.forEach((s, i) => s.classList.toggle('active', i + 1 === n));
+    progFill.style.width = ((n / TOTAL) * 100) + '%';
+    progLbl.textContent  = n + ' / ' + TOTAL;
+    btnBack.disabled     = n === 1;
+    btnNext.textContent  = n === TOTAL ? 'Selesai' : 'Seterusnya →';
+    btnNext.setAttribute('data-umami-event', n === TOTAL ? 'carousel-selesai' : 'nav-next');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.umami) umami.track('slide-view', { slide: n });
+
+    /* Lazy charts */
+    if (n === 3) {
+      buildBarChart('chart-bmr-male', [
+        { label: 'Ismail 1998 (Malaysia)',  value: 1676, display: '1,676 kcal', highlight: true  },
+        { label: 'Mifflin-St Jeor (Barat)', value: 1580, display: '1,580 kcal', highlight: false }
+      ], 1900);
+      buildBarChart('chart-bmr-female', [
+        { label: 'Ismail 1998 (Malaysia)',  value: 1317, display: '1,317 kcal', highlight: true  },
+        { label: 'Mifflin-St Jeor (Barat)', value: 1225, display: '1,225 kcal', highlight: false }
+      ], 1900);
+    }
+    if (n === 5) {
+      buildBarChart('chart-nhms-male', [
+        { label: 'Pengambilan harian (NHMS)', value: 2056, display: '2,056 kcal', highlight: false },
+        { label: 'TDEE sedentari (Ismail)',   value: 2011, display: '2,011 kcal', highlight: true  }
+      ], 2400);
+      buildBarChart('chart-nhms-female', [
+        { label: 'Pengambilan harian (NHMS)', value: 1635, display: '1,635 kcal', highlight: false },
+        { label: 'TDEE sedentari (Ismail)',   value: 1580, display: '1,580 kcal', highlight: true  }
+      ], 2400);
+    }
+  }
+
+  /* ── NAV — BUTTONS ONLY ────────────────────────────────────── */
+  btnNext.addEventListener('click', () => {
+    if (current < TOTAL) { current++; show(current); }
+  });
+  btnBack.addEventListener('click', () => {
+    if (current > 1) { current--; show(current); }
+  });
+
+  show(1);
+})();
+</script>
+</body>
+</html>
