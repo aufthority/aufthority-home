@@ -1,1 +1,1004 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diet Fad: Kenapa Ia Tidak Pernah Berhasil — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="Diet fad menjanjikan banyak, tapi sains menunjukkan sebaliknya. Faham kenapa kitaran ini berlaku — dan apa yang sebenarnya berfungsi.">
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Diet Fad: Kenapa Ia Tidak Akan Kekal">
+<meta property="og:description"  content="Diet fad janjikan yang manis-manis, tapi sains menunjukkan sebaliknya. Faham kenapa kitaran ini berlaku — dan apa yang sebenarnya berfungsi.">
+<meta property="og:url"          content="https://www.aufthority.com/dietfad/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="ms_MY">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Diet Fad: Kenapa Ia Tidak Pernah Berhasil">
+<meta name="twitter:description" content="Diet fad menjanjikan banyak, tapi sains menunjukkan sebaliknya.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   NAVIGATE — NEON PLAYROOM
+   Aufthority / dietfad carousel
+   ============================================= */
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --midnight:   #141414;
+  --ghost:      #fdf9f0;
+  --lime:       #c7ff69;
+  --amethyst:   #7a78ff;
+  --orange:     #ff6d38;
+  --emerald:    #00a652;
+  --sky:        #478bff;
+  --gold:       #ffc412;
+  --lavender:   #ccccff;
+
+  --r-tag:      1000px;
+  --r-card:     43.2px;
+  --r-btn:      25.146px;
+  --r-link:     20.7px;
+
+  --font:       'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+html, body {
+  font-family: var(--font);
+  background: var(--midnight);
+  color: var(--ghost);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- SHELL ---- */
+#shell {
+  max-width: 680px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- TOP NAV ---- */
+#top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--midnight);
+  border-bottom: 1.5px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+}
+
+.site-logo {
+  font-family: var(--font);
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--lime);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+#progress-track {
+  flex: 1;
+  height: 3px;
+  background: #2a2a2a;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+#progress-fill {
+  height: 100%;
+  background: var(--lime);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+#progress-label {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #666;
+  white-space: nowrap;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ---- SLIDES ---- */
+#slides-wrap {
+  flex: 1;
+}
+
+.slide {
+  display: none;
+  padding: 32px 20px 24px;
+  animation: fadeIn 0.25s ease;
+}
+
+.slide.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark slide (default) */
+.slide-dark {
+  background: var(--midnight);
+  color: var(--ghost);
+}
+
+/* Light slide */
+.slide-light {
+  background: var(--ghost);
+  color: var(--midnight);
+}
+
+/* ---- SLIDE LABEL / TAG ---- */
+.slide-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--r-tag);
+  border: 1.5px solid;
+  margin-bottom: 20px;
+}
+
+.slide-dark .slide-tag {
+  color: #888;
+  border-color: #333;
+}
+
+.slide-light .slide-tag {
+  color: #666;
+  border-color: #ccc;
+}
+
+.slide-tag.accent-lime   { color: var(--midnight); background: var(--lime);     border-color: var(--lime); }
+.slide-tag.accent-ameth  { color: #fff;            background: var(--amethyst); border-color: var(--amethyst); }
+.slide-tag.accent-orange { color: #fff;            background: var(--orange);   border-color: var(--orange); }
+.slide-tag.accent-emerald{ color: #fff;            background: var(--emerald);  border-color: var(--emerald); }
+.slide-tag.accent-sky    { color: #fff;            background: var(--sky);      border-color: var(--sky); }
+.slide-tag.accent-gold   { color: var(--midnight); background: var(--gold);     border-color: var(--gold); }
+
+/* ---- HEADINGS ---- */
+.slide-title {
+  font-family: var(--font);
+  font-weight: 900;
+  font-size: clamp(28px, 7vw, 42px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.slide-dark .slide-title  { color: var(--ghost); }
+.slide-light .slide-title { color: var(--midnight); }
+
+.slide-title .hl { color: var(--lime); }
+.slide-light .slide-title .hl { color: var(--emerald); }
+
+.slide-body {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0.005em;
+}
+
+.slide-dark .slide-body  { color: rgba(253,249,240,0.82); }
+.slide-light .slide-body { color: #333; }
+
+/* ---- CARDS (ghost on dark / dark on light) ---- */
+.card {
+  border-radius: var(--r-card);
+  padding: 26px;
+  margin-top: 20px;
+}
+
+.slide-dark .card {
+  background: #1e1e1e;
+  border: 1.5px solid #2a2a2a;
+}
+
+.slide-light .card {
+  background: #fff;
+  border: 1.5px solid #e0ddd5;
+}
+
+/* ---- ACCENT COLOUR CARDS ---- */
+.card-lime     { background: var(--lime)     !important; border-color: var(--lime)     !important; color: var(--midnight) !important; }
+.card-amethyst { background: var(--amethyst) !important; border-color: var(--amethyst) !important; color: #fff !important; }
+.card-orange   { background: var(--orange)   !important; border-color: var(--orange)   !important; color: #fff !important; }
+.card-emerald  { background: var(--emerald)  !important; border-color: var(--emerald)  !important; color: #fff !important; }
+.card-sky      { background: var(--sky)      !important; border-color: var(--sky)      !important; color: #fff !important; }
+.card-gold     { background: var(--gold)     !important; border-color: var(--gold)     !important; color: var(--midnight) !important; }
+.card-lavender { background: var(--lavender) !important; border-color: var(--lavender) !important; color: var(--midnight) !important; }
+
+.card-lime p, .card-gold p, .card-lavender p { color: var(--midnight) !important; }
+.card-amethyst p, .card-orange p, .card-emerald p, .card-sky p { color: rgba(255,255,255,0.92) !important; }
+
+/* ---- NUMBERED ITEMS ---- */
+.num-list { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
+
+.num-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.num-circle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.slide-dark  .num-circle { background: #2a2a2a; color: var(--lime); }
+.slide-light .num-circle { background: var(--midnight); color: var(--lime); }
+
+.num-text {
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 6px;
+}
+
+.slide-dark  .num-text { color: rgba(253,249,240,0.85); }
+.slide-light .num-text { color: #222; }
+
+.num-label {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 2px;
+  letter-spacing: -0.01em;
+}
+
+.slide-dark  .num-label { color: var(--ghost); }
+.slide-light .num-label { color: var(--midnight); }
+
+/* ---- STEP CARDS ---- */
+.step-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+
+.step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 16px;
+}
+
+.slide-dark  .step-card { background: #1e1e1e; border: 1.5px solid #2a2a2a; }
+.slide-light .step-card { background: #fff;    border: 1.5px solid #e0ddd5; }
+
+.step-n {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-top: 2px;
+  min-width: 22px;
+}
+
+.slide-dark  .step-n { color: var(--lime); }
+.slide-light .step-n { color: var(--emerald); }
+
+.step-body { font-size: 14px; line-height: 1.6; }
+.slide-dark  .step-body { color: rgba(253,249,240,0.85); }
+.slide-light .step-body { color: #333; }
+
+.step-label {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.slide-dark  .step-label { color: var(--ghost); }
+.slide-light .step-label { color: var(--midnight); }
+
+/* ---- PILL LIST ---- */
+.pill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+
+.pill {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--r-tag);
+  border: 1.5px solid;
+  letter-spacing: 0.01em;
+}
+
+.slide-dark  .pill { color: rgba(253,249,240,0.75); border-color: #333; background: transparent; }
+.slide-light .pill { color: #444;                   border-color: #ccc; background: transparent; }
+.pill.pill-red { color: #ff6d38; border-color: #ff6d38; }
+
+/* ---- BIG STAT ---- */
+.big-stat-wrap { margin-top: 24px; }
+
+.big-stat {
+  font-family: var(--font);
+  font-weight: 900;
+  font-size: clamp(60px, 18vw, 96px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.slide-dark  .big-stat { color: var(--lime); }
+.slide-light .big-stat { color: var(--midnight); }
+
+.big-stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-top: 8px;
+}
+
+.slide-dark  .big-stat-label { color: #777; }
+.slide-light .big-stat-label { color: #666; }
+
+/* ---- MYTH / FACT ---- */
+.mf-stack { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+
+.mf-card {
+  padding: 18px 20px;
+  border-radius: 20px;
+}
+
+.mf-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.mf-body {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.mf-card.myth {
+  background: #1e1e1e;
+  border: 1.5px solid #333;
+}
+.mf-card.myth .mf-tag  { color: #888; }
+.mf-card.myth .mf-body { color: rgba(253,249,240,0.75); }
+
+.mf-card.fact {
+  background: var(--emerald);
+  border: 1.5px solid var(--emerald);
+}
+.mf-card.fact .mf-tag  { color: rgba(255,255,255,0.7); }
+.mf-card.fact .mf-body { color: #fff; }
+
+/* Light slide myth/fact */
+.slide-light .mf-card.myth {
+  background: #f0ede6;
+  border-color: #ddd;
+}
+.slide-light .mf-card.myth .mf-tag  { color: #999; }
+.slide-light .mf-card.myth .mf-body { color: #444; }
+
+/* ---- CONCLUSION GRID ---- */
+.conc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.conc-card {
+  padding: 20px 18px;
+  border-radius: 20px;
+}
+
+.slide-dark  .conc-card { background: #1e1e1e; border: 1.5px solid #2a2a2a; }
+.slide-light .conc-card { background: #fff;    border: 1.5px solid #e0ddd5; }
+
+.conc-n {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.slide-dark  .conc-n { color: var(--lime); }
+.slide-light .conc-n { color: var(--emerald); }
+
+.conc-text {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.slide-dark  .conc-text { color: rgba(253,249,240,0.82); }
+.slide-light .conc-text { color: #333; }
+
+/* ---- CALLOUT ---- */
+.callout {
+  padding: 18px 20px;
+  border-radius: 16px;
+  border-left: 4px solid var(--lime);
+  margin-top: 20px;
+}
+
+.slide-dark  .callout { background: #1a1a1a; border-left-color: var(--lime); }
+.slide-light .callout { background: #f5f2eb; border-left-color: var(--emerald); }
+
+.callout p {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.slide-dark  .callout p { color: rgba(253,249,240,0.85); }
+.slide-light .callout p { color: #333; }
+
+/* ---- CTA BLOCK (MyTDEE) ---- */
+.cta-block {
+  background: var(--lime);
+  border-radius: var(--r-card);
+  padding: 28px 26px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.cta-block .cta-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(20,20,20,0.55);
+  margin-bottom: 10px;
+}
+
+.cta-block .cta-title {
+  font-family: var(--font);
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--midnight);
+  margin-bottom: 10px;
+}
+
+.cta-block .cta-body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(20,20,20,0.7);
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  display: inline-block;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--ghost);
+  background: var(--midnight);
+  border-radius: var(--r-btn);
+  padding: 12px 28px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.cta-btn:hover { opacity: 0.85; }
+
+/* ---- SOURCE BOX ---- */
+.source-box {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1.5px solid #2a2a2a;
+  background: #111;
+}
+
+.slide-light .source-box {
+  background: #f5f2eb;
+  border-color: #ddd;
+}
+
+.source-box-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.slide-dark  .source-box-title { color: #666; }
+.slide-light .source-box-title { color: #999; }
+
+.source-box p, .source-box a {
+  font-size: 11px;
+  line-height: 1.7;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.slide-dark  .source-box p, .slide-dark  .source-box a { color: #555; }
+.slide-light .source-box p, .slide-light .source-box a { color: #888; }
+.slide-dark  .source-box a:hover,
+.slide-light .source-box a:hover { color: var(--lime); }
+
+/* ---- BOTTOM NAV ---- */
+#nav-wrap {
+  position: sticky;
+  bottom: 0;
+  background: var(--midnight);
+  border-top: 1.5px solid #2a2a2a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 12px;
+}
+
+.nav-btn {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  border-radius: var(--r-btn);
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  border: 1.5px solid;
+}
+
+#btn-back {
+  background: transparent;
+  color: var(--ghost);
+  border-color: #333;
+}
+#btn-back:hover:not(:disabled) { border-color: #555; }
+#btn-back:disabled { opacity: 0.3; cursor: default; }
+
+#btn-next {
+  background: var(--lime);
+  color: var(--midnight);
+  border-color: var(--lime);
+}
+#btn-next:hover { opacity: 0.88; }
+
+/* ---- FOOTER ---- */
+footer {
+  text-align: center;
+  font-size: 11px;
+  color: #444;
+  letter-spacing: 0.04em;
+  padding: 10px 20px 16px;
+  background: var(--midnight);
+}
+
+/* ---- DIVIDER ---- */
+.divider {
+  height: 1.5px;
+  background: #2a2a2a;
+  margin: 20px 0;
+  border: none;
+}
+
+.slide-light .divider { background: #e0ddd5; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 400px) {
+  .conc-grid { grid-template-columns: 1fr; }
+  .slide-title { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<div id="shell">
+
+  <!-- TOP BAR -->
+  <div id="top-bar">
+    <a class="site-logo" href="https://www.aufthority.com">Aufthority</a>
+    <div id="progress-track"><div id="progress-fill"></div></div>
+    <span id="progress-label">1 / 12</span>
+  </div>
+
+  <!-- SLIDES -->
+  <div id="slides-wrap">
+
+    <!-- SLIDE 1: Hook — dark -->
+    <div class="slide slide-dark active" id="slide-1">
+      <span class="slide-tag">Pengenalan</span>
+      <h1 class="slide-title">Anda sudah cuba.<br>Berkali-kali.<br><span class="hl">Kenapa masih gagal?</span></h1>
+      <p class="slide-body">Jus detox dua minggu. Keto sebulan. Puasa ketat. Anda bukan malas — anda sudah berusaha. Tapi berat badan naik semula, dan rasa bersalah pun datang bersama.</p>
+      <div class="callout">
+        <p>Masalahnya bukan pada anda. Masalahnya pada diet itu sendiri — dan cara ia direka.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: What is a fad diet — light -->
+    <div class="slide slide-light" id="slide-2">
+      <span class="slide-tag">Definisi</span>
+      <h2 class="slide-title">Apa itu <span class="hl">diet fad?</span></h2>
+      <p class="slide-body">Diet fad adalah pelan pemakanan yang menjanjikan hasil cepat — tanpa bukti sains yang kukuh untuk menyokong dakwaannya.</p>
+      <div class="step-cards">
+        <div class="step-card">
+          <span class="step-n">01</span>
+          <div class="step-body">
+            <span class="step-label">Janji besar, bukti lemah</span>
+            Tiada kajian saintifik yang sahih menyokong tuntutan diet ini.
+          </div>
+        </div>
+        <div class="step-card">
+          <span class="step-n">02</span>
+          <div class="step-body">
+            <span class="step-label">Peraturan ketat dan menghad</span>
+            Elak kumpulan makanan tertentu sepenuhnya, atau makan hanya satu jenis makanan sahaja.
+          </div>
+        </div>
+        <div class="step-card">
+          <span class="step-n">03</span>
+          <div class="step-body">
+            <span class="step-label">Produk mahal tidak perlu</span>
+            Suplemen, minuman istimewa, atau program berbayar yang dijual sebagai "rahsia" kejayaan.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Why we try — dark -->
+    <div class="slide slide-dark" id="slide-3">
+      <span class="slide-tag accent-ameth">Psikologi</span>
+      <h2 class="slide-title">Kenapa kita <span class="hl">tertarik?</span></h2>
+      <p class="slide-body">Ini bukan kelemahan. Ini adalah respons manusia yang normal terhadap tekanan dan harapan.</p>
+      <div class="num-list">
+        <div class="num-item">
+          <div class="num-circle">1</div>
+          <div class="num-text">
+            <span class="num-label">Iklan yang meyakinkan</span>
+            "Turun 10kg dalam 30 hari." Imej sebelum dan selepas yang dramatik. Testimoni yang kelihatan nyata.
+          </div>
+        </div>
+        <div class="num-item">
+          <div class="num-circle">2</div>
+          <div class="num-text">
+            <span class="num-label">Selebriti dan influencer</span>
+            Jika dia berjaya, kenapa saya tidak boleh? Tapi selebriti bukan pakar pemakanan — dan gambar mereka sering diedit.
+          </div>
+        </div>
+        <div class="num-item">
+          <div class="num-circle">3</div>
+          <div class="num-text">
+            <span class="num-label">Kita penat, kita mahu penyelesaian</span>
+            Apabila usaha biasa tidak nampak hasilnya, tawaran "jalan pintas" terasa masuk akal.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Biology — what actually happens — dark -->
+    <div class="slide slide-dark" id="slide-4">
+      <span class="slide-tag accent-orange">Biologi</span>
+      <h2 class="slide-title">Apa yang <span class="hl">sebenarnya berlaku</span> pada badan anda</h2>
+      <p class="slide-body">Berat memang turun pada peringkat awal — tapi bukan sebab lemak terbakar. Ia adalah cecair dan jisim otot yang hilang.</p>
+      <div class="step-cards" style="margin-top:20px;">
+        <div class="step-card">
+          <span class="step-n">A</span>
+          <div class="step-body">
+            <span class="step-label">Badan berjimat tenaga</span>
+            Apabila kalori berkurangan drastik, metabolisme melambat. Badan "berjimat" supaya dapat terus hidup.
+          </div>
+        </div>
+        <div class="step-card">
+          <span class="step-n">B</span>
+          <div class="step-body">
+            <span class="step-label">Otot hilang, bukan lemak</span>
+            Penurunan berat awal yang cepat selalunya adalah cecair dan jisim otot — bukan lemak badan yang sebenar.
+          </div>
+        </div>
+        <div class="step-card">
+          <span class="step-n">C</span>
+          <div class="step-body">
+            <span class="step-label">Hormon lapar meningkat</span>
+            Badan menghantar isyarat lapar yang lebih kuat untuk memulihkan berat yang hilang — ini adalah mekanisme survival semula jadi.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: The cycle — light -->
+    <div class="slide slide-light" id="slide-5">
+      <span class="slide-tag">Kitaran</span>
+      <h2 class="slide-title">Kitaran yang <span class="hl">memerangkap</span></h2>
+      <p class="slide-body">Kajian menunjukkan majoriti orang yang mengikuti diet ketat akan mendapatkan semula berat badan mereka dalam masa dua hingga lima tahun.</p>
+      <div class="card" style="background:#fff;padding:24px;border-radius:20px;border:1.5px solid #e0ddd5;margin-top:20px;">
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1.5px solid #f0ede6;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#141414;color:#c7ff69;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">1</div>
+            <span style="font-size:14px;color:#222;font-weight:500;">Cuba diet baru</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1.5px solid #f0ede6;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#141414;color:#c7ff69;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">2</div>
+            <span style="font-size:14px;color:#222;font-weight:500;">Berat turun — rasa berjaya</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1.5px solid #f0ede6;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#141414;color:#c7ff69;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">3</div>
+            <span style="font-size:14px;color:#222;font-weight:500;">Peraturan terlalu ketat, sukar diteruskan</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1.5px solid #f0ede6;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#ff6d38;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">4</div>
+            <span style="font-size:14px;color:#222;font-weight:500;">Berat naik semula — rasa gagal</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#ff6d38;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">5</div>
+            <span style="font-size:14px;color:#222;font-weight:500;">Cuba diet baru yang lain... semula</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:16px;">
+        <p>Kitaran ini bukan kelemahan semangat — ia adalah respons biologi yang normal terhadap sekatan kalori yang keterlaluan.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Relationship with food — dark -->
+    <div class="slide slide-dark" id="slide-6">
+      <span class="slide-tag accent-ameth">Kesan Psikologi</span>
+      <h2 class="slide-title">Apabila makanan jadi <span class="hl">musuh</span></h2>
+      <p class="slide-body">Diet fad sering "mengharamkan" kumpulan makanan tertentu. Ini boleh merosakkan hubungan kita dengan makanan dalam jangka panjang.</p>
+      <div class="mf-stack">
+        <div class="mf-card myth">
+          <div class="mf-tag">Yang Berlaku</div>
+          <div class="mf-body">Apabila karbohidrat atau lemak "dilarang," kita mula takut makan — dan hilang kepercayaan pada isyarat lapar badan sendiri.</div>
+        </div>
+        <div class="mf-card fact">
+          <div class="mf-tag">Apa Sains Kata</div>
+          <div class="mf-body">Mendengar isyarat lapar dan kenyang badan adalah kemahiran penting untuk mengawal berat badan dalam jangka panjang — bukan peraturan ketat dari luar.</div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:16px;">
+        <p>Perasaan "gagal" selepas diet bukanlah petanda anda lemah. Ia petanda diet itu tidak direka untuk badan manusia sebenar.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Warning signs — light -->
+    <div class="slide slide-light" id="slide-7">
+      <span class="slide-tag">Tanda Amaran</span>
+      <h2 class="slide-title">Macam mana nak <span class="hl">kenal</span> diet fad?</h2>
+      <p class="slide-body">Elakkan sebarang diet atau program yang mempunyai ciri-ciri berikut:</p>
+      <div class="pill-list" style="margin-top:16px;">
+        <span class="pill pill-red">Janji turun lebih 1kg seminggu</span>
+        <span class="pill pill-red">Elak sepenuhnya satu kumpulan makanan</span>
+        <span class="pill pill-red">Makanan "membakar lemak" ajaib</span>
+        <span class="pill pill-red">Hanya testimoni, tiada kajian</span>
+        <span class="pill pill-red">Jual produk atau suplemen mahal</span>
+        <span class="pill pill-red">Diet yang sama untuk semua orang</span>
+        <span class="pill pill-red">Puasa air atau jus sahaja</span>
+        <span class="pill pill-red">"Rahsia yang doktor sembunyikan"</span>
+        <span class="pill pill-red">Detox atau kombinasi makanan ganjil</span>
+        <span class="pill pill-red">Berdasarkan golongan darah atau genetik</span>
+      </div>
+      <div class="callout" style="margin-top:20px;">
+        <p>Ingat: jika ia terdengar terlalu bagus untuk menjadi kenyataan — ia memang tidak nyata.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Myths vs Facts — dark -->
+    <div class="slide slide-dark" id="slide-8">
+      <span class="slide-tag accent-emerald">Mitos vs Fakta</span>
+      <h2 class="slide-title">Tanggapan biasa yang <span class="hl">tidak betul</span></h2>
+      <div class="mf-stack">
+        <div class="mf-card myth">
+          <div class="mf-tag">Tanggapan Biasa</div>
+          <div class="mf-body">"Buah-buahan tidak boleh dimakan bersama nasi atau makanan lain."</div>
+        </div>
+        <div class="mf-card fact">
+          <div class="mf-tag">Apa Sains Kata</div>
+          <div class="mf-body">Tiada bukti saintifik yang menunjukkan kombinasi makanan biasa menjejaskan pencernaan atau menyebabkan kenaikan berat badan.</div>
+        </div>
+      </div>
+      <div class="mf-stack" style="margin-top:12px;">
+        <div class="mf-card myth">
+          <div class="mf-tag">Tanggapan Biasa</div>
+          <div class="mf-body">"Detox atau 'cleanse' diperlukan untuk membuang toksin dari badan."</div>
+        </div>
+        <div class="mf-card fact">
+          <div class="mf-tag">Apa Sains Kata</div>
+          <div class="mf-body">Badan sudah mempunyai sistem detoksifikasi sendiri — hati dan buah pinggang. Tiada kajian yang membuktikan jus atau suplemen mempercepatkan proses ini.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Who to trust — light -->
+    <div class="slide slide-light" id="slide-9">
+      <span class="slide-tag">Kepercayaan</span>
+      <h2 class="slide-title">Siapa yang <span class="hl">boleh dipercayai?</span></h2>
+      <p class="slide-body">Tidak semua yang bergelar "pakar" dalam media sosial adalah pakar yang sebenar.</p>
+      <div class="step-cards">
+        <div class="step-card">
+          <span class="step-n" style="color:#00a652;">Ya</span>
+          <div class="step-body">
+            <span class="step-label">Ahli Dietetik Berdaftar</span>
+            Berkelayakan, dikawal selia, dan memberi nasihat berdasarkan bukti sains. Boleh dirujuk melalui doktor atau klinik.
+          </div>
+        </div>
+        <div class="step-card" style="border-color:#ffcfbf;background:#fff8f5;">
+          <span class="step-n" style="color:#ff6d38;">Awas</span>
+          <div class="step-body">
+            <span class="step-label">Influencer pemakanan</span>
+            Populariti tidak bermaksud kepakaran. Semak kelayakan dan rujukan saintifik sebelum mengikuti nasihat mereka.
+          </div>
+        </div>
+        <div class="step-card" style="border-color:#ffcfbf;background:#fff8f5;">
+          <span class="step-n" style="color:#ff6d38;">Awas</span>
+          <div class="step-body">
+            <span class="step-label">"Pakar" tidak bertauliah</span>
+            Iridologi, analisis mineral rambut, terapi magnet — kaedah-kaedah ini tidak disokong oleh bukti sains.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: What actually works — dark -->
+    <div class="slide slide-dark" id="slide-10">
+      <span class="slide-tag accent-sky">Penyelesaian</span>
+      <h2 class="slide-title">Apa yang <span class="hl">sebenarnya berfungsi</span></h2>
+      <p class="slide-body">Tiada jalan pintas. Tapi ada pendekatan yang terbukti berkesan dalam jangka panjang.</p>
+      <div class="num-list">
+        <div class="num-item">
+          <div class="num-circle">1</div>
+          <div class="num-text">
+            <span class="num-label">Keseimbangan, bukan sekatan</span>
+            Diet yang boleh diteruskan bertahun-tahun lebih baik dari diet ketat yang hanya bertahan dua minggu.
+          </div>
+        </div>
+        <div class="num-item">
+          <div class="num-circle">2</div>
+          <div class="num-text">
+            <span class="num-label">Kepelbagaian makanan</span>
+            Tiada "makanan jahat" — yang penting adalah keseluruhan corak pemakanan, bukan satu jenis makanan.
+          </div>
+        </div>
+        <div class="num-item">
+          <div class="num-circle">3</div>
+          <div class="num-text">
+            <span class="num-label">Dengar isyarat badan</span>
+            Belajar membezakan lapar sebenar dan lapar emosi adalah kemahiran jangka panjang yang lebih berharga dari mana-mana diet.
+          </div>
+        </div>
+        <div class="num-item">
+          <div class="num-circle">4</div>
+          <div class="num-text">
+            <span class="num-label">Sabar dengan proses</span>
+            Penurunan berat badan yang mampan adalah 0.5–1kg seminggu — bukan 5kg dalam sebulan.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: Reframe — light -->
+    <div class="slide slide-light" id="slide-11">
+      <span class="slide-tag accent-gold">Perspektif Baru</span>
+      <h2 class="slide-title">Ini bukan <span class="hl">salah anda</span></h2>
+      <p class="slide-body">Jika diet fad tidak berjaya untuk anda — itu bukan bukti anda tidak berdisiplin. Itu bukti diet tersebut tidak direka untuk badan manusia yang sebenar.</p>
+      <div class="card card-lime" style="margin-top:20px;text-align:center;">
+        <p style="font-size:15px;font-weight:700;line-height:1.5;color:#141414;">Diet fad menawarkan penyelesaian jangka pendek untuk masalah jangka panjang.<br>Badan anda layak mendapat lebih dari itu.</p>
+      </div>
+      <div class="callout" style="margin-top:16px;">
+        <p>Langkah pertama yang terbaik: faham badan anda — termasuk keperluan tenaga harian anda.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: Summary + CTA + Sources — dark -->
+    <div class="slide slide-dark" id="slide-12">
+      <span class="slide-tag">Rumusan</span>
+      <h2 class="slide-title">Perkara utama <span class="hl">untuk diingat</span></h2>
+
+      <div class="conc-grid">
+        <div class="conc-card">
+          <div class="conc-n">01</div>
+          <div class="conc-text">Diet fad menjanjikan banyak, tapi sains tidak menyokong dakwaan mereka.</div>
+        </div>
+        <div class="conc-card">
+          <div class="conc-n">02</div>
+          <div class="conc-text">Penurunan berat awal selalunya adalah cecair dan otot — bukan lemak.</div>
+        </div>
+        <div class="conc-card">
+          <div class="conc-n">03</div>
+          <div class="conc-text">Kitaran turun-naik berat badan boleh merosakkan hubungan anda dengan makanan.</div>
+        </div>
+        <div class="conc-card">
+          <div class="conc-n">04</div>
+          <div class="conc-text">Pendekatan seimbang dan mampan lebih berkesan dari mana-mana diet ketat.</div>
+        </div>
+      </div>
+
+      <!-- MyTDEE CTA -->
+      <div class="cta-block" data-umami-event="cta-mytdee-click">
+        <div class="cta-label">Alat Percuma dari Aufthority</div>
+        <div class="cta-title">Tahu keperluan kalori anda</div>
+        <div class="cta-body">MyTDEE mengira keperluan tenaga harian anda berdasarkan umur, berat, tinggi, dan tahap aktiviti — titik permulaan yang lebih jujur dari mana-mana diet fad.</div>
+        <a class="cta-btn" href="https://mytdee.aufthority.com/" target="_blank" rel="noopener" data-umami-event="cta-mytdee-click">Cuba MyTDEE Percuma</a>
+      </div>
+
+      <!-- Bacaan Lanjut -->
+      <div class="source-box" style="margin-top:16px;">
+        <div class="source-box-title">Bacaan Lanjut</div>
+        <a href="https://www.aufthority.com/usahaextreme/" target="_blank" rel="noopener">Kenapa Usaha Keras Boleh Menjadi Perangkap — Aufthority</a>
+        <a href="https://www.aufthority.com/tdee/" target="_blank" rel="noopener">Apa Itu TDEE dan Kenapa Ia Penting — Aufthority</a>
+      </div>
+
+      <!-- Sources -->
+      <div class="source-box">
+        <div class="source-box-title">Rujukan</div>
+        <a href="https://www.bda.uk.com/resource/fad-diets.html" target="_blank" rel="noopener">British Dietetic Association (BDA). Fad Diets. Food Fact Sheet. September 2021.</a>
+        <p>Mann et al. (2007). Medicare's search for effective obesity treatments: diets are not the answer. Am Psychol; 62:220–33.</p>
+        <p>National Task Force on the Prevention and Treatment of Obesity (2000). Dieting and the development of eating disorders in overweight and obese adults. Arch Intern Med. 160(17):2581-9.</p>
+        <a href="https://doi.org/10.1002/fsn3.1895" target="_blank" rel="noopener">Malik et al. (2020). Are long-term FAD diets restricting micronutrient intake? Food Science &amp; Nutrition, 8(11), 6047–6060.</a>
+        <a href="https://doi.org/10.1001/jama.2014.10397" target="_blank" rel="noopener">Johnston et al. (2014). Comparison of weight loss among named diet programs in overweight and obese adults. JAMA, 312(9), 923–933.</a>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrap -->
+
+  <div id="nav-wrap">
+    <button class="nav-btn" id="btn-back" disabled data-umami-event="nav-back">← Balik</button>
+    <button class="nav-btn" id="btn-next" data-umami-event="nav-next">Seterusnya →</button>
+  </div>
+
+  <footer>Informed decisions, better health.</footer>
+
+</div><!-- /shell -->
+
+<script>
+(function(){
+  const TOTAL = 12;
+  let current = 1;
+
+  const slides  = document.querySelectorAll('.slide');
+  const btnBack = document.getElementById('btn-back');
+  const btnNext = document.getElementById('btn-next');
+  const progFill = document.getElementById('progress-fill');
+  const progLbl  = document.getElementById('progress-label');
+
+  function show(n) {
+    slides.forEach((s, i) => s.classList.toggle('active', i + 1 === n));
+    progFill.style.width = ((n / TOTAL) * 100) + '%';
+    progLbl.textContent = n + ' / ' + TOTAL;
+    btnBack.disabled = n === 1;
+    btnNext.textContent = n === TOTAL ? 'Selesai' : 'Seterusnya →';
+    btnNext.setAttribute('data-umami-event', n === TOTAL ? 'carousel-selesai' : 'nav-next');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.umami) umami.track('slide-view', { slide: n });
+  }
+
+  btnNext.addEventListener('click', () => {
+    if (current < TOTAL) { current++; show(current); }
+  });
+  btnBack.addEventListener('click', () => {
+    if (current > 1) { current--; show(current); }
+  });
+
+  show(1);
+})();
+</script>
+</body>
+</html>
