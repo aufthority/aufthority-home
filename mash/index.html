@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penyakit Hati: Kenali MASH Sebelum Terlambat — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="Hati anda boleh rosak serius tanpa sebarang simptom. Kenali MASH — penyakit hati berlemak yang sering terlepas pandang, risikonya, dan cara ia boleh dirawat.">
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Penyakit Hati: Kenali MASH Sebelum Terlambat">
+<meta property="og:description"  content="Hati anda boleh rosak serius tanpa sebarang simptom. Kenali MASH — penyakit hati berlemak yang sering terlepas pandang, risikonya, dan cara ia boleh dirawat.">
+<meta property="og:url"          content="https://www.aufthority.com/mash/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="ms_MY">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Penyakit Hati: Kenali MASH Sebelum Terlambat">
+<meta name="twitter:description" content="Hati anda boleh rosak serius tanpa sebarang simptom. Kenali MASH dan apa yang perlu dilakukan.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── AAPLY TOKENS ── */
+:root {
+  --yellow:      #e6e51e;
+  --red:         #f34646;
+  --blue:        #466cf3;
+  --peach:       #ff8562;
+  --carbon:      #000000;
+  --paper:       #ffffff;
+  --mist:        #f2f2f2;
+  --hairline:    #e6e6e6;
+  --shadow-gray: #cccccc;
+  --sunbeam:     #fff705;
+  --muted:       #555555;
+  --radius-full: 3000px;
+  --radius-card: 30px;
+  --radius-sm:   16px;
+  --shadow-nav:  rgba(0,0,0,0.2) 0px 10px 10px -5px;
+}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  height:100%;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--mist);
+  color:var(--carbon);
+  font-size:16px;
+  line-height:1.53;
+}
+
+/* ── SHELL ── */
+#shell{
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  max-width:680px;
+  margin:0 auto;
+  padding:0 0 0 0;
+}
+
+/* ── NAV BAR ── */
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 20px;
+  background:var(--paper);
+  border-radius:0 0 20px 20px;
+  box-shadow:var(--shadow-nav);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.logo{
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  font-size:1rem;
+  color:var(--carbon);
+  text-decoration:none;
+  letter-spacing:-0.02em;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.logo-mark{
+  width:22px;height:22px;
+  background:var(--yellow);
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.75rem;font-weight:700;color:var(--carbon);
+  flex-shrink:0;
+}
+#progress-label{
+  font-family:'Inter',sans-serif;
+  font-size:0.78rem;
+  color:var(--muted);
+  font-weight:500;
+  letter-spacing:0.02em;
+}
+
+/* ── PROGRESS BAR ── */
+#progress-track{height:3px;background:var(--hairline);width:100%;}
+#progress-fill{height:3px;background:var(--carbon);width:0%;transition:width 0.35s ease;}
+
+/* ── SLIDES ── */
+#slides-wrap{flex:1;}
+.slide{display:none;padding:28px 20px 24px;animation:fadeIn 0.25s ease;}
+.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── TYPOGRAPHY ── */
+.slide-label{
+  display:inline-block;
+  font-family:'Inter',sans-serif;
+  font-size:0.72rem;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--carbon);
+  background:var(--yellow);
+  border-radius:var(--radius-full);
+  padding:3px 12px;
+  margin-bottom:14px;
+}
+.slide-title{
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  font-size:clamp(1.5rem,5.5vw,2rem);
+  line-height:1.1;
+  letter-spacing:-0.04em;
+  color:var(--carbon);
+  margin-bottom:16px;
+}
+.slide-body{
+  font-family:'Inter',sans-serif;
+  font-size:0.97rem;
+  color:var(--carbon);
+  line-height:1.65;
+  margin-bottom:14px;
+}
+
+/* ── CALLOUT ── */
+.callout{
+  background:var(--paper);
+  border:2px solid var(--yellow);
+  border-radius:var(--radius-card);
+  padding:16px 18px;
+  margin:16px 0;
+  font-size:0.93rem;
+  color:var(--carbon);
+  line-height:1.65;
+}
+.callout strong{font-weight:700;}
+
+/* ── PULL QUOTE ── */
+.pull-quote{
+  font-family:'Inter',sans-serif;
+  font-style:italic;
+  font-size:1.05rem;
+  font-weight:500;
+  line-height:1.5;
+  color:var(--carbon);
+  background:var(--paper);
+  border-left:4px solid var(--yellow);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  padding:14px 16px;
+  margin:18px 0;
+}
+.pull-quote cite{
+  display:block;
+  font-style:normal;
+  font-size:0.78rem;
+  color:var(--muted);
+  margin-top:6px;
+  font-weight:400;
+}
+
+/* ── STAT PAIR ── */
+.stat-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+.stat-box{
+  background:var(--paper);
+  border:2px solid var(--hairline);
+  border-radius:var(--radius-card);
+  padding:20px 14px;
+  text-align:center;
+}
+.stat-box .snum{
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  font-size:clamp(1.6rem,6vw,2.2rem);
+  color:var(--carbon);
+  line-height:1;
+  letter-spacing:-0.04em;
+}
+.stat-box .slabel{font-size:0.78rem;color:var(--muted);margin-top:8px;line-height:1.4;}
+
+/* ── STEP CARDS ── */
+.step-cards{display:flex;flex-direction:column;gap:10px;margin:16px 0;}
+.step-card{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  background:var(--paper);
+  border:2px solid var(--hairline);
+  border-radius:var(--radius-card);
+  padding:16px;
+  transition:border-color 0.15s;
+}
+.step-card:hover{border-color:var(--yellow);}
+.step-num{
+  flex-shrink:0;
+  width:30px;height:30px;
+  border-radius:var(--radius-full);
+  background:var(--carbon);
+  color:var(--paper);
+  font-size:0.82rem;
+  font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-text{font-size:0.92rem;line-height:1.6;color:var(--carbon);}
+.step-text strong{font-weight:700;}
+
+/* ── NUMBERED ITEMS ── */
+.numbered-items{display:flex;flex-direction:column;gap:12px;margin:16px 0;}
+.numbered-item{display:flex;gap:14px;align-items:flex-start;}
+.num-circle{
+  flex-shrink:0;
+  width:28px;height:28px;
+  border-radius:var(--radius-full);
+  border:2px solid var(--carbon);
+  color:var(--carbon);
+  font-size:0.8rem;
+  font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.num-text{font-size:0.93rem;line-height:1.65;color:var(--carbon);}
+
+/* ── PILL LIST ── */
+.pill-list{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+.pill{
+  background:var(--paper);
+  border:2px solid var(--hairline);
+  border-radius:var(--radius-full);
+  padding:5px 16px;
+  font-size:0.82rem;
+  color:var(--carbon);
+  font-weight:500;
+}
+.pill.accent{
+  background:var(--yellow);
+  border-color:var(--yellow);
+  color:var(--carbon);
+  font-weight:700;
+}
+
+/* ── PROGRESSION IMAGE BLOCK ── */
+.prog-img-wrap{
+  background:var(--paper);
+  border:2px solid var(--hairline);
+  border-radius:var(--radius-card);
+  padding:0;
+  margin:16px 0;
+  overflow:hidden;
+}
+.prog-img-wrap img{
+  width:100%;
+  display:block;
+  border-radius:calc(var(--radius-card) - 2px);
+}
+.prog-img-caption{
+  padding:10px 16px 14px;
+  font-size:0.78rem;
+  color:var(--muted);
+  line-height:1.5;
+  font-style:italic;
+}
+
+/* ── DATA TABLE ── */
+.data-table{width:100%;border-collapse:collapse;font-size:0.85rem;margin:16px 0;}
+.data-table th{
+  text-align:left;
+  font-weight:700;
+  color:var(--muted);
+  border-bottom:2px solid var(--hairline);
+  padding:8px 8px;
+  font-size:0.78rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+}
+.data-table td{
+  padding:10px 8px;
+  border-bottom:1px solid var(--hairline);
+  color:var(--carbon);
+  vertical-align:top;
+  line-height:1.5;
+}
+.data-table tr.highlight td{
+  font-weight:700;
+  color:var(--carbon);
+  background:var(--sunbeam);
+}
+
+/* ── CTA BLOCK ── */
+.cta-block{
+  background:var(--paper);
+  border:2px solid var(--hairline);
+  border-radius:var(--radius-card);
+  padding:20px 18px;
+  margin:16px 0;
+  text-align:center;
+}
+.cta-block p{
+  font-size:0.9rem;
+  color:var(--carbon);
+  margin-bottom:14px;
+  line-height:1.55;
+}
+.cta-btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.cta-block a.btn-yellow{
+  display:inline-block;
+  background:var(--yellow);
+  color:var(--carbon);
+  border-radius:var(--radius-full);
+  padding:12px 26px;
+  font-size:0.88rem;
+  font-weight:700;
+  text-decoration:none;
+  border:2px solid var(--yellow);
+}
+.cta-block a.btn-black{
+  display:inline-block;
+  background:var(--carbon);
+  color:var(--paper);
+  border-radius:var(--radius-full);
+  padding:12px 26px;
+  font-size:0.88rem;
+  font-weight:700;
+  text-decoration:none;
+  border:2px solid var(--carbon);
+}
+.cta-block a:hover{opacity:0.85;}
+
+/* ── CROSS-LINK CARDS ── */
+.crosslink-row{display:flex;flex-direction:column;gap:10px;margin:16px 0;}
+.crosslink-card{
+  background:var(--paper);
+  border:2px solid var(--hairline);
+  border-radius:var(--radius-card);
+  padding:16px 18px;
+  text-decoration:none;
+  display:block;
+  transition:border-color 0.15s;
+}
+.crosslink-card:hover{border-color:var(--yellow);}
+.crosslink-card .cl-tag{
+  font-size:0.72rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:4px;
+  font-weight:700;
+}
+.crosslink-card .cl-title{
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  font-size:1rem;
+  color:var(--carbon);
+  margin-bottom:2px;
+  letter-spacing:-0.02em;
+}
+.crosslink-card .cl-url{font-size:0.78rem;color:var(--muted);}
+
+/* ── SOURCE BOX ── */
+.source-box{
+  background:var(--paper);
+  border:2px solid var(--hairline);
+  border-radius:var(--radius-card);
+  padding:18px;
+  margin:16px 0;
+}
+.source-box h3{
+  font-family:'Poppins',sans-serif;
+  font-size:0.78rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+.source-box ol{padding-left:18px;}
+.source-box li{font-size:0.77rem;color:var(--muted);line-height:1.6;margin-bottom:6px;}
+.source-box a{color:var(--carbon);text-decoration:underline;}
+.source-box a:hover{opacity:0.7;}
+
+/* ── ANNOTATION TAG ── */
+.tag-red{
+  display:inline-block;
+  background:var(--red);
+  color:var(--paper);
+  border-radius:var(--radius-full);
+  padding:3px 12px;
+  font-size:0.75rem;
+  font-weight:700;
+}
+
+/* ── BOTTOM NAV ── */
+#nav-wrap{
+  display:flex;
+  justify-content:space-between;
+  padding:14px 20px;
+  background:var(--paper);
+  border-top:2px solid var(--hairline);
+  border-radius:20px 20px 0 0;
+}
+.nav-btn{
+  font-family:'Inter',sans-serif;
+  font-size:0.88rem;
+  font-weight:700;
+  padding:12px 24px;
+  border-radius:var(--radius-full);
+  cursor:pointer;
+  transition:opacity 0.2s;
+}
+#btn-back{
+  background:transparent;
+  border:2px solid var(--hairline);
+  color:var(--muted);
+}
+#btn-back:disabled{opacity:0.3;cursor:default;}
+#btn-next{
+  background:var(--carbon);
+  border:2px solid var(--carbon);
+  color:var(--paper);
+}
+#btn-next:hover{opacity:0.85;}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;
+  font-size:0.75rem;
+  color:var(--muted);
+  padding:10px 20px 18px;
+  background:var(--paper);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:400px){
+  .stat-pair{grid-template-columns:1fr;}
+  .cta-btn-row{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div id="shell">
+  <nav>
+    <a class="logo" href="https://www.aufthority.com">
+      <span class="logo-mark">A</span>Aufthority
+    </a>
+    <span id="progress-label">1 / 10</span>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <div id="slides-wrap">
+
+    <!-- SLIDE 1: HOOK -->
+    <div class="slide active" id="slide-1">
+      <p class="slide-label">Penyakit Hati</p>
+      <h1 class="slide-title">Hati anda mungkin sedang rosak — tanpa anda tak tahu.</h1>
+      <p class="slide-body">Kebanyakan penyakit beri kita signal: sakit, demam, penat.</p>
+      <p class="slide-body">Tapi <strong>MASH</strong> Metabolic dysfunction-associated steatohepatitis — adalah sejenis penyakit yang senyap, yang boleh sebabkan kegagalan organ hati, tanpa sebarang simptom awal.</p>
+      <div class="callout">
+        <strong>Yang membimbangkan:</strong> Kajian di Eropah dapati lebih 87% kes MASH tidak pernah didiagnosis. Ramai yang ada — tanpa tahu.
+    </div>
+
+    <!-- SLIDE 2: APA ITU MASH -->
+    <div class="slide" id="slide-2">
+      <p class="slide-label">Asas</p>
+      <h1 class="slide-title">Apa itu MASH?</h1>
+      <p class="slide-body">Hati kita berfungsi seperti "penapis" — tapis racun, urus lemak & gula, hasilkan protein penting. Ia mampu tanggung banyak tekanan.</p>
+      <p class="slide-body">Tapi bila terlalu banyak lemak terkumpul di dalam sel-sel hati, ia mula cetuskan keradangan. Inilah yang berlaku dalam MASH.</p>
+      <div class="step-cards">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Lemak terkumpul</strong> — Lemak berlebihan tersimpan dalam sel hati (steatosis).</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Keradangan berlaku</strong> — Hati bertindak balas, menyebabkan sel-sel rosak (steatohepatitis).</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Parut terbentuk</strong> — Jika keradangan berterusan, hati mula membentuk tisu parut (fibrosis).</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Sirosis atau kegagalan hati (liver cirrhosis)</strong> — Jika tidak dikawal, parut boleh merebak hingga fungsi hati terganggu sepenuhnya.</div>
+        </div>
+      </div>
+      <p class="slide-body" style="font-size:0.85rem;color:var(--muted);">MASH adalah bentuk MASLD (penyakit hati berlemak berkaitan metabolisme) yang lebih terus.</p>
+    </div>
+
+    <!-- SLIDE 3: SIAPA BERISIKO -->
+    <div class="slide" id="slide-3">
+      <p class="slide-label">Faktor Risiko</p>
+      <h1 class="slide-title">Siapa yang paling berisiko?</h1>
+      <p class="slide-body">MASH bukan berlaku secara rawak. Ia sangat berkait rapat dengan keadaan metabolik badan.</p>
+      <div class="callout">
+        <strong>Dalam kalangan individu yang obes:</strong> sehingga 30% mungkin ada MASH — berbanding hanya kira-kira 3–5% dalam kalangan mereka yang tidak obes.
+      </div>
+      <p class="slide-body">Faktor risiko utama:</p>
+      <div class="pill-list">
+        <span class="pill accent">Berat badan berlebihan atau obes</span>
+        <span class="pill accent">Diabetes Jenis 2</span>
+        <span class="pill accent">Tekanan darah tinggi</span>
+        <span class="pill accent">Paras lemak darah tinggi</span>
+        <span class="pill">Berumur lebih 40 tahun</span>
+        <span class="pill">Sejarah keluarga penyakit hati</span>
+      </div>
+      <p class="slide-body">Penting untuk difahami: MASH bukan "salah" pesakit. Kelebihan berat badan melibatkan perubahan hormon dan isyarat badan yang kompleks — bukan sekadar kurang bersenam atau makan berlebihan. Biologi mendahului pilihan.</p>
+      <div class="callout">
+        Di Malaysia, lebih <strong>50% orang dewasa</strong> mempunyai berat badan berlebihan atau obes — bermakna ramai yang mungkin berada dalam zon risiko tanpa sedar.
+      </div>
+    </div>
+
+    <!-- SLIDE 4: PROGRESSION IMAGE -->
+    <div class="slide" id="slide-4">
+      <p class="slide-label">Perkembangan Penyakit</p>
+      <h1 class="slide-title">Betapa cepatnya ia boleh merosot.</h1>
+      <p class="slide-body">Ramai yang menganggap penyakit hati mengambil masa berdekad untuk menjadi serius. Tetapi bagi sesetengah pesakit MASH, kerosakan boleh berlaku lebih cepat daripada yang dijangkakan.</p>
+
+      <div class="prog-img-wrap">
+        <img src="progression.jpg" alt="Carta menunjukkan perkembangan penyakit hati: daripada hati sihat ke MASLD, MASH, fibrosis awal, fibrosis lanjut dan sirosis, serta peratusan kemungkinan penyakit bertambah buruk atau bertambah baik di setiap peringkat. Kira-kira 20% pesakit mengalami perkembangan yang pesat." loading="lazy">
+        <div class="prog-img-caption">
+          Rajah: Perkembangan penyakit hati — anak panah kuning menunjukkan peratusan pesakit yang bertambah buruk di setiap peringkat; anak panah putih menunjukkan peluang pemulihan. Kira-kira 80% pesakit merosot perlahan-lahan, tetapi 20% boleh merosot dengan pantas dan memerlukan perhatian lebih segera. (Sumber: Rethink Obesity / data perkembangan semula jadi MASH)
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Mengapa ini penting?</strong> Peringkat awal tidak menunjukkan simptom. Pada masa simptom muncul, kerosakan mungkin sudah serius. <strong>Pengesanan awal adalah satu-satunya cara untuk menghentikan perkembangan ini.</strong>
+      </div>
+      <p class="slide-body" style="font-size:0.82rem;color:var(--muted);">Berdasarkan data daripada kajian biopsi berpasangan (Singh et al., 2015) dan ulasan semula jadi MASH (Loomba &amp; Adams, 2019).</p>
+    </div>
+
+    <!-- SLIDE 5: SILENT DANGER -->
+    <div class="slide" id="slide-5">
+      <p class="slide-label">Bahaya Tersembunyi</p>
+      <h1 class="slide-title">Anda tidak akan rasa sakit — sehinggalah terlambat.</h1>
+      <p class="slide-body">Hati tidak ada saraf untuk rasa sakit macam otot atau kulit. Ini bermakna walaupun hati mengalami keradangan dan parut yang serius, anda mungkin tidak rasa apa-apa.</p>
+      <div class="pull-quote">
+        "Ramai orang tidak tahu mereka ada masalah hati sehingga doktor detect masa medical check up — atau sehingga keadaan sudah teruk."
+        <cite>— Panduan Klinikal AASLD 2023</cite>
+      </div>
+      <p class="slide-body">Apabila simptom akhirnya muncul, ia biasanya bermaksud penyakit sudah berada di peringkat lanjut:</p>
+      <div class="numbered-items">
+        <div class="numbered-item">
+          <div class="num-circle">1</div>
+          <div class="num-text">Rasa penat kronik yang tidak hilang walaupun berehat</div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-circle">2</div>
+          <div class="num-text">Sakit atau rasa tidak selesa di bahagian kanan atas perut</div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-circle">3</div>
+          <div class="num-text">Kulit atau mata menguning (jaundis) — tanda sirosis</div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-circle">4</div>
+          <div class="num-text">Perut membengkak akibat cecair terkumpul</div>
+        </div>
+      </div>
+      <div class="callout">
+        Sama seperti tekanan darah tinggi dipanggil "pembunuh senyap" — MASH juga beroperasi dalam diam. Bezanya, MASH boleh membawa kepada kegagalan hati dan kanser hati jika tidak dirawat.
+      </div>
+    </div>
+
+    <!-- SLIDE 6: CARDIOMETABOLIC LINKS -->
+    <div class="slide" id="slide-6">
+      <p class="slide-label">Kaitan Penyakit</p>
+      <h1 class="slide-title">MASH tidak berhenti di hati.</h1>
+      <p class="slide-body">MASH bukan penyakit hati semata-mata. Ia adalah sebahagian daripada rangkaian penyakit metabolisme yang saling berkait rapat.</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>Kaitan</th><th>Apa yang berlaku</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Penyakit Jantung</td>
+            <td>Penyebab kematian nombor satu dalam kalangan pesakit MASH. Keradangan hati menyumbang kepada keradangan salur darah.</td>
+          </tr>
+          <tr>
+            <td>Diabetes Jenis 2</td>
+            <td>Rintangan insulin — punca utama MASH — juga memacu T2D. Hampir 65% pesakit diabetes ada MASLD.</td>
+          </tr>
+          <tr>
+            <td>Kanser Hati</td>
+            <td>MASH adalah antara punca utama kanser hepatoselular yang semakin meningkat, terutama dalam kalangan yang tidak minum alkohol.</td>
+          </tr>
+          <tr>
+            <td>Obesiti</td>
+            <td>Obes meningkatkan risiko MASH secara dramatik — dan MASH pula memperburuk kawalan berat badan melalui kesan metabolisme.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="slide-body">Ini bermakna merawat MASH bukan sahaja melindungi hati — ia juga melindungi jantung, mengawal gula darah, dan mengurangkan risiko keseluruhan.</p>
+      <div class="cta-block">
+        <p>Ingin tahu lebih lanjut tentang kaitan antara obesiti dan penyakit kronik?</p>
+        <div class="cta-btn-row">
+          <a href="https://www.aufthority.com/glp1-genetik/" class="btn-black" data-umami-event="crosslink-glp1">Baca: Obesiti &amp; Genetik</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: DETECTION -->
+    <div class="slide" id="slide-7">
+      <p class="slide-label">Pengesanan Awal</p>
+      <h1 class="slide-title">Ia boleh dikesan — jika kita tahu apa yang dicari.</h1>
+      <p class="slide-body">Berita baiknya: MASH boleh dikesan sebelum simptom muncul, melalui ujian yang biasa tersedia. Garis panduan antarabangsa mengesyorkan saringan awal bagi mereka yang berisiko.</p>
+      <p class="slide-body"><strong>Langkah saringan biasa:</strong></p>
+      <div class="step-cards">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Ujian darah (ALT, AST, FIB-4)</strong> — Enzim hati yang tinggi boleh menjadi petanda awal. Skor FIB-4 menggunakan umur dan ujian darah untuk menilai risiko fibrosis.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Ultrasound abdomen</strong> — Cara mudah untuk melihat sama ada ada lemak dalam hati. Tidak menyakitkan dan biasa dilakukan.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Elastografi hati (FibroScan)</strong> — Mengukur kekakuan hati untuk menilai tahap fibrosis tanpa perlu biopsi. Tersedia di hospital-hospital besar Malaysia.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Biopsi hati</strong> — Ujian paling tepat, dilakukan hanya apabila diperlukan untuk pengesahan diagnosis atau penilaian terapi.</div>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Siapa patut berbincang dengan doktor tentang saringan MASH?</strong> Sesiapa yang mempunyai berat badan berlebihan, diabetes, tekanan darah tinggi, atau paras lemak darah yang tidak terkawal — terutama jika gabungan beberapa faktor ini hadir.
+      </div>
+    </div>
+
+    <!-- SLIDE 8: REVERSIBILITY -->
+    <div class="slide" id="slide-8">
+      <p class="slide-label">Khabar Baik</p>
+      <h1 class="slide-title">Hati boleh pulih — jika dikesan awal.</h1>
+      <p class="slide-body">Ini adalah sesuatu yang ramai tidak tahu: tidak seperti kebanyakan organ lain, hati mempunyai keupayaan luar biasa untuk memulihkan diri.</p>
+      <div class="stat-pair">
+        <div class="stat-box">
+          <div class="snum">Boleh</div>
+          <div class="slabel">Fibrosis hati berhenti berkembang dengan rawatan berat badan yang berkesan</div>
+        </div>
+        <div class="stat-box">
+          <div class="snum">Malah</div>
+          <div class="slabel">Parut hati boleh berkurangan dan fungsi hati boleh pulih — jika dirawat sebelum sirosis</div>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Kunci utama:</strong> Pemulihan hanya mungkin jika tindakan diambil sebelum parut menjadi sirosis penuh. Di peringkat sirosis, kerosakan adalah kekal. Inilah sebabnya pengesanan awal bukan sekadar cadangan — ia kritikal.
+      </div>
+      <p class="slide-body">Kajian menunjukkan bahawa penurunan berat badan yang bermakna — melalui perubahan gaya hidup, ubat-ubatan, atau pembedahan — boleh secara langsung mengurangkan keradangan dan fibrosis hati.</p>
+      <div class="pull-quote">
+        Hati bukan sekadar organ yang menunggu untuk gagal. Ia adalah organ yang ingin sembuh — jika kita beri peluang.
+      </div>
+    </div>
+
+    <!-- SLIDE 9: TREATMENT -->
+    <div class="slide" id="slide-9">
+      <p class="slide-label">Rawatan</p>
+      <h1 class="slide-title">Apa yang boleh dilakukan sekarang.</h1>
+      <p class="slide-body">Rawatan MASH bermula dengan menangani punca utama: berat badan dan kesihatan metabolisme. Tiga pendekatan utama berdasarkan bukti sains:</p>
+      <div class="step-cards">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Perubahan gaya hidup</strong><br>
+            Penurunan berat badan sebanyak 7–10% daripada berat badan asal boleh mengurangkan keradangan hati secara ketara. Ini melibatkan kombinasi pemakanan sihat dan aktiviti fizikal yang bersesuaian — bukan diet ekstrem.
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Ubat GLP-1 (seperti semaglutide)</strong><br>
+            Ubat kelas GLP-1 — yang pada asalnya digunakan untuk diabetes dan obesiti — kini terbukti secara langsung membaiki keadaan hati dalam MASH. Ujian klinikal Fasa 3 (ESSENCE) menunjukkan 62.9% pesakit mencapai resolusi MASH selepas 72 minggu rawatan, berbanding 34.3% dalam kumpulan plasebo. FDA telah meluluskan semaglutide untuk rawatan MASH pada 2025. Perbincangan dengan doktor diperlukan untuk menentukan kesesuaian.
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Pembedahan bariatrik</strong><br>
+            Bagi pesakit dengan obesiti teruk, pembedahan untuk mengurangkan saiz perut bukan sahaja menurunkan berat badan — ia secara langsung meningkatkan hasil hati dan mengurangkan fibrosis dalam MASH.
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Pendekatan bersepadu:</strong> Rawatan terbaik menggabungkan pengurusan berat badan, kawalan penyakit berkaitan (diabetes, tekanan darah), dan pemantauan hati secara berkala. Tiada satu ubat atau cara tunggal yang mencukupi.
+      </div>
+      <div class="cta-block">
+        <p>Mahu tahu anggaran keperluan kalori harian anda sebagai titik permulaan?</p>
+        <div class="cta-btn-row">
+          <a href="https://mytdee.aufthority.com" target="_blank" rel="noopener" class="btn-yellow" data-umami-event="cta-mytdee">Cuba MyTDEE</a>
+          <a href="https://cermindiri.aufthority.com" target="_blank" rel="noopener" class="btn-black" data-umami-event="cta-cermindiri">CerminDiri</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: SOURCES + CROSSLINKS -->
+    <div class="slide" id="slide-10">
+      <p class="slide-label">Rujukan &amp; Pautan</p>
+      <h1 class="slide-title">Bacaan lanjut &amp; sumber rujukan.</h1>
+      <p class="slide-body">Carousel ini dibina berasaskan kajian semakan sistematik dan garis panduan klinikal yang diterbitkan. Semua statistik mempunyai sumber yang boleh disemak.</p>
+      <p class="slide-body" style="font-weight:700;margin-bottom:4px;">Carousel berkaitan di Aufthority:</p>
+      <div class="crosslink-row">
+        <a href="https://www.aufthority.com/glp1-genetik/" class="crosslink-card" data-umami-event="crosslink-glp1-sources">
+          <div class="cl-tag">Obesiti &amp; Biologi</div>
+          <div class="cl-title">Adakah Obesiti Salah Anda? Sains Sebenar.</div>
+          <div class="cl-url">aufthority.com/glp1-genetik/</div>
+        </a>
+        <a href="https://www.aufthority.com/malaysiaobes/" class="crosslink-card" data-umami-event="crosslink-malaysiaobes-sources">
+          <div class="cl-tag">Epidemiologi</div>
+          <div class="cl-title">Mengapa Malaysia Antara Paling Obes di Asia?</div>
+          <div class="cl-url">aufthority.com/malaysiaobes/</div>
+        </a>
+      </div>
+      <div class="source-box">
+        <h3>Sumber Rujukan</h3>
+        <ol>
+          <li>Singh S et al. Fibrosis progression in nonalcoholic fatty liver vs nonalcoholic steatohepatitis: a systematic review and meta-analysis of paired-biopsy studies. Clin Gastroenterol Hepatol. 2015;13(4):643–654. <a href="https://pubmed.ncbi.nlm.nih.gov/24768810/" target="_blank" rel="noopener">PubMed</a></li>
+          <li>Loomba R, Adams LA. The 20% rule of NASH progression: the natural history of advanced fibrosis and cirrhosis caused by NASH. Hepatology. 2019;70(6):1885–1888. <a href="https://pubmed.ncbi.nlm.nih.gov/31520407/" target="_blank" rel="noopener">PubMed</a></li>
+          <li>Quek J et al. Global prevalence of NAFLD and NASH in the overweight and obese population: a systematic review and meta-analysis. Lancet Gastroenterol Hepatol. 2023;8(1):20–30. <a href="https://www.thelancet.com/journals/langas/article/PIIS2468-1253(22)00317-X/fulltext" target="_blank" rel="noopener">Lancet</a></li>
+          <li>Schattenberg JM et al. Disease burden and economic impact of diagnosed NASH in five European countries in 2018. Liver Int. 2021;41(6):1227–1242. <a href="https://pubmed.ncbi.nlm.nih.gov/33340426/" target="_blank" rel="noopener">PubMed</a></li>
+          <li>Rinella ME et al. AASLD practice guidance on the clinical assessment and management of NAFLD. Hepatology. 2023;77(5):1797–1835. <a href="https://pubmed.ncbi.nlm.nih.gov/36727674/" target="_blank" rel="noopener">PubMed</a></li>
+          <li>Sanyal AJ et al. (ESSENCE Trial). Semaglutide in MASH with liver fibrosis. Phase 3 results. FDA accelerated approval August 2025. <a href="https://www.ajmc.com/view/fda-approves-semaglutide-for-mash-with-fibrosis" target="_blank" rel="noopener">AJMC</a></li>
+          <li>Caldwell SH, Argo CK. Reversing advanced hepatic fibrosis in NASH. Dig Dis Sci. 2015;60(4):810–812. <a href="https://pubmed.ncbi.nlm.nih.gov/25398225/" target="_blank" rel="noopener">PubMed</a></li>
+          <li>Younossi Z et al. The global epidemiology of NAFLD and NASH: a systematic review. Hepatology. 2023;77(4):1335–1347. <a href="https://pubmed.ncbi.nlm.nih.gov/36626630/" target="_blank" rel="noopener">PubMed</a></li>
+          <li>Haron H et al. Prevalence and factors associated with MAFLD in Malaysia. Scientific Reports. 2026. <a href="https://www.nature.com/articles/s41598-025-31737-0" target="_blank" rel="noopener">Nature</a></li>
+          <li>EASL–EASD–EASO Clinical Practice Guidelines on MASLD management. J Hepatol. 2024. <a href="https://www.sciencedirect.com/science/article/abs/pii/S246812532200317X" target="_blank" rel="noopener">ScienceDirect</a></li>
+        </ol>
+      </div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:8px;line-height:1.5;">Kandungan ini adalah untuk tujuan pendidikan awam sahaja dan bukan nasihat perubatan. Sila berbincang dengan doktor anda untuk penilaian peribadi.</p>
+    </div>
+
+  </div><!-- /slides-wrap -->
+
+  <div id="nav-wrap">
+    <button class="nav-btn" id="btn-back" disabled data-umami-event="nav-back">← Balik</button>
+    <button class="nav-btn" id="btn-next" data-umami-event="nav-next">Seterusnya →</button>
+  </div>
+  <footer>Informed decisions, better health.</footer>
+</div>
+
+<script>
+(function(){
+  const TOTAL = 10;
+  let current = 1;
+
+  const slides   = document.querySelectorAll('.slide');
+  const btnBack  = document.getElementById('btn-back');
+  const btnNext  = document.getElementById('btn-next');
+  const progFill = document.getElementById('progress-fill');
+  const progLbl  = document.getElementById('progress-label');
+
+  function show(n) {
+    slides.forEach((s,i) => s.classList.toggle('active', i+1 === n));
+    progFill.style.width = ((n/TOTAL)*100)+'%';
+    progLbl.textContent = n+' / '+TOTAL;
+    btnBack.disabled = n === 1;
+    btnNext.textContent = n === TOTAL ? 'Selesai' : 'Seterusnya →';
+    btnNext.setAttribute('data-umami-event', n === TOTAL ? 'carousel-selesai' : 'nav-next');
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(window.umami) umami.track('slide-view',{slide:n});
+  }
+
+  btnNext.addEventListener('click', () => { if(current < TOTAL){ current++; show(current); } });
+  btnBack.addEventListener('click', () => { if(current > 1){ current--; show(current); } });
+
+  show(1);
+})();
+</script>
+</body>
+</html>
