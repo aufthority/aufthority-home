@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-<title>NafasLega — 4·7·8 Breathing · Aufthority</title>
+<title>NafasLega — Breathing Exercise · Aufthority</title>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -93,6 +93,47 @@
     color: var(--ink);
     font-weight: 400;
   }
+
+  /* ── Mode selector ── */
+  .mode-selector {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 340px;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.5s ease forwards 0.18s;
+  }
+  .mode-btn {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 12px 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.2s, background 0.2s;
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .mode-btn.active {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+  .mode-btn-label {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+    color: var(--ink);
+  }
+  .mode-btn-sub {
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
   .splash-orb-wrap {
     position: relative;
     width: 140px;
@@ -136,6 +177,21 @@
     0%,100% { transform: scale(1);    opacity: 0.6; }
     50%      { transform: scale(1.2); opacity: 0.15; }
   }
+
+  /* Box splash preview */
+  .splash-box-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+  .splash-box-wrap.visible { display: flex; }
+
   .splash-text {
     text-align: center;
     margin-bottom: 22px;
@@ -297,6 +353,8 @@
     justify-content: center;
     overflow: hidden;
   }
+
+  /* ── Orb visualiser (478) ── */
   .orb-wrap {
     position: relative;
     width: 160px;
@@ -324,6 +382,16 @@
     transform: scale(1);
     will-change: transform;
   }
+
+  /* ── Box visualiser ── */
+  .box-wrap {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .box-wrap.visible { display: flex; }
+  #boxSvg { overflow: visible; }
 
   .tool-bottom {
     flex-shrink: 0;
@@ -443,13 +511,14 @@
   }
   @media (max-height: 680px) {
     #splash { padding: 32px 28px 28px; }
-    .breadcrumb { margin-bottom: 20px; }
-    .splash-orb-wrap { width: 110px; height: 110px; margin-bottom: 20px; }
+    .breadcrumb { margin-bottom: 16px; }
+    .splash-orb-wrap { width: 110px; height: 110px; margin-bottom: 16px; }
     .splash-orb { width: 52px; height: 52px; }
     .splash-title { font-size: 2.2rem; }
     .splash-desc { font-size: 0.82rem; }
-    .splash-text { margin-bottom: 16px; }
+    .splash-text { margin-bottom: 14px; }
     .tool-bottom { padding: 14px 24px 20px; }
+    .mode-selector { margin-bottom: 16px; }
   }
   @media (max-width: 360px) {
     .pill { min-width: 56px; padding: 8px 10px; }
@@ -467,37 +536,58 @@
       <span class="breadcrumb-sep">/</span>
       <strong>NafasLega</strong>
     </div>
-    <div class="splash-orb-wrap">
+
+    <!-- Mode selector -->
+    <div class="mode-selector">
+      <button class="mode-btn active" id="mode478" onclick="selectMode('478')"
+        data-umami-event="NafasLega - Mode 478">
+        <div class="mode-btn-label">4 · 7 · 8</div>
+        <div class="mode-btn-sub">Deep calm</div>
+      </button>
+      <button class="mode-btn" id="modeBox" onclick="selectMode('box')"
+        data-umami-event="NafasLega - Mode Box">
+        <div class="mode-btn-label">Box</div>
+        <div class="mode-btn-sub">Focus &amp; balance</div>
+      </button>
+    </div>
+
+    <!-- 478 preview -->
+    <div class="splash-orb-wrap" id="splashOrbWrap">
       <div class="splash-ring-outer"></div>
       <div class="splash-ring-inner"></div>
       <div class="splash-orb"></div>
     </div>
+
+    <!-- Box preview -->
+    <div class="splash-box-wrap" id="splashBoxWrap">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="80" height="80"
+          fill="none" stroke-width="1.5"
+          stroke="var(--rule)" shape-rendering="crispEdges"/>
+        <rect id="splashBoxTrail" x="10" y="10" width="80" height="80"
+          fill="none" stroke-width="1.5"
+          stroke="var(--accent)" shape-rendering="crispEdges"
+          stroke-dasharray="320" stroke-dashoffset="320"
+          style="opacity:0.45"/>
+        <circle id="splashDot" cx="10" cy="10" r="5" fill="var(--accent)"/>
+      </svg>
+    </div>
+
     <div class="splash-text">
       <p class="splash-eyebrow">Evidence-Based Breathwork</p>
       <h1 class="splash-title">Nafas<em>Lega</em></h1>
-      <p class="splash-tagline">4 · 7 · 8 Breathing Technique</p>
-      <p class="splash-desc">
+      <p class="splash-tagline" id="splashTagline">4 · 7 · 8 Breathing Technique</p>
+      <p class="splash-desc" id="splashDesc">
         Activates your parasympathetic nervous system —
         calming your heart rate and cortisol in minutes.
       </p>
     </div>
-    <div class="phase-pills">
-      <div class="pill">
-        <span class="pill-num">4</span>
-        <span class="pill-label">Inhale</span>
-      </div>
-      <span class="pill-dot">·</span>
-      <div class="pill">
-        <span class="pill-num">7</span>
-        <span class="pill-label">Hold</span>
-      </div>
-      <span class="pill-dot">·</span>
-      <div class="pill">
-        <span class="pill-num">8</span>
-        <span class="pill-label">Exhale</span>
-      </div>
+
+    <div class="phase-pills" id="phasePills">
+      <!-- filled by JS -->
     </div>
   </div>
+
   <div class="splash-bottom">
     <button class="btn-begin" id="btnBegin"
       data-umami-event="NafasLega - Begin">Begin →</button>
@@ -517,16 +607,56 @@
   </div>
 
   <div class="orb-stage">
-    <div class="orb-wrap">
+    <!-- 478 orb -->
+    <div class="orb-wrap" id="orbWrap">
       <svg class="orb-ring-svg" viewBox="0 0 160 160">
         <circle cx="80" cy="80" r="72"
-          fill="none" stroke="#e0ddd5" stroke-width="1"/>
+          fill="none" stroke="var(--rule)" stroke-width="1"/>
         <circle id="arcPath" cx="80" cy="80" r="72"
-          fill="none" stroke="#2d6a4f" stroke-width="1.5"
+          fill="none" stroke="var(--accent)" stroke-width="1.5"
           stroke-linecap="round"
           stroke-dasharray="452.39" stroke-dashoffset="452.39"/>
       </svg>
       <div class="orb-ball" id="orbBall"></div>
+    </div>
+
+    <!-- Box SVG -->
+    <div class="box-wrap" id="boxWrap">
+      <!--
+        Square: 160×160 canvas, 20px margin → 120×120 inner square.
+        Perimeter = 4 × 120 = 480px.
+        Corners: TL(20,20) TR(140,20) BR(140,140) BL(20,140)
+        Path starts at TL, goes clockwise: top → right → bottom → left.
+      -->
+      <svg id="boxSvg" width="160" height="160" viewBox="0 0 160 160">
+        <!-- Dim track -->
+        <polyline id="boxTrackTL"
+          points="20,20 140,20 140,140 20,140 20,20"
+          fill="none" stroke="var(--rule)" stroke-width="1.5"
+          stroke-linejoin="miter" shape-rendering="crispEdges"/>
+        <!-- Bright trail (drawn via JS canvas-style on a single path element) -->
+        <!-- We use four separate line segments, toggled active by JS -->
+        <!-- Top side -->
+        <line id="bSide0" x1="20" y1="20" x2="20" y2="20"
+          stroke="var(--accent)" stroke-width="2"
+          stroke-linecap="square" shape-rendering="crispEdges" opacity="0.55"/>
+        <!-- Right side -->
+        <line id="bSide1" x1="140" y1="20" x2="140" y2="20"
+          stroke="var(--accent)" stroke-width="2"
+          stroke-linecap="square" shape-rendering="crispEdges" opacity="0.55"/>
+        <!-- Bottom side -->
+        <line id="bSide2" x1="140" y1="140" x2="140" y2="140"
+          stroke="var(--accent)" stroke-width="2"
+          stroke-linecap="square" shape-rendering="crispEdges" opacity="0.55"/>
+        <!-- Left side -->
+        <line id="bSide3" x1="20" y1="140" x2="20" y2="140"
+          stroke="var(--accent)" stroke-width="2"
+          stroke-linecap="square" shape-rendering="crispEdges" opacity="0.55"/>
+        <!-- Dot -->
+        <circle id="boxDot" cx="20" cy="20" r="6" fill="var(--accent)"/>
+        <!-- Dot glow (behind dot) -->
+        <circle id="boxGlow" cx="20" cy="20" r="12" fill="var(--accent)" opacity="0.15"/>
+      </svg>
     </div>
   </div>
 
@@ -555,19 +685,8 @@
       </div>
     </div>
 
-    <div class="phase-guide">
-      <div class="guide-item" id="g0">
-        <div class="guide-phase-lbl">Inhale</div>
-        <div class="guide-dur-val">4<small>s</small></div>
-      </div>
-      <div class="guide-item" id="g1">
-        <div class="guide-phase-lbl">Hold</div>
-        <div class="guide-dur-val">7<small>s</small></div>
-      </div>
-      <div class="guide-item" id="g2">
-        <div class="guide-phase-lbl">Exhale</div>
-        <div class="guide-dur-val">8<small>s</small></div>
-      </div>
+    <div class="phase-guide" id="phaseGuide">
+      <!-- filled by JS -->
     </div>
 
     <button class="btn-stop" id="btnStop"
@@ -575,26 +694,110 @@
   </div>
 </div>
 
-<!-- Rainfall ambient only — no chime file needed -->
+<!-- Rainfall ambient -->
 <audio id="sndAmbient" src="./416227__rasunter255__gentle-rainfall.mp3"
   preload="auto" loop></audio>
 
 <script>
   /* ══════════════════════════════════════
+     MODE DEFINITIONS
+  ══════════════════════════════════════ */
+  const MODES = {
+    '478': {
+      tagline: '4 · 7 · 8 Breathing Technique',
+      desc: 'Activates your parasympathetic nervous system — calming your heart rate and cortisol in minutes.',
+      pills: [
+        { num: '4', label: 'Inhale' }, null,
+        { num: '7', label: 'Hold'   }, null,
+        { num: '8', label: 'Exhale' }
+      ],
+      phases: [
+        { label: 'Inhale', instr: 'breathe in slowly',  dur: 4, ease: 'ease-in'  },
+        { label: 'Hold',   instr: 'retain the breath',  dur: 7, ease: 'linear'   },
+        { label: 'Exhale', instr: 'release completely', dur: 8, ease: 'ease-out' }
+      ],
+      breathPerCycle: 19
+    },
+    'box': {
+      tagline: 'Box Breathing · 4 · 4 · 4 · 4',
+      desc: 'Balances your nervous system — used by athletes and military for stress control and sharp focus.',
+      pills: [
+        { num: '4', label: 'Inhale' }, null,
+        { num: '4', label: 'Hold'   }, null,
+        { num: '4', label: 'Exhale' }, null,
+        { num: '4', label: 'Hold'   }
+      ],
+      phases: [
+        { label: 'Inhale', instr: 'breathe in slowly',  dur: 4, ease: 'linear' },
+        { label: 'Hold',   instr: 'retain the breath',  dur: 4, ease: 'linear' },
+        { label: 'Exhale', instr: 'release completely', dur: 4, ease: 'linear' },
+        { label: 'Hold',   instr: 'empty lungs, hold',  dur: 4, ease: 'linear' }
+      ],
+      breathPerCycle: 16
+    }
+  };
+
+  let currentMode = '478';
+
+  /* ══════════════════════════════════════
+     SPLASH RENDERING
+  ══════════════════════════════════════ */
+  function renderSplash(mode) {
+    const m = MODES[mode];
+
+    document.getElementById('splashTagline').textContent = m.tagline;
+    document.getElementById('splashDesc').textContent    = m.desc;
+
+    // Pills
+    const pillsEl = document.getElementById('phasePills');
+    pillsEl.innerHTML = m.pills.map(p =>
+      p === null
+        ? `<span class="pill-dot">·</span>`
+        : `<div class="pill">
+             <span class="pill-num">${p.num}</span>
+             <span class="pill-label">${p.label}</span>
+           </div>`
+    ).join('');
+
+    // Preview visual
+    const isBox = mode === 'box';
+    document.getElementById('splashOrbWrap').style.display = isBox ? 'none' : 'flex';
+    document.getElementById('splashBoxWrap').classList.toggle('visible', isBox);
+
+    // Mode buttons
+    document.getElementById('mode478').classList.toggle('active', mode === '478');
+    document.getElementById('modeBox').classList.toggle('active', mode === 'box');
+
+    // Phase guide
+    buildPhaseGuide(mode);
+  }
+
+  function buildPhaseGuide(mode) {
+    const phases = MODES[mode].phases;
+    const el = document.getElementById('phaseGuide');
+    el.innerHTML = phases.map((p, i) =>
+      `<div class="guide-item" id="g${i}">
+         <div class="guide-phase-lbl">${p.label}</div>
+         <div class="guide-dur-val">${p.dur}<small>s</small></div>
+       </div>`
+    ).join('');
+  }
+
+  function selectMode(mode) {
+    currentMode = mode;
+    renderSplash(mode);
+  }
+
+  renderSplash('478');
+
+  /* ══════════════════════════════════════
      WEB AUDIO — CHIME GENERATOR
-     Produces a meditative bell-like tone using
-     two sine oscillators (fundamental + harmonic)
-     with a sharp attack and long natural decay,
-     mimicking a struck bowl or chime bar.
   ══════════════════════════════════════ */
   let audioCtx = null;
   let muted    = false;
 
   function getCtx() {
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    // Resume if suspended (iOS requires this after user gesture)
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if (audioCtx.state === 'suspended') audioCtx.resume();
     return audioCtx;
   }
@@ -603,109 +806,52 @@
     if (muted) return;
     const ctx = getCtx();
     const now = ctx.currentTime;
-
-    // Master gain for this chime instance
     const master = ctx.createGain();
     master.connect(ctx.destination);
-
-    // Two partials — fundamental + soft octave harmonic
-    // 528 Hz is often used in meditation ("love frequency")
-    const partials = [
-      { freq: 528,  gain: 0.22 },
-      { freq: 1056, gain: 0.06 },
-    ];
-
-    partials.forEach(({ freq, gain }) => {
-      const osc  = ctx.createOscillator();
-      const gNode = ctx.createGain();
-
+    [{ freq: 528, gain: 0.22 }, { freq: 1056, gain: 0.06 }].forEach(({ freq, gain }) => {
+      const osc = ctx.createOscillator();
+      const g   = ctx.createGain();
       osc.type = 'sine';
       osc.frequency.setValueAtTime(freq, now);
-
-      // Sharp attack (5ms), then exponential decay over ~2.2s
-      gNode.gain.setValueAtTime(0, now);
-      gNode.gain.linearRampToValueAtTime(gain, now + 0.005);
-      gNode.gain.exponentialRampToValueAtTime(0.0001, now + 2.2);
-
-      osc.connect(gNode);
-      gNode.connect(master);
-      osc.start(now);
-      osc.stop(now + 2.3);
+      g.gain.setValueAtTime(0, now);
+      g.gain.linearRampToValueAtTime(gain, now + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, now + 2.2);
+      osc.connect(g); g.connect(master);
+      osc.start(now); osc.stop(now + 2.3);
     });
   }
 
   /* ══════════════════════════════════════
-     RAINFALL AMBIENT (mp3 file)
+     AMBIENT
   ══════════════════════════════════════ */
   const sndAmbient = document.getElementById('sndAmbient');
   sndAmbient.volume = 0.28;
 
-  function startAmbient() {
-    if (muted) return;
-    sndAmbient.currentTime = 0;
-    sndAmbient.play().catch(() => {});
-  }
-
-  function stopAmbient() {
-    sndAmbient.pause();
-    sndAmbient.currentTime = 0;
-  }
+  function startAmbient() { if (muted) return; sndAmbient.currentTime = 0; sndAmbient.play().catch(() => {}); }
+  function stopAmbient()  { sndAmbient.pause(); sndAmbient.currentTime = 0; }
 
   /* ══════════════════════════════════════
      MUTE
   ══════════════════════════════════════ */
   const btnMute = document.getElementById('btnMute');
-
   function setMuted(val) {
     muted = val;
     sndAmbient.muted = val;
     btnMute.textContent = muted ? '🔇' : '🔊';
     btnMute.classList.toggle('muted', muted);
   }
-
   btnMute.addEventListener('click', () => setMuted(!muted));
 
   /* ══════════════════════════════════════
-     PHASES
+     ORB (478) ANIMATION
   ══════════════════════════════════════ */
-  const PHASES = [
-    { label: "Inhale",  instr: "breathe in slowly",  dur: 4, ease: "ease-in"  },
-    { label: "Hold",    instr: "retain the breath",   dur: 7, ease: "linear"   },
-    { label: "Exhale",  instr: "release completely",  dur: 8, ease: "ease-out" },
-  ];
-
   const SCALE_BASE = 1, SCALE_PEAK = 1.85;
-  const C = +(2 * Math.PI * 72).toFixed(2);
+  const C = +(2 * Math.PI * 72).toFixed(2); // circumference for r=72
 
-  let raf, phaseStart, sessionInterval;
-  let phaseIdx = 0, cycles = 0, sessionSec = 0, running = false;
+  const orbBall = document.getElementById('orbBall');
+  const arcPath = document.getElementById('arcPath');
 
-  const splash       = document.getElementById('splash');
-  const tool         = document.getElementById('tool');
-  const btnBegin     = document.getElementById('btnBegin');
-  const btnExit      = document.getElementById('btnExit');
-  const btnStop      = document.getElementById('btnStop');
-  const orbBall      = document.getElementById('orbBall');
-  const arcPath      = document.getElementById('arcPath');
-  const phaseName    = document.getElementById('phaseName');
-  const phaseInstr   = document.getElementById('phaseInstr');
-  const timerNum     = document.getElementById('timerNum');
-  const timerUnit    = document.getElementById('timerUnit');
-  const statDuration = document.getElementById('statDuration');
-  const statCycles   = document.getElementById('statCycles');
-  const statBreath   = document.getElementById('statBreath');
-
-  function fmt(s) {
-    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
-  }
-
-  function activatePhase(idx) {
-    phaseIdx = idx;
-    const p = PHASES[idx];
-
-    phaseName.textContent  = p.label;
-    phaseInstr.textContent = p.instr;
-
+  function orbActivatePhase(p, idx) {
     const targetScale = (idx === 2) ? SCALE_BASE : SCALE_PEAK;
     orbBall.style.transition = `transform ${p.dur}s ${p.ease}, box-shadow ${p.dur}s ease`;
     orbBall.style.transform  = `scale(${targetScale})`;
@@ -720,30 +866,171 @@
     void arcPath.getBoundingClientRect();
     arcPath.style.transition = `stroke-dashoffset ${p.dur}s linear`;
     arcPath.setAttribute('stroke-dashoffset', '0');
+  }
 
-    for (let i = 0; i < 3; i++) {
-      document.getElementById('g' + i).classList.toggle('active', i === idx);
+  function orbReset() {
+    orbBall.style.transition = 'transform 0.7s ease, box-shadow 0.7s ease';
+    orbBall.style.transform  = `scale(${SCALE_BASE})`;
+    orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
+    arcPath.style.transition = 'none';
+    arcPath.setAttribute('stroke-dashoffset', C);
+  }
+
+  /* ══════════════════════════════════════
+     BOX ANIMATION
+     Square corners (px in 160×160 SVG viewBox, margin=20):
+       TL(20,20)  TR(140,20)  BR(140,140)  BL(20,140)
+     Perimeter = 480px. Each side = 120px.
+     Phase → side mapping (clockwise):
+       0 Inhale  → top    TL→TR
+       1 Hold    → right  TR→BR
+       2 Exhale  → bottom BR→BL
+       3 Hold    → left   BL→TL
+  ══════════════════════════════════════ */
+  const BOX_SIDES = [
+    // { fixed axis, moving axis, from, to, isX_moving }
+    { x1:20,  y1:20,  x2:140, y2:20,  moveX:true,  fromV:20,  toV:140 }, // top
+    { x1:140, y1:20,  x2:140, y2:140, moveX:false, fromV:20,  toV:140 }, // right
+    { x1:140, y1:140, x2:20,  y2:140, moveX:true,  fromV:140, toV:20  }, // bottom
+    { x1:20,  y1:140, x2:20,  y2:20,  moveX:false, fromV:140, toV:20  }, // left
+  ];
+
+  let boxRafId     = null;
+  let boxPhaseStart = null;
+  let boxPhaseIdx   = 0;
+  let boxPhaseDur   = 4;
+
+  function boxStartPhase(idx, dur) {
+    if (boxRafId) cancelAnimationFrame(boxRafId);
+    boxPhaseIdx   = idx;
+    boxPhaseDur   = dur;
+    boxPhaseStart = performance.now();
+
+    // Draw completed sides (full bright trail for sides before this one)
+    for (let i = 0; i < 4; i++) {
+      const s = BOX_SIDES[i];
+      const el = document.getElementById('bSide' + i);
+      if (i < idx) {
+        // fully drawn
+        el.setAttribute('x1', s.x1); el.setAttribute('y1', s.y1);
+        el.setAttribute('x2', s.x2); el.setAttribute('y2', s.y2);
+      } else {
+        // not started yet — collapse to start point
+        el.setAttribute('x1', s.x1); el.setAttribute('y1', s.y1);
+        el.setAttribute('x2', s.x1); el.setAttribute('y2', s.y1);
+      }
     }
 
-    // Generated chime marks every phase change
+    boxRafFrame(performance.now());
+  }
+
+  function boxRafFrame(now) {
+    if (!running) return;
+    const elapsed = (now - boxPhaseStart) / 1000;
+    const frac    = Math.min(elapsed / boxPhaseDur, 1);
+    const s       = BOX_SIDES[boxPhaseIdx];
+
+    // Interpolate the active side
+    const v   = s.fromV + (s.toV - s.fromV) * frac;
+    const el  = document.getElementById('bSide' + boxPhaseIdx);
+    el.setAttribute('x1', s.x1); el.setAttribute('y1', s.y1);
+    if (s.moveX) {
+      el.setAttribute('x2', v);   el.setAttribute('y2', s.y2);
+    } else {
+      el.setAttribute('x2', s.x2); el.setAttribute('y2', v);
+    }
+
+    // Dot position = tip of current side
+    const dot  = document.getElementById('boxDot');
+    const glow = document.getElementById('boxGlow');
+    const dx = s.moveX ? v   : s.x2;
+    const dy = s.moveX ? s.y2 : v;
+    dot.setAttribute('cx', dx);  dot.setAttribute('cy', dy);
+    glow.setAttribute('cx', dx); glow.setAttribute('cy', dy);
+
+    if (frac < 1) {
+      boxRafId = requestAnimationFrame(boxRafFrame);
+    }
+  }
+
+  function boxReset() {
+    if (boxRafId) { cancelAnimationFrame(boxRafId); boxRafId = null; }
+    for (let i = 0; i < 4; i++) {
+      const s = BOX_SIDES[i];
+      const el = document.getElementById('bSide' + i);
+      el.setAttribute('x1', s.x1); el.setAttribute('y1', s.y1);
+      el.setAttribute('x2', s.x1); el.setAttribute('y2', s.y1);
+    }
+    const dot  = document.getElementById('boxDot');
+    const glow = document.getElementById('boxGlow');
+    dot.setAttribute('cx', 20);  dot.setAttribute('cy', 20);
+    glow.setAttribute('cx', 20); glow.setAttribute('cy', 20);
+  }
+
+  /* ══════════════════════════════════════
+     SESSION CORE
+  ══════════════════════════════════════ */
+  let raf, phaseStart, sessionInterval;
+  let phaseIdx = 0, cycles = 0, sessionSec = 0, running = false;
+
+  const splash       = document.getElementById('splash');
+  const tool         = document.getElementById('tool');
+  const btnBegin     = document.getElementById('btnBegin');
+  const btnExit      = document.getElementById('btnExit');
+  const btnStop      = document.getElementById('btnStop');
+  const phaseName    = document.getElementById('phaseName');
+  const phaseInstr   = document.getElementById('phaseInstr');
+  const timerNum     = document.getElementById('timerNum');
+  const timerUnit    = document.getElementById('timerUnit');
+  const statDuration = document.getElementById('statDuration');
+  const statCycles   = document.getElementById('statCycles');
+  const statBreath   = document.getElementById('statBreath');
+
+  function fmt(s) {
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  function activatePhase(idx) {
+    phaseIdx = idx;
+    const mode   = MODES[currentMode];
+    const p      = mode.phases[idx];
+    const total  = mode.phases.length;
+
+    phaseName.textContent  = p.label;
+    phaseInstr.textContent = p.instr;
+
+    // Guide highlight
+    for (let i = 0; i < total; i++) {
+      const g = document.getElementById('g' + i);
+      if (g) g.classList.toggle('active', i === idx);
+    }
+
+    // Visual
+    if (currentMode === '478') {
+      orbActivatePhase(p, idx);
+    } else {
+      boxStartPhase(idx, p.dur);
+    }
+
     playChime();
   }
 
   function tick(now) {
     if (!running) return;
     const elapsed   = (now - phaseStart) / 1000;
-    const p         = PHASES[phaseIdx];
+    const p         = MODES[currentMode].phases[phaseIdx];
     const remaining = Math.ceil(p.dur - elapsed);
     timerNum.textContent  = remaining > 0 ? remaining : 1;
     timerUnit.textContent = 'sec';
 
     if (elapsed >= p.dur) {
       phaseStart = now;
-      const next = (phaseIdx + 1) % PHASES.length;
+      const total = MODES[currentMode].phases.length;
+      const next  = (phaseIdx + 1) % total;
       if (next === 0) {
         cycles++;
         statCycles.textContent = cycles;
-        statBreath.textContent = (cycles * 19) + 's';
+        statBreath.textContent = (cycles * MODES[currentMode].breathPerCycle) + 's';
       }
       activatePhase(next);
     }
@@ -757,10 +1044,19 @@
     statBreath.textContent   = '0s';
     statDuration.textContent = '0:00';
 
-    orbBall.style.transition = 'none';
-    orbBall.style.transform  = `scale(${SCALE_BASE})`;
-    orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
-    void orbBall.getBoundingClientRect();
+    // Show correct visualiser
+    const isBox = currentMode === 'box';
+    document.getElementById('orbWrap').style.display = isBox ? 'none' : 'flex';
+    document.getElementById('boxWrap').classList.toggle('visible', isBox);
+
+    if (currentMode === '478') {
+      orbBall.style.transition = 'none';
+      orbBall.style.transform  = `scale(${SCALE_BASE})`;
+      orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
+      void orbBall.getBoundingClientRect();
+    } else {
+      boxReset();
+    }
 
     startAmbient();
     phaseStart = performance.now();
@@ -779,18 +1075,22 @@
     clearInterval(sessionInterval);
     stopAmbient();
 
-    orbBall.style.transition = 'transform 0.7s ease, box-shadow 0.7s ease';
-    orbBall.style.transform  = `scale(${SCALE_BASE})`;
-    orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
-
-    arcPath.style.transition = 'none';
-    arcPath.setAttribute('stroke-dashoffset', C);
+    if (currentMode === '478') {
+      orbReset();
+    } else {
+      boxReset();
+    }
 
     phaseName.textContent  = 'Ready';
     phaseInstr.textContent = 'session will begin shortly';
     timerNum.textContent   = '—';
     timerUnit.textContent  = '';
-    for (let i = 0; i < 3; i++) document.getElementById('g' + i).classList.remove('active');
+
+    const total = MODES[currentMode].phases.length;
+    for (let i = 0; i < total; i++) {
+      const g = document.getElementById('g' + i);
+      if (g) g.classList.remove('active');
+    }
   }
 
   function goToTool() {
