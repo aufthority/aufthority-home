@@ -116,14 +116,15 @@
     }
     @media (min-width: 820px) {
       .container {
-        max-width: calc(58vw - 24px);
-        margin: 0 0 0 0;
-        padding: 0 40px 0 28px;
+        max-width: 580px;
+        margin: 0 0 0 max(48px, calc((58vw - 580px) / 2));
+        padding: 0 28px;
       }
     }
     @media (min-width: 1200px) {
       .container {
-        max-width: min(var(--page-w), calc(60vw - 24px));
+        max-width: 640px;
+        margin: 0 0 0 max(80px, calc((60vw - 640px) / 2));
       }
     }
 
@@ -138,19 +139,22 @@
     }
     @media (min-width: 820px) {
       .nav-wrap {
-        max-width: calc(58vw - 24px);
-        margin: 12px 0 0 0;
-        padding: 12px 40px 12px 28px;
+        max-width: 580px;
+        margin: 12px 0 0 max(48px, calc((58vw - 580px) / 2));
+        padding: 12px 0;
       }
     }
     @media (min-width: 1200px) {
-      .nav-wrap { max-width: min(var(--page-w), calc(60vw - 24px)); }
+      .nav-wrap {
+        max-width: 640px;
+        margin: 12px 0 0 max(80px, calc((60vw - 640px) / 2));
+      }
     }
     nav {
       background: var(--white);
       border-radius: var(--radius-nav);
       box-shadow: var(--shadow-nav);
-      padding: 14px 28px;
+      padding: 10px 10px 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -168,16 +172,20 @@
       gap: 8px;
     }
     .logo-mark {
-      width: 26px;
-      height: 26px;
-      background: var(--yellow);
+      width: 28px;
+      height: 28px;
       border-radius: 7px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 0.78rem;
       flex-shrink: 0;
+    }
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .nav-links {
       display: flex;
@@ -568,15 +576,19 @@
       gap: 7px;
     }
     .footer-logo-mark {
-      width: 20px;
-      height: 20px;
-      background: var(--yellow);
+      width: 22px;
+      height: 22px;
       border-radius: 5px;
+      overflow: hidden;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.6rem;
-      font-weight: 700;
+    }
+    .footer-logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .socials { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
     .social-link {
@@ -605,9 +617,61 @@
     .section:nth-of-type(6) { animation-delay: 0.5s; }
     footer { opacity: 0; animation: fadeUp 0.6s ease forwards 0.58s; }
 
+    /* ── More button (mobile only) ── */
+    .btn-more {
+      display: none;
+      align-items: center;
+      gap: 5px;
+      background: var(--carbon);
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 10px 20px;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--white);
+      cursor: pointer;
+      transition: opacity 0.15s;
+      position: relative;
+    }
+    .btn-more:hover { opacity: 0.75; }
+
+    /* ── More popup ── */
+    .more-popup {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+      overflow: hidden;
+      min-width: 180px;
+      z-index: 200;
+      animation: fn-pop 0.15s ease;
+    }
+    .more-popup.open { display: block; }
+    .more-popup-item {
+      display: block;
+      padding: 14px 22px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--carbon);
+      text-decoration: none;
+      transition: background 0.12s;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .more-popup-item:last-child { border-bottom: none; }
+    .more-popup-item:hover { background: var(--canvas); }
+
+    /* nav needs position:relative for popup anchoring */
+    nav { position: relative; }
+
     /* ── Mobile ── */
     @media (max-width: 640px) {
       .nav-links { display: none; }
+      .btn-more { display: inline-flex; }
       .hero { padding: 56px 0 40px; }
       .hero h1 { font-size: 2.4rem; }
       .about-card, .support-card, .contact-card, .newsletter-card { padding: 32px 24px; }
@@ -616,6 +680,10 @@
     }
     @media (max-width: 400px) {
       .nav-actions .btn-ghost { display: none; }
+    }
+    /* Desktop: hide More button */
+    @media (min-width: 641px) {
+      .btn-more { display: none !important; }
     }
   </style>
 </head>
@@ -630,7 +698,7 @@
   <div class="nav-wrap">
       <nav>
         <a href="#" class="logo">
-          <span class="logo-mark">A</span>
+          <span class="logo-mark"><img src="/favicon2.png" alt="Aufthority" /></span>
           Aufthority
         </a>
         <ul class="nav-links">
@@ -642,7 +710,14 @@
         </ul>
         <div class="nav-actions">
           <a href="https://aufthority.substack.com" class="btn-ghost" target="_blank" rel="noopener" data-umami-event="Nav - Subscribe click">Subscribe</a>
-          <a href="#apps" class="btn-black" data-umami-event="Nav - Explore apps click">Explore Apps</a>
+          <button class="btn-more" id="btn-more" aria-label="More navigation" data-umami-event="Nav - More click">More</button>
+        </div>
+        <!-- Mobile popup menu -->
+        <div class="more-popup" id="more-popup" role="dialog" aria-hidden="true">
+          <a href="#carousels"  class="more-popup-item" data-umami-event="Nav popup - Carousels">Carousels</a>
+          <a href="#apps"       class="more-popup-item" data-umami-event="Nav popup - Apps">Apps</a>
+          <a href="#newsletter" class="more-popup-item" data-umami-event="Nav popup - Newsletter">Newsletter</a>
+          <a href="#contact"    class="more-popup-item" data-umami-event="Nav popup - Contact">Contact</a>
         </div>
       </nav>
     </div><!-- /nav-wrap -->
@@ -962,7 +1037,7 @@
     <footer>
       <div class="footer-inner">
         <a href="#" class="footer-logo">
-          <span class="footer-logo-mark">A</span>
+          <span class="footer-logo-mark"><img src="/favicon2.png" alt="" /></span>
           Aufthority
         </a>
         <ul class="socials">
@@ -1052,6 +1127,40 @@
 
       document.addEventListener('click', closePopover);
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePopover(); });
+    })();
+
+    // ── More popup ──
+    (function () {
+      var btn   = document.getElementById('btn-more');
+      var popup = document.getElementById('more-popup');
+      if (!btn || !popup) return;
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = popup.classList.toggle('open');
+        popup.setAttribute('aria-hidden', open ? 'false' : 'true');
+      });
+
+      // Close on any link click inside popup
+      popup.querySelectorAll('.more-popup-item').forEach(function (link) {
+        link.addEventListener('click', function () {
+          popup.classList.remove('open');
+          popup.setAttribute('aria-hidden', 'true');
+        });
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function () {
+        popup.classList.remove('open');
+        popup.setAttribute('aria-hidden', 'true');
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          popup.classList.remove('open');
+          popup.setAttribute('aria-hidden', 'true');
+        }
+      });
     })();
   </script>
 
