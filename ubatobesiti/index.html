@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenapa Diet &amp; Senaman Sahaja Tidak Cukup? — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="Sains di sebalik ubat obesiti — kenapa badan kita melawan penurunan berat badan, dan bilakah rawatan perubatan diperlukan.">
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Kenapa Diet &amp; Senaman Sahaja Tidak Cukup?">
+<meta property="og:description"  content="Sains di sebalik ubat obesiti — kenapa badan kita melawan penurunan berat badan, dan bilakah rawatan perubatan diperlukan.">
+<meta property="og:url"          content="https://www.aufthority.com/ubat-obesiti/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="ms_MY">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Kenapa Diet &amp; Senaman Sahaja Tidak Cukup?">
+<meta name="twitter:description" content="Sains di sebalik ubat obesiti — kenapa badan kita melawan, dan bila rawatan perubatan diperlukan.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --yellow:#e6e51e;
+  --sunbeam:#fff705;
+  --red:#f34646;
+  --blue:#466cf3;
+  --peach:#ff8562;
+  --carbon:#000000;
+  --paper:#ffffff;
+  --mist:#f2f2f2;
+  --hairline:#e6e6e6;
+  --ash:#cccccc;
+  --top-h:60px;
+  --bot-h:76px;
+}
+
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-weight:400;
+  background-color:var(--mist);
+  background-image:radial-gradient(circle,#d4d4d4 1px,transparent 1px);
+  background-size:20px 20px;
+  color:var(--carbon);
+  min-height:100vh;
+}
+
+/* TOP BAR */
+#top-bar{
+  position:fixed;top:0;left:0;right:0;height:var(--top-h);
+  background:var(--paper);
+  box-shadow:rgba(0,0,0,0.2) 0px 10px 10px -5px;
+  border-radius:0 0 30px 30px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;z-index:100;
+}
+.site-logo{
+  display:flex;align-items:center;gap:9px;
+  text-decoration:none;color:var(--carbon);flex-shrink:0;
+}
+.logo-mark{
+  width:26px;height:26px;border-radius:7px;
+  background:var(--yellow);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;
+  color:var(--carbon);
+}
+.logo-word{
+  font-family:'Poppins',sans-serif;font-weight:500;font-size:14px;
+  letter-spacing:-0.02em;
+}
+#progress-track{
+  flex:1;height:3px;background:var(--hairline);
+  margin:0 16px;border-radius:3000px;overflow:hidden;
+}
+#progress-fill{
+  height:100%;background:var(--carbon);
+  width:0;transition:width .35s ease;
+}
+#progress-label{
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:500;
+  color:var(--ash);min-width:42px;text-align:right;
+}
+
+/* SLIDES */
+#slides-wrap{margin-top:var(--top-h);margin-bottom:var(--bot-h);}
+
+.slide{
+  display:none;
+  min-height:calc(100vh - var(--top-h) - var(--bot-h));
+  padding:36px 16px 32px;
+}
+.slide.active{display:flex;flex-direction:column;justify-content:flex-start;}
+.slide-inner{width:100%;max-width:620px;margin:0 auto;}
+
+/* TAG */
+.slide-tag{
+  display:inline-flex;align-items:center;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:0.05em;text-transform:uppercase;
+  border:1.5px solid var(--carbon);border-radius:3000px;
+  padding:5px 14px;margin-bottom:18px;
+  color:var(--carbon);background:transparent;width:fit-content;
+}
+.tag-yellow{background:var(--yellow);border-color:var(--yellow);}
+.tag-black{background:var(--carbon);color:var(--paper);}
+.tag-blue{background:var(--blue);color:var(--paper);border-color:var(--blue);}
+.tag-red{background:var(--red);color:var(--paper);border-color:var(--red);}
+
+/* HEADINGS */
+.slide-title{
+  font-family:'Poppins',sans-serif;font-weight:700;
+  font-size:clamp(1.65rem,5.5vw,2.5rem);
+  line-height:1.06;letter-spacing:-0.035em;
+  color:var(--carbon);margin-bottom:18px;
+}
+.slide-body{
+  font-family:'Inter',sans-serif;font-size:15px;
+  line-height:1.62;font-weight:400;color:var(--carbon);
+}
+
+/* CARD */
+.card{
+  background:var(--paper);border-radius:28px;
+  padding:22px 20px;margin-top:10px;
+}
+
+/* BIG NUMBER */
+.big-num-card{
+  background:var(--yellow);border-radius:28px;
+  padding:28px 24px;margin:14px 0;
+}
+.big-num-card.dark{background:var(--carbon);}
+.big-num{
+  font-family:'Poppins',sans-serif;font-weight:700;
+  font-size:clamp(3rem,13vw,5.5rem);
+  line-height:1;letter-spacing:-0.04em;color:var(--carbon);
+}
+.big-num-card.dark .big-num{color:var(--yellow);}
+.big-num-label{
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:400;
+  color:rgba(0,0,0,0.6);margin-top:8px;line-height:1.5;
+}
+.big-num-card.dark .big-num-label{color:rgba(255,255,255,0.55);}
+
+/* MYTH/FACT */
+.mf-stack{display:flex;flex-direction:column;gap:8px;margin:14px 0;}
+.mf-card{border-radius:20px;padding:18px 20px;}
+.mf-card.myth{background:var(--hairline);}
+.mf-card.fact{background:var(--carbon);}
+.mf-tag{
+  font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--ash);margin-bottom:7px;
+}
+.mf-card.fact .mf-tag{color:rgba(255,255,255,0.45);}
+.mf-body{font-family:'Inter',sans-serif;font-size:14px;line-height:1.55;font-weight:400;color:var(--carbon);}
+.mf-card.fact .mf-body{color:var(--paper);}
+
+/* STEP BLOCKS */
+.step-blocks{display:flex;flex-direction:column;gap:7px;margin:14px 0;}
+.step-block{
+  background:var(--paper);border-radius:18px;
+  padding:14px 18px;display:flex;align-items:flex-start;gap:14px;
+}
+.step-num{
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:12px;
+  background:var(--carbon);color:var(--paper);
+  width:32px;height:32px;border-radius:3000px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.step-num.yellow{background:var(--yellow);color:var(--carbon);}
+.step-inner{display:flex;flex-direction:column;gap:3px;}
+.step-label{
+  font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;color:var(--ash);
+}
+.step-text{font-family:'Inter',sans-serif;font-size:13px;line-height:1.5;font-weight:400;color:var(--carbon);}
+
+/* CALLOUT */
+.callout{
+  background:var(--sunbeam);border-radius:20px;
+  padding:18px 20px;margin:12px 0;
+}
+.callout-text{
+  font-family:'Inter',sans-serif;font-size:14px;line-height:1.55;
+  font-weight:600;color:var(--carbon);
+}
+
+/* NUM LIST */
+.num-list{display:flex;flex-direction:column;gap:0;margin:14px 0;}
+.num-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 0;border-bottom:1.5px solid var(--hairline);
+}
+.num-item:last-child{border-bottom:none;}
+.num-idx{
+  font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;
+  color:var(--ash);min-width:20px;padding-top:1px;
+}
+.num-text{font-family:'Inter',sans-serif;font-size:13px;line-height:1.55;font-weight:400;color:var(--carbon);}
+
+/* PILLS */
+.pill-row{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0;}
+.pill{
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:500;
+  border:1.5px solid var(--carbon);border-radius:3000px;
+  padding:5px 14px;color:var(--carbon);background:transparent;
+}
+
+/* PULL QUOTE */
+.pull-card{
+  background:var(--paper);border-radius:28px;
+  border-left:5px solid var(--yellow);
+  padding:22px 20px;margin:14px 0;
+}
+.pull-quote{
+  font-family:'Poppins',sans-serif;font-weight:700;
+  font-size:clamp(1rem,3.5vw,1.25rem);
+  line-height:1.4;letter-spacing:-0.02em;color:var(--carbon);
+}
+.pull-cite{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:400;
+  color:var(--ash);margin-top:10px;
+}
+
+/* BAR CHART */
+.bar-chart-wrap{
+  background:var(--paper);border-radius:24px;
+  padding:18px 18px 14px;margin:14px 0;
+}
+
+/* CONC GRID */
+.conc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;}
+@media(max-width:420px){.conc-grid{grid-template-columns:1fr;}}
+.conc-card{background:var(--paper);border-radius:20px;padding:16px 14px;}
+.conc-card.yellow{background:var(--yellow);}
+.conc-n{
+  font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;color:var(--ash);margin-bottom:5px;
+}
+.conc-card.yellow .conc-n{color:rgba(0,0,0,0.45);}
+.conc-text{font-family:'Inter',sans-serif;font-size:13px;line-height:1.5;font-weight:600;color:var(--carbon);}
+
+/* SOURCE */
+.source-cite{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:400;
+  color:var(--ash);margin-top:8px;
+}
+
+/* SOURCE BOX */
+.source-box{
+  background:var(--paper);border-radius:24px;
+  padding:20px 20px;margin-top:16px;
+}
+.source-box strong{
+  font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--ash);display:block;margin-bottom:10px;
+}
+.source-box p{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:400;
+  line-height:1.9;color:var(--ash);
+}
+.source-box a{color:var(--blue);text-decoration:none;}
+
+/* CTA */
+.cta-block{
+  background:var(--paper);border-radius:28px;
+  padding:22px 20px;margin:14px 0;
+}
+.cta-label{
+  font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--ash);margin-bottom:12px;
+}
+.cta-links{display:flex;flex-direction:column;gap:7px;}
+.cta-link{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 16px;border-radius:16px;
+  background:var(--mist);text-decoration:none;
+  color:var(--carbon);border:1.5px solid var(--hairline);
+  background-image:radial-gradient(circle,#d4d4d4 1px,transparent 1px);
+  background-size:20px 20px;
+}
+.cta-link:hover{background-color:var(--hairline);}
+.cta-link-left{display:flex;flex-direction:column;gap:2px;}
+.cta-link-name{
+  font-family:'Poppins',sans-serif;font-size:14px;
+  font-weight:700;letter-spacing:-0.01em;
+}
+.cta-link-sub{font-family:'Inter',sans-serif;font-size:11px;font-weight:400;color:var(--ash);}
+.cta-link-arrow{
+  width:30px;height:30px;border-radius:3000px;
+  background:var(--carbon);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;flex-shrink:0;
+}
+
+/* BOTTOM NAV */
+#bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;height:var(--bot-h);
+  background:var(--paper);
+  border-radius:24px 24px 0 0;
+  box-shadow:rgba(0,0,0,0.12) 0px -4px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;gap:10px;z-index:100;
+}
+.nav-btn{
+  font-family:'Inter',sans-serif;font-size:14px;font-weight:600;
+  padding:11px 26px;border-radius:3000px;cursor:pointer;
+  transition:opacity .15s;border:none;
+}
+.nav-btn:disabled{opacity:0.28;cursor:default;}
+#btn-back{
+  background:transparent;border:1.5px solid var(--carbon);color:var(--carbon);
+}
+#btn-next{background:var(--yellow);color:var(--carbon);}
+#btn-next:hover:not(:disabled){opacity:0.82;}
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <a class="site-logo" href="https://www.aufthority.com">
+    <div class="logo-mark">A</div>
+    <span class="logo-word">Aufthority</span>
+  </a>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+  <span id="progress-label">1 / 12</span>
+</div>
+
+<div id="slides-wrap">
+
+<!-- SLIDE 1 -->
+<div class="slide active" id="slide-1">
+  <div class="slide-inner">
+    <span class="slide-tag tag-yellow">Fakta Malaysia</span>
+    <h1 class="slide-title">Lebih separuh orang dewasa Malaysia kini overweight!</h1>
+    <div class="big-num-card">
+      <div class="big-num">54.4%</div>
+      <div class="big-num-label">orang dewasa Malaysia — berat badan berlebihan atau obes<br>Kajian Kesihatan &amp; Morbiditi Kebangsaan (NHMS) 2023</div>
+    </div>
+    <div class="card">
+      <p class="slide-body">Pada tahun 2011, angka ini ialah 44.5%. Dalam satu dekad sahaja, ia naik <strong>10 peratus</strong>. Ramai cuba diet dan join pelbagai program senaman — namun masalah ini terus membesar.</p>
+      <p class="slide-body" style="margin-top:10px;font-weight:600;">Mengapa?</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="slide-2">
+  <div class="slide-inner">
+    <span class="slide-tag tag-black">Mitos</span>
+    <h1 class="slide-title">Semua tentang disiplin diri</h1>
+    <div class="mf-stack">
+      <div class="mf-card myth">
+        <div class="mf-tag">Tanggapan Biasa</div>
+        <div class="mf-body">"Kalau gagal turun berat badan, bermakna tidak berusaha bersungguh-sungguh."</div>
+      </div>
+      <div class="mf-card fact">
+        <div class="mf-tag">Apa Sains Kata</div>
+        <div class="mf-body">Badan manusia mempunyai mekanisme biologi yang aktif melawan penurunan berat badan — bukan hanya soal kuasa kehendak semata-mata.</div>
+      </div>
+    </div>
+    <div class="callout">
+      <p class="callout-text">Carousel ini akan jelaskan sains di sebalik perjuangan itu — kenapa sesetengah pesakit memerlukan sokongan perubatan, bukan sekadar lebih banyak usaha.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide" id="slide-3">
+  <div class="slide-inner">
+    <span class="slide-tag tag-blue">Sains Badan</span>
+    <h1 class="slide-title">Apabila berat turun, badan bertindak balas seperti ia dalam bahaya</h1>
+    <p class="slide-body">Ini bukan salah anda. Ini tindakbalas biologi badan yang normal. Apabila kalori berkurangan, badan melakukan tiga perkara secara automatik:</p>
+    <div class="step-blocks">
+      <div class="step-block">
+        <div class="step-num">01</div>
+        <div class="step-inner">
+          <div class="step-label">Hormon Lapar</div>
+          <div class="step-text">Ghrelin meningkat — selera makan menjadi lebih kuat berbanding sebelum diet.</div>
+        </div>
+      </div>
+      <div class="step-block">
+        <div class="step-num">02</div>
+        <div class="step-inner">
+          <div class="step-label">Hormon Kenyang</div>
+          <div class="step-text">Leptin dan hormon kenyang lain menurun — rasa puas selepas makan berkurangan.</div>
+        </div>
+      </div>
+      <div class="step-block">
+        <div class="step-num">03</div>
+        <div class="step-inner">
+          <div class="step-label">Metabolisme Perlahan</div>
+          <div class="step-text">Kadar metabolisme rehat turun lebih rendah daripada yang dijangka — badan membakar kalori lebih sedikit walaupun pada saiz badan yang baharu.</div>
+        </div>
+      </div>
+    </div>
+    <p class="source-cite">Sumithran et al., 2011, New England Journal of Medicine</p>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide" id="slide-4">
+  <div class="slide-inner">
+    <span class="slide-tag">Kajian Jangka Panjang</span>
+    <h1 class="slide-title">Perubahan hormon ini tidak hilang apabila kita berhenti berdiet</h1>
+    <div class="pull-card">
+      <div class="pull-quote">"Perubahan aras leptin, ghrelin, dan hormon kenyang — serta peningkatan selera makan — berterusan selama <mark style="background:var(--yellow);padding:1px 5px;border-radius:4px;">12 bulan</mark> selepas penurunan berat badan."</div>
+      <div class="pull-cite">Sumithran et al., New England Journal of Medicine, 2011</div>
+    </div>
+    <div class="card">
+      <p class="slide-body">Seseorang yang baru selesai berdiet tak kembali kepada keadaan hormon asal mereka. Badan mereka terus mendorong kenaikan berat semula untuk berbulan-bulan selepas itu.</p>
+    </div>
+    <div class="callout">
+      <p class="callout-text">Ini bukan kelemahan diri. Ini biologi.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide" id="slide-5">
+  <div class="slide-inner">
+    <span class="slide-tag tag-red">Data Jangka Panjang</span>
+    <h1 class="slide-title">Lebih 80% orang yang berjaya turunkan berat badan akan naik semula dalam masa setahun</h1>
+    <div class="bar-chart-wrap" id="chart-regain"></div>
+    <div class="card">
+      <p class="slide-body">Ini bukan kegagalan individu — ini corak yang konsisten dalam kajian saintifik. Sebab utama: perubahan hormonal berterusan walaupun diet sudah tamat. Badan sememangnya <em>direka</em> untuk kumpul semula berat yang hilang.</p>
+    </div>
+    <p class="source-cite">Spreckley et al., 2021 (PMC7833027)</p>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide" id="slide-6">
+  <div class="slide-inner">
+    <span class="slide-tag tag-blue">Biologi Bukan Pilihan</span>
+    <h1 class="slide-title">Genetik turut menentukan bagaimana badan anda bertindak balas terhadap makanan</h1>
+    <div class="big-num-card">
+      <div class="big-num">40–70%</div>
+      <div class="big-num-label">perbezaan berat badan antara individu boleh dikaitkan dengan faktor genetik<br>Wardle et al., 2008; Frontiers Genetics, PMC5964872</div>
+    </div>
+    <p class="slide-body" style="margin-bottom:10px;">Faktor lain di luar kawalan penuh individu:</p>
+    <div class="pill-row">
+      <span class="pill">Hormon</span>
+      <span class="pill">Kekurangan tidur</span>
+      <span class="pill">Ubat-ubatan tertentu</span>
+      <span class="pill">Tahap stres</span>
+      <span class="pill">Persekitaran makanan</span>
+      <span class="pill">Faktor sosioekonomi</span>
+    </div>
+    <div class="callout">
+      <p class="callout-text">Dua orang boleh mengikuti diet dan program senaman yang sama — dan mendapat keputusan yang sangat berbeza. Ada asas biologi yang kukuh di sebaliknya.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide" id="slide-7">
+  <div class="slide-inner">
+    <span class="slide-tag">Penting: Jangan Salah Faham</span>
+    <h1 class="slide-title">Diet dan senaman tetap asas — tetapi untuk sesetengah orang, ia tak cukup.</h1>
+    <div class="num-list">
+      <div class="num-item">
+        <div class="num-idx">01</div>
+        <div class="num-text">Kajian menunjukkan <strong>5–10% penurunan berat badan</strong> boleh dicapai melalui perubahan gaya hidup sahaja — dan ini sudah memberikan manfaat kesihatan yang bermakna.</div>
+      </div>
+      <div class="num-item">
+        <div class="num-idx">02</div>
+        <div class="num-text">Cabaran yang lebih besar adalah <strong>mengekalkan</strong> penurunan itu untuk jangka panjang — dan di sinilah biologi sering menghalang usaha terbaik kita.</div>
+      </div>
+      <div class="num-item">
+        <div class="num-idx">03</div>
+        <div class="num-text">Bagi pesakit yang memerlukan rawatan perubatan, ubat-ubatan digunakan <strong>bersama</strong> diet dan senaman — bukan menggantikannya.</div>
+      </div>
+    </div>
+    <div class="callout">
+      <p class="callout-text">Ubat obesiti bukan "cheating" atau shortcut. Ia sokong gaya hidup sihat — sama seperti ubat darah tinggi tidak menggantikan keperluan bersenam.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide" id="slide-8">
+  <div class="slide-inner">
+    <span class="slide-tag tag-blue">Sains Rawatan</span>
+    <h1 class="slide-title">Bagaimana ubat obesiti (semaglutide, ozempic, mounjaro) berfungsi?</h1>
+    <p class="slide-body">Ia meniru hormon semula jadi GLP-1 yang mengawal selera makan. Ia bertindak melalui tiga laluan utama:</p>
+    <div class="step-blocks">
+      <div class="step-block">
+        <div class="step-num">01</div>
+        <div class="step-inner">
+          <div class="step-label">Perut</div>
+          <div class="step-text">Memperlahankan pengosongan perut — rasa kenyang bertahan lebih lama selepas makan.</div>
+        </div>
+      </div>
+      <div class="step-block">
+        <div class="step-num">02</div>
+        <div class="step-inner">
+          <div class="step-label">Hipotalamus</div>
+          <div class="step-text">Menghantar isyarat kepada bahagian otak yang mengawal selera makan — mengurangkan keinginan untuk makan.</div>
+        </div>
+      </div>
+      <div class="step-block">
+        <div class="step-num">03</div>
+        <div class="step-inner">
+          <div class="step-label">Laluan Ganjaran Otak</div>
+          <div class="step-text">Mempengaruhi sistem dopamin — menjadikan kawalan makan terasa lebih semula jadi, bukan bergantung sepenuhnya kepada kuasa motivasi.</div>
+        </div>
+      </div>
+    </div>
+    <p class="source-cite">Kooij et al., 2023, ScienceDirect; PMC12244148</p>
+  </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide" id="slide-9">
+  <div class="slide-inner">
+    <span class="slide-tag tag-red">Perkara Yang Perlu Difahami</span>
+    <h1 class="slide-title">Dua pertiga berat yang hilang cenderung kembali apabila ubat dihentikan</h1>
+    <div class="big-num-card dark">
+      <div class="big-num">2/3 atau 66.6%</div>
+      <div class="big-num-label">daripada berat yang hilang kembali dalam masa setahun selepas semaglutide dihentikan<br>Wilding et al., 2022, Diabetes, Obesity and Metabolism (STEP 1 Extension)</div>
+    </div>
+    <div class="card">
+      <p class="slide-body">Ini bukan tanda ubat tidak berkesan. Ini mengesahkan obesiti adalah keadaan kronik — sama seperti pesakit darah tinggi perlu meneruskan ubat mereka, sesetengah pesakit obes memerlukan rawatan jangka panjang.</p>
+    </div>
+    <div class="callout">
+      <p class="callout-text">Latihan bina otot, protein yang cukup, dan tidur yang baik semasa rawatan bukan pilihan — ia sebahagian daripada rawatan itu sendiri.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide" id="slide-10">
+  <div class="slide-inner">
+    <span class="slide-tag">Risiko Yang Perlu Diketahui</span>
+    <h1 class="slide-title">Penurunan berat tanpa senaman berisiko kehilangan jisim otot</h1>
+    <div class="card" style="background:var(--hairline);border-radius:20px;">
+      <p class="slide-body">Kajian sistematik mendapati sehingga <strong>40%</strong> daripada jumlah berat yang hilang semasa rawatan semaglutide boleh datang daripada jisim tanpa lemak (otot) — bukan semata-mata lemak.</p>
+    </div>
+    <div class="step-blocks">
+      <div class="step-block">
+        <div class="step-num yellow">01</div>
+        <div class="step-inner">
+          <div class="step-label">Latihan Rintangan</div>
+          <div class="step-text">Angkat berat atau latihan beban membantu mengekalkan jisim otot semasa rawatan.</div>
+        </div>
+      </div>
+      <div class="step-block">
+        <div class="step-num yellow">02</div>
+        <div class="step-inner">
+          <div class="step-label">Protein Mencukupi</div>
+          <div class="step-text">Pengambilan protein yang mencukupi membantu badan mengekalkan tisu otot walaupun dalam defisit kalori.</div>
+        </div>
+      </div>
+      <div class="step-block">
+        <div class="step-num yellow">03</div>
+        <div class="step-inner">
+          <div class="step-label">Tidur Berkualiti</div>
+          <div class="step-text">Tidur yang baik penting untuk pemulihan otot dan keseimbangan hormon semasa rawatan.</div>
+        </div>
+      </div>
+    </div>
+    <p class="source-cite">PMC11300307 (systematic review); SEMALEAN study, 2025</p>
+  </div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide" id="slide-11">
+  <div class="slide-inner">
+    <span class="slide-tag tag-black">Siapa Yang Layak</span>
+    <h1 class="slide-title">Ubat obesiti: alat klinikal untuk kes yang memerlukan</h1>
+    <p class="slide-body">Rawatan perubatan seperti semaglutide dipertimbangkan apabila:</p>
+    <div class="num-list">
+      <div class="num-item">
+        <div class="num-idx">01</div>
+        <div class="num-text">BMI <strong>≥ 30 kg/m²</strong> (obes), <em>atau</em></div>
+      </div>
+      <div class="num-item">
+        <div class="num-idx">02</div>
+        <div class="num-text">BMI <strong>≥ 27 kg/m²</strong> dengan komplikasi berkaitan — diabetes jenis 2, tekanan darah tinggi, apnea tidur obstruktif, atau penyakit lemak hati</div>
+      </div>
+      <div class="num-item">
+        <div class="num-idx">03</div>
+        <div class="num-text">Perubahan gaya hidup sahaja tidak mencapai hasil yang diperlukan, dan risiko komplikasi kesihatan adalah serius</div>
+      </div>
+    </div>
+    <div class="conc-grid">
+      <div class="conc-card">
+        <div class="conc-n">Bukan tentang</div>
+        <div class="conc-text">Rupa atau saiz badan.</div>
+      </div>
+      <div class="conc-card yellow">
+        <div class="conc-n">Tetapi tentang</div>
+        <div class="conc-text">Risiko kesihatan yang nyata dan boleh dikurangkan.</div>
+      </div>
+    </div>
+    <p class="source-cite">Kriteria kelulusan FDA; WHO obesity treatment guidelines; SELECT trial</p>
+  </div>
+</div>
+
+<!-- SLIDE 12 — CTA + Sources -->
+<div class="slide" id="slide-12">
+  <div class="slide-inner">
+    <span class="slide-tag tag-yellow">Langkah Seterusnya</span>
+    <h1 class="slide-title">Kawal kesihatan anda</h1>
+    <p class="slide-body">Mulakan dengan memahami keperluan badan anda sendiri.</p>
+    <div class="cta-block">
+      <div class="cta-label">Alat Percuma Aufthority</div>
+      <div class="cta-links">
+        <a class="cta-link" href="https://mytdee.aufthority.com" target="_blank" rel="noopener"
+           data-umami-event="cta-mytdee" data-carousel="ubat-obesiti">
+          <div class="cta-link-left">
+            <span class="cta-link-name">MyTDEE</span>
+            <span class="cta-link-sub">Kira keperluan kalori harian anda</span>
+          </div>
+          <div class="cta-link-arrow">&#8594;</div>
+        </a>
+        <a class="cta-link" href="https://cermindiri.aufthority.com" target="_blank" rel="noopener"
+           data-umami-event="cta-cermindiri" data-carousel="ubat-obesiti">
+          <div class="cta-link-left">
+            <span class="cta-link-name">CerminDiri</span>
+            <span class="cta-link-sub">Nilai status kesihatan dan risiko anda</span>
+          </div>
+          <div class="cta-link-arrow">&#8594;</div>
+        </a>
+        <a class="cta-link" href="https://rancangdiri.aufthority.com" target="_blank" rel="noopener"
+           data-umami-event="cta-rancangdiri" data-carousel="ubat-obesiti">
+          <div class="cta-link-left">
+            <span class="cta-link-name">RancangDiri</span>
+            <span class="cta-link-sub">Rancang matlamat kesihatan anda</span>
+          </div>
+          <div class="cta-link-arrow">&#8594;</div>
+        </a>
+      </div>
+    </div>
+    <div class="source-box">
+      <strong>Rujukan</strong>
+      <p>
+        1. NHMS 2023, Kementerian Kesihatan Malaysia<br>
+        2. Sumithran P et al. <em>NEJM</em>, 2011. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1105816" target="_blank" rel="noopener">doi:10.1056/NEJMoa1105816</a><br>
+        3. Fothergill E et al. <em>Obesity</em>, 2016. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5452198/" target="_blank" rel="noopener">PMC5452198</a><br>
+        4. Spreckley M et al. <em>Int J Qual Health</em>, 2021. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7833027/" target="_blank" rel="noopener">PMC7833027</a><br>
+        5. Wardle J et al. <em>AJCN</em>, 2008. <a href="https://www.sciencedirect.com/science/article/pii/S0002916523234887" target="_blank" rel="noopener">ScienceDirect</a><br>
+        6. Wilding JPH et al. <em>Diabetes Obes Metab</em>, 2022. <a href="https://dom-pubs.onlinelibrary.wiley.com/doi/10.1111/dom.14725" target="_blank" rel="noopener">doi:10.1111/dom.14725</a><br>
+        7. Kooij G et al. <em>ScienceDirect</em>, 2023. <a href="https://www.sciencedirect.com/article/pii/S2772408523029071" target="_blank" rel="noopener">ScienceDirect</a><br>
+        8. PMC11300307 — Lean mass systematic review, 2024<br>
+        9. NCD-RisC / Lancet 2024. <a href="https://doi.org/10.1016/S0140-6736(23)02750-2" target="_blank" rel="noopener">doi:10.1016/S0140-6736(23)02750-2</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end slides-wrap -->
+
+<div id="bottom-nav">
+  <button class="nav-btn" id="btn-back" disabled data-umami-event="nav-back">&#8592; Balik</button>
+  <button class="nav-btn" id="btn-next" data-umami-event="nav-next">Seterusnya &#8594;</button>
+</div>
+
+<script>
+(function(){
+  const TOTAL = 12;
+  let current = 1;
+  const slides   = document.querySelectorAll('.slide');
+  const btnBack  = document.getElementById('btn-back');
+  const btnNext  = document.getElementById('btn-next');
+  const progFill = document.getElementById('progress-fill');
+  const progLbl  = document.getElementById('progress-label');
+
+  function buildRegainChart(){
+    const el = document.getElementById('chart-regain');
+    if(!el || el.dataset.built) return;
+    el.dataset.built = '1';
+    const data = [
+      {label:'Selepas 1 tahun', value:80, display:'> 80%'},
+      {label:'Selepas 2 tahun', value:85, display:'> 85%'},
+      {label:'Selepas 3 tahun', value:95, display:'> 95%'},
+    ];
+    const W = el.clientWidth || 540;
+    const BAR_H=30, GAP=10, LW=128, VW=52, PAD=16;
+    const plotW = W - LW - VW - PAD*2;
+    const H = data.length*(BAR_H+GAP) + PAD*2 + 24;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">`;
+    svg += `<text x="${PAD}" y="${PAD+4}" font-size="9" font-family="Inter,sans-serif" font-weight="700" fill="#cccccc" dominant-baseline="hanging" letter-spacing="1">% YANG NAIK BERAT SEMULA</text>`;
+    data.forEach((d,i)=>{
+      const y = PAD+22+i*(BAR_H+GAP);
+      const bw = Math.max(4,Math.round((d.value/100)*plotW));
+      svg += `<text x="${LW-8}" y="${y+BAR_H*0.64}" text-anchor="end" font-size="12" fill="#000" font-family="Inter,sans-serif" font-weight="400">${d.label}</text>`;
+      svg += `<rect x="${LW}" y="${y}" width="${bw}" height="${BAR_H}" fill="#e6e51e" rx="7"/>`;
+      svg += `<text x="${LW+bw+8}" y="${y+BAR_H*0.64}" font-size="12" fill="#000" font-family="Inter,sans-serif" font-weight="700">${d.display}</text>`;
+    });
+    svg += '</svg>';
+    el.innerHTML = svg;
+  }
+
+  function show(n){
+    slides.forEach((s,i)=> s.classList.toggle('active', i+1===n));
+    progFill.style.width = ((n/TOTAL)*100)+'%';
+    progLbl.textContent  = n+' / '+TOTAL;
+    btnBack.disabled     = n===1;
+    btnNext.textContent  = n===TOTAL ? 'Selesai' : 'Seterusnya \u2192';
+    btnNext.setAttribute('data-umami-event', n===TOTAL ? 'carousel-selesai' : 'nav-next');
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(window.umami) umami.track('slide-view',{slide:n,carousel:'ubat-obesiti'});
+    if(n===5) buildRegainChart();
+  }
+
+  btnNext.addEventListener('click',()=>{ if(current<TOTAL){current++;show(current);}});
+  btnBack.addEventListener('click',()=>{ if(current>1){current--;show(current);}});
+  show(1);
+})();
+</script>
+</body>
+</html>
