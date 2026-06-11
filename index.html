@@ -457,6 +457,14 @@
     .badge-beta { background: #fff4e0; color: #b36200; }
     .badge-new  { background: var(--yellow); color: var(--carbon); }
     .app-desc { font-size: 0.84rem; color: #555; line-height: 1.55; }
+    .app-stat {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #888;
+      letter-spacing: 0.01em;
+    }
     .app-arrow { font-size: 1rem; color: #ccc; transition: color 0.2s, transform 0.2s; margin-top: 3px; }
     .app-card:hover .app-arrow { color: var(--carbon); transform: translateX(3px); }
 
@@ -607,6 +615,33 @@
     .social-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
     .social-link:hover { color: var(--carbon); }
     .footer-copy { font-size: 0.78rem; color: #aaa; }
+    .newsletter-sub-pill {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--carbon);
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      vertical-align: middle;
+      margin-left: 10px;
+      line-height: 1.8;
+    }
+    .footer-socials-wrap { display: flex; flex-direction: column; gap: 10px; }
+    .footer-followers-pill {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--carbon);
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      line-height: 1.8;
+    }
 
     /* ── Animations ── */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
@@ -904,6 +939,7 @@
           <div class="app-info">
             <div class="app-name-row"><p class="app-name">CerminDiri</p><span class="app-badge badge-live">Live</span></div>
             <p class="app-desc">A metabolic health calculator using estimation your bodyfat, risk of diabetes, from your BMI, waist to height ratio to help you understand yourself better and make more intentional decisions.</p>
+            <span class="app-stat">4,880 visitors</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
@@ -915,6 +951,7 @@
           <div class="app-info">
             <div class="app-name-row"><p class="app-name">Neurohabit</p><span class="app-badge badge-beta">Beta</span></div>
             <p class="app-desc">A science-backed habit-building app rooted in neuroscience and behavioural psychology.</p>
+            <span class="app-stat">283 downloads</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
@@ -926,6 +963,7 @@
           <div class="app-info">
             <div class="app-name-row"><p class="app-name">NafasLega</p><span class="app-badge badge-new">New</span></div>
             <p class="app-desc">A 4-7-8 guided breathing tool that activates your parasympathetic nervous system — calming your heart rate and cortisol in minutes.</p>
+            <span class="app-stat">189 visitors</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
@@ -945,6 +983,7 @@
           <div class="app-info">
             <div class="app-name-row"><p class="app-name">MakanLah</p><span class="app-badge badge-new">New</span></div>
             <p class="app-desc">A Malaysian food and nutrition guide to help you make smarter, healthier eating decisions based on what you actually eat.</p>
+            <span class="app-stat">130 users</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
@@ -961,6 +1000,7 @@
           <div class="app-info">
             <div class="app-name-row"><p class="app-name">MyTDEE</p><span class="app-badge badge-new">New</span></div>
             <p class="app-desc">A Malaysia-calibrated calorie calculator. Get your real daily energy target — built on local research, not Western averages.</p>
+            <span class="app-stat">109 visitors</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
@@ -978,6 +1018,7 @@
           <div class="app-info">
             <div class="app-name-row"><p class="app-name">Why the Belly?</p><span class="app-badge badge-new">New</span></div>
             <p class="app-desc">A 5-category weight gain audit built on Malaysian health evidence. Find out which area of your life is likely driving the most weight gain — and what to do about it.</p>
+            <span class="app-stat">89 visitors</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
@@ -991,6 +1032,7 @@
           <div class="app-info">
             <div class="app-name-row"><p class="app-name">Energy Audit</p><span class="app-badge badge-new">New</span></div>
             <p class="app-desc">A 6-domain audit covering sleep, movement, nutrition, stress, and medical risk. Find out what's really draining your energy — and get ranked answers in 3 minutes.</p>
+            <span class="app-stat">77 visitors</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
@@ -1002,7 +1044,7 @@
     <section class="section" id="newsletter">
       <p class="section-label">Newsletter</p>
       <div class="newsletter-card">
-        <h2>The Aufthority Letter</h2>
+        <h2>The Aufthority Letter <span class="newsletter-sub-pill">357 subscribers</span></h2>
         <p>Evidence-based health insights, straight to your inbox. No fluff — just clear, actionable information to help you take charge of your health.</p>
         <a href="https://aufthority.substack.com" class="newsletter-btn" target="_blank" rel="noopener" data-umami-event="Newsletter - Subscribe click">Subscribe on Substack →</a>
       </div>
@@ -1043,7 +1085,8 @@
           <span class="footer-logo-mark"><img src="/favicon2.png" alt="" /></span>
           Aufthority
         </a>
-        <ul class="socials">
+        <div class="footer-socials-wrap">
+          <ul class="socials">
           <a href="https://www.threads.net/@theaufthority" class="social-link" target="_blank" rel="noopener" data-umami-event="Social - Threads">
             <svg viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.028-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.018 5.143.822 6.927 2.328 1.7 1.44 2.796 3.4 3.263 5.836l-2.334.421c-.36-1.97-1.176-3.535-2.426-4.583-1.248-1.05-2.992-1.62-5.12-1.635-2.833.018-4.98.879-6.375 2.56-1.364 1.64-2.062 4.018-2.085 7.072.023 3.053.72 5.43 2.085 7.07 1.394 1.68 3.54 2.56 6.375 2.56 1.993-.012 3.608-.43 4.802-1.244 1.464-.985 2.259-2.512 2.464-4.667H12.19v-2.34h9.004c.028.365.042.73.042 1.088 0 3.3-1.002 5.88-2.98 7.666C16.443 23.29 14.012 24 12.186 24z"/></svg>
             Threads
@@ -1061,6 +1104,8 @@
             LinkedIn
           </a>
         </ul>
+          <span class="footer-followers-pill">15,000+ combined followers</span>
+        </div>
         <div>
           <p class="footer-copy">© 2026 Aufthority — <span style="font-style:italic;">Informed decisions, better health.</span></p>
         </div>
