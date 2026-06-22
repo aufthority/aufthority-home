@@ -30,197 +30,200 @@
 <meta name="twitter:description" content="Satu sesi brainstorm. Pelan untuk seumur hidup.">
 <meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
-/* ── Tokens ── */
+/* ── TOKENS — Traffic Productions ─────────────────────── */
 :root {
-  --bg:            #E2DFD2;
-  --ink:           #1a1a18;
-  --muted:         #6b6b62;
-  --accent:        #2d6a4f;
-  --accent-light:  #e8f5ee;
-  --rule:          #ccc9bb;
-  --card-bg:       #f0ead6;
-  --radius:        2px;
-  --radius-pill:   999px;
-  --step-inactive: #bbb8a8;
+  --color-canvas:  #f3f3f3;
+  --color-paper:   #e5e5e5;
+  --color-ink:     #151515;
+  --color-yellow:  #fff824;
+  --color-muted:   #555555;
+  --color-rule:    #151515;
+
+  --font:          'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-pill:   9999px;
 }
 
-/* ── Reset ── */
+/* ── RESET ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  line-height: 1.7;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
 
-/* ── Layout — always centered ── */
+/* ── LAYOUT ────────────────────────────────────────────── */
 .container {
   max-width: 680px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-/* ── Nav ── */
+/* ── NAV ───────────────────────────────────────────────── */
 nav {
-  padding: 20px 0 18px;
+  padding: 16px 0 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--color-rule);
 }
 .logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.05rem;
-  letter-spacing: 0.01em;
-  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
   text-decoration: none;
-  flex-shrink: 0;
+  text-transform: uppercase;
 }
 .nav-links { display: flex; gap: 10px; list-style: none; align-items: center; }
 .nav-links a {
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
   text-decoration: none;
-  padding: 6px 14px;
-  border: 1px solid var(--rule);
+  padding: 5px 12px;
+  border: 1px solid var(--color-rule);
   border-radius: var(--radius-pill);
-  transition: border-color 0.2s, color 0.2s;
-  white-space: nowrap;
+  transition: background 0.12s, color 0.12s;
 }
-.nav-links a:hover { border-color: var(--accent); color: var(--accent); }
+.nav-links a:hover {
+  background: var(--color-yellow);
+  border-color: var(--color-yellow);
+  color: var(--color-ink);
+}
 
 @media (max-width: 400px) {
-  .nav-links a { font-size: 0.68rem; padding: 5px 10px; }
+  .nav-links a { font-size: 10px; padding: 4px 9px; }
 }
 
-/* ── Brand header ── */
-.brand-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 36px 0 28px;
-  border-bottom: 1px solid var(--rule);
-  text-align: center;
-}
-.brand-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 12px;
-  color: var(--accent);
-}
-.brand-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.7rem, 5vw, 2.2rem);
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.brand-subtitle {
-  font-size: 0.82rem;
-  font-weight: 400;
-  color: var(--muted);
-  letter-spacing: 0.03em;
-}
-
-/* ── Section label ── */
+/* ── SECTION LABEL ─────────────────────────────────────── */
 .section-label {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 12px;
+  color: var(--color-ink);
+  background: var(--color-yellow);
+  padding: 3px 8px;
+  margin-bottom: 20px;
 }
 
-/* ── Welcome ── */
-#welcome { padding: 48px 0 56px; }
-#welcome h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2rem, 6vw, 3rem);
-  line-height: 1.1;
-  color: var(--ink);
-  margin-bottom: 16px;
+/* ── WELCOME ───────────────────────────────────────────── */
+#welcome {
+  padding: 56px 0 64px;
+  border-bottom: 1px solid var(--color-rule);
 }
-#welcome h1 em { font-style: italic; color: var(--accent); }
+#welcome h1 {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4rem);
+  line-height: 0.97;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
 .hero-desc {
-  font-size: 1rem;
-  color: var(--muted);
+  font-size: 15px;
+  color: var(--color-muted);
   line-height: 1.65;
   margin-bottom: 14px;
+  max-width: 540px;
 }
 .welcome-meta {
   display: flex;
-  gap: 28px;
-  margin: 28px 0 36px;
-  flex-wrap: wrap;
-  padding: 20px 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+  gap: 0;
+  margin: 36px 0 40px;
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
 }
-.welcome-meta-item { display: flex; flex-direction: column; gap: 3px; }
+.welcome-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 28px 20px 0;
+  margin-right: 28px;
+  border-right: 1px solid var(--color-rule);
+}
+.welcome-meta-item:last-child {
+  border-right: none;
+}
 .meta-val {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.5rem;
-  color: var(--accent);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
   line-height: 1;
 }
 .meta-key {
-  font-size: 0.71rem;
-  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-muted);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.08em;
 }
 
-/* ── Buttons ── */
+/* ── BUTTONS ───────────────────────────────────────────── */
 .btn-primary {
   display: inline-block;
-  padding: 13px 26px;
-  background: var(--accent);
-  color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 0.88rem;
+  padding: 12px 24px;
+  background: var(--color-yellow);
+  color: var(--color-ink);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 13px;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
   border: none;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: opacity 0.12s;
 }
-.btn-primary:hover { opacity: 0.88; }
+.btn-primary:hover { opacity: 0.82; }
 
-/* ── Tool container ── */
+/* ── TOOL CONTAINER ────────────────────────────────────── */
 #tool-container {
   padding: 48px 0 64px;
   display: none;
 }
 
-/* ── Progress ── */
-.progress-bar-wrap { margin-bottom: 40px; }
-.progress-steps { display: flex; gap: 4px; margin-bottom: 8px; }
+/* ── PROGRESS ──────────────────────────────────────────── */
+.progress-bar-wrap { margin-bottom: 44px; }
+.progress-steps { display: flex; gap: 3px; margin-bottom: 10px; }
 .progress-step {
   flex: 1;
-  height: 3px;
-  background: var(--step-inactive);
-  transition: background 0.3s;
+  height: 2px;
+  background: var(--color-paper);
+  transition: background 0.25s;
 }
 .progress-step.done,
-.progress-step.active { background: var(--accent); }
-.progress-label { font-size: 0.74rem; color: var(--muted); letter-spacing: 0.06em; }
+.progress-step.active { background: var(--color-ink); }
+.progress-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
 
-/* ── Steps ── */
-.step { display: none; animation: fadeUp 0.28s ease; }
+/* ── STEPS ─────────────────────────────────────────────── */
+.step { display: none; animation: fadeUp 0.22s ease; }
 .step.active { display: block; }
 
 @keyframes fadeUp {
@@ -229,220 +232,264 @@ nav {
 }
 
 .step-number {
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-.step h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  line-height: 1.15;
-  color: var(--ink);
+  color: var(--color-muted);
   margin-bottom: 8px;
 }
-.step h2 em { font-style: italic; color: var(--accent); }
+.step h2 {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  line-height: 0.97;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
 .step-intro {
-  font-size: 0.96rem;
-  color: var(--muted);
-  margin-bottom: 28px;
-  line-height: 1.65;
+  font-size: 14px;
+  color: var(--color-muted);
+  margin-bottom: 32px;
+  line-height: 1.6;
+  max-width: 520px;
 }
 
-/* ── Why card ── */
+/* ── WHY CARD ──────────────────────────────────────────── */
 .why-card {
-  background: var(--card-bg);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius);
-  padding: 18px 22px;
-  margin-bottom: 22px;
+  border: 1px solid var(--color-rule);
+  padding: 18px 20px;
+  margin-bottom: 12px;
 }
 .why-label {
-  font-size: 0.66rem;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accent);
-  margin-bottom: 5px;
+  background: var(--color-yellow);
+  color: var(--color-ink);
+  display: inline-block;
+  padding: 2px 7px;
+  margin-bottom: 10px;
 }
 .why-card p {
-  font-size: 0.93rem;
-  color: var(--ink);
+  font-size: 14px;
+  color: var(--color-ink);
   line-height: 1.6;
 }
 
-/* ── Fields ── */
+/* ── FIELDS ────────────────────────────────────────────── */
 .field { margin-bottom: 24px; }
 .field label {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
+  margin-bottom: 6px;
 }
 .field-hint {
-  font-size: 0.77rem;
-  color: var(--muted);
+  font-size: 12px;
+  color: var(--color-muted);
   margin-bottom: 8px;
   line-height: 1.5;
 }
 .field textarea,
 .field input[type="text"] {
   width: 100%;
-  background: var(--card-bg);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  padding: 11px 15px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.93rem;
-  font-weight: 300;
-  color: var(--ink);
-  line-height: 1.6;
+  background: var(--color-canvas);
+  border: 1px solid var(--color-rule);
+  border-radius: 0;
+  padding: 10px 14px;
+  font-family: var(--font);
+  font-size: max(15px, 0.93rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  line-height: 1.55;
   resize: vertical;
-  transition: border-color 0.15s;
+  transition: border-color 0.12s;
   outline: none;
   -webkit-appearance: none;
-  /* Prevent iOS zoom on focus */
-  font-size: max(16px, 0.93rem);
 }
 .field textarea:focus,
-.field input[type="text"]:focus { border-color: var(--accent); }
+.field input[type="text"]:focus {
+  border-color: var(--color-ink);
+  background: #fff;
+}
 .field textarea::placeholder,
-.field input[type="text"]::placeholder { color: var(--step-inactive); }
+.field input[type="text"]::placeholder {
+  color: #aaa;
+  font-weight: 400;
+}
 
-/* ── Chips ── */
-.chip-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+/* ── CHIPS ─────────────────────────────────────────────── */
+.chip-group { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .chip {
-  padding: 6px 14px;
-  border: 1px solid var(--rule);
+  padding: 5px 13px;
+  border: 1px solid var(--color-rule);
   border-radius: var(--radius-pill);
-  font-size: 0.8rem;
-  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-muted);
   cursor: pointer;
-  background: var(--card-bg);
-  transition: all 0.15s;
+  background: var(--color-canvas);
+  transition: all 0.12s;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  letter-spacing: 0.01em;
 }
-.chip:hover { border-color: var(--accent); color: var(--accent); }
-.chip.selected { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+.chip:hover { border-color: var(--color-ink); color: var(--color-ink); }
+.chip.selected {
+  background: var(--color-yellow);
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+  font-weight: 700;
+}
 
-/* ── Divider ── */
-.field-divider { border: none; border-top: 1px solid var(--rule); margin: 28px 0; }
+/* ── DIVIDER ───────────────────────────────────────────── */
+.field-divider {
+  border: none;
+  border-top: 1px solid var(--color-rule);
+  margin: 28px 0;
+}
 
-/* ── Step nav ── */
+/* ── STEP NAV ──────────────────────────────────────────── */
 .step-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 44px;
   padding-top: 24px;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--color-rule);
 }
 .btn-back {
   display: inline-block;
   padding: 10px 20px;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--color-rule);
   border-radius: var(--radius-pill);
   background: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--muted);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s;
+  transition: border-color 0.12s, color 0.12s;
   -webkit-tap-highlight-color: transparent;
 }
-.btn-back:hover { border-color: var(--accent); color: var(--accent); }
+.btn-back:hover { border-color: var(--color-ink); color: var(--color-ink); }
 .btn-next {
   display: inline-block;
-  padding: 12px 26px;
-  background: var(--accent);
-  color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 0.88rem;
-  letter-spacing: 0.03em;
+  padding: 11px 24px;
+  background: var(--color-yellow);
+  color: var(--color-ink);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   border: none;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: opacity 0.12s;
   -webkit-tap-highlight-color: transparent;
 }
-.btn-next:hover { opacity: 0.88; }
+.btn-next:hover { opacity: 0.80; }
 
-/* ── Playbook ── */
+/* ── PLAYBOOK ──────────────────────────────────────────── */
 #playbook { display: none; }
 
 .playbook-header {
-  padding: 48px 0 32px;
-  border-bottom: 1px solid var(--rule);
+  padding: 48px 0 36px;
+  border-bottom: 1px solid var(--color-rule);
 }
 .playbook-header h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
-  line-height: 1.1;
-  margin-bottom: 8px;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
-.playbook-header h2 em { font-style: italic; color: var(--accent); }
-.pb-tagline-text { font-size: 0.95rem; color: var(--muted); }
+.pb-tagline-text {
+  font-size: 13px;
+  color: var(--color-muted);
+  font-weight: 400;
+}
 
 .playbook-section {
   padding: 28px 0;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--color-rule);
 }
 .playbook-section-label {
-  font-size: 0.66rem;
-  font-weight: 500;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accent);
-  margin-bottom: 14px;
+  background: var(--color-yellow);
+  color: var(--color-ink);
+  padding: 2px 7px;
+  margin-bottom: 16px;
 }
 .playbook-section h3 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.15rem;
-  margin-bottom: 14px;
-  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+  color: var(--color-muted);
 }
 .playbook-item {
   display: flex;
   gap: 16px;
   padding: 12px 0;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--color-paper);
 }
 .playbook-item:first-of-type { border-top: none; }
 .playbook-item-label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-muted);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   min-width: 96px;
   padding-top: 2px;
   flex-shrink: 0;
 }
-.playbook-item-value { font-size: 0.93rem; color: var(--ink); line-height: 1.6; }
-.playbook-item-value.chips-display { display: flex; flex-wrap: wrap; gap: 6px; }
+.playbook-item-value {
+  font-size: 14px;
+  color: var(--color-ink);
+  line-height: 1.6;
+}
+.playbook-item-value.chips-display { display: flex; flex-wrap: wrap; gap: 5px; }
 .playbook-chip {
   padding: 3px 10px;
-  background: var(--accent-light);
-  color: var(--accent);
+  background: var(--color-yellow);
+  color: var(--color-ink);
   border-radius: var(--radius-pill);
-  font-size: 0.76rem;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .reminder-card {
-  background: var(--card-bg);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  padding: 22px 26px;
+  border: 1px solid var(--color-rule);
+  padding: 22px 24px;
   margin-top: 28px;
 }
-.reminder-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
-.reminder-card strong { color: var(--ink); font-weight: 500; }
+.reminder-card p {
+  font-size: 13px;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+.reminder-card strong { color: var(--color-ink); font-weight: 700; }
 
 .playbook-actions {
   display: flex;
@@ -453,70 +500,89 @@ nav {
 }
 .btn-restart {
   background: none;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--color-rule);
   border-radius: var(--radius-pill);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: var(--muted);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
   cursor: pointer;
   padding: 10px 20px;
-  transition: border-color 0.15s, color 0.15s;
+  transition: border-color 0.12s, color 0.12s;
 }
-.btn-restart:hover { border-color: var(--accent); color: var(--accent); }
+.btn-restart:hover { border-color: var(--color-ink); color: var(--color-ink); }
 
-/* ── Buy Me a Coffee ── */
+/* ── BMC ───────────────────────────────────────────────── */
 .bmc-section {
-  padding: 36px 0;
-  border-top: 1px solid var(--rule);
-  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--color-rule);
 }
 .bmc-section p {
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.6;
-  max-width: 380px;
-  margin: 0 auto 20px;
+  font-size: 13px;
+  color: var(--color-muted);
+  line-height: 1.65;
+  max-width: 400px;
+  margin-bottom: 20px;
 }
 .bmc-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
+  gap: 9px;
+  padding: 11px 22px;
   background: #FFDD00;
-  color: #1a1a18;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 0.88rem;
-  letter-spacing: 0.02em;
+  color: var(--color-ink);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
   border-radius: var(--radius-pill);
-  transition: opacity 0.15s;
   border: none;
   cursor: pointer;
+  transition: opacity 0.12s;
 }
-.bmc-btn:hover { opacity: 0.88; }
+.bmc-btn:hover { opacity: 0.82; }
 .bmc-btn svg { flex-shrink: 0; }
 
-/* ── Footer ── */
+/* ── FOOTER ────────────────────────────────────────────── */
 footer {
-  padding: 32px 0 40px;
-  border-top: 1px solid var(--rule);
-  font-size: 0.8rem;
-  color: var(--muted);
+  padding: 28px 0 36px;
+  border-top: 1px solid var(--color-rule);
+  font-size: 12px;
+  color: var(--color-muted);
 }
-.footer-inner { display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center; }
-.footer-social { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; justify-content: center; }
-.footer-social a { color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: color 0.15s; }
-.footer-social a:hover { color: var(--ink); }
-.footer-tagline { font-style: italic; color: var(--muted); }
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.footer-social { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
+.footer-social a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color 0.12s;
+}
+.footer-social a:hover { color: var(--color-ink); }
+.footer-tagline {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}
 
-/* ── Print ── */
+/* ── PRINT ─────────────────────────────────────────────── */
 @media print {
-  nav, .brand-header, #welcome, #tool-container, footer, .playbook-actions, .bmc-section { display: none !important; }
+  nav, #welcome, #tool-container, footer, .playbook-actions, .bmc-section { display: none !important; }
   #playbook { display: block !important; }
   body { background: #fff; color: #000; }
-  .playbook-chip { border: 1px solid #ccc; }
+  .playbook-chip { border: 1px solid #ccc; background: #f5f5f5; }
   .reminder-card { border: 1px solid #ccc; background: #f9f9f9; }
 }
 </style>
@@ -533,33 +599,11 @@ footer {
   </nav>
 </div>
 
-<!-- BRAND HEADER -->
-<div class="container">
-  <div class="brand-header">
-    <svg class="brand-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect x="10" y="6" width="28" height="36" rx="3" fill="currentColor" opacity="0.12"/>
-      <rect x="10" y="6" width="28" height="36" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/>
-      <line x1="17" y1="6" x2="17" y2="42" stroke="currentColor" stroke-width="1.8"/>
-      <circle cx="17" cy="13" r="1.5" fill="currentColor"/>
-      <circle cx="17" cy="21" r="1.5" fill="currentColor"/>
-      <circle cx="17" cy="29" r="1.5" fill="currentColor"/>
-      <circle cx="17" cy="37" r="1.5" fill="currentColor"/>
-      <line x1="22" y1="16" x2="33" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      <line x1="22" y1="21" x2="33" y2="21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      <line x1="22" y1="26" x2="33" y2="26" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      <line x1="22" y1="31" x2="29" y2="31" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      <polyline points="22,15.2 23.4,17 25.5,13.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </svg>
-    <div class="brand-name">RancangDiri</div>
-    <div class="brand-subtitle">Plan your life. Autopilot your health.</div>
-  </div>
-</div>
-
 <!-- WELCOME -->
 <div id="welcome">
   <div class="container">
-    <p class="section-label">Mula sini</p>
-    <h1>Bina <em>autopilot</em> hidup sihat anda</h1>
+    <span class="section-label">Mula sini</span>
+    <h1>Bina autopilot<br>hidup sihat anda</h1>
     <p class="hero-desc">Kebanyakan orang gagal bukan sebab kurang disiplin — tapi sebab terpaksa buat keputusan baru setiap hari. Bila penat, bila lapar, bila busy — pilihan yang buruk jadi mudah. Kita panggil ni decision fatigue.</p>
     <p class="hero-desc">RancangDiri bantu anda habiskan satu sesi brainstorm, bina pelan yang masuk akal untuk hidup anda, dan simpan sebagai rujukan harian.</p>
     <div class="welcome-meta">
@@ -598,18 +642,18 @@ footer {
     <!-- Step 1 -->
     <div class="step active" id="step-1">
       <p class="step-number">Langkah 1</p>
-      <h2>Kenapa kita perlu <em>rancang</em> dulu?</h2>
+      <h2>Kenapa kita perlu rancang dulu?</h2>
       <p class="step-intro">Sebelum kita mula, faham dulu prinsip di sebalik pendekatan ini.</p>
       <div class="why-card">
-        <p class="why-label">Prinsip utama</p>
+        <span class="why-label">Prinsip utama</span>
         <p>Willpower adalah sumber terhad. Bila anda terpaksa buat keputusan tentang aktiviti atau makanan on the spot — terutama bila penat atau stressed — otak akan ambil jalan mudah. Keputusan yang dibuat awal, dalam keadaan tenang, jauh lebih baik.</p>
       </div>
       <div class="why-card">
-        <p class="why-label">Apa yang kita buat hari ini</p>
+        <span class="why-label">Apa yang kita buat hari ini</span>
         <p>Kita akan brainstorm pilihan aktiviti dan pemakanan yang sesuai dengan hidup anda — bukan pelan ideal yang tak realistic. Kemudian kita susun jadi playbook peribadi yang anda boleh rujuk setiap hari.</p>
       </div>
       <div class="why-card">
-        <p class="why-label">Hasilnya</p>
+        <span class="why-label">Hasilnya</span>
         <p>Satu dokumen ringkas: "Kalau nak aktif, saya buat ini. Kalau nak makan, saya pilih ini." Lepas keputusan dibuat sekali, anda tak perlu fikir lagi. Inilah cara orang bina disiplin yang kekal.</p>
       </div>
       <div class="field">
@@ -626,10 +670,10 @@ footer {
     <!-- Step 2 -->
     <div class="step" id="step-2">
       <p class="step-number">Langkah 2</p>
-      <h2>Brainstorm: <em>Aktiviti</em></h2>
+      <h2>Brainstorm: Aktiviti</h2>
       <p class="step-intro">Bukan pasal senaman yang perfect. Ini pasal aktiviti yang anda betul-betul akan buat.</p>
       <div class="why-card">
-        <p class="why-label">Ingat ni</p>
+        <span class="why-label">Ingat ni</span>
         <p>Senaman terbaik adalah senaman yang anda buat secara konsisten. 20 minit jalan kaki setiap hari jauh lebih berkesan dari workout intense yang anda buat dua kali sebulan.</p>
       </div>
       <div class="field">
@@ -696,10 +740,10 @@ footer {
     <!-- Step 3 -->
     <div class="step" id="step-3">
       <p class="step-number">Langkah 3</p>
-      <h2>Brainstorm: <em>Pemakanan</em></h2>
+      <h2>Brainstorm: Pemakanan</h2>
       <p class="step-intro">Bukan pasal diet ketat. Pasal pilihan yang mudah, lazat, dan boleh diteruskan.</p>
       <div class="why-card">
-        <p class="why-label">Ingat ni</p>
+        <span class="why-label">Ingat ni</span>
         <p>Anda tak perlu masak semua dari awal atau elak makan luar sepenuhnya. Yang penting: tahu pilihan yang lebih baik, supaya bila tiba masa nak order atau masak, otak tak perlu kerja keras.</p>
       </div>
       <div class="field">
@@ -746,10 +790,10 @@ footer {
     <!-- Step 4 -->
     <div class="step" id="step-4">
       <p class="step-number">Langkah 4</p>
-      <h2>Kukuhkan <em>pelan</em> anda</h2>
+      <h2>Kukuhkan pelan anda</h2>
       <p class="step-intro">Dah brainstorm banyak benda. Sekarang, pilih yang paling penting dan konkrit.</p>
       <div class="why-card">
-        <p class="why-label">Kenapa langkah ini penting</p>
+        <span class="why-label">Kenapa langkah ini penting</span>
         <p>Brainstorm yang bagus tapi tak disempitkan jadi pelan konkrit akan tetap jadi sekadar idea. Langkah ini tukarkan semua tu jadi komitmen harian yang boleh anda ikut.</p>
       </div>
       <div class="field">
@@ -781,10 +825,10 @@ footer {
     <!-- Step 5 -->
     <div class="step" id="step-5">
       <p class="step-number">Langkah 5</p>
-      <h2>Langkah <em>terakhir</em></h2>
+      <h2>Langkah terakhir</h2>
       <p class="step-intro">Pelan yang baik ada tarikh semakan. Bila anda akan review balik playbook ini?</p>
       <div class="why-card">
-        <p class="why-label">Kenapa perlu review</p>
+        <span class="why-label">Kenapa perlu review</span>
         <p>Pelan pertama tak akan perfect — dan tak perlu perfect. Yang penting, anda mula. Selepas 4 minggu, anda akan tahu apa yang work dan apa yang perlu diubah suai.</p>
       </div>
       <div class="field">
@@ -810,12 +854,12 @@ footer {
 <div id="playbook">
   <div class="container">
     <div class="playbook-header">
-      <p class="section-label">RancangDiri — Playbook Peribadi</p>
-      <h2>Pelan <em>hidup sihat</em> anda</h2>
+      <span class="section-label">RancangDiri — Playbook Peribadi</span>
+      <h2>Pelan hidup sihat anda</h2>
       <p class="pb-tagline-text" id="pb-tagline"></p>
     </div>
     <div class="playbook-section">
-      <p class="playbook-section-label">Niat</p>
+      <span class="playbook-section-label">Niat</span>
       <h3>Apa yang anda nak capai</h3>
       <div class="playbook-item" id="pb-goal-row">
         <span class="playbook-item-label">Matlamat</span>
@@ -827,7 +871,7 @@ footer {
       </div>
     </div>
     <div class="playbook-section">
-      <p class="playbook-section-label">Pergerakan</p>
+      <span class="playbook-section-label">Pergerakan</span>
       <h3>Rutin aktif anda</h3>
       <div class="playbook-item" id="pb-move-default-row">
         <span class="playbook-item-label">Default</span>
@@ -855,7 +899,7 @@ footer {
       </div>
     </div>
     <div class="playbook-section">
-      <p class="playbook-section-label">Pemakanan</p>
+      <span class="playbook-section-label">Pemakanan</span>
       <h3>Pilihan makan anda</h3>
       <div class="playbook-item" id="pb-meal-default-row">
         <span class="playbook-item-label">Default</span>
@@ -887,7 +931,7 @@ footer {
       </div>
     </div>
     <div class="playbook-section">
-      <p class="playbook-section-label">Bila Benda Tak Jalan</p>
+      <span class="playbook-section-label">Bila Benda Tak Jalan</span>
       <h3>Pelan backup anda</h3>
       <div class="playbook-item" id="pb-obstacle-row">
         <span class="playbook-item-label">Halangan jangkaan</span>
@@ -899,7 +943,7 @@ footer {
       </div>
     </div>
     <div class="playbook-section">
-      <p class="playbook-section-label">Akauntabiliti</p>
+      <span class="playbook-section-label">Akauntabiliti</span>
       <h3>Semak balik pelan ini</h3>
       <div class="playbook-item" id="pb-review-row">
         <span class="playbook-item-label">Tarikh review</span>
@@ -922,12 +966,12 @@ footer {
   <div class="bmc-section">
     <p>Sokong projek Aufthority. Jadi penyokong kepada inisiatif berasaskan bukti kajian saintifik terkini yang memberi manfaat kepada orang ramai.</p>
     <a href="https://buymeacoffee.com/aufali" target="_blank" class="bmc-btn">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M18 8h1a4 4 0 0 1 0 8h-1" stroke="#1a1a18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" stroke="#1a1a18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="6" y1="1" x2="6" y2="4" stroke="#1a1a18" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="10" y1="1" x2="10" y2="4" stroke="#1a1a18" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="14" y1="1" x2="14" y2="4" stroke="#1a1a18" stroke-width="1.8" stroke-linecap="round"/>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1" stroke="#151515" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" stroke="#151515" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="6" y1="1" x2="6" y2="4" stroke="#151515" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="10" y1="1" x2="10" y2="4" stroke="#151515" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="14" y1="1" x2="14" y2="4" stroke="#151515" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
       Support Aufthority
     </a>
