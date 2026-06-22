@@ -5,14 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>NeuroHabit — i-SIHAT 2026 Demo Hub</title>
 
-<!-- Umami Analytics -->
 <script defer src="https://cloud.umami.is/script.js"
   data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
 
-<!-- SEO -->
 <meta name="description" content="Try the NeuroHabit app and explore the scoring engine simulator — presented at i-SIHAT 2026 by Auf Ali, KPJ Healthcare University.">
-
-<!-- Open Graph -->
 <meta property="og:type"         content="website">
 <meta property="og:site_name"    content="Aufthority">
 <meta property="og:title"        content="NeuroHabit — i-SIHAT 2026 Demo Hub">
@@ -22,8 +18,6 @@
 <meta property="og:image:width"  content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale"       content="en_US">
-
-<!-- Twitter / X -->
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:site"        content="@theaufthority">
 <meta name="twitter:title"       content="NeuroHabit — i-SIHAT 2026 Demo Hub">
@@ -36,25 +30,19 @@
 /* ── TOKENS ── */
 :root {
   --yellow:      #e6e51e;
-  --sunbeam:     #fff705;
   --red:         #f34646;
   --blue:        #466cf3;
-  --peach:       #ff8562;
   --carbon:      #000000;
   --white:       #ffffff;
   --mist:        #f2f2f2;
   --hairline:    #e6e6e6;
   --shadow-gray: #cccccc;
-
-  /* NeuroHabit brand colours — used inside mockup only */
-  --dopa:    #E8834A;
-  --sero:    #4D9E7A;
-  --oxyto:   #9B6BB5;
-  --endor:   #5B8FCC;
-  --dark:    #1A1A2E;
-
-  --shadow-md: rgba(0, 0, 0, 0.2) 0px 10px 10px -5px;
-
+  --dopa:        #E8834A;
+  --sero:        #4D9E7A;
+  --oxyto:       #9B6BB5;
+  --endor:       #5B8FCC;
+  --dark:        #1A1A2E;
+  --shadow-md:   rgba(0,0,0,0.2) 0px 10px 10px -5px;
   --font-poppins: 'Poppins', system-ui, -apple-system, sans-serif;
   --font-inter:   'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -69,43 +57,38 @@ body {
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-
-  /* dot-grid canvas texture */
   background-image: radial-gradient(circle, #d4d4d4 1px, transparent 1px);
   background-size: 20px 20px;
-  background-attachment: fixed;
+  /* FIX: background-attachment:fixed removed — breaks iOS Safari */
+  overflow-x: hidden;
+  width: 100%;
 }
-
-/* ── LAYOUT ── */
-.page { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
 /* ── NAV ── */
 .nav-wrap {
-  padding: 20px 24px;
+  padding: 12px 16px;    /* FIX: was 20px 24px — caused overflow on narrow screens */
   position: sticky;
   top: 12px;
   z-index: 100;
 }
-
 nav {
   background: var(--white);
   border-radius: 30px;
   box-shadow: var(--shadow-md);
-  padding: 14px 24px;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .nav-logo {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  min-width: 0;          /* FIX: allow logo to shrink */
 }
-
 .logo-mark {
   width: 28px; height: 28px;
   display: grid;
@@ -119,17 +102,17 @@ nav {
 .lm-2 { background: var(--sero); }
 .lm-3 { background: var(--oxyto); }
 .lm-4 { background: var(--endor); }
-
 .nav-wordmark {
   font-family: var(--font-poppins);
   font-weight: 700;
   font-size: 16px;
   color: var(--carbon);
   letter-spacing: -0.3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
 .nav-wordmark span { color: var(--dopa); }
-
 .nav-badge {
   background: var(--yellow);
   color: var(--carbon);
@@ -140,6 +123,8 @@ nav {
   text-transform: uppercase;
   padding: 5px 14px;
   border-radius: 3000px;
+  white-space: nowrap; /* FIX: keep badge on one line */
+  flex-shrink: 0;
 }
 
 /* ── HERO ── */
@@ -149,7 +134,6 @@ nav {
   margin: 0 auto;
   text-align: center;
 }
-
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -165,34 +149,35 @@ nav {
   text-transform: uppercase;
   color: #555;
   margin-bottom: 32px;
+  /* FIX: allow eyebrow to wrap on small screens */
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
 }
-
 .eyebrow-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--sero);
+  flex-shrink: 0;
 }
-
 .hero h1 {
   font-family: var(--font-poppins);
   font-weight: 700;
-  font-size: clamp(36px, 6vw, 64px);
-  line-height: 1.05;
-  letter-spacing: -2.5px;
+  font-size: clamp(32px, 6vw, 64px); /* FIX: was min 36px — slightly too large on 360px phones */
+  line-height: 1.1;
+  letter-spacing: clamp(-1px, -0.03em, -2.5px);
   color: var(--carbon);
   margin-bottom: 24px;
   max-width: 820px;
   margin-left: auto;
   margin-right: auto;
 }
-
 .hero h1 .accent-yellow {
   background: var(--yellow);
   padding: 0 6px 2px;
   border-radius: 4px;
   display: inline;
 }
-
 .hero-sub {
   font-family: var(--font-inter);
   font-size: 18px;
@@ -202,15 +187,13 @@ nav {
   max-width: 560px;
   margin: 0 auto 40px;
 }
-
 .hero-buttons {
   display: flex;
   gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
-
 .btn-yellow {
   background: var(--yellow);
   color: var(--carbon);
@@ -227,12 +210,7 @@ nav {
   align-items: center;
   gap: 8px;
 }
-
-.btn-yellow:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(230, 229, 30, 0.4);
-}
-
+.btn-yellow:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230,229,30,0.4); }
 .btn-black {
   background: var(--carbon);
   color: var(--white);
@@ -249,7 +227,6 @@ nav {
   align-items: center;
   gap: 8px;
 }
-
 .btn-black:hover { transform: translateY(-2px); opacity: 0.85; }
 
 /* ── HERO PRODUCT CARD ── */
@@ -261,28 +238,23 @@ nav {
   border: 1px solid var(--hairline);
   max-width: 900px;
   margin: 0 auto;
+  width: 100%; /* FIX: constrain to parent width */
 }
-
 .product-topbar {
   background: var(--mist);
   border-bottom: 1px solid var(--hairline);
-  padding: 12px 20px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
-.traffic-dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-}
+.traffic-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .td-r { background: var(--red); }
 .td-y { background: var(--yellow); }
 .td-b { background: var(--blue); }
-
 .product-url {
   flex: 1;
-  margin-left: 12px;
+  min-width: 0; /* FIX: allow this flex child to shrink */
   background: var(--white);
   border: 1px solid var(--hairline);
   border-radius: 6px;
@@ -291,37 +263,33 @@ nav {
   font-size: 12px;
   color: #777;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
 .product-canvas {
-  padding: 32px 32px 24px;
+  padding: 20px 16px;   /* FIX: was 32px — too much horizontal padding on mobile */
   background: var(--white);
-
-  /* dot-grid inside product frame */
   background-image: radial-gradient(circle, #e0e0e0 1px, transparent 1px);
   background-size: 20px 20px;
 }
-
-/* Score canvas inside the product frame */
 .score-canvas {
   background: var(--dark);
   border-radius: 16px;
-  padding: 24px;
+  padding: 16px;        /* FIX: was 24px */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  max-width: 540px;
-  margin: 0 auto 20px;
+  gap: 10px;
+  width: 100%;          /* FIX: fill available space instead of fixed max-width */
 }
-
 .score-card {
   background: rgba(255,255,255,0.06);
   border-radius: 10px;
-  padding: 16px;
+  padding: 14px 12px;
   position: relative;
   overflow: hidden;
+  min-width: 0;         /* FIX: prevent grid blowout */
 }
-
 .score-card::before {
   content: '';
   position: absolute;
@@ -333,20 +301,18 @@ nav {
 .sc-sero::before  { background: var(--sero); }
 .sc-oxyto::before { background: var(--oxyto); }
 .sc-endor::before { background: var(--endor); }
-
 .sc-label {
   font-family: var(--font-inter);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   margin-bottom: 8px;
 }
-.sc-dopa  .sc-label  { color: var(--dopa); }
-.sc-sero  .sc-label  { color: var(--sero); }
-.sc-oxyto .sc-label  { color: var(--oxyto); }
-.sc-endor .sc-label  { color: var(--endor); }
-
+.sc-dopa  .sc-label { color: var(--dopa); }
+.sc-sero  .sc-label { color: var(--sero); }
+.sc-oxyto .sc-label { color: var(--oxyto); }
+.sc-endor .sc-label { color: var(--endor); }
 .sc-bar-bg {
   height: 6px;
   background: rgba(255,255,255,0.08);
@@ -354,25 +320,22 @@ nav {
   margin-bottom: 8px;
   overflow: hidden;
 }
-
 .sc-bar-fill {
   height: 100%;
   border-radius: 3px;
   transition: width 1.2s cubic-bezier(.22,.68,0,1.2);
 }
-.sc-dopa  .sc-bar-fill  { background: var(--dopa);  width: 0; }
-.sc-sero  .sc-bar-fill  { background: var(--sero);  width: 0; }
-.sc-oxyto .sc-bar-fill  { background: var(--oxyto); width: 0; }
-.sc-endor .sc-bar-fill  { background: var(--endor); width: 0; }
-
+.sc-dopa  .sc-bar-fill { background: var(--dopa);  width: 0; }
+.sc-sero  .sc-bar-fill { background: var(--sero);  width: 0; }
+.sc-oxyto .sc-bar-fill { background: var(--oxyto); width: 0; }
+.sc-endor .sc-bar-fill { background: var(--endor); width: 0; }
 .sc-val {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
   color: var(--white);
   line-height: 1;
 }
-
 .phase-pill {
   display: flex;
   align-items: center;
@@ -380,10 +343,10 @@ nav {
   gap: 8px;
   background: rgba(255,255,255,0.06);
   border-radius: 10px;
-  padding: 12px 16px;
+  padding: 12px;
   grid-column: 1 / -1;
+  flex-wrap: wrap;
 }
-
 .phase-label-small {
   font-family: var(--font-inter);
   font-size: 10px;
@@ -392,61 +355,53 @@ nav {
   text-transform: uppercase;
   color: rgba(255,255,255,0.4);
 }
-
 .phase-name {
   font-family: var(--font-poppins);
   font-weight: 700;
   font-size: 16px;
   color: var(--sero);
 }
-
 .formula-strip {
   background: rgba(255,255,255,0.04);
   border-radius: 8px;
-  padding: 10px 16px;
+  padding: 10px 12px;
   font-family: 'Courier New', monospace;
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(255,255,255,0.5);
   text-align: center;
-  margin-top: 4px;
   grid-column: 1 / -1;
+  word-break: break-word;   /* FIX: formula wraps instead of overflowing */
+  line-height: 1.6;
 }
-
 .formula-strip .fh { color: var(--dopa); font-weight: 700; }
 
-/* ── FLOW CARDS (below product frame) ── */
+/* ── FLOW CARDS ── */
 .flow-row {
   display: flex;
   align-items: center;
-  gap: 0;
-  padding: 0 32px 32px;
+  padding: 16px 16px 24px;  /* FIX: was 32px horizontal */
   justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
+  overflow: hidden;
 }
-
 .flow-card {
   background: var(--white);
   border: 1px solid var(--hairline);
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: var(--font-inter);
   font-size: 13px;
   font-weight: 500;
   color: var(--carbon);
   text-decoration: none;
   transition: border-color 0.15s, box-shadow 0.15s;
-  white-space: nowrap;
+  /* FIX: white-space:nowrap removed — was the main bleed culprit in flow row */
 }
-
-.flow-card:hover {
-  border-color: var(--yellow);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-}
-
+.flow-card:hover { border-color: var(--yellow); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
 .flow-icon {
   width: 28px; height: 28px;
   border-radius: 6px;
@@ -458,18 +413,12 @@ nav {
   color: var(--white);
   font-weight: 700;
 }
-
 .fi-dopa  { background: var(--dopa); }
 .fi-sero  { background: var(--sero); }
 .fi-oxyto { background: var(--oxyto); }
 .fi-endor { background: var(--endor); }
 .fi-blue  { background: var(--blue); }
-
-.flow-arrow {
-  color: var(--shadow-gray);
-  font-size: 16px;
-  flex-shrink: 0;
-}
+.flow-arrow { color: var(--shadow-gray); font-size: 16px; flex-shrink: 0; }
 
 /* ── MAIN GRID ── */
 .main {
@@ -477,7 +426,6 @@ nav {
   margin: 0 auto;
   padding: 0 24px 80px;
 }
-
 .section-label {
   font-family: var(--font-inter);
   font-size: 11px;
@@ -490,27 +438,11 @@ nav {
   align-items: center;
   gap: 12px;
 }
-
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--hairline);
-}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
 
 /* ── CTA CARDS ── */
-.cta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 80px;
-}
-
-.cta-grid-single {
-  grid-template-columns: 1fr;
-  max-width: 640px;
-}
-
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 80px; }
+.cta-grid-single { grid-template-columns: 1fr; max-width: 640px; }  /* FIX: was orphaned/broken selector */
 .cta-card {
   background: var(--white);
   border-radius: 32px;
@@ -525,14 +457,8 @@ nav {
   color: inherit;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-
-.cta-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.1);
-}
-
+.cta-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
 .cta-card.primary { border: 2px solid var(--yellow); }
-
 .cta-card-badge {
   display: inline-flex;
   align-items: center;
@@ -549,19 +475,7 @@ nav {
   color: #555;
   width: fit-content;
 }
-
-.cta-card.primary .cta-card-badge {
-  background: var(--yellow);
-  border-color: transparent;
-  color: var(--carbon);
-}
-
-.badge-live-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--sero);
-}
-
+.cta-card.primary .cta-card-badge { background: var(--yellow); border-color: transparent; color: var(--carbon); }
 .cta-card h2 {
   font-family: var(--font-poppins);
   font-weight: 700;
@@ -570,15 +484,7 @@ nav {
   letter-spacing: -0.5px;
   color: var(--carbon);
 }
-
-.cta-card p {
-  font-family: var(--font-inter);
-  font-size: 15px;
-  line-height: 1.6;
-  color: #555;
-  flex: 1;
-}
-
+.cta-card p { font-family: var(--font-inter); font-size: 15px; line-height: 1.6; color: #555; flex: 1; }
 .cta-card-cta {
   display: inline-flex;
   align-items: center;
@@ -588,10 +494,8 @@ nav {
   font-size: 15px;
   margin-top: 4px;
 }
-
 .cta-card.primary .cta-card-cta { color: var(--carbon); }
 .cta-card:not(.primary) .cta-card-cta { color: var(--blue); }
-
 .card-visual {
   height: 120px;
   border-radius: 16px;
@@ -603,105 +507,38 @@ nav {
   position: relative;
   overflow: hidden;
 }
-
-/* App card visual — dark with 4-colour quadrant */
-.card-visual-app {
-  background: var(--dark);
-  gap: 8px;
-}
-
-.app-quad {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  width: 80px; height: 80px;
-}
-
+.card-visual-app { background: var(--dark); gap: 8px; }
+.app-quad { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; width: 80px; height: 80px; }
 .aq { border-radius: 6px; }
 .aq-1 { background: var(--dopa); }
 .aq-2 { background: var(--sero); }
 .aq-3 { background: var(--oxyto); }
 .aq-4 { background: var(--endor); }
-
 .app-quad-label {
-  position: absolute;
-  right: 16px; bottom: 14px;
-  font-family: var(--font-inter);
-  font-size: 10px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  position: absolute; right: 16px; bottom: 14px;
+  font-family: var(--font-inter); font-size: 10px; font-weight: 700;
+  color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase;
 }
-
-/* Simulator card visual — formula display */
-.card-visual-sim {
-  background: #0d1117;
-  flex-direction: column;
-  gap: 6px;
-  padding: 16px;
-  align-items: flex-start;
-}
-
-.sim-line {
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  line-height: 1.5;
-}
-
+.card-visual-sim { background: #0d1117; flex-direction: column; gap: 6px; padding: 16px; align-items: flex-start; }
+.sim-line { font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.5; }
 .sim-line.dim { color: rgba(255,255,255,0.25); }
 .sim-line.bright { color: var(--dopa); }
 .sim-line.result { color: var(--sero); font-weight: 700; }
 .sim-cursor {
-  display: inline-block;
-  width: 7px; height: 13px;
-  background: var(--yellow);
-  vertical-align: middle;
+  display: inline-block; width: 7px; height: 13px;
+  background: var(--yellow); vertical-align: middle;
   animation: blink 1s step-end infinite;
 }
-
 @keyframes blink { 50% { opacity: 0; } }
 
-/* ── CONTEXT SECTION ── */
-.context-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 80px;
-}
+/* ── CONTEXT CARDS ── */
+.context-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 80px; }
+.context-card { background: var(--white); border-radius: 24px; padding: 28px; border: 1px solid var(--hairline); }
+.context-card .cc-num { font-family: var(--font-poppins); font-weight: 700; font-size: 40px; line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
+.context-card .cc-label { font-family: var(--font-inter); font-size: 13px; font-weight: 500; color: #444; line-height: 1.5; }
+.context-card .cc-sub { font-family: var(--font-inter); font-size: 11px; color: #888; margin-top: 4px; }
 
-.context-card {
-  background: var(--white);
-  border-radius: 24px;
-  padding: 28px;
-  border: 1px solid var(--hairline);
-}
-
-.context-card .cc-num {
-  font-family: var(--font-poppins);
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 1;
-  margin-bottom: 8px;
-  letter-spacing: -1px;
-}
-
-.context-card .cc-label {
-  font-family: var(--font-inter);
-  font-size: 13px;
-  font-weight: 500;
-  color: #444;
-  line-height: 1.5;
-}
-
-.context-card .cc-sub {
-  font-family: var(--font-inter);
-  font-size: 11px;
-  color: #888;
-  margin-top: 4px;
-}
-
-/* ── ABOUT SECTION ── */
+/* ── ABOUT ── */
 .about-wrap {
   background: var(--dark);
   border-radius: 32px;
@@ -712,133 +549,28 @@ nav {
   align-items: center;
   margin-bottom: 80px;
 }
-
-.about-text h2 {
-  font-family: var(--font-poppins);
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 1.2;
-  color: var(--white);
-  margin-bottom: 16px;
-  letter-spacing: -0.5px;
-}
-
-.about-text p {
-  font-family: var(--font-inter);
-  font-size: 15px;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 12px;
-}
-
+.about-text h2 { font-family: var(--font-poppins); font-weight: 700; font-size: 28px; line-height: 1.2; color: var(--white); margin-bottom: 16px; letter-spacing: -0.5px; }
+.about-text p { font-family: var(--font-inter); font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.65); margin-bottom: 12px; }
 .about-text p strong { color: var(--white); font-weight: 500; }
-
-.formula-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 28px;
-}
-
-.fc-label {
-  font-family: var(--font-inter);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 16px;
-}
-
-.fc-formula {
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.8;
-  color: var(--white);
-  margin-bottom: 20px;
-}
-
+.formula-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 28px; }
+.fc-label { font-family: var(--font-inter); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+.fc-formula { font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.8; color: var(--white); margin-bottom: 20px; }
 .fc-highlight { color: var(--dopa); font-weight: 700; }
 .fc-op { color: rgba(255,255,255,0.4); }
-
-.fc-vars {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.fc-var {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-}
-
-.fcv-name {
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  color: var(--sero);
-  font-weight: 700;
-  min-width: 110px;
-  flex-shrink: 0;
-  padding-top: 2px;
-}
-
-.fcv-def {
-  font-family: var(--font-inter);
-  font-size: 11px;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.5;
-}
-
-/* ── WEIGHT TIERS ── */
-.tiers-row {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.tier-pill {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 3000px;
-  padding: 10px 16px;
-}
-
-.tier-badge {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-poppins);
-  font-weight: 700;
-  font-size: 11px;
-  color: var(--white);
-  flex-shrink: 0;
-}
-
+.fc-vars { display: flex; flex-direction: column; gap: 10px; }
+.fc-var { display: flex; gap: 10px; align-items: flex-start; }
+.fcv-name { font-family: 'Courier New', monospace; font-size: 10px; color: var(--sero); font-weight: 700; min-width: 110px; flex-shrink: 0; padding-top: 2px; }
+.fcv-def { font-family: var(--font-inter); font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+.tiers-row { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.tier-pill { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); border-radius: 3000px; padding: 10px 16px; }
+.tier-badge { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-poppins); font-weight: 700; font-size: 11px; color: var(--white); flex-shrink: 0; }
 .tb-3 { background: var(--dopa); }
 .tb-2 { background: var(--sero); }
 .tb-1 { background: var(--oxyto); }
+.tier-name { font-family: var(--font-inter); font-weight: 600; font-size: 12px; color: var(--white); margin-bottom: 1px; }
+.tier-habits { font-family: var(--font-inter); font-size: 11px; color: rgba(255,255,255,0.4); }
 
-.tier-text {}
-.tier-name {
-  font-family: var(--font-inter);
-  font-weight: 600;
-  font-size: 12px;
-  color: var(--white);
-  margin-bottom: 1px;
-}
-.tier-habits {
-  font-family: var(--font-inter);
-  font-size: 11px;
-  color: rgba(255,255,255,0.4);
-}
-
-/* ── AUTHOR FOOTER CARD ── */
+/* ── AUTHOR ── */
 .author-card {
   background: var(--white);
   border-radius: 28px;
@@ -851,121 +583,52 @@ nav {
   margin-bottom: 80px;
   flex-wrap: wrap;
 }
-
-.author-info h3 {
-  font-family: var(--font-poppins);
-  font-weight: 700;
-  font-size: 20px;
-  margin-bottom: 4px;
-  color: var(--carbon);
-  letter-spacing: -0.3px;
-}
-
-.author-info p {
-  font-family: var(--font-inter);
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-}
-
+.author-info h3 { font-family: var(--font-poppins); font-weight: 700; font-size: 20px; margin-bottom: 4px; color: var(--carbon); letter-spacing: -0.3px; }
+.author-info p { font-family: var(--font-inter); font-size: 14px; color: #666; line-height: 1.5; }
 .author-tag {
-  display: inline-flex;
-  align-items: center;
-  background: var(--mist);
-  border: 1px solid var(--hairline);
-  border-radius: 3000px;
-  padding: 4px 12px;
-  font-family: var(--font-inter);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #666;
-  margin-bottom: 10px;
+  display: inline-flex; align-items: center;
+  background: var(--mist); border: 1px solid var(--hairline); border-radius: 3000px;
+  padding: 4px 12px; font-family: var(--font-inter); font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #666; margin-bottom: 10px;
 }
-
-.author-buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+.author-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* ── FOOTER ── */
-footer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px 40px;
-}
-
+footer { max-width: 1200px; margin: 0 auto; padding: 0 24px 40px; }
 .footer-inner {
-  border-top: 1px solid var(--hairline);
-  padding-top: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  border-top: 1px solid var(--hairline); padding-top: 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
 }
-
-.footer-brand {
-  font-family: var(--font-poppins);
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--carbon);
-}
-
-.footer-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  font-family: var(--font-inter);
-  font-size: 13px;
-  color: #888;
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
+.footer-brand { font-family: var(--font-poppins); font-weight: 500; font-size: 14px; color: var(--carbon); }
+.footer-links { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
+.footer-links a { font-family: var(--font-inter); font-size: 13px; color: #888; text-decoration: none; transition: color 0.15s; }
 .footer-links a:hover { color: var(--carbon); }
-
-.footer-tagline {
-  font-family: var(--font-inter);
-  font-size: 13px;
-  color: #888;
-  font-style: italic;
-}
-
-/* ── ANNOTATION TAGS ── */
-.cta-grid-single { grid-template-columns: 1fr; max-width: 640px; }
-  display: inline-flex;
-  background: var(--red);
-  color: var(--white);
-  font-family: var(--font-inter);
-  font-size: 11px;
-  font-weight: 500;
-  padding: 4px 12px;
-  border-radius: 3000px;
-  letter-spacing: 0.3px;
-}
+.footer-tagline { font-family: var(--font-inter); font-size: 13px; color: #888; font-style: italic; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 800px) {
   .cta-grid { grid-template-columns: 1fr; }
   .context-grid { grid-template-columns: 1fr 1fr; }
-  .about-wrap { grid-template-columns: 1fr; gap: 32px; }
-  .hero h1 { letter-spacing: -1.5px; }
+  .about-wrap { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px; }
+  .hero h1 { letter-spacing: -1px; }
 }
 
 @media (max-width: 600px) {
   .context-grid { grid-template-columns: 1fr; }
-  .hero { padding: 48px 24px 32px; }
-  .cta-card { padding: 28px; }
-  .about-wrap { padding: 32px 24px; }
-  .author-card { flex-direction: column; align-items: flex-start; }
+  .hero { padding: 40px 16px 24px; }
+  .hero-sub { font-size: 16px; }
+  .main { padding: 0 16px 60px; }
+  .cta-card { padding: 24px 20px; }
+  .author-card { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
+  footer { padding: 0 16px 32px; }
+  /* FIX: stack formula var name + def on mobile to prevent horizontal overflow */
+  .fc-var { flex-direction: column; gap: 4px; }
+  .fcv-name { min-width: unset; }
+  /* FIX: hide flow arrows on mobile so cards wrap cleanly without orphaned arrows */
+  .flow-arrow { display: none; }
+  .sc-val { font-size: 17px; }
+  .formula-strip { font-size: 10px; }
 }
 </style>
 </head>
@@ -976,10 +639,8 @@ footer {
   <nav>
     <a class="nav-logo" href="https://www.aufthority.com">
       <div class="logo-mark">
-        <div class="lm-1"></div>
-        <div class="lm-2"></div>
-        <div class="lm-3"></div>
-        <div class="lm-4"></div>
+        <div class="lm-1"></div><div class="lm-2"></div>
+        <div class="lm-3"></div><div class="lm-4"></div>
       </div>
       <span class="nav-wordmark">Neuro<span>Habit</span>&#169;</span>
     </a>
@@ -993,26 +654,15 @@ footer {
     <div class="eyebrow-dot"></div>
     Innovation Track &nbsp;&middot;&nbsp; System Design &amp; Algorithm Validation
   </div>
-
-  <h1>
-    The scoring engine
-    that<br><span class="accent-yellow">thinks biologically</span>
-  </h1>
-
+  <h1>The scoring engine that<br><span class="accent-yellow">thinks biologically</span></h1>
   <p class="hero-sub">
     Try the live NeuroHabit app and explore the AI-validated hierarchical scoring engine — built for i-SIHAT 2026.
   </p>
-
   <div class="hero-buttons">
-    <a href="https://aufthority.substack.com/p/neurohabit-a-habit-tracker-app-for?r=ewqnk" target="_blank" class="btn-yellow">
-      Open Live App
-    </a>
-    <a href="https://aufthority.github.io/isihattools/" target="_blank" class="btn-black">
-      View Scoring Simulator
-    </a>
+    <a href="https://aufthority.substack.com/p/neurohabit-a-habit-tracker-app-for?r=ewqnk" target="_blank" class="btn-yellow">Open Live App</a>
+    <a href="https://aufthority.github.io/isihattools/" target="_blank" class="btn-black">View Scoring Simulator</a>
   </div>
 
-  <!-- PRODUCT FRAME -->
   <div class="hero-product">
     <div class="product-topbar">
       <div class="traffic-dot td-r"></div>
@@ -1020,7 +670,6 @@ footer {
       <div class="traffic-dot td-b"></div>
       <div class="product-url">aufthority.github.io/neurohabitbeta</div>
     </div>
-
     <div class="product-canvas">
       <div class="score-canvas" id="scoreCanvas">
         <div class="score-card sc-dopa">
@@ -1052,32 +701,16 @@ footer {
         </div>
       </div>
     </div>
-
     <div class="flow-row">
-      <div class="flow-card">
-        <div class="flow-icon fi-dopa">D</div>
-        Log habit
-      </div>
+      <div class="flow-card"><div class="flow-icon fi-dopa">D</div>Log habit</div>
       <span class="flow-arrow">&rarr;</span>
-      <div class="flow-card">
-        <div class="flow-icon fi-sero">W</div>
-        Foundation gate
-      </div>
+      <div class="flow-card"><div class="flow-icon fi-sero">W</div>Foundation gate</div>
       <span class="flow-arrow">&rarr;</span>
-      <div class="flow-card">
-        <div class="flow-icon fi-oxyto">S</div>
-        Effective score
-      </div>
+      <div class="flow-card"><div class="flow-icon fi-oxyto">S</div>Effective score</div>
       <span class="flow-arrow">&rarr;</span>
-      <div class="flow-card">
-        <div class="flow-icon fi-endor">B</div>
-        Brain Phase
-      </div>
+      <div class="flow-card"><div class="flow-icon fi-endor">B</div>Brain Phase</div>
       <span class="flow-arrow">&rarr;</span>
-      <div class="flow-card">
-        <div class="flow-icon fi-blue">AI</div>
-        Edge-case validated
-      </div>
+      <div class="flow-card"><div class="flow-icon fi-blue">AI</div>Edge-case validated</div>
     </div>
   </div>
 </section>
@@ -1085,15 +718,10 @@ footer {
 <!-- MAIN -->
 <main class="main">
 
-  <!-- CTA CARDS -->
   <div class="section-label">Try it yourself</div>
-
   <div class="cta-grid cta-grid-single">
-
-    <!-- Simulator card -->
     <a class="cta-card" href="https://aufthority.github.io/isihattools/" target="_blank">
       <div class="cta-card-badge">Pre-Clinical Tool</div>
-
       <div class="card-visual card-visual-sim">
         <div class="sim-line dim">// edge case simulation</div>
         <div class="sim-line bright">rawPct = 0.85</div>
@@ -1101,70 +729,54 @@ footer {
         <div class="sim-line dim">&mdash;</div>
         <div class="sim-line result">effectiveScore = 0.566 &nbsp;<span class="sim-cursor"></span></div>
       </div>
-
       <h2>Scoring Engine Simulator</h2>
       <p>Input custom habit completion profiles and watch the formula output in real time. Built to stress-test the algorithm across six pre-clinical edge cases — before any participant exposure.</p>
-
-      <div class="cta-card-cta">
-        Open simulator &rarr;
-      </div>
+      <div class="cta-card-cta">Open simulator &rarr;</div>
     </a>
-
   </div>
 
-  <!-- STATS CONTEXT -->
   <div class="section-label">Study at a glance</div>
-
   <div class="context-grid">
     <div class="context-card">
-      <div class="cc-num" style="color: var(--dopa);">4</div>
+      <div class="cc-num" style="color:var(--dopa);">4</div>
       <div class="cc-label">Neurochemical domains modelled</div>
       <div class="cc-sub">Dopamine &middot; Serotonin &middot; Oxytocin &middot; Endorphin</div>
     </div>
     <div class="context-card">
-      <div class="cc-num" style="color: var(--sero);">6+</div>
+      <div class="cc-num" style="color:var(--sero);">6+</div>
       <div class="cc-label">AI-simulated edge cases</div>
       <div class="cc-sub">Claude deployed as pre-clinical phantom model</div>
     </div>
     <div class="context-card">
-      <div class="cc-num" style="color: var(--oxyto);">33</div>
+      <div class="cc-num" style="color:var(--oxyto);">33</div>
       <div class="cc-label">Participants enrolled</div>
       <div class="cc-sub">28-day behavioural intervention pilot</div>
     </div>
     <div class="context-card">
-      <div class="cc-num" style="color: var(--endor);">3</div>
+      <div class="cc-num" style="color:var(--endor);">3</div>
       <div class="cc-label">Habit weight tiers</div>
       <div class="cc-sub">Foundational &middot; Accelerators &middot; Enhancers</div>
     </div>
     <div class="context-card">
-      <div class="cc-num" style="color: var(--blue);">45%</div>
+      <div class="cc-num" style="color:var(--blue);">45%</div>
       <div class="cc-label">Annual AI-mHealth growth rate</div>
       <div class="cc-sub">Morelli &amp; Giansanti, 2026</div>
     </div>
     <div class="context-card">
-      <div class="cc-num" style="color: #555;">2</div>
+      <div class="cc-num" style="color:#555;">2</div>
       <div class="cc-label">Independent scoring layers</div>
       <div class="cc-sub">Formula (analytics) + Brain Phase (user-facing)</div>
     </div>
   </div>
 
-  <!-- ABOUT / FORMULA -->
   <div class="section-label">The algorithm</div>
-
   <div class="about-wrap">
     <div class="about-text">
       <h2>Biologically weighted, not streak-dependent</h2>
-      <p>
-        Most habit apps treat every action as equal. NeuroHabit doesn't. The <strong>Foundational Gate Formula</strong> multiplies each category score by a biological readiness factor — your sleep, hydration, and nutrition completion.
-      </p>
-      <p>
-        If your physiological foundations are incomplete, all higher-order habit scores are penalised. This mirrors how neurochemical systems actually work: Breuning (2012), Harvey et al. (2022).
-      </p>
-      <p>
-        Users never see the number. They see a <strong>Brain Phase</strong> — a qualitative descriptor that communicates readiness without exposing a gameable score.
-      </p>
-
-      <div class="tiers-row" style="margin-top: 24px;">
+      <p>Most habit apps treat every action as equal. NeuroHabit doesn't. The <strong>Foundational Gate Formula</strong> multiplies each category score by a biological readiness factor — your sleep, hydration, and nutrition completion.</p>
+      <p>If your physiological foundations are incomplete, all higher-order habit scores are penalised. This mirrors how neurochemical systems actually work: Breuning (2012), Harvey et al. (2022).</p>
+      <p>Users never see the number. They see a <strong>Brain Phase</strong> — a qualitative descriptor that communicates readiness without exposing a gameable score.</p>
+      <div class="tiers-row" style="margin-top:24px;">
         <div class="tier-pill">
           <div class="tier-badge tb-3">W3</div>
           <div class="tier-text">
@@ -1188,7 +800,6 @@ footer {
         </div>
       </div>
     </div>
-
     <div class="formula-card">
       <div class="fc-label">Scoring Engine — Foundational Gate Formula</div>
       <div class="fc-formula">
@@ -1217,16 +828,14 @@ footer {
     </div>
   </div>
 
-  <!-- AUTHOR CARD -->
   <div class="section-label">Presenter</div>
-
   <div class="author-card">
     <div class="author-info">
       <div class="author-tag">i-SIHAT 2026 &middot; Innovation Track</div>
       <h3>Auf Ali</h3>
       <p>
         School of Pharmacy, KPJ Healthcare University, Nilai<br>
-        <a href="mailto:ucn.auf@kpju.edu.my" style="color: var(--blue); text-decoration: none;">ucn.auf@kpju.edu.my</a>
+        <a href="mailto:ucn.auf@kpju.edu.my" style="color:var(--blue);text-decoration:none;">ucn.auf@kpju.edu.my</a>
       </p>
     </div>
     <div class="author-buttons">
@@ -1237,7 +846,6 @@ footer {
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">NeuroHabit&copy; by Aufthority</div>
@@ -1251,7 +859,6 @@ footer {
 </footer>
 
 <script>
-// Animate score bars on load
 (function() {
   var fills = document.querySelectorAll('.sc-bar-fill');
   setTimeout(function() {
