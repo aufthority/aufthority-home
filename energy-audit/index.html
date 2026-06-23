@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Energy Audit — Aufthority</title>
-  <meta name="description" content="Find out what's really draining your energy. A 6-domain audit covering sleep, movement, nutrition, stress, and medical risk." />
-  <meta property="og:title" content="Energy Audit — Aufthority" />
-  <meta property="og:description" content="Why are you always tired? Why the belly? One audit. Six domains. Ranked answers." />
+  <title>KenapaPenat? — Aufthority</title>
+  <meta name="description" content="Ada lima jenis penat. Kebanyakan orang tak tahu jenis yang mereka alami. Ketahui jenis penat anda — dengan ujian yang menggunakan alat yang sama seperti klinikan." />
+  <meta property="og:title" content="KenapaPenat? — Aufthority" />
+  <meta property="og:description" content="There are five kinds of tired. Most people never find out which one they are. This audit tells you — in 5 minutes." />
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_MY" />
-  <meta property="og:image"        content="https://www.aufthority.com/energy-audit/energy_audit_preview.png">
-  <meta property="og:image:width"  content="1200">
+  <meta property="og:locale" content="ms_MY" />
+  <meta property="og:image" content="https://www.aufthority.com/energy-audit/energy_audit_preview.png">
+  <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@theaufthority" />
@@ -30,20 +30,17 @@
       --color-emerald-sprint:  #00a652;
       --color-skybound-blue:   #478bff;
       --color-golden-rod:      #ffc412;
-
-      --font-display: 'Bebas Neue', ui-sans-serif, sans-serif;
-      --font-body:    'Inter', ui-sans-serif, sans-serif;
-
-      --radius-tags:    1000px;
-      --radius-cards:   43.2px;
-      --radius-buttons: 25.146px;
-
       --cat-sleep:     var(--color-amethyst-glow);
       --cat-physical:  var(--color-emerald-sprint);
       --cat-nutrition: var(--color-golden-rod);
       --cat-mood:      var(--color-skybound-blue);
       --cat-weight:    var(--color-sunset-orange);
       --cat-redflags:  #ff3b3b;
+      --font-display: 'Bebas Neue', ui-sans-serif, sans-serif;
+      --font-body:    'Inter', ui-sans-serif, sans-serif;
+      --radius-tags:    1000px;
+      --radius-cards:   43.2px;
+      --radius-buttons: 25.146px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,159 +55,74 @@
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
-
-    #shell {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    #shell { max-width: 680px; margin: 0 auto; padding: 0 24px; }
 
     /* NAV */
     nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0 14px;
-      position: sticky;
-      top: 0;
-      background: var(--color-midnight-abyss);
-      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 0 14px; position: sticky; top: 0;
+      background: var(--color-midnight-abyss); z-index: 100;
       border-bottom: 1px solid rgba(253,249,240,0.08);
     }
-    .nav-logo {
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--color-ghost-white);
-      text-decoration: none;
-    }
+    .nav-logo { font-family: var(--font-body); font-weight: 700; font-size: 14px; color: var(--color-ghost-white); text-decoration: none; }
+    .nav-part-indicator { font-size: 11px; color: rgba(253,249,240,0.3); letter-spacing: 0.165px; background: rgba(253,249,240,0.07); border-radius: var(--radius-tags); padding: 4px 12px; display: none; }
+    .nav-part-indicator.visible { display: block; }
 
     /* HERO */
     .hero { padding: 64px 0 48px; }
-    .hero-tag {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.165px;
-      text-transform: uppercase;
-      color: var(--color-midnight-abyss);
-      background: var(--color-lime-squeeze);
-      border-radius: var(--radius-tags);
-      padding: 5px 14px;
-      margin-bottom: 20px;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(64px, 16vw, 108px);
-      line-height: 1;
-      letter-spacing: -0.03em;
-      color: var(--color-ghost-white);
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
+    .hero-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.165px; text-transform: uppercase; color: var(--color-midnight-abyss); background: var(--color-lime-squeeze); border-radius: var(--radius-tags); padding: 5px 14px; margin-bottom: 20px; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(64px, 16vw, 108px); line-height: 1; letter-spacing: -0.03em; color: var(--color-ghost-white); text-transform: uppercase; margin-bottom: 24px; }
     .hero-title .accent { color: var(--color-lime-squeeze); }
-    .hero-body {
-      font-size: 16px;
-      line-height: 1.6;
-      letter-spacing: -0.01em;
-      color: rgba(253,249,240,0.6);
-      max-width: 480px;
+    .hero-body { font-size: 16px; line-height: 1.6; letter-spacing: -0.01em; color: rgba(253,249,240,0.6); max-width: 480px; margin-bottom: 16px; }
+    .hero-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+    .hero-pill { background: rgba(253,249,240,0.07); border: 1px solid rgba(253,249,240,0.12); border-radius: var(--radius-tags); font-size: 11px; letter-spacing: 0.165px; color: rgba(253,249,240,0.45); padding: 5px 14px; }
+
+    /* Payoff list — 16Personalities-style three benefits */
+    .hero-body-payoff {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
       margin-bottom: 28px;
     }
-    .hero-meta { display: flex; gap: 8px; flex-wrap: wrap; }
-    .hero-pill {
-      background: rgba(253,249,240,0.07);
-      border: 1px solid rgba(253,249,240,0.12);
-      border-radius: var(--radius-tags);
-      font-size: 11px;
-      letter-spacing: 0.165px;
-      color: rgba(253,249,240,0.45);
-      padding: 5px 14px;
+    .hero-payoff-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-ghost-white);
+      letter-spacing: -0.01em;
+      line-height: 1.4;
     }
-
-    .section-divider {
-      border: none;
-      border-top: 1px solid rgba(253,249,240,0.08);
+    .hero-payoff-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-lime-squeeze);
+      flex-shrink: 0;
     }
+    .section-divider { border: none; border-top: 1px solid rgba(253,249,240,0.08); }
 
     /* CHECKLIST */
     #checklist-section { padding: 48px 0; }
     .category-block { margin-bottom: 40px; }
-    .cat-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
+    .cat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
     .cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .cat-name {
-      font-family: var(--font-display);
-      font-size: 22px;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      text-transform: uppercase;
-      color: var(--color-ghost-white);
-      flex: 1;
-    }
-    .cat-count {
-      font-family: var(--font-body);
-      font-size: 11px;
-      letter-spacing: 0.165px;
-      color: rgba(253,249,240,0.3);
-    }
-    .cat-desc {
-      font-size: 13px;
-      line-height: 1.55;
-      color: rgba(253,249,240,0.35);
-      margin-bottom: 14px;
-      letter-spacing: 0.01em;
-    }
-
-    /* Red flags section style */
+    .cat-name { font-family: var(--font-display); font-size: 22px; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; color: var(--color-ghost-white); flex: 1; }
+    .cat-count { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.165px; color: rgba(253,249,240,0.3); }
+    .cat-desc { font-size: 13px; line-height: 1.55; color: rgba(253,249,240,0.35); margin-bottom: 14px; letter-spacing: 0.01em; }
     .cat-redflags .cat-name { color: #ff3b3b; }
-    .redflag-notice {
-      background: rgba(255,59,59,0.08);
-      border: 1px solid rgba(255,59,59,0.2);
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 12px;
-      line-height: 1.6;
-      color: rgba(255,180,180,0.8);
-      margin-bottom: 14px;
-      letter-spacing: 0.01em;
-    }
+    .redflag-notice { background: rgba(255,59,59,0.08); border: 1px solid rgba(255,59,59,0.2); border-radius: 12px; padding: 12px 16px; font-size: 12px; line-height: 1.6; color: rgba(255,180,180,0.8); margin-bottom: 14px; letter-spacing: 0.01em; }
+    .check-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.25); padding: 12px 2px 6px; }
 
-    /* Items */
-    .check-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(253,249,240,0.08);
-      background: rgba(253,249,240,0.03);
-      margin-bottom: 6px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      user-select: none;
-    }
+    /* CHECK ITEMS */
+    .check-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; border-radius: 16px; border: 1px solid rgba(253,249,240,0.08); background: rgba(253,249,240,0.03); margin-bottom: 6px; cursor: pointer; transition: all 0.15s ease; user-select: none; }
     .check-item:hover { border-color: rgba(253,249,240,0.18); background: rgba(253,249,240,0.055); }
     .check-item.checked { border-color: rgba(253,249,240,0.22); background: rgba(253,249,240,0.07); }
     .cat-redflags .check-item:hover { border-color: rgba(255,59,59,0.3); }
     .cat-redflags .check-item.checked { border-color: rgba(255,59,59,0.4); background: rgba(255,59,59,0.07); }
-
-    .check-box {
-      width: 20px; height: 20px;
-      border-radius: 6px;
-      border: 1.5px solid rgba(253,249,240,0.2);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.15s ease;
-      margin-top: 1px;
-    }
+    .check-box { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid rgba(253,249,240,0.2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s ease; margin-top: 1px; }
     .check-item.checked .check-box { background: var(--color-lime-squeeze); border-color: var(--color-lime-squeeze); }
     .cat-sleep    .check-item.checked .check-box { background: var(--cat-sleep);    border-color: var(--cat-sleep); }
     .cat-physical .check-item.checked .check-box { background: var(--cat-physical); border-color: var(--cat-physical); }
@@ -218,305 +130,301 @@
     .cat-mood     .check-item.checked .check-box { background: var(--cat-mood);     border-color: var(--cat-mood); }
     .cat-weight   .check-item.checked .check-box { background: var(--cat-weight);   border-color: var(--cat-weight); }
     .cat-redflags .check-item.checked .check-box { background: #ff3b3b; border-color: #ff3b3b; }
-
-    /* keep tick dark on light-bg categories */
     .cat-physical  .check-item.checked .check-box svg path,
     .cat-nutrition .check-item.checked .check-box svg path { stroke: var(--color-midnight-abyss); }
-
     .check-tick { display: none; width: 10px; height: 7px; }
     .check-item.checked .check-tick { display: block; }
-    .check-text {
-      font-size: 14px;
-      line-height: 1.55;
-      letter-spacing: 0.01em;
-      color: rgba(253,249,240,0.65);
-    }
+    .check-text { font-size: 14px; line-height: 1.55; letter-spacing: 0.01em; color: rgba(253,249,240,0.65); }
     .check-item.checked .check-text { color: var(--color-ghost-white); }
 
     /* TALLY BAR */
-    #tally-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 200;
-      background: rgba(20,20,20,0.92);
-      backdrop-filter: blur(14px);
-      border-top: 1px solid rgba(253,249,240,0.1);
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      transform: translateY(100%);
-      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-    }
+    #tally-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(20,20,20,0.92); backdrop-filter: blur(14px); border-top: 1px solid rgba(253,249,240,0.1); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
     #tally-bar.visible { transform: translateY(0); }
     .tally-left { flex: 1; }
-    .tally-count {
-      font-family: var(--font-display);
-      font-size: 36px;
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      color: var(--color-lime-squeeze);
-    }
-    .tally-label {
-      font-size: 11px;
-      color: rgba(253,249,240,0.4);
-      letter-spacing: 0.165px;
-      margin-top: 3px;
-    }
+    .tally-count { font-family: var(--font-display); font-size: 36px; line-height: 0.9; letter-spacing: -0.03em; color: var(--color-lime-squeeze); }
+    .tally-label { font-size: 11px; color: rgba(253,249,240,0.4); letter-spacing: 0.165px; margin-top: 3px; }
     .tally-dots { display: flex; gap: 6px; align-items: center; }
-    .tally-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      opacity: 0.2;
-      transition: opacity 0.2s;
-    }
+    .tally-dot { width: 8px; height: 8px; border-radius: 50%; opacity: 0.2; transition: opacity 0.2s; }
     .tally-dot.active { opacity: 1; }
-    #btn-see-results {
-      background: var(--color-lime-squeeze);
-      color: var(--color-midnight-abyss);
-      border: none;
-      border-radius: var(--radius-buttons);
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 700;
-      padding: 13px 22px;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
-      white-space: nowrap;
-    }
+    #btn-to-part2 { background: var(--color-lime-squeeze); color: var(--color-midnight-abyss); border: none; border-radius: var(--radius-buttons); font-family: var(--font-body); font-size: 14px; font-weight: 700; padding: 13px 22px; cursor: pointer; transition: opacity 0.15s, transform 0.1s; white-space: nowrap; }
+    #btn-to-part2:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* PART 2 — CLINICAL */
+    #clinical-section { display: none; padding: 48px 0 100px; }
+    #clinical-section.visible { display: block; }
+    .part2-intro { background: rgba(253,249,240,0.04); border: 1px solid rgba(253,249,240,0.1); border-radius: var(--radius-cards); padding: 32px; margin-bottom: 40px; }
+    .part2-intro-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.165px; text-transform: uppercase; color: var(--color-midnight-abyss); background: var(--color-lime-squeeze); border-radius: var(--radius-tags); padding: 5px 14px; margin-bottom: 16px; }
+    .part2-intro-title { font-family: var(--font-display); font-size: 42px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: var(--color-ghost-white); margin-bottom: 14px; }
+    .part2-intro-body { font-size: 15px; line-height: 1.65; color: rgba(253,249,240,0.55); letter-spacing: -0.01em; }
+    .part2-intro-body strong { color: var(--color-ghost-white); font-weight: 500; }
+    .part2-progress { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+    .part2-progress-track { flex: 1; height: 3px; background: rgba(253,249,240,0.1); border-radius: 2px; }
+    .part2-progress-fill { height: 3px; background: var(--color-lime-squeeze); border-radius: 2px; width: 0%; transition: width 0.4s ease; }
+    .part2-progress-label { font-size: 11px; color: rgba(253,249,240,0.3); white-space: nowrap; letter-spacing: 0.165px; }
+
+    .instrument-block { margin-bottom: 48px; }
+    .instrument-header { margin-bottom: 24px; }
+    .instrument-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.4); background: rgba(253,249,240,0.07); border-radius: var(--radius-tags); padding: 4px 12px; margin-bottom: 10px; }
+    .instrument-title { font-family: var(--font-display); font-size: 28px; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; color: var(--color-ghost-white); margin-bottom: 8px; }
+    .instrument-desc { font-size: 13px; line-height: 1.55; color: rgba(253,249,240,0.4); letter-spacing: 0.01em; }
+    .instrument-divider { border: none; border-top: 1px solid rgba(253,249,240,0.06); margin: 32px 0; }
+
+    /* LIKERT QUESTION CARD */
+    .q-card { margin-bottom: 10px; }
+    .q-text { font-size: 14px; line-height: 1.6; color: rgba(253,249,240,0.8); letter-spacing: 0.01em; margin-bottom: 8px; padding: 0 2px; }
+    .q-num { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.2); margin-bottom: 6px; }
+    .q-options { display: flex; flex-direction: column; gap: 4px; }
+    .q-option { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(253,249,240,0.07); background: rgba(253,249,240,0.03); cursor: pointer; transition: all 0.12s ease; user-select: none; }
+    .q-option:hover { border-color: rgba(253,249,240,0.16); background: rgba(253,249,240,0.055); }
+    .q-option.selected { border-color: rgba(199,255,105,0.4); background: rgba(199,255,105,0.07); }
+    .q-option-radio { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid rgba(253,249,240,0.2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.12s ease; }
+    .q-option.selected .q-option-radio { border-color: var(--color-lime-squeeze); background: var(--color-lime-squeeze); }
+    .q-option-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-midnight-abyss); display: none; }
+    .q-option.selected .q-option-dot { display: block; }
+    .q-option-label { font-size: 13px; color: rgba(253,249,240,0.55); line-height: 1.4; letter-spacing: 0.01em; }
+    .q-option.selected .q-option-label { color: var(--color-ghost-white); }
+
+    /* UNANSWERED WARNING */
+    .q-unanswered { border-color: rgba(255,59,59,0.3) !important; }
+    .validation-msg { font-size: 12px; color: #ff6b6b; margin-top: 12px; display: none; padding: 0 2px; }
+    .validation-msg.visible { display: block; }
+
+    /* CLINICAL BOTTOM BAR */
+    #clinical-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(20,20,20,0.92); backdrop-filter: blur(14px); border-top: 1px solid rgba(253,249,240,0.1); padding: 14px 24px; display: none; align-items: center; justify-content: space-between; gap: 16px; }
+    #clinical-bar.visible { display: flex; }
+    #btn-see-results { background: var(--color-lime-squeeze); color: var(--color-midnight-abyss); border: none; border-radius: var(--radius-buttons); font-family: var(--font-body); font-size: 14px; font-weight: 700; padding: 13px 22px; cursor: pointer; transition: opacity 0.15s, transform 0.1s; white-space: nowrap; }
     #btn-see-results:hover { opacity: 0.85; transform: translateY(-1px); }
+    .clinical-bar-info { flex: 1; }
+    .clinical-bar-label { font-size: 11px; color: rgba(253,249,240,0.4); letter-spacing: 0.165px; }
+    .clinical-bar-count { font-family: var(--font-display); font-size: 28px; line-height: 0.9; letter-spacing: -0.03em; color: var(--color-lime-squeeze); margin-bottom: 3px; }
 
     /* RESULTS */
     #results-section { display: none; padding: 48px 0 80px; }
     #results-section.visible { display: block; }
 
-    .results-eyebrow {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.165px;
-      text-transform: uppercase;
-      color: var(--color-midnight-abyss);
-      background: var(--color-lime-squeeze);
-      border-radius: var(--radius-tags);
-      padding: 5px 14px;
-      margin-bottom: 20px;
-    }
-    .results-title {
-      font-family: var(--font-display);
-      font-size: clamp(54px, 12vw, 83px);
-      line-height: 1;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-      color: var(--color-ghost-white);
-      margin-bottom: 12px;
-    }
-    .results-subtitle {
-      font-size: 16px;
-      line-height: 1.6;
-      letter-spacing: -0.01em;
-      color: rgba(253,249,240,0.55);
-      margin-bottom: 32px;
-    }
-
-    /* Red flag banner */
-    .redflag-banner {
-      display: none;
-      background: rgba(255,59,59,0.1);
-      border: 1px solid rgba(255,59,59,0.35);
-      border-radius: 16px;
-      padding: 18px 20px;
-      margin-bottom: 24px;
-    }
-    .redflag-banner.visible { display: block; }
-    .redflag-banner-title {
-      font-family: var(--font-display);
-      font-size: 18px;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: #ff3b3b;
-      margin-bottom: 8px;
-    }
-    .redflag-banner-body {
-      font-size: 14px;
+    /* ARCHETYPE HERO */
+    .archetype-hero { border-radius: var(--radius-cards); padding: 36px 32px; margin-bottom: 16px; position: relative; overflow: hidden; }
+    .archetype-share-hint { position: absolute; top: 18px; right: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(20,20,20,0.4); background: rgba(20,20,20,0.15); border-radius: var(--radius-tags); padding: 4px 10px; }
+    .archetype-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(20,20,20,0.5); margin-bottom: 10px; }
+    .archetype-name { font-family: var(--font-display); font-size: clamp(48px, 10vw, 72px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; color: var(--color-midnight-abyss); margin-bottom: 14px; }
+    .archetype-tagline { font-size: 16px; font-weight: 600; color: rgba(20,20,20,0.75); line-height: 1.4; letter-spacing: -0.01em; margin-bottom: 14px; }
+    .archetype-profile { font-size: 14px; line-height: 1.65; color: rgba(20,20,20,0.6); letter-spacing: 0.01em; }
+    .archetype-context {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(20,20,20,0.12);
+      font-size: 12px;
       line-height: 1.65;
-      color: rgba(255,200,200,0.8);
+      color: rgba(20,20,20,0.5);
+      letter-spacing: 0.01em;
     }
+    .archetype-context strong { color: rgba(20,20,20,0.7); font-weight: 600; }
+
+    /* PHQ-2 FLAG */
+    .phq-flag { display: none; background: rgba(255,59,59,0.1); border: 1px solid rgba(255,59,59,0.35); border-radius: 16px; padding: 18px 20px; margin-bottom: 16px; }
+    .phq-flag.visible { display: block; }
+    .phq-flag-title { font-family: var(--font-display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; color: #ff3b3b; margin-bottom: 8px; }
+    .phq-flag-body { font-size: 14px; line-height: 1.65; color: rgba(255,200,200,0.8); }
+    .phq-flag-body strong { color: #ffaaaa; font-weight: 500; }
+
+    /* RED FLAG BANNER */
+    .redflag-banner { display: none; background: rgba(255,59,59,0.1); border: 1px solid rgba(255,59,59,0.35); border-radius: 16px; padding: 18px 20px; margin-bottom: 16px; }
+    .redflag-banner.visible { display: block; }
+    .redflag-banner-title { font-family: var(--font-display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; color: #ff3b3b; margin-bottom: 8px; }
+    .redflag-banner-body { font-size: 14px; line-height: 1.65; color: rgba(255,200,200,0.8); }
     .redflag-banner-body strong { color: #ffaaaa; font-weight: 500; }
 
-    /* Result cards */
-    .result-cards { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
-    .result-card {
-      border-radius: 20px;
-      padding: 20px 22px;
-      border: 1px solid rgba(253,249,240,0.08);
-      background: rgba(253,249,240,0.04);
-    }
+    /* RESULT CARDS */
+    .result-cards { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .result-card { border-radius: 20px; padding: 20px 22px; border: 1px solid rgba(253,249,240,0.08); background: rgba(253,249,240,0.04); }
     .result-card.top-contributor { border-color: rgba(253,249,240,0.18); background: rgba(253,249,240,0.07); }
     .result-card.zero { opacity: 0.4; }
-    .top-badge {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      background: rgba(253,249,240,0.12);
-      border-radius: var(--radius-tags);
-      padding: 3px 10px;
-      color: rgba(253,249,240,0.5);
-      margin-bottom: 10px;
-    }
-    .result-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-    .result-card-name {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-display);
-      font-size: 22px;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      text-transform: uppercase;
-      color: var(--color-ghost-white);
-    }
+    .top-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(253,249,240,0.12); border-radius: var(--radius-tags); padding: 3px 10px; color: rgba(253,249,240,0.5); margin-bottom: 10px; }
+    .result-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .result-card-name { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 22px; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; color: var(--color-ghost-white); }
     .result-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .result-score {
-      font-family: var(--font-display);
-      font-size: 36px;
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-    }
-    .result-bar-wrap {
-      background: rgba(253,249,240,0.08);
-      border-radius: 4px;
-      height: 6px;
-      margin-bottom: 12px;
-    }
+    .result-score { font-family: var(--font-display); font-size: 36px; line-height: 0.9; letter-spacing: -0.03em; }
+    .result-bar-wrap { background: rgba(253,249,240,0.08); border-radius: 4px; height: 6px; margin-bottom: 12px; }
     .result-bar { height: 6px; border-radius: 4px; width: 0%; transition: width 0.9s cubic-bezier(0.25,1,0.5,1); }
     .result-insight { font-size: 13px; line-height: 1.6; letter-spacing: 0.013em; color: rgba(253,249,240,0.55); }
     .result-insight strong { color: var(--color-ghost-white); font-weight: 500; }
     .result-actions { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
-    .result-action {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13px;
-      line-height: 1.5;
-      color: rgba(253,249,240,0.5);
-    }
-    .result-action::before {
-      content: '→';
-      color: var(--color-lime-squeeze);
-      flex-shrink: 0;
-      font-size: 12px;
-      margin-top: 1px;
-    }
+    .result-action { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; color: rgba(253,249,240,0.5); }
+    .result-action::before { content: '→'; color: var(--color-lime-squeeze); flex-shrink: 0; font-size: 12px; margin-top: 1px; }
 
-    /* MFI Classification */
-    .mfi-block {
-      border-radius: 20px;
-      padding: 24px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(253,249,240,0.08);
-    }
+    /* CLINICAL SCORES CARD */
+    .clinical-scores-card { background: rgba(253,249,240,0.04); border: 1px solid rgba(253,249,240,0.1); border-radius: 20px; padding: 22px; margin-bottom: 16px; }
+    .cs-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.3); margin-bottom: 18px; }
+    .cs-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .cs-row:last-child { margin-bottom: 0; }
+    .cs-name { font-size: 13px; color: rgba(253,249,240,0.55); flex: 1; }
+    .cs-band { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-tags); }
+    .cs-band.normal   { background: rgba(0,166,82,0.15);  color: var(--color-emerald-sprint); }
+    .cs-band.mild     { background: rgba(255,196,18,0.15); color: var(--color-golden-rod); }
+    .cs-band.moderate { background: rgba(255,109,56,0.15); color: var(--color-sunset-orange); }
+    .cs-band.severe   { background: rgba(255,59,59,0.15);  color: #ff3b3b; }
+    .cs-band.extreme  { background: rgba(255,59,59,0.25);  color: #ff3b3b; }
+    .cs-band.low      { background: rgba(0,166,82,0.15);  color: var(--color-emerald-sprint); }
+    .cs-band.high     { background: rgba(255,59,59,0.15);  color: #ff3b3b; }
+    .cs-divider { border: none; border-top: 1px solid rgba(253,249,240,0.06); margin: 14px 0; }
+    .cs-score { font-family: var(--font-display); font-size: 18px; letter-spacing: -0.02em; color: rgba(253,249,240,0.3); margin-right: 10px; }
+
+    /* MFI / OVERALL */
+    .mfi-block { border-radius: 20px; padding: 24px; margin-bottom: 16px; border: 1px solid rgba(253,249,240,0.08); }
     .mfi-block.green  { background: rgba(0,166,82,0.1);  border-color: rgba(0,166,82,0.25); }
     .mfi-block.yellow { background: rgba(255,196,18,0.1); border-color: rgba(255,196,18,0.25); }
     .mfi-block.red    { background: rgba(255,59,59,0.1);  border-color: rgba(255,59,59,0.3); }
-    .mfi-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
+    .mfi-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
     .mfi-block.green  .mfi-label { color: var(--color-emerald-sprint); }
     .mfi-block.yellow .mfi-label { color: var(--color-golden-rod); }
     .mfi-block.red    .mfi-label { color: #ff3b3b; }
-    .mfi-title {
-      font-family: var(--font-display);
-      font-size: 32px;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
+    .mfi-title { font-family: var(--font-display); font-size: 32px; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; margin-bottom: 10px; }
     .mfi-block.green  .mfi-title { color: var(--color-emerald-sprint); }
     .mfi-block.yellow .mfi-title { color: var(--color-golden-rod); }
     .mfi-block.red    .mfi-title { color: #ff3b3b; }
-    .mfi-body {
-      font-size: 14px;
-      line-height: 1.65;
-      color: rgba(253,249,240,0.6);
-    }
+    .mfi-body { font-size: 14px; line-height: 1.65; color: rgba(253,249,240,0.6); }
     .mfi-body strong { color: var(--color-ghost-white); font-weight: 500; }
 
-    /* Summary callout */
-    .summary-callout {
-      background: rgba(253,249,240,0.05);
-      border: 1px solid rgba(253,249,240,0.12);
-      border-left: 3px solid var(--color-lime-squeeze);
-      border-radius: 0 16px 16px 0;
-      padding: 18px 20px;
-      margin-bottom: 24px;
-      font-size: 15px;
-      color: rgba(253,249,240,0.75);
-      line-height: 1.65;
-      letter-spacing: -0.01em;
-    }
+    /* SUMMARY */
+    .summary-callout { background: rgba(253,249,240,0.05); border: 1px solid rgba(253,249,240,0.12); border-left: 3px solid var(--color-lime-squeeze); border-radius: 0 16px 16px 0; padding: 18px 20px; margin-bottom: 16px; font-size: 15px; color: rgba(253,249,240,0.75); line-height: 1.65; letter-spacing: -0.01em; }
     .summary-callout strong { color: var(--color-lime-squeeze); font-weight: 500; }
     .summary-callout a { color: var(--color-lime-squeeze); text-decoration: none; font-weight: 500; }
+    .summary-callout.compound { border-left-color: var(--color-sunset-orange); }
+    .summary-callout.compound strong { color: var(--color-sunset-orange); }
 
-    /* CTA strip */
-    .cta-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px; }
+    /* CTA */
+    .cta-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
     @media (max-width: 480px) { .cta-strip { grid-template-columns: 1fr; } }
-    .cta-card {
-      background: rgba(253,249,240,0.04);
-      border: 1px solid rgba(253,249,240,0.1);
-      border-radius: var(--radius-cards);
-      padding: 22px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.15s ease;
-    }
+    .cta-card { background: rgba(253,249,240,0.04); border: 1px solid rgba(253,249,240,0.1); border-radius: var(--radius-cards); padding: 22px; text-decoration: none; display: block; transition: all 0.15s ease; }
     .cta-card:hover { border-color: rgba(253,249,240,0.22); background: rgba(253,249,240,0.07); }
     .cta-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.3); margin-bottom: 8px; }
     .cta-title { font-family: var(--font-display); font-size: 28px; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; color: var(--color-ghost-white); margin-bottom: 8px; }
     .cta-desc { font-size: 12px; line-height: 1.55; color: rgba(253,249,240,0.45); margin-bottom: 14px; }
     .cta-arrow { font-size: 12px; color: var(--color-lime-squeeze); font-weight: 600; }
 
-    .btn-reset {
-      background: transparent;
-      border: 1.5px solid rgba(253,249,240,0.15);
-      border-radius: var(--radius-buttons);
-      color: rgba(253,249,240,0.4);
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 13px 22px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      width: 100%;
-    }
+    .btn-reset { background: transparent; border: 1.5px solid rgba(253,249,240,0.15); border-radius: var(--radius-buttons); color: rgba(253,249,240,0.4); font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 13px 22px; cursor: pointer; transition: all 0.15s ease; width: 100%; }
     .btn-reset:hover { border-color: rgba(253,249,240,0.35); color: var(--color-ghost-white); }
 
-    footer {
-      border-top: 1px solid rgba(253,249,240,0.08);
-      padding: 36px 0 24px;
-      text-align: center;
-    }
+    footer { border-top: 1px solid rgba(253,249,240,0.08); padding: 36px 0 24px; text-align: center; }
     .footer-brand { font-size: 13px; color: rgba(253,249,240,0.35); margin-bottom: 6px; }
     .footer-brand a { color: var(--color-ghost-white); text-decoration: none; font-weight: 600; }
     .footer-note { font-size: 11px; color: rgba(253,249,240,0.2); line-height: 1.7; letter-spacing: 0.013em; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* METHODOLOGY DISCLOSURE */
+    .methodology-wrap {
+      border-top: 1px solid rgba(253,249,240,0.08);
+      margin-top: 0;
     }
+    .methodology-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 12px;
+    }
+    .methodology-toggle:hover .methodology-toggle-label { color: var(--color-ghost-white); }
+    .methodology-toggle-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(253,249,240,0.3);
+      transition: color 0.15s;
+    }
+    .methodology-toggle-icon {
+      font-size: 18px;
+      color: rgba(253,249,240,0.25);
+      line-height: 1;
+      flex-shrink: 0;
+      transition: transform 0.25s ease, color 0.15s;
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+    .methodology-toggle.open .methodology-toggle-icon {
+      transform: rotate(45deg);
+      color: rgba(253,249,240,0.5);
+    }
+    .methodology-body {
+      display: none;
+      padding-bottom: 48px;
+    }
+    .methodology-body.open { display: block; }
+
+    .meth-section { margin-bottom: 28px; }
+    .meth-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(253,249,240,0.35);
+      margin-bottom: 12px;
+    }
+    .meth-text {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(253,249,240,0.4);
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+    }
+    .meth-text em { font-style: italic; }
+    .meth-text strong { color: rgba(253,249,240,0.6); font-weight: 500; }
+    .meth-caveat {
+      color: rgba(253,249,240,0.25);
+      background: rgba(253,249,240,0.03);
+      border-left: 2px solid rgba(253,249,240,0.1);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    .meth-list {
+      margin: 8px 0 10px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .meth-list li {
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(253,249,240,0.4);
+      letter-spacing: 0.01em;
+    }
+    .meth-list li em { font-style: italic; }
+    .meth-list-ol { list-style-type: decimal; }
+    .meth-list-ol li strong { color: rgba(253,249,240,0.6); font-weight: 500; }
+    .meth-divider {
+      border: none;
+      border-top: 1px solid rgba(253,249,240,0.06);
+      margin: 24px 0;
+    }
+    .meth-instrument {
+      background: rgba(253,249,240,0.02);
+      border: 1px solid rgba(253,249,240,0.06);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 10px;
+    }
+    .meth-instrument-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(253,249,240,0.6);
+      margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+    .meth-instrument-meta {
+      font-size: 11px;
+      color: rgba(253,249,240,0.25);
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .meth-instrument .meth-text { margin-bottom: 8px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
     .anim    { animation: fadeUp 0.45s ease both; }
     .anim-d1 { animation-delay: 0.05s; }
     .anim-d2 { animation-delay: 0.10s; }
@@ -524,8 +432,33 @@
     .anim-d4 { animation-delay: 0.20s; }
     .anim-d5 { animation-delay: 0.25s; }
     .anim-d6 { animation-delay: 0.30s; }
-
     .bottom-spacer { height: 80px; }
+
+    /* ── BILINGUAL SYSTEM ─────────────────────────────────── */
+    [data-bm] { display: none; }
+    body.bm [data-en] { display: none; }
+    body.bm [data-bm] { display: inline; }
+    /* block-level BM elements */
+    body.bm [data-bm-block] { display: block; }
+    [data-bm-block] { display: none; }
+    body.bm [data-en-block] { display: none; }
+    [data-en-block] { display: block; }
+
+    /* Lang toggle button */
+    .lang-toggle {
+      background: var(--color-lime-squeeze);
+      border: none;
+      border-radius: var(--radius-tags);
+      color: var(--color-midnight-abyss);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 14px;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+      letter-spacing: 0.05em;
+    }
+    .lang-toggle:hover { opacity: 0.8; }
   </style>
 </head>
 <body>
@@ -533,156 +466,436 @@
 
   <nav>
     <a class="nav-logo" href="https://www.aufthority.com">Aufthority</a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="nav-part-indicator" id="navPartIndicator"></span>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">BM</button>
+    </div>
   </nav>
 
+  <!-- HERO -->
   <div class="hero anim">
-    <div class="hero-tag">Energy Audit</div>
-    <h1 class="hero-title">Why are you<br><span class="accent">running<br>on empty?</span></h1>
-    <p class="hero-body">Tired all the time? Belly that won't budge? Tick everything that applies. We'll identify which areas of your life are draining your energy and driving weight gain — and what to do about each one.</p>
+    <div class="hero-tag">
+      <span data-en>Aufthority · Built for Malaysians</span>
+      <span data-bm>Aufthority · Dibina untuk Rakyat Malaysia</span>
+    </div>
+    <h1 class="hero-title">Kenapa<span class="accent">Penat?</span></h1>
+    <p class="hero-body">
+      <span data-en>There are five kinds of tired. Most people never find out which one they are.</span>
+      <span data-bm>Ada lima jenis penat. Kebanyakan orang tidak tahu yang mana satu mereka.</span>
+    </p>
+    <p class="hero-body" style="margin-top:-12px">
+      <span data-en>Most people guess wrong — they fix their diet when it's burnout, or blame stress when it's a sleep disorder. This audit identifies your real driver using the same tools clinicians use, calibrated for Malaysians.</span>
+      <span data-bm>Ramai yang tersalah meneka — mereka ubah diet sedangkan masalahnya burnout, atau salahkan stres sedangkan ia gangguan tidur. Audit ini mengenal pasti punca sebenar anda — menggunakan alat yang sama seperti klinisian, disesuaikan untuk rakyat Malaysia.</span>
+    </p>
+    <p class="hero-body-payoff">
+      <span class="hero-payoff-item" data-en>Discover your energy archetype</span>
+      <span class="hero-payoff-item" data-bm>Temui arkitaip tenaga anda</span>
+      <span class="hero-payoff-item" data-en>Get your clinical signals</span>
+      <span class="hero-payoff-item" data-bm>Ketahui isyarat klinikal anda</span>
+      <span class="hero-payoff-item" data-en>Know exactly what to do next</span>
+      <span class="hero-payoff-item" data-bm>Tahu apa yang perlu dilakukan seterusnya</span>
+    </p>
     <div class="hero-meta">
-      <span class="hero-pill">6 domains</span>
-      <span class="hero-pill">~3 minutes</span>
-      <span class="hero-pill">No sign-up needed</span>
+      <span class="hero-pill"><span data-en>5 minutes · Free</span><span data-bm>5 minit · Percuma</span></span>
+      <span class="hero-pill"><span data-en>No sign-up needed</span><span data-bm>Tiada pendaftaran</span></span>
+      <span class="hero-pill"><span data-en>Built for Malaysia</span><span data-bm>Dibina untuk Malaysia</span></span>
     </div>
   </div>
 
   <hr class="section-divider" />
 
+  <!-- PART 1: CHECKLIST -->
   <div id="checklist-section">
 
-    <!-- SLEEP -->
     <div class="category-block cat-sleep anim anim-d1">
       <div class="cat-header">
         <div class="cat-dot" style="background:var(--cat-sleep)"></div>
-        <div class="cat-name">Sleep Quality</div>
-        <div class="cat-count" id="count-sleep">0 / 5</div>
+        <div class="cat-name"><span data-en>Sleep Quality</span><span data-bm>Kualiti Tidur</span></div>
+        <div class="cat-count" id="count-sleep">0 / 9</div>
       </div>
-      <div class="cat-desc">Poor sleep raises hunger hormones, impairs fat metabolism, and leaves you exhausted — even after a full night in bed.</div>
+      <div class="cat-desc">
+        <span data-en>Poor sleep raises hunger hormones, impairs fat metabolism, and leaves you exhausted — even after a full night in bed. Note: waking up already tired (morning fatigue) and crashing mid-afternoon (daytime sleepiness) are distinct problems with different causes — both are captured below.</span>
+        <span data-bm>Kualiti tidur yang rendah meningkatkan hormon lapar, menjejaskan metabolisme lemak, dan membuatkan anda keletihan — walaupun selepas tidur penuh. Nota: bangun tidur dalam keadaan penat dan mengantuk pada waktu tengah hari ialah dua masalah yang berbeza — kedua-duanya diukur di bawah.</span>
+      </div>
       <div id="items-sleep"></div>
     </div>
 
-    <!-- PHYSICAL -->
     <div class="category-block cat-physical anim anim-d2">
       <div class="cat-header">
         <div class="cat-dot" style="background:var(--cat-physical)"></div>
-        <div class="cat-name">Physical Activity</div>
+        <div class="cat-name"><span data-en>Physical Activity</span><span data-bm>Aktiviti Fizikal</span></div>
         <div class="cat-count" id="count-physical">0 / 5</div>
       </div>
-      <div class="cat-desc">Inactivity reduces your daily energy expenditure and accelerates muscle loss — making weight gain easier and fatigue harder to shift.</div>
+      <div class="cat-desc">
+        <span data-en>Inactivity reduces your daily energy expenditure and accelerates muscle loss — making weight gain easier and fatigue harder to shift.</span>
+        <span data-bm>Kurang aktif mengurangkan penggunaan tenaga harian dan mempercepatkan kehilangan otot — menjadikan penambahan berat lebih mudah dan keletihan lebih sukar diatasi.</span>
+      </div>
       <div id="items-physical"></div>
     </div>
 
-    <!-- NUTRITION -->
     <div class="category-block cat-nutrition anim anim-d3">
       <div class="cat-header">
         <div class="cat-dot" style="background:var(--cat-nutrition)"></div>
-        <div class="cat-name">Nutrition</div>
+        <div class="cat-name"><span data-en>Nutrition</span><span data-bm>Pemakanan</span></div>
         <div class="cat-count" id="count-nutrition">0 / 5</div>
       </div>
-      <div class="cat-desc">What and when you eat directly affects your energy levels, hunger signals, and how your body stores or burns fat throughout the day.</div>
+      <div class="cat-desc">
+        <span data-en>What and when you eat directly affects your energy levels, hunger signals, and how your body stores or burns fat throughout the day.</span>
+        <span data-bm>Apa yang anda makan dan waktu anda makan secara langsung mempengaruhi tahap tenaga, isyarat lapar, dan cara badan anda menyimpan atau membakar lemak sepanjang hari.</span>
+      </div>
       <div id="items-nutrition"></div>
     </div>
 
-    <!-- MOOD -->
     <div class="category-block cat-mood anim anim-d4">
       <div class="cat-header">
         <div class="cat-dot" style="background:var(--cat-mood)"></div>
-        <div class="cat-name">Mood &amp; Stress</div>
+        <div class="cat-name"><span data-en>Mood &amp; Stress</span><span data-bm>Mood &amp; Stres</span></div>
         <div class="cat-count" id="count-mood">0 / 5</div>
       </div>
-      <div class="cat-desc">Chronic stress elevates cortisol, which drives abdominal fat storage, triggers emotional eating, and depletes physical energy reserves.</div>
+      <div class="cat-desc">
+        <span data-en>Chronic stress elevates cortisol, which drives abdominal fat storage, triggers emotional eating, and depletes physical energy reserves.</span>
+        <span data-bm>SStres kronik meningkatkan kortisol — mendorong penyimpanan lemak perut, mencetuskan pemakanan beremosi, dan menghabiskan simpanan tenaga fizikal.</span>
+      </div>
       <div id="items-mood"></div>
     </div>
 
-    <!-- WEIGHT / MEDICAL -->
     <div class="category-block cat-weight anim anim-d5">
       <div class="cat-header">
         <div class="cat-dot" style="background:var(--cat-weight)"></div>
-        <div class="cat-name">Metabolic &amp; Medical</div>
+        <div class="cat-name"><span data-en>Metabolic &amp; Medical</span><span data-bm>Metabolik &amp; Perubatan</span></div>
         <div class="cat-count" id="count-weight">0 / 5</div>
       </div>
-      <div class="cat-desc">Hormonal and metabolic conditions — thyroid disorders, insulin resistance, PCOS — can make fatigue and weight gain far harder to reverse through lifestyle changes alone.</div>
+      <div class="cat-desc">
+        <span data-en>Hormonal and metabolic conditions — thyroid disorders, insulin resistance, PCOS — can make fatigue and weight gain far harder to reverse through lifestyle changes alone.</span>
+        <span data-bm>Keadaan hormon dan metabolik — gangguan tiroid, rintangan insulin, PCOS — boleh menjadikan keletihan dan penambahan berat jauh lebih sukar diatasi melalui perubahan gaya hidup semata-mata.</span>
+      </div>
       <div id="items-weight"></div>
     </div>
 
-    <!-- RED FLAGS -->
     <div class="category-block cat-redflags anim anim-d6">
       <div class="cat-header">
         <div class="cat-dot" style="background:#ff3b3b"></div>
-        <div class="cat-name">Red Flags</div>
+        <div class="cat-name"><span data-en>Red Flags</span><span data-bm>Tanda Amaran</span></div>
         <div class="cat-count" id="count-redflags">0 / 5</div>
       </div>
-      <div class="redflag-notice">These symptoms may indicate a condition requiring prompt medical attention. Tick any that apply — your results will flag them clearly.</div>
+      <div class="redflag-notice">
+        <span data-en>These symptoms may indicate a condition requiring prompt medical attention. Tick any that apply — your results will flag them clearly.</span>
+        <span data-bm>Gejala-gejala ini mungkin menandakan keadaan yang memerlukan perhatian perubatan segera. Tandakan mana-mana yang berkenaan — keputusan anda akan menandakannya dengan jelas.</span>
+      </div>
       <div id="items-redflags"></div>
     </div>
 
   </div><!-- /checklist-section -->
 
+  <!-- PART 2: CLINICAL -->
+  <div id="clinical-section">
+
+    <div class="part2-intro anim">
+      <div class="part2-intro-tag"><span data-en>Part 2 of 2</span><span data-bm>Bahagian 2 daripada 2</span></div>
+      <div class="part2-intro-title"><span data-en>Now let's go deeper.</span><span data-bm>Sekarang kita lihat dengan lebih mendalam.</span></div>
+      <p class="part2-intro-body">
+        <span data-en>The next questions come from <strong>three validated clinical instruments</strong> used by healthcare professionals. Your responses will determine your energy archetype and whether any of your signals warrant a clinical conversation.</span>
+        <span data-bm>Soalan-soalan seterusnya diambil daripada <strong>tiga alat klinikal yang telah disahkan</strong> dan digunakan oleh profesional kesihatan. Jawapan anda akan menentukan arkitaip tenaga anda dan sama ada mana-mana isyarat anda memerlukan perbualan klinikal.</span>
+      </p>
+      <p class="part2-intro-body" style="margin-top:10px">
+        <span data-en>Answer based on <strong>the past week</strong>. Be honest — there are no wrong answers.</span>
+        <span data-bm>Jawab berdasarkan <strong>pengalaman anda sepanjang minggu lepas.</strong>. Jujur saja — tiada jawapan yang salah.</span>
+      </p>
+      <div class="part2-progress">
+        <div class="part2-progress-track"><div class="part2-progress-fill" id="clinicalProgressFill"></div></div>
+        <div class="part2-progress-label" id="clinicalProgressLabel">0 / 36 <span data-en>answered</span><span data-bm>dijawab</span></div>
+      </div>
+    </div>
+
+    <!-- DASS-21 -->
+    <div class="instrument-block">
+      <div class="instrument-header">
+        <div class="instrument-tag">DASS-21 · Lovibond &amp; Lovibond, 1995</div>
+        <div class="instrument-title"><span data-en>Mood &amp; Stress Screen</span><span data-bm>Saringan Mood &amp; Stres</span></div>
+        <div class="instrument-desc"><span data-en>21 questions. Rate how much each statement applied to you over the past week.</span><span data-bm>21 soalan. Nilai sejauh mana setiap pernyataan berikut menggambarkan keadaan anda sepanjang minggu lepas.</span></div>
+      </div>
+      <div id="dass-questions"></div>
+    </div>
+
+    <div class="instrument-divider"></div>
+
+    <!-- CBI -->
+    <div class="instrument-block">
+      <div class="instrument-header">
+        <div class="instrument-tag">Copenhagen Burnout Inventory · Kristensen et al., 2005</div>
+        <div class="instrument-title"><span data-en>Burnout Assessment</span><span data-bm>Penilaian Kelesuan Melampau (Burnout)</span></div>
+        <div class="instrument-desc"><span data-en>13 questions across personal and work-related exhaustion.</span><span data-bm>13 soalan merangkumi keletihan peribadi dan berkaitan kerja.</span></div>
+      </div>
+      <div id="cbi-questions"></div>
+    </div>
+
+    <div class="instrument-divider"></div>
+
+    <!-- PHQ-2 -->
+    <div class="instrument-block">
+      <div class="instrument-header">
+        <div class="instrument-tag">PHQ-2 · Kroenke et al., 2003</div>
+        <div class="instrument-title"><span data-en>Depression Screen</span><span data-bm>Saringan Kemurungan</span></div>
+        <div class="instrument-desc"><span data-en>2 questions. Rate how often you have been bothered by the following over the past 2 weeks.</span><span data-bm>2 soalan. Nilai seberapa kerap anda mengalami perkara berikut dalam tempoh 2 minggu lepas.</span></div>
+      </div>
+      <div id="phq-questions"></div>
+    </div>
+
+    <div class="validation-msg" id="validationMsg"><span data-en>Please answer all questions before continuing.</span><span data-bm>Sila jawab semua soalan sebelum meneruskan.</span></div>
+
+  </div><!-- /clinical-section -->
+
   <!-- RESULTS -->
   <div id="results-section">
-    <div class="results-eyebrow">Your Energy Audit</div>
-    <h2 class="results-title">Here's what's<br>draining you.</h2>
-    <p class="results-subtitle">Ranked from most to least signals flagged. Scroll down for your overall classification.</p>
+    <div class="archetype-hero anim" id="archetypeHero">
+      <div class="archetype-share-hint">Your archetype</div>
+      <div class="archetype-label">Keputusan KenapaPenat?</div>
+      <div class="archetype-name" id="archetypeName"></div>
+      <div class="archetype-tagline" id="archetypeTagline"></div>
+      <div class="archetype-profile" id="archetypeProfile"></div>
+      <div class="archetype-context" id="archetypeContext" style="display:none"></div>
+    </div>
+
+    <div class="phq-flag" id="phqFlag">
+      <div class="phq-flag-title"><span data-en>Depression Signal Detected</span><span data-bm>Isyarat Kemurungan Dikesan</span></div>
+      <div class="phq-flag-body">
+        <span data-en>Your responses to the depression screen suggest you may be experiencing symptoms of depression. <strong>This is a medical condition, not a character flaw.</strong> Please speak to a doctor or mental health professional — effective treatments exist. If you are in crisis, contact Befrienders Malaysia at <strong>03-7956 8145</strong> (24 hours).</span>
+        <span data-bm>Jawapan anda menunjukkan bahawa anda mungkin mengalami gejala kemurungan. <strong>Ini adalah keadaan perubatan, bukan kelemahan peribadi.</strong> Sila berjumpa doktor atau profesional kesihatan mental — rawatan yang berkesan ada tersedia. Jika anda dalam krisis, hubungi Befrienders Malaysia di <strong>03-7956 8145</strong> (24 jam).</span>
+      </div>
+    </div>
 
     <div class="redflag-banner" id="redflagBanner">
-      <div class="redflag-banner-title">⚠ Medical Attention Recommended</div>
-      <div class="redflag-banner-body">You flagged one or more symptoms that may indicate a condition requiring clinical evaluation. <strong>Please see a doctor before making any major lifestyle or supplement changes.</strong> These symptoms — unexplained weight loss, prolonged fever, breathlessness, abnormal bleeding, or persistent pallor — are not explained by lifestyle factors alone.</div>
+      <div class="redflag-banner-title">⚠ <span data-en>Medical Attention Recommended</span><span data-bm>Perhatian Perubatan Diperlukan</span></div>
+      <div class="redflag-banner-body">
+        <span data-en>You flagged one or more symptoms that may indicate a condition requiring clinical evaluation. <strong>Please see a doctor before making any major lifestyle or supplement changes.</strong> These symptoms — unexplained weight loss, prolonged fever, breathlessness, abnormal bleeding, or persistent pallor — are not explained by lifestyle factors alone.</span>
+        <span data-bm>Anda melaporkan satu atau lebih gejala yang mungkin menunjukkan keadaan yang memerlukan penilaian klinikal. <strong>Sila berjumpa doktor sebelum membuat sebarang perubahan gaya hidup atau suplemen.</strong> Gejala-gejala ini — penurunan berat yang tidak dapat dijelaskan, demam berpanjangan, sesak nafas, pendarahan luar biasa, atau kepucatan berterusan — tidak boleh dijelaskan oleh faktor gaya hidup semata-mata.</span>
+      </div>
     </div>
 
     <div class="result-cards" id="resultCards"></div>
 
-    <div id="mfiBlock" class="mfi-block"></div>
+    <div class="clinical-scores-card anim anim-d2">
+      <div class="cs-title"><span data-en>Clinical Instrument Scores</span><span data-bm>Skor Alat Klinikal</span></div>
+      <div id="clinicalScoresContent"></div>
+    </div>
 
-    <div class="summary-callout" id="summaryCallout"></div>
+    <div id="mfiBlock" class="mfi-block anim anim-d3"></div>
 
-    <div class="cta-strip">
+    <div class="summary-callout anim anim-d4" id="summaryCallout"></div>
+
+    <div class="cta-strip anim anim-d5">
       <a href="https://mytdee.aufthority.com" class="cta-card" target="_blank" rel="noopener">
-        <div class="cta-tag">Know your number</div>
+        <div class="cta-tag"><span data-en>Know your number</span><span data-bm>Kenali badan anda</span></div>
         <div class="cta-title">MyTDEE</div>
-        <div class="cta-desc">Find your real daily calorie target — built on Malaysian research.</div>
+        <div class="cta-desc"><span data-en>Find your real daily calorie target — built on Malaysian research.</span><span data-bm>Cari sasaran kalori harian sebenar anda — berdasarkan kajian Malaysia.</span></div>
         <div class="cta-arrow">Go →</div>
       </a>
       <a href="https://cermindiri.aufthority.com" class="cta-card" target="_blank" rel="noopener">
-        <div class="cta-tag">Check your risk</div>
+        <div class="cta-tag"><span data-en>Check your risk</span><span data-bm>Semak risiko anda</span></div>
         <div class="cta-title">CerminDiri</div>
-        <div class="cta-desc">Screen for heart disease &amp; diabetes risk. No lab results needed.</div>
+        <div class="cta-desc"><span data-en>Screen for heart disease &amp; diabetes risk. No lab results needed.</span><span data-bm>Saringan risiko penyakit jantung &amp; diabetes. Tiada keputusan makmal diperlukan.</span></div>
         <div class="cta-arrow">Go →</div>
       </a>
     </div>
 
-    <button class="btn-reset" onclick="resetAudit()">← Start Over</button>
+    <button class="btn-reset" onclick="resetAudit()">
+      <span data-en>← Start Over</span><span data-bm>← Mulakan Semula</span>
+    </button>
   </div>
 
   <div class="bottom-spacer"></div>
 
+  <!-- METHODOLOGY DISCLOSURE -->
+  <div class="methodology-wrap">
+    <button class="methodology-toggle" onclick="toggleMethodology()" id="methodologyToggle" aria-expanded="false">
+      <span class="methodology-toggle-label">Methodology &amp; Instruments</span>
+      <span class="methodology-toggle-icon" id="methodologyIcon">+</span>
+    </button>
+
+    <div class="methodology-body" id="methodologyBody">
+
+      <div class="meth-section">
+        <div class="meth-section-title">About this tool</div>
+        <p class="meth-text">KenapaPenat? is a two-part self-screening tool by Aufthority, designed to help Malaysian adults identify lifestyle and psychological contributors to fatigue and low energy. It is not a diagnostic instrument. Results are indicative and should be interpreted alongside clinical judgment from a qualified healthcare professional.</p>
+        <p class="meth-text">The tool is intentionally population-agnostic in its lifestyle checklist but draws on instruments validated across diverse populations, including Southeast Asian samples. Where population-specific validation data exists, it is noted below.</p>
+      </div>
+
+      <div class="meth-divider"></div>
+
+      <div class="meth-section">
+        <div class="meth-section-title">Part 1 — Lifestyle Checklist</div>
+        <p class="meth-text">34 items across 6 domains: Sleep Quality, Physical Activity, Nutrition, Mood &amp; Stress, Metabolic &amp; Medical, and Red Flags. Items were developed by Aufthority, informed by:</p>
+        <ul class="meth-list">
+          <li>Malaysian National Health and Morbidity Survey (NHMS) 2019, 2023, 2024 — MOH Malaysia</li>
+          <li>WHO Global Action Plan on Physical Activity 2018–2030</li>
+          <li>Wright et al. (2019). Morning Fatigue Severity Profiles in Oncology Outpatients. <em>Cancer Nursing</em>, 42(5), 355–364. (PMC6336532) — basis for distinguishing morning fatigue from daytime sleepiness as distinct symptom clusters</li>
+          <li>Fatigue Severity Scale (FSS) — Krupp et al. (1989). <em>Archives of Neurology</em>, 46(10), 1121–1123. Items 7–9 of the sleep domain are adapted from FSS functional impact items.</li>
+          <li>Epworth Sleepiness Scale (ESS) — Johns (1991). <em>Sleep</em>, 14(6), 540–545. Sleep domain item 7 is adapted from ESS situational dozing scenarios.</li>
+        </ul>
+        <p class="meth-text meth-caveat">Limitation: the lifestyle checklist is a non-validated custom instrument. Domain scores represent signal counts, not psychometrically derived subscale scores. They should be interpreted directionally, not as clinical measurements.</p>
+      </div>
+
+      <div class="meth-divider"></div>
+
+      <div class="meth-section">
+        <div class="meth-section-title">Part 2 — Clinical Instruments</div>
+
+        <div class="meth-instrument">
+          <div class="meth-instrument-name">DASS-21 — Depression Anxiety Stress Scales (Short Form)</div>
+          <div class="meth-instrument-meta">Lovibond &amp; Lovibond (1995) · Free to use · 21 items · 3 subscales</div>
+          <p class="meth-text">Measures severity of depression, anxiety, and stress symptoms over the past week. Each subscale (7 items) is scored 0–3; raw subscale scores are multiplied by 2 to align with DASS-42 normative bands.</p>
+          <p class="meth-text">Severity bands (scaled scores): Depression — Normal (&lt;10), Mild (10–13), Moderate (14–20), Severe (21–27), Extremely Severe (≥28). Anxiety — Normal (&lt;8), Mild (8–9), Moderate (10–14), Severe (15–19), Extremely Severe (≥20). Stress — Normal (&lt;15), Mild (15–18), Moderate (19–25), Severe (26–33), Extremely Severe (≥34).</p>
+          <p class="meth-text">References: Lovibond SH &amp; Lovibond PF (1995). <em>Manual for the Depression Anxiety Stress Scales</em>. Psychology Foundation of Australia. Henry &amp; Crawford (2005). <em>British Journal of Clinical Psychology</em>, 44(2), 227–239.</p>
+          <p class="meth-text meth-caveat">Limitation: the DASS-21 was normed primarily on Western and Australian populations. A 2020 validation study in Malaysian university students (Ramli et al.) confirmed acceptable psychometric properties (Cronbach's α = 0.87–0.92), but population-specific normative bands for Malaysian adults have not been formally established. Bands used here follow the original Lovibond &amp; Lovibond (1995) DASS-42 norms.</p>
+        </div>
+
+        <div class="meth-instrument">
+          <div class="meth-instrument-name">CBI — Copenhagen Burnout Inventory (Personal + Work subscales)</div>
+          <div class="meth-instrument-meta">Kristensen et al. (2005) · Public domain · 13 items · 2 subscales</div>
+          <p class="meth-text">Measures physical and psychological exhaustion across personal life (6 items) and work context (7 items). Responses are converted to a 0–100 scale (Never=0, Seldom=25, Sometimes=50, Often=75, Always=100 for frequency items; equivalent scale for degree items). The work burnout item on leisure energy is reverse-scored. Subscale score = mean of item scores.</p>
+          <p class="meth-text">Bands used in this tool: Low (&lt;50), Moderate (50–74), High (≥75). Note: the original CBI authors (Kristensen et al.) do not specify fixed cutoffs, describing burnout as a continuum. The bands above are directional thresholds derived from published research using the instrument.</p>
+          <p class="meth-text">The client-related burnout subscale (7 items) was excluded as it is designed for human services workers and is not applicable to a general population tool.</p>
+          <p class="meth-text">Reference: Kristensen TS, Borritz M, Villadsen E &amp; Christensen KB (2005). The Copenhagen Burnout Inventory. <em>Work &amp; Stress</em>, 19(3), 192–207.</p>
+          <p class="meth-text meth-caveat">Limitation: no Malaysia-specific validation data for the CBI has been identified. The instrument has been validated across European and North American populations. Cross-cultural applicability to Malaysian adults is assumed but not formally confirmed.</p>
+        </div>
+
+        <div class="meth-instrument">
+          <div class="meth-instrument-name">PHQ-2 — Patient Health Questionnaire (2-item Depression Screener)</div>
+          <div class="meth-instrument-meta">Kroenke, Spitzer &amp; Williams (2003) · Free to use · 2 items</div>
+          <p class="meth-text">A 2-item ultra-brief screen for depressive symptoms (anhedonia and depressed mood) over the past 2 weeks. Scored 0–3 per item (Not at all=0, Several days=1, More than half the days=2, Nearly every day=3). Total score range: 0–6. A score of ≥3 is the validated threshold for flagging possible depression requiring further evaluation (sensitivity 83%, specificity 90% for major depressive disorder).</p>
+          <p class="meth-text">Reference: Kroenke K, Spitzer RL &amp; Williams JBW (2003). The Patient Health Questionnaire-2. <em>Medical Care</em>, 41(11), 1284–1292.</p>
+          <p class="meth-text meth-caveat">Limitation: PHQ-2 is a screening tool only, not diagnostic. A positive flag (≥3) indicates the need for further evaluation, not a confirmed diagnosis of depression. The full PHQ-9 was deliberately excluded from this tool because item 9 (suicidal ideation) requires a supervised clinical pathway that a public self-administered tool cannot provide.</p>
+        </div>
+      </div>
+
+      <div class="meth-divider"></div>
+
+      <div class="meth-section">
+        <div class="meth-section-title">Archetype Assignment Logic</div>
+        <p class="meth-text">The five energy archetypes (The Burned Out, The Wired &amp; Tired, The Morning Wreck, The Depleted, The Invisible Illness) are Aufthority constructs — not clinical diagnoses. They are descriptive profiles designed to communicate result patterns in plain language.</p>
+        <p class="meth-text">Assignment follows a deterministic priority hierarchy:</p>
+        <ol class="meth-list meth-list-ol">
+          <li><strong>The Invisible Illness</strong> — assigned if any Red Flag items are ticked (overrides all other signals)</li>
+          <li><strong>The Burned Out</strong> — CBI Work ≥75 (High), or CBI Personal ≥75 and DASS Stress Severe or above</li>
+          <li><strong>The Wired &amp; Tired</strong> — DASS Stress Severe or above, DASS Anxiety Moderate or above, and Sleep domain flagged</li>
+          <li><strong>The Morning Wreck</strong> — Sleep domain morning fatigue items flagged and functional impact items flagged</li>
+          <li><strong>The Depleted</strong> — default archetype when no higher-priority pattern is met</li>
+        </ol>
+        <p class="meth-text meth-caveat">Limitation: archetype assignment is rule-based, not statistically derived. The thresholds reflect clinical judgment, not population-calibrated cutpoints. Users whose scores sit near a threshold boundary may not be accurately represented by their assigned archetype.</p>
+      </div>
+
+      <div class="meth-section">
+        <div class="meth-section-title">Malaysian Population Context — Sources</div>
+        <p class="meth-text">The contextual statistics shown within each archetype profile are drawn from the following sources. They are used to frame individual results against documented Malaysian population patterns — not to establish personal clinical norms.</p>
+        <ul class="meth-list">
+          <li><strong>NHMS 2023</strong> — National Health and Morbidity Survey 2023: Non-Communicable Diseases and Healthcare Demand. Ministry of Health Malaysia. Depression prevalence: 4.6% of adults aged 15+ (approximately 1 million people), doubling from 2.3% in 2019. Overweight/obesity prevalence: 54.4%. PHQ-9 used as the depression screening tool.</li>
+          <li><strong>Abdul Aziz AF &amp; Ong T (2024)</strong>. Prevalence and associated factors of burnout among working adults in Southeast Asia: results from a public health assessment. <em>Frontiers in Public Health</em>, 12:1326227. doi:10.3389/fpubh.2024.1326227 (PMC10972957). Malaysia-specific findings: 58.13% burnout prevalence; 41.75% severe/extremely severe anxiety; 43.34% severe/extremely severe depression; 31.25% severe/extremely severe stress on DASS-21. Sample: n=2,381 Malaysian full-time employees aged 18–65, convenience sample via online recruitment.</li>
+          <li><strong>Wright et al. (2019)</strong>. Morning Fatigue Severity Profiles in Oncology Outpatients Receiving Chemotherapy. <em>Cancer Nursing</em>, 42(5), 355–364. (PMC6336532). Basis for the morning fatigue vs. daytime sleepiness distinction in The Morning Wreck profile.</li>
+        </ul>
+        <p class="meth-text meth-caveat">Limitation: the Abdul Aziz &amp; Ong (2024) sample was recruited via paid social media advertising and is not a random population-representative sample. Results skew younger (53.7% aged 18–29) and female (74.5%). DASS-21 prevalence figures cited are for the Malaysian subsample only and should be interpreted as indicative of working-age adults with digital access, not the Malaysian general population. No published DASS-21 or CBI population norms for Malaysian adults currently exist.</p>
+      </div>
+
+      <div class="meth-divider"></div>
+        <ul class="meth-list">
+          <li>It does not diagnose any medical, psychiatric, or psychological condition.</li>
+          <li>It does not replace a clinical consultation, blood tests, or professional assessment.</li>
+          <li>It does not account for medication effects, comorbidities, or individual clinical context.</li>
+          <li>It is not validated for use in populations under 18 or in individuals with active serious mental illness.</li>
+        </ul>
+      </div>
+
+      <div class="meth-divider"></div>
+
+      <div class="meth-section">
+        <div class="meth-section-title">Data &amp; Privacy</div>
+        <p class="meth-text">This tool runs entirely in your browser. No answers, scores, or identifiable data are transmitted to or stored on any server. Anonymous usage events (page views, results shown, archetype assigned) are logged via Umami Analytics — a privacy-respecting, cookieless analytics platform — for the purpose of understanding how the tool is used. No personal health data is collected.</p>
+      </div>
+
+    </div><!-- /methodology-body -->
+  </div><!-- /methodology-wrap -->
+
   <footer>
     <p class="footer-brand">A tool by <a href="https://www.aufthority.com" target="_blank">Aufthority</a> — evidence-based health for Malaysians</p>
-    <p class="footer-note">For informational purposes only. Not medical advice. If you are concerned about your symptoms, consult a registered doctor or dietitian.</p>
+    <p class="footer-note">KenapaPenat? · For informational purposes only. Not medical advice. Clinical instruments: DASS-21 (Lovibond &amp; Lovibond, 1995), CBI (Kristensen et al., 2005), PHQ-2 (Kroenke et al., 2003). If you are concerned about your symptoms, consult a registered doctor or mental health professional.</p>
   </footer>
 
 </div><!-- /shell -->
 
-<!-- TALLY BAR -->
+<!-- TALLY BAR (Part 1) -->
 <div id="tally-bar">
   <div class="tally-left">
     <div class="tally-count" id="tallyCount">0</div>
-    <div class="tally-label">items flagged</div>
+    <div class="tally-label"><span data-en>items flagged</span><span data-bm>item ditanda</span></div>
   </div>
   <div class="tally-dots" id="tallyDots"></div>
-  <button id="btn-see-results" onclick="showResults()">See Results →</button>
+  <button id="btn-to-part2" onclick="goToPart2()"><span data-en>Continue →</span><span data-bm>Teruskan →</span></button>
+</div>
+
+<!-- CLINICAL BAR (Part 2) -->
+<div id="clinical-bar">
+  <div class="clinical-bar-info">
+    <div class="clinical-bar-count" id="clinicalAnsweredCount">0</div>
+    <div class="clinical-bar-label"><span data-en>of 36 answered</span><span data-bm>daripada 36 dijawab</span></div>
+  </div>
+  <button id="btn-see-results" onclick="showResults()"><span data-en>See My Results →</span><span data-bm>Lihat Keputusan Saya →</span></button>
 </div>
 
 <script>
+/* ══════════════════════════════════════════════════════════════
+   LANGUAGE
+══════════════════════════════════════════════════════════════ */
+let currentLang = 'en';
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'bm' : 'en';
+  document.body.classList.toggle('bm', currentLang === 'bm');
+  document.getElementById('langToggle').textContent = currentLang === 'en' ? 'BM' : 'EN';
+  // Re-render dynamic content in new language
+  CATEGORIES.forEach(cat => {
+    const container = document.getElementById('items-' + cat.id);
+    if (!container) return;
+    const items = currentLang === 'bm' && cat.itemsBm ? cat.itemsBm : cat.items;
+    container.innerHTML = items.map((item, i) => {
+      let sublabel = '';
+      if (cat.id === 'sleep' && SLEEP_SUBLABELS[i]) {
+        const sl = SLEEP_SUBLABELS[i];
+        sublabel = `<div class="check-sublabel">${currentLang === 'bm' ? sl.bm : sl.en}</div>`;
+      }
+      const isChecked = checked[cat.id] && checked[cat.id].has(i);
+      return `${sublabel}<div class="check-item${isChecked ? ' checked' : ''}" id="item-${cat.id}-${i}" onclick="toggle('${cat.id}',${i})">
+        <div class="check-box"><svg class="check-tick" viewBox="0 0 10 7" fill="none"><path d="M1 3.5L3.8 6L9 1" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="check-text">${item}</div></div>`;
+    }).join('');
+  });
+  renderDASS(); renderCBI(); renderPHQ();
+  updateClinicalProgress();
+  if (window.umami) umami.track('lang-toggle', { lang: currentLang });
+}
+
+function t(en, bm) { return currentLang === 'bm' ? bm : en; }
+
+/* ══════════════════════════════════════════════════════════════
+   DATA
+══════════════════════════════════════════════════════════════ */
+
 const CATEGORIES = [
   {
     id: 'sleep', color: '#7a78ff',
-    name: 'Sleep Quality',
+    name: 'Sleep Quality', nameBm: 'Kualiti Tidur',
     isRedFlag: false,
-    insight: '<strong>Sleep is the most underestimated driver of both fatigue and weight gain.</strong> During poor sleep, ghrelin (hunger hormone) rises and leptin (fullness hormone) falls — making you hungrier the next day with less willpower to resist. Even one week of sleeping under 6 hours can measurably increase abdominal fat accumulation.',
+    insight: 'Sleep is the most underestimated driver of both fatigue and weight gain. During poor sleep, ghrelin (hunger hormone) rises and leptin (fullness hormone) falls. Research confirms that morning fatigue and daytime sleepiness are distinct problems — waking up exhausted points to sleep quality issues, while dozing off during the day may indicate a sleep disorder like apnea.',
+    insightBm: 'Tidur adalah pemacu keletihan dan penambahan berat yang paling dipandang remeh. Semasa tidur yang buruk, ghrelin (hormon lapar) meningkat dan leptin (hormon kenyang) menurun. Kajian mengesahkan bahawa keletihan pagi dan mengantuk siang hari adalah masalah yang berbeza — bangun dalam keadaan penat menunjukkan masalah kualiti tidur, manakala mengantuk di siang hari mungkin menandakan gangguan tidur seperti apnea.',
     actions: [
       'Aim for 7–9 hours in a dark, cool room — set a consistent sleep and wake time even on weekends',
       'Avoid screens 30–60 minutes before bed; the blue light suppresses melatonin',
-      'If you snore loudly or wake unrefreshed despite adequate sleep time, ask your doctor about sleep apnea screening',
+      'If you doze off easily in passive situations (watching TV, as a passenger), ask your doctor about sleep apnea screening',
+      'If fatigue is interfering with your work, family life, or daily responsibilities, this warrants a clinical assessment',
+    ],
+    actionsBm: [
+      'Tidur 7–9 jam dalam bilik yang gelap dan sejuk — tetapkan waktu tidur dan bangun yang konsisten walaupun pada hujung minggu',
+      'Elakkan skrin 30–60 minit sebelum tidur; cahaya biru menyekat melatonin',
+      'Jika anda mudah tertidur dalam situasi pasif (menonton TV, sebagai penumpang), tanya doktor tentang saringan apnea tidur',
+      'Jika keletihan mengganggu kerja, kehidupan keluarga, atau tanggungjawab harian anda, ini memerlukan penilaian klinikal',
     ],
     items: [
       'I regularly sleep less than 7 hours a night',
@@ -690,17 +903,38 @@ const CATEGORIES = [
       'I stay awake past midnight most nights',
       'My sleep is frequently interrupted or I wake up multiple times a night',
       'I\'ve been told I snore loudly or stop breathing during sleep',
+      'I wake up in the morning already feeling exhausted — before my day has even started',
+      'I would likely doze off sitting quietly in a public place, watching TV, or as a passenger in a car',
+      'My fatigue interferes with carrying out my work, family duties, or social life',
+      'Fatigue is among my top three most disabling daily problems',
+    ],
+    itemsBm: [
+      'Saya kerap tidur kurang daripada 7 jam sehari',
+      'Saya sering berasa lapar atau ingin makan makanan manis pada pagi selepas tidur yang buruk',
+      'Saya kerap terjaga hingga lepas tengah malam',
+      'Tidur saya sering terganggu atau saya terjaga berkali-kali dalam semalam',
+      'Saya diberitahu bahawa saya berdengkur kuat atau berhenti bernafas semasa tidur',
+      'Saya bangun tidur dalam keadaan sudah keletihan — sebelum hari bermula',
+      'Saya berkemungkinan tertidur apabila duduk diam di tempat awam, menonton TV, atau sebagai penumpang dalam kereta',
+      'Keletihan saya mengganggu pelaksanaan kerja, tanggungjawab keluarga, atau kehidupan sosial saya',
+      'Keletihan adalah antara tiga masalah paling melumpuhkan dalam kehidupan harian saya',
     ]
   },
   {
     id: 'physical', color: '#00a652',
-    name: 'Physical Activity',
+    name: 'Physical Activity', nameBm: 'Aktiviti Fizikal',
     isRedFlag: false,
-    insight: '<strong>Inactivity is one of the most potent drivers of both fatigue and weight gain — and they reinforce each other.</strong> A sedentary body burns fewer calories at rest, loses muscle mass faster with age, and paradoxically feels more tired. Even low-intensity daily movement (walking, standing) significantly improves both energy and metabolic rate over time.',
+    insight: '<strong>Inactivity is one of the most potent drivers of both fatigue and weight gain — and they reinforce each other.</strong> A sedentary body burns fewer calories at rest, loses muscle mass faster with age, and paradoxically feels more tired.',
+    insightBm: '<strong>Ketidakaktifan adalah antara pemacu keletihan dan penambahan berat yang paling kuat — dan ia saling mengukuhkan.</strong> Badan yang tidak aktif membakar lebih sedikit kalori semasa rehat, kehilangan jisim otot lebih cepat dengan usia, dan secara paradoks berasa lebih penat.',
     actions: [
       'Start with a 20-minute walk daily — it\'s the single most evidence-backed intervention for energy and mood',
       'Reduce continuous sitting: stand or walk for 5 minutes every hour',
       'Aim for at least 150 minutes of moderate activity per week (Malaysian MOH & WHO guideline)',
+    ],
+    actionsBm: [
+      'Mulakan dengan berjalan kaki 20 minit sehari — ia adalah intervensi yang paling disokong bukti untuk tenaga dan mood',
+      'Kurangkan duduk berterusan: berdiri atau berjalan 5 minit setiap jam',
+      'Sasarkan sekurang-kurangnya 150 minit aktiviti sederhana seminggu (garis panduan MOH Malaysia & WHO)',
     ],
     items: [
       'I sit for more than 8 hours a day (desk job, driving, TV, phone)',
@@ -708,17 +942,30 @@ const CATEGORIES = [
       'I feel easily winded climbing stairs or walking briskly',
       'My body feels stiff or achy most mornings',
       'My lifestyle is significantly more sedentary than it was 5 years ago',
+    ],
+    itemsBm: [
+      'Saya duduk lebih daripada 8 jam sehari (kerja meja, memandu, TV, telefon)',
+      'Saya bersenam kurang daripada 2 kali seminggu',
+      'Saya mudah tersekat nafas apabila menaiki tangga atau berjalan dengan pantas',
+      'Badan saya berasa kaku atau sakit kebanyakan pagi',
+      'Gaya hidup saya jauh lebih tidak aktif berbanding 5 tahun lalu',
     ]
   },
   {
     id: 'nutrition', color: '#ffc412',
-    name: 'Nutrition',
+    name: 'Nutrition', nameBm: 'Pemakanan',
     isRedFlag: false,
-    insight: '<strong>What you eat — and when — directly regulates your energy levels, hunger signals, and fat storage patterns.</strong> In the Malaysian diet, the most common issues are excess liquid sugar (teh tarik, cordials, soft drinks), insufficient protein (which drives hunger and muscle loss), and skipping meals leading to large compensatory eating late in the day.',
+    insight: '<strong>What you eat — and when — directly regulates your energy levels, hunger signals, and fat storage patterns.</strong> In the Malaysian diet, the most common issues are excess liquid sugar, insufficient protein, and skipping meals leading to large compensatory eating late in the day.',
+    insightBm: '<strong>Apa dan bila anda makan secara langsung mengawal tahap tenaga, isyarat lapar, dan corak penyimpanan lemak anda.</strong> Dalam diet Malaysia, masalah paling biasa adalah gula cecair berlebihan, protein tidak mencukupi, dan melangkau makan yang membawa kepada makan berlebihan pada waktu malam.',
     actions: [
       'Cut liquid calories first — replacing sugary drinks with water or unsweetened teh o alone creates a significant calorie deficit',
       'Include a protein source at every meal (eggs, fish, tofu, chicken) to sustain energy and reduce hunger',
       'Don\'t skip breakfast — it sets hunger and energy patterns for the whole day',
+    ],
+    actionsBm: [
+      'Kurangkan kalori cecair dahulu — menggantikan minuman manis dengan air atau teh o tawar sahaja sudah mewujudkan defisit kalori yang ketara',
+      'Sertakan sumber protein pada setiap hidangan (telur, ikan, tauhu, ayam) untuk mengekalkan tenaga dan mengurangkan rasa lapar',
+      'Jangan langkau sarapan — ia menentukan corak lapar dan tenaga untuk sepanjang hari',
     ],
     items: [
       'I drink sweetened beverages daily — teh tarik, milo, kopi, cordials, or soft drinks',
@@ -726,17 +973,30 @@ const CATEGORIES = [
       'My diet is low in fruits, vegetables, or whole foods most days',
       'I eat very little protein (meat, fish, eggs, legumes, tofu) at meals',
       'I often feel an energy crash in the mid-afternoon after eating',
+    ],
+    itemsBm: [
+      'Saya minum minuman manis setiap hari — teh tarik, milo, kopi, sirap, atau minuman bergas',
+      'Saya kerap melangkau makan, kemudian makan hidangan yang sangat besar kemudian hari',
+      'Diet saya rendah buah-buahan, sayur-sayuran, atau makanan semula jadi kebanyakan hari',
+      'Saya makan sangat sedikit protein (daging, ikan, telur, kekacang, tauhu) pada waktu makan',
+      'Saya sering berasa keletihan tenaga pada tengah petang selepas makan',
     ]
   },
   {
     id: 'mood', color: '#478bff',
-    name: 'Mood & Stress',
+    name: 'Mood & Stress', nameBm: 'Mood & Stres',
     isRedFlag: false,
-    insight: '<strong>Chronic psychological stress keeps cortisol chronically elevated — which directly promotes abdominal fat storage, disrupts sleep, and depletes physical energy.</strong> Stress also triggers emotional eating and reduces the mental bandwidth needed to sustain healthy habits. In Malaysian adults, financial pressure, work demands, and family obligations are common chronic stressors that go unaddressed.',
+    insight: '<strong>Chronic psychological stress keeps cortisol chronically elevated — which directly promotes abdominal fat storage, disrupts sleep, and depletes physical energy.</strong> In Malaysian adults, financial pressure, work demands, and family obligations are common chronic stressors that go unaddressed.',
+    insightBm: '<strong>Stres psikologi kronik mengekalkan kortisol sentiasa tinggi — yang secara langsung mendorong penyimpanan lemak perut, mengganggu tidur, dan menghabiskan tenaga fizikal.</strong> Dalam kalangan dewasa Malaysia, tekanan kewangan, tuntutan kerja, dan obligasi keluarga adalah penyebab stres kronik yang biasa tidak ditangani.',
     actions: [
       'Name the stressor — write down the top 2–3 things draining you most; vague stress is harder to act on than specific ones',
       'Even 10 minutes of daily outdoor walking reduces cortisol measurably',
-      'If low mood or loss of interest in things you used to enjoy has persisted for more than 2 weeks, speak to a doctor — this may be depression, which is a medical condition, not a willpower issue',
+      'If low mood or loss of interest in things you used to enjoy has persisted for more than 2 weeks, speak to a doctor',
+    ],
+    actionsBm: [
+      'Namakan penyebab stres — tuliskan 2–3 perkara teratas yang paling meletihkan anda; stres kabur lebih sukar ditangani daripada yang spesifik',
+      'Walaupun 10 minit berjalan di luar setiap hari dapat mengurangkan kortisol secara ketara',
+      'Jika mood rendah atau kehilangan minat terhadap perkara yang anda suka berterusan lebih daripada 2 minggu, berjumpa doktor',
     ],
     items: [
       'I often eat to cope with stress, boredom, or difficult emotions',
@@ -744,17 +1004,30 @@ const CATEGORIES = [
       'I\'ve lost interest in activities I used to enjoy',
       'I have difficulty relaxing or mentally switching off after work',
       'I feel irritable, anxious, or emotionally flat more often than not',
+    ],
+    itemsBm: [
+      'Saya kerap makan untuk mengatasi stres, kebosanan, atau emosi yang sukar',
+      'Saya berasa tertekan, terbeban, atau burnout kebanyakan hari',
+      'Saya telah kehilangan minat terhadap aktiviti yang dulu saya sukai',
+      'Saya sukar untuk berehat atau mematikan fikiran selepas kerja',
+      'Saya berasa mudah marah, cemas, atau emosi datar lebih kerap daripada tidak',
     ]
   },
   {
     id: 'weight', color: '#ff6d38',
-    name: 'Metabolic & Medical',
+    name: 'Metabolic & Medical', nameBm: 'Metabolik & Perubatan',
     isRedFlag: false,
-    insight: '<strong>Undiagnosed metabolic and hormonal conditions are more common than most people realise — and they make it nearly impossible to lose weight or recover energy through lifestyle changes alone.</strong> Hypothyroidism, insulin resistance, PCOS, and type 2 diabetes are all under-diagnosed in Malaysia. If this domain scores highest and lifestyle changes haven\'t moved the needle, a basic blood panel is the right next step.',
+    insight: '<strong>Undiagnosed metabolic and hormonal conditions are more common than most people realise — and they make it nearly impossible to lose weight or recover energy through lifestyle changes alone.</strong> Hypothyroidism, insulin resistance, PCOS, and type 2 diabetes are all under-diagnosed in Malaysia.',
+    insightBm: '<strong>Keadaan metabolik dan hormon yang tidak didiagnosis lebih biasa daripada yang kebanyakan orang sedar — dan ia menjadikan penurunan berat atau pemulihan tenaga hampir mustahil melalui perubahan gaya hidup semata-mata.</strong> Hipotiroidisme, rintangan insulin, PCOS, dan diabetes jenis 2 semuanya kurang didiagnosis di Malaysia.',
     actions: [
       'Request a basic metabolic panel from your GP: fasting glucose, HbA1c, TSH (thyroid), full blood count, and lipid profile',
-      'If you are on long-term medications (steroids, antidepressants, antipsychotics), ask your doctor if weight gain is a known side effect and whether alternatives exist',
+      'If you are on long-term medications (steroids, antidepressants, antipsychotics), ask your doctor if weight gain is a known side effect',
       'For women: irregular cycles combined with fatigue and weight gain warrants PCOS screening',
+    ],
+    actionsBm: [
+      'Minta panel metabolik asas daripada doktor: glukosa puasa, HbA1c, TSH (tiroid), kiraan darah penuh, dan profil lipid',
+      'Jika anda mengambil ubat jangka panjang (steroid, antidepresan, antipsikotik), tanya doktor jika penambahan berat adalah kesan sampingan yang diketahui',
+      'Untuk wanita: kitaran haid yang tidak teratur bersama keletihan dan penambahan berat memerlukan saringan PCOS',
     ],
     items: [
       'My weight gain or fatigue began suddenly without clear lifestyle changes',
@@ -762,17 +1035,30 @@ const CATEGORIES = [
       'I have irregular periods, excess facial/body hair, or persistent acne (PCOS signs, for women)',
       'I am currently taking long-term medications (steroids, antidepressants, antipsychotics, insulin, contraceptives)',
       'I have been diagnosed with diabetes, prediabetes, high cholesterol, or high blood pressure',
+    ],
+    itemsBm: [
+      'Penambahan berat atau keletihan saya bermula secara tiba-tiba tanpa perubahan gaya hidup yang jelas',
+      'Saya sering berasa sejuk, sembelit, atau mempunyai kulit kering dan rambut gugur (kemungkinan tanda tiroid)',
+      'Saya mempunyai kitaran haid yang tidak teratur, lebihan bulu muka/badan, atau jerawat berterusan (tanda PCOS, untuk wanita)',
+      'Saya sedang mengambil ubat jangka panjang (steroid, antidepresan, antipsikotik, insulin, kontraseptif)',
+      'Saya telah didiagnosis dengan diabetes, pradiabetes, kolesterol tinggi, atau tekanan darah tinggi',
     ]
   },
   {
     id: 'redflags', color: '#ff3b3b',
-    name: 'Red Flags',
+    name: 'Red Flags', nameBm: 'Tanda Amaran',
     isRedFlag: true,
-    insight: '<strong>These symptoms are not explained by lifestyle factors alone.</strong> They may indicate an underlying medical condition — including infections, blood disorders, cardiac conditions, or malignancy — that requires clinical evaluation. Do not delay seeking medical attention if any of these apply to you.',
+    insight: '<strong>These symptoms are not explained by lifestyle factors alone.</strong> They may indicate an underlying medical condition requiring clinical evaluation.',
+    insightBm: '<strong>Gejala-gejala ini tidak dapat dijelaskan oleh faktor gaya hidup semata-mata.</strong> Ia mungkin menunjukkan keadaan perubatan yang mendasari yang memerlukan penilaian klinikal.',
     actions: [
       'See a doctor promptly — do not wait for symptoms to worsen',
       'Bring a written list of all your symptoms, when they started, and how they\'ve changed',
       'Do not start new supplements or restrictive diets before getting a medical assessment',
+    ],
+    actionsBm: [
+      'Berjumpa doktor dengan segera — jangan tunggu gejala menjadi lebih teruk',
+      'Bawa senarai bertulis semua gejala anda, bila ia bermula, dan bagaimana ia berubah',
+      'Jangan mulakan suplemen baru atau diet ketat sebelum mendapatkan penilaian perubatan',
     ],
     items: [
       'I have lost weight noticeably without trying to',
@@ -780,34 +1066,373 @@ const CATEGORIES = [
       'I feel breathless doing activities that didn\'t used to tire me',
       'I appear significantly paler than usual, or others have commented on it',
       'I have experienced abnormal bleeding (from any site) that I cannot explain',
+    ],
+    itemsBm: [
+      'Saya telah kehilangan berat badan secara ketara tanpa berusaha',
+      'Saya mengalami demam berterusan atau berpeluh malam lebih daripada 2 minggu',
+      'Saya berasa sesak nafas melakukan aktiviti yang dahulunya tidak meletihkan saya',
+      'Saya kelihatan jauh lebih pucat daripada biasa, atau orang lain telah menyebut tentangnya',
+      'Saya mengalami pendarahan luar biasa (dari mana-mana bahagian) yang tidak dapat saya jelaskan',
     ]
   }
 ];
 
-let checked = {};
+// DASS-21: subscale tags D=depression A=anxiety S=stress
+const DASS_ITEMS = [
+  { q: 'I found it hard to wind down',                                              sub: 'S' },
+  { q: 'I was aware of dryness of my mouth',                                        sub: 'A' },
+  { q: "I couldn't seem to experience any positive feeling at all",                  sub: 'D' },
+  { q: 'I experienced breathing difficulty (e.g. excessively rapid breathing, breathlessness in the absence of physical exertion)', sub: 'A' },
+  { q: 'I found it difficult to work up the initiative to do things',                sub: 'D' },
+  { q: 'I tended to over-react to situations',                                       sub: 'S' },
+  { q: 'I experienced trembling (e.g. in the hands)',                                sub: 'A' },
+  { q: 'I felt that I was using a lot of nervous energy',                            sub: 'S' },
+  { q: 'I was worried about situations in which I might panic and make a fool of myself', sub: 'A' },
+  { q: 'I felt that I had nothing to look forward to',                               sub: 'D' },
+  { q: 'I found myself getting agitated',                                            sub: 'S' },
+  { q: 'I found it difficult to relax',                                              sub: 'S' },
+  { q: 'I felt down-hearted and blue',                                               sub: 'D' },
+  { q: 'I was intolerant of anything that kept me from getting on with what I was doing', sub: 'S' },
+  { q: 'I felt I was close to panic',                                                sub: 'A' },
+  { q: 'I was unable to become enthusiastic about anything',                         sub: 'D' },
+  { q: "I felt I wasn't worth much as a person",                                     sub: 'D' },
+  { q: 'I felt that I was rather touchy',                                            sub: 'S' },
+  { q: 'I was aware of the action of my heart in the absence of physical exertion (e.g. sense of heart rate increase, heart missing a beat)', sub: 'A' },
+  { q: 'I felt scared without any good reason',                                      sub: 'A' },
+  { q: 'I felt that life was meaningless',                                           sub: 'D' },
+];
+const DASS_OPTIONS = [
+  { label: 'Did not apply to me at all', val: 0 },
+  { label: 'Applied to me to some degree, or some of the time', val: 1 },
+  { label: 'Applied to me to a considerable degree, or a good part of the time', val: 2 },
+  { label: 'Applied to me very much, or most of the time', val: 3 },
+];
 
+const CBI_PERSONAL = [
+  { q: 'How often do you feel tired?',                     type: 'freq' },
+  { q: 'How often are you physically exhausted?',          type: 'freq' },
+  { q: 'How often are you emotionally exhausted?',         type: 'freq' },
+  { q: 'How often do you think "I can\'t take it anymore"?', type: 'freq' },
+  { q: 'How often do you feel worn out?',                  type: 'freq' },
+  { q: 'How often do you feel that you have had enough?',  type: 'freq' },
+];
+const CBI_WORK = [
+  { q: 'Is your work emotionally exhausting?',                               type: 'degree' },
+  { q: 'Do you feel burnt out because of your work?',                        type: 'degree' },
+  { q: 'Does your work frustrate you?',                                      type: 'degree' },
+  { q: 'Do you feel worn out at the end of the working day?',                type: 'freq' },
+  { q: 'Are you exhausted in the morning at the thought of another day at work?', type: 'freq' },
+  { q: 'Do you feel that every working hour is tiring for you?',             type: 'freq' },
+  { q: 'Do you have enough energy for family and friends during leisure time?', type: 'freq', reverse: true },
+];
+const CBI_FREQ_OPTIONS = [
+  { label: 'Always',           val: 100 },
+  { label: 'Often',            val: 75  },
+  { label: 'Sometimes',        val: 50  },
+  { label: 'Seldom',           val: 25  },
+  { label: 'Never / almost never', val: 0 },
+];
+const CBI_DEGREE_OPTIONS = [
+  { label: 'To a very high degree', val: 100 },
+  { label: 'To a high degree',      val: 75  },
+  { label: 'Somewhat',              val: 50  },
+  { label: 'To a low degree',       val: 25  },
+  { label: 'To a very low degree',  val: 0   },
+];
+
+const PHQ_ITEMS = [
+  { q: 'Little interest or pleasure in doing things' },
+  { q: 'Feeling down, depressed, or hopeless' },
+];
+const PHQ_OPTIONS = [
+  { label: 'Not at all',              val: 0 },
+  { label: 'Several days',            val: 1 },
+  { label: 'More than half the days', val: 2 },
+  { label: 'Nearly every day',        val: 3 },
+];
+
+// Answers storage: null = unanswered
+let dassAnswers = new Array(21).fill(null);
+let cbiPAnswers = new Array(6).fill(null);
+let cbiWAnswers = new Array(7).fill(null);
+let phqAnswers  = new Array(2).fill(null);
+let checked     = {};
+
+const TOTAL_CLINICAL = 21 + 6 + 7 + 2; // 36
+
+/* ══════════════════════════════════════════════════════════════
+   SLEEP SUB-LABELS
+══════════════════════════════════════════════════════════════ */
+const SLEEP_SUBLABELS = {
+  0: { en: 'Sleep habits', bm: 'Tabiat tidur' },
+  5: { en: 'Morning fatigue & daytime sleepiness', bm: 'Keletihan pagi & mengantuk siang' },
+  7: { en: 'Functional impact', bm: 'Kesan fungsional' }
+};
+
+/* ══════════════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════════════ */
 function init() {
+  // Part 1 checklist
   CATEGORIES.forEach(cat => {
-    checked[cat.id] = new Set();
+    if (!checked[cat.id]) checked[cat.id] = new Set();
     const container = document.getElementById('items-' + cat.id);
-    container.innerHTML = cat.items.map((item, i) => `
-      <div class="check-item" id="item-${cat.id}-${i}" onclick="toggle('${cat.id}',${i})">
-        <div class="check-box">
-          <svg class="check-tick" viewBox="0 0 10 7" fill="none">
-            <path d="M1 3.5L3.8 6L9 1" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="check-text">${item}</div>
-      </div>
-    `).join('');
+    const items = currentLang === 'bm' && cat.itemsBm ? cat.itemsBm : cat.items;
+    container.innerHTML = items.map((item, i) => {
+      let sublabel = '';
+      if (cat.id === 'sleep' && SLEEP_SUBLABELS[i]) {
+        const sl = SLEEP_SUBLABELS[i];
+        sublabel = `<div class="check-sublabel">${currentLang === 'bm' ? sl.bm : sl.en}</div>`;
+      }
+      const isChecked = checked[cat.id].has(i);
+      return `${sublabel}<div class="check-item${isChecked ? ' checked' : ''}" id="item-${cat.id}-${i}" onclick="toggle('${cat.id}',${i})">
+        <div class="check-box"><svg class="check-tick" viewBox="0 0 10 7" fill="none"><path d="M1 3.5L3.8 6L9 1" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="check-text">${item}</div></div>`;
+    }).join('');
+    document.getElementById('count-' + cat.id).textContent = `${checked[cat.id].size} / ${cat.items.length}`;
   });
 
+  // Tally dots (only on first run)
   const wrap = document.getElementById('tallyDots');
-  wrap.innerHTML = CATEGORIES.map(c =>
-    `<div class="tally-dot" id="tdot-${c.id}" style="background:${c.color}"></div>`
-  ).join('');
+  if (!wrap.children.length) {
+    wrap.innerHTML = CATEGORIES.map(c =>
+      `<div class="tally-dot" id="tdot-${c.id}" style="background:${c.color}"></div>`
+    ).join('');
+  }
+
+  // Part 2: render clinical questions
+  renderDASS();
+  renderCBI();
+  renderPHQ();
 }
 
+/* ── RENDER DASS ── */
+function renderDASS() {
+  const container = document.getElementById('dass-questions');
+  container.innerHTML = DASS_ITEMS.map((item, i) => buildQCard(
+    `dass-${i}`, i + 1, item.q, DASS_OPTIONS,
+    (val) => { dassAnswers[i] = val; updateClinicalProgress(); }
+  )).join('');
+}
+
+/* ── RENDER CBI ── */
+function renderCBI() {
+  const container = document.getElementById('cbi-questions');
+  let html = '<div style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin-bottom:12px">Personal Burnout</div>';
+  html += CBI_PERSONAL.map((item, i) => buildQCard(
+    `cbip-${i}`, i + 1, item.q, CBI_FREQ_OPTIONS,
+    (val) => { cbiPAnswers[i] = val; updateClinicalProgress(); }
+  )).join('');
+  html += '<div style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin:20px 0 12px">Work Burnout</div>';
+  html += CBI_WORK.map((item, i) => buildQCard(
+    `cbiw-${i}`, i + 1, item.q, item.type === 'degree' ? CBI_DEGREE_OPTIONS : CBI_FREQ_OPTIONS,
+    (val) => { cbiWAnswers[i] = val; updateClinicalProgress(); }
+  )).join('');
+  container.innerHTML = html;
+}
+
+/* ── RENDER PHQ ── */
+function renderPHQ() {
+  const container = document.getElementById('phq-questions');
+  container.innerHTML = PHQ_ITEMS.map((item, i) => buildQCard(
+    `phq-${i}`, i + 1, item.q, PHQ_OPTIONS,
+    (val) => { phqAnswers[i] = val; updateClinicalProgress(); }
+  )).join('');
+}
+
+/* ── BUILD Q CARD ── */
+function buildQCard(id, num, question, options, onChange) {
+  const opts = options.map((o, oi) => `
+    <div class="q-option" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},${JSON.stringify(onChange).replace(/"/g,"'")})" >
+      <div class="q-option-radio"><div class="q-option-dot"></div></div>
+      <div class="q-option-label">${o.label}</div>
+    </div>`).join('');
+  return `<div class="q-card" id="qcard-${id}">
+    <div class="q-num">Q${num}</div>
+    <div class="q-text">${question}</div>
+    <div class="q-options">${opts}</div>
+  </div>`;
+}
+
+/* ── SELECT OPTION ── */
+// Store callbacks by id since we can't serialize functions
+const _callbacks = {};
+function buildQCardWithCB(id, num, question, options, onChange) {
+  _callbacks[id] = onChange;
+  const opts = options.map((o, oi) => `
+    <div class="q-option" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
+      <div class="q-option-radio"><div class="q-option-dot"></div></div>
+      <div class="q-option-label">${o.label}</div>
+    </div>`).join('');
+  return `<div class="q-card" id="qcard-${id}">
+    <div class="q-num">Q${num}</div>
+    <div class="q-text">${question}</div>
+    <div class="q-options">${opts}</div>
+  </div>`;
+}
+
+function selectOption(qid, optIdx, val, numOpts, cbKey) {
+  for (let i = 0; i < numOpts; i++) {
+    const el = document.getElementById(`${qid}-opt-${i}`);
+    if (el) el.classList.remove('selected');
+  }
+  const selected = document.getElementById(`${qid}-opt-${optIdx}`);
+  if (selected) selected.classList.add('selected');
+  // Remove unanswered highlight
+  const card = document.getElementById(`qcard-${qid}`);
+  if (card) card.classList.remove('q-unanswered');
+  // Fire callback
+  if (_callbacks[qid]) _callbacks[qid](val);
+}
+
+// Bilingual option sets
+const DASS_OPTIONS_BM = [
+  { label: 'Tidak berlaku kepada saya langsung', val: 0 },
+  { label: 'Berlaku kepada saya pada kadar tertentu, atau kadang-kadang', val: 1 },
+  { label: 'Berlaku kepada saya pada kadar yang ketara, atau sebahagian besar masa', val: 2 },
+  { label: 'Berlaku kepada saya dengan sangat ketara, atau kebanyakan masa', val: 3 },
+];
+const DASS_ITEMS_BM = [
+  'Saya sukar untuk bertenang',
+  'Saya sedar mulut saya kering',
+  'Saya langsung tidak dapat merasai sebarang perasaan positif',
+  'Saya mengalami kesukaran bernafas (seperti bernafas terlalu cepat, sesak nafas tanpa aktiviti fizikal)',
+  'Saya sukar untuk berusaha memulakan sesuatu perkara',
+  'Saya cenderung untuk bertindak berlebihan terhadap sesuatu situasi',
+  'Saya mengalami gegaran (contohnya pada tangan)',
+  'Saya berasa menggunakan banyak tenaga saraf',
+  'Saya bimbang tentang situasi di mana saya mungkin panik dan memalukan diri sendiri',
+  'Saya berasa tidak ada apa yang boleh saya harapkan',
+  'Saya mendapati diri saya menjadi gelisah',
+  'Saya sukar untuk berehat',
+  'Saya berasa murung dan sedih',
+  'Saya tidak bertolak ansur dengan apa sahaja yang menghalang saya daripada meneruskan apa yang saya lakukan',
+  'Saya berasa hampir panik',
+  'Saya tidak dapat menjadi bersemangat tentang apa-apa',
+  'Saya berasa saya tidak bernilai sebagai seorang manusia',
+  'Saya berasa agak mudah tersinggung',
+  'Saya sedar denyutan jantung saya tanpa aktiviti fizikal',
+  'Saya berasa takut tanpa sebab yang munasabah',
+  'Saya berasa hidup tidak bermakna',
+];
+const CBI_FREQ_OPTIONS_BM = [
+  { label: 'Sentiasa', val: 100 },
+  { label: 'Kerap', val: 75 },
+  { label: 'Kadang-kadang', val: 50 },
+  { label: 'Jarang', val: 25 },
+  { label: 'Tidak pernah / hampir tidak pernah', val: 0 },
+];
+const CBI_DEGREE_OPTIONS_BM = [
+  { label: 'Pada tahap yang sangat tinggi', val: 100 },
+  { label: 'Pada tahap yang tinggi', val: 75 },
+  { label: 'Pada tahap sederhana', val: 50 },
+  { label: 'Pada tahap yang rendah', val: 25 },
+  { label: 'Pada tahap yang sangat rendah', val: 0 },
+];
+const CBI_PERSONAL_BM = [
+  'Seberapa kerap anda berasa penat?',
+  'Seberapa kerap anda berasa keletihan fizikal?',
+  'Seberapa kerap anda berasa keletihan emosi?',
+  'Seberapa kerap anda berfikir "Saya tidak tahan lagi"?',
+  'Seberapa kerap anda berasa kelelahan?',
+  'Seberapa kerap anda berasa sudah cukup?',
+];
+const CBI_WORK_BM = [
+  'Adakah kerja anda meletihkan secara emosi?',
+  'Adakah anda berasa burnout disebabkan kerja anda?',
+  'Adakah kerja anda membuatkan anda kecewa?',
+  'Adakah anda berasa kelelahan di penghujung hari bekerja?',
+  'Adakah anda berasa keletihan pada waktu pagi apabila memikirkan hari bekerja yang lain?',
+  'Adakah anda berasa setiap jam bekerja meletihkan anda?',
+  'Adakah anda mempunyai cukup tenaga untuk keluarga dan rakan-rakan semasa masa lapang?',
+];
+const PHQ_OPTIONS_BM = [
+  { label: 'Langsung tidak', val: 0 },
+  { label: 'Beberapa hari', val: 1 },
+  { label: 'Lebih daripada separuh hari', val: 2 },
+  { label: 'Hampir setiap hari', val: 3 },
+];
+const PHQ_ITEMS_BM = [
+  'Kurang minat atau keseronokan dalam melakukan sesuatu perkara',
+  'Berasa murung, tertekan, atau putus harapan',
+];
+
+function renderDASS() {
+  const container = document.getElementById('dass-questions');
+  const isBM = currentLang === 'bm';
+  const questions = isBM ? DASS_ITEMS_BM : DASS_ITEMS.map(x => x.q);
+  const options   = isBM ? DASS_OPTIONS_BM : DASS_OPTIONS;
+  container.innerHTML = questions.map((q, i) => {
+    const id = `dass-${i}`;
+    _callbacks[id] = (val) => { dassAnswers[i] = val; updateClinicalProgress(); };
+    const prevVal = dassAnswers[i];
+    const opts = options.map((o, oi) => `
+      <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
+        <div class="q-option-radio"><div class="q-option-dot"></div></div>
+        <div class="q-option-label">${o.label}</div>
+      </div>`).join('');
+    return `<div class="q-card" id="qcard-${id}"><div class="q-num">Q${i+1}</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+  }).join('');
+}
+
+function renderCBI() {
+  const container = document.getElementById('cbi-questions');
+  const isBM = currentLang === 'bm';
+  const freqOpts   = isBM ? CBI_FREQ_OPTIONS_BM : CBI_FREQ_OPTIONS;
+  const degreeOpts = isBM ? CBI_DEGREE_OPTIONS_BM : CBI_DEGREE_OPTIONS;
+  const personalQs = isBM ? CBI_PERSONAL_BM : CBI_PERSONAL.map(x => x.q);
+  const workQs     = isBM ? CBI_WORK_BM : CBI_WORK.map(x => x.q);
+  const pLabel = isBM ? 'Burnout Peribadi' : 'Personal Burnout';
+  const wLabel = isBM ? 'Burnout Kerja' : 'Work Burnout';
+  let html = `<div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin-bottom:12px">${pLabel}</div>`;
+  html += personalQs.map((q, i) => {
+    const id = `cbip-${i}`;
+    _callbacks[id] = (val) => { cbiPAnswers[i] = val; updateClinicalProgress(); };
+    const prevVal = cbiPAnswers[i];
+    const opts = freqOpts.map((o, oi) => `
+      <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${freqOpts.length},'${id}')">
+        <div class="q-option-radio"><div class="q-option-dot"></div></div>
+        <div class="q-option-label">${o.label}</div>
+      </div>`).join('');
+    return `<div class="q-card" id="qcard-${id}"><div class="q-num">Q${i+1}</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+  }).join('');
+  html += `<div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin:20px 0 12px">${wLabel}</div>`;
+  html += workQs.map((q, i) => {
+    const id = `cbiw-${i}`;
+    _callbacks[id] = (val) => { cbiWAnswers[i] = val; updateClinicalProgress(); };
+    const prevVal = cbiWAnswers[i];
+    const options = CBI_WORK[i].type === 'degree' ? degreeOpts : freqOpts;
+    const opts = options.map((o, oi) => `
+      <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
+        <div class="q-option-radio"><div class="q-option-dot"></div></div>
+        <div class="q-option-label">${o.label}</div>
+      </div>`).join('');
+    return `<div class="q-card" id="qcard-${id}"><div class="q-num">Q${i+1}</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+  }).join('');
+  container.innerHTML = html;
+}
+
+function renderPHQ() {
+  const container = document.getElementById('phq-questions');
+  const isBM = currentLang === 'bm';
+  const questions = isBM ? PHQ_ITEMS_BM : PHQ_ITEMS.map(x => x.q);
+  const options   = isBM ? PHQ_OPTIONS_BM : PHQ_OPTIONS;
+  container.innerHTML = questions.map((q, i) => {
+    const id = `phq-${i}`;
+    _callbacks[id] = (val) => { phqAnswers[i] = val; updateClinicalProgress(); };
+    const prevVal = phqAnswers[i];
+    const opts = options.map((o, oi) => `
+      <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
+        <div class="q-option-radio"><div class="q-option-dot"></div></div>
+        <div class="q-option-label">${o.label}</div>
+      </div>`).join('');
+    return `<div class="q-card" id="qcard-${id}"><div class="q-num">Q${i+1}</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PART 1 LOGIC
+══════════════════════════════════════════════════════════════ */
 function toggle(catId, idx) {
   const el  = document.getElementById(`item-${catId}-${idx}`);
   const set = checked[catId];
@@ -828,90 +1453,339 @@ function updateTally() {
   });
 }
 
-function showResults() {
-  const hasRedFlags = checked['redflags'].size > 0;
+function goToPart2() {
+  document.getElementById('checklist-section').style.display = 'none';
+  document.getElementById('tally-bar').classList.remove('visible');
+  const clinEl = document.getElementById('clinical-section');
+  clinEl.classList.add('visible');
+  document.getElementById('clinical-bar').classList.add('visible');
+  document.getElementById('navPartIndicator').textContent = t('Part 2 / 2', 'Bahagian 2 / 2');
+  document.getElementById('navPartIndicator').classList.add('visible');
+  clinEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (window.umami) umami.track('part2-start');
+}
 
-  // Sort non-redflag categories by score, exclude redflags from ranked list
+/* ══════════════════════════════════════════════════════════════
+   PART 2 LOGIC
+══════════════════════════════════════════════════════════════ */
+function updateClinicalProgress() {
+  const answered =
+    dassAnswers.filter(v => v !== null).length +
+    cbiPAnswers.filter(v => v !== null).length +
+    cbiWAnswers.filter(v => v !== null).length +
+    phqAnswers.filter(v => v !== null).length;
+  const pct = Math.round((answered / TOTAL_CLINICAL) * 100);
+  document.getElementById('clinicalProgressFill').style.width = pct + '%';
+  document.getElementById('clinicalProgressLabel').textContent = `${answered} / ${TOTAL_CLINICAL} ${t('answered', 'dijawab')}`;
+  document.getElementById('clinicalAnsweredCount').textContent = answered;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SCORING
+══════════════════════════════════════════════════════════════ */
+function scoreDASS() {
+  const D_IDX = [2,4,9,12,15,16,20];
+  const A_IDX = [1,3,6,8,14,18,19];
+  const S_IDX = [0,5,7,10,11,13,17];
+  const raw_d = D_IDX.reduce((s,i) => s + (dassAnswers[i] || 0), 0);
+  const raw_a = A_IDX.reduce((s,i) => s + (dassAnswers[i] || 0), 0);
+  const raw_s = S_IDX.reduce((s,i) => s + (dassAnswers[i] || 0), 0);
+  return { d: raw_d * 2, a: raw_a * 2, s: raw_s * 2 };
+}
+
+function scoreCBI() {
+  const pVals = cbiPAnswers.map(v => v === null ? 0 : v);
+  const wVals = cbiWAnswers.map((v, i) => {
+    const raw = v === null ? 0 : v;
+    return CBI_WORK[i].reverse ? (100 - raw) : raw;
+  });
+  const personal = pVals.reduce((s,v) => s+v, 0) / 6;
+  const work     = wVals.reduce((s,v) => s+v, 0) / 7;
+  return { personal: Math.round(personal), work: Math.round(work) };
+}
+
+function scorePHQ() {
+  return phqAnswers.reduce((s,v) => s + (v || 0), 0);
+}
+
+function dassBand(score, type) {
+  if (type === 'D') {
+    if (score <= 9)  return 'Normal';
+    if (score <= 13) return 'Mild';
+    if (score <= 20) return 'Moderate';
+    if (score <= 27) return 'Severe';
+    return 'Extremely Severe';
+  }
+  if (type === 'A') {
+    if (score <= 7)  return 'Normal';
+    if (score <= 9)  return 'Mild';
+    if (score <= 14) return 'Moderate';
+    if (score <= 19) return 'Severe';
+    return 'Extremely Severe';
+  }
+  // Stress
+  if (score <= 14) return 'Normal';
+  if (score <= 18) return 'Mild';
+  if (score <= 25) return 'Moderate';
+  if (score <= 33) return 'Severe';
+  return 'Extremely Severe';
+}
+
+function bandClass(band) {
+  const map = { 'Normal': 'normal', 'Mild': 'mild', 'Moderate': 'moderate', 'Severe': 'severe', 'Extremely Severe': 'extreme', 'Low': 'low', 'High': 'high' };
+  return map[band] || 'normal';
+}
+
+function cbiPersonalBand(score) {
+  if (score < 50) return 'Low';
+  if (score < 75) return 'Moderate';
+  return 'High';
+}
+function cbiWorkBand(score) {
+  if (score < 50) return 'Low';
+  if (score < 75) return 'Moderate';
+  return 'High';
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ARCHETYPES
+══════════════════════════════════════════════════════════════ */
+const ARCHETYPES = {
+  INVISIBLE_ILLNESS: {
+    name: 'The Invisible Illness',
+    tagline: 'What you\'re feeling may have a medical explanation.',
+    profile: 'Your symptoms — fatigue, weight changes, persistent physical signs — point beyond lifestyle. An undiagnosed metabolic or medical condition may be the primary driver. Lifestyle changes alone are unlikely to resolve this until the underlying cause is identified and treated.',
+    context: null,
+    color: '#ff3b3b',
+    referral: 'See a GP promptly. Request a full metabolic panel including fasting glucose, HbA1c, TSH (thyroid), full blood count, and lipid profile.',
+  },
+  BURNED_OUT: {
+    name: 'The Burned Out',
+    tagline: 'Your reserves are empty — and rest alone won\'t refill them.',
+    profile: 'Work demands have outpaced recovery for long enough that the exhaustion is now structural. Sleep doesn\'t refresh. Weekends don\'t recover. The tank stays empty.',
+    context: 'You are not alone in this. A 2024 study of Malaysian working adults found that 58% reported high or very high burnout — the lowest in Southeast Asia, but still a majority. The same study found that nearly 1 in 3 Malaysian employees showed severe or extremely severe stress symptoms on the DASS-21. Burnout in Malaysia is strongly associated with job dissatisfaction and working outside of normal hours — both cultural and structural patterns that are well-documented locally. (Abdul Aziz & Ong, Frontiers in Public Health, 2024)',
+    color: '#ff6d38',
+    referral: 'Consider speaking to a GP or counsellor if this pattern has persisted for more than 3 months. Burnout is a medical state, not a productivity problem.',
+  },
+  WIRED_AND_TIRED: {
+    name: 'The Wired & Tired',
+    tagline: 'Your nervous system hasn\'t had a real break in a long time.',
+    profile: 'Chronically elevated stress has kept cortisol high — disrupting sleep, suppressing energy, and making physical activity feel impossible. You\'re exhausted but can\'t fully switch off. The anxiety and tension you feel aren\'t personality traits — they\'re physiological responses to sustained overload.',
+    context: 'Among Malaysian working adults surveyed in 2022, 41.75% showed severe or extremely severe anxiety and 31.25% showed severe or extremely severe stress on the DASS-21 — the lowest rates in Southeast Asia, but still clinically significant at a population level. Separately, NHMS 2023 (MOH Malaysia) found that 4.6% of Malaysians aged 15 and above — approximately one million people — have clinical depression, double the 2019 figure. Depression was highest among those aged 16–29. If you are in this pattern, you are part of a documented and growing national trend. It warrants attention, not dismissal. (NHMS 2023, MOH Malaysia; Abdul Aziz & Ong, 2024)',
+    color: '#7a78ff',
+    referral: 'Your DASS scores suggest clinical-level stress and/or anxiety. Speak to a GP or psychologist if this has persisted more than a month.',
+  },
+  MORNING_WRECK: {
+    name: 'The Morning Wreck',
+    tagline: 'Your day starts in deficit — before it\'s even begun.',
+    profile: 'The fatigue hits hardest on waking. Sleep duration may look adequate on paper but quality is poor — possible sleep disorder, disrupted sleep architecture, or chronic sleep debt compounding over time. Daytime functioning is impaired as a direct consequence.',
+    context: 'Research on morning fatigue in clinical populations (Wright et al., Cancer Nursing, 2019) confirmed that waking up exhausted and daytime sleepiness are distinct symptom patterns with different underlying causes. In Malaysian adults, poor sleep quality is compounded by late-night screen use, irregular work hours, and high rates of undiagnosed sleep apnea — a condition linked to obesity rates of 54.4% in the NHMS 2023 dataset.',
+    color: '#ffc412',
+    referral: 'Ask your GP about a sleep assessment. If you snore or have been told you stop breathing during sleep, request an apnea screening.',
+  },
+  DEPLETED: {
+    name: 'The Depleted',
+    tagline: 'Your lifestyle is writing cheques your body can\'t cash.',
+    profile: 'No single crisis — just a sustained accumulation of sleep debt, inactivity, and nutritional gaps. The fatigue is real but the causes are reversible with the right changes in the right order. Sleep first. Movement next. Nutrition follows.',
+    context: 'According to NHMS 2023 (MOH Malaysia), 54.4% of Malaysian adults are overweight or obese, and physical inactivity remains one of the leading modifiable risk factors for chronic disease. The Malaysian dietary pattern — high in refined carbohydrates, liquid sugar, and fried foods — systematically drives the energy crashes, afternoon fatigue, and weight accumulation that define this profile. The good news: this profile responds well to structured lifestyle changes, and the causes are largely within your control.',
+    color: '#00a652',
+    referral: 'A dietitian or lifestyle medicine GP can help you build a structured recovery plan.',
+  },
+};
+
+function assignArchetype(dass, cbi, phq2, domainScores) {
+  const hasRedFlags = checked['redflags'].size > 0;
+  if (hasRedFlags) return 'INVISIBLE_ILLNESS';
+
+  const dass_d_band = dassBand(dass.d, 'D');
+  const dass_s_band = dassBand(dass.s, 'S');
+  const dass_a_band = dassBand(dass.a, 'A');
+  const cbi_p_band  = cbiPersonalBand(cbi.personal);
+  const cbi_w_band  = cbiWorkBand(cbi.work);
+
+  const severeLevels = ['Severe', 'Extremely Severe'];
+  const modPlusDASS  = ['Moderate', 'Severe', 'Extremely Severe'];
+
+  if (cbi_w_band === 'High' || (cbi_p_band === 'High' && severeLevels.includes(dass_s_band))) {
+    return 'BURNED_OUT';
+  }
+  if (severeLevels.includes(dass_s_band) && modPlusDASS.includes(dass_a_band) && domainScores.sleep > 0) {
+    return 'WIRED_AND_TIRED';
+  }
+  // Morning wreck: sleep morning fatigue items (idx 5,6) + functional items (idx 7,8)
+  const sleepMorningItems = [5,6].filter(i => checked['sleep'].has(i)).length;
+  const sleepFunctionalItems = [7,8].filter(i => checked['sleep'].has(i)).length;
+  if (sleepMorningItems >= 1 && sleepFunctionalItems >= 1) {
+    return 'MORNING_WRECK';
+  }
+  return 'DEPLETED';
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SHOW RESULTS
+══════════════════════════════════════════════════════════════ */
+function showResults() {
+  // Validate all answered
+  const allAnswered =
+    dassAnswers.every(v => v !== null) &&
+    cbiPAnswers.every(v => v !== null) &&
+    cbiWAnswers.every(v => v !== null) &&
+    phqAnswers.every(v => v !== null);
+
+  if (!allAnswered) {
+    // Highlight unanswered
+    dassAnswers.forEach((v,i) => { if(v===null) document.getElementById(`qcard-dass-${i}`)?.classList.add('q-unanswered'); });
+    cbiPAnswers.forEach((v,i) => { if(v===null) document.getElementById(`qcard-cbip-${i}`)?.classList.add('q-unanswered'); });
+    cbiWAnswers.forEach((v,i) => { if(v===null) document.getElementById(`qcard-cbiw-${i}`)?.classList.add('q-unanswered'); });
+    phqAnswers.forEach((v,i)  => { if(v===null) document.getElementById(`qcard-phq-${i}`)?.classList.add('q-unanswered'); });
+    const msg = document.getElementById('validationMsg');
+    msg.classList.add('visible');
+    // Scroll to first unanswered
+    const first = document.querySelector('.q-unanswered');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const dass = scoreDASS();
+  const cbi  = scoreCBI();
+  const phq2 = scorePHQ();
+
+  const domainScores = {};
+  CATEGORIES.forEach(c => { domainScores[c.id] = checked[c.id].size; });
+
+  const archetypeKey = assignArchetype(dass, cbi, phq2, domainScores);
+  const archetype    = ARCHETYPES[archetypeKey];
+
+  // Compound cluster
+  const hasCompound = domainScores.sleep > 0 && domainScores.physical > 0 && domainScores.weight > 0;
+  const hasRedFlags = checked['redflags'].size > 0;
+  const phq2Flag    = phq2 >= 3;
+
+  // ── Archetype hero ──
+  const hero = document.getElementById('archetypeHero');
+  hero.style.background = archetype.color;
+  document.getElementById('archetypeName').textContent    = archetype.name;
+  document.getElementById('archetypeTagline').textContent = archetype.tagline;
+  document.getElementById('archetypeProfile').textContent = archetype.profile;
+  // Context stat block
+  const ctxEl = document.getElementById('archetypeContext');
+  if (archetype.context) {
+    ctxEl.innerHTML = archetype.context;
+    ctxEl.style.display = 'block';
+  } else {
+    ctxEl.style.display = 'none';
+  }
+
+  // ── PHQ-2 flag ──
+  document.getElementById('phqFlag').classList.toggle('visible', phq2Flag);
+
+  // ── Red flag banner ──
+  document.getElementById('redflagBanner').classList.toggle('visible', hasRedFlags);
+
+  // ── Domain result cards ──
   const mainCats = CATEGORIES.filter(c => !c.isRedFlag);
   const sorted = mainCats
     .map(c => ({ ...c, score: checked[c.id].size, max: c.items.length }))
     .sort((a, b) => b.score - a.score);
-
   const totalChecked = sorted.reduce((s, c) => s + c.score, 0);
-  const topCat = sorted[0];
 
-  // Red flag banner
-  document.getElementById('redflagBanner').classList.toggle('visible', hasRedFlags);
-
-  // Result cards (main domains only)
   document.getElementById('resultCards').innerHTML = sorted.map((s, i) => {
     const isTop  = i === 0 && s.score > 0;
     const isZero = s.score === 0;
+    const displayName = currentLang === 'bm' && s.nameBm ? s.nameBm : s.name;
+    const displayInsight = currentLang === 'bm' && s.insightBm ? s.insightBm : s.insight;
+    const displayActions = currentLang === 'bm' && s.actionsBm ? s.actionsBm : s.actions;
     const actionsHTML = s.score > 0
-      ? `<div class="result-actions">${s.actions.map(a => `<div class="result-action">${a}</div>`).join('')}</div>`
-      : '';
-    return `
-      <div class="result-card ${isTop ? 'top-contributor' : ''} ${isZero ? 'zero' : ''}">
-        ${isTop ? '<div class="top-badge">Top contributor</div>' : ''}
-        <div class="result-card-top">
-          <div class="result-card-name">
-            <div class="result-dot" style="background:${s.color}"></div>
-            ${s.name}
-          </div>
-          <div class="result-score" style="color:${s.score > 0 ? s.color : 'rgba(253,249,240,0.2)'}">${s.score}/${s.max}</div>
-        </div>
-        <div class="result-bar-wrap">
-          <div class="result-bar" id="rbar-${s.id}" style="background:${s.color};width:0%"></div>
-        </div>
-        ${s.score > 0 ? `<div class="result-insight">${s.insight}</div>${actionsHTML}` : ''}
-      </div>`;
+      ? `<div class="result-actions">${displayActions.map(a => `<div class="result-action">${a}</div>`).join('')}</div>` : '';
+    return `<div class="result-card ${isTop ? 'top-contributor' : ''} ${isZero ? 'zero' : ''}">
+      ${isTop ? `<div class="top-badge">${t('Top contributor','Penyumbang utama')}</div>` : ''}
+      <div class="result-card-top">
+        <div class="result-card-name"><div class="result-dot" style="background:${s.color}"></div>${displayName}</div>
+        <div class="result-score" style="color:${s.score > 0 ? s.color : 'rgba(253,249,240,0.2)'}">${s.score}/${s.max}</div>
+      </div>
+      <div class="result-bar-wrap"><div class="result-bar" id="rbar-${s.id}" style="background:${s.color};width:0%"></div></div>
+      ${s.score > 0 ? `<div class="result-insight">${displayInsight}</div>${actionsHTML}` : ''}
+    </div>`;
   }).join('');
 
-  // MFI Classification
-  // Score = total flags / total possible (excluding red flags)
+  // ── Clinical scores ──
+  const db = dassBand(dass.d, 'D'), ab = dassBand(dass.a, 'A'), sb = dassBand(dass.s, 'S');
+  const cpb = cbiPersonalBand(cbi.personal), cwb = cbiWorkBand(cbi.work);
+  const bandBm = { 'Normal': 'Normal', 'Mild': 'Ringan', 'Moderate': 'Sederhana', 'Severe': 'Teruk', 'Extremely Severe': 'Sangat Teruk', 'Low': 'Rendah', 'High': 'Tinggi' };
+  const bl = (b) => currentLang === 'bm' ? (bandBm[b] || b) : b;
+  document.getElementById('clinicalScoresContent').innerHTML = `
+    <div class="cs-row"><span class="cs-name">${t('DASS-21 — Depression','DASS-21 — Kemurungan')}</span><span class="cs-score">${dass.d}</span><span class="cs-band ${bandClass(db)}">${bl(db)}</span></div>
+    <div class="cs-row"><span class="cs-name">${t('DASS-21 — Anxiety','DASS-21 — Kebimbangan')}</span><span class="cs-score">${dass.a}</span><span class="cs-band ${bandClass(ab)}">${bl(ab)}</span></div>
+    <div class="cs-row"><span class="cs-name">${t('DASS-21 — Stress','DASS-21 — Stres')}</span><span class="cs-score">${dass.s}</span><span class="cs-band ${bandClass(sb)}">${bl(sb)}</span></div>
+    <div class="cs-divider"></div>
+    <div class="cs-row"><span class="cs-name">${t('CBI — Personal Burnout','CBI — Burnout Peribadi')}</span><span class="cs-score">${cbi.personal}</span><span class="cs-band ${bandClass(cpb)}">${bl(cpb)}</span></div>
+    <div class="cs-row"><span class="cs-name">${t('CBI — Work Burnout','CBI — Burnout Kerja')}</span><span class="cs-score">${cbi.work}</span><span class="cs-band ${bandClass(cwb)}">${bl(cwb)}</span></div>
+    <div class="cs-divider"></div>
+    <div class="cs-row"><span class="cs-name">${t('PHQ-2 — Depression Screen','PHQ-2 — Saringan Kemurungan')}</span><span class="cs-score">${phq2}</span><span class="cs-band ${phq2Flag ? 'severe' : 'normal'}">${phq2Flag ? t('Follow up','Susulan diperlukan') : t('No flag','Tiada tanda')}</span></div>
+    <div style="margin-top:14px;font-size:11px;line-height:1.6;color:rgba(253,249,240,0.25)">${t('Scores are indicative based on validated instruments. Not a clinical diagnosis. Consult a healthcare professional for formal assessment.','Skor adalah berdasarkan alat yang telah disahkan. Bukan diagnosis klinikal. Rujuk profesional kesihatan untuk penilaian formal.')}</div>
+  `;
+
+  // ── MFI overall classification ──
   const totalPossible = mainCats.reduce((s, c) => s + c.items.length, 0);
   const mfiPct = totalPossible > 0 ? totalChecked / totalPossible : 0;
   let mfiClass, mfiTitle, mfiBody;
-
   if (hasRedFlags) {
     mfiClass = 'red';
-    mfiTitle = 'Clinical Evaluation Needed';
-    mfiBody  = 'You flagged symptoms that fall outside lifestyle explanations. <strong>See a doctor before making any changes.</strong> Once medical causes are ruled out or treated, revisit your lifestyle domains.';
-  } else if (mfiPct >= 0.4) {
+    mfiTitle = t('Clinical Evaluation Needed', 'Penilaian Klinikal Diperlukan');
+    mfiBody  = t('You flagged symptoms that fall outside lifestyle explanations. <strong>See a doctor before making any changes.</strong> Once medical causes are ruled out or treated, revisit your lifestyle domains.',
+                 'Anda menandakan gejala di luar penjelasan gaya hidup. <strong>Berjumpa doktor sebelum membuat sebarang perubahan.</strong> Setelah punca perubatan dikecualikan atau dirawat, tinjau semula domain gaya hidup anda.');
+  } else if (mfiPct >= 0.4 || cbi.work >= 75 || cbi.personal >= 75 || ['Severe','Extremely Severe'].includes(db) || ['Severe','Extremely Severe'].includes(ab)) {
     mfiClass = 'red';
-    mfiTitle = 'High Load — Consider Clinical Support';
-    mfiBody  = 'You\'ve flagged signals across multiple domains at high intensity. Lifestyle changes alone may feel overwhelming to sustain. <strong>Consider speaking to a doctor or dietitian</strong> to get structured, personalised support — especially if these patterns have persisted for more than 3 months.';
-  } else if (mfiPct >= 0.2) {
+    mfiTitle = t('High Load — Consider Clinical Support', 'Beban Tinggi — Pertimbangkan Sokongan Klinikal');
+    mfiBody  = t('Your combined lifestyle and clinical signals are elevated. Lifestyle changes alone may feel overwhelming. <strong>Consider speaking to a doctor, psychologist, or dietitian</strong> for structured, personalised support.',
+                 'Isyarat gaya hidup dan klinikal anda digabungkan adalah tinggi. Perubahan gaya hidup sahaja mungkin terasa terlampau. <strong>Pertimbangkan untuk berjumpa doktor, psikologis, atau dietitian</strong> untuk sokongan yang berstruktur dan peribadi.');
+  } else if (mfiPct >= 0.2 || sb === 'Moderate' || cpb === 'Moderate') {
     mfiClass = 'yellow';
-    mfiTitle = 'Moderate Load — Directed Lifestyle Intervention';
-    mfiBody  = 'You have clear contributors identified. <strong>Targeted changes in your top 1–2 domains</strong> — rather than trying to fix everything at once — will give you the best results. Focus on sleep or nutrition first; energy tends to improve, making other changes feel more manageable.';
+    mfiTitle = t('Moderate Load — Directed Intervention', 'Beban Sederhana — Intervensi Terarah');
+    mfiBody  = t('Clear contributors identified. <strong>Targeted changes in your top 1–2 domains</strong> will give you the best results. Focus on sleep or the mood domain first.',
+                 'Penyumbang yang jelas dikenal pasti. <strong>Perubahan terarah dalam 1–2 domain teratas anda</strong> akan memberikan hasil terbaik. Fokus pada tidur atau domain mood dahulu.');
   } else {
     mfiClass = 'green';
-    mfiTitle = 'Low Load — Lifestyle Optimisation';
-    mfiBody  = 'Your signal load is low. <strong>Small, consistent lifestyle tweaks</strong> — particularly in your flagged areas — are likely sufficient. You\'re in a good position to make changes that stick.';
+    mfiTitle = t('Low Load — Lifestyle Optimisation', 'Beban Rendah — Pengoptimuman Gaya Hidup');
+    mfiBody  = t('Your signal load is low. <strong>Small, consistent lifestyle tweaks</strong> in your flagged areas are likely sufficient.',
+                 'Beban isyarat anda adalah rendah. <strong>Penambahbaikan gaya hidup yang kecil dan konsisten</strong> dalam kawasan yang ditanda kemungkinan sudah mencukupi.');
   }
+  document.getElementById('mfiBlock').className = `mfi-block ${mfiClass} anim anim-d3`;
+  document.getElementById('mfiBlock').innerHTML = `<div class="mfi-label">${t('Overall Load Assessment','Penilaian Beban Keseluruhan')}</div><div class="mfi-title">${mfiTitle}</div><div class="mfi-body">${mfiBody}</div>`;
 
-  document.getElementById('mfiBlock').className = `mfi-block ${mfiClass}`;
-  document.getElementById('mfiBlock').innerHTML = `
-    <div class="mfi-label">Morning Fatigue Index (MFI)</div>
-    <div class="mfi-title">${mfiTitle}</div>
-    <div class="mfi-body">${mfiBody}</div>
-  `;
-
-  // Summary callout
+  // ── Summary callout ──
+  const topCat = sorted[0];
+  const topCatName = currentLang === 'bm' && topCat.nameBm ? topCat.nameBm : topCat.name;
   let summary;
   if (totalChecked === 0 && !hasRedFlags) {
-    summary = "You didn't flag any items. If fatigue or weight gain is still a concern, consider speaking to a doctor — sometimes causes don't fit neatly into checklists.";
+    summary = t(
+      "You didn't flag any lifestyle items. Your clinical scores may still carry signal — review them above and speak to a professional if anything concerns you.",
+      "Anda tidak menandakan sebarang item gaya hidup. Skor klinikal anda mungkin masih membawa isyarat — semak di atas dan berjumpa profesional jika ada yang membimbangkan anda."
+    );
   } else if (hasRedFlags) {
-    summary = `<strong>Priority: see a doctor first.</strong> Once medical causes are addressed, your lifestyle domains — especially <strong>${topCat.name}</strong> — are where to focus next.`;
+    summary = t(
+      `<strong>Priority: see a doctor first.</strong> Once medical causes are addressed, your lifestyle domains — especially <strong>${topCatName}</strong> — are where to focus next.`,
+      `<strong>Keutamaan: berjumpa doktor dahulu.</strong> Setelah punca perubatan ditangani, domain gaya hidup anda — terutamanya <strong>${topCatName}</strong> — adalah tempat untuk fokus seterusnya.`
+    );
+  } else if (hasCompound) {
+    summary = t(
+      `<strong>Compounding risk pattern detected:</strong> you flagged Sleep, Physical Activity, and Metabolic &amp; Medical together. These three factors amplify each other — poor sleep raises BMI, inactivity worsens metabolic markers, metabolic dysfunction disrupts sleep. <strong>Breaking this cycle requires addressing all three.</strong> Start with sleep (most leverage), then layer in daily movement. Use <a href="https://mytdee.aufthority.com">MyTDEE</a> for nutrition and <a href="https://cermindiri.aufthority.com">CerminDiri</a> for cardiovascular and diabetes risk.`,
+      `<strong>Corak risiko berganda dikesan:</strong> anda menandakan Tidur, Aktiviti Fizikal, dan Metabolik &amp; Perubatan bersama-sama. Ketiga-tiga faktor ini saling mengukuhkan — tidur buruk meningkatkan BMI, ketidakaktifan memperburuk penanda metabolik, disfungsi metabolik mengganggu tidur. <strong>Memutuskan kitaran ini memerlukan menangani ketiga-tiganya.</strong> Mulakan dengan tidur (paling berkesan), kemudian tambah pergerakan harian. Gunakan <a href="https://mytdee.aufthority.com">MyTDEE</a> untuk pemakanan dan <a href="https://cermindiri.aufthority.com">CerminDiri</a> untuk risiko kardiovaskular dan diabetes.`
+    );
   } else {
-    summary = `<strong>${topCat.name}</strong> flagged the most signals. Start there — it will give you the highest return on effort. Use <a href="https://mytdee.aufthority.com">MyTDEE</a> to quantify the nutrition side, and <a href="https://cermindiri.aufthority.com">CerminDiri</a> to screen your cardiovascular and diabetes risk.`;
+    summary = t(
+      `<strong>${archetype.name}.</strong> ${archetype.referral} Use <a href="https://mytdee.aufthority.com">MyTDEE</a> to quantify the nutrition side, and <a href="https://cermindiri.aufthority.com">CerminDiri</a> to screen your cardiovascular and diabetes risk.`,
+      `<strong>${archetype.name}.</strong> ${archetype.referral} Gunakan <a href="https://mytdee.aufthority.com">MyTDEE</a> untuk mengira bahagian pemakanan, dan <a href="https://cermindiri.aufthority.com">CerminDiri</a> untuk menyaring risiko kardiovaskular dan diabetes anda.`
+    );
   }
-  document.getElementById('summaryCallout').innerHTML = summary;
+  const callout = document.getElementById('summaryCallout');
+  callout.innerHTML = summary;
+  callout.classList.toggle('compound', hasCompound && !hasRedFlags);
 
   // Show results
-  document.getElementById('checklist-section').style.display = 'none';
-  document.getElementById('tally-bar').classList.remove('visible');
+  document.getElementById('clinical-section').classList.remove('visible');
+  document.getElementById('clinical-bar').classList.remove('visible');
+  document.getElementById('navPartIndicator').classList.remove('visible');
   const resEl = document.getElementById('results-section');
   resEl.classList.add('visible');
   resEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -924,9 +1798,17 @@ function showResults() {
     });
   }, 80));
 
-  if (window.umami) umami.track('results-shown', { total: totalChecked, redflags: checked['redflags'].size });
+  if (window.umami) umami.track('results-shown', {
+    archetype: archetypeKey,
+    dass_d: dass.d, dass_a: dass.a, dass_s: dass.s,
+    cbi_p: cbi.personal, cbi_w: cbi.work,
+    phq2, redflags: checked['redflags'].size
+  });
 }
 
+/* ══════════════════════════════════════════════════════════════
+   RESET
+══════════════════════════════════════════════════════════════ */
 function resetAudit() {
   CATEGORIES.forEach(cat => {
     checked[cat.id] = new Set();
@@ -934,10 +1816,33 @@ function resetAudit() {
       .querySelectorAll('.check-item').forEach(el => el.classList.remove('checked'));
     document.getElementById('count-' + cat.id).textContent = `0 / ${cat.items.length}`;
   });
-  updateTally();
+  dassAnswers = new Array(21).fill(null);
+  cbiPAnswers = new Array(6).fill(null);
+  cbiWAnswers = new Array(7).fill(null);
+  phqAnswers  = new Array(2).fill(null);
+  // Re-render clinical questions (clears selections)
+  renderDASS(); renderCBI(); renderPHQ();
+  updateTally(); updateClinicalProgress();
   document.getElementById('results-section').classList.remove('visible');
+  document.getElementById('clinical-section').classList.remove('visible');
+  document.getElementById('clinical-bar').classList.remove('visible');
   document.getElementById('checklist-section').style.display = 'block';
+  document.getElementById('navPartIndicator').classList.remove('visible');
+  document.getElementById('validationMsg').classList.remove('visible');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ══════════════════════════════════════════════════════════════
+   METHODOLOGY TOGGLE
+══════════════════════════════════════════════════════════════ */
+function toggleMethodology() {
+  const btn  = document.getElementById('methodologyToggle');
+  const body = document.getElementById('methodologyBody');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', String(!isOpen));
+  if (window.umami) umami.track('methodology-toggle', { open: !isOpen });
 }
 
 init();
