@@ -262,17 +262,92 @@
     .q-card.answered { border-color: rgba(253,249,240,0.12); background: rgba(253,249,240,0.045); }
     .q-text { font-size: 14px; line-height: 1.6; color: rgba(253,249,240,0.8); letter-spacing: 0.01em; margin-bottom: 14px; }
     .q-num { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.2); margin-bottom: 8px; }
-    /* Horizontal pill row */
-    .q-options {
+    /* ── SCALE SLIDER ───────────────────────────────────────── */
+    .q-scale {
+      padding: 8px 0 4px;
+    }
+    .q-scale-track-wrap {
+      position: relative;
+      padding: 0 4px;
+      margin-bottom: 10px;
+    }
+    .q-scale-input {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(253,249,240,0.12);
+      outline: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .q-scale-input.touched {
+      background: linear-gradient(to right, var(--color-lime-squeeze) var(--fill-pct, 0%), rgba(253,249,240,0.12) var(--fill-pct, 0%));
+    }
+    .q-scale-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--color-ghost-white);
+      border: 2px solid rgba(253,249,240,0.2);
+      cursor: pointer;
+      transition: border-color 0.15s, transform 0.1s;
+    }
+    .q-scale-input.touched::-webkit-slider-thumb {
+      background: var(--color-lime-squeeze);
+      border-color: var(--color-lime-squeeze);
+    }
+    .q-scale-input::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--color-ghost-white);
+      border: 2px solid rgba(253,249,240,0.2);
+      cursor: pointer;
+    }
+    .q-scale-input.touched::-moz-range-thumb {
+      background: var(--color-lime-squeeze);
+      border-color: var(--color-lime-squeeze);
+    }
+    .q-scale-anchors {
       display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+    .q-scale-anchor {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(253,249,240,0.3);
+      letter-spacing: 0.04em;
+    }
+    .q-scale-value {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--color-midnight-abyss);
+      background: var(--color-lime-squeeze);
+      border-radius: var(--radius-tags);
+      padding: 3px 10px;
+      margin-bottom: 10px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .q-scale-value.visible { opacity: 1; }
+
+    /* Keep .q-option for employment gate (2-button row only) */
+    .q-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 6px;
-      flex-wrap: wrap;
     }
     .q-option {
-      flex: 1;
       min-width: 0;
       text-align: center;
-      padding: 10px 8px;
+      padding: 10px 6px;
       border-radius: 10px;
       border: 1px solid rgba(253,249,240,0.1);
       background: rgba(253,249,240,0.04);
@@ -293,10 +368,41 @@
       display: block;
     }
     .q-option.selected .q-option-label { color: var(--color-lime-squeeze); font-weight: 600; }
-    /* Hide radio — replaced by pill visual */
-    .q-option-radio, .q-option-dot { display: none; }
 
-    /* UNANSWERED WARNING */
+    /* ── HINT POPUP ─────────────────────────────────────────── */
+    .q-hint-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(253,249,240,0.2);
+      background: transparent;
+      color: rgba(253,249,240,0.35);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-left: 8px;
+      vertical-align: middle;
+      flex-shrink: 0;
+      line-height: 1;
+      transition: all 0.15s;
+    }
+    .q-hint-btn:hover { border-color: var(--color-lime-squeeze); color: var(--color-lime-squeeze); }
+    .q-hint-popup {
+      display: none;
+      margin-top: 10px;
+      padding: 12px 14px;
+      background: rgba(199,255,105,0.07);
+      border: 1px solid rgba(199,255,105,0.2);
+      border-radius: 10px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(253,249,240,0.6);
+      letter-spacing: 0.01em;
+    }
+    .q-hint-popup.open { display: block; }
     .q-unanswered { border-color: rgba(255,59,59,0.3) !important; }
     .validation-msg { font-size: 12px; color: #ff6b6b; margin-top: 12px; display: none; padding: 0 2px; }
     .validation-msg.visible { display: block; }
@@ -716,7 +822,7 @@
       <div class="cat-header">
         <div class="cat-dot" style="background:var(--cat-mood)"></div>
         <div class="cat-name"><span data-en>Mood &amp; Stress</span><span data-bm>Mood &amp; Stres</span></div>
-        <div class="cat-count" id="count-mood">0 / 5</div>
+        <div class="cat-count" id="count-mood">0 / 3</div>
       </div>
       <button class="cat-desc-toggle" onclick="toggleCatDesc('mood-desc', this)" data-en><span class="cat-desc-toggle-icon">+</span> Why this matters</button>
       <button class="cat-desc-toggle" onclick="toggleCatDesc('mood-desc', this)" data-bm><span class="cat-desc-toggle-icon">+</span> Kenapa ini penting</button>
@@ -764,8 +870,8 @@
       <div class="part2-intro-tag"><span data-en>Part 2 of 2</span><span data-bm>Bahagian 2 daripada 2</span></div>
       <div class="part2-intro-title"><span data-en>Now let's go deeper.</span><span data-bm>Sekarang kita lihat dengan lebih mendalam.</span></div>
       <p class="part2-intro-body">
-        <span data-en>The next questions come from <strong>three validated clinical instruments</strong> used by healthcare professionals. Your responses will determine your energy archetype and whether any of your signals warrant a clinical conversation.</span>
-        <span data-bm>Soalan-soalan seterusnya diambil daripada <strong>tiga alat klinikal yang telah disahkan</strong> dan digunakan oleh profesional kesihatan. Jawapan anda akan menentukan arkitaip tenaga anda dan sama ada mana-mana isyarat anda memerlukan perbualan klinikal.</span>
+        <span data-en>The next questions come from <strong>two validated clinical instruments</strong> used by healthcare professionals. Your responses will determine your energy archetype and whether any of your signals warrant a clinical conversation.</span>
+        <span data-bm>Soalan-soalan seterusnya diambil daripada <strong>dua alat klinikal yang telah disahkan</strong> dan digunakan oleh profesional kesihatan. Jawapan anda akan menentukan arkitaip tenaga anda dan sama ada mana-mana isyarat anda memerlukan perbualan klinikal.</span>
       </p>
       <p class="part2-intro-body" style="margin-top:10px">
         <span data-en>Answer based on <strong>the past week</strong>. Be honest — there are no wrong answers.</span>
@@ -773,14 +879,14 @@
       </p>
       <div class="part2-progress">
         <div class="part2-progress-track"><div class="part2-progress-fill" id="clinicalProgressFill"></div></div>
-        <div class="part2-progress-label" id="clinicalProgressLabel">0 / 36 <span data-en>answered</span><span data-bm>dijawab</span></div>
+        <div class="part2-progress-label" id="clinicalProgressLabel">0 / 28 <span data-en>answered</span><span data-bm>dijawab</span></div>
       </div>
     </div>
 
     <!-- Halfway milestone -->
     <div class="halfway-banner" id="halfwayBanner">
       <div class="halfway-banner-title"><span data-en>You're halfway there.</span><span data-bm>Anda dah separuh jalan.</span></div>
-      <div class="halfway-banner-body"><span data-en>Part 1 done. Three short clinical screens left — takes about 2 more minutes.</span><span data-bm>Bahagian 1 selesai. Tiga saringan klinikal ringkas lagi — lebih kurang 2 minit lagi.</span></div>
+      <div class="halfway-banner-body"><span data-en>Part 1 done. Two short clinical screens left — takes about 2 more minutes.</span><span data-bm>Bahagian 1 selesai. Dua saringan klinikal ringkas lagi — lebih kurang 2 minit lagi.</span></div>
     </div>
 
     <!-- DASS-21 -->
@@ -804,7 +910,7 @@
       <div class="instrument-header">
         <div class="instrument-tag">Copenhagen Burnout Inventory · Kristensen et al., 2005</div>
         <div class="instrument-title"><span data-en>Burnout Assessment</span><span data-bm>Penilaian Kelesuan Melampau (Burnout)</span></div>
-        <div class="instrument-desc"><span data-en>13 questions across personal and work-related exhaustion.</span><span data-bm>13 soalan merangkumi keletihan peribadi dan berkaitan kerja.</span></div>
+        <div class="instrument-desc"><span data-en>6 personal burnout questions, plus 7 work burnout questions if you are currently employed.</span><span data-bm>6 soalan burnout peribadi, dan 7 soalan burnout kerja jika anda sedang bekerja.</span></div>
         <div class="instrument-progress">
           <div class="instrument-progress-track"><div class="instrument-progress-fill" id="cbiProgressFill"></div></div>
           <div class="instrument-progress-label" id="cbiProgressLabel">0 / 13</div>
@@ -814,20 +920,6 @@
     </div>
 
     <div class="instrument-divider"></div>
-
-    <!-- PHQ-2 -->
-    <div class="instrument-block">
-      <div class="instrument-header">
-        <div class="instrument-tag">PHQ-2 · Kroenke et al., 2003</div>
-        <div class="instrument-title"><span data-en>Depression Screen</span><span data-bm>Saringan Kemurungan</span></div>
-        <div class="instrument-desc"><span data-en>2 questions. Rate how often you have been bothered by the following over the past 2 weeks.</span><span data-bm>2 soalan. Nilai seberapa kerap anda mengalami perkara berikut dalam tempoh 2 minggu lepas.</span></div>
-        <div class="instrument-progress">
-          <div class="instrument-progress-track"><div class="instrument-progress-fill" id="phqProgressFill"></div></div>
-          <div class="instrument-progress-label" id="phqProgressLabel">0 / 2</div>
-        </div>
-      </div>
-      <div id="phq-questions"></div>
-    </div>
 
     <div class="validation-msg" id="validationMsg"><span data-en>Please answer all questions before continuing.</span><span data-bm>Sila jawab semua soalan sebelum meneruskan.</span></div>
 
@@ -847,8 +939,8 @@
     <div class="phq-flag" id="phqFlag">
       <div class="phq-flag-title"><span data-en>Depression Signal Detected</span><span data-bm>Isyarat Kemurungan Dikesan</span></div>
       <div class="phq-flag-body">
-        <span data-en>Your responses to the depression screen suggest you may be experiencing symptoms of depression. <strong>This is a medical condition, not a character flaw.</strong> Please speak to a doctor or mental health professional — effective treatments exist. If you are in crisis, contact Befrienders Malaysia at <strong>03-7956 8145</strong> (24 hours).</span>
-        <span data-bm>Jawapan anda menunjukkan bahawa anda mungkin mengalami gejala kemurungan. <strong>Ini adalah keadaan perubatan, bukan kelemahan peribadi.</strong> Sila berjumpa doktor atau profesional kesihatan mental — rawatan yang berkesan ada tersedia. Jika anda dalam krisis, hubungi Befrienders Malaysia di <strong>03-7956 8145</strong> (24 jam).</span>
+        <span data-en>Your DASS-21 depression score is in the Moderate or above range, suggesting you may be experiencing significant depressive symptoms. <strong>This is a medical condition, not a character flaw.</strong> Please speak to a doctor or mental health professional — effective treatments exist. If you are in crisis, contact Befrienders Malaysia at <strong>03-7956 8145</strong> (24 hours).</span>
+        <span data-bm>Skor kemurungan DASS-21 anda berada dalam julat Sederhana atau lebih tinggi, menunjukkan anda mungkin mengalami gejala kemurungan yang ketara. <strong>Ini adalah keadaan perubatan, bukan kelemahan peribadi.</strong> Sila berjumpa doktor atau profesional kesihatan mental — rawatan yang berkesan ada tersedia. Jika anda dalam krisis, hubungi Befrienders Malaysia di <strong>03-7956 8145</strong> (24 jam).</span>
       </div>
     </div>
 
@@ -931,7 +1023,7 @@
         <div class="meth-instrument">
           <div class="meth-instrument-name">DASS-21 — Depression Anxiety Stress Scales (Short Form)</div>
           <div class="meth-instrument-meta">Lovibond &amp; Lovibond (1995) · Free to use · 21 items · 3 subscales</div>
-          <p class="meth-text">Measures severity of depression, anxiety, and stress symptoms over the past week. Each subscale (7 items) is scored 0–3; raw subscale scores are multiplied by 2 to align with DASS-42 normative bands.</p>
+          <p class="meth-text">Measures severity of depression, anxiety, and stress symptoms over the past week. Each subscale (7 items) is scored 0–3; raw subscale scores are multiplied by 2 to align with DASS-42 normative bands. Response labels are abbreviated for mobile display (Not at all / Sometimes / Often / Almost always) — these correspond to the standard DASS-21 response scale (0=Did not apply to me at all, 1=Applied to some degree, 2=Applied to a considerable degree, 3=Applied very much). Item wording has been simplified into plain language for public self-administration clarity; the meaning and scoring of each item is preserved. Items with ambiguous physical symptom descriptions (dry mouth, breathing difficulty, heart palpitations, nervous energy, frustration tolerance) include optional popup explanations accessible via a '?' button. The BM translation was adapted for this tool.</p>
           <p class="meth-text">Severity bands (scaled scores): Depression — Normal (&lt;10), Mild (10–13), Moderate (14–20), Severe (21–27), Extremely Severe (≥28). Anxiety — Normal (&lt;8), Mild (8–9), Moderate (10–14), Severe (15–19), Extremely Severe (≥20). Stress — Normal (&lt;15), Mild (15–18), Moderate (19–25), Severe (26–33), Extremely Severe (≥34).</p>
           <p class="meth-text">References: Lovibond SH &amp; Lovibond PF (1995). <em>Manual for the Depression Anxiety Stress Scales</em>. Psychology Foundation of Australia. Henry &amp; Crawford (2005). <em>British Journal of Clinical Psychology</em>, 44(2), 227–239.</p>
           <p class="meth-text meth-caveat">Limitation: the DASS-21 was normed primarily on Western and Australian populations. A 2020 validation study in Malaysian university students (Ramli et al.) confirmed acceptable psychometric properties (Cronbach's α = 0.87–0.92), but population-specific normative bands for Malaysian adults have not been formally established. Bands used here follow the original Lovibond &amp; Lovibond (1995) DASS-42 norms.</p>
@@ -939,20 +1031,20 @@
 
         <div class="meth-instrument">
           <div class="meth-instrument-name">CBI — Copenhagen Burnout Inventory (Personal + Work subscales)</div>
-          <div class="meth-instrument-meta">Kristensen et al. (2005) · Public domain · 13 items · 2 subscales</div>
-          <p class="meth-text">Measures physical and psychological exhaustion across personal life (6 items) and work context (7 items). Responses are converted to a 0–100 scale (Never=0, Seldom=25, Sometimes=50, Often=75, Always=100 for frequency items; equivalent scale for degree items). The work burnout item on leisure energy is reverse-scored. Subscale score = mean of item scores.</p>
+          <div class="meth-instrument-meta">Kristensen et al. (2005) · Public domain · 6–13 items · 1–2 subscales</div>
+          <p class="meth-text">Measures physical and psychological exhaustion across personal life (6 items) and, for currently employed users, work context (7 additional items). Responses are converted to a 0–100 scale (Never=0, Seldom=25, Sometimes=50, Often=75, Always=100 for frequency items; equivalent scale for degree items). The work burnout item on leisure energy is reverse-scored. Subscale score = mean of item scores.</p>
           <p class="meth-text">Bands used in this tool: Low (&lt;50), Moderate (50–74), High (≥75). Note: the original CBI authors (Kristensen et al.) do not specify fixed cutoffs, describing burnout as a continuum. The bands above are directional thresholds derived from published research using the instrument.</p>
-          <p class="meth-text">The client-related burnout subscale (7 items) was excluded as it is designed for human services workers and is not applicable to a general population tool.</p>
+          <p class="meth-text">The client-related burnout subscale (7 items) was excluded as it is designed for human services workers and is not applicable to a general population tool. The CBI-Work subscale is conditionally shown to currently employed users only — it is not applicable to homemakers, retirees, students, or the unemployed.</p>
           <p class="meth-text">Reference: Kristensen TS, Borritz M, Villadsen E &amp; Christensen KB (2005). The Copenhagen Burnout Inventory. <em>Work &amp; Stress</em>, 19(3), 192–207.</p>
           <p class="meth-text meth-caveat">Limitation: no Malaysia-specific validation data for the CBI has been identified. The instrument has been validated across European and North American populations. Cross-cultural applicability to Malaysian adults is assumed but not formally confirmed.</p>
         </div>
 
         <div class="meth-instrument">
-          <div class="meth-instrument-name">PHQ-2 — Patient Health Questionnaire (2-item Depression Screener)</div>
-          <div class="meth-instrument-meta">Kroenke, Spitzer &amp; Williams (2003) · Free to use · 2 items</div>
-          <p class="meth-text">A 2-item ultra-brief screen for depressive symptoms (anhedonia and depressed mood) over the past 2 weeks. Scored 0–3 per item (Not at all=0, Several days=1, More than half the days=2, Nearly every day=3). Total score range: 0–6. A score of ≥3 is the validated threshold for flagging possible depression requiring further evaluation (sensitivity 83%, specificity 90% for major depressive disorder).</p>
-          <p class="meth-text">Reference: Kroenke K, Spitzer RL &amp; Williams JBW (2003). The Patient Health Questionnaire-2. <em>Medical Care</em>, 41(11), 1284–1292.</p>
-          <p class="meth-text meth-caveat">Limitation: PHQ-2 is a screening tool only, not diagnostic. A positive flag (≥3) indicates the need for further evaluation, not a confirmed diagnosis of depression. The full PHQ-9 was deliberately excluded from this tool because item 9 (suicidal ideation) requires a supervised clinical pathway that a public self-administered tool cannot provide.</p>
+          <div class="meth-instrument-name">Unified Scoring Engine — Depression Signal</div>
+          <div class="meth-instrument-meta">Design decision · Replaces standalone PHQ-2</div>
+          <p class="meth-text">Earlier versions of this tool used the PHQ-2 (Kroenke et al., 2003) as a standalone 2-item depression screen. PHQ-2 was removed in the current version because its two items (anhedonia, depressed mood) are functionally redundant with the DASS-21 Depression subscale, which measures the same constructs across 7 items and provides clinical severity banding (Normal/Mild/Moderate/Severe/Extremely Severe) rather than a binary flag.</p>
+          <p class="meth-text">The depression advisory banner is now triggered by DASS-21 Depression subscale score ≥14 (Moderate or above). This threshold is more conservative than the PHQ-2 ≥3 cutoff and provides greater sensitivity for detecting clinically meaningful depressive symptoms. All other instrument scoring remains unchanged.</p>
+          <p class="meth-text meth-caveat">Limitation: DASS-21 depression severity bands were developed on Western populations (Lovibond &amp; Lovibond, 1995). Malaysian-specific normative data does not currently exist. The ≥14 threshold is applied directionally, not as a diagnostic cutpoint.</p>
         </div>
       </div>
 
@@ -961,10 +1053,10 @@
       <div class="meth-section">
         <div class="meth-section-title">Archetype Assignment Logic</div>
         <p class="meth-text">The five energy archetypes (The Burned Out, The Wired &amp; Tired, The Morning Wreck, The Depleted, The Invisible Illness) are Aufthority constructs — not clinical diagnoses. They are descriptive profiles designed to communicate result patterns in plain language.</p>
-        <p class="meth-text">Assignment follows a deterministic priority hierarchy:</p>
+        <p class="meth-text">Assignment follows a unified deterministic priority hierarchy that draws on all instrument subscores and Part 1 domain signals as a single combined input:</p>
         <ol class="meth-list meth-list-ol">
           <li><strong>The Invisible Illness</strong> — assigned if any Red Flag items are ticked (overrides all other signals)</li>
-          <li><strong>The Burned Out</strong> — CBI Work ≥75 (High), or CBI Personal ≥75 and DASS Stress Severe or above</li>
+          <li><strong>The Burned Out</strong> — CBI Work ≥75 (High) for employed users, or CBI Personal ≥75 and DASS Stress Severe or above</li>
           <li><strong>The Wired &amp; Tired</strong> — DASS Stress Severe or above, DASS Anxiety Moderate or above, and Sleep domain flagged</li>
           <li><strong>The Morning Wreck</strong> — Sleep domain morning fatigue items flagged and functional impact items flagged</li>
           <li><strong>The Depleted</strong> — default archetype when no higher-priority pattern is met</li>
@@ -1004,7 +1096,7 @@
 
   <footer>
     <p class="footer-brand">A tool by <a href="https://www.aufthority.com" target="_blank">Aufthority</a> — evidence-based health for Malaysians</p>
-    <p class="footer-note">KenapaPenat? · For informational purposes only. Not medical advice. Clinical instruments: DASS-21 (Lovibond &amp; Lovibond, 1995), CBI (Kristensen et al., 2005), PHQ-2 (Kroenke et al., 2003). If you are concerned about your symptoms, consult a registered doctor or mental health professional.</p>
+    <p class="footer-note">KenapaPenat? · For informational purposes only. Not medical advice. Clinical instruments: DASS-21 (Lovibond &amp; Lovibond, 1995), CBI (Kristensen et al., 2005). If you are concerned about your symptoms, consult a registered doctor or mental health professional.</p>
   </footer>
 
 </div><!-- /shell -->
@@ -1061,7 +1153,7 @@ function toggleLang() {
         <div class="check-text">${item}</div></div>`;
     }).join('');
   });
-  renderDASS(); renderCBI(); renderPHQ();
+  renderDASS(); renderCBI();
   updateClinicalProgress();
   if (window.umami) umami.track('lang-toggle', { lang: currentLang });
 }
@@ -1209,16 +1301,12 @@ const CATEGORIES = [
     ],
     items: [
       'I often eat to cope with stress, boredom, or difficult emotions',
-      'I feel persistently stressed, overwhelmed, or burned out most days',
       'I\'ve lost interest in activities I used to enjoy',
-      'I have difficulty relaxing or mentally switching off after work',
       'I feel irritable, anxious, or emotionally flat more often than not',
     ],
     itemsBm: [
       'Saya kerap makan untuk mengatasi stres, kebosanan, atau emosi yang sukar',
-      'Saya berasa tertekan, terbeban, atau burnout kebanyakan hari',
       'Saya telah kehilangan minat terhadap aktiviti yang dulu saya sukai',
-      'Saya sukar untuk berehat atau mematikan fikiran selepas kerja',
       'Saya berasa mudah marah, cemas, atau emosi datar lebih kerap daripada tidak',
     ]
   },
@@ -1288,33 +1376,33 @@ const CATEGORIES = [
 
 // DASS-21: subscale tags D=depression A=anxiety S=stress
 const DASS_ITEMS = [
-  { q: 'I found it hard to wind down',                                              sub: 'S' },
-  { q: 'I was aware of dryness of my mouth',                                        sub: 'A' },
-  { q: "I couldn't seem to experience any positive feeling at all",                  sub: 'D' },
-  { q: 'I experienced breathing difficulty (e.g. excessively rapid breathing, breathlessness in the absence of physical exertion)', sub: 'A' },
-  { q: 'I found it difficult to work up the initiative to do things',                sub: 'D' },
-  { q: 'I tended to over-react to situations',                                       sub: 'S' },
-  { q: 'I experienced trembling (e.g. in the hands)',                                sub: 'A' },
-  { q: 'I felt that I was using a lot of nervous energy',                            sub: 'S' },
-  { q: 'I was worried about situations in which I might panic and make a fool of myself', sub: 'A' },
-  { q: 'I felt that I had nothing to look forward to',                               sub: 'D' },
-  { q: 'I found myself getting agitated',                                            sub: 'S' },
-  { q: 'I found it difficult to relax',                                              sub: 'S' },
-  { q: 'I felt down-hearted and blue',                                               sub: 'D' },
-  { q: 'I was intolerant of anything that kept me from getting on with what I was doing', sub: 'S' },
-  { q: 'I felt I was close to panic',                                                sub: 'A' },
-  { q: 'I was unable to become enthusiastic about anything',                         sub: 'D' },
-  { q: "I felt I wasn't worth much as a person",                                     sub: 'D' },
-  { q: 'I felt that I was rather touchy',                                            sub: 'S' },
-  { q: 'I was aware of the action of my heart in the absence of physical exertion (e.g. sense of heart rate increase, heart missing a beat)', sub: 'A' },
-  { q: 'I felt scared without any good reason',                                      sub: 'A' },
-  { q: 'I felt that life was meaningless',                                           sub: 'D' },
+  { q: 'I found it hard to wind down or switch off',                              sub: 'S' },
+  { q: 'I noticed my mouth was dry',                                              sub: 'A', hint: 'Anxiety can cause physical symptoms. A dry mouth that appears when you\'re stressed or tense — not due to dehydration — counts here.' },
+  { q: "I couldn't seem to feel any positive emotions at all",                    sub: 'D' },
+  { q: 'I had difficulty breathing even when I wasn\'t physically active',        sub: 'A', hint: 'E.g. breathing faster than usual, feeling short of breath, or feeling like you couldn\'t get enough air — without any physical effort like exercise.' },
+  { q: 'I had trouble motivating myself to start doing things',                   sub: 'D' },
+  { q: 'I tended to overreact to things that happened',                           sub: 'S' },
+  { q: 'I noticed my hands or body trembling or shaking',                         sub: 'A' },
+  { q: 'I felt mentally wound up or running on nervous energy',                   sub: 'S', hint: 'Like your mind was going faster than it needed to, or you felt a buzzing internal tension even when things were calm on the outside.' },
+  { q: 'I worried about embarrassing myself in situations where I might panic',   sub: 'A' },
+  { q: 'I felt like I had nothing to look forward to',                            sub: 'D' },
+  { q: 'I found myself feeling restless or on edge',                              sub: 'S' },
+  { q: 'I found it difficult to relax',                                           sub: 'S' },
+  { q: 'I felt sad or low',                                                       sub: 'D' },
+  { q: 'Small interruptions or delays made me unusually frustrated or impatient', sub: 'S', hint: 'E.g. snapping at someone who interrupted you, feeling disproportionately angry about a slow internet connection, or losing patience over minor inconveniences.' },
+  { q: 'I felt like I was on the verge of panic',                                 sub: 'A' },
+  { q: 'I couldn\'t feel enthusiasm or excitement about anything',                sub: 'D' },
+  { q: 'I felt like I wasn\'t worth much as a person',                            sub: 'D' },
+  { q: 'I felt easily irritated or annoyed',                                      sub: 'S' },
+  { q: 'I could feel my heart beating fast or skipping, even without physical activity', sub: 'A', hint: 'E.g. a racing heart, a pounding feeling in your chest, or a sense that your heart "missed a beat" — when you weren\'t exercising or doing anything strenuous.' },
+  { q: 'I felt frightened or scared for no clear reason',                         sub: 'A' },
+  { q: 'I felt that life had no meaning or purpose',                              sub: 'D' },
 ];
 const DASS_OPTIONS = [
-  { label: 'Did not apply to me at all', val: 0 },
-  { label: 'Applied to me to some degree, or some of the time', val: 1 },
-  { label: 'Applied to me to a considerable degree, or a good part of the time', val: 2 },
-  { label: 'Applied to me very much, or most of the time', val: 3 },
+  { label: 'Not at all',    val: 0 },
+  { label: 'Sometimes',     val: 1 },
+  { label: 'Often',         val: 2 },
+  { label: 'Almost always', val: 3 },
 ];
 
 const CBI_PERSONAL = [
@@ -1335,39 +1423,33 @@ const CBI_WORK = [
   { q: 'Do you have enough energy for family and friends during leisure time?', type: 'freq', reverse: true },
 ];
 const CBI_FREQ_OPTIONS = [
-  { label: 'Always',           val: 100 },
-  { label: 'Often',            val: 75  },
-  { label: 'Sometimes',        val: 50  },
-  { label: 'Seldom',           val: 25  },
-  { label: 'Never / almost never', val: 0 },
+  { label: 'Always',    val: 100 },
+  { label: 'Often',     val: 75  },
+  { label: 'Sometimes', val: 50  },
+  { label: 'Seldom',    val: 25  },
+  { label: 'Never',     val: 0   },
 ];
 const CBI_DEGREE_OPTIONS = [
-  { label: 'To a very high degree', val: 100 },
-  { label: 'To a high degree',      val: 75  },
-  { label: 'Somewhat',              val: 50  },
-  { label: 'To a low degree',       val: 25  },
-  { label: 'To a very low degree',  val: 0   },
+  { label: 'Very high', val: 100 },
+  { label: 'High',      val: 75  },
+  { label: 'Somewhat',  val: 50  },
+  { label: 'Low',       val: 25  },
+  { label: 'Very low',  val: 0   },
 ];
 
-const PHQ_ITEMS = [
-  { q: 'Little interest or pleasure in doing things' },
-  { q: 'Feeling down, depressed, or hopeless' },
-];
-const PHQ_OPTIONS = [
-  { label: 'Not at all',              val: 0 },
-  { label: 'Several days',            val: 1 },
-  { label: 'More than half the days', val: 2 },
-  { label: 'Nearly every day',        val: 3 },
-];
-
-// Answers storage: null = unanswered
 let dassAnswers = new Array(21).fill(null);
 let cbiPAnswers = new Array(6).fill(null);
 let cbiWAnswers = new Array(7).fill(null);
-let phqAnswers  = new Array(2).fill(null);
-let checked     = {};
+let isEmployed  = null; // null = not yet answered; true/false gates CBI-Work
 
-const TOTAL_CLINICAL = 21 + 6 + 7 + 2; // 36
+const TOTAL_CLINICAL_BASE = 21 + 6; // 27 without CBI-Work (no PHQ-2)
+const TOTAL_CLINICAL_WORK = 21 + 6 + 7; // 34 with CBI-Work (no PHQ-2)
+
+let checked = {};
+
+function getTotalClinical() {
+  return isEmployed ? TOTAL_CLINICAL_WORK : TOTAL_CLINICAL_BASE;
+}
 
 /* ══════════════════════════════════════════════════════════════
    SLEEP SUB-LABELS
@@ -1412,7 +1494,6 @@ function init() {
   // Part 2: render clinical questions
   renderDASS();
   renderCBI();
-  renderPHQ();
 }
 
 /* ── SELECT OPTION ── */
@@ -1434,47 +1515,47 @@ function selectOption(qid, optIdx, val, numOpts, cbKey) {
 
 // Bilingual option sets
 const DASS_OPTIONS_BM = [
-  { label: 'Tidak berlaku kepada saya langsung', val: 0 },
-  { label: 'Berlaku kepada saya pada kadar tertentu, atau kadang-kadang', val: 1 },
-  { label: 'Berlaku kepada saya pada kadar yang ketara, atau sebahagian besar masa', val: 2 },
-  { label: 'Berlaku kepada saya dengan sangat ketara, atau kebanyakan masa', val: 3 },
+  { label: 'Tidak langsung', val: 0 },
+  { label: 'Kadang-kadang',  val: 1 },
+  { label: 'Kerap',          val: 2 },
+  { label: 'Hampir selalu',  val: 3 },
 ];
 const DASS_ITEMS_BM = [
-  'Saya sukar untuk bertenang',
-  'Saya sedar mulut saya kering',
-  'Saya langsung tidak dapat merasai sebarang perasaan positif',
-  'Saya mengalami kesukaran bernafas (seperti bernafas terlalu cepat, sesak nafas tanpa aktiviti fizikal)',
-  'Saya sukar untuk berusaha memulakan sesuatu perkara',
-  'Saya cenderung untuk bertindak berlebihan terhadap sesuatu situasi',
-  'Saya mengalami gegaran (contohnya pada tangan)',
-  'Saya berasa menggunakan banyak tenaga saraf',
-  'Saya bimbang tentang situasi di mana saya mungkin panik dan memalukan diri sendiri',
-  'Saya berasa tidak ada apa yang boleh saya harapkan',
-  'Saya mendapati diri saya menjadi gelisah',
-  'Saya sukar untuk berehat',
-  'Saya berasa murung dan sedih',
-  'Saya tidak bertolak ansur dengan apa sahaja yang menghalang saya daripada meneruskan apa yang saya lakukan',
-  'Saya berasa hampir panik',
-  'Saya tidak dapat menjadi bersemangat tentang apa-apa',
-  'Saya berasa saya tidak bernilai sebagai seorang manusia',
-  'Saya berasa agak mudah tersinggung',
-  'Saya sedar denyutan jantung saya tanpa aktiviti fizikal',
-  'Saya berasa takut tanpa sebab yang munasabah',
-  'Saya berasa hidup tidak bermakna',
+  { q: 'Saya sukar untuk bertenang atau berhenti memikirkan sesuatu' },
+  { q: 'Saya perasan mulut saya kering', hint: 'Kebimbangan boleh menyebabkan gejala fizikal. Mulut kering yang muncul ketika anda tertekan atau tegang — bukan disebabkan kurang minum air — dikira di sini.' },
+  { q: 'Saya langsung tidak dapat merasai sebarang perasaan positif' },
+  { q: 'Saya sukar bernafas walaupun ketika tidak melakukan aktiviti fizikal', hint: 'Contoh: bernafas lebih laju dari biasa, rasa sesak nafas, atau rasa seperti tidak dapat cukup udara — tanpa sebarang usaha fizikal seperti bersenam.' },
+  { q: 'Saya sukar untuk memotivasikan diri memulakan sesuatu perkara' },
+  { q: 'Saya cenderung bertindak balas secara berlebihan terhadap sesuatu situasi' },
+  { q: 'Saya berasa tangan atau badan saya menggeletar' },
+  { q: 'Saya berasa tegang di dalam dan seperti beroperasi atas tenaga saraf', hint: 'Seperti fikiran anda berjalan lebih laju dari yang perlu, atau anda berasa ketegangan dalaman walaupun keadaan luar nampak tenang.' },
+  { q: 'Saya bimbang tentang situasi di mana saya mungkin panik dan memalukan diri sendiri' },
+  { q: 'Saya berasa tiada apa yang boleh dinantikan' },
+  { q: 'Saya mendapati diri saya berasa resah atau tidak senang' },
+  { q: 'Saya sukar untuk berehat' },
+  { q: 'Saya berasa sedih atau murung' },
+  { q: 'Gangguan atau kelewatan kecil membuatkan saya luar biasa kecewa atau tidak sabar', hint: 'Contoh: menjawab dengan kasar kepada seseorang yang mengganggu anda, berasa marah secara tidak wajar kerana internet lambat, atau hilang sabar atas perkara kecil.' },
+  { q: 'Saya berasa hampir panik' },
+  { q: 'Saya tidak dapat berasa sebarang semangat atau keseronokan terhadap apa-apa' },
+  { q: 'Saya berasa diri saya tidak bernilai sebagai seorang manusia' },
+  { q: 'Saya berasa mudah marah atau terganggu' },
+  { q: 'Saya dapat merasai jantung saya berdegup laju atau terlangkau tanpa aktiviti fizikal', hint: 'Contoh: jantung berdegup laju, rasa berdebar-debar di dada, atau rasa jantung "tertinggal degupan" — ketika anda tidak bersenam atau melakukan sesuatu yang memenatkan.' },
+  { q: 'Saya berasa takut atau gerun tanpa sebab yang jelas' },
+  { q: 'Saya berasa hidup tidak bermakna atau tiada tujuan' },
 ];
 const CBI_FREQ_OPTIONS_BM = [
-  { label: 'Sentiasa', val: 100 },
-  { label: 'Kerap', val: 75 },
-  { label: 'Kadang-kadang', val: 50 },
-  { label: 'Jarang', val: 25 },
-  { label: 'Tidak pernah / hampir tidak pernah', val: 0 },
+  { label: 'Sentiasa',      val: 100 },
+  { label: 'Kerap',         val: 75  },
+  { label: 'Kadang-kadang', val: 50  },
+  { label: 'Jarang',        val: 25  },
+  { label: 'Tidak pernah',  val: 0   },
 ];
 const CBI_DEGREE_OPTIONS_BM = [
-  { label: 'Pada tahap yang sangat tinggi', val: 100 },
-  { label: 'Pada tahap yang tinggi', val: 75 },
-  { label: 'Pada tahap sederhana', val: 50 },
-  { label: 'Pada tahap yang rendah', val: 25 },
-  { label: 'Pada tahap yang sangat rendah', val: 0 },
+  { label: 'Sangat tinggi', val: 100 },
+  { label: 'Tinggi',        val: 75  },
+  { label: 'Sederhana',     val: 50  },
+  { label: 'Rendah',        val: 25  },
+  { label: 'Sangat rendah', val: 0   },
 ];
 const CBI_PERSONAL_BM = [
   'Seberapa kerap anda berasa penat?',
@@ -1493,36 +1574,44 @@ const CBI_WORK_BM = [
   'Adakah anda berasa setiap jam bekerja meletihkan anda?',
   'Adakah anda mempunyai cukup tenaga untuk keluarga dan rakan-rakan semasa masa lapang?',
 ];
-const PHQ_OPTIONS_BM = [
-  { label: 'Langsung tidak', val: 0 },
-  { label: 'Beberapa hari', val: 1 },
-  { label: 'Lebih daripada separuh hari', val: 2 },
-  { label: 'Hampir setiap hari', val: 3 },
-];
-const PHQ_ITEMS_BM = [
-  'Kurang minat atau keseronokan dalam melakukan sesuatu perkara',
-  'Berasa murung, tertekan, atau putus harapan',
-];
-
 function renderDASS() {
   const container = document.getElementById('dass-questions');
   const isBM = currentLang === 'bm';
-  const questions = isBM ? DASS_ITEMS_BM : DASS_ITEMS.map(x => x.q);
-  const options   = isBM ? DASS_OPTIONS_BM : DASS_OPTIONS;
-  container.innerHTML = questions.map((q, i) => {
-    const id = `dass-${i}`;
-    _callbacks[id] = (val) => {
-      dassAnswers[i] = val;
-      document.getElementById('qcard-' + id)?.classList.add('answered');
-      updateClinicalProgress();
-    };
-    const prevVal = dassAnswers[i];
-    const isAnswered = prevVal !== null;
-    const opts = options.map((o, oi) => `
-      <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
-        <div class="q-option-label">${o.label}</div>
-      </div>`).join('');
-    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}"><div class="q-num">Q${i+1} / 21</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+  const items   = isBM ? DASS_ITEMS_BM : DASS_ITEMS;
+  const options  = isBM ? DASS_OPTIONS_BM : DASS_OPTIONS;
+  const anchorLo = options[0].label;
+  const anchorHi = options[options.length - 1].label;
+  container.innerHTML = items.map((item, i) => {
+    const q    = item.q;
+    const hint = item.hint || null;
+    const id   = 'dass-' + i;
+    const val  = dassAnswers[i];
+    const isAnswered = val !== null;
+    const sliderVal  = isAnswered ? val : 2;
+    const fillPct    = isAnswered ? (val / 3) * 100 : 50;
+    const valLabel   = isAnswered ? options[val].label : '';
+    const hintHtml   = hint
+      ? `<button class="q-hint-btn" onclick="toggleHint('hint-${id}')" aria-label="Explain this question">?</button>
+         <div class="q-hint-popup" id="hint-${id}">${hint}</div>`
+      : '';
+    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}">
+      <div class="q-num">Q${i+1} / 21</div>
+      <div class="q-text">${q}${hint ? `<button class="q-hint-btn" onclick="toggleHint('hint-${id}')" aria-label="Explain this question">?</button>` : ''}</div>
+      ${hint ? `<div class="q-hint-popup" id="hint-${id}">${hint}</div>` : ''}
+      <div class="q-scale">
+        <span class="q-scale-value${isAnswered ? ' visible' : ''}" id="slval-${id}">${valLabel}</span>
+        <div class="q-scale-track-wrap">
+          <input type="range" class="q-scale-input${isAnswered ? ' touched' : ''}" id="sl-${id}"
+            min="0" max="3" step="1" value="${sliderVal}"
+            style="--fill-pct:${fillPct}%"
+            oninput="onDassSlider('${id}',${i},this)">
+        </div>
+        <div class="q-scale-anchors">
+          <span class="q-scale-anchor">${anchorLo}</span>
+          <span class="q-scale-anchor">${anchorHi}</span>
+        </div>
+      </div>
+    </div>`;
   }).join('');
 }
 
@@ -1535,62 +1624,152 @@ function renderCBI() {
   const workQs     = isBM ? CBI_WORK_BM : CBI_WORK.map(x => x.q);
   const pLabel = isBM ? 'Burnout Peribadi' : 'Personal Burnout';
   const wLabel = isBM ? 'Burnout Kerja' : 'Work Burnout';
+
   let html = `<div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin-bottom:12px">${pLabel}</div>`;
+  // Reverse display so left=Never(low burnout) right=Always(high burnout) — intuitive left-to-right
+  const freqDisplay = [...freqOpts].reverse();
   html += personalQs.map((q, i) => {
     const id = `cbip-${i}`;
-    _callbacks[id] = (val) => {
-      cbiPAnswers[i] = val;
-      document.getElementById('qcard-' + id)?.classList.add('answered');
-      updateClinicalProgress();
-    };
-    const prevVal = cbiPAnswers[i];
-    const isAnswered = prevVal !== null;
-    const opts = freqOpts.map((o, oi) => `
-      <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${freqOpts.length},'${id}')">
-        <div class="q-option-label">${o.label}</div>
-      </div>`).join('');
-    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}"><div class="q-num">Q${i+1} / 6</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+    const val = cbiPAnswers[i];
+    const isAnswered = val !== null;
+    const mid = Math.floor((freqDisplay.length - 1) / 2);
+    const sliderIdx = isAnswered ? freqDisplay.findIndex(o => o.val === val) : mid;
+    const fillPct = isAnswered ? (sliderIdx / (freqDisplay.length - 1)) * 100 : 50;
+    const valLabel = isAnswered ? freqDisplay[sliderIdx].label : '';
+    const anchorLo = freqDisplay[0].label;
+    const anchorHi = freqDisplay[freqDisplay.length - 1].label;
+    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}">
+      <div class="q-num">Q${i+1} / 6</div>
+      <div class="q-text">${q}</div>
+      <div class="q-scale">
+        <span class="q-scale-value${isAnswered ? ' visible' : ''}" id="slval-${id}">${valLabel}</span>
+        <div class="q-scale-track-wrap">
+          <input type="range" class="q-scale-input${isAnswered ? ' touched' : ''}" id="sl-${id}"
+            min="0" max="${freqOpts.length - 1}" step="1" value="${sliderIdx}"
+            style="--fill-pct:${fillPct}%"
+            oninput="onCbiSlider('cbip',${i},this,false)">
+        </div>
+        <div class="q-scale-anchors">
+          <span class="q-scale-anchor">${anchorLo}</span>
+          <span class="q-scale-anchor">${anchorHi}</span>
+        </div>
+      </div>
+    </div>`;
   }).join('');
-  html += `<div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin:20px 0 12px">${wLabel}</div>`;
+
+  // Employment gate
+  const empYes = isBM ? 'Ya, saya bekerja sekarang' : 'Yes, I am currently employed';
+  const empNo  = isBM ? 'Tidak (surirumah, bersara, belajar, menganggur)' : 'No (homemaker, retired, student, unemployed)';
+  const empQ   = isBM ? 'Adakah anda sedang bekerja?' : 'Are you currently employed?';
+  const selYes = isEmployed === true  ? ' selected' : '';
+  const selNo  = isEmployed === false ? ' selected' : '';
+  html += `
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin:20px 0 12px">${wLabel}</div>
+    <div class="q-card${isEmployed !== null ? ' answered' : ''}" id="qcard-emp">
+      <div class="q-num">Employment status</div>
+      <div class="q-text">${empQ}</div>
+      <div class="q-options" style="grid-template-columns:1fr 1fr">
+        <div class="q-option${selYes}" id="emp-opt-yes" onclick="setEmployed(true)"><div class="q-option-label">${empYes}</div></div>
+        <div class="q-option${selNo}"  id="emp-opt-no"  onclick="setEmployed(false)"><div class="q-option-label">${empNo}</div></div>
+      </div>
+    </div>
+    <div id="cbi-work-questions" style="display:${isEmployed ? 'block' : 'none'}">`;
+
   html += workQs.map((q, i) => {
-    const id = `cbiw-${i}`;
-    _callbacks[id] = (val) => {
-      cbiWAnswers[i] = val;
-      document.getElementById('qcard-' + id)?.classList.add('answered');
-      updateClinicalProgress();
-    };
-    const prevVal = cbiWAnswers[i];
-    const isAnswered = prevVal !== null;
-    const options = CBI_WORK[i].type === 'degree' ? degreeOpts : freqOpts;
-    const opts = options.map((o, oi) => `
-      <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
-        <div class="q-option-label">${o.label}</div>
-      </div>`).join('');
-    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}"><div class="q-num">Q${i+1} / 7</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+    const id = 'cbiw-' + i;
+    const isReverse = !!CBI_WORK[i].reverse;
+    const baseOptions = CBI_WORK[i].type === 'degree' ? degreeOpts : freqOpts;
+    const val = cbiWAnswers[i];
+    const isAnswered = val !== null;
+    const mid = Math.floor((baseOptions.length - 1) / 2);
+    // Non-reverse: display Never→Always (left=best). Reverse (Q7): display Always→Never (left=best).
+    const displayOptions = isReverse ? baseOptions : [...baseOptions].reverse();
+    const sliderIdx = isAnswered ? displayOptions.findIndex(o => o.val === val) : mid;
+    const fillPct = isAnswered ? (sliderIdx / (displayOptions.length - 1)) * 100 : 50;
+    const valLabel = isAnswered ? displayOptions[sliderIdx].label : '';
+    const isDegree = CBI_WORK[i].type === 'degree';
+    const anchorLo = displayOptions[0].label;
+    const anchorHi = displayOptions[displayOptions.length - 1].label;
+    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}">
+      <div class="q-num">Q${i+1} / 7</div>
+      <div class="q-text">${q}</div>
+      <div class="q-scale">
+        <span class="q-scale-value${isAnswered ? ' visible' : ''}" id="slval-${id}">${valLabel}</span>
+        <div class="q-scale-track-wrap">
+          <input type="range" class="q-scale-input${isAnswered ? ' touched' : ''}" id="sl-${id}"
+            min="0" max="${displayOptions.length - 1}" step="1" value="${sliderIdx}"
+            style="--fill-pct:${fillPct}%"
+            oninput="onCbiSlider('cbiw',${i},this,${isDegree})">
+        </div>
+        <div class="q-scale-anchors">
+          <span class="q-scale-anchor">${anchorLo}</span>
+          <span class="q-scale-anchor">${anchorHi}</span>
+        </div>
+      </div>
+    </div>`;
   }).join('');
+
+  html += `</div>`; // /cbi-work-questions
   container.innerHTML = html;
 }
 
-function renderPHQ() {
-  const container = document.getElementById('phq-questions');
+function setEmployed(val) {
+  isEmployed = val;
+  document.getElementById('emp-opt-yes')?.classList.toggle('selected', val === true);
+  document.getElementById('emp-opt-no')?.classList.toggle('selected', val === false);
+  document.getElementById('qcard-emp')?.classList.add('answered');
+  const workSection = document.getElementById('cbi-work-questions');
+  if (workSection) workSection.style.display = val ? 'block' : 'none';
+  if (!val) cbiWAnswers = new Array(7).fill(null);
+  updateClinicalProgress();
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+
+function _updateSliderUI(sliderEl, labelEl, labelText, fillPct) {
+  sliderEl.classList.add('touched');
+  sliderEl.style.setProperty('--fill-pct', fillPct + '%');
+  labelEl.textContent = labelText;
+  labelEl.classList.add('visible');
+}
+
+function onDassSlider(id, idx, sliderEl) {
   const isBM = currentLang === 'bm';
-  const questions = isBM ? PHQ_ITEMS_BM : PHQ_ITEMS.map(x => x.q);
-  const options   = isBM ? PHQ_OPTIONS_BM : PHQ_OPTIONS;
-  container.innerHTML = questions.map((q, i) => {
-    const id = `phq-${i}`;
-    _callbacks[id] = (val) => {
-      phqAnswers[i] = val;
-      document.getElementById('qcard-' + id)?.classList.add('answered');
-      updateClinicalProgress();
-    };
-    const prevVal = phqAnswers[i];
-    const isAnswered = prevVal !== null;
-    const opts = options.map((o, oi) => `
-      <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
-        <div class="q-option-label">${o.label}</div>
-      </div>`).join('');
-    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}"><div class="q-num">Q${i+1} / 2</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
-  }).join('');
+  const options = isBM ? DASS_OPTIONS_BM : DASS_OPTIONS;
+  const step = parseInt(sliderEl.value);
+  const opt = options[step];
+  dassAnswers[idx] = opt.val;
+  const fillPct = (step / (options.length - 1)) * 100;
+  const labelEl = document.getElementById('slval-' + id);
+  _updateSliderUI(sliderEl, labelEl, opt.label, fillPct);
+  document.getElementById('qcard-' + id)?.classList.remove('q-unanswered');
+  document.getElementById('qcard-' + id)?.classList.add('answered');
+  updateClinicalProgress();
+}
+
+function onCbiSlider(prefix, idx, sliderEl, isDegree) {
+  const isBM = currentLang === 'bm';
+  const freqOpts   = isBM ? CBI_FREQ_OPTIONS_BM : CBI_FREQ_OPTIONS;
+  const degreeOpts = isBM ? CBI_DEGREE_OPTIONS_BM : CBI_DEGREE_OPTIONS;
+  const baseOptions = isDegree ? degreeOpts : freqOpts;
+  // All freq sliders display Never→Always (reversed from source array Always→Never)
+  // Reverse items (CBI-Work Q7) display Always→Never (same as source array)
+  const isReverse = prefix === 'cbiw' && !!CBI_WORK[idx].reverse;
+  const displayOptions = isReverse ? baseOptions : [...baseOptions].reverse();
+  const step = parseInt(sliderEl.value);
+  const opt = displayOptions[step];
+  const id = prefix + '-' + idx;
+  if (prefix === 'cbip') cbiPAnswers[idx] = opt.val;
+  else                   cbiWAnswers[idx] = opt.val;
+  const fillPct = (step / (displayOptions.length - 1)) * 100;
+  const labelEl = document.getElementById('slval-' + id);
+  _updateSliderUI(sliderEl, labelEl, opt.label, fillPct);
+  document.getElementById('qcard-' + id)?.classList.remove('q-unanswered');
+  document.getElementById('qcard-' + id)?.classList.add('answered');
+  updateClinicalProgress();
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1636,14 +1815,16 @@ function goToPart2() {
 ══════════════════════════════════════════════════════════════ */
 function updateClinicalProgress() {
   const dassAnswered = dassAnswers.filter(v => v !== null).length;
-  const cbiAnswered  = cbiPAnswers.filter(v => v !== null).length + cbiWAnswers.filter(v => v !== null).length;
-  const phqAnswered  = phqAnswers.filter(v => v !== null).length;
-  const answered     = dassAnswered + cbiAnswered + phqAnswered;
-  const pct = Math.round((answered / TOTAL_CLINICAL) * 100);
+  const cbiPAnswered = cbiPAnswers.filter(v => v !== null).length;
+  const cbiWAnswered = isEmployed ? cbiWAnswers.filter(v => v !== null).length : 0;
+  const empAnswered  = isEmployed !== null ? 1 : 0;
+  const answered     = dassAnswered + cbiPAnswered + cbiWAnswered + empAnswered;
+  const total        = getTotalClinical() + 1;
+  const pct          = Math.round((answered / total) * 100);
 
-  // Overall progress (in part2-intro card)
+  // Overall progress
   document.getElementById('clinicalProgressFill').style.width = pct + '%';
-  document.getElementById('clinicalProgressLabel').textContent = `${answered} / ${TOTAL_CLINICAL} ${t('answered', 'dijawab')}`;
+  document.getElementById('clinicalProgressLabel').textContent = `${answered} / ${total} ${t('answered', 'dijawab')}`;
   document.getElementById('clinicalAnsweredCount').textContent = answered;
 
   // Per-instrument progress bars
@@ -1652,15 +1833,12 @@ function updateClinicalProgress() {
   if (dassFill) dassFill.style.width = Math.round((dassAnswered / 21) * 100) + '%';
   if (dassLbl)  dassLbl.textContent = `${dassAnswered} / 21`;
 
+  const cbiTotal    = isEmployed ? 13 : 6;
+  const cbiAnswered = cbiPAnswered + cbiWAnswered;
   const cbiFill = document.getElementById('cbiProgressFill');
   const cbiLbl  = document.getElementById('cbiProgressLabel');
-  if (cbiFill) cbiFill.style.width = Math.round((cbiAnswered / 13) * 100) + '%';
-  if (cbiLbl)  cbiLbl.textContent = `${cbiAnswered} / 13`;
-
-  const phqFill = document.getElementById('phqProgressFill');
-  const phqLbl  = document.getElementById('phqProgressLabel');
-  if (phqFill) phqFill.style.width = Math.round((phqAnswered / 2) * 100) + '%';
-  if (phqLbl)  phqLbl.textContent = `${phqAnswered} / 2`;
+  if (cbiFill) cbiFill.style.width = Math.round((cbiAnswered / cbiTotal) * 100) + '%';
+  if (cbiLbl)  cbiLbl.textContent = `${cbiAnswered} / ${cbiTotal}`;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1685,10 +1863,6 @@ function scoreCBI() {
   const personal = pVals.reduce((s,v) => s+v, 0) / 6;
   const work     = wVals.reduce((s,v) => s+v, 0) / 7;
   return { personal: Math.round(personal), work: Math.round(work) };
-}
-
-function scorePHQ() {
-  return phqAnswers.reduce((s,v) => s + (v || 0), 0);
 }
 
 function dassBand(score, type) {
@@ -1776,7 +1950,7 @@ const ARCHETYPES = {
   },
 };
 
-function assignArchetype(dass, cbi, phq2, domainScores) {
+function assignArchetype(dass, cbi, domainScores) {
   const hasRedFlags = checked['redflags'].size > 0;
   if (hasRedFlags) return 'INVISIBLE_ILLNESS';
 
@@ -1808,22 +1982,22 @@ function assignArchetype(dass, cbi, phq2, domainScores) {
    SHOW RESULTS
 ══════════════════════════════════════════════════════════════ */
 function showResults() {
-  // Validate all answered
+  const workAnswered = !isEmployed || cbiWAnswers.every(v => v !== null);
   const allAnswered =
     dassAnswers.every(v => v !== null) &&
     cbiPAnswers.every(v => v !== null) &&
-    cbiWAnswers.every(v => v !== null) &&
-    phqAnswers.every(v => v !== null);
+    workAnswered &&
+    isEmployed !== null;
 
   if (!allAnswered) {
-    // Highlight unanswered
     dassAnswers.forEach((v,i) => { if(v===null) document.getElementById(`qcard-dass-${i}`)?.classList.add('q-unanswered'); });
     cbiPAnswers.forEach((v,i) => { if(v===null) document.getElementById(`qcard-cbip-${i}`)?.classList.add('q-unanswered'); });
-    cbiWAnswers.forEach((v,i) => { if(v===null) document.getElementById(`qcard-cbiw-${i}`)?.classList.add('q-unanswered'); });
-    phqAnswers.forEach((v,i)  => { if(v===null) document.getElementById(`qcard-phq-${i}`)?.classList.add('q-unanswered'); });
+    if (isEmployed) {
+      cbiWAnswers.forEach((v,i) => { if(v===null) document.getElementById(`qcard-cbiw-${i}`)?.classList.add('q-unanswered'); });
+    }
+    if (isEmployed === null) document.getElementById('qcard-emp')?.classList.add('q-unanswered');
     const msg = document.getElementById('validationMsg');
     msg.classList.add('visible');
-    // Scroll to first unanswered
     const first = document.querySelector('.q-unanswered');
     if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
@@ -1831,18 +2005,20 @@ function showResults() {
 
   const dass = scoreDASS();
   const cbi  = scoreCBI();
-  const phq2 = scorePHQ();
 
   const domainScores = {};
   CATEGORIES.forEach(c => { domainScores[c.id] = checked[c.id].size; });
 
-  const archetypeKey = assignArchetype(dass, cbi, phq2, domainScores);
+  // Unified engine: DASS-D Moderate+ (≥14) triggers depression advisory — replaces PHQ-2 flag
+  const dassDFlag = dass.d >= 14;
+
+  const archetypeKey = assignArchetype(dass, cbi, domainScores);
   const archetype    = ARCHETYPES[archetypeKey];
 
   // Compound cluster
   const hasCompound = domainScores.sleep > 0 && domainScores.physical > 0 && domainScores.weight > 0;
   const hasRedFlags = checked['redflags'].size > 0;
-  const phq2Flag    = phq2 >= 3;
+  const phq2Flag    = dassDFlag; // unified: DASS-D Moderate+ triggers depression advisory
 
   // ── Archetype hero ──
   const hero = document.getElementById('archetypeHero');
@@ -1902,9 +2078,7 @@ function showResults() {
     <div class="cs-row"><span class="cs-name">${t('DASS-21 — Stress','DASS-21 — Stres')}</span><span class="cs-score">${dass.s}</span><span class="cs-band ${bandClass(sb)}">${bl(sb)}</span></div>
     <div class="cs-divider"></div>
     <div class="cs-row"><span class="cs-name">${t('CBI — Personal Burnout','CBI — Burnout Peribadi')}</span><span class="cs-score">${cbi.personal}</span><span class="cs-band ${bandClass(cpb)}">${bl(cpb)}</span></div>
-    <div class="cs-row"><span class="cs-name">${t('CBI — Work Burnout','CBI — Burnout Kerja')}</span><span class="cs-score">${cbi.work}</span><span class="cs-band ${bandClass(cwb)}">${bl(cwb)}</span></div>
-    <div class="cs-divider"></div>
-    <div class="cs-row"><span class="cs-name">${t('PHQ-2 — Depression Screen','PHQ-2 — Saringan Kemurungan')}</span><span class="cs-score">${phq2}</span><span class="cs-band ${phq2Flag ? 'severe' : 'normal'}">${phq2Flag ? t('Follow up','Susulan diperlukan') : t('No flag','Tiada tanda')}</span></div>
+    ${isEmployed ? `<div class="cs-row"><span class="cs-name">${t('CBI — Work Burnout','CBI — Burnout Kerja')}</span><span class="cs-score">${cbi.work}</span><span class="cs-band ${bandClass(cwb)}">${bl(cwb)}</span></div>` : ''}
     <div style="margin-top:14px;font-size:11px;line-height:1.6;color:rgba(253,249,240,0.25)">${t('Scores are indicative based on validated instruments. Not a clinical diagnosis. Consult a healthcare professional for formal assessment.','Skor adalah berdasarkan alat yang telah disahkan. Bukan diagnosis klinikal. Rujuk profesional kesihatan untuk penilaian formal.')}</div>
   `;
 
@@ -1917,7 +2091,7 @@ function showResults() {
     mfiTitle = t('Clinical Evaluation Needed', 'Penilaian Klinikal Diperlukan');
     mfiBody  = t('You flagged symptoms that fall outside lifestyle explanations. <strong>See a doctor before making any changes.</strong> Once medical causes are ruled out or treated, revisit your lifestyle domains.',
                  'Anda menandakan gejala di luar penjelasan gaya hidup. <strong>Berjumpa doktor sebelum membuat sebarang perubahan.</strong> Setelah punca perubatan dikecualikan atau dirawat, tinjau semula domain gaya hidup anda.');
-  } else if (mfiPct >= 0.4 || cbi.work >= 75 || cbi.personal >= 75 || ['Severe','Extremely Severe'].includes(db) || ['Severe','Extremely Severe'].includes(ab)) {
+  } else if (mfiPct >= 0.4 || (isEmployed && cbi.work >= 75) || cbi.personal >= 75 || ['Severe','Extremely Severe'].includes(db) || ['Severe','Extremely Severe'].includes(ab)) {
     mfiClass = 'red';
     mfiTitle = t('High Load — Consider Clinical Support', 'Beban Tinggi — Pertimbangkan Sokongan Klinikal');
     mfiBody  = t('Your combined lifestyle and clinical signals are elevated. Lifestyle changes alone may feel overwhelming. <strong>Consider speaking to a doctor, psychologist, or dietitian</strong> for structured, personalised support.',
@@ -1984,8 +2158,8 @@ function showResults() {
   if (window.umami) umami.track('results-shown', {
     archetype: archetypeKey,
     dass_d: dass.d, dass_a: dass.a, dass_s: dass.s,
-    cbi_p: cbi.personal, cbi_w: cbi.work,
-    phq2, redflags: checked['redflags'].size
+    cbi_p: cbi.personal, cbi_w: isEmployed ? cbi.work : null,
+    employed: isEmployed, redflags: checked['redflags'].size
   });
 }
 
@@ -2002,8 +2176,8 @@ function resetAudit() {
   dassAnswers = new Array(21).fill(null);
   cbiPAnswers = new Array(6).fill(null);
   cbiWAnswers = new Array(7).fill(null);
-  phqAnswers  = new Array(2).fill(null);
-  renderDASS(); renderCBI(); renderPHQ();
+  isEmployed  = null;
+  renderDASS(); renderCBI();
   updateTally(); updateClinicalProgress();
   document.getElementById('results-section').classList.remove('visible');
   document.getElementById('clinical-section').classList.remove('visible');
