@@ -111,7 +111,36 @@
     .cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
     .cat-name { font-family: var(--font-display); font-size: 22px; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; color: var(--color-ghost-white); flex: 1; }
     .cat-count { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.165px; color: rgba(253,249,240,0.3); }
-    .cat-desc { font-size: 13px; line-height: 1.55; color: rgba(253,249,240,0.35); margin-bottom: 14px; letter-spacing: 0.01em; }
+    /* Collapsible cat-desc */
+    .cat-desc-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(253,249,240,0.28);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 14px;
+      transition: color 0.15s;
+      font-family: var(--font-body);
+    }
+    .cat-desc-toggle:hover { color: rgba(253,249,240,0.55); }
+    .cat-desc-toggle-icon { font-size: 14px; line-height: 1; transition: transform 0.2s; }
+    .cat-desc-toggle.open .cat-desc-toggle-icon { transform: rotate(45deg); }
+    .cat-desc {
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(253,249,240,0.35);
+      margin-bottom: 14px;
+      letter-spacing: 0.01em;
+      display: none;
+    }
+    .cat-desc.open { display: block; }
     .cat-redflags .cat-name { color: #ff3b3b; }
     .redflag-notice { background: rgba(255,59,59,0.08); border: 1px solid rgba(255,59,59,0.2); border-radius: 12px; padding: 12px 16px; font-size: 12px; line-height: 1.6; color: rgba(255,180,180,0.8); margin-bottom: 14px; letter-spacing: 0.01em; }
     .check-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.25); padding: 12px 2px 6px; }
@@ -162,7 +191,57 @@
     .part2-progress-fill { height: 3px; background: var(--color-lime-squeeze); border-radius: 2px; width: 0%; transition: width 0.4s ease; }
     .part2-progress-label { font-size: 11px; color: rgba(253,249,240,0.3); white-space: nowrap; letter-spacing: 0.165px; }
 
-    .instrument-block { margin-bottom: 48px; }
+    .instrument-progress {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .instrument-progress-track {
+      flex: 1;
+      height: 3px;
+      background: rgba(253,249,240,0.08);
+      border-radius: 2px;
+    }
+    .instrument-progress-fill {
+      height: 3px;
+      border-radius: 2px;
+      background: var(--color-lime-squeeze);
+      width: 0%;
+      transition: width 0.35s ease;
+    }
+    .instrument-progress-label {
+      font-size: 11px;
+      color: rgba(253,249,240,0.3);
+      white-space: nowrap;
+      letter-spacing: 0.165px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Halfway milestone banner */
+    .halfway-banner {
+      display: none;
+      background: rgba(199,255,105,0.07);
+      border: 1px solid rgba(199,255,105,0.2);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .halfway-banner.visible { display: block; }
+    .halfway-banner-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--color-lime-squeeze);
+      margin-bottom: 4px;
+    }
+    .halfway-banner-body {
+      font-size: 13px;
+      color: rgba(253,249,240,0.45);
+      line-height: 1.5;
+    }
     .instrument-header { margin-bottom: 24px; }
     .instrument-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.4); background: rgba(253,249,240,0.07); border-radius: var(--radius-tags); padding: 4px 12px; margin-bottom: 10px; }
     .instrument-title { font-family: var(--font-display); font-size: 28px; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; color: var(--color-ghost-white); margin-bottom: 8px; }
@@ -444,7 +523,7 @@
     body.bm [data-en-block] { display: none; }
     [data-en-block] { display: block; }
 
-    /* Lang toggle button */
+    /* Lang toggle button — more prominent */
     .lang-toggle {
       background: var(--color-lime-squeeze);
       border: none;
@@ -453,12 +532,52 @@
       font-family: var(--font-body);
       font-size: 12px;
       font-weight: 700;
-      padding: 5px 14px;
+      padding: 7px 18px;
       cursor: pointer;
       transition: opacity 0.15s ease;
       letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
     .lang-toggle:hover { opacity: 0.8; }
+    .lang-toggle-hint {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      opacity: 0.65;
+    }
+
+    /* First-load lang nudge strip */
+    #lang-nudge {
+      background: rgba(199,255,105,0.06);
+      border: 1px solid rgba(199,255,105,0.15);
+      border-radius: 12px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: rgba(253,249,240,0.45);
+    }
+    #lang-nudge.hidden { display: none; }
+    #lang-nudge-btn {
+      background: rgba(199,255,105,0.15);
+      border: 1px solid rgba(199,255,105,0.3);
+      border-radius: var(--radius-tags);
+      color: var(--color-lime-squeeze);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+      transition: background 0.15s;
+    }
+    #lang-nudge-btn:hover { background: rgba(199,255,105,0.25); }
   </style>
 </head>
 <body>
@@ -468,7 +587,9 @@
     <a class="nav-logo" href="https://www.aufthority.com">Aufthority</a>
     <div style="display:flex;align-items:center;gap:10px">
       <span class="nav-part-indicator" id="navPartIndicator"></span>
-      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">BM</button>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+        <span id="langToggleLabel">BM</span><span class="lang-toggle-hint" id="langToggleHint">· Bahasa Malaysia</span>
+      </button>
     </div>
   </nav>
 
@@ -507,13 +628,25 @@
   <!-- PART 1: CHECKLIST -->
   <div id="checklist-section">
 
+    <!-- Language nudge — shown on first load, dismissed on toggle -->
+    <div id="lang-nudge" style="margin-top:32px">
+      <span>Lebih selesa dalam Bahasa Malaysia?</span>
+      <button id="lang-nudge-btn" onclick="switchToBM()">Tukar ke BM</button>
+    </div>
+
     <div class="category-block cat-sleep anim anim-d1">
       <div class="cat-header">
         <div class="cat-dot" style="background:var(--cat-sleep)"></div>
         <div class="cat-name"><span data-en>Sleep Quality</span><span data-bm>Kualiti Tidur</span></div>
         <div class="cat-count" id="count-sleep">0 / 9</div>
       </div>
-      <div class="cat-desc">
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('sleep-desc', this)" data-en>
+        <span class="cat-desc-toggle-icon">+</span> Why this matters
+      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('sleep-desc', this)" data-bm>
+        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
+      </button>
+      <div class="cat-desc" id="sleep-desc">
         <span data-en>Poor sleep raises hunger hormones, impairs fat metabolism, and leaves you exhausted — even after a full night in bed. Note: waking up already tired (morning fatigue) and crashing mid-afternoon (daytime sleepiness) are distinct problems with different causes — both are captured below.</span>
         <span data-bm>Kualiti tidur yang rendah meningkatkan hormon lapar, menjejaskan metabolisme lemak, dan membuatkan anda keletihan — walaupun selepas tidur penuh. Nota: bangun tidur dalam keadaan penat dan mengantuk pada waktu tengah hari ialah dua masalah yang berbeza — kedua-duanya diukur di bawah.</span>
       </div>
@@ -526,7 +659,13 @@
         <div class="cat-name"><span data-en>Physical Activity</span><span data-bm>Aktiviti Fizikal</span></div>
         <div class="cat-count" id="count-physical">0 / 5</div>
       </div>
-      <div class="cat-desc">
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('physical-desc', this)" data-en>
+        <span class="cat-desc-toggle-icon">+</span> Why this matters
+      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('physical-desc', this)" data-bm>
+        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
+      </button>
+      <div class="cat-desc" id="physical-desc">
         <span data-en>Inactivity reduces your daily energy expenditure and accelerates muscle loss — making weight gain easier and fatigue harder to shift.</span>
         <span data-bm>Kurang aktif mengurangkan penggunaan tenaga harian dan mempercepatkan kehilangan otot — menjadikan penambahan berat lebih mudah dan keletihan lebih sukar diatasi.</span>
       </div>
@@ -539,7 +678,13 @@
         <div class="cat-name"><span data-en>Nutrition</span><span data-bm>Pemakanan</span></div>
         <div class="cat-count" id="count-nutrition">0 / 5</div>
       </div>
-      <div class="cat-desc">
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('nutrition-desc', this)" data-en>
+        <span class="cat-desc-toggle-icon">+</span> Why this matters
+      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('nutrition-desc', this)" data-bm>
+        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
+      </button>
+      <div class="cat-desc" id="nutrition-desc">
         <span data-en>What and when you eat directly affects your energy levels, hunger signals, and how your body stores or burns fat throughout the day.</span>
         <span data-bm>Apa yang anda makan dan waktu anda makan secara langsung mempengaruhi tahap tenaga, isyarat lapar, dan cara badan anda menyimpan atau membakar lemak sepanjang hari.</span>
       </div>
@@ -552,7 +697,13 @@
         <div class="cat-name"><span data-en>Mood &amp; Stress</span><span data-bm>Mood &amp; Stres</span></div>
         <div class="cat-count" id="count-mood">0 / 5</div>
       </div>
-      <div class="cat-desc">
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('mood-desc', this)" data-en>
+        <span class="cat-desc-toggle-icon">+</span> Why this matters
+      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('mood-desc', this)" data-bm>
+        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
+      </button>
+      <div class="cat-desc" id="mood-desc">
         <span data-en>Chronic stress elevates cortisol, which drives abdominal fat storage, triggers emotional eating, and depletes physical energy reserves.</span>
         <span data-bm>SStres kronik meningkatkan kortisol — mendorong penyimpanan lemak perut, mencetuskan pemakanan beremosi, dan menghabiskan simpanan tenaga fizikal.</span>
       </div>
@@ -565,7 +716,13 @@
         <div class="cat-name"><span data-en>Metabolic &amp; Medical</span><span data-bm>Metabolik &amp; Perubatan</span></div>
         <div class="cat-count" id="count-weight">0 / 5</div>
       </div>
-      <div class="cat-desc">
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('weight-desc', this)" data-en>
+        <span class="cat-desc-toggle-icon">+</span> Why this matters
+      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('weight-desc', this)" data-bm>
+        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
+      </button>
+      <div class="cat-desc" id="weight-desc">
         <span data-en>Hormonal and metabolic conditions — thyroid disorders, insulin resistance, PCOS — can make fatigue and weight gain far harder to reverse through lifestyle changes alone.</span>
         <span data-bm>Keadaan hormon dan metabolik — gangguan tiroid, rintangan insulin, PCOS — boleh menjadikan keletihan dan penambahan berat jauh lebih sukar diatasi melalui perubahan gaya hidup semata-mata.</span>
       </div>
@@ -607,12 +764,22 @@
       </div>
     </div>
 
+    <!-- Halfway milestone -->
+    <div class="halfway-banner" id="halfwayBanner">
+      <div class="halfway-banner-title"><span data-en>You're halfway there.</span><span data-bm>Anda dah separuh jalan.</span></div>
+      <div class="halfway-banner-body"><span data-en>Part 1 done. Three short clinical screens left — takes about 2 more minutes.</span><span data-bm>Bahagian 1 selesai. Tiga saringan klinikal ringkas lagi — lebih kurang 2 minit lagi.</span></div>
+    </div>
+
     <!-- DASS-21 -->
     <div class="instrument-block">
       <div class="instrument-header">
         <div class="instrument-tag">DASS-21 · Lovibond &amp; Lovibond, 1995</div>
         <div class="instrument-title"><span data-en>Mood &amp; Stress Screen</span><span data-bm>Saringan Mood &amp; Stres</span></div>
         <div class="instrument-desc"><span data-en>21 questions. Rate how much each statement applied to you over the past week.</span><span data-bm>21 soalan. Nilai sejauh mana setiap pernyataan berikut menggambarkan keadaan anda sepanjang minggu lepas.</span></div>
+        <div class="instrument-progress">
+          <div class="instrument-progress-track"><div class="instrument-progress-fill" id="dassProgressFill"></div></div>
+          <div class="instrument-progress-label" id="dassProgressLabel">0 / 21</div>
+        </div>
       </div>
       <div id="dass-questions"></div>
     </div>
@@ -625,6 +792,10 @@
         <div class="instrument-tag">Copenhagen Burnout Inventory · Kristensen et al., 2005</div>
         <div class="instrument-title"><span data-en>Burnout Assessment</span><span data-bm>Penilaian Kelesuan Melampau (Burnout)</span></div>
         <div class="instrument-desc"><span data-en>13 questions across personal and work-related exhaustion.</span><span data-bm>13 soalan merangkumi keletihan peribadi dan berkaitan kerja.</span></div>
+        <div class="instrument-progress">
+          <div class="instrument-progress-track"><div class="instrument-progress-fill" id="cbiProgressFill"></div></div>
+          <div class="instrument-progress-label" id="cbiProgressLabel">0 / 13</div>
+        </div>
       </div>
       <div id="cbi-questions"></div>
     </div>
@@ -637,6 +808,10 @@
         <div class="instrument-tag">PHQ-2 · Kroenke et al., 2003</div>
         <div class="instrument-title"><span data-en>Depression Screen</span><span data-bm>Saringan Kemurungan</span></div>
         <div class="instrument-desc"><span data-en>2 questions. Rate how often you have been bothered by the following over the past 2 weeks.</span><span data-bm>2 soalan. Nilai seberapa kerap anda mengalami perkara berikut dalam tempoh 2 minggu lepas.</span></div>
+        <div class="instrument-progress">
+          <div class="instrument-progress-track"><div class="instrument-progress-fill" id="phqProgressFill"></div></div>
+          <div class="instrument-progress-label" id="phqProgressLabel">0 / 2</div>
+        </div>
       </div>
       <div id="phq-questions"></div>
     </div>
@@ -849,7 +1024,13 @@ let currentLang = 'en';
 function toggleLang() {
   currentLang = currentLang === 'en' ? 'bm' : 'en';
   document.body.classList.toggle('bm', currentLang === 'bm');
-  document.getElementById('langToggle').textContent = currentLang === 'en' ? 'BM' : 'EN';
+  const lbl = document.getElementById('langToggleLabel');
+  const hint = document.getElementById('langToggleHint');
+  if (lbl) lbl.textContent = currentLang === 'en' ? 'BM' : 'EN';
+  if (hint) hint.textContent = currentLang === 'en' ? '· Bahasa Malaysia' : '· English';
+  // Dismiss nudge on any language toggle
+  const nudge = document.getElementById('lang-nudge');
+  if (nudge) nudge.classList.add('hidden');
   // Re-render dynamic content in new language
   CATEGORIES.forEach(cat => {
     const container = document.getElementById('items-' + cat.id);
@@ -870,6 +1051,22 @@ function toggleLang() {
   renderDASS(); renderCBI(); renderPHQ();
   updateClinicalProgress();
   if (window.umami) umami.track('lang-toggle', { lang: currentLang });
+}
+
+// Switch to BM from the nudge strip
+function switchToBM() {
+  if (currentLang !== 'bm') toggleLang();
+}
+
+// Collapsible cat-desc toggle
+function toggleCatDesc(id, btn) {
+  const desc = document.getElementById(id);
+  if (!desc) return;
+  const isOpen = desc.classList.contains('open');
+  desc.classList.toggle('open', !isOpen);
+  // Toggle all buttons for this desc (EN + BM versions)
+  const allBtns = document.querySelectorAll(`[onclick="toggleCatDesc('${id}', this)"]`);
+  allBtns.forEach(b => b.classList.toggle('open', !isOpen));
 }
 
 function t(en, bm) { return currentLang === 'bm' ? bm : en; }
@@ -1461,6 +1658,9 @@ function goToPart2() {
   document.getElementById('clinical-bar').classList.add('visible');
   document.getElementById('navPartIndicator').textContent = t('Part 2 / 2', 'Bahagian 2 / 2');
   document.getElementById('navPartIndicator').classList.add('visible');
+  // Show halfway milestone banner
+  const banner = document.getElementById('halfwayBanner');
+  if (banner) banner.classList.add('visible');
   clinEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
   if (window.umami) umami.track('part2-start');
 }
@@ -1469,15 +1669,32 @@ function goToPart2() {
    PART 2 LOGIC
 ══════════════════════════════════════════════════════════════ */
 function updateClinicalProgress() {
-  const answered =
-    dassAnswers.filter(v => v !== null).length +
-    cbiPAnswers.filter(v => v !== null).length +
-    cbiWAnswers.filter(v => v !== null).length +
-    phqAnswers.filter(v => v !== null).length;
+  const dassAnswered = dassAnswers.filter(v => v !== null).length;
+  const cbiAnswered  = cbiPAnswers.filter(v => v !== null).length + cbiWAnswers.filter(v => v !== null).length;
+  const phqAnswered  = phqAnswers.filter(v => v !== null).length;
+  const answered     = dassAnswered + cbiAnswered + phqAnswered;
   const pct = Math.round((answered / TOTAL_CLINICAL) * 100);
+
+  // Overall progress (in part2-intro card)
   document.getElementById('clinicalProgressFill').style.width = pct + '%';
   document.getElementById('clinicalProgressLabel').textContent = `${answered} / ${TOTAL_CLINICAL} ${t('answered', 'dijawab')}`;
   document.getElementById('clinicalAnsweredCount').textContent = answered;
+
+  // Per-instrument progress bars
+  const dassFill = document.getElementById('dassProgressFill');
+  const dassLbl  = document.getElementById('dassProgressLabel');
+  if (dassFill) dassFill.style.width = Math.round((dassAnswered / 21) * 100) + '%';
+  if (dassLbl)  dassLbl.textContent = `${dassAnswered} / 21`;
+
+  const cbiFill = document.getElementById('cbiProgressFill');
+  const cbiLbl  = document.getElementById('cbiProgressLabel');
+  if (cbiFill) cbiFill.style.width = Math.round((cbiAnswered / 13) * 100) + '%';
+  if (cbiLbl)  cbiLbl.textContent = `${cbiAnswered} / 13`;
+
+  const phqFill = document.getElementById('phqProgressFill');
+  const phqLbl  = document.getElementById('phqProgressLabel');
+  if (phqFill) phqFill.style.width = Math.round((phqAnswered / 2) * 100) + '%';
+  if (phqLbl)  phqLbl.textContent = `${phqAnswered} / 2`;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1829,6 +2046,8 @@ function resetAudit() {
   document.getElementById('checklist-section').style.display = 'block';
   document.getElementById('navPartIndicator').classList.remove('visible');
   document.getElementById('validationMsg').classList.remove('visible');
+  const banner = document.getElementById('halfwayBanner');
+  if (banner) banner.classList.remove('visible');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
