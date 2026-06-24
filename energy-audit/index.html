@@ -111,6 +111,7 @@
     .cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
     .cat-name { font-family: var(--font-display); font-size: 22px; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; color: var(--color-ghost-white); flex: 1; }
     .cat-count { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.165px; color: rgba(253,249,240,0.3); }
+
     /* Collapsible cat-desc */
     .cat-desc-toggle {
       display: inline-flex;
@@ -145,13 +146,13 @@
     .redflag-notice { background: rgba(255,59,59,0.08); border: 1px solid rgba(255,59,59,0.2); border-radius: 12px; padding: 12px 16px; font-size: 12px; line-height: 1.6; color: rgba(255,180,180,0.8); margin-bottom: 14px; letter-spacing: 0.01em; }
     .check-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.25); padding: 12px 2px 6px; }
 
-    /* CHECK ITEMS */
-    .check-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; border-radius: 16px; border: 1px solid rgba(253,249,240,0.08); background: rgba(253,249,240,0.03); margin-bottom: 6px; cursor: pointer; transition: all 0.15s ease; user-select: none; }
-    .check-item:hover { border-color: rgba(253,249,240,0.18); background: rgba(253,249,240,0.055); }
-    .check-item.checked { border-color: rgba(253,249,240,0.22); background: rgba(253,249,240,0.07); }
-    .cat-redflags .check-item:hover { border-color: rgba(255,59,59,0.3); }
-    .cat-redflags .check-item.checked { border-color: rgba(255,59,59,0.4); background: rgba(255,59,59,0.07); }
-    .check-box { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid rgba(253,249,240,0.2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s ease; margin-top: 1px; }
+    /* CHECK ITEMS — cleaner, no border when unchecked */
+    .check-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 4px; border-bottom: 1px solid rgba(253,249,240,0.05); cursor: pointer; transition: all 0.12s ease; user-select: none; }
+    .check-item:last-child { border-bottom: none; }
+    .check-item:hover { background: rgba(253,249,240,0.03); border-radius: 10px; }
+    .check-item.checked { background: rgba(253,249,240,0.05); border-radius: 10px; border-bottom-color: transparent; }
+    .cat-redflags .check-item.checked { background: rgba(255,59,59,0.07); }
+    .check-box { width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid rgba(253,249,240,0.15); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s ease; margin-top: 1px; }
     .check-item.checked .check-box { background: var(--color-lime-squeeze); border-color: var(--color-lime-squeeze); }
     .cat-sleep    .check-item.checked .check-box { background: var(--cat-sleep);    border-color: var(--cat-sleep); }
     .cat-physical .check-item.checked .check-box { background: var(--cat-physical); border-color: var(--cat-physical); }
@@ -163,8 +164,9 @@
     .cat-nutrition .check-item.checked .check-box svg path { stroke: var(--color-midnight-abyss); }
     .check-tick { display: none; width: 10px; height: 7px; }
     .check-item.checked .check-tick { display: block; }
-    .check-text { font-size: 14px; line-height: 1.55; letter-spacing: 0.01em; color: rgba(253,249,240,0.65); }
+    .check-text { font-size: 14px; line-height: 1.55; letter-spacing: 0.01em; color: rgba(253,249,240,0.6); flex: 1; }
     .check-item.checked .check-text { color: var(--color-ghost-white); }
+
 
     /* TALLY BAR */
     #tally-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(20,20,20,0.92); backdrop-filter: blur(14px); border-top: 1px solid rgba(253,249,240,0.1); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
@@ -248,20 +250,51 @@
     .instrument-desc { font-size: 13px; line-height: 1.55; color: rgba(253,249,240,0.4); letter-spacing: 0.01em; }
     .instrument-divider { border: none; border-top: 1px solid rgba(253,249,240,0.06); margin: 32px 0; }
 
-    /* LIKERT QUESTION CARD */
-    .q-card { margin-bottom: 10px; }
-    .q-text { font-size: 14px; line-height: 1.6; color: rgba(253,249,240,0.8); letter-spacing: 0.01em; margin-bottom: 8px; padding: 0 2px; }
-    .q-num { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.2); margin-bottom: 6px; }
-    .q-options { display: flex; flex-direction: column; gap: 4px; }
-    .q-option { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(253,249,240,0.07); background: rgba(253,249,240,0.03); cursor: pointer; transition: all 0.12s ease; user-select: none; }
-    .q-option:hover { border-color: rgba(253,249,240,0.16); background: rgba(253,249,240,0.055); }
-    .q-option.selected { border-color: rgba(199,255,105,0.4); background: rgba(199,255,105,0.07); }
-    .q-option-radio { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid rgba(253,249,240,0.2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.12s ease; }
-    .q-option.selected .q-option-radio { border-color: var(--color-lime-squeeze); background: var(--color-lime-squeeze); }
-    .q-option-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-midnight-abyss); display: none; }
-    .q-option.selected .q-option-dot { display: block; }
-    .q-option-label { font-size: 13px; color: rgba(253,249,240,0.55); line-height: 1.4; letter-spacing: 0.01em; }
-    .q-option.selected .q-option-label { color: var(--color-ghost-white); }
+    /* LIKERT QUESTION CARD — horizontal pill options */
+    .q-card {
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      background: rgba(253,249,240,0.03);
+      border: 1px solid rgba(253,249,240,0.07);
+      border-radius: 16px;
+      transition: border-color 0.15s;
+    }
+    .q-card.answered { border-color: rgba(253,249,240,0.12); background: rgba(253,249,240,0.045); }
+    .q-text { font-size: 14px; line-height: 1.6; color: rgba(253,249,240,0.8); letter-spacing: 0.01em; margin-bottom: 14px; }
+    .q-num { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.2); margin-bottom: 8px; }
+    /* Horizontal pill row */
+    .q-options {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .q-option {
+      flex: 1;
+      min-width: 0;
+      text-align: center;
+      padding: 10px 8px;
+      border-radius: 10px;
+      border: 1px solid rgba(253,249,240,0.1);
+      background: rgba(253,249,240,0.04);
+      cursor: pointer;
+      transition: all 0.12s ease;
+      user-select: none;
+    }
+    .q-option:hover { border-color: rgba(253,249,240,0.22); background: rgba(253,249,240,0.08); }
+    .q-option.selected {
+      border-color: rgba(199,255,105,0.5);
+      background: rgba(199,255,105,0.1);
+    }
+    .q-option-label {
+      font-size: 12px;
+      color: rgba(253,249,240,0.45);
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+      display: block;
+    }
+    .q-option.selected .q-option-label { color: var(--color-lime-squeeze); font-weight: 600; }
+    /* Hide radio — replaced by pill visual */
+    .q-option-radio, .q-option-dot { display: none; }
 
     /* UNANSWERED WARNING */
     .q-unanswered { border-color: rgba(255,59,59,0.3) !important; }
@@ -628,7 +661,7 @@
   <!-- PART 1: CHECKLIST -->
   <div id="checklist-section">
 
-    <!-- Language nudge — shown on first load, dismissed on toggle -->
+    <!-- Language nudge -->
     <div id="lang-nudge" style="margin-top:32px">
       <span>Lebih selesa dalam Bahasa Malaysia?</span>
       <button id="lang-nudge-btn" onclick="switchToBM()">Tukar ke BM</button>
@@ -640,12 +673,8 @@
         <div class="cat-name"><span data-en>Sleep Quality</span><span data-bm>Kualiti Tidur</span></div>
         <div class="cat-count" id="count-sleep">0 / 9</div>
       </div>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('sleep-desc', this)" data-en>
-        <span class="cat-desc-toggle-icon">+</span> Why this matters
-      </button>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('sleep-desc', this)" data-bm>
-        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
-      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('sleep-desc', this)" data-en><span class="cat-desc-toggle-icon">+</span> Why this matters</button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('sleep-desc', this)" data-bm><span class="cat-desc-toggle-icon">+</span> Kenapa ini penting</button>
       <div class="cat-desc" id="sleep-desc">
         <span data-en>Poor sleep raises hunger hormones, impairs fat metabolism, and leaves you exhausted — even after a full night in bed. Note: waking up already tired (morning fatigue) and crashing mid-afternoon (daytime sleepiness) are distinct problems with different causes — both are captured below.</span>
         <span data-bm>Kualiti tidur yang rendah meningkatkan hormon lapar, menjejaskan metabolisme lemak, dan membuatkan anda keletihan — walaupun selepas tidur penuh. Nota: bangun tidur dalam keadaan penat dan mengantuk pada waktu tengah hari ialah dua masalah yang berbeza — kedua-duanya diukur di bawah.</span>
@@ -659,12 +688,8 @@
         <div class="cat-name"><span data-en>Physical Activity</span><span data-bm>Aktiviti Fizikal</span></div>
         <div class="cat-count" id="count-physical">0 / 5</div>
       </div>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('physical-desc', this)" data-en>
-        <span class="cat-desc-toggle-icon">+</span> Why this matters
-      </button>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('physical-desc', this)" data-bm>
-        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
-      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('physical-desc', this)" data-en><span class="cat-desc-toggle-icon">+</span> Why this matters</button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('physical-desc', this)" data-bm><span class="cat-desc-toggle-icon">+</span> Kenapa ini penting</button>
       <div class="cat-desc" id="physical-desc">
         <span data-en>Inactivity reduces your daily energy expenditure and accelerates muscle loss — making weight gain easier and fatigue harder to shift.</span>
         <span data-bm>Kurang aktif mengurangkan penggunaan tenaga harian dan mempercepatkan kehilangan otot — menjadikan penambahan berat lebih mudah dan keletihan lebih sukar diatasi.</span>
@@ -678,12 +703,8 @@
         <div class="cat-name"><span data-en>Nutrition</span><span data-bm>Pemakanan</span></div>
         <div class="cat-count" id="count-nutrition">0 / 5</div>
       </div>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('nutrition-desc', this)" data-en>
-        <span class="cat-desc-toggle-icon">+</span> Why this matters
-      </button>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('nutrition-desc', this)" data-bm>
-        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
-      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('nutrition-desc', this)" data-en><span class="cat-desc-toggle-icon">+</span> Why this matters</button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('nutrition-desc', this)" data-bm><span class="cat-desc-toggle-icon">+</span> Kenapa ini penting</button>
       <div class="cat-desc" id="nutrition-desc">
         <span data-en>What and when you eat directly affects your energy levels, hunger signals, and how your body stores or burns fat throughout the day.</span>
         <span data-bm>Apa yang anda makan dan waktu anda makan secara langsung mempengaruhi tahap tenaga, isyarat lapar, dan cara badan anda menyimpan atau membakar lemak sepanjang hari.</span>
@@ -697,15 +718,11 @@
         <div class="cat-name"><span data-en>Mood &amp; Stress</span><span data-bm>Mood &amp; Stres</span></div>
         <div class="cat-count" id="count-mood">0 / 5</div>
       </div>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('mood-desc', this)" data-en>
-        <span class="cat-desc-toggle-icon">+</span> Why this matters
-      </button>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('mood-desc', this)" data-bm>
-        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
-      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('mood-desc', this)" data-en><span class="cat-desc-toggle-icon">+</span> Why this matters</button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('mood-desc', this)" data-bm><span class="cat-desc-toggle-icon">+</span> Kenapa ini penting</button>
       <div class="cat-desc" id="mood-desc">
         <span data-en>Chronic stress elevates cortisol, which drives abdominal fat storage, triggers emotional eating, and depletes physical energy reserves.</span>
-        <span data-bm>SStres kronik meningkatkan kortisol — mendorong penyimpanan lemak perut, mencetuskan pemakanan beremosi, dan menghabiskan simpanan tenaga fizikal.</span>
+        <span data-bm>Stres kronik meningkatkan kortisol — mendorong penyimpanan lemak perut, mencetuskan pemakanan beremosi, dan menghabiskan simpanan tenaga fizikal.</span>
       </div>
       <div id="items-mood"></div>
     </div>
@@ -716,12 +733,8 @@
         <div class="cat-name"><span data-en>Metabolic &amp; Medical</span><span data-bm>Metabolik &amp; Perubatan</span></div>
         <div class="cat-count" id="count-weight">0 / 5</div>
       </div>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('weight-desc', this)" data-en>
-        <span class="cat-desc-toggle-icon">+</span> Why this matters
-      </button>
-      <button class="cat-desc-toggle" onclick="toggleCatDesc('weight-desc', this)" data-bm>
-        <span class="cat-desc-toggle-icon">+</span> Kenapa ini penting
-      </button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('weight-desc', this)" data-en><span class="cat-desc-toggle-icon">+</span> Why this matters</button>
+      <button class="cat-desc-toggle" onclick="toggleCatDesc('weight-desc', this)" data-bm><span class="cat-desc-toggle-icon">+</span> Kenapa ini penting</button>
       <div class="cat-desc" id="weight-desc">
         <span data-en>Hormonal and metabolic conditions — thyroid disorders, insulin resistance, PCOS — can make fatigue and weight gain far harder to reverse through lifestyle changes alone.</span>
         <span data-bm>Keadaan hormon dan metabolik — gangguan tiroid, rintangan insulin, PCOS — boleh menjadikan keletihan dan penambahan berat jauh lebih sukar diatasi melalui perubahan gaya hidup semata-mata.</span>
@@ -1064,7 +1077,6 @@ function toggleCatDesc(id, btn) {
   if (!desc) return;
   const isOpen = desc.classList.contains('open');
   desc.classList.toggle('open', !isOpen);
-  // Toggle all buttons for this desc (EN + BM versions)
   const allBtns = document.querySelectorAll(`[onclick="toggleCatDesc('${id}', this)"]`);
   allBtns.forEach(b => b.classList.toggle('open', !isOpen));
 }
@@ -1403,71 +1415,9 @@ function init() {
   renderPHQ();
 }
 
-/* ── RENDER DASS ── */
-function renderDASS() {
-  const container = document.getElementById('dass-questions');
-  container.innerHTML = DASS_ITEMS.map((item, i) => buildQCard(
-    `dass-${i}`, i + 1, item.q, DASS_OPTIONS,
-    (val) => { dassAnswers[i] = val; updateClinicalProgress(); }
-  )).join('');
-}
-
-/* ── RENDER CBI ── */
-function renderCBI() {
-  const container = document.getElementById('cbi-questions');
-  let html = '<div style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin-bottom:12px">Personal Burnout</div>';
-  html += CBI_PERSONAL.map((item, i) => buildQCard(
-    `cbip-${i}`, i + 1, item.q, CBI_FREQ_OPTIONS,
-    (val) => { cbiPAnswers[i] = val; updateClinicalProgress(); }
-  )).join('');
-  html += '<div style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin:20px 0 12px">Work Burnout</div>';
-  html += CBI_WORK.map((item, i) => buildQCard(
-    `cbiw-${i}`, i + 1, item.q, item.type === 'degree' ? CBI_DEGREE_OPTIONS : CBI_FREQ_OPTIONS,
-    (val) => { cbiWAnswers[i] = val; updateClinicalProgress(); }
-  )).join('');
-  container.innerHTML = html;
-}
-
-/* ── RENDER PHQ ── */
-function renderPHQ() {
-  const container = document.getElementById('phq-questions');
-  container.innerHTML = PHQ_ITEMS.map((item, i) => buildQCard(
-    `phq-${i}`, i + 1, item.q, PHQ_OPTIONS,
-    (val) => { phqAnswers[i] = val; updateClinicalProgress(); }
-  )).join('');
-}
-
-/* ── BUILD Q CARD ── */
-function buildQCard(id, num, question, options, onChange) {
-  const opts = options.map((o, oi) => `
-    <div class="q-option" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},${JSON.stringify(onChange).replace(/"/g,"'")})" >
-      <div class="q-option-radio"><div class="q-option-dot"></div></div>
-      <div class="q-option-label">${o.label}</div>
-    </div>`).join('');
-  return `<div class="q-card" id="qcard-${id}">
-    <div class="q-num">Q${num}</div>
-    <div class="q-text">${question}</div>
-    <div class="q-options">${opts}</div>
-  </div>`;
-}
-
 /* ── SELECT OPTION ── */
 // Store callbacks by id since we can't serialize functions
 const _callbacks = {};
-function buildQCardWithCB(id, num, question, options, onChange) {
-  _callbacks[id] = onChange;
-  const opts = options.map((o, oi) => `
-    <div class="q-option" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
-      <div class="q-option-radio"><div class="q-option-dot"></div></div>
-      <div class="q-option-label">${o.label}</div>
-    </div>`).join('');
-  return `<div class="q-card" id="qcard-${id}">
-    <div class="q-num">Q${num}</div>
-    <div class="q-text">${question}</div>
-    <div class="q-options">${opts}</div>
-  </div>`;
-}
-
 function selectOption(qid, optIdx, val, numOpts, cbKey) {
   for (let i = 0; i < numOpts; i++) {
     const el = document.getElementById(`${qid}-opt-${i}`);
@@ -1561,14 +1511,18 @@ function renderDASS() {
   const options   = isBM ? DASS_OPTIONS_BM : DASS_OPTIONS;
   container.innerHTML = questions.map((q, i) => {
     const id = `dass-${i}`;
-    _callbacks[id] = (val) => { dassAnswers[i] = val; updateClinicalProgress(); };
+    _callbacks[id] = (val) => {
+      dassAnswers[i] = val;
+      document.getElementById('qcard-' + id)?.classList.add('answered');
+      updateClinicalProgress();
+    };
     const prevVal = dassAnswers[i];
+    const isAnswered = prevVal !== null;
     const opts = options.map((o, oi) => `
       <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
-        <div class="q-option-radio"><div class="q-option-dot"></div></div>
         <div class="q-option-label">${o.label}</div>
       </div>`).join('');
-    return `<div class="q-card" id="qcard-${id}"><div class="q-num">Q${i+1}</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}"><div class="q-num">Q${i+1} / 21</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
   }).join('');
 }
 
@@ -1584,27 +1538,35 @@ function renderCBI() {
   let html = `<div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin-bottom:12px">${pLabel}</div>`;
   html += personalQs.map((q, i) => {
     const id = `cbip-${i}`;
-    _callbacks[id] = (val) => { cbiPAnswers[i] = val; updateClinicalProgress(); };
+    _callbacks[id] = (val) => {
+      cbiPAnswers[i] = val;
+      document.getElementById('qcard-' + id)?.classList.add('answered');
+      updateClinicalProgress();
+    };
     const prevVal = cbiPAnswers[i];
+    const isAnswered = prevVal !== null;
     const opts = freqOpts.map((o, oi) => `
       <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${freqOpts.length},'${id}')">
-        <div class="q-option-radio"><div class="q-option-dot"></div></div>
         <div class="q-option-label">${o.label}</div>
       </div>`).join('');
-    return `<div class="q-card" id="qcard-${id}"><div class="q-num">Q${i+1}</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}"><div class="q-num">Q${i+1} / 6</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
   }).join('');
   html += `<div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,240,0.25);margin:20px 0 12px">${wLabel}</div>`;
   html += workQs.map((q, i) => {
     const id = `cbiw-${i}`;
-    _callbacks[id] = (val) => { cbiWAnswers[i] = val; updateClinicalProgress(); };
+    _callbacks[id] = (val) => {
+      cbiWAnswers[i] = val;
+      document.getElementById('qcard-' + id)?.classList.add('answered');
+      updateClinicalProgress();
+    };
     const prevVal = cbiWAnswers[i];
+    const isAnswered = prevVal !== null;
     const options = CBI_WORK[i].type === 'degree' ? degreeOpts : freqOpts;
     const opts = options.map((o, oi) => `
       <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
-        <div class="q-option-radio"><div class="q-option-dot"></div></div>
         <div class="q-option-label">${o.label}</div>
       </div>`).join('');
-    return `<div class="q-card" id="qcard-${id}"><div class="q-num">Q${i+1}</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}"><div class="q-num">Q${i+1} / 7</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
   }).join('');
   container.innerHTML = html;
 }
@@ -1616,14 +1578,18 @@ function renderPHQ() {
   const options   = isBM ? PHQ_OPTIONS_BM : PHQ_OPTIONS;
   container.innerHTML = questions.map((q, i) => {
     const id = `phq-${i}`;
-    _callbacks[id] = (val) => { phqAnswers[i] = val; updateClinicalProgress(); };
+    _callbacks[id] = (val) => {
+      phqAnswers[i] = val;
+      document.getElementById('qcard-' + id)?.classList.add('answered');
+      updateClinicalProgress();
+    };
     const prevVal = phqAnswers[i];
+    const isAnswered = prevVal !== null;
     const opts = options.map((o, oi) => `
       <div class="q-option${prevVal === o.val ? ' selected' : ''}" id="${id}-opt-${oi}" onclick="selectOption('${id}',${oi},${o.val},${options.length},'${id}')">
-        <div class="q-option-radio"><div class="q-option-dot"></div></div>
         <div class="q-option-label">${o.label}</div>
       </div>`).join('');
-    return `<div class="q-card" id="qcard-${id}"><div class="q-num">Q${i+1}</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
+    return `<div class="q-card${isAnswered ? ' answered' : ''}" id="qcard-${id}"><div class="q-num">Q${i+1} / 2</div><div class="q-text">${q}</div><div class="q-options">${opts}</div></div>`;
   }).join('');
 }
 
@@ -2037,7 +2003,6 @@ function resetAudit() {
   cbiPAnswers = new Array(6).fill(null);
   cbiWAnswers = new Array(7).fill(null);
   phqAnswers  = new Array(2).fill(null);
-  // Re-render clinical questions (clears selections)
   renderDASS(); renderCBI(); renderPHQ();
   updateTally(); updateClinicalProgress();
   document.getElementById('results-section').classList.remove('visible');
