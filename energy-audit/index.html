@@ -54,13 +54,11 @@
       letter-spacing: 0.14px;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     #shell {
       width: 100%;
-      max-width: 680px;
+      max-width: 960px;
+      margin: 0 auto;
       padding: 0 24px;
     }
     /* Phone */
@@ -69,11 +67,11 @@
     }
     /* Tablet */
     @media (min-width: 481px) and (max-width: 768px) {
-      #shell { padding: 0 28px; }
+      #shell { max-width: 680px; padding: 0 28px; }
     }
-    /* Laptop+ — shell is centered by max-width + body flex */
+    /* Laptop+ */
     @media (min-width: 769px) {
-      #shell { padding: 0 32px; }
+      #shell { padding: 0 40px; }
     }
 
     /* NAV */
@@ -92,7 +90,7 @@
     .hero-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.165px; text-transform: uppercase; color: var(--color-midnight-abyss); background: var(--color-lime-squeeze); border-radius: var(--radius-tags); padding: 5px 14px; margin-bottom: 20px; }
     .hero-title { font-family: var(--font-display); font-size: clamp(64px, 16vw, 108px); line-height: 1; letter-spacing: -0.03em; color: var(--color-ghost-white); text-transform: uppercase; margin-bottom: 24px; }
     .hero-title .accent { color: var(--color-lime-squeeze); }
-    .hero-body { font-size: 16px; line-height: 1.6; letter-spacing: -0.01em; color: rgba(253,249,240,0.6); max-width: 480px; margin-bottom: 16px; }
+    .hero-body { font-size: 16px; line-height: 1.6; letter-spacing: -0.01em; color: rgba(253,249,240,0.6); max-width: 640px; margin-bottom: 16px; }
     .hero-meta { display: flex; gap: 8px; flex-wrap: wrap; }
     .hero-pill { background: rgba(253,249,240,0.07); border: 1px solid rgba(253,249,240,0.12); border-radius: var(--radius-tags); font-size: 11px; letter-spacing: 0.165px; color: rgba(253,249,240,0.45); padding: 5px 14px; }
 
@@ -125,6 +123,33 @@
 
     /* CHECKLIST */
     #checklist-section { padding: 48px 0; }
+
+    /* Part 1: 2-col grid on desktop, 1-col on mobile/tablet */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    @media (min-width: 769px) {
+      .categories-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0 56px;
+      }
+      .categories-grid .cat-redflags {
+        grid-column: 1 / -1;
+        border-top: 1px solid rgba(253,249,240,0.06);
+        padding-top: 32px;
+        margin-top: 8px;
+      }
+    }
+
+    /* Part 2 questions: stay single column, centered at readable width */
+    #clinical-section { display: none; padding: 48px 0 100px; }
+    #clinical-section.visible { display: block; }
+    @media (min-width: 769px) {
+      #clinical-section { max-width: 680px; margin-left: auto; margin-right: auto; }
+    }
+
     .category-block { margin-bottom: 40px; }
     .cat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
     .cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
@@ -188,7 +213,7 @@
 
 
     /* TALLY BAR */
-    #tally-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(20,20,20,0.92); backdrop-filter: blur(14px); border-top: 1px solid rgba(253,249,240,0.1); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+    #tally-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(20,20,20,0.92); backdrop-filter: blur(14px); border-top: 1px solid rgba(253,249,240,0.1); padding: 14px max(24px, calc((100vw - 960px) / 2 + 40px)); display: flex; align-items: center; justify-content: space-between; gap: 16px; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
     #tally-bar.visible { transform: translateY(0); }
     .tally-left { flex: 1; }
     .tally-count { font-family: var(--font-display); font-size: 36px; line-height: 0.9; letter-spacing: -0.03em; color: var(--color-lime-squeeze); }
@@ -200,8 +225,6 @@
     #btn-to-part2:hover { opacity: 0.85; transform: translateY(-1px); }
 
     /* PART 2 — CLINICAL */
-    #clinical-section { display: none; padding: 48px 0 100px; }
-    #clinical-section.visible { display: block; }
     .part2-intro { background: rgba(253,249,240,0.04); border: 1px solid rgba(253,249,240,0.1); border-radius: var(--radius-cards); padding: 32px; margin-bottom: 40px; }
     .part2-intro-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.165px; text-transform: uppercase; color: var(--color-midnight-abyss); background: var(--color-lime-squeeze); border-radius: var(--radius-tags); padding: 5px 14px; margin-bottom: 16px; }
     .part2-intro-title { font-family: var(--font-display); font-size: 42px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: var(--color-ghost-white); margin-bottom: 14px; }
@@ -418,7 +441,7 @@
     .validation-msg.visible { display: block; }
 
     /* CLINICAL BOTTOM BAR */
-    #clinical-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(20,20,20,0.92); backdrop-filter: blur(14px); border-top: 1px solid rgba(253,249,240,0.1); padding: 14px 24px; display: none; align-items: center; justify-content: space-between; gap: 16px; }
+    #clinical-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(20,20,20,0.92); backdrop-filter: blur(14px); border-top: 1px solid rgba(253,249,240,0.1); padding: 14px max(24px, calc((100vw - 960px) / 2 + 40px)); display: none; align-items: center; justify-content: space-between; gap: 16px; }
     #clinical-bar.visible { display: flex; }
     #btn-see-results { background: var(--color-lime-squeeze); color: var(--color-midnight-abyss); border: none; border-radius: var(--radius-buttons); font-family: var(--font-body); font-size: 14px; font-weight: 700; padding: 13px 22px; cursor: pointer; transition: opacity 0.15s, transform 0.1s; white-space: nowrap; }
     #btn-see-results:hover { opacity: 0.85; transform: translateY(-1px); }
@@ -478,7 +501,7 @@
     .result-insight strong { color: var(--color-ghost-white); font-weight: 500; }
     .result-actions { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
     .result-action { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; color: rgba(253,249,240,0.5); }
-    .result-action::before { content: '→'; color: var(--color-lime-squeeze); flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+    .result-action::before { content: ''; color: var(--color-lime-squeeze); flex-shrink: 0; font-size: 12px; margin-top: 1px; }
 
     /* CLINICAL SCORES CARD */
     .clinical-scores-card { background: rgba(253,249,240,0.04); border: 1px solid rgba(253,249,240,0.1); border-radius: 20px; padding: 22px; margin-bottom: 16px; }
@@ -521,14 +544,14 @@
     .summary-callout.compound strong { color: var(--color-sunset-orange); }
 
     /* CTA */
-    .cta-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+    .cta-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+    @media (max-width: 768px) { .cta-strip { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 480px) { .cta-strip { grid-template-columns: 1fr; } }
     .cta-card { background: rgba(253,249,240,0.04); border: 1px solid rgba(253,249,240,0.1); border-radius: var(--radius-cards); padding: 22px; text-decoration: none; display: block; transition: all 0.15s ease; }
     .cta-card:hover { border-color: rgba(253,249,240,0.22); background: rgba(253,249,240,0.07); }
     .cta-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,240,0.3); margin-bottom: 8px; }
     .cta-title { font-family: var(--font-display); font-size: 28px; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; color: var(--color-ghost-white); margin-bottom: 8px; }
     .cta-desc { font-size: 12px; line-height: 1.55; color: rgba(253,249,240,0.45); margin-bottom: 14px; }
-    .cta-arrow { font-size: 12px; color: var(--color-lime-squeeze); font-weight: 600; }
 
     .btn-reset { background: transparent; border: 1.5px solid rgba(253,249,240,0.15); border-radius: var(--radius-buttons); color: rgba(253,249,240,0.4); font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 13px 22px; cursor: pointer; transition: all 0.15s ease; width: 100%; }
     .btn-reset:hover { border-color: rgba(253,249,240,0.35); color: var(--color-ghost-white); }
@@ -783,6 +806,7 @@
       <button id="lang-nudge-btn" onclick="switchToBM()">Tukar ke BM</button>
     </div>
 
+    <div class="categories-grid">
     <div class="category-block cat-sleep anim anim-d1">
       <div class="cat-header">
         <div class="cat-dot" style="background:var(--cat-sleep)"></div>
@@ -870,6 +894,8 @@
       </div>
       <div id="items-redflags"></div>
     </div>
+
+    </div><!-- /categories-grid -->
 
   </div><!-- /checklist-section -->
 
@@ -978,18 +1004,21 @@
         <div class="cta-tag"><span data-en>Know your number</span><span data-bm>Kenali badan anda</span></div>
         <div class="cta-title">MyTDEE</div>
         <div class="cta-desc"><span data-en>Find your real daily calorie target — built on Malaysian research.</span><span data-bm>Cari sasaran kalori harian sebenar anda — berdasarkan kajian Malaysia.</span></div>
-        <div class="cta-arrow">Go →</div>
       </a>
       <a href="https://cermindiri.aufthority.com" class="cta-card" target="_blank" rel="noopener">
         <div class="cta-tag"><span data-en>Check your risk</span><span data-bm>Semak risiko anda</span></div>
         <div class="cta-title">CerminDiri</div>
         <div class="cta-desc"><span data-en>Screen for heart disease &amp; diabetes risk. No lab results needed.</span><span data-bm>Saringan risiko penyakit jantung &amp; diabetes. Tiada keputusan makmal diperlukan.</span></div>
-        <div class="cta-arrow">Go →</div>
+      </a>
+      <a href="https://www.aufthority.com/nafaslega/" class="cta-card" target="_blank" rel="noopener">
+        <div class="cta-tag"><span data-en>Manage your breathing</span><span data-bm>Urus pernafasan anda</span></div>
+        <div class="cta-title">NafasLega</div>
+        <div class="cta-desc"><span data-en>Guided breathing exercises calibrated for stress and fatigue recovery.</span><span data-bm>Latihan pernafasan berpandu untuk pemulihan stres dan keletihan.</span></div>
       </a>
     </div>
 
     <button class="btn-reset" onclick="resetAudit()">
-      <span data-en>← Start Over</span><span data-bm>← Mulakan Semula</span>
+      <span data-en>Start Over</span><span data-bm>Mulakan Semula</span>
     </button>
   </div>
 
@@ -1118,7 +1147,7 @@
     <div class="tally-label"><span data-en>items flagged</span><span data-bm>item ditanda</span></div>
   </div>
   <div class="tally-dots" id="tallyDots"></div>
-  <button id="btn-to-part2" onclick="goToPart2()"><span data-en>Continue →</span><span data-bm>Teruskan →</span></button>
+  <button id="btn-to-part2" onclick="goToPart2()"><span data-en>Continue</span><span data-bm>Teruskan</span></button>
 </div>
 
 <!-- CLINICAL BAR (Part 2) -->
@@ -1127,7 +1156,7 @@
     <div class="clinical-bar-count" id="clinicalAnsweredCount">0</div>
     <div class="clinical-bar-label"><span data-en>of 36 answered</span><span data-bm>daripada 36 dijawab</span></div>
   </div>
-  <button id="btn-see-results" onclick="showResults()"><span data-en>See My Results →</span><span data-bm>Lihat Keputusan Saya →</span></button>
+  <button id="btn-see-results" onclick="showResults()"><span data-en>See My Results</span><span data-bm>Lihat Keputusan Saya</span></button>
 </div>
 
 <script>
