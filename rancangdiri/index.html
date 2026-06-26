@@ -577,6 +577,29 @@ footer {
   letter-spacing: 0.02em;
 }
 
+/* ── ENV BLOCKS (playbook) ─────────────────────────────── */
+.env-block {
+  padding: 16px 0;
+  border-top: 1px solid var(--color-paper);
+}
+.env-block:first-child { border-top: none; }
+.env-block-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin-bottom: 6px;
+}
+.env-block p { font-size: 14px; color: var(--color-ink); line-height: 1.6; }
+.env-block p + p { margin-top: 8px; }
+.env-action {
+  background: var(--color-yellow);
+  padding: 10px 14px;
+  margin-top: 10px !important;
+  font-size: 13px !important;
+}
+
 /* ── PRINT ─────────────────────────────────────────────── */
 @media print {
   nav, #welcome, #tool-container, footer, .playbook-actions, .bmc-section { display: none !important; }
@@ -642,24 +665,46 @@ footer {
     <!-- Step 1 -->
     <div class="step active" id="step-1">
       <p class="step-number">Langkah 1</p>
-      <h2>Kenapa kita perlu rancang dulu?</h2>
-      <p class="step-intro">Sebelum kita mula, faham dulu prinsip di sebalik pendekatan ini.</p>
+      <h2>Kenapa pelan yang baik pun selalu gagal?</h2>
+      <p class="step-intro">Sebelum kita mula, faham dulu dua prinsip di sebalik pendekatan ini.</p>
       <div class="why-card">
-        <span class="why-label">Prinsip utama</span>
-        <p>Willpower adalah sumber terhad. Bila anda terpaksa buat keputusan tentang aktiviti atau makanan on the spot — terutama bila penat atau stressed — otak akan ambil jalan mudah. Keputusan yang dibuat awal, dalam keadaan tenang, jauh lebih baik.</p>
+        <span class="why-label">Prinsip 1: Willpower adalah sumber terhad</span>
+        <p>Bila anda terpaksa buat keputusan tentang aktiviti atau makanan on the spot — terutama bila penat, lapar, atau stressed — otak akan ambil jalan mudah. Bukan sebab anda lemah. Sebab memang begitu cara otak bekerja.</p>
+        <p style="margin-top:10px;">Keputusan yang dibuat awal, dalam keadaan tenang, jauh lebih baik. Inilah yang kita buat hari ini.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-label">Prinsip 2: Default menang selalu</span>
+        <p>Tapi ada sesuatu yang lebih dalam dari decision fatigue.</p>
+        <p style="margin-top:10px;">Sebelum anda sempat penat pun — persekitaran anda sudah buat keputusan untuk anda.</p>
+        <p style="margin-top:10px;">Makanan ringan yang ada atas meja dapur? Itu default. Sofa yang lebih selesa dari ruang senaman? Itu default. App penghantaran makanan yang ada kat skrin utama telefon anda? Itu default.</p>
+        <p style="margin-top:10px;">Default dipilih tanpa fikir. Dan bila penat, lapar, atau busy — default yang menang, bukan niat.</p>
+        <p style="margin-top:10px;">Kebanyakan orang cuba lawan default dengan lebih banyak willpower. Tapi ada pendekatan yang lebih bijak: <strong>reka semula defaultnya.</strong></p>
+        <p style="margin-top:10px;">Kalau buah ada atas meja dan keropok sorok dalam almari — anda tak perlu willpower untuk pilih yang lebih baik. Pilihan tu dah dibuat untuk anda, oleh persekitaran yang anda reka sendiri.</p>
       </div>
       <div class="why-card">
         <span class="why-label">Apa yang kita buat hari ini</span>
-        <p>Kita akan brainstorm pilihan aktiviti dan pemakanan yang sesuai dengan hidup anda — bukan pelan ideal yang tak realistic. Kemudian kita susun jadi playbook peribadi yang anda boleh rujuk setiap hari.</p>
+        <p>Kita buat dua perkara:</p>
+        <p style="margin-top:10px;">Pertama, kita brainstorm pilihan aktiviti dan pemakanan yang sesuai dengan hidup anda — bukan pelan ideal yang tak realistic.</p>
+        <p style="margin-top:10px;">Kedua, kita kenal pasti beberapa perubahan persekitaran yang boleh anda buat minggu ini — supaya default anda menyokong anda, bukan sabotaj anda.</p>
       </div>
       <div class="why-card">
         <span class="why-label">Hasilnya</span>
-        <p>Satu dokumen ringkas: "Kalau nak aktif, saya buat ini. Kalau nak makan, saya pilih ini." Lepas keputusan dibuat sekali, anda tak perlu fikir lagi. Inilah cara orang bina disiplin yang kekal.</p>
+        <p>Satu playbook peribadi yang ada dua bahagian: rutin default anda, dan senarai pendek perubahan persekitaran untuk buat sekarang.</p>
+        <p style="margin-top:10px;">Lepas ni, anda tak perlu bergantung pada semangat atau willpower semata-mata. Persekitaran yang direka dengan baik akan buat kerja berat untuk anda.</p>
       </div>
       <div class="field">
         <label>Apa yang anda paling harap boleh ubah dalam 4 minggu akan datang?</label>
         <p class="field-hint">Tulis apa yang ada dalam fikiran — tak perlu perfect.</p>
         <textarea id="f-goal" rows="3" placeholder="Contoh: Nak rasa lebih bertenaga, kurang makan luar, jalan kaki tiap pagi..."></textarea>
+      </div>
+      <div class="field">
+        <label>Dalam kehidupan harian anda sekarang — apa pilihan yang paling mudah untuk anda buat?</label>
+        <p class="field-hint">Fikir sebentar tentang persekitaran harian anda — rumah, pejabat, perjalanan. Ini bukan ujian, ini titik permulaan.</p>
+        <div class="chip-group">
+          <span class="chip" data-group="env-ease" data-val="Pilihan sihat lebih mudah">Pilihan sihat lebih mudah</span>
+          <span class="chip" data-group="env-ease" data-val="Lebih kurang sama">Lebih kurang sama</span>
+          <span class="chip" data-group="env-ease" data-val="Pilihan tidak sihat lebih mudah">Pilihan tidak sihat lebih mudah</span>
+        </div>
       </div>
       <div class="step-nav">
         <span></span>
@@ -671,10 +716,21 @@ footer {
     <div class="step" id="step-2">
       <p class="step-number">Langkah 2</p>
       <h2>Brainstorm: Aktiviti</h2>
-      <p class="step-intro">Bukan pasal senaman yang perfect. Ini pasal aktiviti yang anda betul-betul akan buat.</p>
+      <p class="step-intro">Bukan pasal senaman yang perfect. Ini pasal aktiviti yang anda betul-betul akan buat — dalam persekitaran yang betul-betul wujud dalam hidup anda.</p>
       <div class="why-card">
         <span class="why-label">Ingat ni</span>
         <p>Senaman terbaik adalah senaman yang anda buat secara konsisten. 20 minit jalan kaki setiap hari jauh lebih berkesan dari workout intense yang anda buat dua kali sebulan.</p>
+      </div>
+      <div class="field">
+        <label>Di mana pakaian atau kasut sukan anda disimpan sekarang?</label>
+        <p class="field-hint">Tempat simpan = ukuran geseran. Makin susah nak capai, makin mudah anda skip.</p>
+        <div class="chip-group">
+          <span class="chip" data-group="gear-location" data-val="Dalam almari bilik tidur">Dalam almari bilik tidur</span>
+          <span class="chip" data-group="gear-location" data-val="Dalam beg, belum keluarkan">Dalam beg, belum keluarkan</span>
+          <span class="chip" data-group="gear-location" data-val="Terus kat depan pintu">Terus kat depan pintu</span>
+          <span class="chip" data-group="gear-location" data-val="Tak ada lagi">Tak ada lagi</span>
+        </div>
+        <p class="field-hint" style="margin-top:6px;">Tiada jawapan yang salah — ini untuk bantu anda kenal pasti geseran yang wujud.</p>
       </div>
       <div class="field">
         <label>Masa yang paling mudah untuk anda aktif</label>
@@ -723,6 +779,15 @@ footer {
         <input type="text" id="f-move-location" placeholder="Lokasi lain...">
       </div>
       <div class="field">
+        <label>Dalam rumah atau pejabat anda, apa yang lebih mudah dicapai?</label>
+        <p class="field-hint">Ini bantu kita kenal pasti sama ada persekitaran anda menyokong atau melawan pergerakan anda.</p>
+        <div class="chip-group">
+          <span class="chip" data-group="space-type" data-val="Tempat duduk jauh lebih mudah">Tempat duduk jauh lebih mudah</span>
+          <span class="chip" data-group="space-type" data-val="Lebih kurang sama">Lebih kurang sama</span>
+          <span class="chip" data-group="space-type" data-val="Ruang gerak lebih mudah">Ruang gerak lebih mudah</span>
+        </div>
+      </div>
+      <div class="field">
         <label>Berapa kali seminggu yang realistic untuk anda?</label>
         <div class="chip-group">
           <span class="chip" data-group="freq" data-val="2 kali seminggu">2 kali</span>
@@ -741,11 +806,42 @@ footer {
     <div class="step" id="step-3">
       <p class="step-number">Langkah 3</p>
       <h2>Brainstorm: Pemakanan</h2>
-      <p class="step-intro">Bukan pasal diet ketat. Pasal pilihan yang mudah, lazat, dan boleh diteruskan.</p>
+      <p class="step-intro">Bukan pasal diet ketat. Pasal pilihan yang mudah, lazat, dan boleh diteruskan — dan memastikan persekitaran anda menyokong pilihan tu.</p>
       <div class="why-card">
         <span class="why-label">Ingat ni</span>
-        <p>Anda tak perlu masak semua dari awal atau elak makan luar sepenuhnya. Yang penting: tahu pilihan yang lebih baik, supaya bila tiba masa nak order atau masak, otak tak perlu kerja keras.</p>
+        <p>Anda tak perlu masak semua dari awal atau elak makan luar sepenuhnya. Yang penting: tahu pilihan yang lebih baik, dan pastikan pilihan tu mudah dicapai — supaya bila tiba masa nak order atau masak, otak tak perlu kerja keras.</p>
       </div>
+      <div class="why-card">
+        <span class="why-label">Audit persekitaran makanan anda dulu</span>
+        <p>Sebelum kita brainstorm pilihan, jom tengok apa yang persekitaran anda sedang push anda ke arah sekarang.</p>
+      </div>
+      <div class="field">
+        <label>Apa yang pertama sekali anda nampak bila buka peti sejuk?</label>
+        <p class="field-hint">Apa yang paling visible = apa yang paling kerap dipilih. Ini bukan pasal disiplin — ini pasal susun atur.</p>
+        <input type="text" id="f-env-fridge" placeholder="Contoh: Lauk semalam, minuman bergas, sayur, kosong je...">
+      </div>
+      <div class="field">
+        <label>Apa yang ada atas meja dapur atau kaunter anda sekarang?</label>
+        <p class="field-hint">Benda yang ada kat permukaan = default bila lapar dan tak fikir panjang.</p>
+        <div class="chip-group">
+          <span class="chip" data-group="counter" data-val="Makanan ringan / keropok">Makanan ringan / keropok</span>
+          <span class="chip" data-group="counter" data-val="Buah-buahan">Buah-buahan</span>
+          <span class="chip" data-group="counter" data-val="Roti / biskut">Roti / biskut</span>
+          <span class="chip" data-group="counter" data-val="Kosong">Kosong</span>
+          <span class="chip" data-group="counter" data-val="Campuran">Campuran</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>App penghantaran makanan anda — kat mana dalam telefon?</label>
+        <p class="field-hint">Makin mudah nak order, makin kerap anda order tanpa fikir.</p>
+        <div class="chip-group">
+          <span class="chip" data-group="delivery-app" data-val="Skrin utama (terus nampak)">Skrin utama (terus nampak)</span>
+          <span class="chip" data-group="delivery-app" data-val="Dalam folder, kena cari">Dalam folder, kena cari</span>
+          <span class="chip" data-group="delivery-app" data-val="Tak install langsung">Tak install langsung</span>
+          <span class="chip" data-group="delivery-app" data-val="Install tapi log keluar">Install tapi log keluar</span>
+        </div>
+      </div>
+      <hr class="field-divider">
       <div class="field">
         <label>Lauk atau masakan yang mudah anda masak di rumah</label>
         <p class="field-hint">Fikir benda yang dah biasa masak, bukan benda yang anda plan nak cuba.</p>
@@ -930,6 +1026,11 @@ footer {
         <span class="playbook-item-value" id="pb-meal-change"></span>
       </div>
     </div>
+    <div class="playbook-section" id="pb-env-section">
+      <span class="playbook-section-label">Ubah Persekitaran Anda</span>
+      <h3>Perubahan konkrit untuk buat minggu ini</h3>
+      <div id="pb-env-content" style="font-size:14px; color: var(--color-ink); line-height:1.7;"></div>
+    </div>
     <div class="playbook-section">
       <span class="playbook-section-label">Bila Benda Tak Jalan</span>
       <h3>Pelan backup anda</h3>
@@ -1031,7 +1132,7 @@ document.querySelectorAll('.chip').forEach(chip => {
     const group = this.dataset.group;
     const val = this.dataset.val;
     if (!selectedChips[group]) selectedChips[group] = new Set();
-    const singleGroups = ['freq', 'breakfast'];
+    const singleGroups = ['freq', 'breakfast', 'env-ease', 'gear-location', 'space-type', 'counter', 'delivery-app'];
     if (singleGroups.includes(group)) {
       document.querySelectorAll('.chip[data-group="' + group + '"]').forEach(c => c.classList.remove('selected'));
       selectedChips[group] = new Set();
@@ -1106,7 +1207,77 @@ function generatePlaybook() {
   renderTextInto('pb-backup', getVal('f-lock-backup'), 'pb-backup-row');
   renderTextInto('pb-review', getVal('f-review-date'), 'pb-review-row');
 
+  generateEnvSection();
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function generateEnvSection() {
+  const gear     = getChips('gear-location')[0] || '';
+  const space    = getChips('space-type')[0] || '';
+  const counter  = getChips('counter')[0] || '';
+  const delivery = getChips('delivery-app')[0] || '';
+  const fridge   = getVal('f-env-fridge');
+
+  let blocks = [];
+
+  // ── Gear / movement friction ──────────────────────────────
+  if (gear === 'Dalam almari bilik tidur' || gear === 'Dalam beg, belum keluarkan') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">Persekitaran Pergerakan</p><p>Kasut atau pakaian sukan anda tersimpan jauh dari pandangan. Ini geseran yang senyap — kecil, tapi cukup untuk buat anda skip bila semangat rendah.</p><p class="env-action"><strong>Buat sekarang:</strong> Keluarkan kasut sukan dan letak kat depan pintu, atau di tempat yang terus nampak setiap pagi. Baju senaman — lipat dan letak atas meja atau tepi katil malam ini.</p></div>`);
+  } else if (gear === 'Terus kat depan pintu') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">Persekitaran Pergerakan</p><p>Gear senaman anda dah ada kat tempat yang mudah dicapai — persekitaran yang menyokong pergerakan.</p><p class="env-action"><strong>Kekalkan:</strong> Pastikan ia kekal di situ walaupun rumah nampak "berselerak." Kebolehcapaian lebih penting dari kekemasan di sini.</p></div>`);
+  } else if (gear === 'Tak ada lagi') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">Persekitaran Pergerakan</p><p>Anda belum ada gear senaman lagi. Ini bukan halangan — tapi ini sesuatu yang boleh diselesaikan dengan satu keputusan kecil.</p><p class="env-action"><strong>Buat sekarang:</strong> Pilih satu aktiviti dari senarai anda yang tak perlukan peralatan (jalan kaki, senaman rumah) dan mulakan dengan tu. Kalau anda plan nak beli gear, tetapkan tarikh — bukan "nanti."</p></div>`);
+  }
+
+  // ── Space type ────────────────────────────────────────────
+  if (space === 'Tempat duduk jauh lebih mudah') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">Susun Atur Ruang</p><p>Dalam ruang anda sekarang, rehat lebih mudah dari bergerak. Ini bukan masalah disiplin — ini reka bentuk ruang yang memihak kepada duduk diam.</p><p class="env-action"><strong>Buat sekarang:</strong> Letak yoga mat atau resistance band kat tempat yang nampak dari sofa. Atau tetapkan satu sudut dalam rumah — walaupun kecil — yang anda kaitkan dengan bergerak, bukan berehat.</p></div>`);
+  }
+
+  // ── Fridge ────────────────────────────────────────────────
+  if (fridge) {
+    const fridgeLower = fridge.toLowerCase();
+    const healthyFridge = fridgeLower.includes('sayur') || fridgeLower.includes('buah') || fridgeLower.includes('air');
+    if (healthyFridge) {
+      blocks.push(`<div class="env-block"><p class="env-block-title">Peti Sejuk</p><p>Bahagian depan peti sejuk anda dah menyokong pilihan yang lebih baik. Persekitaran makanan yang bekerja untuk anda — kekalkan dan pastikan sentiasa ada stok.</p></div>`);
+    } else {
+      blocks.push(`<div class="env-block"><p class="env-block-title">Peti Sejuk</p><p>Benda pertama yang anda nampak dalam peti sejuk membentuk pilihan anda sebelum anda sempat fikir. Sekarang, ia belum tentu bekerja untuk anda.</p><p class="env-action"><strong>Buat sekarang:</strong> Susun semula satu rak — letak air masak, buah, atau lauk sihat di paras mata. Benda yang anda nak kurangkan, sorok di belakang atau rak bawah. Ini bukan tipu diri — ini reka bentuk.</p></div>`);
+    }
+  }
+
+  // ── Counter ───────────────────────────────────────────────
+  if (counter === 'Makanan ringan / keropok') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">Kaunter Dapur</p><p>Makanan ringan atas kaunter = default bila lapar dan tak fikir. Sesiapa pun akan capai benda yang paling mudah bila perut kosong — ini bukan pasal disiplin.</p><p class="env-action"><strong>Buat sekarang:</strong> Alihkan makanan ringan dari kaunter ke dalam almari atau pantri. Gantikan dengan satu benda yang lebih neutral — sebotol air, atau semangkuk buah. Perubahan ini ambil masa 2 minit.</p></div>`);
+  } else if (counter === 'Buah-buahan') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">Kaunter Dapur</p><p>Buah atas kaunter adalah contoh persekitaran makanan yang direka dengan baik. Teruskan — dan pastikan ia sentiasa ada stok.</p></div>`);
+  } else if (counter === 'Roti / biskut') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">Kaunter Dapur</p><p>Roti dan biskut atas kaunter adalah pilihan yang bergantung pada jenisnya. Kalau ini selalu jadi default bila lapar, pertimbangkan sama ada anda nak kekalkan atau gantikan dengan sesuatu yang lebih mengenyangkan.</p></div>`);
+  } else if (counter === 'Kosong') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">Kaunter Dapur</p><p>Kaunter kosong adalah neutral — tiada geseran buruk, tapi tiada sokongan juga.</p><p class="env-action"><strong>Pertimbangkan:</strong> Letak sesuatu yang mudah dan sihat kat situ — segelas air, atau buah yang tak perlu disediakan.</p></div>`);
+  } else if (counter === 'Campuran') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">Kaunter Dapur</p><p>Kaunter anda ada campuran benda.</p><p class="env-action"><strong>Satu langkah mudah:</strong> Kenal pasti benda yang paling kerap anda capai tanpa fikir, dan tanya diri — adakah anda nak tu jadi default anda?</p></div>`);
+  }
+
+  // ── Delivery app ──────────────────────────────────────────
+  if (delivery === 'Skrin utama (terus nampak)') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">App Penghantaran Makanan</p><p>App penghantaran makanan di skrin utama = geseran sifar untuk order. Ia direka untuk jadi semudah mungkin — tapi mudah untuk order bermakna anda akan order lebih kerap dari yang anda plan.</p><p class="env-action"><strong>Buat sekarang:</strong> Alihkan app penghantaran makanan dari skrin utama ke dalam folder, di skrin kedua atau ketiga. Ini bukan padam — ini tambah satu langkah geseran yang bagi anda masa untuk fikir.</p></div>`);
+  } else if (delivery === 'Dalam folder, kena cari') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">App Penghantaran Makanan</p><p>App penghantaran makanan anda dah ada sedikit geseran — bagus. Kalau anda nak tingkatkan lagi, log keluar dari app selepas guna supaya ada satu langkah tambahan sebelum order.</p></div>`);
+  } else if (delivery === 'Tak install langsung') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">App Penghantaran Makanan</p><p>Tiada app penghantaran makanan = geseran maksimum untuk order impulsif. Ini persekitaran yang menyokong masak sendiri dan pilihan yang lebih deliberate. Kekalkan kalau boleh.</p></div>`);
+  } else if (delivery === 'Install tapi log keluar') {
+    blocks.push(`<div class="env-block"><p class="env-block-title">App Penghantaran Makanan</p><p>Ini pendekatan yang bijak — ada akses kalau perlu, tapi ada geseran yang cukup untuk elak order impulsif. Kekalkan.</p></div>`);
+  }
+
+  const envContent = document.getElementById('pb-env-content');
+  const envSection = document.getElementById('pb-env-section');
+
+  if (blocks.length === 0) {
+    envSection.style.display = 'none';
+  } else {
+    envContent.innerHTML = blocks.join('') + `<p style="margin-top:20px; font-size:13px; color:var(--color-muted);">Ingat: Perubahan persekitaran ini bukan tambahan kepada pelan anda — ia adalah sebahagian daripada pelan anda. Lakukan satu atau dua minggu ini. Anda tak perlu buat semuanya sekaligus.</p>`;
+  }
 }
 
 function restartTool() {
