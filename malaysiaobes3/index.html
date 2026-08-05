@@ -281,7 +281,7 @@
       btnBack:'Kembali',
       btnNext:'Seterusnya',
       btnComplete:'Selesai',
-      progressLabel:(n,total)=>'+n+' daripada '+total,
+      progressLabel:(n,total)=>n+' daripada '+total,
       summaryWhatChanged:'Apa yang berubah dalam tempoh ini',
       summaryToday:'Keadaan hari ini',
       todayStepsLbl:'purata langkah harian',
@@ -440,7 +440,6 @@
   function yPos(v){ return padT + plotH - (v/maxY)*plotH; }
 
   function drawAxes(){
-    // No gridlines — just a thin baseline and axis tick labels for reference.
     svg.appendChild(el('line',{x1:padL,y1:padT+plotH,x2:W-padR,y2:padT+plotH,stroke:'#ddd','stroke-width':1}));
     [20,40,60].forEach(v=>{
       const t = el('text',{x:padL-8,y:yPos(v)+4,'text-anchor':'end','font-size':11,fill:'#bbb'});
@@ -470,8 +469,6 @@
   }
 
   function drawFloatingText(year, takeaway, driverFact, extraFact){
-    // Plain text floating at the top of the chart canvas — no box, no pointer.
-    // Fixed zone so it never depends on where the line happens to sit.
     const zoneX = padL;
     let y = 16;
 
