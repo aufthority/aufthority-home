@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drivers of obesity in Malaysia from 1980 to 2024</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f2f2f2;
+    --card:#ffffff;
+    --ink:#000000;
+    --muted:#555555;
+    --accent:#e6e51e;
+    --accent-ink:#000000;
+    --spine:#f34646;
+    --rule:#e6e6e6;
+    --radius:32px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle, #dcdcdc 1px, transparent 1px) 0 0/16px 16px,
+      var(--bg);
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    padding:32px 16px 80px;
+  }
+  h1,h2,h3{font-family:'Poppins',sans-serif;margin:0;}
+  .wrap{max-width:860px;margin:0 auto;}
+  .intro{margin-bottom:24px;}
+  .intro h1{font-size:clamp(20px,3.6vw,26px);line-height:1.2;margin-bottom:6px;}
+  .intro p{color:var(--muted);font-size:13px;max-width:640px;}
+
+  .stage{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:26px 24px 22px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .chart-title{
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--muted);
+    text-transform:none;
+    margin-bottom:2px;
+  }
+  .year-badge{
+    display:inline-block;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    color:#fff;
+    background:var(--spine);
+    padding:5px 14px;
+    border-radius:3000px;
+    margin:8px 0 10px;
+  }
+
+  .takeaway{
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    line-height:1.4;
+    margin-bottom:14px;
+    min-height:44px;
+    transition:opacity .25s ease;
+  }
+
+  svg{width:100%;display:block;overflow:visible;}
+
+  .controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:16px;
+  }
+  .controls-left{display:flex;gap:8px;}
+  button{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    padding:10px 18px;
+    border-radius:3000px;
+    border:1px solid var(--ink);
+    background:#fff;
+    color:var(--ink);
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  button.primary{background:var(--ink);color:#fff;}
+  button:disabled{opacity:0.3;cursor:default;}
+  button:not(:disabled):hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+  .progress-label{font-size:12px;color:var(--muted);font-weight:600;}
+
+  /* Collapsible accordion */
+  details{
+    margin-top:12px;
+    border-top:1px solid var(--rule);
+    padding-top:10px;
+  }
+  summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--muted);
+    padding:4px 0;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:'+';
+    font-size:16px;
+    font-weight:700;
+    color:var(--ink);
+    transition:transform .2s ease;
+  }
+  details[open] summary::after{ content:'\2212'; }
+  .details-body{padding:10px 0 4px;}
+
+  .driver-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(110px,1fr));
+    gap:12px;
+  }
+  .driver-tag{
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    color:var(--muted);
+    margin-bottom:4px;
+  }
+  .driver-card-context{opacity:0.6;}
+  .driver-card{
+    background:var(--bg);
+    border-radius:14px;
+    padding:12px 10px 10px;
+    text-align:center;
+  }
+  .driver-label{font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.3;min-height:28px;}
+  .driver-svg{width:100%;height:60px;}
+  .driver-value{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;margin-top:4px;}
+  .driver-delta{font-size:11px;font-weight:600;margin-top:2px;}
+  .delta-up{color:#f34646;}
+  .delta-flat{color:var(--muted);}
+  .driver-empty{font-size:11px;color:#bbb;margin-top:18px;}
+
+  .today-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .today-card{
+    background:#fff8dc;
+    border:1px solid #f0e9a8;
+    border-radius:14px;
+    padding:14px;
+  }
+  .today-card .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;}
+  .today-card .lbl{font-size:12px;color:var(--muted);margin-top:2px;}
+  .snapshot-tag{
+    display:inline-block;
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:#8a7400;
+    background:#fdf0a0;
+    padding:2px 8px;
+    border-radius:3000px;
+    margin-top:8px;
+  }
+  .today-note{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5;}
+  .note{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.5;}
+
+  .top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+  .lang-toggle{
+    flex-shrink:0;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:12px;
+    padding:8px 16px;
+    border-radius:3000px;
+    border:1px solid var(--ink);
+    background:#fff;
+    color:var(--ink);
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .lang-toggle:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-row">
+    <div class="intro">
+      <h1 id="introH1">Pendorong obesiti di Malaysia dari 1980 hingga 2024</h1>
+      <p id="introP">Klik &quot;Seterusnya&quot; untuk melihat perjalanannya</p>
+    </div>
+    <button id="langToggle" class="lang-toggle">ENG</button>
+  </div>
+
+  <div class="stage">
+    <div class="chart-title" id="chartTitleEl">Peratusan orang dewasa yang berlebihan berat badan atau obes di Malaysia</div>
+
+    <svg id="spineChart" viewBox="0 0 780 330"></svg>
+
+    <div class="controls">
+      <div class="controls-left">
+        <button id="prevBtn" disabled>&larr; Kembali</button>
+        <button id="nextBtn" class="primary">Seterusnya &rarr;</button>
+      </div>
+      <div class="progress-label" id="progressLabel">Noktah 1 daripada 10</div>
+    </div>
+
+    <details id="driverDetails">
+      <summary id="summaryWhatChanged">Apa yang berubah dalam tempoh ini</summary>
+      <div class="details-body">
+        <div class="driver-grid" id="driverGrid"></div>
+        <div class="note" id="driverNoteEl" style="margin-top:14px;"></div>
+      </div>
+    </details>
+
+    <details id="todayDetails" style="display:none;">
+      <summary id="summaryToday">Keadaan hari ini</summary>
+      <div class="details-body">
+        <div class="today-grid">
+          <div class="today-card">
+            <div class="big">3,963</div>
+            <div class="lbl" id="todayStepsLblEl">purata langkah harian</div>
+            <span class="snapshot-tag" id="todayStepsTagEl">Kajian global 2017</span>
+          </div>
+          <div class="today-card">
+            <div class="big">~19g</div>
+            <div class="lbl" id="todayFibreLblEl">pengambilan serat harian (disyorkan: 20&ndash;30g)</div>
+            <span class="snapshot-tag" id="todayFibreTagEl">Kajian serantau, bukan siri kebangsaan</span>
+          </div>
+        </div>
+        <div class="today-note" id="todayNoteEl"></div>
+      </div>
+    </details>
+
+    <div class="note" id="finalNote" style="display:none;"></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs){
+    const e = document.createElementNS(NS, tag);
+    for(const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function celEl(tag, cls, txt){
+    const d = document.createElement(tag);
+    if(cls) d.className = cls;
+    if(txt!==undefined) d.textContent = txt;
+    return d;
+  }
+
+  // ---------- LANGUAGE STATE ----------
+  let lang = 'ms'; // default: Bahasa Malaysia
+
+  const UI = {
+    ms: {
+      introH1:'Pendorong obesiti di Malaysia dari 1980 hingga 2024',
+      introP:'Klik \u201cSeterusnya\u201d untuk melihat perjalanannya',
+      chartTitle:'Peratusan orang dewasa yang berlebihan berat badan atau obes di Malaysia',
+      btnBack:'\u2190 Kembali',
+      btnNext:'Seterusnya \u2192',
+      btnComplete:'Selesai',
+      progressLabel:(n,total)=>'Noktah '+n+' daripada '+total,
+      summaryWhatChanged:'Apa yang berubah dalam tempoh ini',
+      summaryToday:'Keadaan hari ini',
+      todayStepsLbl:'purata langkah harian',
+      todayStepsTag:'Kajian global 2017',
+      todayFibreLbl:'pengambilan serat harian (disyorkan: 20\u201330g)',
+      todayFibreTag:'Kajian serantau, bukan siri kebangsaan',
+      todayNote:'Tidak seperti KDNK, urbanisasi, kiraan McDonald\u2019s, atau pengambilan SSB, tiada siri Malaysia 1980\u20132024 yang bersih untuk langkah harian atau serat \u2014 anggaran terbaik yang ada, ditunjukkan sekali sahaja, bukan secara berperingkat.',
+      driverNote:'\u201cTenaga kerja dalam sektor perkhidmatan\u201d: nombor sebenar pada 1990 (46.3%, DOSM/ILMIA) dan 2020 (63.08%, World Bank/ILO) \u2014 2024 guna angka terkini yang diterbitkan (62.4%, 2023); tahun di antaranya dianggarkan. \u201cDewasa tidak capai garis panduan aktiviti\u201d: nombor NHMS sebenar pada 2006, 2011, 2015, 2019, 2023 (tidak dianggarkan \u2014 penurunan pada 2019 mungkin sebahagiannya disebabkan perubahan kaedah tinjauan). KDNK ditunjukkan sebagai latar belakang konteks sahaja, tidak dikira sebagai salah satu daripada lima pendorong utama.',
+      finalNote:'Ini hanya bentuk mekanisme. Binaan sebenar akan menggantikan setiap nilai ilustrasi dengan angka DOSM / OWID / NHMS / rasmi McDonald\u2019s yang telah disahkan sebelum ini.',
+      noDataYet:'tiada data lagi',
+      flat:'tiada perubahan',
+      baseline:'garis dasar',
+      langToggleLabel:'ENG'
+    },
+    en: {
+      introH1:'Drivers of obesity in Malaysia from 1980 to 2024',
+      introP:'Click "Next" to see the journey',
+      chartTitle:'Share of overweight and obese adults in Malaysia',
+      btnBack:'\u2190 Back',
+      btnNext:'Next \u2192',
+      btnComplete:'Complete',
+      progressLabel:(n,total)=>'Stop '+n+' of '+total,
+      summaryWhatChanged:'What changed in this window',
+      summaryToday:'Where things stand today',
+      todayStepsLbl:'average daily steps',
+      todayStepsTag:'2017 global study',
+      todayFibreLbl:'daily fibre intake (recommended: 20\u201330g)',
+      todayFibreTag:'Regional studies, not a national series',
+      todayNote:'Unlike GDP, urbanisation, McDonald\u2019s count, or SSB intake, there\u2019s no clean 1980\u20132024 Malaysian series for steps or fibre \u2014 best available snapshots, shown once rather than incrementally.',
+      driverNote:'"Workforce in services sector": real at 1990 (46.3%, DOSM/ILMIA) and 2020 (63.08%, World Bank/ILO) \u2014 2024 uses the latest published figure (62.4%, 2023); years between are interpolated. "Adults not meeting activity guidelines": real NHMS figures at 2006, 2011, 2015, 2019, 2023 (not interpolated \u2014 the dip in 2019 may partly reflect a change in survey methodology, same caveat as the mental-health data elsewhere in this project). GDP is shown as background context only, not counted among the five named drivers.',
+      finalNote:'This is the shape of the mechanic only. The real build replaces every illustrative value with the sourced DOSM / OWID / NHMS / McDonald\u2019s-corporate figures verified earlier in this conversation.',
+      noDataYet:'no data yet',
+      flat:'flat',
+      baseline:'baseline',
+      langToggleLabel:'BM'
+    }
+  };
+
+  // ---------- DATA (language-neutral numbers) ----------
+  const years = [1980,1985,1990,1995,2000,2005,2010,2015,2020,2024];
+  const obesityLine = [20,24,28,33,38,42,46,49,52,53.6];
+
+  const driverLabels = {
+    ms:{ gdp:'KDNK per kapita (RM)', urban:'Peratusan penduduk bandar', meat:'Bekalan daging (kg/orang/tahun)',
+         mcd:"Restoran McDonald's", ssb:'Dewasa minum minuman bergula setiap hari',
+         inactivity:'Dewasa tidak capai garis panduan aktiviti', services:'Tenaga kerja dalam sektor perkhidmatan' },
+    en:{ gdp:'GDP per capita (RM)', urban:'Urban population share', meat:'Meat supply (kg/person/yr)',
+         mcd:"McDonald's restaurants", ssb:'Adults drinking SSB daily',
+         inactivity:'Adults not meeting activity guidelines', services:'Workforce in services sector' }
+  };
+
+  const categoryLabels = {
+    ms:{ urbanisation:'Urbanisasi', food:'Alam Sekitar Makanan', sedentary:'Gaya Hidup Tidak Aktif',
+         office:'Kerja Pejabat & Gelung Tekanan', context:'Latar Belakang Ekonomi (konteks \u2014 bukan salah satu daripada lima pendorong)' },
+    en:{ urbanisation:'Urbanisation', food:'Food environment', sedentary:'Sedentary lifestyle',
+         office:'Office work & the stress loop', context:'Economic backdrop (context \u2014 not one of the five named drivers)' }
+  };
+
+  const drivers = [
+    { key:'gdp', color:'#cccccc', category:'context',
+      values:[3900,5000,7000,11000,14000,18000,24000,33000,39000,47000], fmt:v=>'RM '+Math.round(v).toLocaleString() },
+    { key:'urban', color:'#466cf3', category:'urbanisation',
+      values:[34,40,46,53,62,68,71,74,77,78], fmt:v=>v+'%' },
+    { key:'meat', color:'#ff8562', category:'food',
+      values:[18,22,28,35,42,48,52,56,58,60], fmt:v=>v+' kg' },
+    { key:'mcd', color:'#ff8562', category:'food',
+      values:[null,null,null,null,null,null,204,259,305,373], fmt:v=>v+' outlets' },
+    { key:'ssb', color:'#ff8562', category:'food',
+      values:[20,25,30,36,42,48,53,58,61,63.8], fmt:v=>v+'%' },
+    { key:'inactivity', color:'#f34646', category:'sedentary',
+      values:[null,null,null,null,null,43.7,35.2,34,25.1,29.9], fmt:v=>v+'%' },
+    { key:'services', color:'#e6e51e', category:'office',
+      values:[null,null,46.3,49.5,52.5,55.5,58.5,60.5,63.08,62.4], fmt:v=>v+'%' }
+  ];
+
+  const driverCategories = ['urbanisation','food','sedentary','office','context'];
+
+  const takeawaysByLang = {
+    ms:[
+      '1980: Kira-kira 1 daripada 5 orang dewasa berlebihan berat badan atau obes \u2014 titik permulaan.',
+      '1985: Masih awal, tetapi peningkatan sudah bermula seiring ekonomi mula terbuka.',
+      '1990: Hampir 3 daripada 10 orang dewasa kini berlebihan berat badan atau obes.',
+      '1995: Kadar ini melepasi satu pertiga orang dewasa.',
+      '2000: Hampir 2 daripada 5 orang dewasa kini membawa berat badan berlebihan.',
+      '2005: Melebihi 4 daripada 10 \u2014 keluk terus menajam, bukan mendatar.',
+      '2010: Hampir separuh orang dewasa Malaysia berlebihan berat badan atau obes.',
+      '2015: Kadar ini melepasi angka 50%.',
+      '2020: Kira-kira 1 daripada 2 orang dewasa, kekal pada paras tinggi.',
+      '2024: Lebih separuh orang dewasa Malaysia berlebihan berat badan atau obes \u2014 persekitaran yang mencetuskan ini menjadi tema keseluruhan carta ini.'
+    ],
+    en:[
+      '1980: Malaysia\u2019s overweight/obesity rate sits around 1 in 5 adults \u2014 the starting point.',
+      '1985: still early, but the climb has begun as the economy opens up.',
+      '1990: nearly 3 in 10 adults are now overweight or obese.',
+      '1995: the rate crosses into a third of all adults.',
+      '2000: almost 2 in 5 adults now carry excess weight.',
+      '2005: over 4 in 10 \u2014 the curve keeps steepening, not levelling.',
+      '2010: nearly half of Malaysian adults are overweight or obese.',
+      '2015: the rate passes the halfway mark.',
+      '2020: roughly 1 in 2 adults, holding at a high plateau.',
+      '2024: over half of Malaysian adults are overweight or obese \u2014 the environment that produced this is the rest of this carousel.'
+    ]
+  };
+
+  const popupsByLang = {
+    ms:[
+      { text:'1982 \u2014 dua tahun lagi, McDonald\u2019s membuka restoran pertamanya di Malaysia, di Jalan Bukit Bintang, KL.' },
+      { text:'KDNK per kapita: RM 5,000 \u2014 ekonomi mula terbuka kepada dunia.' },
+      { text:'Sektor perkhidmatan kini menggaji 46.3% tenaga kerja Malaysia \u2014 peralihan daripada ladang ke pejabat bermula (DOSM/ILMIA).' },
+      { text:'Bekalan daging: 35 kg seorang setahun \u2014 terus meningkat pesat.' },
+      { text:'KDNK per kapita: RM 14,000 \u2014 lebih tiga kali ganda berbanding 1980.' },
+      { text:'43.7% orang dewasa tidak mencapai garis panduan aktiviti fizikal \u2014 tahun pertama ukuran ini dibuat (NHMS 2006).' },
+      { text:"Restoran McDonald's: 204 \u2014 tahun pertama data kiraan restoran tersedia untuk umum.",
+        extra:'Turut sebahagian daripada alam sekitar makanan: budaya kedai mamak dan kopitiam 24 jam di Malaysia. Tiada dataset menjejaki ini dari semasa ke semasa, tetapi penyelidik (termasuk Hazreen Abdul Majid, Harvard T.H. Chan/UM) menyatakan kepadatan kedai makan 24 jam di Malaysia luar biasa berbanding negara lain \u2014 disebut sebagai konteks, bukan metrik yang diplot.' },
+      { text:'34% orang dewasa masih tidak mencapai garis panduan aktiviti (NHMS 2015) \u2014 hampir tiada peningkatan berbanding 2011.',
+        extra:"Restoran McDonald's: 259 \u2014 meningkat 27% dalam lima tahun." },
+      { text:'Ketidakaktifan fizikal menurun ke 25.1% (NHMS 2019) \u2014 titik paling aktif dalam siri ini.',
+        extra:'Pada 2022: 58% pekerja Malaysia melaporkan burnout (kajian Employment Hero Wellness at Work, ~1,015 responden \u2014 tinjauan industri, bukan tinjauan kerajaan).' },
+      { text:'Ketidakaktifan meningkat semula ke 29.9% (NHMS 2023) \u2014 walaupun kadar obesiti mencatat rekod tertinggi.',
+        extra:'Menjelang 2024: 67% pekerja Malaysia melaporkan burnout, meningkat daripada 58% pada 2022 (sumber sama \u2014 kaveat sama).' }
+    ],
+    en:[
+      { text:'1982 \u2014 two years from now, McDonald\u2019s opens its first Malaysian restaurant, on Jalan Bukit Bintang, KL.' },
+      { text:'GDP per capita: RM 5,000 \u2014 the economy is opening up.' },
+      { text:'Services now employ 46.3% of Malaysia\u2019s workforce \u2014 the shift from farm to office begins (DOSM/ILMIA).' },
+      { text:'Meat supply: 35 kg per person per year \u2014 rising fast.' },
+      { text:'GDP per capita: RM 14,000 \u2014 more than tripled since 1980.' },
+      { text:'43.7% of adults aren\u2019t meeting physical activity guidelines \u2014 the first year this was measured (NHMS 2006).' },
+      { text:"McDonald's restaurants: 204 \u2014 first year with public restaurant-count data.",
+        extra:'Also part of the food environment: Malaysia\u2019s 24-hour mamak stalls and kopitiams. No dataset tracks this over time, but researchers (incl. Harvard T.H. Chan/UM\u2019s Hazreen Abdul Majid) note Malaysia\u2019s density of round-the-clock eateries is unusual globally \u2014 named here as context, not as a plotted metric.' },
+      { text:'34% of adults still aren\u2019t meeting activity guidelines (NHMS 2015) \u2014 barely improved from 2011.',
+        extra:"McDonald's restaurants: 259 \u2014 up 27% in five years." },
+      { text:'Physical inactivity falls to 25.1% (NHMS 2019) \u2014 the most active point in this whole series.',
+        extra:'As of 2022: 58% of Malaysian employees report burnout (Employment Hero Wellness at Work survey, ~1,015 respondents \u2014 industry poll, not a government survey).' },
+      { text:'Inactivity rises again to 29.9% (NHMS 2023) \u2014 even as obesity hits its highest recorded rate.',
+        extra:'By 2024: 67% of Malaysian employees report burnout, up from 58% in 2022 (same source \u2014 same caveat).' }
+    ]
+  };
+
+  let stage = 0;
+  const maxStage = years.length - 1;
+
+  const svg = document.getElementById('spineChart');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const progressLabel = document.getElementById('progressLabel');
+  const driverGrid = document.getElementById('driverGrid');
+  const todayDetails = document.getElementById('todayDetails');
+  const finalNote = document.getElementById('finalNote');
+
+  const W=780,H=330,padL=44,padR=20,padT=118,padB=34;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const maxY = 60;
+
+  function xPos(i){ return padL + (i/(years.length-1))*plotW; }
+  function yPos(v){ return padT + plotH - (v/maxY)*plotH; }
+
+  function drawAxes(){
+    // No gridlines — just a thin baseline and axis tick labels for reference.
+    svg.appendChild(el('line',{x1:padL,y1:padT+plotH,x2:W-padR,y2:padT+plotH,stroke:'#ddd','stroke-width':1}));
+    [20,40,60].forEach(v=>{
+      const t = el('text',{x:padL-8,y:yPos(v)+4,'text-anchor':'end','font-size':11,fill:'#bbb'});
+      t.textContent = v+'%';
+      svg.appendChild(t);
+    });
+    years.forEach((y,i)=>{
+      const t = el('text',{x:xPos(i),y:H-10,'text-anchor':'middle','font-size':11,fill:'#999'});
+      t.textContent = y;
+      svg.appendChild(t);
+    });
+  }
+
+  function pathFor(vals){
+    return vals.map((v,i)=> (i===0?'M':'L') + xPos(i).toFixed(1) + ',' + yPos(v).toFixed(1)).join(' ');
+  }
+
+  function wrapText(text, maxCharsPerLine){
+    const words = text.split(' ');
+    let lines = [], cur = '';
+    words.forEach(w=>{
+      if((cur+' '+w).trim().length > maxCharsPerLine){ lines.push(cur.trim()); cur = w; }
+      else { cur = (cur+' '+w).trim(); }
+    });
+    if(cur) lines.push(cur);
+    return lines;
+  }
+
+  function drawFloatingText(year, takeaway, driverFact, extraFact){
+    // Plain text floating at the top of the chart canvas — no box, no pointer.
+    // Fixed zone so it never depends on where the line happens to sit.
+    const zoneX = padL;
+    let y = 16;
+
+    const yearEl = el('text',{x:zoneX,y:y,'font-family':"'Poppins',sans-serif",'font-size':15,'font-weight':700,fill:'#f34646'});
+    yearEl.textContent = year;
+    svg.appendChild(yearEl);
+    y += 20;
+
+    wrapText(takeaway, 70).forEach(line=>{
+      const t = el('text',{x:zoneX,y:y,'font-size':13,'font-weight':600,fill:'#1a1a1a'});
+      t.textContent = line;
+      svg.appendChild(t);
+      y += 17;
+    });
+
+    y += 3;
+    wrapText(driverFact, 78).forEach(line=>{
+      const t = el('text',{x:zoneX,y:y,'font-size':12,'font-style':'italic',fill:'#777'});
+      t.textContent = line;
+      svg.appendChild(t);
+      y += 15;
+    });
+
+    if(extraFact){
+      y += 4;
+      wrapText(extraFact, 78).forEach(line=>{
+        const t = el('text',{x:zoneX,y:y,'font-size':11,'font-style':'italic',fill:'#466cf3'});
+        t.textContent = line;
+        svg.appendChild(t);
+        y += 14;
+      });
+    }
+  }
+
+  function renderSpine(){
+    svg.innerHTML = '';
+    svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'#ffffff'}));
+    drawAxes();
+    const visibleVals = obesityLine.slice(0, stage+1);
+    const path = el('path',{d:pathFor(visibleVals), fill:'none', stroke:'#f34646', 'stroke-width':3.5});
+    svg.appendChild(path);
+
+    visibleVals.forEach((v,i)=>{
+      const isCurrent = i===stage;
+      svg.appendChild(el('circle',{cx:xPos(i),cy:yPos(v),r:isCurrent?6:3.5,fill:'#f34646',opacity:isCurrent?1:0.5}));
+    });
+
+    const cx = xPos(stage), cy = yPos(obesityLine[stage]);
+    const valLbl = el('text',{x:cx,y:cy-14,'text-anchor':'middle','font-size':12,'font-weight':700,fill:'#f34646'});
+    valLbl.textContent = obesityLine[stage]+'%';
+    svg.appendChild(valLbl);
+
+    const p = popupsByLang[lang][stage];
+    drawFloatingText(years[stage], takeawaysByLang[lang][stage].replace(/^\d{4}:\s*/,''), p.text, p.extra);
+  }
+
+  function miniBar(prevVal, curVal, maxVal, color){
+    const s = el('svg',{viewBox:'0 0 100 60', class:'driver-svg'});
+    const bw = 26, gap = 18;
+    const x1 = 50-gap/2-bw, x2 = 50+gap/2;
+    const hMax = 50;
+    function h(v){ return (v/maxVal)*hMax; }
+    if(prevVal !== null && prevVal !== undefined){
+      const hh = h(prevVal);
+      s.appendChild(el('rect',{x:x1,y:56-hh,width:bw,height:hh,fill:'#d8d8d8',rx:2}));
+    }
+    if(curVal !== null && curVal !== undefined){
+      const hh2 = h(curVal);
+      s.appendChild(el('rect',{x:x2,y:56-hh2,width:bw,height:hh2,fill:color,rx:2,stroke: color==='#e6e51e' ? '#000000' : 'none','stroke-width':1}));
+    }
+    return s;
+  }
+
+  function renderDrivers(){
+    driverGrid.innerHTML = '';
+    driverCategories.forEach(catKey=>{
+      const catDrivers = drivers.filter(d=>d.category===catKey);
+      catDrivers.forEach(d=>{
+        const curVal = d.values[stage];
+        const prevVal = stage>0 ? d.values[stage-1] : null;
+        const validVals = d.values.filter(v=>v!==null);
+        const maxVal = Math.max(...validVals) * 1.05;
+
+        const card = celEl('div', catKey==='context' ? 'driver-card driver-card-context' : 'driver-card');
+        card.appendChild(celEl('div','driver-tag', categoryLabels[lang][catKey]));
+        card.appendChild(celEl('div','driver-label', driverLabels[lang][d.key]));
+
+        if(curVal === null || curVal === undefined){
+          card.appendChild(celEl('div','driver-empty', UI[lang].noDataYet));
+        } else {
+          card.appendChild(miniBar(prevVal, curVal, maxVal, d.color));
+          card.appendChild(celEl('div','driver-value', d.fmt(curVal)));
+          if(prevVal !== null && prevVal !== undefined){
+            const diff = curVal - prevVal;
+            card.appendChild(celEl('div', diff>0.05?'driver-delta delta-up':'driver-delta delta-flat',
+              diff>0.05 ? ('\u2191 +'+(Math.round(diff*10)/10)) : UI[lang].flat));
+          } else {
+            card.appendChild(celEl('div','driver-delta delta-flat', UI[lang].baseline));
+          }
+        }
+        driverGrid.appendChild(card);
+      });
+    });
+  }
+
+  function applyStaticStrings(){
+    const t = UI[lang];
+    document.documentElement.lang = lang;
+    document.getElementById('introH1').textContent = t.introH1;
+    document.getElementById('introP').textContent = t.introP;
+    document.getElementById('chartTitleEl').textContent = t.chartTitle;
+    document.getElementById('summaryWhatChanged').textContent = t.summaryWhatChanged;
+    document.getElementById('summaryToday').textContent = t.summaryToday;
+    document.getElementById('todayStepsLblEl').textContent = t.todayStepsLbl;
+    document.getElementById('todayStepsTagEl').textContent = t.todayStepsTag;
+    document.getElementById('todayFibreLblEl').textContent = t.todayFibreLbl;
+    document.getElementById('todayFibreTagEl').textContent = t.todayFibreTag;
+    document.getElementById('todayNoteEl').textContent = t.todayNote;
+    document.getElementById('driverNoteEl').textContent = t.driverNote;
+    document.getElementById('finalNote').textContent = t.finalNote;
+    prevBtn.textContent = t.btnBack;
+    langToggle.textContent = t.langToggleLabel;
+  }
+
+  function render(){
+    applyStaticStrings();
+    renderSpine();
+    renderDrivers();
+
+    const t = UI[lang];
+    progressLabel.textContent = t.progressLabel(stage+1, years.length);
+    prevBtn.disabled = stage === 0;
+    nextBtn.disabled = stage === maxStage;
+    nextBtn.textContent = stage === maxStage ? t.btnComplete : t.btnNext;
+
+    if(stage === maxStage){
+      todayDetails.style.display = 'block';
+      finalNote.style.display = 'block';
+    } else {
+      todayDetails.style.display = 'none';
+      finalNote.style.display = 'none';
+    }
+  }
+
+  const langToggle = document.getElementById('langToggle');
+  langToggle.addEventListener('click', ()=>{
+    lang = (lang === 'ms') ? 'en' : 'ms';
+    render();
+  });
+
+  nextBtn.addEventListener('click', ()=>{ if(stage<maxStage){ stage++; render(); }});
+  prevBtn.addEventListener('click', ()=>{ if(stage>0){ stage--; render(); }});
+
+  render();
+})();
+</script>
+</body>
+</html>
