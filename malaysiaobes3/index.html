@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Drivers of obesity in Malaysia from 1980 to 2024</title>
+<title>Drivers of obesity in Malaysia from 1985 to 2024</title>
 <meta property="og:type"         content="article">
 <meta property="og:site_name"    content="Aufthority">
-<meta property="og:title"        content="Pendorong obesiti di Malaysia dari 1980 hingga 2024">
-<meta property="og:description"  content="Peratusan orang dewasa berlebihan berat badan atau obes di Malaysia meningkat dari 1980 hingga 2024 — tengok apa yang mendorongnya.">
+<meta property="og:title"        content="Pendorong obesiti di Malaysia dari 1985 hingga 2024">
+<meta property="og:description"  content="Peratusan orang dewasa berlebihan berat badan atau obes di Malaysia meningkat dari 1985 hingga 2024 — tengok apa yang mendorongnya.">
 <meta property="og:url"          content="https://www.aufthority.com/malaysiaobes3/">
-<meta property="og:image"        content="https://www.aufthority.com/preview_v3.png">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
 <meta property="og:image:width"  content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale"       content="ms_MY">
 <meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:site"        content="@aufthority">
-<meta name="twitter:title"       content="Pendorong obesiti di Malaysia dari 1980 hingga 2024">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Pendorong obesiti di Malaysia dari 1985 hingga 2024">
 <meta name="twitter:description" content="Dari 1985 hingga 2024, kadar obesiti Malaysia terus meningkat — apa puncanya?">
-<meta name="twitter:image"       content="https://www.aufthority.com/preview_v3.png">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -143,33 +143,67 @@
   details[open] summary::after{ content:'\2212'; }
   .details-body{padding:10px 0 4px;}
 
-  .driver-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(110px,1fr));
-    gap:12px;
-  }
-  .driver-tag{
-    font-size:9px;
+  .driver-cat-header{
+    font-size:10px;
     font-weight:700;
     text-transform:uppercase;
     letter-spacing:0.03em;
     color:var(--muted);
-    margin-bottom:4px;
+    margin:12px 0 2px;
   }
-  .driver-card-context{opacity:0.6;}
-  .driver-card{
+  .driver-cat-header:first-child{margin-top:0;}
+  .driver-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .driver-row{
     background:var(--bg);
     border-radius:14px;
-    padding:12px 10px 10px;
-    text-align:center;
+    padding:10px 14px;
   }
-  .driver-label{font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.3;min-height:28px;}
-  .driver-svg{width:100%;height:60px;}
-  .driver-value{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;margin-top:4px;}
-  .driver-delta{font-size:11px;font-weight:600;margin-top:2px;}
+  .driver-row-context{opacity:0.6;}
+  .driver-row-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+  }
+  .driver-dot{
+    display:inline-block;
+    width:7px;height:7px;
+    border-radius:50%;
+    margin-right:7px;
+    flex-shrink:0;
+  }
+  .driver-row-label{
+    font-size:12px;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    min-width:0;
+  }
+  .driver-row-value{
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    white-space:nowrap;
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+  }
+  .driver-delta{font-size:10px;font-weight:600;}
   .delta-up{color:#f34646;}
   .delta-flat{color:var(--muted);}
-  .driver-empty{font-size:11px;color:#bbb;margin-top:18px;}
+  .driver-bar-track{
+    height:6px;
+    background:#e6e6e6;
+    border-radius:3000px;
+    margin-top:7px;
+    overflow:hidden;
+  }
+  .driver-bar-fill{height:100%;border-radius:3000px;}
+  .driver-empty-row{font-size:11px;color:#bbb;}
 
   .today-grid{
     display:grid;
@@ -274,8 +308,6 @@
   </div>
 
   <div class="stage">
-    <div class="chart-title" id="chartTitleEl">Peratusan orang dewasa yang berlebihan berat badan atau obes di Malaysia</div>
-
     <svg id="spineChart" viewBox="0 0 780 330"></svg>
 
 
@@ -284,13 +316,12 @@
         <button id="prevBtn" disabled>Kembali</button>
         <button id="nextBtn" class="primary">Seterusnya</button>
       </div>
-      <div class="progress-label" id="progressLabel">1 daripada 10</div>
     </div>
 
     <details id="driverDetails">
       <summary id="summaryWhatChanged">Apa yang berubah dalam tempoh ini</summary>
       <div class="details-body">
-        <div class="driver-grid" id="driverGrid"></div>
+        <div class="driver-list" id="driverGrid"></div>
         <div class="note" id="driverNoteEl" style="margin-top:14px;"></div>
       </div>
     </details>
@@ -342,7 +373,7 @@
   const UI = {
     ms: {
       introH1:'Pendorong obesiti di Malaysia dari 1985 hingga 2024',
-      introP:'Klik \u201cSeterusnya\u201d untuk tengok pengembaraan kita',
+      introP:'Klik \u201cSeterusnya\u201d untuk tengok pemngembaraan kita',
       chartTitle:'Peratusan orang dewasa yang berlebihan berat badan atau obes di Malaysia',
       btnBack:'Kembali',
       btnNext:'Seterusnya',
@@ -425,6 +456,17 @@
 
   const driverCategories = ['urbanisation','food','sedentary','office','context'];
 
+  // Which driver each checkpoint's floating annotation is actually about \u2014
+  // used to color that checkpoint's dot on the spine line to match the
+  // driver card colors below (blue urbanisation, peach food, red sedentary,
+  // yellow office, grey context), so the dot trail visually ties back to
+  // whichever fact is being highlighted at each stop.
+  const dotDriverKeys = ['gdp','services','meat','gdp','inactivity','mcd','inactivity','inactivity','inactivity'];
+  function driverColor(key){
+    const d = drivers.find(d=>d.key===key);
+    return d ? d.color : '#f34646';
+  }
+
   const takeawaysByLang = {
     ms:[
       '1985: Kira-kira 1 daripada 5 orang dewasa berlebihan berat badan atau obes \u2014 titik permulaan.',
@@ -489,7 +531,6 @@
   const svg = document.getElementById('spineChart');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  const progressLabel = document.getElementById('progressLabel');
   const driverGrid = document.getElementById('driverGrid');
   const todayDetails = document.getElementById('todayDetails');
   const finalNote = document.getElementById('finalNote');
@@ -576,29 +617,16 @@
     }
   }
 
-  function renderSpine(){
-    W = measureWidth();
-    const narrow = W < 480;
-    const textAvailW = W - padL - padR;
-
-    const p = popupsByLang[lang][stage];
-    const takeawayText = takeawaysByLang[lang][stage].replace(/^\d{4}:\s*/,'');
-
-    const fonts = {
-      year: narrow ? 14 : 15,
-      takeaway: narrow ? 12 : 13,
-      driver: narrow ? 11 : 12,
-      extra: narrow ? 10 : 11
-    };
-
+  // Computes the text lines + pixel height needed for one checkpoint's
+  // annotation, at a given language/font/available-width.
+  function computeCheckpointText(l, s, fonts, textAvailW){
+    const p = popupsByLang[l][s];
+    const takeawayText = takeawaysByLang[l][s].replace(/^\d{4}:\s*/,'');
     const lineSets = {
       takeaway: wrapText(takeawayText, textAvailW, fonts.takeaway),
       driver: wrapText(p.text, textAvailW, fonts.driver),
       extra: p.extra ? wrapText(p.extra, textAvailW, fonts.extra) : []
     };
-
-    // Compute exactly how tall the text zone needs to be, so the chart never
-    // has to fight its own annotation for space — the plot gets a fixed, protected height.
     let textHeight = 16 + fonts.year + 5;
     textHeight += lineSets.takeaway.length * (fonts.takeaway + 4);
     textHeight += 3;
@@ -607,8 +635,45 @@
       textHeight += 4 + lineSets.extra.length * (fonts.extra + 3);
     }
     textHeight += 12;
+    return { p, takeawayText, lineSets, textHeight };
+  }
 
-    padT = Math.max(70, Math.round(textHeight));
+  // The text zone height used to be recalculated per stage, so shorter
+  // checkpoints made the whole card (and the Next/Back buttons) shrink and
+  // jump. Instead we scan every stage in both languages up front and lock
+  // padT to the single tallest case — the plot area and everything below it
+  // then stay pinned in place across the whole journey. Cached per measured
+  // width so a stage/lang change doesn't re-run all 18 wrap calculations.
+  let padTCache = { width:null, value:null };
+  function computeLockedPadT(fonts, textAvailW, W){
+    if(padTCache.width === W) return padTCache.value;
+    let max = 0;
+    ['ms','en'].forEach(l=>{
+      for(let s=0; s<years.length; s++){
+        const { textHeight } = computeCheckpointText(l, s, fonts, textAvailW);
+        if(textHeight > max) max = textHeight;
+      }
+    });
+    const value = Math.max(70, Math.round(max));
+    padTCache = { width:W, value };
+    return value;
+  }
+
+  function renderSpine(){
+    W = measureWidth();
+    const narrow = W < 480;
+    const textAvailW = W - padL - padR;
+
+    const fonts = {
+      year: narrow ? 14 : 15,
+      takeaway: narrow ? 12 : 13,
+      driver: narrow ? 11 : 12,
+      extra: narrow ? 10 : 11
+    };
+
+    const { p, takeawayText, lineSets } = computeCheckpointText(lang, stage, fonts, textAvailW);
+
+    padT = computeLockedPadT(fonts, textAvailW, W);
     plotH = narrow ? 150 : 160;
     H = padT + plotH + padB;
     plotW = W - padL - padR;
@@ -624,7 +689,10 @@
 
     visibleVals.forEach((v,i)=>{
       const isCurrent = i===stage;
-      svg.appendChild(el('circle',{cx:xPos(i),cy:yPos(v),r:isCurrent?6:3.5,fill:'#f34646',opacity:isCurrent?1:0.5}));
+      const dotColor = driverColor(dotDriverKeys[i]);
+      svg.appendChild(el('circle',{cx:xPos(i),cy:yPos(v),r:isCurrent?6:3.5,fill:dotColor,
+        opacity:isCurrent?1:0.6,
+        stroke: dotColor==='#e6e51e' ? '#000000' : 'none','stroke-width':1}));
     });
 
     const cx = xPos(stage), cy = yPos(obesityLine[stage]);
@@ -635,51 +703,60 @@
     drawFloatingText(years[stage], takeawayText, p.text, p.extra, fonts, lineSets);
   }
 
-  function miniBar(prevVal, curVal, maxVal, color){
-    const s = el('svg',{viewBox:'0 0 100 60', class:'driver-svg'});
-    const bw = 26, gap = 18;
-    const x1 = 50-gap/2-bw, x2 = 50+gap/2;
-    const hMax = 50;
-    function h(v){ return (v/maxVal)*hMax; }
-    if(prevVal !== null && prevVal !== undefined){
-      const hh = h(prevVal);
-      s.appendChild(el('rect',{x:x1,y:56-hh,width:bw,height:hh,fill:'#d8d8d8',rx:2}));
-    }
-    if(curVal !== null && curVal !== undefined){
-      const hh2 = h(curVal);
-      s.appendChild(el('rect',{x:x2,y:56-hh2,width:bw,height:hh2,fill:color,rx:2,stroke: color==='#e6e51e' ? '#000000' : 'none','stroke-width':1}));
-    }
-    return s;
-  }
-
   function renderDrivers(){
     driverGrid.innerHTML = '';
     driverCategories.forEach(catKey=>{
       const catDrivers = drivers.filter(d=>d.category===catKey);
+      if(!catDrivers.length) return;
+
+      driverGrid.appendChild(celEl('div','driver-cat-header', categoryLabels[lang][catKey]));
+
       catDrivers.forEach(d=>{
         const curVal = d.values[stage];
         const prevVal = stage>0 ? d.values[stage-1] : null;
         const validVals = d.values.filter(v=>v!==null);
         const maxVal = Math.max(...validVals) * 1.05;
 
-        const card = celEl('div', catKey==='context' ? 'driver-card driver-card-context' : 'driver-card');
-        card.appendChild(celEl('div','driver-tag', categoryLabels[lang][catKey]));
-        card.appendChild(celEl('div','driver-label', driverLabels[lang][d.key]));
+        const row = celEl('div', catKey==='context' ? 'driver-row driver-row-context' : 'driver-row');
+        const top = celEl('div','driver-row-top');
+
+        const labelWrap = celEl('div','driver-row-label');
+        const dot = celEl('span','driver-dot');
+        dot.style.background = d.color;
+        if(d.color === '#e6e51e'){ dot.style.border = '1px solid #000'; }
+        labelWrap.appendChild(dot);
+        labelWrap.appendChild(document.createTextNode(driverLabels[lang][d.key]));
+        top.appendChild(labelWrap);
 
         if(curVal === null || curVal === undefined){
-          card.appendChild(celEl('div','driver-empty', UI[lang].noDataYet));
+          top.appendChild(celEl('span','driver-empty-row', UI[lang].noDataYet));
+          row.appendChild(top);
         } else {
-          card.appendChild(miniBar(prevVal, curVal, maxVal, d.color));
-          card.appendChild(celEl('div','driver-value', d.fmt(curVal)));
+          const valWrap = celEl('div','driver-row-value');
+          valWrap.appendChild(document.createTextNode(d.fmt(curVal)));
           if(prevVal !== null && prevVal !== undefined){
             const diff = curVal - prevVal;
-            card.appendChild(celEl('div', diff>0.05?'driver-delta delta-up':'driver-delta delta-flat',
+            valWrap.appendChild(celEl('span', diff>0.05?'driver-delta delta-up':'driver-delta delta-flat',
               diff>0.05 ? ('\u2191 +'+(Math.round(diff*10)/10)) : UI[lang].flat));
           } else {
-            card.appendChild(celEl('div','driver-delta delta-flat', UI[lang].baseline));
+            valWrap.appendChild(celEl('span','driver-delta delta-flat', UI[lang].baseline));
           }
+          top.appendChild(valWrap);
+          row.appendChild(top);
+
+          const track = celEl('div','driver-bar-track');
+          const fill = celEl('div','driver-bar-fill');
+          const pct = Math.max(4, Math.min(100, (curVal/maxVal)*100));
+          fill.style.width = pct + '%';
+          fill.style.background = d.color;
+          if(d.color === '#e6e51e'){
+            fill.style.border = '1px solid #000';
+            fill.style.boxSizing = 'border-box';
+          }
+          track.appendChild(fill);
+          row.appendChild(track);
         }
-        driverGrid.appendChild(card);
+        driverGrid.appendChild(row);
       });
     });
   }
@@ -689,7 +766,6 @@
     document.documentElement.lang = lang;
     document.getElementById('introH1').textContent = t.introH1;
     document.getElementById('introP').textContent = t.introP;
-    document.getElementById('chartTitleEl').textContent = t.chartTitle;
     document.getElementById('summaryWhatChanged').textContent = t.summaryWhatChanged;
     document.getElementById('summaryToday').textContent = t.summaryToday;
     document.getElementById('todayStepsLblEl').textContent = t.todayStepsLbl;
@@ -709,7 +785,6 @@
     renderDrivers();
 
     const t = UI[lang];
-    progressLabel.textContent = t.progressLabel(stage+1, years.length);
     prevBtn.disabled = stage === 0;
     nextBtn.disabled = stage === maxStage;
     nextBtn.textContent = stage === maxStage ? t.btnComplete : t.btnNext;
