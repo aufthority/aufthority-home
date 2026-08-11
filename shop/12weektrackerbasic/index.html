@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MyHealth 12-Week Tracker — Aufthority</title>
+
+<!-- ── Umami Analytics ── -->
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+
+<!-- ── SEO ── -->
+<meta name="description" content="A 12-week Excel tracker that turns your daily sleep, food, steps and training logs into automatic scores, streaks and a body composition trend. RM19 early bird — one-time purchase.">
+
+<!-- ── Open Graph ── -->
+<meta property="og:type"         content="website">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="MyHealth 12-Week Tracker — Aufthority">
+<meta property="og:description"  content="A 12-week Excel tracker that turns your daily sleep, food, steps and training logs into automatic scores, streaks and a body composition trend.">
+<meta property="og:url"          content="https://www.aufthority.com/shop/myhealth-12-week-tracker/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="en_US">
+
+<!-- ── Twitter / X ── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="MyHealth 12-Week Tracker — Aufthority">
+<meta name="twitter:description" content="Log daily habits and body progress — the Dashboard scores, streaks and charts build themselves.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #f7f5f0;
+  --ink:          #1a1a18;
+  --muted:        #6b6b62;
+  --accent:       #2d6a4f;
+  --accent-light: #e8f5ee;
+  --rule:         #e0ddd5;
+  --card-bg:      #ffffff;
+  --radius:       2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:           #141412;
+    --ink:          #f0ede6;
+    --muted:        #9a9a8e;
+    --accent:       #52b788;
+    --accent-light: #1a2e24;
+    --rule:         #2a2a26;
+    --card-bg:      #1e1e1a;
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.container-wide {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+section {
+  padding: 48px 0;
+  border-top: 1px solid var(--rule);
+}
+section:first-of-type { border-top: none; }
+
+/* ── Nav ── */
+nav {
+  padding: 28px 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--rule);
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--ink); }
+@media (max-width: 540px) {
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.72rem; }
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  padding-top: 24px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.breadcrumb a { color: var(--muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
+
+/* ── Typography ── */
+h1, h2, h3 {
+  font-family: 'DM Serif Display', serif;
+  line-height: 1.15;
+  color: var(--ink);
+}
+h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); margin-bottom: 14px; }
+h2 { font-size: clamp(1.3rem, 3.2vw, 1.7rem); margin-bottom: 16px; }
+h3 { font-size: 1.05rem; margin-bottom: 8px; }
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+p { font-size: 1rem; line-height: 1.7; color: var(--ink); }
+p + p { margin-top: 12px; }
+.muted { color: var(--muted); }
+
+a.link { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 13px 28px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn:hover { opacity: 0.82; }
+.btn-block { display: block; text-align: center; width: 100%; }
+
+/* ── Product hero (two-column on desktop) ── */
+.product-hero { padding-top: 40px; padding-bottom: 40px; }
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+@media (min-width: 900px) {
+  .product-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: start;
+  }
+}
+
+.hero-eyebrow-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.badge-timer { background: #fff4e0; color: #b36200; }
+@media (prefers-color-scheme: dark) {
+  .badge-timer { background: #2e2410; color: #e0a545; }
+}
+
+.hero-sub {
+  font-size: 1.02rem;
+  color: var(--muted);
+  margin-bottom: 26px;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.1rem;
+  color: var(--ink);
+}
+.price-note { font-size: 0.85rem; color: var(--muted); }
+.early-bird-note {
+  font-size: 0.86rem;
+  color: #b36200;
+  margin-bottom: 22px;
+}
+@media (prefers-color-scheme: dark) {
+  .early-bird-note { color: #e0a545; }
+}
+
+.hero-cta { margin-bottom: 24px; }
+
+.hero-facts {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 28px;
+}
+.hero-facts li {
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding-left: 18px;
+  position: relative;
+}
+.hero-facts li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* ── Author / support blurb ── */
+.author-blurb {
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+.author-blurb p + p { margin-top: 10px; }
+.author-blurb strong { color: var(--ink); font-weight: 500; }
+
+/* ── Gallery ── */
+.gallery-wrap { position: relative; }
+.gallery-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  scrollbar-width: none;
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+.gallery-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+}
+.gallery-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--card-bg);
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+.gallery-arrow:hover { background: var(--accent-light); border-color: var(--accent); }
+.gallery-arrow.prev { left: 10px; }
+.gallery-arrow.next { right: 10px; }
+@media (max-width: 540px) {
+  .gallery-arrow { display: none; }
+}
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: var(--rule);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, transform 0.15s;
+}
+.dot.active { background: var(--accent); transform: scale(1.25); }
+.gallery-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* ── Feature list (condensed) ── */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 8px;
+}
+.feature-item {
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.94rem;
+}
+.feature-item strong { color: var(--ink); }
+.feature-item span { color: var(--muted); }
+
+/* ── FAQ ── */
+.faq-item { padding: 16px 0; border-top: 1px solid var(--rule); }
+.faq-item:last-child { padding-bottom: 0; }
+.faq-q { font-family: 'DM Serif Display', serif; font-size: 0.98rem; margin-bottom: 5px; }
+.faq-a { font-size: 0.9rem; color: var(--muted); }
+
+/* ── Bottom CTA ── */
+.bottom-cta { text-align: center; }
+.bottom-cta h2 { margin-bottom: 10px; }
+.bottom-cta p.muted { margin-bottom: 24px; }
+.license-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Footer ── */
+footer {
+  padding: 40px 0 32px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.footer-inner { display: flex; flex-direction: column; gap: 16px; }
+.footer-social { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
+.footer-social a { color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: color 0.15s; }
+.footer-social a:hover { color: var(--ink); }
+.footer-tagline { font-style: italic; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="container-wide">
+  <nav>
+    <a class="logo" href="https://www.aufthority.com">Aufthority</a>
+    <ul class="nav-links">
+      <li><a href="https://www.aufthority.com/#carousels">Carousels</a></li>
+      <li><a href="https://www.aufthority.com/#apps">Apps</a></li>
+      <li><a href="https://aufthority.substack.com">Newsletter</a></li>
+      <li><a href="https://www.aufthority.com/shop/#digital">Shop</a></li>
+    </ul>
+  </nav>
+  <div class="breadcrumb">
+    <a href="https://www.aufthority.com/shop/#digital">Shop</a> / MyHealth 12-Week Tracker
+  </div>
+</div>
+
+<!-- ── Product hero (two-column on desktop) ── -->
+<section class="product-hero">
+  <div class="container-wide">
+    <div class="product-grid">
+
+      <!-- LEFT: gallery -->
+      <div>
+        <div class="gallery-wrap">
+          <div class="gallery-track" id="galleryTrack">
+            <div class="gallery-slide"><img src="images/screenshot-01-start-here.png" alt="Start Here tab — setup and instructions" loading="lazy"></div>
+            <div class="gallery-slide"><img src="images/screenshot-02-log.png" alt="Log tab — daily rows for sleep, food, steps and training" loading="lazy"></div>
+            <div class="gallery-slide"><img src="images/screenshot-03-dashboard-wide.png" alt="Log and Dashboard side by side" loading="lazy"></div>
+            <div class="gallery-slide"><img src="images/screenshot-04-dashboard-detail.png" alt="Dashboard tab — pillar scores, streaks and weekly heatmap" loading="lazy"></div>
+          </div>
+          <button class="gallery-arrow prev" id="galleryPrev" aria-label="Previous screenshot">‹</button>
+          <button class="gallery-arrow next" id="galleryNext" aria-label="Next screenshot">›</button>
+        </div>
+        <div class="gallery-dots" id="galleryDots"></div>
+        <p class="gallery-caption">Swipe or tap through — Start Here, Log, and Dashboard tabs.</p>
+      </div>
+
+      <!-- RIGHT: product info -->
+      <div>
+        <div class="hero-eyebrow-row">
+          <span class="section-label" style="margin-bottom:0;">Digital Tracker — Basic</span>
+          <span class="badge badge-timer">Early Bird — ends 23 Aug 2026</span>
+        </div>
+        <h1>MyHealth 12-Week Tracker</h1>
+        <p class="hero-sub">A 12-week Excel dashboard that turns your daily sleep, food, steps and training logs into automatic scores, streaks and a body composition trend.</p>
+
+        <div class="price-row">
+          <span class="price">RM19</span>
+          <span class="price-note">one-time purchase</span>
+        </div>
+        <p class="early-bird-note">Early bird pricing — locked in until 23 August 2026.</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-block" href="https://toyyibpay.com/MyHealth-12-Week-Tracker-Basic" target="_blank" data-umami-event="shop-click-digital-myhealth-12-week-tracker">Get it Now →</a>
+        </div>
+
+        <ul class="hero-facts">
+          <li>Instant download — .xlsx file, no account needed</li>
+          <li>Licensed for personal use — not for resale or redistribution</li>
+          <li>Built for Microsoft Excel — formula-driven, not a Google Sheets file</li>
+        </ul>
+
+        <div class="author-blurb">
+          <p>By <a class="link" href="https://www.linkedin.com/in/aufbinali/" target="_blank"><strong>Auf Ali</strong></a>, independent digital health builder behind Aufthority — pharmaceutical quality-control background, ten self-built health tools.</p>
+          <p>Need support or have trouble? <a class="link" href="mailto:the.aufthority@gmail.com">Email Auf</a>. I'll do my best to make it right — if I can't, I'll send you a refund.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── What's included ── -->
+<section>
+  <div class="container">
+    <span class="section-label">What's included</span>
+    <h2>Set it up once. Everything else calculates itself.</h2>
+    <p class="muted">Fill in your name, goal and targets in the Setup tab — all 84 days, dates and the goal-weight path build themselves from there.</p>
+    <div class="feature-list">
+      <div class="feature-item"><strong>Daily log —</strong> <span>sleep, calories, protein, water, steps, active minutes, resistance sessions, energy and a one-line note, for all 84 days.</span></div>
+      <div class="feature-item"><strong>Weekly check-in —</strong> <span>weight, waist and hip, plus a one-line reflection.</span></div>
+      <div class="feature-item"><strong>Automatic body composition —</strong> <span>BMI, waist-to-height ratio, ABSI and estimated body fat %, recalculated every week.</span></div>
+      <div class="feature-item"><strong>Five pillar scores —</strong> <span>Sleep, Nutrition, Movement, Recovery and Training, scored daily and rolled up weekly.</span></div>
+      <div class="feature-item"><strong>Streaks and badges —</strong> <span>four streak counters plus ten unlockable badges to keep you going.</span></div>
+      <div class="feature-item"><strong>Dashboard charts —</strong> <span>weight vs. goal-path, weekly score trend, average steps and sleep, and a 7-day adherence trend.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section>
+  <div class="container">
+    <span class="section-label">Questions, answered</span>
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q">Do I need Excel experience?</div>
+      <div class="faq-a">No. Type into the blue Setup cells once and everything else fills itself. Black cells are calculated — don't type over them.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will this work in Google Sheets?</div>
+      <div class="faq-a">It's built for Microsoft Excel and relies on formulas that may not convert cleanly to Sheets.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I get the file after I pay?</div>
+      <div class="faq-a">Checkout is handled securely through ToyyibPay. You'll receive your download link right after payment.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Bottom CTA ── -->
+<section>
+  <div class="container bottom-cta">
+    <h2>RM19 — early bird until 23 August 2026</h2>
+    <p class="muted">One-time purchase. Instant download. Yours to keep.</p>
+    <a class="btn" href="https://toyyibpay.com/MyHealth-12-Week-Tracker-Basic" target="_blank" data-umami-event="shop-click-digital-myhealth-12-week-tracker">Get it Now →</a>
+    <p class="license-note">Licensed for personal use only. Not for resale, sharing, or redistribution without written permission from Aufthority.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <ul class="footer-social">
+        <li><a href="https://www.threads.net/@theaufthority" target="_blank">Threads</a></li>
+        <li><a href="https://www.instagram.com/theaufthority" target="_blank">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@theaufthority" target="_blank">TikTok</a></li>
+        <li><a href="https://www.linkedin.com/in/aufbinali/" target="_blank">LinkedIn</a></li>
+      </ul>
+      <p>© 2026 Aufthority</p>
+      <p class="footer-tagline">Informed decisions, better health.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var track = document.getElementById('galleryTrack');
+  var slides = track.querySelectorAll('.gallery-slide');
+  var dotsWrap = document.getElementById('galleryDots');
+  var prevBtn = document.getElementById('galleryPrev');
+  var nextBtn = document.getElementById('galleryNext');
+  var dots = [];
+
+  slides.forEach(function(_, i) {
+    var dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to screenshot ' + (i + 1));
+    dot.addEventListener('click', function() {
+      track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' });
+    });
+    dotsWrap.appendChild(dot);
+    dots.push(dot);
+  });
+
+  function updateActive() {
+    var index = Math.round(track.scrollLeft / track.clientWidth);
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
+  }
+
+  track.addEventListener('scroll', function() {
+    window.requestAnimationFrame(updateActive);
+  }, { passive: true });
+
+  prevBtn.addEventListener('click', function() {
+    var index = Math.max(0, Math.round(track.scrollLeft / track.clientWidth) - 1);
+    track.scrollTo({ left: track.clientWidth * index, behavior: 'smooth' });
+  });
+
+  nextBtn.addEventListener('click', function() {
+    var index = Math.min(slides.length - 1, Math.round(track.scrollLeft / track.clientWidth) + 1);
+    track.scrollTo({ left: track.clientWidth * index, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>
