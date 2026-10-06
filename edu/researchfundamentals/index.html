@@ -275,6 +275,17 @@ h3.sub {
 .toolkit-how { font-size: 13.5px; color: var(--muted); }
 .toolkit-how strong { color: var(--ink); font-weight: 600; }
 
+/* ── PROPOSAL MAP ────────────────────────────────────────── */
+.pmap { list-style: none; border: 1px solid var(--rule); border-radius: var(--r-card); margin: 18px 0 22px; overflow: hidden; }
+.pmap li { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-top: 1px solid var(--rule); }
+.pmap li:first-child { border-top: none; }
+.pmap-n { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--green); color: #fff; font-size: 12.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.pmap-body { flex: 1; min-width: 0; }
+.pmap-name { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.35; }
+.pmap-q { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+.pmap-step { flex-shrink: 0; font-size: 12px; font-weight: 600; color: var(--gold-text); background: var(--gold-light); border-radius: var(--r-pill); padding: 3px 10px; white-space: nowrap; }
+.pmap-step.none { color: var(--muted); background: #f3f5f2; }
+
 /* ── CONNECT ─────────────────────────────────────────────── */
 .connect { margin: 28px 0 0; }
 .connect-title { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
@@ -328,7 +339,6 @@ footer { text-align: center; padding: 0 0 28px; }
   .chain-arrow { display: flex; align-items: center; padding: 0 8px; }
   .chain-arrow span { display: inline-block; transform: rotate(-90deg); }
   .conc { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .conc-card:last-child { grid-column: 1 / -1; }
   #nav-wrap { justify-content: flex-end; }
   .nav-btn { flex: 0 0 200px; }
 }
@@ -343,7 +353,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 <div id="shell">
   <nav>
     <a class="logo" href="https://www.aufthority.com">Auf<span>thority</span></a>
-    <span id="progress-label">1 / 14</span>
+    <span id="progress-label">1 / 15</span>
   </nav>
   <div id="progress-track"><div id="progress-fill"></div></div>
 
@@ -622,21 +632,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
           <p><strong>determine, identify, compare, measure, describe.</strong></p>
         </div>
       </div>
-      <div class="toggle-wrap">
-        <button class="toggle-btn" data-label="research-proposal">What goes into a research proposal? <span class="chev">+</span></button>
-        <div class="toggle-body">
-          <p class="slide-body" style="font-size:15px">A proposal is your plan, written down before you start. It usually covers:</p>
-          <ul class="check-list">
-            <li>Title</li>
-            <li>Background and problem statement</li>
-            <li>Literature review</li>
-            <li>Objectives</li>
-            <li>Methodology: who, what and how</li>
-            <li>Timeline and budget</li>
-            <li>References</li>
-          </ul>
-        </div>
-      </div>
+      <div class="callout">Your objectives become the backbone of your <strong>research proposal</strong>, the written plan for your whole study. We put it all together after Step 7.</div>
     </section>
 
     <!-- 10 · STEP 4 -->
@@ -745,8 +741,56 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
       <div class="callout"><strong>The end is also a beginning.</strong> Her finding raises a new question: would a simple reminder text help patients finish their antibiotics? That's the next study. Research is a cycle.</div>
     </section>
 
-    <!-- 14 · SUMMARY + SOURCES -->
+    <!-- 14 · PUTTING IT TOGETHER: THE PROPOSAL -->
     <section class="slide" id="slide-14">
+      <span class="slide-tag gold">Putting it together · The research proposal</span>
+      <h2 class="slide-title">A proposal is your whole plan, <em>written down before you start.</em></h2>
+      <p class="slide-body">An architect draws the building before anyone pours concrete. A <strong>research proposal</strong> does the same for a study: it shows your supervisor, or an ethics committee, exactly what you plan to do, so mistakes are caught on paper instead of after months of work.</p>
+      <div class="callout"><strong>When do you write it?</strong> After you've worked through Steps 1 to 4, and <strong>before you collect any data</strong>. It describes what you <em>will</em> do, so it's written in the future tense: "We will survey&hellip;", not "We found&hellip;".</div>
+      <h3 class="sub">Every section comes from a step you've already learned</h3>
+      <ol class="pmap">
+        <li><span class="pmap-n">1</span><div class="pmap-body"><div class="pmap-name">Title</div><div class="pmap-q">What, who and where, in one line</div></div><span class="pmap-step">Step 1</span></li>
+        <li><span class="pmap-n">2</span><div class="pmap-body"><div class="pmap-name">Introduction and problem statement</div><div class="pmap-q">What's going wrong, and why does it matter?</div></div><span class="pmap-step">Step 1</span></li>
+        <li><span class="pmap-n">3</span><div class="pmap-body"><div class="pmap-name">Literature review</div><div class="pmap-q">What's already known, and what's still missing?</div></div><span class="pmap-step">Step 2</span></li>
+        <li><span class="pmap-n">4</span><div class="pmap-body"><div class="pmap-name">Objectives</div><div class="pmap-q">What exactly will you find out?</div></div><span class="pmap-step">Step 3</span></li>
+        <li><span class="pmap-n">5</span><div class="pmap-body"><div class="pmap-name">Methodology</div><div class="pmap-q">Your variables, who you'll ask, how you'll collect the data, and how you'll analyse it</div></div><span class="pmap-step">Steps 4&ndash;6</span></li>
+        <li><span class="pmap-n">6</span><div class="pmap-body"><div class="pmap-name">References</div><div class="pmap-q">Credit for every source you used</div></div><span class="pmap-step">Step 2</span></li>
+        <li><span class="pmap-n">7</span><div class="pmap-body"><div class="pmap-name">Appendix</div><div class="pmap-q">Your questionnaire, consent form and other extras</div></div><span class="pmap-step">Step 5</span></li>
+        <li><span class="pmap-n">+</span><div class="pmap-body"><div class="pmap-name">Timeline and budget</div><div class="pmap-q">When each stage happens and what it costs, if your course asks for it</div></div><span class="pmap-step none">If required</span></li>
+      </ol>
+
+      <div class="cards two">
+        <div class="card">
+          <div class="card-kicker">Common mistakes</div>
+          <ul class="check-list bad">
+            <li>Objectives and methods don't match</li>
+            <li>The literature review is a list of summaries, with no gap</li>
+            <li>Writing results before collecting any data</li>
+            <li>A vague sample: "some patients" instead of who, how many and how chosen</li>
+            <li>Missing or inconsistent references</li>
+          </ul>
+        </div>
+        <div class="card green">
+          <div class="card-kicker">The one-minute check</div>
+          <p>Read each objective, then look for the method that answers it.</p>
+          <p><strong>Every objective needs a matching method.</strong> If one doesn't have one, something is missing from your plan.</p>
+        </div>
+      </div>
+
+      <div class="tryit">
+        <div class="tryit-head">Spot the mistake</div>
+        <div class="tryit-sub">A student's proposal says:</div>
+        <div class="q">
+          <div class="q-text"><strong>Objective:</strong> to compare antibiotic completion between younger and older patients.<br><strong>Method:</strong> we will survey patients aged 60 and above.</div>
+          <button class="q-btn" data-umami-event="tryit-reveal">Show answer</button>
+          <div class="q-ans"><strong>The method can't answer the objective.</strong> You can't compare younger and older patients if you only ask older ones. The sample must include both age groups.</div>
+        </div>
+      </div>
+      <p class="slide-body" style="font-size:15px">The <strong>Research Builder Toolkit</strong> on the next page walks you through drafting each section.</p>
+    </section>
+
+    <!-- 15 · SUMMARY + SOURCES -->
+    <section class="slide" id="slide-15">
       <span class="slide-tag gold">Summary</span>
       <h2 class="slide-title">The whole journey, <em>in one breath.</em></h2>
       <div class="conc">
@@ -755,6 +799,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
         <div class="conc-card"><span class="conc-n">03</span><span class="conc-text"><strong>Quantitative counts; qualitative explores.</strong> Many studies use both.</span></div>
         <div class="conc-card"><span class="conc-n">04</span><span class="conc-text">Seven steps: <strong>problem, what's known, aim, what to measure, collect, analyse, share.</strong></span></div>
         <div class="conc-card"><span class="conc-n">05</span><span class="conc-text"><strong>Fair sampling and honest reporting</strong> are what make results worth trusting.</span></div>
+        <div class="conc-card"><span class="conc-n">06</span><span class="conc-text">A <strong>proposal is the plan on paper</strong>, written before any data is collected, so mistakes are caught early.</span></div>
       </div>
       <div class="toolkit">
         <div class="card-kicker" style="color:var(--green)">Your turn</div>
@@ -798,7 +843,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 
 <script>
 (function(){
-  const TOTAL = 14;
+  const TOTAL = 15;
   let current = 1;
 
   const slides   = document.querySelectorAll('.slide');
