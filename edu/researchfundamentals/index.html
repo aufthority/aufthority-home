@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research, Simply Explained — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="What research is, why we do it, and the seven steps every study follows. A plain-language companion to Fundamentals of Research.">
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Research, Simply Explained">
+<meta property="og:description"  content="What research is, why we do it, and the seven steps every study follows.">
+<meta property="og:url"          content="https://www.aufthority.com/edu/researchfundamentals/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="en_MY">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Research, Simply Explained">
+<meta name="twitter:description" content="What research is, why we do it, and the seven steps every study follows.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS: green-gold on white ─────────────────────────── */
+:root {
+  --bg:          #ffffff;
+  --ink:         #17291f;
+  --muted:       #5c6a61;
+  --green:       #1f5c3f;
+  --green-mid:   #3d7a5a;
+  --green-light: #edf5ef;
+  --gold:        #b8901f;
+  --gold-soft:   #e6c66a;
+  --gold-light:  #fbf6e6;
+  --gold-text:   #8a6a10;
+  --rule:        #e4e8e3;
+  --font: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --r-card: 14px;
+  --r-pill: 999px;
+}
+
+/* ── RESET ───────────────────────────────────────────────── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SHELL ───────────────────────────────────────────────── */
+#shell {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 0 12px;
+}
+.logo { font-weight: 700; font-size: 14px; color: var(--green); text-decoration: none; letter-spacing: -0.01em; }
+.logo span { color: var(--gold); }
+#progress-label {
+  font-size: 12px; font-weight: 500; color: var(--muted);
+  background: var(--green-light); border-radius: var(--r-pill); padding: 3px 11px;
+}
+#progress-track { height: 3px; background: var(--rule); border-radius: 2px; }
+#progress-fill  {
+  height: 3px; width: 0; border-radius: 2px;
+  background: linear-gradient(90deg, var(--green), var(--gold-soft));
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── SLIDES ──────────────────────────────────────────────── */
+#slides-wrap { flex: 1; }
+.slide { display: none; padding: 40px 0 32px; }
+.slide.active { display: block; animation: fadeUp .35s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.slide-tag {
+  display: block;
+  font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 14px;
+}
+.slide-tag.gold { color: var(--gold-text); }
+.slide-title {
+  font-size: clamp(28px, 6vw, 40px); font-weight: 700;
+  line-height: 1.12; letter-spacing: -0.025em;
+  color: var(--ink); margin-bottom: 20px;
+}
+.slide-title em { font-style: normal; color: var(--green); }
+.slide-body { font-size: 16.5px; color: var(--muted); margin-bottom: 16px; }
+.slide-body strong { color: var(--ink); font-weight: 600; }
+h3.sub {
+  font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--muted); margin: 28px 0 12px;
+}
+
+/* ── CALLOUT ─────────────────────────────────────────────── */
+.callout {
+  border-left: 3px solid var(--gold);
+  background: var(--gold-light);
+  border-radius: 0 var(--r-card) var(--r-card) 0;
+  padding: 16px 18px; margin: 24px 0;
+  font-size: 15.5px; color: var(--ink);
+}
+.callout strong { font-weight: 600; color: var(--green); }
+
+/* ── EXAMPLE BOX (running example) ───────────────────────── */
+.example {
+  border: 1px solid #cfe2d5; background: var(--green-light);
+  border-radius: var(--r-card); padding: 18px 18px 16px; margin: 24px 0;
+}
+.example-label {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 8px;
+}
+.example p { font-size: 15.5px; color: var(--ink); }
+.example p + p { margin-top: 8px; }
+.example .note { font-size: 13px; color: var(--muted); }
+
+/* ── CARDS (2 or 3 column) ───────────────────────────────── */
+.cards { display: grid; gap: 10px; margin: 22px 0; }
+.cards.two   { grid-template-columns: 1fr 1fr; }
+.cards.three { grid-template-columns: 1fr 1fr 1fr; }
+@media (max-width: 560px) { .cards.two, .cards.three { grid-template-columns: 1fr; } }
+.card {
+  border: 1px solid var(--rule); border-radius: var(--r-card);
+  padding: 16px 16px 14px; background: #fff;
+}
+.card.green { border-color: var(--green); background: var(--green-light); }
+.card.gold  { border-color: var(--gold-soft); background: var(--gold-light); }
+.card-kicker { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 6px; }
+.card.green .card-kicker { color: var(--green); }
+.card-title { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+.card p { font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+.card p + p { margin-top: 8px; }
+.card p strong { color: var(--ink); font-weight: 600; }
+
+/* ── NUMBERED ITEMS ──────────────────────────────────────── */
+.num-list { list-style: none; margin: 22px 0; display: flex; flex-direction: column; gap: 10px; }
+.num-list li { display: flex; gap: 14px; align-items: flex-start; }
+.num-circle {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--green); color: var(--green);
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px;
+}
+.num-text { font-size: 15.5px; color: var(--muted); }
+.num-text strong { color: var(--ink); font-weight: 600; }
+
+/* ── GOOD / BAD LIST ─────────────────────────────────────── */
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.check-list li { position: relative; padding-left: 22px; font-size: 14.5px; color: var(--ink); line-height: 1.5; }
+.check-list li::before {
+  content: ''; position: absolute; left: 2px; top: 8px;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+}
+.check-list.bad li { color: var(--muted); }
+.check-list.bad li::before { background: transparent; border: 1.5px solid #b9a26a; }
+
+/* ── CHAIN (problem → question → title) ──────────────────── */
+.chain { margin: 22px 0; display: flex; flex-direction: column; gap: 0; }
+.chain-step { border: 1px solid var(--rule); border-radius: var(--r-card); padding: 14px 16px; background: #fff; }
+.chain-step.final { border-color: var(--green); background: var(--green-light); }
+.chain-label { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 4px; }
+.chain-step.final .chain-label { color: var(--green); }
+.chain-text { font-size: 15px; color: var(--ink); }
+.chain-arrow { text-align: center; color: var(--gold); font-size: 18px; line-height: 1; padding: 6px 0; }
+
+/* ── PILLS ───────────────────────────────────────────────── */
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
+.pill {
+  font-size: 14px; font-weight: 500; color: var(--green);
+  border: 1px solid #cfe2d5; background: #fff;
+  border-radius: var(--r-pill); padding: 6px 14px;
+}
+
+/* ── VARIABLE DIAGRAM ────────────────────────────────────── */
+.var-diagram {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px;
+  align-items: center; margin: 22px 0;
+}
+.var-box { border-radius: var(--r-card); padding: 14px 14px 12px; }
+.var-box.iv { background: var(--gold-light); border: 1px solid var(--gold-soft); }
+.var-box.dv { background: var(--green-light); border: 1px solid var(--green); }
+.var-head { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+.var-box.iv .var-head { color: #7a5d0c; }
+.var-box.dv .var-head { color: var(--green); }
+.var-def { font-size: 13px; color: var(--muted); margin-bottom: 10px; line-height: 1.45; }
+.var-eg { font-size: 14.5px; font-weight: 500; color: var(--ink); line-height: 1.5; }
+.var-arrow { color: var(--gold); font-size: 22px; font-weight: 700; }
+@media (max-width: 480px) {
+  .var-diagram { grid-template-columns: 1fr; }
+  .var-arrow { text-align: center; transform: rotate(90deg); }
+}
+
+/* ── TRY IT ──────────────────────────────────────────────── */
+.tryit { border: 1px dashed var(--gold-soft); border-radius: var(--r-card); padding: 16px; margin: 24px 0; }
+.tryit-head { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #7a5d0c; margin-bottom: 4px; }
+.tryit-sub { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+.q { border-top: 1px solid var(--rule); padding: 12px 0 4px; }
+.q:first-of-type { border-top: none; }
+.q-text { font-size: 15px; color: var(--ink); margin-bottom: 8px; }
+.q-btn {
+  font-family: var(--font); font-size: 13px; font-weight: 600;
+  color: var(--green); background: #fff; border: 1px solid var(--green);
+  border-radius: var(--r-pill); padding: 5px 14px; cursor: pointer;
+}
+.q-btn:hover { background: var(--green-light); }
+.q-ans { display: none; font-size: 14.5px; color: var(--muted); margin-top: 8px; }
+.q-ans strong { color: var(--green); }
+.q.open .q-ans { display: block; }
+.q.open .q-btn { display: none; }
+
+/* ── TOGGLE ──────────────────────────────────────────────── */
+.toggle-wrap { border: 1px solid var(--rule); border-radius: var(--r-card); margin: 22px 0; overflow: hidden; }
+.toggle-btn {
+  width: 100%; text-align: left; background: #fff; border: none; cursor: pointer;
+  font-family: var(--font); font-size: 15px; font-weight: 600; color: var(--ink);
+  padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.toggle-btn .chev { color: var(--gold); font-size: 18px; transition: transform .2s; flex-shrink: 0; }
+.toggle-wrap.open .chev { transform: rotate(45deg); }
+.toggle-body { display: none; padding: 0 16px 16px; }
+.toggle-wrap.open .toggle-body { display: block; }
+
+/* ── JOURNEY MAP ─────────────────────────────────────────── */
+.journey { border: 1px solid var(--rule); border-radius: var(--r-card); padding: 18px 12px 8px; margin: 22px 0; }
+.journey svg { width: 100%; height: auto; display: block; max-width: 420px; margin: 0 auto; }
+
+/* ── CONCLUSION CARDS ────────────────────────────────────── */
+.conc { display: flex; flex-direction: column; gap: 8px; margin: 22px 0; }
+.conc-card { display: flex; gap: 16px; border: 1px solid var(--rule); border-radius: var(--r-card); padding: 16px; }
+.conc-n { font-size: 15px; font-weight: 700; color: var(--gold-text); min-width: 24px; }
+.conc-text { font-size: 15px; color: var(--muted); }
+.conc-text strong { color: var(--ink); font-weight: 600; }
+
+/* ── SOURCE BOX ──────────────────────────────────────────── */
+.source-box {
+  border-top: 1px solid var(--rule); margin-top: 32px; padding-top: 20px;
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+}
+.source-box h4 { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; }
+.source-box p + p { margin-top: 8px; }
+.source-box a { color: var(--green); text-decoration: underline; text-decoration-color: var(--gold-soft); text-underline-offset: 2px; }
+
+/* ── TOOLKIT CTA ─────────────────────────────────────────── */
+.toolkit {
+  border: 1px solid var(--green); border-radius: var(--r-card);
+  background: linear-gradient(135deg, var(--green-light), var(--gold-light));
+  padding: 20px 18px; margin: 28px 0 8px;
+}
+.toolkit-title { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 6px; }
+.toolkit p { font-size: 15px; color: var(--muted); }
+.toolkit-btn {
+  display: inline-block; margin: 14px 0 12px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  color: #fff; background: var(--green); border-radius: var(--r-pill); padding: 11px 20px;
+}
+.toolkit-btn:hover { background: #174a32; }
+.toolkit-how { font-size: 13.5px; color: var(--muted); }
+.toolkit-how strong { color: var(--ink); font-weight: 600; }
+
+/* ── CONNECT ─────────────────────────────────────────────── */
+.connect { margin: 28px 0 0; }
+.connect-title { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.connect-sub { font-size: 14.5px; color: var(--muted); margin-bottom: 12px; }
+.connect-sub a { color: var(--green); font-weight: 600; text-decoration: underline; text-decoration-color: var(--gold-soft); text-underline-offset: 2px; }
+.connect-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.connect-link {
+  font-size: 14px; font-weight: 600; color: var(--green); text-decoration: none;
+  border: 1px solid #cfe2d5; background: #fff; border-radius: var(--r-pill); padding: 7px 15px;
+  transition: background .15s, border-color .15s;
+}
+.connect-link:hover { background: var(--green-light); border-color: var(--green); }
+.connect-link span { color: var(--muted); font-weight: 500; }
+
+/* ── NAV BUTTONS ─────────────────────────────────────────── */
+#nav-wrap { display: flex; gap: 10px; padding: 20px 0; border-top: 1px solid var(--rule); }
+.nav-btn {
+  flex: 1; font-family: var(--font); font-size: 15px; font-weight: 600;
+  padding: 14px 18px; border-radius: var(--r-pill); cursor: pointer;
+  border: 1.5px solid var(--rule); background: #fff; color: var(--muted);
+  transition: background .15s, border-color .15s, color .15s;
+}
+.nav-btn:hover:not(:disabled) { border-color: var(--green); color: var(--green); }
+.nav-btn:disabled { opacity: .35; cursor: not-allowed; }
+#btn-next { background: var(--green); border-color: var(--green); color: #fff; }
+#btn-next:hover { background: #174a32; color: #fff; }
+
+footer { text-align: center; padding: 0 0 28px; }
+.footer-line { font-size: 13px; font-style: italic; color: var(--ink); margin-bottom: 4px; }
+.footer-credit { font-size: 12px; color: var(--muted); }
+.footer-credit a { color: var(--green); font-weight: 600; text-decoration: none; }
+.footer-credit a:hover { text-decoration: underline; text-decoration-color: var(--gold-soft); }
+
+/* ── RESPONSIVE: tablet & wide screens ───────────────────── */
+.slide-body, .slide-title { max-width: 720px; }
+@media (min-width: 768px) {
+  #shell { padding: 0 32px; }
+  .slide { padding: 48px 0 40px; }
+}
+@media (min-width: 1024px) {
+  #shell { max-width: 1000px; padding: 0 40px; }
+  .slide-title { font-size: 44px; }
+  .slide-body { font-size: 17px; }
+  .cards.two { gap: 14px; }
+  #slide-12 .cards.two { grid-template-columns: repeat(4, 1fr); }
+  .journey-row { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; align-items: start; }
+  .journey-row .journey, .journey-row .example { margin-top: 22px; }
+  .num-list { max-width: 760px; }
+  .chain { flex-direction: row; align-items: stretch; }
+  .chain-step { flex: 1; }
+  .chain-arrow { display: flex; align-items: center; padding: 0 8px; }
+  .chain-arrow span { display: inline-block; transform: rotate(-90deg); }
+  .conc { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .conc-card:last-child { grid-column: 1 / -1; }
+  #nav-wrap { justify-content: flex-end; }
+  .nav-btn { flex: 0 0 200px; }
+}
+@media (min-width: 1440px) {
+  #shell { max-width: 1120px; }
+}
+
+button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div id="shell">
+  <nav>
+    <a class="logo" href="https://www.aufthority.com">Auf<span>thority</span></a>
+    <span id="progress-label">1 / 14</span>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <div id="slides-wrap">
+
+    <!-- 1 · HOOK -->
+    <section class="slide active" id="slide-1">
+      <span class="slide-tag">Start here</span>
+      <h1 class="slide-title">You already do research. <em>You just don't call it that.</em></h1>
+      <p class="slide-body">Before buying a new phone, you probably read reviews, asked friends, compared prices, and maybe tried one in the shop. You had a question, gathered information, and made a decision.</p>
+      <p class="slide-body"><strong>Research is that same habit, done carefully and openly</strong>, so that other people can check your answer and trust it.</p>
+      <div class="callout">This page walks through <strong>what research is</strong>, <strong>why we do it</strong>, and <strong>the seven steps</strong> every research project follows. No background needed.</div>
+    </section>
+
+    <!-- 2 · WHAT -->
+    <section class="slide" id="slide-2">
+      <span class="slide-tag">What is research?</span>
+      <h2 class="slide-title">A careful, <em>organised</em> way of finding answers.</h2>
+      <p class="slide-body">The key word is organised. You decide your question first, plan how you will answer it, collect information in a fair way, and report exactly what you did.</p>
+      <h3 class="sub">Three ways to answer the same question</h3>
+      <div class="cards three">
+        <div class="card">
+          <div class="card-kicker">A guess</div>
+          <p>"I think most patients stop their antibiotics early."</p>
+          <p><strong>Based on a feeling.</strong></p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">An opinion</div>
+          <p>"My colleagues say patients stop early."</p>
+          <p><strong>Based on what a few people believe.</strong></p>
+        </div>
+        <div class="card green">
+          <div class="card-kicker">Research</div>
+          <p>"We asked a fair sample of patients the same questions and counted the answers."</p>
+          <p><strong>Based on a plan anyone can check.</strong></p>
+        </div>
+      </div>
+      <div class="callout">Research does not guarantee the answer is right. It means <strong>anyone can see how you got it</strong>, and repeat it to check.</div>
+    </section>
+
+    <!-- 3 · WHY -->
+    <section class="slide" id="slide-3">
+      <span class="slide-tag">Why do research?</span>
+      <h2 class="slide-title">Because guessing is <em>expensive.</em></h2>
+      <ul class="num-list">
+        <li><span class="num-circle">1</span><span class="num-text"><strong>To solve real problems.</strong> Find out why something goes wrong, so it can be fixed.</span></li>
+        <li><span class="num-circle">2</span><span class="num-text"><strong>To check what works.</strong> Test whether a new treatment, service or idea actually helps.</span></li>
+        <li><span class="num-circle">3</span><span class="num-text"><strong>To describe what is happening.</strong> How common is something, and who does it affect?</span></li>
+        <li><span class="num-circle">4</span><span class="num-text"><strong>To make better decisions.</strong> Doctors, pharmacists and governments choose better with evidence than with habit.</span></li>
+        <li><span class="num-circle">5</span><span class="num-text"><strong>To add to what we know.</strong> Every study is a brick that others can build on.</span></li>
+      </ul>
+      <div class="callout">In health care, a wrong assumption can harm patients. Research replaces <strong>"we've always done it this way"</strong> with <strong>"here is what we found."</strong></div>
+    </section>
+
+    <!-- 4 · QUANT vs QUAL -->
+    <section class="slide" id="slide-4">
+      <span class="slide-tag">Two approaches</span>
+      <h2 class="slide-title">Numbers or words? <em>Two ways to find an answer.</em></h2>
+      <div class="cards two">
+        <div class="card green">
+          <div class="card-kicker">Quantitative</div>
+          <div class="card-title">Counts and measures</div>
+          <p>Asks <strong>how many, how much, how often.</strong></p>
+          <p>"What share of patients finish their antibiotic course?"</p>
+          <p>Uses questionnaires with fixed answers, measurements, and records.</p>
+        </div>
+        <div class="card gold">
+          <div class="card-kicker">Qualitative</div>
+          <div class="card-title">Listens and explores</div>
+          <p>Asks <strong>why and how.</strong></p>
+          <p>"Why do some patients stop their antibiotics early?"</p>
+          <p>Uses interviews, group discussions, and open-ended questions.</p>
+        </div>
+      </div>
+      <p class="slide-body">Many studies use <strong>both</strong>: numbers show how big a problem is, words explain why it happens. This is called mixed methods.</p>
+
+      <div class="tryit">
+        <div class="tryit-head">Try it</div>
+        <div class="tryit-sub">Which approach fits each question?</div>
+        <div class="q">
+          <div class="q-text">How many hours do students sleep the night before an exam?</div>
+          <button class="q-btn" data-umami-event="tryit-reveal">Show answer</button>
+          <div class="q-ans"><strong>Quantitative.</strong> It counts hours.</div>
+        </div>
+        <div class="q">
+          <div class="q-text">How do new mothers feel about breastfeeding in public?</div>
+          <button class="q-btn" data-umami-event="tryit-reveal">Show answer</button>
+          <div class="q-ans"><strong>Qualitative.</strong> It explores feelings and experiences.</div>
+        </div>
+        <div class="q">
+          <div class="q-text">Is blood pressure lower after a four-week walking programme?</div>
+          <button class="q-btn" data-umami-event="tryit-reveal">Show answer</button>
+          <div class="q-ans"><strong>Quantitative.</strong> It measures and compares before and after.</div>
+        </div>
+      </div>
+
+      <div class="toggle-wrap">
+        <button class="toggle-btn" data-label="types-of-research">Other ways research is grouped <span class="chev">+</span></button>
+        <div class="toggle-body">
+          <ul class="check-list">
+            <li><strong>Descriptive:</strong> describes what is there. How common is a problem?</li>
+            <li><strong>Analytical:</strong> looks for links. Is one thing connected to another?</li>
+            <li><strong>Experimental:</strong> changes something on purpose and watches what happens, like testing a new medicine.</li>
+            <li><strong>Basic vs applied:</strong> understanding something for its own sake, or solving a practical problem.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · GOOD vs BAD -->
+    <section class="slide" id="slide-5">
+      <span class="slide-tag">Quality</span>
+      <h2 class="slide-title">What makes research good, <em>and what ruins it.</em></h2>
+      <div class="cards two">
+        <div class="card green">
+          <div class="card-kicker">Good research</div>
+          <ul class="check-list">
+            <li>A clear, focused question</li>
+            <li>Planned before any data is collected</li>
+            <li>A fair way of choosing who takes part</li>
+            <li>Honest reporting, even of disappointing results</li>
+            <li>Enough detail for someone else to repeat it</li>
+            <li>Ethical: people agree to take part and are protected</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-kicker">Bad research</div>
+          <ul class="check-list bad">
+            <li>A vague question, like "a study about health"</li>
+            <li>Changing the plan after seeing the results</li>
+            <li>Only asking people likely to agree with you</li>
+            <li>Hiding results that don't fit</li>
+            <li>Too little detail to check or repeat</li>
+            <li>Collecting data without permission</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · JOURNEY MAP -->
+    <section class="slide" id="slide-6">
+      <span class="slide-tag">How it's done</span>
+      <h2 class="slide-title">Every research project follows <em>the same journey.</em></h2>
+      <p class="slide-body">The details change from study to study, but the route stays the same.</p>
+      <div class="journey-row">
+      <div class="journey">
+        <svg viewBox="0 0 360 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The seven steps of research, with an arrow looping from the last step back to the first">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="#b8901f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+          <!-- spine -->
+          <line x1="40" y1="30" x2="40" y2="462" stroke="#cfe2d5" stroke-width="2"/>
+          <!-- loop back -->
+          <path d="M 296 462 H 332 V 30 H 298" fill="none" stroke="#e6c66a" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arr)"/>
+          <text x="346" y="246" font-family="DM Sans,sans-serif" font-size="13" font-weight="600" fill="#8a6a10" text-anchor="middle" transform="rotate(90 346 246)">Answers spark new questions</text>
+
+          <g font-family="DM Sans,sans-serif">
+            <circle cx="40" cy="30"  r="18" fill="#1f5c3f"/><text x="40" y="35"  font-size="14" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+            <text x="72" y="28"  font-size="16" font-weight="600" fill="#17291f">Spot a problem</text>
+            <text x="72" y="46"  font-size="13" fill="#5c6a61">What needs answering?</text>
+
+            <circle cx="40" cy="102" r="18" fill="#1f5c3f"/><text x="40" y="107" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+            <text x="72" y="100" font-size="16" font-weight="600" fill="#17291f">See what's known</text>
+            <text x="72" y="118" font-size="13" fill="#5c6a61">Read what others found</text>
+
+            <circle cx="40" cy="174" r="18" fill="#1f5c3f"/><text x="40" y="179" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+            <text x="72" y="172" font-size="16" font-weight="600" fill="#17291f">Set your aim</text>
+            <text x="72" y="190" font-size="13" fill="#5c6a61">Write clear objectives</text>
+
+            <circle cx="40" cy="246" r="18" fill="#1f5c3f"/><text x="40" y="251" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+            <text x="72" y="244" font-size="16" font-weight="600" fill="#17291f">Choose what to measure</text>
+            <text x="72" y="262" font-size="13" fill="#5c6a61">Pick your variables</text>
+
+            <circle cx="40" cy="318" r="18" fill="#1f5c3f"/><text x="40" y="323" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">5</text>
+            <text x="72" y="316" font-size="16" font-weight="600" fill="#17291f">Collect the data</text>
+            <text x="72" y="334" font-size="13" fill="#5c6a61">Choose who to ask, and how</text>
+
+            <circle cx="40" cy="390" r="18" fill="#1f5c3f"/><text x="40" y="395" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">6</text>
+            <text x="72" y="388" font-size="16" font-weight="600" fill="#17291f">Make sense of it</text>
+            <text x="72" y="406" font-size="13" fill="#5c6a61">Clean, check, analyse</text>
+
+            <circle cx="40" cy="462" r="18" fill="#b8901f"/><text x="40" y="467" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">7</text>
+            <text x="72" y="460" font-size="16" font-weight="600" fill="#17291f">Share it</text>
+            <text x="72" y="478" font-size="13" fill="#5c6a61">So others can check and use it</text>
+          </g>
+        </svg>
+      </div>
+      <div class="example">
+        <div class="example-label">Our example for the next seven steps</div>
+        <p>A pharmacist notices that some patients come back with the same infection a week later. She suspects they stopped taking their antibiotics too early. Is she right? Let's research it.</p>
+        <p class="note">This is a made-up example, used only to show the steps.</p>
+      </div>
+      </div>
+    </section>
+
+    <!-- 7 · STEP 1 -->
+    <section class="slide" id="slide-7">
+      <span class="slide-tag">Step 1 of 7 · Spot a problem</span>
+      <h2 class="slide-title">Start with a problem <em>worth solving.</em></h2>
+      <p class="slide-body">A research problem is a gap between what is happening and what should happen, where nobody yet has a clear answer.</p>
+      <h3 class="sub">Before you pick one, ask</h3>
+      <ul class="num-list">
+        <li><span class="num-circle">1</span><span class="num-text"><strong>Does it matter?</strong> Does it affect many people, or cause harm?</span></li>
+        <li><span class="num-circle">2</span><span class="num-text"><strong>Is it already answered?</strong> If so, read the answer instead.</span></li>
+        <li><span class="num-circle">3</span><span class="num-text"><strong>Can I actually do it?</strong> Think about time, money, and access to people.</span></li>
+        <li><span class="num-circle">4</span><span class="num-text"><strong>Is it ethical?</strong> Will anyone be put at risk?</span></li>
+        <li><span class="num-circle">5</span><span class="num-text"><strong>Will the answer be useful?</strong> Can someone act on it?</span></li>
+      </ul>
+      <h3 class="sub">In our example: from problem to title</h3>
+      <div class="chain">
+        <div class="chain-step"><div class="chain-label">Problem</div><div class="chain-text">Patients return with the same infection.</div></div>
+        <div class="chain-arrow"><span>&darr;</span></div>
+        <div class="chain-step"><div class="chain-label">Question</div><div class="chain-text">Do patients at our clinic finish their antibiotic course, and if not, why?</div></div>
+        <div class="chain-arrow"><span>&darr;</span></div>
+        <div class="chain-step final"><div class="chain-label">Title</div><div class="chain-text">Completion of antibiotic courses, and reasons for stopping early, among outpatients at a community clinic</div></div>
+      </div>
+      <div class="callout">A good title tells the reader <strong>what</strong>, <strong>who</strong> and <strong>where</strong>, in one line.</div>
+    </section>
+
+    <!-- 8 · STEP 2 -->
+    <section class="slide" id="slide-8">
+      <span class="slide-tag">Step 2 of 7 · See what's known</span>
+      <h2 class="slide-title">Find out what others <em>have already found.</em></h2>
+      <p class="slide-body">This is called a <strong>literature review</strong>: reading earlier studies on your topic. It stops you repeating old work, shows how others measured the same thing, and reveals what is still missing.</p>
+      <div class="cards two">
+        <div class="card green">
+          <div class="card-kicker">Primary source</div>
+          <p>The original study, written by the people who did it.</p>
+          <p><strong>e.g. a journal article reporting a survey</strong></p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">Secondary source</div>
+          <p>Someone summarising or discussing other people's studies.</p>
+          <p><strong>e.g. textbooks, review articles, news stories</strong></p>
+        </div>
+      </div>
+      <h3 class="sub">How to search</h3>
+      <ul class="num-list">
+        <li><span class="num-circle">1</span><span class="num-text"><strong>Pick keywords:</strong> antibiotic, adherence, completion, outpatient.</span></li>
+        <li><span class="num-circle">2</span><span class="num-text"><strong>Search trusted places:</strong> Google Scholar, PubMed, your library.</span></li>
+        <li><span class="num-circle">3</span><span class="num-text"><strong>Read the summary first</strong> (the abstract) and keep only relevant studies.</span></li>
+        <li><span class="num-circle">4</span><span class="num-text"><strong>Note what each found</strong>, and what it didn't look at.</span></li>
+        <li><span class="num-circle">5</span><span class="num-text"><strong>Save the full reference</strong> for every source you use.</span></li>
+      </ul>
+      <div class="example">
+        <div class="example-label">In our example</div>
+        <p>She finds studies from other countries, but few from clinics like hers, and almost none that asked patients <em>why</em> they stopped. That gap is what her study will fill.</p>
+      </div>
+      <div class="callout">A good review doesn't just list studies. It <strong>connects them</strong> and points to the gap your study fills.</div>
+    </section>
+
+    <!-- 9 · STEP 3 -->
+    <section class="slide" id="slide-9">
+      <span class="slide-tag">Step 3 of 7 · Set your aim</span>
+      <h2 class="slide-title">Decide exactly <em>what you want to find out.</em></h2>
+      <p class="slide-body">An <strong>objective</strong> is a clear statement of what your study will do. It keeps you focused and tells you what data to collect.</p>
+      <div class="example">
+        <div class="example-label">General objective: the big aim</div>
+        <p>To study how well outpatients at Clinic X complete their antibiotic course.</p>
+        <div class="example-label" style="margin-top:14px">Specific objectives: the measurable steps</div>
+        <p>1. To determine the proportion of patients who complete their course.</p>
+        <p>2. To identify the reasons patients give for stopping early.</p>
+        <p>3. To compare completion between younger and older patients.</p>
+      </div>
+      <div class="cards two">
+        <div class="card">
+          <div class="card-kicker">Weak</div>
+          <p>"To understand antibiotic use."</p>
+          <p>Understand what, exactly? How would you know you've done it?</p>
+        </div>
+        <div class="card green">
+          <div class="card-kicker">Strong</div>
+          <p>Starts with an action you can check:</p>
+          <p><strong>determine, identify, compare, measure, describe.</strong></p>
+        </div>
+      </div>
+      <div class="toggle-wrap">
+        <button class="toggle-btn" data-label="research-proposal">What goes into a research proposal? <span class="chev">+</span></button>
+        <div class="toggle-body">
+          <p class="slide-body" style="font-size:15px">A proposal is your plan, written down before you start. It usually covers:</p>
+          <ul class="check-list">
+            <li>Title</li>
+            <li>Background and problem statement</li>
+            <li>Literature review</li>
+            <li>Objectives</li>
+            <li>Methodology: who, what and how</li>
+            <li>Timeline and budget</li>
+            <li>References</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · STEP 4 -->
+    <section class="slide" id="slide-10">
+      <span class="slide-tag">Step 4 of 7 · Choose what to measure</span>
+      <h2 class="slide-title">Name the things <em>you will measure.</em></h2>
+      <p class="slide-body">A <strong>variable</strong> is anything that can change from one person to another, like age, a test score, or whether someone finished their medicine.</p>
+      <div class="var-diagram">
+        <div class="var-box iv">
+          <div class="var-head">Independent</div>
+          <div class="var-def">The factors you think make a difference</div>
+          <div class="var-eg">Age<br>Understanding of instructions<br>Side effects</div>
+        </div>
+        <div class="var-arrow" aria-hidden="true">&rarr;</div>
+        <div class="var-box dv">
+          <div class="var-head">Dependent</div>
+          <div class="var-def">The outcome you measure</div>
+          <div class="var-eg">Finished the course?<br>(yes or no)</div>
+        </div>
+      </div>
+      <h3 class="sub">Two kinds of variable</h3>
+      <div class="cards two">
+        <div class="card">
+          <div class="card-kicker">Categorical</div>
+          <p>Fits into groups. <strong>Yes or no, male or female, age group.</strong></p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">Numerical</div>
+          <p>Is a number you can count or measure. <strong>Age in years, doses missed.</strong></p>
+        </div>
+      </div>
+      <div class="callout"><strong>Watch for hidden factors.</strong> If older patients finish their course more often, is it their age, or is it that they see the pharmacist more often? A factor that affects both sides can fool you. Researchers call it a confounding variable.</div>
+    </section>
+
+    <!-- 11 · STEP 5 -->
+    <section class="slide" id="slide-11">
+      <span class="slide-tag">Step 5 of 7 · Collect the data</span>
+      <h2 class="slide-title">Choose who to ask, <em>and how to ask them.</em></h2>
+      <p class="slide-body">Data can be <strong>primary</strong> (you collect it yourself) or <strong>secondary</strong> (it already exists, like hospital records or national surveys).</p>
+      <div class="pill-row">
+        <span class="pill">Questionnaire</span>
+        <span class="pill">Interview</span>
+        <span class="pill">Observation</span>
+        <span class="pill">Records review</span>
+        <span class="pill">Measurements</span>
+      </div>
+      <h3 class="sub">Why you don't need to ask everyone</h3>
+      <div class="callout">You don't drink the whole pot to know if soup needs salt. You <strong>stir it well</strong> and taste a spoonful. The pot is the <strong>population</strong>. The spoonful is your <strong>sample</strong>. Stirring is choosing people fairly.</div>
+      <div class="cards two">
+        <div class="card green">
+          <div class="card-kicker">Probability sampling</div>
+          <p>Everyone has a known chance of being picked, for example a random draw from the patient list.</p>
+          <p><strong>Best for saying something about everyone.</strong></p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">Non-probability sampling</div>
+          <p>People are picked by convenience or judgement, for example whoever walks in today.</p>
+          <p><strong>Easier, but may not represent everyone.</strong></p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="example-label">The trap in our example</div>
+        <p>If she only surveys patients who come back to the pharmacy, she misses the ones who stopped early and never returned. Her results would look better than reality. This is called <strong>sampling bias</strong>.</p>
+        <p><strong>The fix:</strong> pick patients at random from the prescription records and contact each one.</p>
+      </div>
+    </section>
+
+    <!-- 12 · STEP 6 -->
+    <section class="slide" id="slide-12">
+      <span class="slide-tag">Step 6 of 7 · Make sense of it</span>
+      <h2 class="slide-title">Clean up the data, <em>then find the story.</em></h2>
+      <ul class="num-list">
+        <li><span class="num-circle">1</span><span class="num-text"><strong>Sort it.</strong> Put every answer into one table, label it clearly, and give each person a code instead of a name.</span></li>
+        <li><span class="num-circle">2</span><span class="num-text"><strong>Check it.</strong> Look for missing answers, impossible values (an age of 250), and duplicates.</span></li>
+        <li><span class="num-circle">3</span><span class="num-text"><strong>Spot answers you can't trust.</strong> Some forms are filled in carelessly.</span></li>
+        <li><span class="num-circle">4</span><span class="num-text"><strong>Analyse it.</strong> For numbers: count, work out percentages, compare groups. For words: read through and group similar answers into themes.</span></li>
+      </ul>
+      <h3 class="sub">Answers that need a second look</h3>
+      <div class="cards two">
+        <div class="card"><div class="card-kicker">Same answer every time</div><p>Ticks "agree" for every single question.</p></div>
+        <div class="card"><div class="card-kicker">Too fast</div><p>Finishes a 15-minute form in one minute.</p></div>
+        <div class="card"><div class="card-kicker">Mostly blank</div><p>Skips most of the questions.</p></div>
+        <div class="card"><div class="card-kicker">Contradicts itself</div><p>"Never missed a dose" and "missed three doses."</p></div>
+      </div>
+      <div class="example">
+        <div class="example-label">In our example</div>
+        <p>When she groups the reasons patients gave, three themes stand out: <strong>"I felt better already"</strong>, <strong>"side effects"</strong> and <strong>"I forgot."</strong></p>
+        <p class="note">Made-up result, for illustration.</p>
+      </div>
+    </section>
+
+    <!-- 13 · STEP 7 -->
+    <section class="slide" id="slide-13">
+      <span class="slide-tag">Step 7 of 7 · Share it</span>
+      <h2 class="slide-title">Share it, so others can <em>check it and use it.</em></h2>
+      <p class="slide-body">Research that stays in a drawer helps nobody. Sharing lets others check your method, use your findings, and build on them.</p>
+      <h3 class="sub">What a research presentation covers</h3>
+      <ul class="num-list">
+        <li><span class="num-circle">1</span><span class="num-text"><strong>Title</strong>: what, who and where.</span></li>
+        <li><span class="num-circle">2</span><span class="num-text"><strong>Introduction</strong>: the problem and why it matters.</span></li>
+        <li><span class="num-circle">3</span><span class="num-text"><strong>Literature review</strong>: what is already known, and the gap.</span></li>
+        <li><span class="num-circle">4</span><span class="num-text"><strong>Methodology</strong>: who you asked, what you measured, and how.</span></li>
+        <li><span class="num-circle">5</span><span class="num-text"><strong>Citations and references</strong>: credit for every source you used.</span></li>
+        <li><span class="num-circle">6</span><span class="num-text"><strong>Appendix</strong>: extras like your questionnaire and consent form.</span></li>
+      </ul>
+      <div class="callout"><strong>The end is also a beginning.</strong> Her finding raises a new question: would a simple reminder text help patients finish their antibiotics? That's the next study. Research is a cycle.</div>
+    </section>
+
+    <!-- 14 · SUMMARY + SOURCES -->
+    <section class="slide" id="slide-14">
+      <span class="slide-tag gold">Summary</span>
+      <h2 class="slide-title">The whole journey, <em>in one breath.</em></h2>
+      <div class="conc">
+        <div class="conc-card"><span class="conc-n">01</span><span class="conc-text"><strong>Research is an organised, checkable way</strong> of answering questions.</span></div>
+        <div class="conc-card"><span class="conc-n">02</span><span class="conc-text">We do it to <strong>solve problems, test what works, and make better decisions.</strong></span></div>
+        <div class="conc-card"><span class="conc-n">03</span><span class="conc-text"><strong>Quantitative counts; qualitative explores.</strong> Many studies use both.</span></div>
+        <div class="conc-card"><span class="conc-n">04</span><span class="conc-text">Seven steps: <strong>problem, what's known, aim, what to measure, collect, analyse, share.</strong></span></div>
+        <div class="conc-card"><span class="conc-n">05</span><span class="conc-text"><strong>Fair sampling and honest reporting</strong> are what make results worth trusting.</span></div>
+      </div>
+      <div class="toolkit">
+        <div class="card-kicker" style="color:var(--green)">Your turn</div>
+        <div class="toolkit-title">Research Builder Toolkit</div>
+        <p>A free spreadsheet that walks you through the same seven steps for your own project, from problem to presentation.</p>
+        <a class="toolkit-btn" href="https://kpjucedumy-my.sharepoint.com/:x:/g/personal/ucn_auf_kpju_edu_my/IQCe2GC-KseHQIkI9bkYtBz6AVzBAqZzHRGaaYOkIb51MSo?e=SXxzrl" target="_blank" rel="noopener" data-umami-event="toolkit-open">Open the toolkit &rarr;</a>
+        <p class="toolkit-how"><strong>To make it yours:</strong> once it opens, go to <strong>File &rarr; Create a Copy &rarr; Download a Copy</strong>, then open it in Excel or upload it to Google Sheets.</p>
+      </div>
+      <div class="connect">
+        <div class="connect-title">Stay in touch</div>
+        <p class="connect-sub">Questions or feedback? Email <a href="mailto:the.aufthority@gmail.com" data-umami-event="email-click">the.aufthority@gmail.com</a>, or follow along for more plain-language explainers.</p>
+        <div class="connect-row">
+          <a class="connect-link" href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener" data-umami-event="social-linkedin">LinkedIn</a>
+          <a class="connect-link" href="https://aufthority.substack.com/" target="_blank" rel="noopener" data-umami-event="social-substack">Substack</a>
+          <a class="connect-link" href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener" data-umami-event="social-instagram">Instagram <span>@aufthority</span></a>
+          <a class="connect-link" href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener" data-umami-event="social-tiktok">TikTok <span>@aufthority</span></a>
+          <a class="connect-link" href="https://www.threads.com/@aufthority" target="_blank" rel="noopener" data-umami-event="social-threads">Threads <span>@aufthority</span></a>
+        </div>
+      </div>
+      <div class="source-box">
+        <h4>About this page</h4>
+        <p>A plain-language companion to PHFR 4312 Fundamentals of Research, Diploma in Pharmacy, KPJ Healthcare University. The antibiotic example is fictional and contains no real data.</p>
+        <h4 style="margin-top:16px">Further reading (from the course reading list)</h4>
+        <p>Sim J, Wright C. <em>Research in Health Care: Concepts, Designs and Methods.</em> Cheltenham: Nelson Thornes; 2002. <a href="https://search.worldcat.org/search?q=Research+in+Health+Care+Concepts+Designs+and+Methods+Sim+Wright" target="_blank" rel="noopener">Find in a library</a></p>
+        <p>Creswell JW. <em>Research Design: Qualitative, Quantitative, and Mixed Methods Approaches.</em> 3rd ed. London: SAGE; 2009. <a href="https://search.worldcat.org/search?q=Research+Design+Qualitative+Quantitative+Mixed+Methods+Creswell+3rd" target="_blank" rel="noopener">Find in a library</a></p>
+        <p>Walsh M. <em>Research Made Real: A Guide for Students.</em> Cheltenham: Nelson Thornes; 2001. <a href="https://search.worldcat.org/search?q=Research+Made+Real+A+Guide+for+Students+Walsh" target="_blank" rel="noopener">Find in a library</a></p>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="nav-wrap">
+    <button id="btn-back" class="nav-btn" disabled data-umami-event="nav-back">&larr; Back</button>
+    <button id="btn-next" class="nav-btn" data-umami-event="nav-next">Next &rarr;</button>
+  </div>
+  <footer>
+    <p class="footer-line">Ask carefully. Answer honestly.</p>
+    <p class="footer-credit">Made by <a href="https://www.aufthority.com/" target="_blank" rel="noopener">Aufthority</a></p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const TOTAL = 14;
+  let current = 1;
+
+  const slides   = document.querySelectorAll('.slide');
+  const btnBack  = document.getElementById('btn-back');
+  const btnNext  = document.getElementById('btn-next');
+  const progFill = document.getElementById('progress-fill');
+  const progLbl  = document.getElementById('progress-label');
+
+  function show(n) {
+    slides.forEach((s, i) => s.classList.toggle('active', i + 1 === n));
+    progFill.style.width = ((n / TOTAL) * 100) + '%';
+    progLbl.textContent  = n + ' / ' + TOTAL;
+    btnBack.disabled     = n === 1;
+    btnNext.textContent  = n === TOTAL ? 'Done' : 'Next →';
+    btnNext.setAttribute('data-umami-event', n === TOTAL ? 'carousel-selesai' : 'nav-next');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.umami) umami.track('slide-view', { slide: n });
+  }
+
+  /* NAV BUTTONS ONLY — no swipe, no keyboard */
+  btnNext.addEventListener('click', () => {
+    if (current < TOTAL) { current++; show(current); }
+  });
+  btnBack.addEventListener('click', () => {
+    if (current > 1) { current--; show(current); }
+  });
+
+  /* Try-it reveals */
+  document.querySelectorAll('.q-btn').forEach(b => {
+    b.addEventListener('click', () => b.closest('.q').classList.add('open'));
+  });
+
+  /* Toggles */
+  document.querySelectorAll('.toggle-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      const wrap = b.closest('.toggle-wrap');
+      wrap.classList.toggle('open');
+      if (window.umami) umami.track('toggle', { label: b.dataset.label });
+    });
+  });
+
+  show(1);
+})();
+</script>
+</body>
+</html>
