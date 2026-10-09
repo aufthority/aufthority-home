@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Portfolio — Aufthority</title>
+  <meta name="description" content="Auf Ali's work: evidence-based digital health and education tools, explainers, and science communication, built and shipped solo since November 2024." />
+  <meta property="og:type"         content="website" />
+  <meta property="og:site_name"    content="Aufthority" />
+  <meta property="og:title"        content="Auf Ali — Portfolio" />
+  <meta property="og:description"  content="Evidence, turned into things people use." />
+  <meta property="og:url"          content="https://www.aufthority.com/portfolio/" />
+  <meta property="og:image"        content="https://www.aufthority.com/preview_v2.png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"       content="en_US" />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@theaufthority" />
+  <meta name="twitter:title"       content="Auf Ali — Portfolio" />
+  <meta name="twitter:description" content="Evidence, turned into things people use." />
+  <meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png" />
+  <link rel="icon" type="image/png" href="/favicon2.png" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Tokens (same as homepage) ── */
+    :root {
+      --yellow:   #e6e51e;
+      --blue:     #466cf3;
+      --carbon:   #000000;
+      --white:    #ffffff;
+      --canvas:   #f2f2f2;
+      --hairline: #e6e6e6;
+      --ink-2:    #444444;
+      --ink-3:    #777777;
+
+      --font-head: 'Poppins', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-pill: 3000px;
+      --radius-card: 32px;
+      --radius-card-sm: 20px;
+      --radius-nav:  28px;
+      --shadow-nav: rgba(0,0,0,0.2) 0px 10px 10px -5px;
+
+      --page-w: 1080px;
+      --ease: cubic-bezier(.2,.7,.2,1);
+    }
+
+    /* ── Base (no overflow:hidden on html/body) ── */
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--canvas);
+      color: var(--carbon);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, #c8c8c8 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Nav ── */
+    .nav-wrap {
+      position: sticky;
+      top: 12px;
+      z-index: 100;
+      max-width: var(--page-w);
+      margin: 12px auto 0;
+      padding: 12px 28px;
+    }
+    nav {
+      background: var(--white);
+      border-radius: var(--radius-nav);
+      box-shadow: var(--shadow-nav);
+      padding: 10px 10px 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-mark { width: 28px; height: 28px; border-radius: 7px; overflow: hidden; flex-shrink: 0; }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .nav-links a:hover { opacity: 0.55; }
+
+    /* ── Buttons ── */
+    .btn-pair { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+    .btn:hover { opacity: 0.8; }
+    .btn-yellow { background: var(--yellow); color: var(--carbon); padding: 14px 30px; }
+    .btn-black  { background: var(--carbon); color: var(--white); padding: 10px 22px; }
+    .btn-line   { border: 1.5px solid var(--carbon); padding: 8px 18px; font-size: 0.8rem; }
+
+    /* ── Hero ── */
+    .hero { padding: 96px 0 56px; max-width: 820px; }
+    .eyebrow {
+      display: inline-block;
+      background: var(--yellow);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      padding: 5px 14px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(2.6rem, 6.4vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      margin-bottom: 26px;
+    }
+    .hero h1 .accent { color: var(--blue); }
+    .hero-body { font-size: 1.08rem; line-height: 1.7; color: var(--ink-2); max-width: 600px; margin-bottom: 38px; }
+
+    /* ── Marquee ── */
+    .marquee {
+      position: relative;
+      z-index: 1;
+      padding: 18px 0 8px;
+    }
+    .marquee-viewport {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .marquee-label {
+      max-width: var(--page-w);
+      margin: 0 auto 14px;
+      padding: 0 28px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .marquee-track { display: flex; width: max-content; animation: marquee 48s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-group { display: flex; gap: 12px; padding-right: 12px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border-radius: var(--radius-pill);
+      padding: 10px 20px 10px 12px;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .chip-dot { width: 22px; height: 22px; border-radius: 7px; flex-shrink: 0; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ── Sections ── */
+    .section { padding: 96px 0 24px; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+    .section-intro { color: var(--ink-2); max-width: 620px; margin-bottom: 40px; }
+
+    /* ── Audiences ── */
+    .aud-list { list-style: none; }
+    .aud {
+      display: grid;
+      grid-template-columns: 56px 1fr 1.4fr;
+      gap: 24px;
+      align-items: baseline;
+      padding: 28px 0;
+      border-top: 1.5px solid var(--carbon);
+    }
+    .aud:last-child { border-bottom: 1.5px solid var(--carbon); }
+    .aud-num { font-family: var(--font-head); font-weight: 700; font-size: 0.8rem; color: #999; }
+    .aud-name { font-family: var(--font-head); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.2; }
+    .aud-desc { color: var(--ink-2); font-size: 0.95rem; }
+    .aud-desc strong { color: var(--carbon); font-weight: 600; }
+
+    /* ── Flagship case studies ── */
+    .case {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 48px;
+      align-items: center;
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 48px;
+      margin-bottom: 20px;
+    }
+    .case:nth-of-type(even) .case-media { order: -1; }
+    .case-tag {
+      display: inline-block;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .case h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+    .case-lede { color: var(--ink-2); margin-bottom: 22px; }
+    .case-rows { list-style: none; margin-bottom: 24px; }
+    .case-rows li {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 14px;
+      padding: 11px 0;
+      border-top: 1px solid var(--hairline);
+      font-size: 0.88rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+    .case-rows b {
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--carbon);
+      padding-top: 3px;
+    }
+    .case-stats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
+    .stat-pill {
+      background: var(--canvas);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      color: var(--ink-2);
+    }
+    .stat-pill strong { font-family: var(--font-head); color: var(--carbon); font-weight: 700; margin-right: 4px; }
+    .case-note { font-size: 0.74rem; color: var(--ink-3); margin: -14px 0 24px; }
+
+    /* Media slot — swap the placeholder for a <video> when recordings exist */
+    .case-media {
+      position: relative;
+      aspect-ratio: 16 / 11;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--carbon);
+    }
+    .case-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .media-ph {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 26px;
+      color: var(--white);
+      background-image: radial-gradient(circle, rgba(255,255,255,0.16) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+    .media-ph::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 30%, rgba(230,229,30,0.18) 50%, transparent 70%);
+      background-size: 250% 100%;
+      animation: sheen 3.6s var(--ease) infinite;
+    }
+    @keyframes sheen { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+    .media-ph span { position: relative; z-index: 1; }
+    .media-ph .ph-name { font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.03em; }
+    .media-ph .ph-hint { font-size: 0.74rem; opacity: 0.6; margin-top: 4px; }
+    .media-ph .ph-badge {
+      position: absolute;
+      top: 22px; left: 22px;
+      background: var(--yellow);
+      color: var(--carbon);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+    }
+
+    /* ── Second-tier grid ── */
+    .sub-head {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      margin: 56px 0 16px;
+    }
+    .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+    .tool {
+      background: var(--white);
+      border-radius: var(--radius-card-sm);
+      padding: 22px 24px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: box-shadow 0.2s, transform 0.2s var(--ease);
+    }
+    .tool:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-3px); }
+    .tool-name { font-family: var(--font-head); font-weight: 600; font-size: 0.98rem; letter-spacing: -0.01em; display: flex; justify-content: space-between; gap: 10px; }
+    .tool-name::after { content: '\2192'; color: #bbb; transition: color 0.2s, transform 0.2s; }
+    .tool:hover .tool-name::after { color: var(--carbon); transform: translateX(3px); }
+    .tool-desc { font-size: 0.82rem; color: #555; line-height: 1.5; flex: 1; }
+    .tool-meta { font-size: 0.72rem; font-weight: 600; color: #888; margin-top: 4px; }
+
+    /* ── Interactive labs ── */
+    .labs {
+      background: var(--carbon);
+      color: var(--white);
+      border-radius: var(--radius-card);
+      padding: 48px;
+      margin-top: 20px;
+    }
+    .labs-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+    .labs-head .case-tag { color: rgba(255,255,255,0.55); }
+    .labs-head h3 { font-family: var(--font-head); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem); letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 10px; }
+    .labs-head p { color: rgba(255,255,255,0.72); max-width: 560px; font-size: 0.95rem; }
+    .levels { display: flex; gap: 6px; flex-wrap: wrap; }
+    .level { border: 1px solid rgba(255,255,255,0.25); border-radius: var(--radius-pill); padding: 4px 12px; font-size: 0.72rem; color: rgba(255,255,255,0.8); white-space: nowrap; }
+    .level b { color: var(--yellow); font-weight: 600; }
+    .lab-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .lab {
+      background: #141414;
+      border: 1px solid #262626;
+      border-radius: var(--radius-card-sm);
+      padding: 20px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color 0.2s, transform 0.2s var(--ease);
+    }
+    .lab:hover { border-color: var(--yellow); transform: translateY(-3px); }
+    .lab svg { width: 100%; height: auto; aspect-ratio: 12 / 7; margin-bottom: 8px; background: #0b0b0b; border-radius: 12px; }
+    .lab-name { font-family: var(--font-head); font-weight: 600; font-size: 0.98rem; letter-spacing: -0.01em; display: flex; justify-content: space-between; gap: 8px; }
+    .lab-name::after { content: '\2192'; color: #555; transition: color 0.2s, transform 0.2s; }
+    .lab:hover .lab-name::after { color: var(--yellow); transform: translateX(3px); }
+    .lab-desc { font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .labs-foot { font-size: 0.74rem; color: rgba(255,255,255,0.45); margin-top: 22px; }
+    /* lab motifs */
+    .curve { stroke-dasharray: 160; stroke-dashoffset: 0; }
+    .motion .labs .curve { stroke-dashoffset: 160; transition: stroke-dashoffset 1.8s var(--ease) 0.3s; }
+    .motion .labs.in .curve { stroke-dashoffset: 0; }
+    .spin { transform-origin: 60px 35px; animation: spin 9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .drop { animation: drop 1.8s ease-in infinite; }
+    @keyframes drop { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 80% { transform: translateY(22px); opacity: 1; } 100% { transform: translateY(24px); opacity: 0; } }
+    .cell { animation: pulse 3.2s ease-in-out infinite; animation-delay: var(--t); }
+    @keyframes pulse { 0%, 100% { opacity: var(--o); } 50% { opacity: 1; } }
+
+    /* ── Publications (book mockups) ── */
+    .books { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .book-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .book { perspective: 1200px; }
+    .book-3d {
+      position: relative;
+      width: 160px;
+      aspect-ratio: 2 / 3;
+      transform: rotateY(-22deg);
+      transform-origin: left center;
+      transition: transform 0.9s var(--ease);
+    }
+    .book-card:hover .book-3d { transform: rotateY(-6deg); }
+    .book-cover {
+      position: absolute;
+      inset: 0;
+      border-radius: 3px 8px 8px 3px;
+      overflow: hidden;
+      padding: 16px 14px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--white);
+      box-shadow: 3px 2px 0 #f4f1e8, 6px 4px 0 #e2ded2, 22px 26px 34px -14px rgba(0,0,0,0.5);
+    }
+    .book-cover::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 9px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(255,255,255,0.12) 60%, rgba(0,0,0,0.15));
+    }
+    .book-cover svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .book-cover > span { position: relative; z-index: 1; }
+    .bc-kicker { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.75; }
+    .bc-title { font-family: var(--font-head); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+    .bc-sub { display: block; font-family: var(--font-body); font-weight: 400; font-size: 0.6rem; letter-spacing: 0.02em; margin-top: 6px; opacity: 0.85; }
+    .bc-author { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-sea  { background: linear-gradient(180deg, #13587d 0%, #0a3550 48%, #031621 100%); }
+    .cover-sea .bc-title { font-size: 0.92rem; }
+    .cover-bima { background: #123528; color: #f2e7c9; }
+    .cover-bima .bc-title { font-size: 1.35rem; color: #e3c675; }
+    .book-info .eng-top { margin-bottom: 10px; }
+    .book-info h3 { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 4px; }
+    .book-where { font-size: 0.8rem; color: var(--ink-3); margin-bottom: 10px; }
+    .book-where em { font-style: italic; }
+    .book-info p.book-desc { font-size: 0.86rem; color: #555; line-height: 1.6; }
+    .cover-note { font-size: 0.7rem; color: var(--ink-3); margin-top: 14px; }
+
+    /* ── Speaking ── */
+    .speak-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 20px; align-items: start; }
+    .photo-main { border-radius: var(--radius-card); overflow: hidden; background: #ddd; }
+    .photo-main img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 30%; }
+    .photo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+    .photo-row figure { border-radius: var(--radius-card-sm); overflow: hidden; background: #ddd; position: relative; }
+    .photo-row img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
+    figcaption {
+      position: absolute;
+      left: 10px; bottom: 10px;
+      background: rgba(255,255,255,0.92);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+    .eng-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .eng {
+      background: var(--white);
+      border-radius: var(--radius-card-sm);
+      padding: 24px 26px;
+    }
+    .eng-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+    .eng-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      padding: 2px 9px;
+      line-height: 1.8;
+    }
+    .eng-badge.award    { background: var(--yellow); }
+    .eng-badge.upcoming { background: #eef2ff; color: #2f4fc9; }
+    .eng-badge.ongoing  { background: #e8f5ee; color: #2d6a4f; }
+    .eng-when { font-size: 0.74rem; color: #888; font-weight: 600; }
+    .eng h3 { font-family: var(--font-head); font-weight: 700; font-size: 1.08rem; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 6px; }
+    .eng p { font-size: 0.86rem; color: #555; line-height: 1.55; }
+    .eng p em { font-style: italic; }
+    .eng-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+
+    /* ── Numbers band ── */
+    .numbers {
+      background: var(--carbon);
+      color: var(--white);
+      border-radius: var(--radius-card);
+      padding: 56px 48px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 28px;
+    }
+    .num-val {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--yellow);
+      font-variant-numeric: tabular-nums;
+    }
+    .num-label { font-size: 0.8rem; opacity: 0.72; margin-top: 10px; line-height: 1.45; }
+    .numbers-note { grid-column: 1 / -1; font-size: 0.72rem; opacity: 0.5; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; }
+
+    /* ── Contact ── */
+    .cta {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 64px 48px;
+      text-align: center;
+    }
+    .cta h2 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(2rem, 4.4vw, 3.2rem);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+    .cta p { color: var(--ink-2); max-width: 520px; margin: 0 auto 30px; }
+    .cta .btn-pair { justify-content: center; }
+
+    /* ── Footer ── */
+    footer { padding: 56px 0 56px; position: relative; z-index: 1; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .socials { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
+    .socials a { font-size: 0.78rem; font-weight: 500; color: #777; text-decoration: none; transition: color 0.15s; }
+    .socials a:hover { color: var(--carbon); }
+    .footer-copy { font-size: 0.78rem; color: #aaa; }
+
+    /* ── Scroll reveal (progressive enhancement) ──
+       Content is only hidden when JS has run AND the user allows motion,
+       so crawlers, no-JS and reduced-motion users always see everything. */
+    .motion .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+      transition-delay: calc(var(--d, 0) * 90ms);
+    }
+    .motion .reveal.in { opacity: 1; transform: none; }
+    .motion .reveal-img img { transform: scale(1.08); transition: transform 1.4s var(--ease); }
+    .motion .reveal-img.in img { transform: scale(1); }
+    .motion .book-card .book-3d { transform: rotateY(-70deg); transition-duration: 1.3s; }
+    .motion .book-card.in .book-3d { transform: rotateY(-22deg); }
+    .motion .book-card.in:hover .book-3d { transform: rotateY(-6deg); transition-duration: 0.9s; }
+
+    /* Hero headline: word-by-word rise */
+    .motion .hero h1 .w { display: inline-block; opacity: 0; transform: translateY(0.45em); animation: wordUp 0.9s var(--ease) forwards; animation-delay: calc(var(--i) * 70ms + 120ms); }
+    @keyframes wordUp { to { opacity: 1; transform: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
+      .marquee-group[aria-hidden="true"] { display: none; }
+      .marquee-group { flex-wrap: wrap; padding: 0 28px; }
+      .marquee-viewport { -webkit-mask-image: none; mask-image: none; }
+      .media-ph::after { animation: none; }
+      .tool, .tool-name::after, .book-3d, .lab, .lab-name::after { transition: none; }
+      .spin, .drop, .cell { animation: none; }
+      .cell { opacity: var(--o); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .case { grid-template-columns: 1fr; gap: 28px; padding: 32px 26px; }
+      .case:nth-of-type(even) .case-media { order: 0; }
+      .speak-grid { grid-template-columns: 1fr; }
+      .books { grid-template-columns: 1fr; }
+      .lab-grid { grid-template-columns: repeat(2, 1fr); }
+      .labs { padding: 32px 24px; }
+      .numbers { grid-template-columns: repeat(2, 1fr); padding: 40px 28px; }
+      .aud { grid-template-columns: 40px 1fr; }
+      .aud-desc { grid-column: 2; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 64px 0 40px; }
+      .section { padding: 72px 0 16px; }
+      .container, .nav-wrap, .marquee-label { padding-left: 16px; padding-right: 16px; }
+      .case-rows li { grid-template-columns: 1fr; gap: 2px; }
+      .cta { padding: 44px 24px; }
+      .book-card { grid-template-columns: 1fr; padding: 32px 24px; justify-items: start; }
+      .book { padding-left: 8px; }
+      .lab-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <div class="nav-wrap">
+    <nav>
+      <a href="https://www.aufthority.com/" class="logo" data-umami-event="Portfolio nav - Logo">
+        <span class="logo-mark"><img src="/favicon2.png" alt="Aufthority" /></span>
+        Aufthority
+      </a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#numbers">Numbers</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-black" data-umami-event="Portfolio nav - Contact">Get in touch</a>
+    </nav>
+  </div>
+
+  <main>
+    <div class="container">
+
+      <!-- ── Hero ── -->
+      <header class="hero">
+        <p class="eyebrow">Portfolio · Auf Ali</p>
+        <h1>Evidence, turned into things people <span class="accent">actually use.</span></h1>
+        <p class="hero-body">
+          I'm a lecturer with a background in pharmaceutical quality control, and I build. Since November 2024 I've shipped
+          10+ evidence-based tools for the Malaysian public, students and lecturers, plus explainers,
+          essays, a forthcoming book and talks. I use AI tools to design and ship them solo. The products themselves
+          are deterministic and evidence-grounded, so every output can be traced and checked.
+        </p>
+        <div class="btn-pair">
+          <a href="#work" class="btn btn-yellow" data-umami-event="Portfolio hero - See the work">See the work</a>
+          <a href="https://www.linkedin.com/in/aufbinali/" class="btn btn-black" target="_blank" rel="noopener" data-umami-event="Portfolio hero - LinkedIn">LinkedIn</a>
+        </div>
+      </header>
+    </div>
+
+    <!-- ── Marquee: everything shipped ── -->
+    <section class="marquee" aria-label="Tools and explainers shipped">
+      <p class="marquee-label">Shipped solo since November 2024</p>
+      <div class="marquee-viewport"><div class="marquee-track">
+        <div class="marquee-group">
+          <span class="chip"><span class="chip-dot" style="background:#e6e51e"></span>Kompas Semester</span>
+          <span class="chip"><span class="chip-dot" style="background:#000000"></span>Interactive Chemistry Labs</span>
+          <span class="chip"><span class="chip-dot" style="background:#e8f5ee"></span>CerminDiri</span>
+          <span class="chip"><span class="chip-dot" style="background:#fff4e6"></span>MakanLah</span>
+          <span class="chip"><span class="chip-dot" style="background:#ede7ff"></span>NeuroHabit</span>
+          <span class="chip"><span class="chip-dot" style="background:#2d6a4f"></span>NafasLega</span>
+          <span class="chip"><span class="chip-dot" style="background:#eef2ff"></span>MyTDEE</span>
+          <span class="chip"><span class="chip-dot" style="background:#fef3e2"></span>Why the Belly?</span>
+          <span class="chip"><span class="chip-dot" style="background:#e8f0fe"></span>Energy Audit</span>
+          <span class="chip"><span class="chip-dot" style="background:#f0eaff"></span>RancangDiri</span>
+          <span class="chip"><span class="chip-dot" style="background:#fff0f0"></span>KanserCheck</span>
+          <span class="chip"><span class="chip-dot" style="background:#466cf3"></span>Research, Simply Explained</span>
+          <span class="chip"><span class="chip-dot" style="background:#466cf3"></span>Literature Reviews, Simply Explained</span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span class="chip"><span class="chip-dot" style="background:#e6e51e"></span>Kompas Semester</span>
+          <span class="chip"><span class="chip-dot" style="background:#000000"></span>Interactive Chemistry Labs</span>
+          <span class="chip"><span class="chip-dot" style="background:#e8f5ee"></span>CerminDiri</span>
+          <span class="chip"><span class="chip-dot" style="background:#fff4e6"></span>MakanLah</span>
+          <span class="chip"><span class="chip-dot" style="background:#ede7ff"></span>NeuroHabit</span>
+          <span class="chip"><span class="chip-dot" style="background:#2d6a4f"></span>NafasLega</span>
+          <span class="chip"><span class="chip-dot" style="background:#eef2ff"></span>MyTDEE</span>
+          <span class="chip"><span class="chip-dot" style="background:#fef3e2"></span>Why the Belly?</span>
+          <span class="chip"><span class="chip-dot" style="background:#e8f0fe"></span>Energy Audit</span>
+          <span class="chip"><span class="chip-dot" style="background:#f0eaff"></span>RancangDiri</span>
+          <span class="chip"><span class="chip-dot" style="background:#fff0f0"></span>KanserCheck</span>
+          <span class="chip"><span class="chip-dot" style="background:#466cf3"></span>Research, Simply Explained</span>
+          <span class="chip"><span class="chip-dot" style="background:#466cf3"></span>Literature Reviews, Simply Explained</span>
+        </div>
+      </div></div>
+    </section>
+
+    <div class="container">
+
+      <!-- ── Who I build for ── -->
+      <section class="section" id="audiences">
+        <p class="section-label reveal">Who I build for</p>
+        <h2 class="section-title reveal">Three audiences, one method.</h2>
+        <p class="section-intro reveal">Find the best available evidence, then turn it into the format each reader can act on: a tool, an explainer, or a talk.</p>
+        <ol class="aud-list">
+          <li class="aud reveal">
+            <span class="aud-num">01</span>
+            <span class="aud-name">The Malaysian public</span>
+            <span class="aud-desc">Bilingual tools and carousels on metabolic health, nutrition, energy and cancer risk. <strong>CerminDiri, MakanLah, MyTDEE, KanserCheck</strong> and ten carousels.</span>
+          </li>
+          <li class="aud reveal" style="--d:1">
+            <span class="aud-num">02</span>
+            <span class="aud-name">Students</span>
+            <span class="aud-desc">Weekly practice, interactive chemistry labs, and plain-language research-method explainers. <strong>Kompas Semester</strong> and the <strong>Simply Explained</strong> series.</span>
+          </li>
+          <li class="aud reveal" style="--d:2">
+            <span class="aud-num">03</span>
+            <span class="aud-name">Lecturers</span>
+            <span class="aud-desc">An early view of who is keeping up and who has gone quiet, while there is still time to help. <strong>Kompas Semester's</strong> lecturer view.</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ── Flagship work ── -->
+      <section class="section" id="work">
+        <p class="section-label reveal">Selected work</p>
+        <h2 class="section-title reveal">Four case studies.</h2>
+        <p class="section-intro reveal">Each one shows a different part of the job: running a full product loop, working with a clinical stakeholder, learning from reach, and designing for behaviour change.</p>
+
+        <!-- Kompas Semester -->
+        <article class="case reveal">
+          <div class="case-text">
+            <span class="case-tag">EdTech · PWA · Supabase</span>
+            <h3>Kompas Semester</h3>
+            <p class="case-lede">A course companion that makes steady study visible to students and their lecturer, alongside the official LMS.</p>
+            <ul class="case-rows">
+              <li><b>Problem</b>My own results showed students clearing coursework without the mastery that holds up in the final exam, and large cohorts hid who was quietly falling behind.</li>
+              <li><b>Built</b>Weekly practice quizzes, typed notes, guided study prompts and five interactive chemistry labs, scored in Postgres views with row-level security on every table, plus bilingual nudge emails.</li>
+              <li><b>Iterated</b>Reviewed the scoring rules in September: softened the late penalty, counted first attempts only, and rescaled badges to each course.</li>
+            </ul>
+            <div class="case-stats">
+              <span class="stat-pill"><strong>201</strong>students</span>
+              <span class="stat-pill"><strong>3</strong>courses</span>
+              <span class="stat-pill"><strong>71%</strong>of enrolments earning points</span>
+              <span class="stat-pill"><strong>655</strong>practice questions</span>
+            </div>
+            <p class="case-note">Snapshot, 8 Oct 2026, semester week 4. These describe use, not learning outcomes; that comparison comes at semester end.</p>
+            <div class="btn-pair">
+              <a href="https://www.aufthority.com/kompas/" class="btn btn-black" data-umami-event="Portfolio case - Kompas page">Read the case study</a>
+              <a href="https://github.com/aufthority/kompassemester" class="btn btn-line" target="_blank" rel="noopener" data-umami-event="Portfolio case - Kompas GitHub">Code on GitHub</a>
+            </div>
+          </div>
+          <div class="case-media reveal-img">
+            <!-- Replace .media-ph with:
+                 <video class="autoplay-visible" src="media/kompas.mp4" poster="media/kompas.jpg" muted loop playsinline preload="none"></video> -->
+            <div class="media-ph"><span class="ph-badge">Video slot</span><span class="ph-name">Kompas Semester</span><span class="ph-hint">15 s screen recording, muted loop</span></div>
+          </div>
+        </article>
+
+        <!-- MakanLah -->
+        <article class="case reveal">
+          <div class="case-text">
+            <span class="case-tag">Nutrition · Clinical use</span>
+            <h3>MakanLah</h3>
+            <p class="case-lede">A Malaysian food and nutrition guide built around what people here actually eat, not Western food databases.</p>
+            <ul class="case-rows">
+              <li><b>Problem</b>Most nutrition tools assume Western meals, so Malaysians get advice that doesn't match their plate.</li>
+              <li><b>Built</b>A local-food guide that turns everyday Malaysian meals into practical, evidence-based choices.</li>
+              <li><b>In use</b>Now in active clinical use with a dietitian stakeholder.</li>
+            </ul>
+            <div class="case-stats">
+              <span class="stat-pill"><strong>130</strong>users</span>
+            </div>
+            <div class="btn-pair">
+              <a href="https://makanlah.aufthority.com/onboarding.html" class="btn btn-black" target="_blank" rel="noopener" data-umami-event="Portfolio case - MakanLah">Open MakanLah</a>
+            </div>
+          </div>
+          <div class="case-media reveal-img">
+            <div class="media-ph"><span class="ph-badge">Video slot</span><span class="ph-name">MakanLah</span><span class="ph-hint">15 s screen recording, muted loop</span></div>
+          </div>
+        </article>
+
+        <!-- CerminDiri -->
+        <article class="case reveal">
+          <div class="case-text">
+            <span class="case-tag">Metabolic health · Calculator</span>
+            <h3>CerminDiri</h3>
+            <p class="case-lede">A metabolic health calculator that estimates body fat and diabetes risk from BMI and waist-to-height ratio.</p>
+            <ul class="case-rows">
+              <li><b>Reach</b>My most-used tool, with a large spike after a post went viral on Threads.</li>
+              <li><b>Lesson</b>The spike didn't turn into lasting search traffic. I traced it to an indexing problem, not the content.</li>
+              <li><b>Next</b>Fix indexability first, then on-page metadata.</li>
+            </ul>
+            <div class="case-stats">
+              <span class="stat-pill"><strong>12,000+</strong>visitors</span>
+            </div>
+            <div class="btn-pair">
+              <a href="https://cermindiri.aufthority.com" class="btn btn-black" target="_blank" rel="noopener" data-umami-event="Portfolio case - CerminDiri">Open CerminDiri</a>
+            </div>
+          </div>
+          <div class="case-media reveal-img">
+            <div class="media-ph"><span class="ph-badge">Video slot</span><span class="ph-name">CerminDiri</span><span class="ph-hint">15 s screen recording, muted loop</span></div>
+          </div>
+        </article>
+
+        <!-- NeuroHabit -->
+        <article class="case reveal">
+          <div class="case-text">
+            <span class="case-tag">Behaviour change · PWA · Beta</span>
+            <h3>NeuroHabit</h3>
+            <p class="case-lede">A habit tracker built on neuroscience: habits grouped by four neurochemical pathways (dopamine, serotonin, oxytocin and endorphin) that feed one Hero Score.</p>
+            <ul class="case-rows">
+              <li><b>Problem</b>Most habit apps reward streaks without explaining the behaviour behind them, or how habits depend on each other.</li>
+              <li><b>Built</b>Foundational gates that unlock each category (an AND-gate for most, an OR-gate for serotonin), a Commit and Lock system with a 60-minute edit window, multi-session cyclers, and shareable score images drawn on canvas.</li>
+              <li><b>Learning</b>Downloads came; keeping users is the open problem. The next step is learning from the returning core before building further.</li>
+            </ul>
+            <div class="case-stats">
+              <span class="stat-pill"><strong>294</strong>downloads</span>
+              <span class="stat-pill"><strong>4</strong>neurochemical categories</span>
+            </div>
+            <p class="case-note">Downloads as of 8 Oct 2026.</p>
+            <div class="btn-pair">
+              <a href="https://aufthority.substack.com/p/neurohabit-a-habit-tracker-app-for?r=ewqnk" class="btn btn-black" target="_blank" rel="noopener" data-umami-event="Portfolio case - NeuroHabit write-up">Read the write-up</a>
+            </div>
+          </div>
+          <div class="case-media reveal-img">
+            <div class="media-ph"><span class="ph-badge">Video slot</span><span class="ph-name">NeuroHabit</span><span class="ph-hint">15 s screen recording, muted loop</span></div>
+          </div>
+        </article>
+
+        <!-- Interactive chemistry labs -->
+        <div class="labs reveal" id="labs">
+          <div class="labs-head">
+            <div>
+              <span class="case-tag">Built for Kompas Semester · Open to anyone</span>
+              <h3>Interactive chemistry labs</h3>
+              <p>Four standalone labs that show what particles are doing inside a flask, and why a trend runs the way it does. Each one is layered, so the same page serves a first-year student and final-exam revision.</p>
+            </div>
+            <div class="levels">
+              <span class="level"><b>Core</b> secondary school</span>
+              <span class="level"><b>Go deeper</b> STPM / Matriculation</span>
+              <span class="level"><b>Into the maths</b> degree</span>
+            </div>
+          </div>
+          <div class="lab-grid">
+            <a href="https://kompassemester.aufthority.com/labs/acidbase.html" class="lab" target="_blank" rel="noopener" data-umami-event="Portfolio lab - Acid-Base">
+              <svg viewBox="0 0 120 70" aria-hidden="true">
+                <g stroke="#2a2a2a" stroke-width="0.6"><line x1="8" y1="62" x2="114" y2="62"/><line x1="8" y1="62" x2="8" y2="6"/><line x1="8" y1="34" x2="114" y2="34" stroke-dasharray="2 3"/></g>
+                <path class="curve" d="M8 58 C40 56 52 52 57 45 C59 40 60 28 62 22 C68 14 84 11 114 9" fill="none" stroke="#e6e51e" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="60" cy="34" r="2.6" fill="#466cf3"/>
+              </svg>
+              <span class="lab-name">Acid–Base Lab</span>
+              <span class="lab-desc">Strong and weak acids, equilibrium, titration curves, and equivalence point versus end point.</span>
+            </a>
+            <a href="https://kompassemester.aufthority.com/labs/orbitals.html" class="lab" target="_blank" rel="noopener" data-umami-event="Portfolio lab - Orbitals">
+              <svg viewBox="0 0 120 70" aria-hidden="true">
+                <g stroke="#2a2a2a" stroke-width="0.6"><line x1="60" y1="4" x2="60" y2="66"/><line x1="20" y1="35" x2="100" y2="35"/></g>
+                <g class="spin">
+                  <ellipse cx="60" cy="20" rx="9" ry="14" fill="rgba(230,229,30,0.25)" stroke="#e6e51e" stroke-width="1.2"/>
+                  <ellipse cx="60" cy="50" rx="9" ry="14" fill="rgba(70,108,243,0.25)" stroke="#466cf3" stroke-width="1.2"/>
+                </g>
+                <circle cx="60" cy="35" r="2.2" fill="#fff"/>
+              </svg>
+              <span class="lab-name">Atomic Orbital Lab</span>
+              <span class="lab-desc">s, p and d orbitals in 3D, with clouds, surfaces, nodes and cutaways you can rotate.</span>
+            </a>
+            <a href="https://kompassemester.aufthority.com/labs/titration.html" class="lab" target="_blank" rel="noopener" data-umami-event="Portfolio lab - Titration">
+              <svg viewBox="0 0 120 70" aria-hidden="true">
+                <rect x="56" y="2" width="8" height="26" rx="2" fill="none" stroke="#555" stroke-width="1"/>
+                <rect x="57.5" y="6" width="5" height="12" fill="rgba(70,108,243,0.6)"/>
+                <line x1="60" y1="28" x2="60" y2="32" stroke="#555" stroke-width="1"/>
+                <circle class="drop" cx="60" cy="35" r="1.8" fill="#466cf3"/>
+                <path d="M50 46 L50 52 L40 66 L80 66 L70 52 L70 46" fill="none" stroke="#e6e51e" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M44 60 L76 60 L80 66 L40 66 Z" fill="rgba(230,229,30,0.3)"/>
+              </svg>
+              <span class="lab-name">Titration &amp; Gravimetry Lab</span>
+              <span class="lab-desc">Acid–base, precipitation, redox and EDTA titrations, plus gravimetry. Students add the drops themselves.</span>
+            </a>
+            <a href="https://kompassemester.aufthority.com/labs/trends.html" class="lab" target="_blank" rel="noopener" data-umami-event="Portfolio lab - Periodic Trends">
+              <svg viewBox="0 0 120 70" aria-hidden="true">
+                <g fill="#e6e51e">
+                  <rect class="cell" x="14" y="10" width="10" height="10" rx="2" style="--o:.2;--t:0s"/>
+                  <rect class="cell" x="98" y="10" width="10" height="10" rx="2" style="--o:.9;--t:.7s"/>
+                  <rect class="cell" x="14" y="23" width="10" height="10" rx="2" style="--o:.15;--t:.1s"/>
+                  <rect class="cell" x="27" y="23" width="10" height="10" rx="2" style="--o:.25;--t:.2s"/>
+                  <rect class="cell" x="59" y="23" width="10" height="10" rx="2" style="--o:.5;--t:.4s"/>
+                  <rect class="cell" x="72" y="23" width="10" height="10" rx="2" style="--o:.6;--t:.5s"/>
+                  <rect class="cell" x="85" y="23" width="10" height="10" rx="2" style="--o:.75;--t:.6s"/>
+                  <rect class="cell" x="98" y="23" width="10" height="10" rx="2" style="--o:.85;--t:.7s"/>
+                  <rect class="cell" x="14" y="36" width="10" height="10" rx="2" style="--o:.12;--t:.2s"/>
+                  <rect class="cell" x="27" y="36" width="10" height="10" rx="2" style="--o:.2;--t:.3s"/>
+                  <rect class="cell" x="59" y="36" width="10" height="10" rx="2" style="--o:.4;--t:.5s"/>
+                  <rect class="cell" x="72" y="36" width="10" height="10" rx="2" style="--o:.5;--t:.6s"/>
+                  <rect class="cell" x="85" y="36" width="10" height="10" rx="2" style="--o:.6;--t:.7s"/>
+                  <rect class="cell" x="98" y="36" width="10" height="10" rx="2" style="--o:.7;--t:.8s"/>
+                  <rect class="cell" x="14" y="49" width="10" height="10" rx="2" style="--o:.08;--t:.3s"/>
+                  <rect class="cell" x="27" y="49" width="10" height="10" rx="2" style="--o:.15;--t:.4s"/>
+                  <rect class="cell" x="59" y="49" width="10" height="10" rx="2" style="--o:.3;--t:.6s"/>
+                  <rect class="cell" x="72" y="49" width="10" height="10" rx="2" style="--o:.4;--t:.7s"/>
+                  <rect class="cell" x="85" y="49" width="10" height="10" rx="2" style="--o:.5;--t:.8s"/>
+                  <rect class="cell" x="98" y="49" width="10" height="10" rx="2" style="--o:.6;--t:.9s"/>
+                </g>
+                <line x1="42" y1="30" x2="52" y2="30" stroke="#466cf3" stroke-width="1"/><line x1="42" y1="45" x2="52" y2="45" stroke="#466cf3" stroke-width="1"/>
+              </svg>
+              <span class="lab-name">Periodic Trends Lab</span>
+              <span class="lab-desc">Effective nuclear charge, size, ionisation energy and electronegativity, recoloured across a live periodic table.</span>
+            </a>
+          </div>
+          <p class="labs-foot">No sign-in needed. English, with British spelling and standard chemical notation.</p>
+        </div>
+
+        <!-- Second tier: tools -->
+        <h3 class="sub-head reveal">More tools</h3>
+        <div class="tool-grid">
+          <a href="https://www.aufthority.com/nafaslega" class="tool reveal" style="--d:1" data-umami-event="Portfolio tool - NafasLega">
+            <span class="tool-name">NafasLega</span>
+            <span class="tool-desc">A guided 4-7-8 breathing tool.</span>
+            <span class="tool-meta">189 visitors</span>
+          </a>
+          <a href="https://mytdee.aufthority.com/" class="tool reveal" style="--d:2" target="_blank" rel="noopener" data-umami-event="Portfolio tool - MyTDEE">
+            <span class="tool-name">MyTDEE</span>
+            <span class="tool-desc">A calorie calculator calibrated on Malaysian research, not Western averages.</span>
+            <span class="tool-meta">109 visitors</span>
+          </a>
+          <a href="https://www.aufthority.com/boroi/" class="tool reveal" target="_blank" rel="noopener" data-umami-event="Portfolio tool - Boroi">
+            <span class="tool-name">Why the Belly?</span>
+            <span class="tool-desc">A five-category weight-gain audit built on Malaysian health evidence.</span>
+            <span class="tool-meta">89 visitors</span>
+          </a>
+          <a href="https://www.aufthority.com/energy-audit/" class="tool reveal" style="--d:1" target="_blank" rel="noopener" data-umami-event="Portfolio tool - Energy Audit">
+            <span class="tool-name">Energy Audit</span>
+            <span class="tool-desc">A six-domain audit that ranks what is most likely draining your energy.</span>
+            <span class="tool-meta">77 visitors</span>
+          </a>
+          <a href="https://www.aufthority.com/rancangdiri/" class="tool reveal" style="--d:2" target="_blank" rel="noopener" data-umami-event="Portfolio tool - RancangDiri">
+            <span class="tool-name">RancangDiri</span>
+            <span class="tool-desc">A personal health-planning tool built around evidence-based habits.</span>
+          </a>
+          <a href="https://kansercheck.aufthority.com/" class="tool reveal" target="_blank" rel="noopener" data-umami-event="Portfolio tool - KanserCheck">
+            <span class="tool-name">KanserCheck</span>
+            <span class="tool-desc">Cancer-risk screening for Malaysians, from lifestyle and family history.</span>
+          </a>
+        </div>
+
+        <!-- Second tier: explainers -->
+        <h3 class="sub-head reveal">Explainers and newsletter</h3>
+        <div class="tool-grid">
+          <a href="https://www.aufthority.com/edu/researchfundamentals/" class="tool reveal" target="_blank" rel="noopener" data-umami-event="Portfolio explainer - Research Fundamentals">
+            <span class="tool-name">Research, Simply Explained</span>
+            <span class="tool-desc">The seven steps every study follows, with a running example and tap-to-check exercises.</span>
+            <span class="tool-meta">Interactive explainer</span>
+          </a>
+          <a href="https://www.aufthority.com/edu/literaturereview/" class="tool reveal" style="--d:1" target="_blank" rel="noopener" data-umami-event="Portfolio explainer - Literature Review">
+            <span class="tool-name">Literature Reviews, Simply Explained</span>
+            <span class="tool-desc">From PICO to synthesis, with a live forest plot and the four ways to publish a review.</span>
+            <span class="tool-meta">Interactive explainer</span>
+          </a>
+          <a href="https://www.aufthority.com/#carousels" class="tool reveal" style="--d:2" data-umami-event="Portfolio explainer - Carousels">
+            <span class="tool-name">Health carousels</span>
+            <span class="tool-desc">Ten Bahasa Malaysia explainers on obesity, PCOS, MASH, vaccines and obesity medicines.</span>
+            <span class="tool-meta">10 carousels</span>
+          </a>
+          <a href="https://aufthority.substack.com" class="tool reveal" target="_blank" rel="noopener" data-umami-event="Portfolio explainer - Substack">
+            <span class="tool-name">The Aufthority Letter</span>
+            <span class="tool-desc">Essays and deep-dives on evidence-based health, on Substack.</span>
+            <span class="tool-meta">1,090 subscribers</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ── Publications ── -->
+      <section class="section" id="writing">
+        <p class="section-label reveal">Publications</p>
+        <h2 class="section-title reveal">Writing beyond the lab.</h2>
+        <p class="section-intro reveal">The same curiosity about evidence, applied to memory, the sea and the history of medicine.</p>
+
+        <div class="books">
+          <article class="book-card reveal">
+            <div class="book" aria-hidden="true">
+              <div class="book-3d">
+                <div class="book-cover cover-sea">
+                  <svg viewBox="0 0 160 240" preserveAspectRatio="none">
+                    <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1">
+                      <path d="M0 70 Q20 62 40 70 T80 70 T120 70 T160 70"/>
+                      <path d="M0 84 Q20 76 40 84 T80 84 T120 84 T160 84"/>
+                      <path d="M0 98 Q20 90 40 98 T80 98 T120 98 T160 98"/>
+                    </g>
+                    <g fill="rgba(255,255,255,0.5)">
+                      <circle cx="118" cy="140" r="1.6"/><circle cx="124" cy="128" r="1.1"/><circle cx="114" cy="118" r="0.9"/>
+                      <circle cx="40" cy="170" r="1.3"/><circle cx="46" cy="156" r="0.8"/>
+                    </g>
+                  </svg>
+                  <span class="bc-kicker">Essay</span>
+                  <span class="bc-title">From Fictional Depths and Fragile Diversity</span>
+                  <span class="bc-author">Auf Ali</span>
+                </div>
+              </div>
+            </div>
+            <div class="book-info">
+              <div class="eng-top"><span class="eng-badge upcoming">Forthcoming</span></div>
+              <h3>From Fictional Depths and Fragile Diversity</h3>
+              <p class="book-where">Essay in <em>Lushness of the Sea</em>, Malaysian Writers' Society</p>
+              <p class="book-desc">Watching James Cameron's <em>The Abyss</em> on RTM2's Mega Movie as a nine-year-old in Besut, Terengganu sparked a lifelong curiosity about filmmaking and the ocean. Decades on, we have learned so much, still know so little, and are destroying the sea we are only beginning to understand.</p>
+            </div>
+          </article>
+
+          <article class="book-card reveal" style="--d:1">
+            <div class="book" aria-hidden="true">
+              <div class="book-3d">
+                <div class="book-cover cover-bima">
+                  <svg viewBox="0 0 160 240" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                      <pattern id="girih" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <g fill="none" stroke="rgba(227,198,117,0.28)" stroke-width="0.8">
+                          <rect x="10" y="10" width="20" height="20"/>
+                          <rect x="10" y="10" width="20" height="20" transform="rotate(45 20 20)"/>
+                          <circle cx="20" cy="20" r="4"/>
+                        </g>
+                      </pattern>
+                    </defs>
+                    <rect width="160" height="240" fill="url(#girih)"/>
+                    <rect x="12" y="70" width="136" height="96" fill="#123528"/>
+                    <rect x="12" y="70" width="136" height="96" fill="none" stroke="rgba(227,198,117,0.6)" stroke-width="0.8"/>
+                  </svg>
+                  <span class="bc-kicker">Buku</span>
+                  <span class="bc-title" style="text-align:center">Bimaristan<span class="bc-sub">Kerapuhan Sistem Manusia</span></span>
+                  <span class="bc-author">Auf Ali</span>
+                </div>
+              </div>
+            </div>
+            <div class="book-info">
+              <div class="eng-top"><span class="eng-badge award">Accepted for publication</span></div>
+              <h3>Bimaristan: Kerapuhan Sistem Manusia</h3>
+              <p class="book-where">Book, Dewan Bahasa dan Pustaka · in Bahasa Malaysia</p>
+              <p class="book-desc">The fragility of human systems, seen through the hospitals of the Middle Ages, as described by the Muslim and Islamicate historians and figures who lived alongside them.</p>
+            </div>
+          </article>
+        </div>
+        <p class="cover-note reveal">Covers shown are placeholders until the publishers release the final artwork.</p>
+      </section>
+
+      <!-- ── Speaking & teaching ── -->
+      <section class="section" id="speaking">
+        <p class="section-label reveal">Speaking and teaching</p>
+        <h2 class="section-title reveal">Science communication, in person.</h2>
+        <p class="section-intro reveal">The same evidence, delivered live: conference presentations, public talks, and ten years of teaching in a healthcare university.</p>
+
+        <div class="speak-grid">
+          <div>
+            <figure class="photo-main reveal reveal-img">
+              <img src="img/stage.jpg" alt="Auf Ali speaking with a microphone on stage at KPJ Healthcare University" loading="lazy" width="1400" height="1036" />
+            </figure>
+            <div class="photo-row">
+              <figure class="reveal reveal-img">
+                <img src="img/klsf.jpg" alt="Auf Ali beside his digital poster on Centella asiatica at KLSF 2025" loading="lazy" width="900" height="1167" />
+                <figcaption>KLSF ICPHS 2025</figcaption>
+              </figure>
+              <figure class="reveal reveal-img" style="--d:1">
+                <img src="img/teaching.jpg" alt="Auf Ali teaching a class on methylmercury bioaccumulation in the food chain" loading="lazy" width="278" height="393" />
+                <figcaption>In the classroom</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <ul class="eng-list">
+            <li class="eng reveal">
+              <div class="eng-top"><span class="eng-badge award">Best Presenter Award</span><span class="eng-when">KLSF ICPHS 2025</span></div>
+              <h3>A Scoping Review of <em>Centella asiatica</em> (Pegaga) and the Antibacterial Evaluations of its Topical Formulations</h3>
+              <p>First author, with four KPJU co-authors. A PRISMA-guided scoping review across Scopus, PubMed and CINAHL, framed with PICO and screened in Rayyan.</p>
+              <div class="eng-links">
+                <!-- Add once uploaded: <a href="files/klsf-2025-poster.pdf" class="btn btn-line">Poster PDF</a> -->
+                <a href="https://www.aufthority.com/edu/literaturereview/" class="btn btn-line" target="_blank" rel="noopener" data-umami-event="Portfolio speaking - Lit review explainer">The method, explained</a>
+              </div>
+            </li>
+            <li class="eng reveal" style="--d:1">
+              <div class="eng-top"><span class="eng-badge upcoming">Upcoming</span><span class="eng-when">21 Oct 2026</span></div>
+              <h3>USIM x PAWE</h3>
+              <p>Invited talk on healthy ageing from a pharmacy perspective.</p>
+            </li>
+            <li class="eng reveal" style="--d:2">
+              <div class="eng-top"><span class="eng-badge ongoing">Since 2016</span><span class="eng-when">KPJ Healthcare University</span></div>
+              <h3>University teaching</h3>
+              <p>Chemistry for pharmacy and healthcare students, now supported by Kompas Semester and the Simply Explained series.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ── Numbers ── -->
+      <section class="section" id="numbers">
+        <div class="numbers reveal">
+          <div><div class="num-val" data-count="10" data-suffix="+">10+</div><div class="num-label">tools shipped solo since Nov 2024</div></div>
+          <div><div class="num-val" data-count="12000" data-suffix="+">12,000+</div><div class="num-label">CerminDiri visitors</div></div>
+          <div><div class="num-val" data-count="201">201</div><div class="num-label">students on Kompas Semester</div></div>
+          <div><div class="num-val" data-count="1090">1,090</div><div class="num-label">newsletter subscribers</div></div>
+          <div><div class="num-val" data-count="15000" data-suffix="+">15,000+</div><div class="num-label">followers across platforms</div></div>
+          <p class="numbers-note">Figures as of October 2026.</p>
+        </div>
+      </section>
+
+      <!-- ── Contact ── -->
+      <section class="section" id="contact">
+        <div class="cta reveal">
+          <h2>Let's build something people use.</h2>
+          <p>Open to roles in digital health product, AI implementation, partnerships and scientific writing.</p>
+          <div class="btn-pair">
+            <a href="mailto:the.aufthority@gmail.com" class="btn btn-yellow" data-umami-event="Portfolio contact - Email">the.aufthority@gmail.com</a>
+            <a href="https://www.linkedin.com/in/aufbinali/" class="btn btn-black" target="_blank" rel="noopener" data-umami-event="Portfolio contact - LinkedIn">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <ul class="socials">
+        <li><a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener" data-umami-event="Portfolio social - Threads">Threads</a></li>
+        <li><a href="https://www.instagram.com/aufthority" target="_blank" rel="noopener" data-umami-event="Portfolio social - Instagram">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener" data-umami-event="Portfolio social - TikTok">TikTok</a></li>
+        <li><a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener" data-umami-event="Portfolio social - LinkedIn">LinkedIn</a></li>
+        <li><a href="https://github.com/aufthority" target="_blank" rel="noopener" data-umami-event="Portfolio social - GitHub">GitHub</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Aufthority — <span style="font-style:italic;">Informed decisions, better health.</span></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var hasIO = 'IntersectionObserver' in window;
+
+      // Motion is opt-in: only hide-then-reveal when JS runs and motion is allowed.
+      if (reduce || !hasIO) return;
+      document.documentElement.classList.add('motion');
+
+      // Hero headline: split into words for a staggered rise (keeps the accent span intact).
+      var h1 = document.querySelector('.hero h1');
+      if (h1) {
+        var i = 0;
+        Array.prototype.slice.call(h1.childNodes).forEach(function (node) {
+          var isAccent = node.nodeType === 1;
+          var text = node.textContent;
+          var frag = document.createDocumentFragment();
+          text.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var s = document.createElement('span');
+            s.className = 'w' + (isAccent ? ' accent' : '');
+            s.style.setProperty('--i', i++);
+            s.textContent = part;
+            frag.appendChild(s);
+          });
+          h1.replaceChild(frag, node);
+        });
+      }
+
+      // Scroll reveal
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+      document.querySelectorAll('.reveal, .reveal-img').forEach(function (el) { io.observe(el); });
+
+      // Count-up numbers (final value is already in the HTML)
+      function countUp(el) {
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var start = null, dur = 1400;
+        function step(t) {
+          if (!start) start = t;
+          var p = Math.min((t - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased).toLocaleString('en-US') + (p === 1 ? suffix : '');
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      var numIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          countUp(e.target);
+          numIO.unobserve(e.target);
+        });
+      }, { threshold: 0.6 });
+      document.querySelectorAll('[data-count]').forEach(function (el) { numIO.observe(el); });
+
+      // Videos: play only while on screen (ready for when recordings replace placeholders)
+      var vidIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+          else { v.pause(); }
+        });
+      }, { threshold: 0.35 });
+      document.querySelectorAll('video.autoplay-visible').forEach(function (v) { vidIO.observe(v); });
+    })();
+  </script>
+</body>
+</html>
