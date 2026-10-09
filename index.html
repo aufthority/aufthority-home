@@ -189,7 +189,7 @@
     }
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 22px;
       list-style: none;
     }
     .nav-links a {
@@ -329,6 +329,7 @@
       color: #333;
     }
     .about-card p + p { margin-top: 16px; }
+    .about-cta { margin-top: 28px; }
 
     /* Footnote refs */
     .fn-ref {
@@ -437,6 +438,7 @@
     .app-icon.energy-audit-icon { background: #e8f0fe; }
     .app-icon.rancangdiri-icon  { background: #f0eaff; }
     .app-icon.kansercheck-icon  { background: #fff0f0; }
+    .app-icon.kompas-icon       { background: #fbfbd6; }
     .app-info { flex: 1; }
     .app-name-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
     .app-name {
@@ -742,7 +744,7 @@
           Aufthority
         </a>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
+          <li><a href="/portfolio/" data-umami-event="Nav - Portfolio click">Portfolio</a></li>
           <li><a href="#carousels">Carousels</a></li>
           <li><a href="#apps">Apps</a></li>
           <li><a href="#newsletter">Newsletter</a></li>
@@ -755,6 +757,7 @@
         </div>
         <!-- Mobile popup menu -->
         <div class="more-popup" id="more-popup" role="dialog" aria-hidden="true">
+          <a href="/portfolio/" class="more-popup-item" data-umami-event="Nav popup - Portfolio">Portfolio</a>
           <a href="#carousels"  class="more-popup-item" data-umami-event="Nav popup - Carousels">Carousels</a>
           <a href="#apps"       class="more-popup-item" data-umami-event="Nav popup - Apps">Apps</a>
           <a href="#newsletter" class="more-popup-item" data-umami-event="Nav popup - Newsletter">Newsletter</a>
@@ -787,7 +790,7 @@
     <!-- Footnote data -->
     <div class="fn-data">
       <div id="fn-1">
-        Auf Ali. Trained QC chemist — worked at Pharmaniaga from 2011–2016.
+        Auf Ali. Former Quality Control Executive at Pharmaniaga (2012–2016).
         Ten-year veteran teaching undergraduate chemistry in Negeri Sembilan, Malaysia.
         Masters in Pharmaceutical Technology.
         Aspiring to pursue a doctorate (PhD) in Digital Health.
@@ -796,10 +799,10 @@
       <div id="fn-2">
         Find Aufthority across the web:
         <div class="fn-socials">
-          <a class="fn-social-pill" href="https://www.threads.net/@theaufthority" target="_blank" rel="noopener">Threads</a>
+          <a class="fn-social-pill" href="https://www.threads.com/@aufthority" target="_blank" rel="noopener">Threads</a>
           <a class="fn-social-pill" href="https://aufthority.substack.com" target="_blank" rel="noopener">Substack</a>
-          <a class="fn-social-pill" href="https://www.instagram.com/theaufthority" target="_blank" rel="noopener">Instagram</a>
-          <a class="fn-social-pill" href="https://www.tiktok.com/@theaufthority" target="_blank" rel="noopener">TikTok</a>
+          <a class="fn-social-pill" href="https://www.instagram.com/aufthority" target="_blank" rel="noopener">Instagram</a>
+          <a class="fn-social-pill" href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener">TikTok</a>
         </div>
       </div>
       <div id="fn-3">
@@ -818,11 +821,15 @@
 
     <!-- ── About ── -->
     <section class="section" id="about">
-      <p class="section-label">About</p>
+      <p class="section-label">About me</p>
       <h2 class="section-title">Science first, always.</h2>
       <div class="about-card">
         <p>I believe that access to clear, accurate health information is a right — not a privilege. Too often, people make healthcare decisions based on incomplete or misleading information.</p>
         <p>Aufthority is my attempt to change that. I research, write, and build — creating content and tools grounded in science, designed for real people navigating their own health journeys.</p>
+        <p>For the full picture — case studies, publications, talks, and the tools behind Aufthority — see my portfolio.</p>
+        <div class="btn-pair about-cta">
+          <a href="/portfolio/" class="btn-black" data-umami-event="About - Portfolio click">See my portfolio →</a>
+        </div>
       </div>
     </section>
 
@@ -943,7 +950,23 @@
           <div class="app-info">
             <div class="app-name-row"><p class="app-name">CerminDiri</p><span class="app-badge badge-live">Live</span></div>
             <p class="app-desc">A metabolic health calculator using estimation your bodyfat, risk of diabetes, from your BMI, waist to height ratio to help you understand yourself better and make more intentional decisions.</p>
-            <span class="app-stat">4,880 visitors</span>
+            <span class="app-stat">12,000+ visitors</span>
+          </div>
+          <span class="app-arrow">→</span>
+        </a>
+
+        <a href="/kompas/" class="app-card" data-umami-event="App click - Kompas Semester">
+          <div class="app-icon kompas-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" stroke="#6b6a00" stroke-width="1.4"/>
+              <path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" stroke="#6b6a00" stroke-width="1.3" stroke-linejoin="round" fill="#e6e51e"/>
+              <circle cx="12" cy="12" r="1" fill="#6b6a00"/>
+            </svg>
+          </div>
+          <div class="app-info">
+            <div class="app-name-row"><p class="app-name">Kompas Semester</p><span class="app-badge badge-live">Live</span></div>
+            <p class="app-desc">A course companion for university lecturers. Students get weekly practice quizzes, typed notes and interactive chemistry labs; lecturers get an early view of who needs a check-in.</p>
+            <span class="app-stat">201 students</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
@@ -955,7 +978,7 @@
           <div class="app-info">
             <div class="app-name-row"><p class="app-name">Neurohabit</p><span class="app-badge badge-beta">Beta</span></div>
             <p class="app-desc">A science-backed habit-building app rooted in neuroscience and behavioural psychology.</p>
-            <span class="app-stat">283 downloads</span>
+            <span class="app-stat">294 downloads</span>
           </div>
           <span class="app-arrow">→</span>
         </a>
@@ -1088,7 +1111,7 @@
     <section class="section" id="newsletter">
       <p class="section-label">Newsletter</p>
       <div class="newsletter-card">
-        <h2>The Aufthority Letter <span class="newsletter-sub-pill">357 subscribers</span></h2>
+        <h2>The Aufthority Letter <span class="newsletter-sub-pill">1,090 subscribers</span></h2>
         <p>Evidence-based health insights, straight to your inbox. No fluff — just clear, actionable information to help you take charge of your health.</p>
         <a href="https://aufthority.substack.com" class="newsletter-btn" target="_blank" rel="noopener" data-umami-event="Newsletter - Subscribe click">Subscribe on Substack →</a>
       </div>
@@ -1131,15 +1154,15 @@
         </a>
         <div class="footer-socials-wrap">
           <ul class="socials">
-          <a href="https://www.threads.net/@theaufthority" class="social-link" target="_blank" rel="noopener" data-umami-event="Social - Threads">
+          <a href="https://www.threads.com/@aufthority" class="social-link" target="_blank" rel="noopener" data-umami-event="Social - Threads">
             <svg viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.028-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.018 5.143.822 6.927 2.328 1.7 1.44 2.796 3.4 3.263 5.836l-2.334.421c-.36-1.97-1.176-3.535-2.426-4.583-1.248-1.05-2.992-1.62-5.12-1.635-2.833.018-4.98.879-6.375 2.56-1.364 1.64-2.062 4.018-2.085 7.072.023 3.053.72 5.43 2.085 7.07 1.394 1.68 3.54 2.56 6.375 2.56 1.993-.012 3.608-.43 4.802-1.244 1.464-.985 2.259-2.512 2.464-4.667H12.19v-2.34h9.004c.028.365.042.73.042 1.088 0 3.3-1.002 5.88-2.98 7.666C16.443 23.29 14.012 24 12.186 24z"/></svg>
             Threads
           </a>
-          <a href="https://www.instagram.com/theaufthority" class="social-link" target="_blank" rel="noopener" data-umami-event="Social - Instagram">
+          <a href="https://www.instagram.com/aufthority" class="social-link" target="_blank" rel="noopener" data-umami-event="Social - Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             Instagram
           </a>
-          <a href="https://www.tiktok.com/@theaufthority" class="social-link" target="_blank" rel="noopener" data-umami-event="Social - TikTok">
+          <a href="https://www.tiktok.com/@aufthority" class="social-link" target="_blank" rel="noopener" data-umami-event="Social - TikTok">
             <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
             TikTok
           </a>
