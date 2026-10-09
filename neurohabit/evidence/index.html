@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>NeuroHabit Evidence Matrix — Aufthority</title>
+  <meta name="description" content="How every NeuroHabit habit was graded: the pathway it targets, the strength of mechanism and outcome evidence, and how that evidence sets its weight in the scoring engine." />
+  <meta property="og:type"         content="article" />
+  <meta property="og:site_name"    content="Aufthority" />
+  <meta property="og:title"        content="NeuroHabit Evidence Matrix" />
+  <meta property="og:description"  content="Every habit, graded for mechanism and outcome evidence, and how the grades set the scoring engine." />
+  <meta property="og:url"          content="https://www.aufthority.com/neurohabit/evidence/" />
+  <meta property="og:image"        content="https://www.aufthority.com/preview_v2.png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"       content="en_US" />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="NeuroHabit Evidence Matrix" />
+  <meta name="twitter:description" content="Every habit, graded for mechanism and outcome evidence." />
+  <meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png" />
+  <link rel="icon" type="image/png" href="/favicon2.png" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --yellow: #e6e51e; --blue: #466cf3; --carbon: #000; --white: #fff;
+      --canvas: #f2f2f2; --hairline: #e6e6e6; --ink-2: #444; --ink-3: #777;
+      --font-head: 'Poppins', system-ui, sans-serif; --font-body: 'Inter', system-ui, sans-serif;
+      --radius-pill: 3000px; --radius-card: 32px; --radius-sm: 20px;
+      --dop: #c8712a; --dop-bg: #fff3e8; --ser: #2e7a5e; --ser-bg: #edf7f3;
+      --oxy: #923050; --oxy-bg: #fdf0f4; --end: #3a5fa0; --end-bg: #eef2fc;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--canvas); color: var(--carbon); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, #c8c8c8 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; z-index: 0; }
+    a { color: inherit; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 28px 0 0; font-size: 0.82rem; font-weight: 500; }
+    .topbar a { text-decoration: none; }
+    .topbar a:hover { opacity: 0.6; }
+    .brand { font-family: var(--font-head); font-weight: 700; font-size: 1rem; letter-spacing: -0.02em; }
+
+    header.intro { padding: 64px 0 32px; max-width: 760px; }
+    .eyebrow { display: inline-block; background: var(--yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; border-radius: var(--radius-pill); padding: 5px 14px; margin-bottom: 24px; }
+    h1 { font-family: var(--font-head); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 20px; }
+    .lede { font-size: 1.05rem; color: var(--ink-2); }
+    .lede + .lede { margin-top: 12px; }
+
+    h2 { font-family: var(--font-head); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 1.9rem); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 8px; }
+    .sec { padding: 40px 0; }
+    .sec-intro { color: var(--ink-2); max-width: 700px; margin-bottom: 24px; font-size: 0.95rem; }
+
+    /* How to read */
+    .key-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .key { background: var(--white); border-radius: var(--radius-sm); padding: 24px; }
+    .key h3 { font-family: var(--font-head); font-weight: 600; font-size: 1rem; margin-bottom: 10px; }
+    .key p { font-size: 0.86rem; color: var(--ink-2); }
+    .key dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; font-size: 0.84rem; color: var(--ink-2); align-items: baseline; }
+
+    .grade, .tier, .cat { display: inline-block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em; border-radius: var(--radius-pill); padding: 2px 9px; white-space: nowrap; line-height: 1.7; }
+    .g-s { background: #e3f3d6; color: #2c5a0c; }
+    .g-m { background: #fdf0d5; color: #7a4a06; }
+    .g-l { background: #eeeeee; color: #555; }
+    .t-f { background: var(--carbon); color: var(--white); }
+    .t-s { background: #dfe7fd; color: #2a4bb0; }
+    .t-b { background: #f2f2f2; color: #555; border: 1px solid #ddd; }
+    .cat-dop { background: var(--dop-bg); color: var(--dop); }
+    .cat-ser { background: var(--ser-bg); color: var(--ser); }
+    .cat-oxy { background: var(--oxy-bg); color: var(--oxy); }
+    .cat-end { background: var(--end-bg); color: var(--end); }
+
+    /* Gates */
+    .gate-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .gate { border-radius: var(--radius-sm); padding: 22px; }
+    .gate-dop { background: var(--dop-bg); color: var(--dop); }
+    .gate-ser { background: var(--ser-bg); color: var(--ser); }
+    .gate-oxy { background: var(--oxy-bg); color: var(--oxy); }
+    .gate-end { background: var(--end-bg); color: var(--end); }
+    .gate-name { font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; }
+    .gate-sub { font-size: 0.76rem; opacity: 0.85; margin-bottom: 12px; }
+    .gate-list { font-size: 0.84rem; color: var(--carbon); line-height: 1.5; }
+
+    /* Matrix */
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .fbtn { font: inherit; font-size: 0.8rem; font-weight: 500; padding: 7px 16px; border-radius: var(--radius-pill); border: 1.5px solid #d8d8d8; background: var(--white); cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+    .fbtn:hover { border-color: var(--carbon); }
+    .fbtn[aria-pressed="true"] { background: var(--carbon); border-color: var(--carbon); color: var(--white); }
+    .table-card { background: var(--white); border-radius: var(--radius-card); padding: 8px 8px; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    th { text-align: left; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; padding: 16px 14px 10px; border-bottom: 1.5px solid var(--carbon); white-space: nowrap; }
+    td { vertical-align: top; padding: 14px; border-bottom: 1px solid var(--hairline); color: var(--ink-2); line-height: 1.55; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: #fafafa; }
+    .c-habit { min-width: 190px; }
+    .hname { display: block; font-family: var(--font-head); font-weight: 600; font-size: 0.9rem; color: var(--carbon); letter-spacing: -0.01em; margin-bottom: 6px; line-height: 1.3; }
+    .c-lit { min-width: 200px; font-size: 0.8rem; }
+    .c-note { min-width: 260px; }
+    .todo { color: #b0b0b0; font-style: italic; }
+    tr.hide { display: none; }
+
+    /* Effect size table */
+    .es td:first-child { color: var(--carbon); font-weight: 600; }
+    .es .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    /* Changes */
+    .changes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .change { background: var(--white); border-radius: var(--radius-sm); padding: 20px 22px; }
+    .change b { display: block; font-family: var(--font-head); font-size: 0.92rem; margin-bottom: 4px; }
+    .change span { font-size: 0.85rem; color: var(--ink-2); }
+    .change .act { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: var(--radius-pill); padding: 2px 8px; margin-bottom: 8px; background: var(--yellow); color: var(--carbon); }
+
+    .disclaimer { background: var(--carbon); color: rgba(255,255,255,0.8); border-radius: var(--radius-card); padding: 36px 40px; font-size: 0.9rem; }
+    .disclaimer strong { color: var(--white); }
+    .disclaimer p + p { margin-top: 10px; }
+    footer { padding: 40px 0 56px; font-size: 0.78rem; color: #999; position: relative; z-index: 1; }
+
+    @media (max-width: 900px) {
+      .key-grid { grid-template-columns: 1fr; }
+      .gate-grid { grid-template-columns: repeat(2, 1fr); }
+      .changes { grid-template-columns: 1fr; }
+    }
+    /* Mobile: matrix rows become cards */
+    @media (max-width: 680px) {
+      .container { padding: 0 16px; }
+      header.intro { padding: 40px 0 16px; }
+      .gate-grid { grid-template-columns: 1fr; }
+      .table-card { padding: 4px 18px; border-radius: var(--radius-sm); }
+      .matrix thead { display: none; }
+      .matrix, .matrix tbody, .matrix tr, .matrix td { display: block; width: 100%; }
+      .matrix tr { padding: 18px 0; border-bottom: 1px solid var(--hairline); }
+      .matrix tr.hide { display: none; }
+      .matrix tbody tr:last-child { border-bottom: none; }
+      .matrix td { border: none; padding: 4px 0; min-width: 0; }
+      .matrix td[data-label]::before { content: attr(data-label); display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #999; margin-top: 6px; }
+      .matrix .c-tier, .matrix .c-g { display: inline-block; width: auto; margin-right: 14px; }
+      .disclaimer { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <a href="/" class="brand" data-umami-event="Evidence - Home">Aufthority</a>
+      <a href="/portfolio/#work" data-umami-event="Evidence - Back to portfolio">&larr; Back to portfolio</a>
+    </div>
+
+    <header class="intro">
+      <p class="eyebrow">NeuroHabit · Evidence matrix</p>
+      <h1>How every habit earns its weight.</h1>
+      <p class="lede">NeuroHabit groups daily habits by the brain pathway they most plausibly act on: dopamine, serotonin, oxytocin or endorphin. Before a habit enters the app, it goes through this matrix: what the mechanism is, how strong the evidence is, and which literature it rests on.</p>
+      <p class="lede">The grades then set each habit's tier, and the tier sets its weight in the scoring engine. Weak evidence cannot earn a heavy weight.</p>
+    </header>
+
+    <section class="sec" id="how">
+      <h2>How to read the matrix</h2>
+      <p class="sec-intro">Each habit is graded twice, because a plausible mechanism and a proven benefit are different claims.</p>
+      <div class="key-grid">
+        <div class="key">
+          <h3>Mechanism evidence</h3>
+          <p>How well established the link is between the habit and its named pathway, from human, animal or imaging studies.</p>
+        </div>
+        <div class="key">
+          <h3>Outcome evidence</h3>
+          <p>How well established the effect is on mood, wellbeing or mental-health outcomes in people.</p>
+        </div>
+        <div class="key">
+          <h3>Grades</h3>
+          <dl>
+            <dt><span class="grade g-s">Strong</span></dt><dd>Meta-analyses or multiple randomised trials</dd>
+            <dt><span class="grade g-m">Moderate</span></dt><dd>Some trials, or consistent observational and mechanistic work</dd>
+            <dt><span class="grade g-l">Limited</span></dt><dd>Plausible, but indirect, small or animal-only evidence</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="engine">
+      <h2>From grade to score</h2>
+      <p class="sec-intro">Three tiers carry different weight. <strong>Foundational</strong> habits unlock a category's full score, <strong>secondary</strong> habits score at weight 2, and <strong>bonus</strong> habits at weight 1. Each category's foundational habits:</p>
+      <div class="gate-grid">
+        <div class="gate gate-dop"><p class="gate-name">Dopamine</p><p class="gate-sub">Drive &amp; reward</p><p class="gate-list">Deep Work / Main Goal &middot; Meaningful Progress &middot; Morning Sunlight (10–15 min)</p></div>
+        <div class="gate gate-ser"><p class="gate-name">Serotonin</p><p class="gate-sub">Stability &amp; mood</p><p class="gate-list">Sleep &middot; Solat / Daily Prayer / Mindfulness &middot; Rhythmic Movement (20+ min)</p></div>
+        <div class="gate gate-oxy"><p class="gate-name">Oxytocin</p><p class="gate-sub">Connection &amp; trust</p><p class="gate-list">Active Socialising (20+ min) &middot; Physical Touch / Oxytocin Anchor &middot; Sincere Appreciation (Expressed)</p></div>
+        <div class="gate gate-end"><p class="gate-name">Endorphin</p><p class="gate-sub">Resilience &amp; movement</p><p class="gate-list">Exercise (Dedicated Session) &middot; Active Day (Incidental Steps)</p></div>
+      </div>
+    </section>
+
+    <section class="sec" id="matrix">
+      <h2>The matrix</h2>
+      <p class="sec-intro">33 habits across four pathways. Filter by category.</p>
+      <div class="filters" role="group" aria-label="Filter by category">
+        <button class="fbtn" data-f="all" aria-pressed="true">All (33)</button>
+        <button class="fbtn" data-f="D" aria-pressed="false">Dopamine (9)</button>
+        <button class="fbtn" data-f="S" aria-pressed="false">Serotonin (11)</button>
+        <button class="fbtn" data-f="O" aria-pressed="false">Oxytocin (8)</button>
+        <button class="fbtn" data-f="E" aria-pressed="false">Endorphin (5)</button>
+      </div>
+      <div class="table-card">
+        <table class="matrix">
+          <thead>
+            <tr><th>Habit</th><th>Tier</th><th>Mechanism</th><th>Outcome</th><th>Key literature</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+      <tr data-cat="D">
+        <td class="c-habit"><span class="hname">Deep Work / Main Goal</span><span class="cat cat-dop">Dopamine</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature">Berke 2018, Nat Neurosci; Gershman 2024</td>
+        <td class="c-note" data-label="Notes">Dopamine ramps during sustained goal pursuit are well described in animal and computational work. Direct wellbeing trials of deep-work sessions are limited.</td>
+      </tr>
+      <tr data-cat="D">
+        <td class="c-habit"><span class="hname">Meaningful Progress</span><span class="cat cat-dop">Dopamine</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Amabile &amp; Kramer 2011, <i>The Progress Principle</i></td>
+        <td class="c-note" data-label="Notes">Diary evidence links small daily progress to mood and motivation. Observational; the dopamine link is inferred.</td>
+      </tr>
+      <tr data-cat="D">
+        <td class="c-habit"><span class="hname">Morning Sunlight (10–15 min)</span><span class="cat cat-dop">Dopamine</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Leproult &amp; Van Cauter (circadian); Golden et al. 2005, Am J Psychiatry</td>
+        <td class="c-note" data-label="Notes">Circadian entrainment by morning light is well established, and light therapy improves mood. The dopamine-specific pathway is less direct.</td>
+      </tr>
+      <tr data-cat="D">
+        <td class="c-habit"><span class="hname">Task List Completion</span><span class="cat cat-dop">Dopamine</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature">Berridge 2007, Psychopharmacology</td>
+        <td class="c-note" data-label="Notes">Small, real reward signals per completed task. Reweighted down after review: productivity gains do not map cleanly to neurochemical uplift.</td>
+      </tr>
+      <tr data-cat="D">
+        <td class="c-habit"><span class="hname">Active Skill Practice (20+ min)</span><span class="cat cat-dop">Dopamine</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature"><span class="todo">Reference in review</span></td>
+        <td class="c-note" data-label="Notes"><span class="todo">Note in review</span></td>
+      </tr>
+      <tr data-cat="D">
+        <td class="c-habit"><span class="hname">Goal-Focused Journaling</span><span class="cat cat-dop">Dopamine</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature"><span class="todo">Reference in review</span></td>
+        <td class="c-note" data-label="Notes">Plausible prefrontal and anticipatory-reward mechanism; outcome trials for this specific habit are limited. Kept at the lowest weight.</td>
+      </tr>
+      <tr data-cat="D">
+        <td class="c-habit"><span class="hname">Screen-Free Block (2+ hrs)</span><span class="cat cat-dop">Dopamine</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Hunt et al. 2018, J Soc Clin Psychol</td>
+        <td class="c-note" data-label="Notes">Limiting social media use reduced loneliness and depressive symptoms in a randomised trial. Framed as a protective, removal habit.</td>
+      </tr>
+      <tr data-cat="D">
+        <td class="c-habit"><span class="hname">Tyrosine-Rich Meal</span><span class="cat cat-dop">Dopamine</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature">Amino-acid precursor literature</td>
+        <td class="c-note" data-label="Notes">Tyrosine is the dietary precursor to dopamine. Evidence for mood outcomes from diet alone is limited.</td>
+      </tr>
+      <tr data-cat="D">
+        <td class="c-habit"><span class="hname">Fasting (Eating Window)</span><span class="cat cat-dop">Dopamine</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature"><span class="todo">Reference in review</span></td>
+        <td class="c-note" data-label="Notes">A consistent eating window supports regular routines. Claims about dopamine receptor sensitivity are speculative and are not used in scoring rationale.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">Sleep</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-s">Strong</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-s">Strong</span></td>
+        <td class="c-lit" data-label="Key literature">Scott et al. 2021, Sleep Med Rev; Zhang et al. 2024, Sleep Breath</td>
+        <td class="c-note" data-label="Notes">Improving sleep improves mental health in randomised trials: the strongest causal evidence in the library. The serotonin-specific link is indirect.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">Solat / Daily Prayer / Mindfulness</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Goyal et al. 2014, JAMA Intern Med (47 trials, n=3,515)</td>
+        <td class="c-note" data-label="Notes">Moderate evidence for anxiety and depression from meditation trials. Prayer-specific trials are fewer; the shared mechanism is stress-response downregulation.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">Rhythmic Movement (20+ min)</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Jacobs &amp; Azmitia 1992, Physiol Rev</td>
+        <td class="c-note" data-label="Notes">Rhythmic motor activity increases serotonergic neuron firing in animal work; walking interventions show moderate mood benefits in people.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">5-a-Day (Veg &amp; Fruit)</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Jacka et al. 2017, BMC Med; Firth et al. 2019, Psychosom Med</td>
+        <td class="c-note" data-label="Notes">Dietary improvement reduces depressive symptoms in trials. Note: most serotonin is made in the gut but does not cross into the brain; the link runs through the microbiome and inflammation.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">Nature Walk (20+ min)</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Bratman et al. 2015, PNAS</td>
+        <td class="c-note" data-label="Notes">A nature walk reduced rumination and subgenual prefrontal activity versus an urban walk. Small trial; consistent with wider nature-exposure literature.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">Protein-Rich Meals</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature">Tryptophan precursor literature</td>
+        <td class="c-note" data-label="Notes">Tryptophan is the serotonin precursor, but protein-rich meals also raise competing amino acids, so brain entry depends on the whole meal. Mood outcomes are limited.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">Gratitude / Muhasabah</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Davis et al. 2016, J Couns Psychol</td>
+        <td class="c-note" data-label="Notes">Gratitude interventions show small but consistent wellbeing effects. The serotonin mechanism is inferred.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">Breathwork / Dhikr</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Zaccaro et al. 2018, Front Hum Neurosci; Goyal et al. 2014</td>
+        <td class="c-note" data-label="Notes">Slow breathing shifts autonomic balance toward parasympathetic activity. Effects on anxiety are modest but real.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">Power Nap / Qailullah (10–25 min)</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Brooks &amp; Lack 2006, Sleep</td>
+        <td class="c-note" data-label="Notes">Short naps improve alertness and mood; longer naps cause sleep inertia. Capped so it cannot substitute for night sleep.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">Restorative Hobby (20+ min)</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Soga et al. 2017, Prev Med Rep (gardening meta-analysis)</td>
+        <td class="c-note" data-label="Notes">Gardening and similar hobbies show positive wellbeing effects. Soil-bacteria serotonin findings are from animal studies only.</td>
+      </tr>
+      <tr data-cat="S">
+        <td class="c-habit"><span class="hname">No Added Sugar Today</span><span class="cat cat-ser">Serotonin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Kn&uuml;ppel et al. 2017, Sci Rep</td>
+        <td class="c-note" data-label="Notes">Higher sugar intake is associated with later common mental disorders in cohort data. Association, not causation. Shown with a disordered-eating note.</td>
+      </tr>
+      <tr data-cat="O">
+        <td class="c-habit"><span class="hname">Active Socialising (20+ min)</span><span class="cat cat-oxy">Oxytocin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-s">Strong</span></td>
+        <td class="c-lit" data-label="Key literature">Holt-Lunstad et al. 2010, PLoS Med; Holt-Lunstad 2024, World Psychiatry</td>
+        <td class="c-note" data-label="Notes">Social connection predicts mortality and mental health with some of the strongest evidence in behavioural science.</td>
+      </tr>
+      <tr data-cat="O">
+        <td class="c-habit"><span class="hname">Physical Touch / Oxytocin Anchor</span><span class="cat cat-oxy">Oxytocin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Light et al. 2005, Biol Psychol; Packheiser et al. 2024, Nat Hum Behav</td>
+        <td class="c-note" data-label="Notes">Hugs and partner contact associate with higher oxytocin, and touch interventions improve wellbeing. Specific duration thresholds are not well supported, so the app says "sustained contact".</td>
+      </tr>
+      <tr data-cat="O">
+        <td class="c-habit"><span class="hname">Sincere Appreciation (Expressed)</span><span class="cat cat-oxy">Oxytocin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Kumar &amp; Epley 2018, Psychol Sci</td>
+        <td class="c-note" data-label="Notes">Expressing gratitude improves wellbeing for both sides, more than expressers predict. The oxytocin link is inferred.</td>
+      </tr>
+      <tr data-cat="O">
+        <td class="c-habit"><span class="hname">Shared Meal (Eat Together)</span><span class="cat cat-oxy">Oxytocin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature">Dunbar 2017, Adapt Hum Behav Physiol</td>
+        <td class="c-note" data-label="Notes">People who eat socially more often report closer relationships and higher life satisfaction. Cross-sectional.</td>
+      </tr>
+      <tr data-cat="O">
+        <td class="c-habit"><span class="hname">Receive Care / Be Vulnerable</span><span class="cat cat-oxy">Oxytocin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature"><span class="todo">Reference in review</span></td>
+        <td class="c-note" data-label="Notes"><span class="todo">Note in review</span></td>
+      </tr>
+      <tr data-cat="O">
+        <td class="c-habit"><span class="hname">Group Singing / Shared Music</span><span class="cat cat-oxy">Oxytocin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature">Pearce et al. 2015, R Soc Open Sci</td>
+        <td class="c-note" data-label="Notes">Group singing speeds social bonding. The evidence points to endorphin-mediated bonding as much as oxytocin.</td>
+      </tr>
+      <tr data-cat="O">
+        <td class="c-habit"><span class="hname">Community Help / Act of Kindness</span><span class="cat cat-oxy">Oxytocin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Moll et al. 2006, PNAS; Curry et al. 2018, J Exp Soc Psychol</td>
+        <td class="c-note" data-label="Notes">Giving activates reward circuitry, and kindness interventions show small-to-medium wellbeing effects.</td>
+      </tr>
+      <tr data-cat="O">
+        <td class="c-habit"><span class="hname">Social Laughter / Humor</span><span class="cat cat-oxy">Oxytocin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature">Manninen et al. 2017, J Neurosci</td>
+        <td class="c-note" data-label="Notes">Social laughter releases endogenous opioids (PET). Placed in Oxytocin because its function is bonding; moved from Endorphin after review.</td>
+      </tr>
+      <tr data-cat="E">
+        <td class="c-habit"><span class="hname">Exercise (Dedicated Session)</span><span class="cat cat-end">Endorphin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-s">Strong</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-s">Strong</span></td>
+        <td class="c-lit" data-label="Key literature">Singh et al. 2023, Br J Sports Med (97 reviews, n=128,119); Boecker et al. 2008, Cereb Cortex</td>
+        <td class="c-note" data-label="Notes">Exercise reduces depression and anxiety with medium effects; PET shows opioid release in running. Tiered by intensity.</td>
+      </tr>
+      <tr data-cat="E">
+        <td class="c-habit"><span class="hname">Active Day (Incidental Steps)</span><span class="cat cat-end">Endorphin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-f">Foundational</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-l">Limited</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Bizzozero-Peroni et al. 2024, JAMA Netw Open</td>
+        <td class="c-note" data-label="Notes">More daily steps associate with fewer depressive symptoms. Acute neurochemical effects are weaker than structured exercise.</td>
+      </tr>
+      <tr data-cat="E">
+        <td class="c-habit"><span class="hname">Cold Shower / Contrast Therapy</span><span class="cat cat-end">Endorphin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-l">Limited</span></td>
+        <td class="c-lit" data-label="Key literature">&Scaron;r&aacute;mek et al. 2000, Eur J Appl Physiol; Buijze et al. 2016, PLoS One</td>
+        <td class="c-note" data-label="Notes">Cold water raises noradrenaline robustly. The endorphin link is extrapolated, and the app says so. Not for people with cardiovascular conditions.</td>
+      </tr>
+      <tr data-cat="E">
+        <td class="c-habit"><span class="hname">Creative Play / Dancing</span><span class="cat cat-end">Endorphin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-s">Secondary</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Tarr et al. 2016, Evol Hum Behav</td>
+        <td class="c-note" data-label="Notes">Synchronised dancing raises pain thresholds, a marker of endorphin release, and increases bonding.</td>
+      </tr>
+      <tr data-cat="E">
+        <td class="c-habit"><span class="hname">Yoga / Mobility / Stretching (10+ min)</span><span class="cat cat-end">Endorphin</span></td>
+        <td class="c-tier" data-label="Tier"><span class="tier t-b">Bonus</span></td>
+        <td class="c-g" data-label="Mechanism"><span class="grade g-m">Moderate</span></td>
+        <td class="c-g" data-label="Outcome"><span class="grade g-m">Moderate</span></td>
+        <td class="c-lit" data-label="Key literature">Cramer et al. 2013, Depress Anxiety</td>
+        <td class="c-note" data-label="Notes">Yoga shows moderate short-term benefits for depressive symptoms.</td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="weights">
+      <h2>Effect size to weight</h2>
+      <p class="sec-intro">Where meta-analyses report effects on depressive symptoms, those effect sizes anchor the weights. Values are approximate standardised mean differences summarised from the cited reviews.</p>
+      <div class="table-card">
+        <table class="es">
+          <thead><tr><th>Domain</th><th>Effect on depression (SMD)</th><th>Weight</th><th>Tier</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td>Vigorous exercise (45+ min)</td><td class="num">~0.60–0.80</td><td>3</td><td><span class="tier t-f">Foundational, high level</span></td><td>Largest effect in the library; PET-confirmed opioid release.</td></tr>
+            <tr><td>Sleep (7–9 hrs)</td><td class="num">~0.40–0.55</td><td>2</td><td><span class="tier t-f">Foundational</span></td><td>Causal link shown in randomised trials of sleep improvement.</td></tr>
+            <tr><td>Moderate exercise (30 min)</td><td class="num">~0.43</td><td>2</td><td><span class="tier t-f">Foundational, moderate level</span></td><td>Within the WHO-recommended range; dose-response supported.</td></tr>
+            <tr><td>In-person social connection</td><td class="num">~0.19–0.40</td><td>2–3</td><td><span class="tier t-f">Foundational</span></td><td>Mortality-level evidence justifies weight despite a moderate depression effect.</td></tr>
+            <tr><td>Diet (fibre, protein)</td><td class="num">~0.25–0.35</td><td>1–2</td><td><span class="tier t-s">Secondary</span></td><td>Strong mechanism, moderate trial outcomes.</td></tr>
+            <tr><td>Mindfulness, breathwork, dhikr</td><td class="num">~0.30–0.38</td><td>1</td><td><span class="tier t-b">Bonus</span></td><td>Real but modest effects (Goyal et al. 2014).</td></tr>
+            <tr><td>Walking and incidental activity</td><td class="num">~0.25–0.30</td><td>1</td><td><span class="tier t-b">Bonus</span></td><td>Effective, but weaker than structured exercise.</td></tr>
+            <tr><td>Journaling, goal-writing</td><td class="num">Indirect</td><td>1</td><td><span class="tier t-b">Bonus</span></td><td>Plausible mechanism, insufficient outcome data.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="changes">
+      <h2>What the review changed</h2>
+      <p class="sec-intro">The matrix is not decoration: grading the evidence changed the engine.</p>
+      <div class="changes">
+        <div class="change"><span class="act">Promoted</span><b>Morning Sunlight</b><span>Raised to foundational, so Dopamine no longer depends on a single habit that some users cannot do daily.</span></div>
+        <div class="change"><span class="act">Reweighted</span><b>Task List Completion</b><span>Kept secondary but reduced: real but small reward signals did not justify a heavy weight.</span></div>
+        <div class="change"><span class="act">Moved</span><b>Social Laughter</b><span>From Endorphin to Oxytocin. Its function is bonding, even though PET shows opioid release.</span></div>
+        <div class="change"><span class="act">Softened</span><b>Cold exposure and touch claims</b><span>Cold water is credited mainly with noradrenaline, with the endorphin link marked as extrapolated; "20-second hug" became "sustained contact".</span></div>
+        <div class="change"><span class="act">Rebalanced</span><b>Serotonin weights</b><span>Foundational weights reduced so one category could not dominate the daily score.</span></div>
+        <div class="change"><span class="act">Removed</span><b>Virtual check-ins</b><span>Weak evidence relative to in-person contact, and overlapping with Active Socialising.</span></div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="disclaimer">
+        <p><strong>What this is, and isn't.</strong> NeuroHabit is a habit-building and psychoeducation tool, not a treatment for any condition. Mapping a habit to one neurotransmitter is a simplification: every habit here acts on several systems at once.</p>
+        <p>The grades reflect the literature as reviewed in October 2026 and will change as evidence does.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">&copy; 2026 Aufthority — <span style="font-style:italic;">Informed decisions, better health.</span></div>
+  </footer>
+
+  <script>
+    (function () {
+      var btns = document.querySelectorAll('.fbtn');
+      var rows = document.querySelectorAll('.matrix tbody tr');
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var f = b.getAttribute('data-f');
+          btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          rows.forEach(function (r) { r.classList.toggle('hide', f !== 'all' && r.getAttribute('data-cat') !== f); });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
