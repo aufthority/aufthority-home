@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Literature Reviews, Simply Explained — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="How to do a literature review, step by step, and how it becomes a narrative review, scoping review, systematic review or meta-analysis. Plain English, with interactive visuals.">
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Literature reviews, simply explained">
+<meta property="og:description"  content="Seven steps from question to synthesis, and the four ways to publish a review: narrative, scoping, systematic and meta-analysis.">
+<meta property="og:url"          content="https://www.aufthority.com/edu/literaturereview/">
+<meta property="og:image"        content="https://www.aufthority.com/edu/literaturereview/og.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="en_GB">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Literature reviews, simply explained">
+<meta name="twitter:description" content="From question to synthesis, and the four ways to publish a review.">
+<meta name="twitter:image"       content="https://www.aufthority.com/edu/literaturereview/og.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1f5c3f; --green-2:#2f7a55; --gold:#b8901f; --gold-text:#8a6a10;
+  --lgreen:#edf5ef; --lgold:#fbf6e6; --ink:#17291f; --muted:#5c6a61;
+  --rule:#dbe6df; --bad:#9a4a2e; --lbad:#f8ece6; --white:#ffffff;
+  --base:15px;
+}
+@media (min-width:700px){ :root{ --base:16px; } }
+@media (min-width:1100px) and (min-height:760px){ :root{ --base:17px; } }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--white);color:var(--ink);font-family:'DM Sans',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+body{overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--green)}
+
+/* ---------- SHELL ---------- */
+#shell{height:100vh;height:100dvh;display:flex;flex-direction:column;max-width:760px;margin:0 auto}
+@media (min-width:900px){ #shell{max-width:1060px} }
+@media (min-width:1440px){ #shell{max-width:1180px} }
+nav{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;padding:10px 18px 8px}
+.logo{font-weight:700;color:var(--green);text-decoration:none;font-size:15px;letter-spacing:-.01em}
+.logo span{color:var(--gold-text);font-weight:500}
+#progress-label{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+#progress-track{flex:0 0 auto;height:3px;background:var(--rule);margin:0 18px;border-radius:2px;overflow:hidden}
+#progress-fill{height:100%;width:0;background:var(--gold);transition:width .35s ease}
+#slides-wrap{flex:1 1 auto;position:relative;min-height:0}
+#nav-wrap{flex:0 0 auto;display:flex;justify-content:space-between;gap:10px;padding:8px 18px 4px}
+@media (min-width:900px){ #nav-wrap{justify-content:flex-end} }
+.nav-btn{font-size:15px;font-weight:600;padding:10px 20px;border-radius:999px;border:1.5px solid var(--green);background:var(--white);color:var(--green);min-width:100px;transition:transform .15s,background .15s}
+.nav-btn:active{transform:scale(.97)}
+#btn-next{background:var(--green);color:#fff}
+.nav-btn:disabled{opacity:.3;cursor:default}
+footer{flex:0 0 auto;display:flex;justify-content:space-between;gap:10px;font-size:11.5px;color:var(--muted);padding:3px 18px calc(8px + env(safe-area-inset-bottom))}
+footer a{color:var(--muted);text-decoration:none;font-weight:600}
+
+/* ---------- SLIDE ---------- */
+.slide{position:absolute;inset:0;display:none;flex-direction:column;gap:.75em;padding:14px 18px 6px;overflow:hidden;font-size:calc(var(--base) * var(--k,1))}
+.slide.active{display:flex;animation:slideIn .35s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.s-head,.s-mid,.s-foot{flex:0 0 auto}
+.s-body{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:.6em}
+.s-foot{display:flex;flex-wrap:wrap;gap:.5em;align-items:center}
+.label{font-size:.72em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-text);margin-bottom:.35em}
+h1,h2{font-weight:700;letter-spacing:-.025em;line-height:1.1;color:var(--ink)}
+h1{font-size:1.95em}
+h2{font-size:1.42em}
+h1 em,h2 em{font-style:normal;color:var(--green)}
+.lead{font-size:.95em;line-height:1.42;color:var(--muted);margin-top:.45em}
+.lead b,.txt b{color:var(--ink);font-weight:600}
+.txt{font-size:.9em;line-height:1.42}
+.small{font-size:.78em;line-height:1.4;color:var(--muted)}
+
+/* visual container: svg fills whatever height is left */
+.viz{flex:1 1 auto;min-height:100px;position:relative}
+.viz>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+
+/* split layout on landscape screens */
+@media (min-width:900px) and (orientation:landscape){
+  .slide.split.active{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);grid-template-rows:1fr auto auto auto 1.3fr;grid-template-areas:". body" "head body" "mid body" "foot body" ". body";column-gap:2.6em;row-gap:.8em;padding:22px 24px 8px;align-items:start}
+  .slide.split .s-head{grid-area:head}
+  .slide.split .s-mid{grid-area:mid;align-self:start}
+  .slide.split .s-body{grid-area:body;height:100%}
+  .slide.split .s-body:not(:has(.viz)){justify-content:center}
+  .slide:not(.split) .s-body{justify-content:flex-start}
+  .slide.split .s-foot{grid-area:foot}
+  h1{font-size:2.5em} h2{font-size:1.85em}
+}
+@media (min-width:900px) and (orientation:portrait){ h2{font-size:1.7em} h1{font-size:2.3em} .slide{padding:22px 26px 8px} }
+
+/* small parts */
+.fake{display:inline-block;font-size:.7em;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-text);border:1px dashed var(--gold);border-radius:999px;padding:.25em .7em;background:var(--lgold)}
+.deeper{font-size:.8em;font-weight:600;color:var(--green);background:var(--lgreen);border:1px solid #cfe2d5;border-radius:999px;padding:.45em .95em}
+.deeper::after{content:" +";color:var(--gold-text)}
+.seg{display:inline-flex;background:var(--lgreen);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;font-size:.82em;font-weight:600;color:var(--green);padding:.45em .95em;border-radius:999px}
+.seg button.on{background:var(--green);color:#fff}
+.card{background:var(--white);border:1.5px solid var(--rule);border-radius:14px;padding:.8em .95em}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4em}
+.chip{font-size:.78em;font-weight:500;background:var(--lgreen);color:var(--green);border-radius:999px;padding:.3em .75em}
+.chip.gold{background:var(--lgold);color:var(--gold-text)}
+.chip.bad{background:var(--lbad);color:var(--bad)}
+
+/* toon common */
+.ink{stroke:var(--ink);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.svgt{font-family:'DM Sans',sans-serif;fill:var(--ink)}
+.bob{animation:bob 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.blink{animation:blink 4s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+
+/* ---------- S1 hook ---------- */
+.slide.active .paper{animation:drop .55s cubic-bezier(.3,1.5,.6,1) both;animation-delay:calc(var(--d) * 1s)}
+@keyframes drop{from{transform:translateY(-170px) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
+.flyer{animation:fly 3.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center;animation-delay:calc(var(--d) * 1s)}
+@keyframes fly{0%,100%{transform:translate(0,0) rotate(-10deg)}50%{transform:translate(-8px,-10px) rotate(8deg)}}
+.slide.active .pop{animation:pop .5s cubic-bezier(.3,1.6,.6,1) both;animation-delay:calc(var(--d,0) * 1s);transform-box:fill-box;transform-origin:center}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:none;opacity:1}}
+.companion{font-size:.8em;color:var(--muted)}
+
+/* ---------- S2 pile vs woven ---------- */
+#weave .grp{transition:opacity .45s ease,transform .45s ease}
+#weave.pile .woven{opacity:0;transform:translateX(30px)}
+#weave.woven .pile{opacity:0;transform:translateX(-30px)}
+#weave.woven .thread{animation:draw 1s ease both;animation-delay:calc(var(--d) * 1s)}
+@keyframes draw{from{stroke-dashoffset:300}to{stroke-dashoffset:0}}
+.thread{stroke-dasharray:300;fill:none;stroke:var(--green-2);stroke-width:2.2;opacity:.75}
+
+/* ---------- S3 spectrum ---------- */
+.spec{position:relative;padding-top:.3em}
+.spec-bar{height:8px;border-radius:999px;background:linear-gradient(90deg,#f3e6bd,var(--gold) 35%,var(--green-2) 70%,var(--green));margin:0 12%}
+.spec-ends{display:flex;justify-content:space-between;font-size:.72em;color:var(--muted);margin-top:.35em;font-weight:600}
+.stops{display:grid;grid-template-columns:repeat(4,1fr);gap:.4em;margin-top:.5em}
+.stop{border:1.5px solid var(--rule);background:var(--white);border-radius:12px;padding:.45em .25em .5em;display:flex;flex-direction:column;align-items:center;gap:.2em;font-size:.78em;font-weight:600;color:var(--ink);transition:all .2s}
+.stop svg{width:2.3em;height:2.3em}
+.stop.on{border-color:var(--green);background:var(--lgreen);color:var(--green);transform:translateY(-2px)}
+.type-card{flex:0 0 auto;min-height:0;display:flex;flex-direction:column;gap:.45em}
+.type-card h3{font-size:1.15em;color:var(--green);letter-spacing:-.01em}
+.type-card .ask{font-size:.88em;background:var(--lgold);border-left:3px solid var(--gold);padding:.5em .7em;border-radius:0 8px 8px 0;line-height:1.4}
+.type-card .ask b{display:block;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-text)}
+.type-card .what{font-size:.9em;line-height:1.42}
+.swap{animation:swap .35s ease both}
+@keyframes swap{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- S4 journey funnel ---------- */
+.fdot{animation:fall 3.2s ease-in infinite;animation-delay:calc(var(--d) * 1s);opacity:0}
+@keyframes fall{0%{transform:translate(0,0);opacity:0}10%{opacity:1}80%{opacity:1}100%{transform:translate(var(--dx),238px);opacity:0}}
+
+/* ---------- S5 PICO ---------- */
+.qcard{font-size:1.02em;line-height:1.55;font-weight:500}
+.qcard .p{transition:background .25s,color .25s;border-radius:6px;padding:0 .12em}
+.qcard .p.hl{color:#fff}
+.qcard .p.P.hl{background:var(--green)} .qcard .p.I.hl{background:var(--gold)} .qcard .p.C.hl{background:#6f7f75} .qcard .p.O.hl{background:var(--green-2)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:.45em}
+.tile{border:1.5px solid var(--rule);background:var(--white);border-radius:12px;padding:.5em .3em;text-align:center}
+.tile b{display:block;font-size:1.5em;line-height:1;color:var(--green)}
+.tile span{font-size:.72em;color:var(--muted);font-weight:600}
+.tile.on{border-color:var(--green);background:var(--lgreen)}
+.tile[data-k="I"] b{color:var(--gold)} .tile[data-k="C"] b{color:#6f7f75} .tile[data-k="O"] b{color:var(--green-2)}
+.meaning{min-height:2.8em;font-size:.88em;line-height:1.4;color:var(--muted)}
+.meaning b{color:var(--ink)}
+
+/* ---------- S6 venn ---------- */
+.vz{transition:opacity .35s ease}
+#venn.and .A,#venn.and .B,#venn.and .Iw{opacity:0}
+#venn.or .Iw{opacity:0}
+#venn.not .B,#venn.not .I{opacity:0}
+#venn.not .Iw{opacity:1}
+.meter{height:10px;background:var(--lgreen);border-radius:999px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--green);border-radius:999px;transition:width .5s cubic-bezier(.3,1.3,.6,1)}
+.meter-row{display:flex;align-items:center;gap:.6em;font-size:.8em;color:var(--muted)}
+.meter-row .meter{flex:1}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8em;background:var(--lgold);border-radius:8px;padding:.45em .6em;color:var(--ink);line-height:1.5;word-break:break-word}
+.code .op{color:var(--gold-text);font-weight:700}
+
+/* ---------- S7 places ---------- */
+.dbs{display:grid;grid-template-columns:repeat(3,1fr);gap:.4em}
+.db{border:1.5px solid var(--rule);border-radius:10px;padding:.4em .55em}
+.db b{display:block;font-size:.84em;color:var(--green)}
+.db span{font-size:.72em;color:var(--muted);line-height:1.3;display:block}
+.db.grey{border-style:dashed;background:var(--lgold)}
+.db.grey b{color:var(--gold-text)}
+.slide.active .arrowanim{animation:draw 1.1s ease both;animation-delay:calc(var(--d) * 1s);stroke-dasharray:300}
+
+/* ---------- S8 prisma funnel ---------- */
+.slide.active .stage{animation:pop .5s cubic-bezier(.3,1.5,.6,1) both;animation-delay:calc(var(--d) * 1s);transform-box:fill-box;transform-origin:center}
+.ticks{display:flex;flex-direction:column;gap:.3em}
+.ticks div{font-size:.86em;line-height:1.4;padding-left:1.3em;position:relative}
+.ticks div::before{content:"";position:absolute;left:0;top:.42em;width:.62em;height:.62em;border-radius:50%;background:var(--gold)}
+
+/* ---------- S9 appraisal ---------- */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:.45em;flex:1 1 auto;min-height:0;grid-auto-rows:1fr}
+.flip{perspective:600px;border:0;background:none;padding:0;text-align:left;min-height:3.2em}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip.done .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:.45em .65em;display:flex;flex-direction:column;justify-content:center;font-size:.82em;line-height:1.3}
+.flip .f{border:1.5px solid var(--rule);background:var(--white)}
+.flip .f::after{content:"Tap to judge";font-size:.78em;color:var(--gold-text);font-weight:600;margin-top:.2em}
+.flip .b{transform:rotateY(180deg)}
+.flip .b strong{font-size:1em}
+.flip.more .b{background:var(--lgreen);border:1.5px solid #bcd8c6;color:var(--green)}
+.flip.less .b{background:var(--lbad);border:1.5px solid #ecd0c3;color:var(--bad)}
+.flip .b span{color:var(--ink);font-size:.92em;margin-top:.15em}
+
+/* ---------- S10 table ---------- */
+.xt{width:100%;border-collapse:separate;border-spacing:0;font-size:.78em;line-height:1.3}
+.xt th{text-align:left;font-size:.82em;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-text);padding:.4em .45em;border-bottom:2px solid var(--gold)}
+.xt td{padding:.45em .45em;border-bottom:1px solid var(--rule);vertical-align:top}
+.xt td:first-child{font-weight:700;color:var(--green)}
+.slide.active .xt tbody tr{animation:rowin .45s ease both;animation-delay:calc(var(--d) * 1s)}
+@keyframes rowin{from{opacity:0;transform:translateX(-10px);background:var(--lgold)}to{opacity:1;transform:none}}
+.xt-wrap{border:1.5px solid var(--rule);border-radius:12px;padding:.3em .45em;overflow:hidden}
+
+/* ---------- S11 synthesis ---------- */
+.para{font-size:.9em;line-height:1.55;border-radius:12px;padding:.75em .9em}
+.para.list{background:#f4f5f4;color:#4a554e}
+.para.wov{background:var(--lgreen)}
+.th1{background:#d6eadc;border-radius:4px;padding:0 .15em} .th2{background:#f3e6bd;border-radius:4px;padding:0 .15em} .th3{background:#e4e6f0;border-radius:4px;padding:0 .15em}
+.verdict{font-size:.8em;font-weight:600;margin-top:.45em}
+.para.list .verdict{color:var(--bad)} .para.wov .verdict{color:var(--green)}
+
+/* ---------- type slides ---------- */
+.facts{display:flex;flex-direction:column;gap:.38em}
+.fact{display:grid;grid-template-columns:5.6em 1fr;gap:.6em;font-size:.86em;line-height:1.38;padding-bottom:.38em;border-bottom:1px solid var(--rule)}
+.fact:last-child{border-bottom:0}
+.fact b{font-size:.78em;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-text);padding-top:.15em}
+@media (max-width:560px){ .fact{display:block} .fact b{margin-right:.5em} }
+.effort{display:flex;align-items:center;gap:.35em;font-size:.76em;color:var(--muted);font-weight:600}
+.effort i{width:.7em;height:.7em;border-radius:50%;background:var(--rule);display:inline-block}
+.effort i.f{background:var(--gold)}
+.slide.active .spot{animation:sweep 4s ease-in-out infinite;transform-box:view-box;transform-origin:190px 0}
+@keyframes sweep{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
+.slide.active .tickmark{stroke-dasharray:40;animation:tick .4s ease both;animation-delay:calc(var(--d) * 1s)}
+@keyframes tick{from{stroke-dashoffset:40}to{stroke-dashoffset:0}}
+.gap{animation:pulse 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(.9)}50%{opacity:1;transform:scale(1.05)}}
+
+/* ---------- S15 forest ---------- */
+.frow{cursor:pointer}
+.frow.off{opacity:.25}
+.readout{font-size:.88em;line-height:1.42;background:var(--lgreen);border-radius:12px;padding:.6em .8em}
+.readout b{color:var(--green)}
+.readout .i2{display:block;font-size:.85em;color:var(--muted);margin-top:.2em}
+
+/* ---------- S16 decision ---------- */
+.dec{flex:1 1 auto;min-height:0;display:flex;gap:.9em;align-items:center}
+.dec svg.toon{width:26%;max-width:150px;height:auto;flex:0 0 auto}
+.dec-card{flex:1;display:flex;flex-direction:column;gap:.6em}
+.crumbs{display:flex;gap:.3em}
+.crumbs i{width:1.8em;height:5px;border-radius:999px;background:var(--rule)}
+.crumbs i.on{background:var(--gold)}
+.dq{font-size:1.02em;font-weight:600;line-height:1.38}
+.dbtns{display:flex;gap:.5em}
+.dbtn{flex:1;border:1.5px solid var(--green);background:var(--white);color:var(--green);font-weight:700;border-radius:12px;padding:.6em;font-size:.95em}
+.dbtn.yes{background:var(--green);color:#fff}
+.dres{background:var(--lgreen);border-radius:14px;padding:.8em .95em;border:1.5px solid #bcd8c6}
+.dres h3{font-size:1.2em;color:var(--green);letter-spacing:-.01em}
+.dres p{font-size:.88em;line-height:1.42;margin-top:.3em}
+.restart{align-self:flex-start;border:0;background:none;color:var(--gold-text);font-weight:600;font-size:.82em;text-decoration:underline}
+
+/* ---------- S17 publish ---------- */
+.steps{display:flex;flex-direction:column;gap:.45em}
+.st{display:grid;grid-template-columns:2em 1fr;gap:.55em;align-items:start}
+.st .n{width:1.8em;height:1.8em;border-radius:50%;background:var(--green);color:#fff;font-weight:700;font-size:.85em;display:flex;align-items:center;justify-content:center}
+.st b{font-size:.92em;display:block}
+.st span{font-size:.82em;color:var(--muted);line-height:1.38;display:block}
+
+/* ---------- S18 summary ---------- */
+.sum{display:grid;grid-template-columns:1fr;gap:.4em}
+@media (min-width:600px){ .sum{grid-template-columns:1fr 1fr} }
+.sum div{display:grid;grid-template-columns:1.9em 1fr;gap:.5em;align-items:start;font-size:.88em;line-height:1.38;background:var(--lgreen);border-radius:12px;padding:.55em .7em}
+.sum div b{width:1.7em;height:1.7em;border-radius:50%;background:var(--gold);color:#fff;font-size:.85em;display:flex;align-items:center;justify-content:center}
+
+/* ---------- S19 final ---------- */
+.comp{display:flex;align-items:center;gap:.8em;text-decoration:none;color:var(--ink)}
+.comp .ar{margin-left:auto;font-weight:700;color:var(--green);font-size:1.2em}
+.comp small{display:block;color:var(--muted);font-size:.8em}
+.comp strong{font-size:.98em}
+.links{display:flex;flex-wrap:wrap;gap:.4em}
+.links a{font-size:.8em;font-weight:600;text-decoration:none;color:var(--green);border:1.5px solid #cfe2d5;border-radius:999px;padding:.4em .85em;background:var(--white)}
+.links a.mail{background:var(--green);color:#fff;border-color:var(--green)}
+.srcbtn{font-size:.85em;font-weight:600;color:var(--gold-text);background:var(--lgold);border:1px solid #ecdcae;border-radius:12px;padding:.65em .9em;text-align:left;width:100%}
+
+/* ---------- SHEET ---------- */
+#sheet{position:fixed;inset:0;background:rgba(23,41,31,.38);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}
+#sheet.open{opacity:1;pointer-events:auto}
+.sheet-panel{background:var(--white);width:100%;max-width:680px;max-height:86dvh;overflow:auto;border-radius:18px 18px 0 0;padding:16px 20px calc(18px + env(safe-area-inset-bottom));transform:translateY(30px);transition:transform .3s cubic-bezier(.3,1.3,.6,1);font-size:15px}
+#sheet.open .sheet-panel{transform:none}
+@media (min-width:700px){ #sheet{align-items:center} .sheet-panel{border-radius:18px} }
+.sheet-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6em}
+.sheet-top .label{margin:0}
+#sheet-close{border:0;background:var(--lgreen);color:var(--green);font-weight:700;border-radius:999px;padding:.35em .85em;font-size:.85em}
+.sheet-body h3{font-size:1.15em;letter-spacing:-.01em;margin-bottom:.5em;color:var(--ink)}
+.sheet-body p,.sheet-body li{font-size:.92em;line-height:1.5;color:var(--ink)}
+.sheet-body ul{padding-left:1.1em;display:flex;flex-direction:column;gap:.35em}
+.sheet-body p+p,.sheet-body p+ul,.sheet-body ul+p{margin-top:.55em}
+.sheet-body .refs li{font-size:.82em;color:var(--muted)}
+.sheet-body .refs a{word-break:break-all}
+
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- toon pharmacist -->
+    <symbol id="ph" viewBox="0 0 100 140">
+      <path class="ink" d="M16 140 C16 104 28 86 50 86 C72 86 84 104 84 140 Z" fill="#fff"/>
+      <path class="ink" d="M39 88 L50 108 L61 88" fill="#1f5c3f"/>
+      <path class="ink" d="M50 108 V140" fill="none"/>
+      <rect class="ink" x="60" y="112" width="13" height="9" rx="2" fill="#b8901f"/>
+      <circle class="ink" cx="50" cy="52" r="25" fill="#f1c9a5"/>
+      <path class="ink" d="M25 51 C24 30 38 23 51 25 C66 25 77 35 75 51 C68 43 54 40 42 44 C35 46 30 48 25 51 Z" fill="#2b2b2b"/>
+      <g class="blink"><circle cx="41" cy="55" r="2.8" fill="#17291f"/><circle cx="59" cy="55" r="2.8" fill="#17291f"/></g>
+      <circle cx="35" cy="63" r="4" fill="#e9a08a" opacity=".45"/><circle cx="65" cy="63" r="4" fill="#e9a08a" opacity=".45"/>
+      <path class="ink" d="M43 65 Q50 70 57 65" fill="none"/>
+    </symbol>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <clipPath id="clipA"><circle cx="140" cy="100" r="78"/></clipPath>
+  </defs>
+</svg>
+
+<div id="shell">
+  <nav>
+    <a class="logo" href="https://www.aufthority.com">Aufthority <span>· Edu</span></a>
+    <span id="progress-label">1 / 19</span>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <div id="slides-wrap">
+
+    <!-- 1 HOOK -->
+    <section class="slide split active" data-n="1">
+      <div class="s-head">
+        <div class="label">Literature reviews</div>
+        <h1>Nobody can read <em>everything.</em></h1>
+      </div>
+      <div class="s-mid">
+        <p class="lead">So how do you find out what is already known about a question, fairly and without picking only the studies you like? That is the job of a <b>literature review</b>.</p>
+        <p class="companion" style="margin-top:.7em">Companion to <a href="/edu/researchfundamentals" data-umami-event="companion-click">Research, simply explained</a>.</p>
+      </div>
+      <div class="s-body">
+        <div class="viz">
+          <svg viewBox="0 0 420 250" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A pharmacist next to a growing pile of research papers">
+            <path d="M8 238 H412" stroke="#dbe6df" stroke-width="2"/>
+            <rect class="ink" x="150" y="176" width="256" height="12" rx="4" fill="#efe3c6"/>
+            <path class="ink" d="M168 188 V238 M388 188 V238" fill="none"/>
+            <g>
+              <rect class="ink paper" style="--d:.1" x="180" y="164" width="80" height="10" rx="2" fill="#fff"/>
+              <rect class="ink paper" style="--d:.2" x="184" y="153" width="80" height="10" rx="2" fill="#fbf6e6"/>
+              <rect class="ink paper" style="--d:.3" x="178" y="142" width="80" height="10" rx="2" fill="#fff"/>
+              <rect class="ink paper" style="--d:.4" x="186" y="131" width="80" height="10" rx="2" fill="#edf5ef"/>
+              <rect class="ink paper" style="--d:.5" x="181" y="120" width="80" height="10" rx="2" fill="#fff"/>
+              <rect class="ink paper" style="--d:.15" x="290" y="164" width="86" height="10" rx="2" fill="#fbf6e6"/>
+              <rect class="ink paper" style="--d:.25" x="286" y="153" width="86" height="10" rx="2" fill="#fff"/>
+              <rect class="ink paper" style="--d:.35" x="292" y="142" width="86" height="10" rx="2" fill="#edf5ef"/>
+              <rect class="ink paper" style="--d:.45" x="288" y="131" width="86" height="10" rx="2" fill="#fff"/>
+              <rect class="ink paper" style="--d:.55" x="294" y="120" width="86" height="10" rx="2" fill="#fbf6e6"/>
+              <rect class="ink paper" style="--d:.65" x="289" y="109" width="86" height="10" rx="2" fill="#fff"/>
+              <rect class="ink paper" style="--d:.75" x="293" y="98"  width="86" height="10" rx="2" fill="#edf5ef"/>
+              <rect class="ink paper" style="--d:.85" x="287" y="87"  width="86" height="10" rx="2" fill="#fff"/>
+            </g>
+            <rect class="ink flyer" style="--d:0" x="372" y="40" width="26" height="32" rx="3" fill="#fff"/>
+            <rect class="ink flyer" style="--d:1.1" x="328" y="22" width="22" height="28" rx="3" fill="#fbf6e6"/>
+            <rect class="ink flyer" style="--d:.6" x="392" y="96" width="20" height="25" rx="3" fill="#edf5ef"/>
+            <g class="bob"><use href="#ph" x="24" y="96" width="102" height="142"/></g>
+            <g class="pop" style="--d:.9">
+              <rect class="ink" x="96" y="14" width="214" height="60" rx="16" fill="#edf5ef"/>
+              <path class="ink" d="M128 72 L108 100 L150 73" fill="#edf5ef"/>
+              <text class="svgt" x="203" y="39" text-anchor="middle" font-size="15" font-weight="700" fill="#1f5c3f">Why don't patients finish</text>
+              <text class="svgt" x="203" y="59" text-anchor="middle" font-size="15" font-weight="700" fill="#1f5c3f">their antibiotics?</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="s-foot"><span class="fake">Running example, made up</span></div>
+    </section>
+
+    <!-- 2 WHAT IT IS -->
+    <section class="slide split" data-n="2">
+      <div class="s-head">
+        <div class="label">What a review is</div>
+        <h2>A woven answer, <em>not a pile of summaries.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead">A weak review lists studies one by one. A good one pulls them together into <b>themes</b>: what keeps coming up, where studies disagree, and what nobody has looked at yet.</p>
+        <div class="tag-row" style="margin-top:.7em">
+          <span class="chip">A chapter inside your own study</span>
+          <span class="chip gold">A paper of its own (this explainer)</span>
+        </div>
+      </div>
+      <div class="s-body">
+        <div class="seg" role="group" aria-label="Compare">
+          <button class="on" data-mode="pile">Pile of summaries</button>
+          <button data-mode="woven">Woven review</button>
+        </div>
+        <div class="viz">
+          <svg id="weave" class="pile" viewBox="0 0 400 230" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Five studies listed separately, or linked into three themes">
+            <g class="grp pile">
+              <g><rect class="ink" x="70" y="12"  width="260" height="36" rx="8" fill="#fff"/><text class="svgt" x="86" y="35" font-size="16"><tspan font-weight="700" fill="#1f5c3f">Study A</tspan> found…</text></g>
+              <g><rect class="ink" x="80" y="56"  width="260" height="36" rx="8" fill="#fff"/><text class="svgt" x="96" y="79" font-size="16"><tspan font-weight="700" fill="#1f5c3f">Study B</tspan> found…</text></g>
+              <g><rect class="ink" x="70" y="100" width="260" height="36" rx="8" fill="#fff"/><text class="svgt" x="86" y="123" font-size="16"><tspan font-weight="700" fill="#1f5c3f">Study C</tspan> found…</text></g>
+              <g><rect class="ink" x="80" y="144" width="260" height="36" rx="8" fill="#fff"/><text class="svgt" x="96" y="167" font-size="16"><tspan font-weight="700" fill="#1f5c3f">Study D</tspan> found…</text></g>
+              <g><rect class="ink" x="70" y="188" width="260" height="36" rx="8" fill="#fff"/><text class="svgt" x="86" y="211" font-size="16"><tspan font-weight="700" fill="#1f5c3f">Study E</tspan> found…</text></g>
+            </g>
+            <g class="grp woven">
+              <path class="thread" style="--d:.0" d="M62 35 C150 35 160 52 226 52"/>
+              <path class="thread" style="--d:.1" d="M62 115 C150 115 160 56 226 56"/>
+              <path class="thread" style="--d:.2" d="M62 155 C150 155 160 60 226 60"/>
+              <path class="thread" style="--d:.3" d="M62 75 C150 75 160 112 226 112"/>
+              <path class="thread" style="--d:.4" d="M62 158 C150 158 160 116 226 116"/>
+              <path class="thread" style="--d:.5" d="M62 118 C150 118 160 168 226 168"/>
+              <path class="thread" style="--d:.6" d="M62 195 C150 195 160 172 226 172"/>
+              <g><circle class="ink" cx="48" cy="35" r="15" fill="#fbf6e6"/><text class="svgt" x="48" y="40" text-anchor="middle" font-size="14" font-weight="700">A</text></g>
+              <g><circle class="ink" cx="48" cy="75" r="15" fill="#fbf6e6"/><text class="svgt" x="48" y="80" text-anchor="middle" font-size="14" font-weight="700">B</text></g>
+              <g><circle class="ink" cx="48" cy="115" r="15" fill="#fbf6e6"/><text class="svgt" x="48" y="120" text-anchor="middle" font-size="14" font-weight="700">C</text></g>
+              <g><circle class="ink" cx="48" cy="155" r="15" fill="#fbf6e6"/><text class="svgt" x="48" y="160" text-anchor="middle" font-size="14" font-weight="700">D</text></g>
+              <g><circle class="ink" cx="48" cy="195" r="15" fill="#fbf6e6"/><text class="svgt" x="48" y="200" text-anchor="middle" font-size="14" font-weight="700">E</text></g>
+              <g><rect class="ink" x="226" y="38" width="170" height="36" rx="18" fill="#d6eadc"/><text class="svgt" x="311" y="61" text-anchor="middle" font-size="14.5" font-weight="600">Felt better, so stopped</text></g>
+              <g><rect class="ink" x="226" y="96" width="170" height="36" rx="18" fill="#f3e6bd"/><text class="svgt" x="311" y="119" text-anchor="middle" font-size="14.5" font-weight="600">Side effects</text></g>
+              <g><rect class="ink" x="226" y="152" width="170" height="36" rx="18" fill="#e4e6f0"/><text class="svgt" x="311" y="175" text-anchor="middle" font-size="14.5" font-weight="600">Cost or forgetting</text></g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="s-foot"><span class="fake">Studies are made up</span></div>
+    </section>
+
+    <!-- 3 FOUR KINDS -->
+    <section class="slide split" data-n="3">
+      <div class="s-head">
+        <div class="label">Four ways to publish</div>
+        <h2>Same pile of studies, <em>four kinds of review.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead">They differ in how strict the method is and how focused the question is. Tap each one to see what it asks about our example.</p>
+      </div>
+      <div class="s-body">
+        <div class="spec">
+          <div class="spec-bar"></div>
+          <div class="spec-ends"><span>Flexible, broad</span><span>Strict, focused</span></div>
+          <div class="stops" id="stops">
+            <button class="stop on" data-t="narrative"><svg viewBox="0 0 40 40"><path class="ink" d="M6 10 C12 8 17 9 20 12 C23 9 28 8 34 10 V31 C28 29 23 30 20 33 C17 30 12 29 6 31 Z" fill="#fbf6e6"/><path class="ink" d="M20 12 V33" fill="none"/></svg>Narrative</button>
+            <button class="stop" data-t="scoping"><svg viewBox="0 0 40 40"><path class="ink" d="M5 10 L14 7 L26 11 L35 8 V31 L26 34 L14 30 L5 33 Z" fill="#edf5ef"/><path class="ink" d="M14 7 V30 M26 11 V34" fill="none"/><circle cx="20" cy="20" r="3" fill="#b8901f"/></svg>Scoping</button>
+            <button class="stop" data-t="systematic"><svg viewBox="0 0 40 40"><rect class="ink" x="8" y="6" width="24" height="29" rx="3" fill="#fff"/><path class="ink" d="M13 14 l2 2 l4 -4 M13 22 l2 2 l4 -4 M22 15 h6 M22 23 h6" fill="none"/></svg>Systematic</button>
+            <button class="stop" data-t="meta"><svg viewBox="0 0 40 40"><path class="ink" d="M20 5 V35" fill="none" stroke-dasharray="2 3"/><path class="ink" d="M9 11 H27 M13 18 H31 M7 25 H24" fill="none"/><path class="ink" d="M12 31 L19 28 L26 31 L19 34 Z" fill="#1f5c3f"/></svg>Meta-analysis</button>
+          </div>
+        </div>
+        <div class="card type-card" id="typeCard"></div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d3">Other review types</button>
+        <template id="d3">
+          <h3>Other review types you'll meet</h3>
+          <ul>
+            <li><b>Umbrella review</b>: a review of existing systematic reviews.</li>
+            <li><b>Rapid review</b>: a systematic review with planned shortcuts, used when decisions can't wait.</li>
+            <li><b>Qualitative evidence synthesis</b>: combines findings from interview and focus-group studies (for example, JBI meta-aggregation).</li>
+            <li><b>Integrative and realist reviews</b>: mix different kinds of evidence, or ask what works, for whom and why.</li>
+          </ul>
+        </template>
+      </div>
+    </section>
+
+    <!-- 4 JOURNEY -->
+    <section class="slide split" data-n="4">
+      <div class="s-head">
+        <div class="label">The process</div>
+        <h2>Seven steps, <em>one funnel.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead">Every review moves from a big messy pile to a small set of studies you can trust, and then to one clear story.</p>
+        <p class="txt" style="margin-top:.6em">Narrative reviews follow these steps loosely. Scoping and systematic reviews follow them strictly and <b>write every step down</b>, so someone else could repeat them.</p>
+      </div>
+      <div class="s-body">
+        <div class="viz">
+          <svg viewBox="0 0 412 280" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A funnel with seven numbered steps">
+            <path class="ink" d="M8 12 H172 L104 236 V264 H76 V236 Z" fill="#edf5ef"/>
+            <g stroke="#bcd8c6" stroke-width="1.5">
+              <path d="M18 44 H162"/><path d="M28 76 H153"/><path d="M37 108 H143"/><path d="M47 140 H133"/><path d="M57 172 H123"/><path d="M66 204 H114"/>
+            </g>
+            <g class="svgt" font-size="13" font-weight="700" text-anchor="middle" fill="#fff">
+              <circle cx="90" cy="28" r="11" fill="#1f5c3f"/><text x="90" y="32.5">1</text>
+              <circle cx="90" cy="60" r="11" fill="#1f5c3f"/><text x="90" y="64.5">2</text>
+              <circle cx="90" cy="92" r="11" fill="#1f5c3f"/><text x="90" y="96.5">3</text>
+              <circle cx="90" cy="124" r="11" fill="#1f5c3f"/><text x="90" y="128.5">4</text>
+              <circle cx="90" cy="156" r="11" fill="#1f5c3f"/><text x="90" y="160.5">5</text>
+              <circle cx="90" cy="188" r="11" fill="#1f5c3f"/><text x="90" y="192.5">6</text>
+              <circle cx="90" cy="220" r="11" fill="#b8901f"/><text x="90" y="224.5">7</text>
+            </g>
+            <g stroke="#b8901f" stroke-width="1.2" stroke-dasharray="2 3">
+              <path d="M168 28 H184"/><path d="M158 60 H184"/><path d="M148 92 H184"/><path d="M138 124 H184"/><path d="M128 156 H184"/><path d="M119 188 H184"/><path d="M109 220 H184"/>
+            </g>
+            <g class="svgt" font-size="17" font-weight="600">
+              <text x="190" y="34">Ask a clear question</text>
+              <text x="190" y="66">Choose your words</text>
+              <text x="190" y="98">Search the right places</text>
+              <text x="190" y="130">Sort the pile</text>
+              <text x="190" y="162">Judge quality</text>
+              <text x="190" y="194">Pull out the facts</text>
+              <text x="190" y="226" fill="#8a6a10">Weave it together</text>
+            </g>
+            <g fill="#b8901f">
+              <circle class="fdot" style="--d:0;--dx:40px"   cx="40"  cy="0" r="4"/>
+              <circle class="fdot" style="--d:.5;--dx:-50px" cx="140" cy="0" r="4"/>
+              <circle class="fdot" style="--d:1;--dx:10px"   cx="80"  cy="0" r="4"/>
+              <circle class="fdot" style="--d:1.5;--dx:-30px" cx="120" cy="0" r="4"/>
+              <circle class="fdot" style="--d:2;--dx:60px"   cx="30"  cy="0" r="4"/>
+              <circle class="fdot" style="--d:2.5;--dx:0px"  cx="90"  cy="0" r="4"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="s-foot"></div>
+    </section>
+
+    <!-- 5 STEP 1 -->
+    <section class="slide split" data-n="5">
+      <div class="s-head">
+        <div class="label">Step 1 · Ask a clear question</div>
+        <h2>A vague question <em>finds a vague pile.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead">"Antibiotics and patients" could mean anything. Break your question into parts with <b>PICO</b>. Tap each letter.</p>
+        <p class="txt" style="margin-top:.6em">Mapping a topic rather than testing something? Use <b>PCC</b> instead: Population, Concept, Context.</p>
+      </div>
+      <div class="s-body">
+        <div class="card qcard">
+          In <span class="p P">adults prescribed antibiotics</span>, does <span class="p I">a pharmacist reminder call</span>, compared with <span class="p C">usual care</span>, help them <span class="p O">finish the full course</span>?
+        </div>
+        <div class="tiles" id="tiles">
+          <button class="tile" data-k="P"><b>P</b><span>Who?</span></button>
+          <button class="tile" data-k="I"><b>I</b><span>Trying what?</span></button>
+          <button class="tile" data-k="C"><b>C</b><span>Versus what?</span></button>
+          <button class="tile" data-k="O"><b>O</b><span>What result?</span></button>
+        </div>
+        <p class="meaning" id="meaning">Each letter becomes a search concept in Step 2.</p>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d5">Other question frameworks</button>
+        <span class="fake">Example question</span>
+        <template id="d5">
+          <h3>Other question frameworks</h3>
+          <ul>
+            <li><b>PCC</b> (Population, Concept, Context): recommended by JBI for scoping reviews.</li>
+            <li><b>PEO</b> (Population, Exposure, Outcome): for "what is linked with what" questions.</li>
+            <li><b>SPIDER</b> (Sample, Phenomenon of Interest, Design, Evaluation, Research type): for qualitative questions.</li>
+            <li><b>FINER</b> check: is the question Feasible, Interesting, Novel, Ethical and Relevant?</li>
+          </ul>
+          <p>Before you start, search PROSPERO, the Cochrane Library and OSF to see whether someone is already doing your review.</p>
+        </template>
+      </div>
+    </section>
+
+    <!-- 6 STEP 2 -->
+    <section class="slide split" data-n="6">
+      <div class="s-head">
+        <div class="label">Step 2 · Choose your words</div>
+        <h2>Three little words <em>control the pile.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead"><b>AND</b> narrows, <b>OR</b> widens, <b>NOT</b> removes. Tap each to see what a database would bring back.</p>
+        <div class="code" style="margin-top:.6em">(adherence <span class="op">OR</span> compliance <span class="op">OR</span> "course completion") <span class="op">AND</span> antibiotic*</div>
+        <p class="small" style="margin-top:.4em">Use OR between synonyms. A star finds every ending: <b>antibiotic*</b> catches antibiotic and antibiotics.</p>
+      </div>
+      <div class="s-body">
+        <div class="seg" id="boolSeg" role="group" aria-label="Search operator">
+          <button class="on" data-op="and">AND</button>
+          <button data-op="or">OR</button>
+          <button data-op="not">NOT</button>
+        </div>
+        <div class="viz">
+          <svg id="venn" class="and" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Two overlapping circles: antibiotic and adherence">
+            <circle class="vz A" cx="140" cy="100" r="78" fill="#bcd8c6"/>
+            <circle class="vz B" cx="260" cy="100" r="78" fill="#bcd8c6"/>
+            <circle class="vz I" cx="260" cy="100" r="78" fill="#1f5c3f" clip-path="url(#clipA)"/>
+            <circle class="vz Iw" cx="260" cy="100" r="78" fill="#fff" clip-path="url(#clipA)" style="opacity:0"/>
+            <circle class="ink" cx="140" cy="100" r="78" fill="none"/>
+            <circle class="ink" cx="260" cy="100" r="78" fill="none"/>
+            <text class="svgt" x="116" y="106" text-anchor="middle" font-size="17" font-weight="700">antibiotic*</text>
+            <text class="svgt" x="286" y="106" text-anchor="middle" font-size="17" font-weight="700">adherence</text>
+          </svg>
+        </div>
+        <div class="meter-row"><span>Pile size</span><div class="meter"><i id="meterFill" style="width:18%"></i></div><span id="meterTxt">small, on target</span></div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d6">Search like a librarian</button>
+        <template id="d6">
+          <h3>Search like a librarian</h3>
+          <ul>
+            <li><b>Build blocks.</b> One block of synonyms per PICO concept, joined with OR. Then join the blocks with AND.</li>
+            <li><b>Subject headings</b> (MeSH in PubMed) catch papers that use different words for the same idea. Combine them with free-text words.</li>
+            <li><b>Quotes</b> keep phrases together: "course completion".</li>
+            <li><b>Symbols differ</b> between databases. Check each database's help page.</li>
+            <li><b>Ask a librarian.</b> Systematic review guidance encourages working with an information specialist, and PRISMA-S sets out how to report your searches.</li>
+          </ul>
+        </template>
+      </div>
+    </section>
+
+    <!-- 7 STEP 3 -->
+    <section class="slide split" data-n="7">
+      <div class="s-head">
+        <div class="label">Step 3 · Search the right places</div>
+        <h2>One database <em>is never enough.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead">Each database covers different journals. Then follow the trail: check what your best papers cite, and who cited them later. This is called <b>snowballing</b>.</p>
+      </div>
+      <div class="s-body">
+        <div class="dbs">
+          <div class="db"><b>PubMed</b><span>Free. Medicine and health.</span></div>
+          <div class="db"><b>Scopus</b><span>Very broad. Via your library.</span></div>
+          <div class="db"><b>CINAHL</b><span>Nursing and allied health.</span></div>
+          <div class="db"><b>Cochrane Library</b><span>Trials and reviews.</span></div>
+          <div class="db"><b>Google Scholar</b><span>Wide but messy. For checking.</span></div>
+          <div class="db grey"><b>Grey literature</b><span>Theses, reports, trial registers.</span></div>
+        </div>
+        <div class="viz">
+          <svg viewBox="0 0 400 150" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Backward and forward citation searching from one key paper">
+            <g class="svgt" font-size="14.5" font-weight="700" fill="#8a6a10" text-anchor="middle"><text x="70" y="14">Older papers it cites</text><text x="330" y="14">Newer papers citing it</text></g>
+            <g>
+              <rect class="ink" x="36" y="26" width="34" height="40" rx="4" fill="#fbf6e6"/><rect class="ink" x="44" y="76" width="34" height="40" rx="4" fill="#fbf6e6"/><rect class="ink" x="70" y="40" width="34" height="40" rx="4" fill="#fff"/>
+              <rect class="ink" x="296" y="40" width="34" height="40" rx="4" fill="#fff"/><rect class="ink" x="330" y="26" width="34" height="40" rx="4" fill="#edf5ef"/><rect class="ink" x="322" y="80" width="34" height="40" rx="4" fill="#edf5ef"/>
+            </g>
+            <path class="arrowanim" style="--d:.2" d="M166 75 C140 75 130 64 108 62" fill="none" stroke="#b8901f" stroke-width="2.4" marker-end="url(#arr)"/>
+            <path class="arrowanim" style="--d:.4" d="M166 88 C140 92 110 98 84 98" fill="none" stroke="#b8901f" stroke-width="2.4" marker-end="url(#arr)"/>
+            <path class="arrowanim" style="--d:.7" d="M234 75 C260 75 270 64 292 62" fill="none" stroke="#1f5c3f" stroke-width="2.4" marker-end="url(#arr)"/>
+            <path class="arrowanim" style="--d:.9" d="M234 88 C262 92 292 98 318 100" fill="none" stroke="#1f5c3f" stroke-width="2.4" marker-end="url(#arr)"/>
+            <g class="pop" style="--d:0">
+              <rect class="ink" x="166" y="44" width="68" height="84" rx="6" fill="#fff"/>
+              <path class="ink" d="M178 62 H222 M178 74 H222 M178 86 H212 M178 98 H222 M178 110 H206" fill="none" stroke-width="2"/>
+              <text class="svgt" x="200" y="144" text-anchor="middle" font-size="14.5" font-weight="700">Your key paper</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d7">How many places is enough?</button>
+        <template id="d7">
+          <h3>How many places is enough?</h3>
+          <ul>
+            <li>Cochrane intervention reviews search at least <b>CENTRAL, MEDLINE and Embase</b>, plus trial registers and other sources where relevant.</li>
+            <li>For every search, record the <b>database, date and exact search string</b>. You will report them.</li>
+            <li>Export everything to a reference manager (Zotero, EndNote or Mendeley) and <b>remove duplicates</b> before screening.</li>
+            <li>Google Scholar results are hard to reproduce, so use it to check and supplement, not as your main source.</li>
+          </ul>
+        </template>
+      </div>
+    </section>
+
+    <!-- 8 STEP 4 -->
+    <section class="slide split" data-n="8">
+      <div class="s-head">
+        <div class="label">Step 4 · Sort the pile</div>
+        <h2>From hundreds of hits <em>to a handful that fit.</em></h2>
+      </div>
+      <div class="s-mid">
+        <div class="ticks">
+          <div><b>Decide what counts before you look.</b> Write down who, what and which designs you'll include.</div>
+          <div><b>Sort in stages.</b> Titles and abstracts first, then read the survivors in full.</div>
+          <div><b>Use two people</b>, working separately, then compare and settle disagreements.</div>
+        </div>
+      </div>
+      <div class="s-body">
+        <div class="viz">
+          <svg id="prisma" viewBox="0 0 420 290" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Screening flow: 1,240 found, 15 included">
+            <g class="stage" style="--d:0">
+              <path class="ink" d="M10 8 H250 L236 62 H24 Z" fill="#edf5ef"/>
+              <text class="svgt cnt" data-to="1240" x="130" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#1f5c3f">1,240</text>
+              <text class="svgt" x="130" y="52" text-anchor="middle" font-size="14">records found</text>
+            </g>
+            <g class="stage" style="--d:.5">
+              <path class="ink" d="M30 82 H230 L216 136 H44 Z" fill="#edf5ef"/>
+              <text class="svgt cnt" data-to="930" x="130" y="108" text-anchor="middle" font-size="20" font-weight="700" fill="#1f5c3f">930</text>
+              <text class="svgt" x="130" y="126" text-anchor="middle" font-size="14">titles &amp; abstracts read</text>
+            </g>
+            <g class="stage" style="--d:1">
+              <path class="ink" d="M50 156 H210 L196 210 H64 Z" fill="#edf5ef"/>
+              <text class="svgt cnt" data-to="64" x="130" y="182" text-anchor="middle" font-size="20" font-weight="700" fill="#1f5c3f">64</text>
+              <text class="svgt" x="130" y="200" text-anchor="middle" font-size="14">read in full</text>
+            </g>
+            <g class="stage" style="--d:1.5">
+              <path class="ink" d="M70 230 H190 L180 284 H80 Z" fill="#1f5c3f"/>
+              <text class="svgt cnt" data-to="15" x="130" y="256" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">15</text>
+              <text class="svgt" x="130" y="274" text-anchor="middle" font-size="14" fill="#fff">included</text>
+            </g>
+            <g stroke="#17291f" stroke-width="1.8" fill="none">
+              <path d="M130 64 V78" marker-end="url(#arr)"/><path d="M130 138 V152" marker-end="url(#arr)"/><path d="M130 212 V226" marker-end="url(#arr)"/>
+            </g>
+            <g class="stage" style="--d:.3">
+              <path d="M240 35 H264" stroke="#9a4a2e" stroke-width="1.8" marker-end="url(#arr)"/>
+              <rect class="ink" x="268" y="10" width="150" height="50" rx="8" fill="#f8ece6"/>
+              <text class="svgt" x="343" y="33" text-anchor="middle" font-size="16" font-weight="700" fill="#9a4a2e">−310</text>
+              <text class="svgt" x="343" y="51" text-anchor="middle" font-size="13">duplicates</text>
+            </g>
+            <g class="stage" style="--d:.8">
+              <path d="M222 109 H264" stroke="#9a4a2e" stroke-width="1.8" marker-end="url(#arr)"/>
+              <rect class="ink" x="268" y="84" width="150" height="50" rx="8" fill="#f8ece6"/>
+              <text class="svgt" x="343" y="107" text-anchor="middle" font-size="16" font-weight="700" fill="#9a4a2e">−866</text>
+              <text class="svgt" x="343" y="125" text-anchor="middle" font-size="13">clearly off-topic</text>
+            </g>
+            <g class="stage" style="--d:1.3">
+              <path d="M204 183 H264" stroke="#9a4a2e" stroke-width="1.8" marker-end="url(#arr)"/>
+              <rect class="ink" x="268" y="158" width="150" height="50" rx="8" fill="#f8ece6"/>
+              <text class="svgt" x="343" y="177" text-anchor="middle" font-size="16" font-weight="700" fill="#9a4a2e">−49</text>
+              <text class="svgt" x="343" y="196" text-anchor="middle" font-size="13">wrong patients/design</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d8">The PRISMA flow diagram</button>
+        <span class="fake">Numbers are made up</span>
+        <template id="d8">
+          <h3>The PRISMA flow diagram</h3>
+          <p>The funnel you just saw is a simplified <b>PRISMA 2020 flow diagram</b>. Systematic and scoping reviews are expected to include one, with numbers at every stage.</p>
+          <ul>
+            <li>Test your inclusion criteria on a small sample first, then adjust.</li>
+            <li>Give a reason for <b>every</b> study you exclude at the full-text stage.</li>
+            <li>Free and paid tools help two people screen independently: Rayyan, Covidence and EPPI-Reviewer.</li>
+            <li>Agreement between screeners can be measured (for example, Cohen's kappa).</li>
+          </ul>
+        </template>
+      </div>
+    </section>
+
+    <!-- 9 STEP 5 -->
+    <section class="slide split" data-n="9">
+      <div class="s-head">
+        <div class="label">Step 5 · Judge quality</div>
+        <h2>Not every study <em>deserves the same trust.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead">This is <b>critical appraisal</b>: checking how a study was done, not whether you like its answer. Tap each feature. Would it make you trust the result more, or less?</p>
+        <p class="small" id="appScore" style="margin-top:.5em">0 of 6 judged</p>
+      </div>
+      <div class="s-body">
+        <div class="flips" id="flips">
+          <button class="flip more"><div class="in"><div class="f">Patients were put in groups at random</div><div class="b"><strong>Trust more</strong><span>Groups start out alike, so it's a fair test.</span></div></div></button>
+          <button class="flip less"><div class="in"><div class="f">Only 12 patients took part</div><div class="b"><strong>Trust less</strong><span>Small studies are easily swayed by chance.</span></div></div></button>
+          <button class="flip less"><div class="in"><div class="f">Half dropped out, with no explanation</div><div class="b"><strong>Trust less</strong><span>Those who left may differ from those who stayed.</span></div></div></button>
+          <button class="flip more"><div class="in"><div class="f">Assessors didn't know who got the call</div><div class="b"><strong>Trust more</strong><span>"Blinding" stops hopes colouring the results.</span></div></div></button>
+          <button class="flip less"><div class="in"><div class="f">Funded by the app maker, not declared</div><div class="b"><strong>Trust less</strong><span>Hidden conflicts of interest are a red flag.</span></div></div></button>
+          <button class="flip more"><div class="in"><div class="f">Methods clear enough to repeat</div><div class="b"><strong>Trust more</strong><span>Others can check the work.</span></div></div></button>
+        </div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d9">Appraisal tools</button>
+        <template id="d9">
+          <h3>Appraisal tools by study design</h3>
+          <ul>
+            <li><b>RoB 2</b>: risk of bias in randomised trials (Cochrane).</li>
+            <li><b>ROBINS-I</b>: risk of bias in non-randomised studies of interventions.</li>
+            <li><b>JBI and CASP checklists</b>: short checklists for many designs, including qualitative studies.</li>
+            <li><b>Newcastle–Ottawa Scale</b>: often used for cohort and case-control studies.</li>
+          </ul>
+          <p>Two people appraise each study independently. Report the judgement for every study, usually in a table or "traffic-light" chart.</p>
+        </template>
+      </div>
+    </section>
+
+    <!-- 10 STEP 6 -->
+    <section class="slide split" data-n="10">
+      <div class="s-head">
+        <div class="label">Step 6 · Pull out the facts</div>
+        <h2>Same questions, <em>asked of every study.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead">Build a table before you start reading. Fill in the same columns for every included study, so nothing important slips through and studies can be compared side by side.</p>
+      </div>
+      <div class="s-body">
+        <div class="xt-wrap">
+          <table class="xt">
+            <thead><tr><th>Study</th><th>Who</th><th>Design</th><th>Main finding</th></tr></thead>
+            <tbody>
+              <tr style="--d:.1"><td>A</td><td>200 adults, city clinic</td><td>Survey</td><td>Most who stopped said they felt better</td></tr>
+              <tr style="--d:.35"><td>B</td><td>24 adults</td><td>Interviews</td><td>Side effects made people stop</td></tr>
+              <tr style="--d:.6"><td>C</td><td>310 adults, rural</td><td>Survey</td><td>Cost and forgetting both mattered</td></tr>
+              <tr style="--d:.85"><td>D</td><td>450 adults</td><td>Trial</td><td>Reminder call: more finished the course</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="viz" style="min-height:60px">
+          <svg viewBox="0 0 400 90" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <g class="bob"><use href="#ph" x="20" y="4" width="62" height="86"/></g>
+            <rect class="ink pop" style="--d:1.1" x="96" y="18" width="290" height="44" rx="14" fill="#fbf6e6"/>
+            <text class="svgt pop" style="--d:1.1" x="241" y="45" text-anchor="middle" font-size="14" font-weight="600" fill="#8a6a10">Now the patterns are easy to spot.</text>
+          </svg>
+        </div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d10">Extraction tips</button>
+        <span class="fake">Studies are made up</span>
+        <template id="d10">
+          <h3>Extraction tips</h3>
+          <ul>
+            <li>Try your form on two or three studies first, then fix it.</li>
+            <li>In systematic reviews, two people extract independently and compare.</li>
+            <li>Scoping reviews call this step <b>charting</b> the data.</li>
+            <li>Missing numbers? Contact the study's authors and record that you did.</li>
+          </ul>
+        </template>
+      </div>
+    </section>
+
+    <!-- 11 STEP 7 -->
+    <section class="slide split" data-n="11">
+      <div class="s-head">
+        <div class="label">Step 7 · Weave it together</div>
+        <h2>This is the part <em>readers actually want.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead"><b>Synthesis</b> means organising by idea, not by study. Say where studies agree, where they clash, how strong the evidence is, and what's missing.</p>
+      </div>
+      <div class="s-body">
+        <div class="seg" id="synSeg" role="group" aria-label="Compare paragraphs">
+          <button class="on" data-s="list">Listing</button>
+          <button data-s="wov">Synthesis</button>
+        </div>
+        <div id="synBox"></div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d11">Ways to synthesise</button>
+        <span class="fake">Example text</span>
+        <template id="d11">
+          <h3>Ways to synthesise</h3>
+          <ul>
+            <li><b>Narrative or thematic synthesis</b>: group studies by idea and describe the patterns.</li>
+            <li><b>Synthesis without meta-analysis</b>: when numbers can't be pooled, the SWiM guideline shows how to report the grouping and comparison honestly.</li>
+            <li><b>Meta-aggregation</b> (JBI): for combining qualitative findings.</li>
+            <li><b>Meta-analysis</b>: pooling numbers (slide 15).</li>
+          </ul>
+          <p>Then say how sure you are. GRADE rates certainty for effects; GRADE-CERQual does the same for qualitative findings.</p>
+        </template>
+      </div>
+    </section>
+
+    <!-- 12 NARRATIVE -->
+    <section class="slide split" data-n="12">
+      <div class="s-head">
+        <div class="label">Review type 1</div>
+        <h2>Narrative review: <em>an expert's guided tour.</em></h2>
+      </div>
+      <div class="s-mid">
+        <div class="facts">
+          <div class="fact"><b>Asks</b><span>What do we know about why patients stop antibiotics early?</span></div>
+          <div class="fact"><b>How</b><span>An expert reads widely, picks key studies, groups them by theme and gives a view.</span></div>
+          <div class="fact"><b>Good for</b><span>Introducing a topic, textbook chapters, proposing a new idea.</span></div>
+          <div class="fact"><b>Watch out</b><span>The author chooses what goes in, so it can lean towards their own view. Say how you searched.</span></div>
+          <div class="fact"><b>Check with</b><span>SANRA, a six-item quality scale for narrative reviews.</span></div>
+        </div>
+      </div>
+      <div class="s-body">
+        <div class="viz">
+          <svg viewBox="0 0 380 220" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A spotlight picks some papers and leaves others in the dark">
+            <path class="spot" d="M190 0 L120 200 H260 Z" fill="#fbf6e6" opacity=".9"/>
+            <g>
+              <rect class="ink" x="40"  y="150" width="44" height="54" rx="5" fill="#f1f2f1" stroke-opacity=".35"/>
+              <rect class="ink" x="96"  y="150" width="44" height="54" rx="5" fill="#fff"/>
+              <rect class="ink" x="152" y="150" width="44" height="54" rx="5" fill="#fff"/>
+              <rect class="ink" x="208" y="150" width="44" height="54" rx="5" fill="#fff"/>
+              <rect class="ink" x="264" y="150" width="44" height="54" rx="5" fill="#f1f2f1" stroke-opacity=".35"/>
+              <rect class="ink" x="320" y="150" width="44" height="54" rx="5" fill="#f1f2f1" stroke-opacity=".35"/>
+            </g>
+            <g class="bob"><use href="#ph" x="10" y="8" width="84" height="118"/></g>
+            <rect class="ink pop" style="--d:.5" x="214" y="18" width="160" height="58" rx="16" fill="#edf5ef"/>
+            <text class="svgt pop" style="--d:.5" x="294" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#1f5c3f">Readable and quick,</text>
+            <text class="svgt pop" style="--d:.5" x="294" y="63" text-anchor="middle" font-size="15" font-weight="700" fill="#9a4a2e">but who picks?</text>
+          </svg>
+        </div>
+        <div class="effort">Effort <i class="f"></i><i class="f"></i><i></i><i></i></div>
+      </div>
+      <div class="s-foot"></div>
+    </section>
+
+    <!-- 13 SCOPING -->
+    <section class="slide split" data-n="13">
+      <div class="s-head">
+        <div class="label">Review type 2</div>
+        <h2>Scoping review: <em>a map of the evidence.</em></h2>
+      </div>
+      <div class="s-mid">
+        <div class="facts">
+          <div class="fact"><b>Asks</b><span>What has been studied on this, in whom, where and how, and what's missing?</span></div>
+          <div class="fact"><b>How</b><span>Search widely using PCC, then chart the key features of every source into a table or map.</span></div>
+          <div class="fact"><b>Good for</b><span>New or messy topics, and checking whether a systematic review is worth doing.</span></div>
+          <div class="fact"><b>Watch out</b><span>It maps; it doesn't say what works. Quality appraisal is usually optional.</span></div>
+          <div class="fact"><b>Report with</b><span>PRISMA-ScR. Register the plan on OSF: PROSPERO doesn't accept scoping reviews.</span></div>
+        </div>
+      </div>
+      <div class="s-body">
+        <div class="viz">
+          <svg viewBox="0 0 380 216" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Evidence map with bubbles and gaps">
+            <g class="svgt" font-size="14" font-weight="700" fill="#8a6a10" text-anchor="middle">
+              <text x="190" y="16">Survey</text><text x="264" y="16">Interview</text><text x="338" y="16">Trial</text>
+            </g>
+            <g class="svgt" font-size="15" font-weight="600" text-anchor="end">
+              <text x="146" y="51">Why stop</text><text x="146" y="97">Reminders</text><text x="146" y="143">Cost</text><text x="146" y="189">Children</text>
+            </g>
+            <g stroke="#dbe6df" stroke-width="1.2"><path d="M154 24 H376 M154 70 H376 M154 116 H376 M154 162 H376 M154 208 H376"/><path d="M154 24 V208 M227 24 V208 M301 24 V208 M376 24 V208"/></g>
+            <g fill="#1f5c3f">
+              <circle class="pop" style="--d:.1" cx="190" cy="46" r="17" opacity=".85"/>
+              <circle class="pop" style="--d:.2" cx="264" cy="46" r="12" opacity=".85"/>
+              <circle class="pop" style="--d:.3" cx="338" cy="46" r="5" opacity=".85"/>
+              <circle class="pop" style="--d:.4" cx="190" cy="92" r="7" opacity=".85"/>
+              <circle class="pop" style="--d:.5" cx="338" cy="92" r="14" opacity=".85"/>
+              <circle class="pop" style="--d:.6" cx="190" cy="138" r="11" opacity=".85"/>
+              <circle class="pop" style="--d:.7" cx="264" cy="138" r="6" opacity=".85"/>
+              <circle class="pop" style="--d:.8" cx="264" cy="184" r="5" opacity=".85"/>
+            </g>
+            <g class="gap"><circle cx="264" cy="92" r="11" fill="none" stroke="#b8901f" stroke-width="2" stroke-dasharray="3 3"/></g>
+            <g class="gap"><circle cx="338" cy="138" r="11" fill="none" stroke="#b8901f" stroke-width="2" stroke-dasharray="3 3"/></g>
+            <g class="gap"><circle cx="190" cy="184" r="11" fill="none" stroke="#b8901f" stroke-width="2" stroke-dasharray="3 3"/></g>
+            <g class="gap"><circle cx="338" cy="184" r="11" fill="none" stroke="#b8901f" stroke-width="2" stroke-dasharray="3 3"/></g>
+          </svg>
+        </div>
+        <div class="effort">Effort <i class="f"></i><i class="f"></i><i class="f"></i><i></i> <span style="margin-left:.6em">Dashed circles = gaps</span></div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d13">The scoping framework</button>
+        <span class="fake">Map is made up</span>
+        <template id="d13">
+          <h3>The scoping framework</h3>
+          <p>Arksey and O'Malley (2005) set out five stages, plus an optional sixth:</p>
+          <ul>
+            <li>Identify the research question</li>
+            <li>Identify relevant studies</li>
+            <li>Select studies</li>
+            <li>Chart the data</li>
+            <li>Collate, summarise and report the results</li>
+            <li>(Optional) consult stakeholders</li>
+          </ul>
+          <p>JBI's updated guidance (Peters et al., 2020) refines these steps and lines up with PRISMA-ScR.</p>
+        </template>
+      </div>
+    </section>
+
+    <!-- 14 SYSTEMATIC -->
+    <section class="slide split" data-n="14">
+      <div class="s-head">
+        <div class="label">Review type 3</div>
+        <h2>Systematic review: <em>strict, planned, checkable.</em></h2>
+      </div>
+      <div class="s-mid">
+        <div class="facts">
+          <div class="fact"><b>Asks</b><span>Do pharmacist reminder calls help patients finish their antibiotics?</span></div>
+          <div class="fact"><b>How</b><span>Plan first and register the plan. Search several databases. Two people screen and extract. Appraise every study.</span></div>
+          <div class="fact"><b>Good for</b><span>Guiding practice and policy, because anyone can check and repeat it.</span></div>
+          <div class="fact"><b>Watch out</b><span>It takes a team and many months. Narrow, one-database searches don't count.</span></div>
+          <div class="fact"><b>Report with</b><span>PRISMA 2020. Register on PROSPERO before data extraction starts.</span></div>
+        </div>
+      </div>
+      <div class="s-body">
+        <div class="viz">
+          <svg viewBox="0 0 360 210" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A checklist being ticked off">
+            <rect class="ink" x="10" y="14" width="340" height="192" rx="12" fill="#fff"/>
+            <rect class="ink" x="140" y="4" width="80" height="20" rx="6" fill="#b8901f"/>
+            <rect class="ink" x="30" y="33" width="22" height="22" rx="5" fill="#edf5ef"/>
+            <text class="svgt" x="64" y="50" font-size="17" font-weight="600">Plan registered</text>
+            <path class="tickmark" style="--d:0.3" d="M35 43 l5 5 l9 -11" fill="none" stroke="#1f5c3f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect class="ink" x="30" y="67" width="22" height="22" rx="5" fill="#edf5ef"/>
+            <text class="svgt" x="64" y="84" font-size="17" font-weight="600">Searched several databases</text>
+            <path class="tickmark" style="--d:0.6" d="M35 77 l5 5 l9 -11" fill="none" stroke="#1f5c3f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect class="ink" x="30" y="101" width="22" height="22" rx="5" fill="#edf5ef"/>
+            <text class="svgt" x="64" y="118" font-size="17" font-weight="600">Two people screened</text>
+            <path class="tickmark" style="--d:0.9" d="M35 111 l5 5 l9 -11" fill="none" stroke="#1f5c3f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect class="ink" x="30" y="135" width="22" height="22" rx="5" fill="#edf5ef"/>
+            <text class="svgt" x="64" y="152" font-size="17" font-weight="600">Every study appraised</text>
+            <path class="tickmark" style="--d:1.2" d="M35 145 l5 5 l9 -11" fill="none" stroke="#1f5c3f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect class="ink" x="30" y="169" width="22" height="22" rx="5" fill="#edf5ef"/>
+            <text class="svgt" x="64" y="186" font-size="17" font-weight="600">Certainty rated (GRADE)</text>
+            <path class="tickmark" style="--d:1.5" d="M35 179 l5 5 l9 -11" fill="none" stroke="#1f5c3f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="effort">Effort <i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d14">Rating certainty with GRADE</button>
+        <template id="d14">
+          <h3>Rating certainty with GRADE</h3>
+          <p>GRADE rates how sure we can be about each main result: <b>high, moderate, low or very low</b>.</p>
+          <p>Certainty goes down for risk of bias, inconsistency between studies, indirectness (studies don't quite match your question), imprecision (wide uncertainty) and publication bias.</p>
+          <p>The protocol follows PRISMA-P. Cochrane reviews register automatically; others register on PROSPERO, which only accepts reviews with a health-related outcome.</p>
+        </template>
+      </div>
+    </section>
+
+    <!-- 15 META-ANALYSIS -->
+    <section class="slide split" data-n="15">
+      <div class="s-head">
+        <div class="label">Review type 4</div>
+        <h2>Meta-analysis: <em>one answer from many numbers.</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead">Used inside a systematic review when studies are similar enough to combine. In this <b>forest plot</b>, each line is a study and bigger boxes carry more weight. The <b>diamond</b> is the combined answer. <b>Tap a study to leave it out.</b></p>
+      </div>
+      <div class="s-body">
+        <div class="viz"><svg id="forest" viewBox="0 0 420 250" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Interactive forest plot of five made-up trials"></svg></div>
+        <div class="readout" id="readout"></div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d15">I², random effects, funnel plots</button>
+        <span class="fake">Trials are made up</span>
+        <template id="d15">
+          <h3>I², random effects, funnel plots</h3>
+          <ul>
+            <li><b>I²</b> estimates how much of the spread between studies is real difference rather than chance. Cochrane's rough guide: 0–40% may not matter, 30–60% moderate, 50–90% substantial, 75–100% considerable.</li>
+            <li><b>Fixed-effect</b> models assume one true effect. <b>Random-effects</b> models allow it to vary between settings, and are common when studies differ. This demo uses a fixed-effect model to keep it simple.</li>
+            <li><b>Funnel plots</b> help spot small-study effects such as publication bias (positive studies being published more often).</li>
+            <li>Only pool studies that ask the same question in similar ways. Combining apples and oranges gives a precise-looking wrong answer.</li>
+          </ul>
+        </template>
+      </div>
+    </section>
+
+    <!-- 16 DECISION -->
+    <section class="slide split" data-n="16">
+      <div class="s-head">
+        <div class="label">Choosing</div>
+        <h2>Which review <em>fits your question?</em></h2>
+      </div>
+      <div class="s-mid">
+        <p class="lead">Answer up to three questions. The right type depends on your question, not on which one sounds most impressive.</p>
+      </div>
+      <div class="s-body">
+        <div class="dec">
+          <svg class="toon" viewBox="0 0 100 140" aria-hidden="true"><g class="bob"><use href="#ph" x="0" y="0" width="100" height="140"/></g></svg>
+          <div class="dec-card card" id="decCard"></div>
+        </div>
+      </div>
+      <div class="s-foot"></div>
+    </section>
+
+    <!-- 17 PUBLISH -->
+    <section class="slide split" data-n="17">
+      <div class="s-head">
+        <div class="label">Getting published</div>
+        <h2>From finished review <em>to published paper.</em></h2>
+      </div>
+      <div class="s-mid">
+        <div class="steps">
+          <div class="st"><span class="n">1</span><div><b>Plan and register early</b><span>Systematic: PROSPERO. Scoping: OSF. Narrative: no registration, but keep notes on how you searched.</span></div></div>
+          <div class="st"><span class="n">2</span><div><b>Follow the checklist</b><span>PRISMA 2020, PRISMA-ScR or SANRA. Many journals ask you to upload the completed checklist.</span></div></div>
+          <div class="st"><span class="n">3</span><div><b>Choose a genuine journal</b><span>Match its scope and readers. Check it with Think. Check. Submit.</span></div></div>
+          <div class="st"><span class="n">4</span><div><b>Answer the reviewers</b><span>Revise, and reply to every comment point by point.</span></div></div>
+        </div>
+      </div>
+      <div class="s-body">
+        <div class="card" style="display:flex;flex-direction:column;gap:.55em">
+          <div class="label" style="margin:0">Common reasons reviews get sent back</div>
+          <div class="tag-row">
+            <span class="chip bad">Only one database searched</span>
+            <span class="chip bad">Search is years out of date</span>
+            <span class="chip bad">Lists studies, no synthesis</span>
+            <span class="chip bad">No quality appraisal</span>
+            <span class="chip bad">Question too vague</span>
+            <span class="chip bad">No flow diagram</span>
+          </div>
+        </div>
+        <div class="viz" style="min-height:70px">
+          <svg viewBox="0 0 400 110" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <path d="M10 104 H390" stroke="#dbe6df" stroke-width="2"/>
+            <g class="bob"><use href="#ph" x="30" y="24" width="58" height="82"/></g>
+            <g class="pop" style="--d:.4"><rect class="ink" x="120" y="34" width="70" height="66" rx="6" fill="#fff"/><path class="ink" d="M132 52 H178 M132 64 H178 M132 76 H166" fill="none" stroke-width="2"/></g>
+            <path class="arrowanim" style="--d:.7" d="M200 66 H252" stroke="#b8901f" stroke-width="2.4" fill="none" marker-end="url(#arr)"/>
+            <g class="pop" style="--d:1"><rect class="ink" x="262" y="22" width="112" height="78" rx="8" fill="#1f5c3f"/><text class="svgt" x="318" y="56" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">JOURNAL</text><text class="svgt" x="318" y="76" text-anchor="middle" font-size="11" fill="#d6eadc">peer reviewed</text></g>
+          </svg>
+        </div>
+      </div>
+      <div class="s-foot">
+        <button class="deeper" data-deep="d17">Spotting predatory journals</button>
+        <template id="d17">
+          <h3>Spotting predatory journals</h3>
+          <p>Predatory journals charge fees but skip real peer review. Warning signs:</p>
+          <ul>
+            <li>Flattering, unsolicited emails inviting you to submit</li>
+            <li>Promises of acceptance within days</li>
+            <li>Fees that are unclear or only revealed after acceptance</li>
+            <li>Claims of indexing you can't confirm in Scopus, Web of Science or DOAJ</li>
+          </ul>
+          <p>Ask your librarian or supervisor, and use the Think. Check. Submit. checklist.</p>
+        </template>
+      </div>
+    </section>
+
+    <!-- 18 SUMMARY -->
+    <section class="slide" data-n="18">
+      <div class="s-head">
+        <div class="label">Summary</div>
+        <h2>Six things <em>to remember.</em></h2>
+      </div>
+      <div class="s-body">
+        <div class="sum">
+          <div><b>1</b><span>A review weaves studies together. It doesn't just list them.</span></div>
+          <div><b>2</b><span>Start with a clear, searchable question, using PICO or PCC.</span></div>
+          <div><b>3</b><span>Search more than one place, and write down exactly how.</span></div>
+          <div><b>4</b><span>Decide what counts before you look, then sort the pile in stages.</span></div>
+          <div><b>5</b><span>Judge each study's quality before you trust its result.</span></div>
+          <div><b>6</b><span>Pick the review type that fits your question, then follow its checklist.</span></div>
+        </div>
+      </div>
+      <div class="s-foot"></div>
+    </section>
+
+    <!-- 19 KEEP GOING -->
+    <section class="slide split" data-n="19">
+      <div class="s-head">
+        <div class="label">Keep going</div>
+        <h2>Read widely. <em>Weigh fairly.</em></h2>
+      </div>
+      <div class="s-mid">
+        <a class="card comp" href="/edu/researchfundamentals" data-umami-event="companion-click">
+          <div><small>New to research?</small><strong>Research, simply explained</strong></div><span class="ar">&rarr;</span>
+        </a>
+        <p class="small" style="margin-top:.7em">Written for laypeople and diploma students. The running example, its studies and all its numbers are made up.</p>
+      </div>
+      <div class="s-body">
+        <div>
+          <div class="label">Stay in touch</div>
+          <div class="links">
+            <a class="mail" href="mailto:ucn.auf@kpju.edu.my" data-umami-event="email-click">ucn.auf@kpju.edu.my</a>
+            <a href="https://www.linkedin.com/in/aufbinali" target="_blank" rel="noopener" data-umami-event="social-linkedin">LinkedIn</a>
+            <a href="https://aufthority.substack.com" target="_blank" rel="noopener" data-umami-event="social-substack">Substack</a>
+            <a href="https://www.instagram.com/aufthority" target="_blank" rel="noopener" data-umami-event="social-instagram">Instagram</a>
+            <a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener" data-umami-event="social-tiktok">TikTok</a>
+            <a href="https://www.threads.net/@aufthority" target="_blank" rel="noopener" data-umami-event="social-threads">Threads</a>
+          </div>
+        </div>
+        <button class="srcbtn" data-deep="dsrc" data-umami-event="sources-open">Sources and further reading (14) &rarr;</button>
+        <template id="dsrc">
+          <h3>Sources and further reading</h3>
+          <ul class="refs">
+            <li>Higgins JPT, Thomas J, Chandler J, et al. (eds). <em>Cochrane Handbook for Systematic Reviews of Interventions</em>, version 6.5. Cochrane; 2024. <a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current" target="_blank" rel="noopener">cochrane.org/handbook</a></li>
+            <li>Aromataris E, Lockwood C, Porritt K, Pilla B, Jordan Z (eds). <em>JBI Manual for Evidence Synthesis</em>. JBI; 2024. <a href="https://jbi-global.atlassian.net/wiki/spaces/MANUAL" target="_blank" rel="noopener">jbi-global.atlassian.net/wiki/spaces/MANUAL</a></li>
+            <li>Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. <em>BMJ</em> 2021;372:n71. <a href="https://doi.org/10.1136/bmj.n71" target="_blank" rel="noopener">doi.org/10.1136/bmj.n71</a></li>
+            <li>Tricco AC, Lillie E, Zarin W, et al. PRISMA Extension for Scoping Reviews (PRISMA-ScR): checklist and explanation. <em>Ann Intern Med</em> 2018;169:467–473. <a href="https://doi.org/10.7326/M18-0850" target="_blank" rel="noopener">doi.org/10.7326/M18-0850</a></li>
+            <li>Arksey H, O'Malley L. Scoping studies: towards a methodological framework. <em>Int J Soc Res Methodol</em> 2005;8:19–32. <a href="https://doi.org/10.1080/1364557032000119616" target="_blank" rel="noopener">doi.org/10.1080/1364557032000119616</a></li>
+            <li>Peters MDJ, Marnie C, Tricco AC, et al. Updated methodological guidance for the conduct of scoping reviews. <em>JBI Evid Synth</em> 2020;18:2119–2126. <a href="https://doi.org/10.11124/JBIES-20-00167" target="_blank" rel="noopener">doi.org/10.11124/JBIES-20-00167</a></li>
+            <li>Baethge C, Goldbeck-Wood S, Mertens S. SANRA: a scale for the quality assessment of narrative review articles. <em>Res Integr Peer Rev</em> 2019;4:5. <a href="https://doi.org/10.1186/s41073-019-0064-8" target="_blank" rel="noopener">doi.org/10.1186/s41073-019-0064-8</a></li>
+            <li>Rethlefsen ML, Kirtley S, Waffenschmidt S, et al. PRISMA-S: an extension to the PRISMA statement for reporting literature searches. <em>Syst Rev</em> 2021;10:39. <a href="https://doi.org/10.1186/s13643-020-01542-z" target="_blank" rel="noopener">doi.org/10.1186/s13643-020-01542-z</a></li>
+            <li>Campbell M, McKenzie JE, Sowden A, et al. Synthesis without meta-analysis (SWiM) in systematic reviews: reporting guideline. <em>BMJ</em> 2020;368:l6890. <a href="https://doi.org/10.1136/bmj.l6890" target="_blank" rel="noopener">doi.org/10.1136/bmj.l6890</a></li>
+            <li>Sterne JAC, Savović J, Page MJ, et al. RoB 2: a revised tool for assessing risk of bias in randomised trials. <em>BMJ</em> 2019;366:l4898. <a href="https://doi.org/10.1136/bmj.l4898" target="_blank" rel="noopener">doi.org/10.1136/bmj.l4898</a></li>
+            <li>Guyatt GH, Oxman AD, Vist GE, et al. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. <em>BMJ</em> 2008;336:924–926. <a href="https://doi.org/10.1136/bmj.39489.470347.AD" target="_blank" rel="noopener">doi.org/10.1136/bmj.39489.470347.AD</a></li>
+            <li>Higgins JPT, Thompson SG, Deeks JJ, Altman DG. Measuring inconsistency in meta-analyses. <em>BMJ</em> 2003;327:557–560. <a href="https://doi.org/10.1136/bmj.327.7414.557" target="_blank" rel="noopener">doi.org/10.1136/bmj.327.7414.557</a></li>
+            <li>PROSPERO: International prospective register of systematic reviews, inclusion criteria. Centre for Reviews and Dissemination, University of York. <a href="https://www.crd.york.ac.uk/prospero/" target="_blank" rel="noopener">crd.york.ac.uk/prospero</a></li>
+            <li>Think. Check. Submit. <a href="https://thinkchecksubmit.org" target="_blank" rel="noopener">thinkchecksubmit.org</a></li>
+          </ul>
+        </template>
+      </div>
+      <div class="s-foot"></div>
+    </section>
+
+  </div>
+
+  <div id="nav-wrap">
+    <button id="btn-back" class="nav-btn" disabled data-umami-event="nav-back">&larr; Back</button>
+    <button id="btn-next" class="nav-btn" data-umami-event="nav-next">Next &rarr;</button>
+  </div>
+  <footer><span>Ask carefully. Answer honestly.</span><a href="https://www.aufthority.com">Made by Aufthority</a></footer>
+</div>
+
+<div id="sheet" aria-hidden="true">
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-label="Going deeper">
+    <div class="sheet-top"><div class="label">Going deeper</div><button id="sheet-close">Close</button></div>
+    <div class="sheet-body" id="sheet-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const TOTAL = 19;
+  let current = 1;
+  const slides   = document.querySelectorAll('.slide');
+  const btnBack  = document.getElementById('btn-back');
+  const btnNext  = document.getElementById('btn-next');
+  const progFill = document.getElementById('progress-fill');
+  const progLbl  = document.getElementById('progress-label');
+  const track = (e, d) => { if (window.umami) umami.track(e, d); };
+
+  /* ---------- fit every slide to the screen, no scrolling ---------- */
+  function overflowing(s){
+    if (s.scrollHeight > s.clientHeight + 2) return true;
+    const parts = s.querySelectorAll('.s-body,.s-mid');
+    for (const el of parts) if (el.scrollHeight > el.clientHeight + 3) return true;
+    return false;
+  }
+  function fit(s){
+    if (!s || !s.classList.contains('active')) return;
+    let k = 1; s.style.setProperty('--k', k);
+    let guard = 0;
+    while (overflowing(s) && k > 0.7 && guard < 14){ k = +(k - 0.03).toFixed(2); s.style.setProperty('--k', k); guard++; }
+    s.dataset.k = k;
+  }
+  const refit = () => fit(slides[current - 1]);
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(refit, 80); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refit);
+
+  function show(n){
+    slides.forEach((s, i) => s.classList.toggle('active', i + 1 === n));
+    progFill.style.width = ((n / TOTAL) * 100) + '%';
+    progLbl.textContent  = n + ' / ' + TOTAL;
+    btnBack.disabled     = n === 1;
+    btnNext.innerHTML    = n === TOTAL ? 'Done' : 'Next &rarr;';
+    btnNext.setAttribute('data-umami-event', n === TOTAL ? 'carousel-selesai' : 'nav-next');
+    track('slide-view', { slide: n });
+    if (n === 8) countUp();
+    refit();
+  }
+  /* NAV BUTTONS ONLY — no swipe, no keyboard */
+  btnNext.addEventListener('click', () => { if (current < TOTAL){ current++; show(current); } });
+  btnBack.addEventListener('click', () => { if (current > 1){ current--; show(current); } });
+
+  /* ---------- going-deeper sheet ---------- */
+  const sheet = document.getElementById('sheet'), sheetBody = document.getElementById('sheet-body');
+  function closeSheet(){ sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); }
+  document.querySelectorAll('[data-deep]').forEach(b => b.addEventListener('click', () => {
+    const t = document.getElementById(b.dataset.deep);
+    sheetBody.innerHTML = ''; sheetBody.appendChild(t.content.cloneNode(true));
+    sheet.classList.add('open'); sheet.setAttribute('aria-hidden','false');
+    sheet.querySelector('.sheet-panel').scrollTop = 0;
+    if (b.dataset.deep !== 'dsrc') track('toggle', { label: b.textContent.trim() });
+  }));
+  document.getElementById('sheet-close').addEventListener('click', closeSheet);
+  sheet.addEventListener('click', e => { if (e.target === sheet) closeSheet(); });
+
+  /* ---------- S2 pile vs woven ---------- */
+  const weave = document.getElementById('weave');
+  document.querySelectorAll('[data-n="2"] .seg button').forEach(b => b.addEventListener('click', () => {
+    b.parentNode.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+    weave.setAttribute('class', b.dataset.mode);
+    track('weave-toggle', { mode: b.dataset.mode });
+  }));
+
+  /* ---------- S3 review types ---------- */
+  const TYPES = {
+    narrative: { name:'Narrative review', ask:'What do we know about why patients stop their antibiotics early?', what:'An expert’s guided tour of the topic. Flexible and readable, but the author chooses what to include.' },
+    scoping:   { name:'Scoping review', ask:'What has been studied on this, in whom, where and how, and where are the gaps?', what:'A map of the evidence. Searches widely and charts what exists, usually without judging quality.' },
+    systematic:{ name:'Systematic review', ask:'Do pharmacist reminder calls help patients finish their antibiotics?', what:'A strict, pre-planned search for every relevant study, with each one checked for quality.' },
+    meta:      { name:'Meta-analysis', ask:'By how much do reminder calls help, when we combine the trials’ numbers?', what:'A statistics step inside a systematic review. It pools similar studies into one overall answer.' }
+  };
+  const typeCard = document.getElementById('typeCard');
+  function renderType(k){
+    const t = TYPES[k];
+    typeCard.innerHTML = '<div class="swap" style="display:flex;flex-direction:column;gap:.45em"><h3>'+t.name+'</h3><div class="ask"><b>It asks</b>'+t.ask+'</div><p class="what">'+t.what+'</p></div>';
+  }
+  document.querySelectorAll('#stops .stop').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#stops .stop').forEach(x => x.classList.toggle('on', x === b));
+    renderType(b.dataset.t); refit(); track('type-pick', { type: b.dataset.t });
+  }));
+  renderType('narrative');
+
+  /* ---------- S5 PICO ---------- */
+  const PICO = {
+    P:'<b>P, Population:</b> who you’re asking about. Here, adults prescribed antibiotics.',
+    I:'<b>I, Intervention:</b> what’s being tried. Here, a pharmacist reminder call.',
+    C:'<b>C, Comparison:</b> what it’s compared with. Here, usual care with no call.',
+    O:'<b>O, Outcome:</b> the result that matters. Here, finishing the full course.'
+  };
+  const meaning = document.getElementById('meaning');
+  document.querySelectorAll('#tiles .tile').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.k;
+    document.querySelectorAll('#tiles .tile').forEach(x => x.classList.toggle('on', x === b));
+    document.querySelectorAll('[data-n="5"] .qcard .p').forEach(sp => sp.classList.toggle('hl', sp.classList.contains(k)));
+    meaning.innerHTML = PICO[k]; refit(); track('pico-tap', { part: k });
+  }));
+
+  /* ---------- S6 Boolean ---------- */
+  const venn = document.getElementById('venn'), mFill = document.getElementById('meterFill'), mTxt = document.getElementById('meterTxt');
+  const BOOL = { and:['18%','small, on target'], or:['100%','huge, mostly noise'], not:['48%','removes the overlap'] };
+  document.querySelectorAll('#boolSeg button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#boolSeg button').forEach(x => x.classList.toggle('on', x === b));
+    const op = b.dataset.op;
+    venn.setAttribute('class', op);
+    mFill.style.width = BOOL[op][0]; mTxt.textContent = BOOL[op][1];
+    track('boolean-mode', { op: op });
+  }));
+
+  /* ---------- S8 count-up ---------- */
+  function countUp(){
+    document.querySelectorAll('#prisma .cnt').forEach((el, i) => {
+      const to = +el.dataset.to, t0 = performance.now() + i * 500, dur = 700;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce){ el.textContent = to.toLocaleString('en-GB'); return; }
+      el.textContent = '0';
+      (function step(t){
+        const p = Math.min(1, Math.max(0, (t - t0) / dur));
+        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))).toLocaleString('en-GB');
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    });
+  }
+
+  /* ---------- S9 appraisal ---------- */
+  const appScore = document.getElementById('appScore');
+  document.querySelectorAll('#flips .flip').forEach(b => b.addEventListener('click', () => {
+    if (b.classList.contains('done')) return;
+    b.classList.add('done');
+    const n = document.querySelectorAll('#flips .flip.done').length;
+    appScore.textContent = n + ' of 6 judged' + (n === 6 ? '. Appraisal is exactly this, done for every study.' : '');
+    track('appraise-flip', { verdict: b.classList.contains('more') ? 'more' : 'less' });
+  }));
+
+  /* ---------- S11 synthesis ---------- */
+  const SYN = {
+    list:'<div class="para list swap">Study A found that patients stopped when they felt better. Study B found that side effects were a problem. Study C found that cost and forgetting mattered. Study D found that a reminder call helped.<div class="verdict">Reads like four book reports. The reader still has to do the thinking.</div></div>',
+    wov:'<div class="para wov swap">Three reasons recur across studies: <span class="th1">feeling better</span> (A, C), <span class="th2">side effects</span> (B) and <span class="th3">cost or forgetting</span> (C). Most evidence comes from surveys; only one trial (D) tested a fix, so we can’t yet be sure reminders work. No study included children.<div class="verdict">Themes, strength of evidence and gaps, in four sentences.</div></div>'
+  };
+  const synBox = document.getElementById('synBox');
+  synBox.innerHTML = SYN.list;
+  document.querySelectorAll('#synSeg button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#synSeg button').forEach(x => x.classList.toggle('on', x === b));
+    synBox.innerHTML = SYN[b.dataset.s]; refit(); track('synth-toggle', { mode: b.dataset.s });
+  }));
+
+  /* ---------- S15 forest plot (fixed-effect, inverse variance) ---------- */
+  const TRIALS = [
+    { id:'Trial A', rr:1.30, lo:1.05, hi:1.61 },
+    { id:'Trial B', rr:1.12, lo:0.90, hi:1.40 },
+    { id:'Trial C', rr:1.45, lo:1.10, hi:1.91 },
+    { id:'Trial D', rr:0.98, lo:0.80, hi:1.20 },
+    { id:'Trial E', rr:1.20, lo:1.00, hi:1.44 }
+  ];
+  TRIALS.forEach(t => { t.y = Math.log(t.rr); t.se = (Math.log(t.hi) - Math.log(t.lo)) / 3.92; t.w = 1 / (t.se * t.se); t.on = true; });
+  const forest = document.getElementById('forest'), readout = document.getElementById('readout');
+  const X0 = 112, X1 = 392, LMIN = Math.log(0.7), LMAX = Math.log(2.0);
+  const xs = v => X0 + (Math.log(v) - LMIN) / (LMAX - LMIN) * (X1 - X0);
+  const f2 = v => v.toFixed(2);
+  function drawForest(){
+    const on = TRIALS.filter(t => t.on);
+    const W = TRIALS.reduce((a, t) => a + (t.on ? t.w : 0), 0);
+    let pooled = null;
+    if (on.length){
+      const yb = on.reduce((a, t) => a + t.w * t.y, 0) / W, se = Math.sqrt(1 / W);
+      const Q = on.reduce((a, t) => a + t.w * Math.pow(t.y - yb, 2), 0), df = on.length - 1;
+      pooled = { rr:Math.exp(yb), lo:Math.exp(yb - 1.96 * se), hi:Math.exp(yb + 1.96 * se), i2: Q > 0 && df > 0 ? Math.max(0, (Q - df) / Q) : 0, n:on.length };
+    }
+    const maxW = Math.max.apply(null, TRIALS.map(t => t.w));
+    let s = '';
+    s += '<line x1="'+xs(1)+'" y1="8" x2="'+xs(1)+'" y2="214" stroke="#5c6a61" stroke-width="1.4" stroke-dasharray="4 4"/>';
+    TRIALS.forEach((t, i) => {
+      const y = 22 + i * 32, sz = 6 + 10 * Math.sqrt(t.w / maxW);
+      s += '<g class="frow'+(t.on ? '' : ' off')+'" data-i="'+i+'" tabindex="0" role="button" aria-pressed="'+t.on+'" aria-label="'+t.id+'">';
+      s += '<rect x="0" y="'+(y - 14)+'" width="420" height="28" fill="transparent"/>';
+      s += '<text class="svgt" x="4" y="'+(y + 5)+'" font-size="15" font-weight="600">'+(t.on ? '' : '<tspan fill="#9a4a2e">✕ </tspan>')+t.id+'</text>';
+      s += '<line x1="'+xs(t.lo)+'" y1="'+y+'" x2="'+xs(t.hi)+'" y2="'+y+'" stroke="#17291f" stroke-width="2"/>';
+      s += '<rect x="'+(xs(t.rr) - sz/2)+'" y="'+(y - sz/2)+'" width="'+sz+'" height="'+sz+'" fill="#1f5c3f"/>';
+      s += '</g>';
+    });
+    const yd = 196;
+    s += '<line x1="'+X0+'" y1="182" x2="'+X1+'" y2="182" stroke="#dbe6df"/>';
+    s += '<text class="svgt" x="4" y="'+(yd + 4)+'" font-size="15" font-weight="700" fill="#8a6a10">Combined</text>';
+    if (pooled){
+      s += '<path d="M'+xs(pooled.lo)+' '+yd+' L'+xs(pooled.rr)+' '+(yd - 9)+' L'+xs(pooled.hi)+' '+yd+' L'+xs(pooled.rr)+' '+(yd + 9)+' Z" fill="#b8901f" stroke="#17291f" stroke-width="1.6" style="transition:all .4s"/>';
+    }
+    s += '<line x1="'+X0+'" y1="216" x2="'+X1+'" y2="216" stroke="#17291f" stroke-width="1.4"/>';
+    [0.8, 1, 1.5, 2].forEach(v => { s += '<line x1="'+xs(v)+'" y1="216" x2="'+xs(v)+'" y2="221" stroke="#17291f"/><text class="svgt" x="'+xs(v)+'" y="234" text-anchor="middle" font-size="13">'+v+'</text>'; });
+    s += '<text class="svgt" x="'+(xs(1) - 6)+'" y="251" text-anchor="end" font-size="13" fill="#5c6a61">← Usual care better</text>';
+    s += '<text class="svgt" x="'+(xs(1) + 6)+'" y="251" font-size="13" fill="#5c6a61">Call better →</text>';
+    forest.innerHTML = s;
+    forest.querySelectorAll('.frow').forEach(g => {
+      const toggle = () => { const t = TRIALS[+g.dataset.i]; t.on = !t.on; drawForest(); track('forestplot-toggle', { trial: t.id, on: t.on }); };
+      g.addEventListener('click', toggle);
+      g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
+    });
+    if (!pooled){ readout.innerHTML = 'All trials are switched off. Tap one to bring it back.'; return; }
+    const pct = Math.round(Math.abs(pooled.rr - 1) * 100);
+    const crosses = pooled.lo < 1 && pooled.hi > 1;
+    let plain = pooled.rr >= 1 ? 'Patients who got a call were about <b>'+pct+'% more likely</b> to finish the course.' : 'Patients who got a call were about <b>'+pct+'% less likely</b> to finish the course.';
+    if (crosses) plain += ' But the diamond crosses the dashed "no difference" line, so this could be chance.';
+    readout.innerHTML = plain + ' <span class="i2">Risk ratio '+f2(pooled.rr)+' ('+f2(pooled.lo)+' to '+f2(pooled.hi)+') · '+pooled.n+' trial'+(pooled.n > 1 ? 's' : '')+' · I² '+Math.round(pooled.i2 * 100)+'%</span>';
+  }
+  drawForest();
+
+  /* ---------- S16 decision tree ---------- */
+  const DQ = {
+    q1:{ q:'Do you want to map everything studied on a topic, rather than answer one focused question?', yes:'scoping', no:'q2', step:1 },
+    q2:{ q:'Does your answer need to be strict and repeatable, so others can check it (for example, to guide practice)?', yes:'q3', no:'narrative', step:2 },
+    q3:{ q:'Will you have several similar studies that report numbers you can combine?', yes:'meta', no:'systematic', step:3 }
+  };
+  const DR = {
+    scoping:{ h:'Scoping review', p:'Map the evidence and its gaps. Register on OSF and report with PRISMA-ScR.' },
+    narrative:{ h:'Narrative review', p:'An expert overview. Be open about how you searched, and check your draft against SANRA.' },
+    systematic:{ h:'Systematic review', p:'Synthesise the findings in words (the SWiM guideline helps). Register on PROSPERO and report with PRISMA 2020.' },
+    meta:{ h:'Systematic review with meta-analysis', p:'Pool the numbers, then rate how sure you are with GRADE. Register on PROSPERO and report with PRISMA 2020.' }
+  };
+  const decCard = document.getElementById('decCard');
+  function crumbs(n){ let s = '<div class="crumbs">'; for (let i = 1; i <= 3; i++) s += '<i class="'+(i <= n ? 'on' : '')+'"></i>'; return s + '</div>'; }
+  function renderDec(key){
+    if (DQ[key]){
+      const d = DQ[key];
+      decCard.innerHTML = '<div class="swap" style="display:flex;flex-direction:column;gap:.6em">'+crumbs(d.step)+'<p class="dq">'+d.q+'</p><div class="dbtns"><button class="dbtn yes" data-go="'+d.yes+'">Yes</button><button class="dbtn" data-go="'+d.no+'">No</button></div></div>';
+    } else {
+      const r = DR[key];
+      decCard.innerHTML = '<div class="swap" style="display:flex;flex-direction:column;gap:.6em">'+crumbs(3)+'<div class="dres"><div class="label" style="margin-bottom:.2em">Your best fit</div><h3>'+r.h+'</h3><p>'+r.p+'</p></div><button class="restart" data-go="q1">Start again</button></div>';
+      track('decision-result', { result: key });
+    }
+    decCard.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => renderDec(b.dataset.go)));
+    refit();
+  }
+  renderDec('q1');
+
+  show(1);
+})();
+</script>
+</body>
+</html>
