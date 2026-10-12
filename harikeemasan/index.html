@@ -234,6 +234,30 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
 #install.android .ib .go{display:block} #install:not(.android) .ib .go{display:none}
 .twobtn{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .twobtn .linkbtn{padding:.55em .8em;font-size:.92em}
+.nutri{display:flex;gap:6px;flex-wrap:wrap}
+.nutri button{border:1.5px solid var(--line);background:#fff;border-radius:100px;padding:.3em .85em;min-height:42px;font-weight:500;font-size:.92em}
+.nutri button[aria-selected="true"]{background:var(--line);color:#fff}
+.ncard{background:#fff;border:1.5px solid var(--rule);border-radius:14px;padding:.75em 1em}
+.ncard .nh{display:flex;flex-wrap:wrap;gap:.2em .6em;align-items:baseline;margin-bottom:.4em}
+.ncard .nh b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.3em}
+.ncard .nh>span{font-family:'Patrick Hand',cursive;color:var(--red);font-size:1.05em}
+.ncard p{font-size:.92em;line-height:1.4;margin:0 0 .35em}
+.ncard p:last-child{margin:0}
+.ncard b.f,.ncard b.s,.ncard b.w{font-family:'Patrick Hand',cursive;font-weight:400;font-size:1.12em}
+.ncard b.f{color:var(--green)} .ncard b.s{color:var(--blue)} .ncard b.w{color:var(--red)}
+.ncard dl{display:grid;grid-template-columns:auto 1fr;gap:.35em .8em;font-size:.92em;line-height:1.4}
+.ncard dt{font-family:'Patrick Hand',cursive;font-size:1.08em;white-space:nowrap}
+.ncard dt.f{color:var(--green)} .ncard dt.s{color:var(--blue)} .ncard dt.w{color:var(--red)}
+.ncard dd{margin:0}
+@media (max-width:520px){.ncard dl{grid-template-columns:1fr;gap:.1em}.ncard dd{margin-bottom:.35em}}
+@media (max-height:720px){
+  .hide-short{display:none}
+  .art{min-height:100px}
+  .ck{min-height:42px;padding:.35em .7em;font-size:.9em}
+  .checklist{gap:5px}
+  .ncard{padding:.55em .8em}
+  .ncard p{font-size:.88em}
+}
 .contact{font-size:.85em;color:var(--muted)}
 .contact .soc{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:2px}
 .signoff{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.25em}
@@ -421,11 +445,22 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow">Battery 1 · Food</div>
-      <h2>A plate that is <em>mostly plants.</em></h2>
-      <p>Blue Zone meals are mostly vegetables, whole grains, beans and healthy fats, with only a little meat or fish. <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
-      <p class="small muted">On a Malaysian table that could be ulam, dhal, brown rice, fish, tofu and tempeh.</p>
+      <h2>Quarter, quarter, <em>half.</em></h2>
+      <p>Malaysia's Healthy Plate: <strong>half</strong> vegetables and fruit, a <strong>quarter</strong> rice or other grains, a <strong>quarter</strong> fish, chicken, meat or legumes such as tofu and dhal, with plain water. <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
+      <p class="small muted">Yet only 12% of Malaysian adults eat 3 servings of vegetables a day, and under 3% eat a daily serving of nuts or legumes. <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024, adults 18+</a>)</span> Blue Zone meals look much the same: mostly plants. <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
     </div>
-    <div class="art" data-scene="plate" data-label="A plate filled one by one: half greens and ulam, brown rice, grilled fish, tofu and tempeh."></div>
+    <div class="art" data-scene="plate" data-label="Hand-drawn Malaysian Healthy Plate filled one by one: half vegetables and ulam, a quarter brown rice, a quarter fish, tofu and tempeh."></div>
+  </section>
+
+  <!-- older eat -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 1 · Malaysians aged 60+</div>
+      <h2>1 in 4 older Malaysians <em>eat out of balance.</em></h2>
+      <p>The 2024 national survey found most people aged 60 and over were <strong>not eating enough</strong> of several nutrients, while <strong>64%</strong> ate too much fat. <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
+      <p class="small muted">Based on what people said they ate, not blood tests.</p>
+    </div>
+    <div class="art" data-scene="gaps" data-label="Hand-drawn bar chart of the share of Malaysians aged 60 and over not eating enough: calcium 96.7%, vitamin B1 80.6%, vitamin B3 71.0%, vitamin B2 64.7%, vitamin A 63.3%, vitamin C 61.0%."></div>
   </section>
 
   <!-- 7 -->
@@ -434,22 +469,23 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <div class="eyebrow">Battery 1 · Myth buster</div>
       <h2>Does soy cause cancer? <em>Not in these studies.</em></h2>
       <p>A common fear is that tofu and soy milk cause cancer. In a study of <strong>73,223 women</strong> in Shanghai, eating more soy foods was linked to a <strong>lower</strong>, not higher, risk of breast cancer, mainly before menopause. The link was strongest in women who ate soy as teenagers <strong>and</strong> as adults. <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.27361" target="_blank" rel="noopener">Lee et al., 2009</a>)</span></p>
-      <p class="small">So there is no need to fear tofu and tempeh. They can stay on the family table, alongside fish and chicken, from young to old.</p>
-    </div>
-    <div class="art" data-scene="soy" data-label="Hand-drawn sketch: one character shown as a teenager with soy milk, an adult and an older adult with tofu, then handing tofu to a grandchild."></div>
-  </section>
-
-  <!-- 8 -->
-  <section class="slide has-art">
-    <div class="text">
-      <div class="eyebrow">Battery 1 · Food</div>
-      <h2>Linked to, <em>not proof of.</em></h2>
-      <p>A second study of <strong>68,412 women</strong> linked soy foods to a lower risk of bowel cancer, mainly after menopause. <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.26742" target="_blank" rel="noopener">Yang et al., 2009</a>)</span></p>
+      <p class="small">So there is no need to fear tofu and tempeh. They can stay on the family table, alongside fish and chicken.</p>
     </div>
     <div class="extra">
-      <button class="reveal" type="button" aria-expanded="false">Why do we say "linked to", not "prevents"?<span class="hint">Tap to see</span><span class="rb">These studies followed what people ate and how healthy they stayed over many years. They did not test soy as a treatment. So soy is <strong>linked to</strong> lower risk, but we cannot say it prevents cancer.</span></button>
+      <button class="reveal" type="button" aria-expanded="false">A second study, and why we say "linked to"<span class="hint">Tap to see</span><span class="rb">A study of <strong>68,412 women</strong> linked soy foods to a lower risk of bowel cancer, mainly after menopause. <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.26742" target="_blank" rel="noopener">Yang et al., 2009</a>)</span> Both studies followed what people ate for years; neither tested soy as a treatment. So soy is <strong>linked to</strong> lower risk, but we can't say it prevents cancer.</span></button>
     </div>
-    <div class="art swap" data-scene="clip" data-label="A magnifying glass moving over a researcher's clipboard of notes."></div>
+    <div class="art swap" data-scene="soy" data-label="Hand-drawn sketch: one character shown as a teenager with soy milk, an adult and an older adult with tofu, then handing tofu to a grandchild."></div>
+  </section>
+
+  <!-- salt sugar -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 1 · Hidden salt and sugar</div>
+      <h2>Too salty, <em>too sweet.</em></h2>
+      <p><strong>3 in 4</strong> Malaysian adults eat too much salt, which raises blood pressure: 7.3 g a day against a limit under 5 g (1 teaspoon). <strong>1 in 2</strong> eat over 7.5 teaspoons of sugar a day, half from drinks. <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024, adults 18+</a>)</span></p>
+      <p class="small"><strong>40%</strong> of people aged 60+ never read food labels. <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
+    </div>
+    <div class="art" data-scene="saltsugar" data-label="Hand-drawn: one and a half spoons of salt eaten each day against a one-spoon limit, and a glass of teh tarik with sugar spoons dropping in."></div>
   </section>
 
   <!-- 9 -->
@@ -457,13 +493,15 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow">Battery 1 · Checklist</div>
       <h2>Charge your <em>food battery.</em></h2>
-      <div class="counter" data-for="food">Tap what you do, or will start · 0 of 4 charged</div>
+      <div class="counter" data-for="food">Tap what you do, or will start · 0 of 6 charged</div>
     </div>
     <ul class="checklist">
       <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Don't avoid tofu, tempeh or soy milk out of cancer fears.</span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Fill half your plate with vegetables or ulam.</span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Keep fish and chicken in moderate portions, with beans or dhal too.</span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Serve tofu and tempeh to your grandchildren too.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Season with herbs and spices instead of salt.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Order drinks "kurang manis" or "kosong".</span></button></li>
     </ul>
   </section>
 
@@ -483,7 +521,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow">Battery 2 · Movement</div>
       <h2>What the World Health Organization <em>advises for older adults.</em></h2>
-      <p class="cite">(<a href="https://doi.org/10.1136/bjsports-2020-102955" target="_blank" rel="noopener">Bull et al., 2020</a>)</p>
+      <p class="small">In Malaysia, <strong>1 in 3</strong> adults isn't physically active. <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span> <span class="cite">(<a href="https://doi.org/10.1136/bjsports-2020-102955" target="_blank" rel="noopener">Bull et al., 2020</a>)</span></p>
     </div>
     <div class="art" data-tiles="who"></div>
   </section>
@@ -617,6 +655,20 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="art" data-scene="supp" data-label="A supplement jar and a medicine blister pack slide together and set off a warning sign, then a pharmacist steps in to check them."></div>
   </section>
 
+  <!-- supplement guide -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow">Battery 4 · Filling the gaps</div>
+      <h2>Food first. <em>Then ask about these.</em></h2>
+      <p class="small muted hide-short">Tap a nutrient older Malaysians lack: foods first, the supplement a pharmacist might suggest, and what to watch for.</p>
+    </div>
+    <div class="nutri" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-n="0">Calcium</button><button type="button" role="tab" aria-selected="false" data-n="1">Vitamin D</button><button type="button" role="tab" aria-selected="false" data-n="2">B1 · B2 · B3</button><button type="button" role="tab" aria-selected="false" data-n="3">Vitamin A</button><button type="button" role="tab" aria-selected="false" data-n="4">Vitamin C</button>
+    </div>
+    <div class="ncard" role="tabpanel" aria-live="polite"></div>
+    <p class="small"><strong>Before any supplement:</strong> show it to your pharmacist, especially if you take other medicines.</p>
+  </section>
+
   <!-- 19 -->
   <section class="slide has-art">
     <div class="text">
@@ -672,15 +724,16 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow">Battery 4 · Checklist</div>
       <h2>Charge your <em>supplement battery.</em></h2>
-      <div class="counter" data-for="sup">Tap what you do, or will start · 0 of 6 charged</div>
+      <div class="counter" data-for="sup">Tap what you do, or will start · 0 of 7 charged</div>
     </div>
     <ul class="checklist">
-      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Tell your doctor and pharmacist about every supplement, herb and traditional remedy.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Tell your doctor and pharmacist about every supplement and herb you take.</span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Before buying, ask: "Can I get this from food instead?"</span></button></li>
-      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Take a supplement only for a reason a health professional has confirmed.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Take supplements only for a reason your doctor or pharmacist confirms.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Ask for a blood test before taking vitamin D.</span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Check the MAL number on NPRA's product search before buying.</span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Report any side effect to NPRA with the ConSERF form.</span></button></li>
-      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Put supplements in your medicine bag for your pharmacist review.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Bring supplements to your pharmacist review.</span></button></li>
     </ul>
   </section>
 
@@ -721,7 +774,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <button type="button" role="tab" aria-selected="false" data-tab="2">Evening</button>
       <button type="button" role="tab" aria-selected="false" data-tab="3">Weekly</button>
     </div>
-    <div class="tabpanel on" role="tabpanel"><ul><li>Check your pillbox against your medicine list.</li><li>Stretch gently or take a short walk.</li><li>Add vegetables or ulam to your first meal if you can.</li></ul></div>
+    <div class="tabpanel on" role="tabpanel"><ul><li>Check your pillbox against your medicine list.</li><li>Stretch gently or take a short walk in the morning sun.</li><li>Add vegetables or ulam to your first meal if you can.</li></ul></div>
     <div class="tabpanel" role="tabpanel"><ul><li>Fill half your plate with vegetables or ulam.</li><li>Do your strength or balance exercise.</li><li>Spend time with people, or on something that gives you purpose.</li></ul></div>
     <div class="tabpanel" role="tabpanel"><ul><li>Check your evening medicines and supplements.</li><li>Switch on the night light and clear the path to the bathroom.</li><li>Put non-slip slippers by the bed.</li></ul></div>
     <div class="tabpanel" role="tabpanel"><ul><li>Refill your pillbox with a family member checking the labels.</li><li>Check MyUBAT for your medicine balance and next appointment.</li><li>Join a PAWE activity or meet friends.</li></ul></div>
@@ -735,11 +788,11 @@ svg .badge:focus-visible .ring{stroke-width:5}
     </div>
     <ol class="sumlist small">
       <li>A long, healthy life can be measured, and it is kept up by daily habits.</li>
-      <li>Food: mostly plants, with some fish and chicken. Soy foods are linked to lower, not higher, cancer risk.</li>
+      <li>Food: quarter, quarter, half; less salt and sugar; soy is linked to lower, not higher, cancer risk.</li>
       <li>Movement: move daily, build strength and balance, and make your home safe.</li>
       <li>Medicines and supplements: know what you take, review it with a pharmacist, and use MyUBAT and NPRA's checks.</li>
     </ol>
-    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open">Save on your phone →</button><button class="linkbtn" type="button" id="open-deeper">Sources &amp; about (19) →</button></div>
+    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open">Save on your phone →</button><button class="linkbtn" type="button" id="open-deeper">Sources &amp; about (21) →</button></div>
     <div class="contact">Stay in touch
       <div class="soc"><a href="mailto:the.aufthority@gmail.com">the.aufthority@gmail.com</a><a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener">LinkedIn</a><a href="https://aufthority.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener">TikTok</a><a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener">Threads</a></div>
     </div>
@@ -781,6 +834,8 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <ol>
       <li>Asia News Network. (2025, December 5). Malaysia's centenarians growing in numbers [DOSM figures]. <a href="https://asianews.network/malaysias-centenarians-growing-in-numbers/" target="_blank" rel="noopener">https://asianews.network/malaysias-centenarians-growing-in-numbers/</a></li>
       <li>Department of Statistics Malaysia. (2026). <em>Current population estimates, 2026</em>. <a href="https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026" target="_blank" rel="noopener">https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026</a></li>
+      <li>Institute for Public Health. (2025). <em>National Health and Morbidity Survey (NHMS) 2024: Nutrition — fact sheet and key findings</em>. National Institutes of Health, Ministry of Health Malaysia. <a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">https://iku.nih.gov.my/nhms-2024</a></li>
+      <li>National Institutes of Health, Office of Dietary Supplements. (n.d.). Consumer fact sheets: <a href="https://ods.od.nih.gov/factsheets/Calcium-Consumer/" target="_blank" rel="noopener">Calcium</a>, <a href="https://ods.od.nih.gov/factsheets/VitaminD-Consumer/" target="_blank" rel="noopener">Vitamin D</a>, <a href="https://ods.od.nih.gov/factsheets/VitaminA-Consumer/" target="_blank" rel="noopener">Vitamin A</a>, <a href="https://ods.od.nih.gov/factsheets/Thiamin-Consumer/" target="_blank" rel="noopener">Thiamin</a>, <a href="https://ods.od.nih.gov/factsheets/Niacin-Consumer/" target="_blank" rel="noopener">Niacin</a>. Retrieved October 12, 2026.</li>
       <li>Japan Times. (2024, September 17). Japan's centenarian population hits record. <a href="https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians" target="_blank" rel="noopener">https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians</a></li>
       <li>Nippon.com. (2026). Japan's centenarian population tops 100,000 for first time [MHLW data]. <a href="https://www.nippon.com/en/japan-data/h02902/" target="_blank" rel="noopener">https://www.nippon.com/en/japan-data/h02902/</a></li>
       <li>The Star. (2015, November 3). Over 40,000 centenarians in Malaysia. <a href="https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia" target="_blank" rel="noopener">https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia</a></li>
@@ -950,10 +1005,10 @@ svg .badge:focus-visible .ring{stroke-width:5}
     c+='<g class="drop" style="animation-delay:2s">'+tofu(240,214,22)+tofu(270,212,20)+'</g>';
     c+='<g class="drop" style="animation-delay:2.5s">'+P('M298 176 h28 v14 h-28 Z M302 192 h28 v14 h-28 Z',{w:2.1})+P('M304 182 h1 M312 185 h1 M320 181 h1 M308 198 h1 M316 202 h1 M324 197 h1',{w:2.6})+'</g>';
     c+=xh({x:96,y:254,s:.9,r:[14,-104],l:[-8,-104]})+'<g transform="translate(-8 0)">'+leaf(110,150,-8,1.7)+'</g>';
-    c+=H(16,40,'half the plate:',ORG,20,{dl:.3})+H(16,62,'greens &amp; ulam',ORG,20,{dl:.4})+arrow('M130 70 Q168 78 192 96',ORG,.5);
-    c+=H(362,52,'brown rice',BLU,20,{dl:1})+arrow('M370 60 Q352 70 340 82',BLU,1.1);
-    c+=H(372,164,'fish',BLU,20,{dl:1.6})+arrow('M368 158 L342 154',BLU,1.7);
-    c+=H(334,250,'tofu &amp; tempeh',BLU,20,{dl:2.2})+arrow('M332 236 Q312 228 300 214',BLU,2.3);
+    c+=H(16,40,'half: vegetables',ORG,20,{dl:.3})+H(16,62,'&amp; ulam',ORG,20,{dl:.4})+arrow('M130 70 Q168 78 192 96',ORG,.5);
+    c+=H(362,52,'¼ brown rice',BLU,20,{dl:1})+arrow('M370 60 Q352 70 340 82',BLU,1.1);
+    c+=
+    c+=H(334,250,'¼ fish, tofu, tempeh',BLU,20,{dl:2.2})+arrow('M332 236 Q312 228 300 214',BLU,2.3);
     return frame(480,270,c,L);
   };
 
@@ -1093,6 +1148,35 @@ svg .badge:focus-visible .ring{stroke-width:5}
     return frame(480,270,c,L);
   };
 
+  SC.gaps=function(L){
+    var c='', rows=[['calcium',96.7],['vitamin B1',80.6],['vitamin B3',71.0],['vitamin B2',64.7],['vitamin A',63.3],['vitamin C',61.0]];
+    c+=H(20,34,'not eating enough (age 60+)',BLU,20,{dl:.1});
+    rows.forEach(function(r,i){ var y=58+i*32, w=r[1]/100*270;
+      c+=H(150,y+19,r[0],K,19,{a:'end',dl:.1+i*.12});
+      c+=P('M160 '+y+' h270 v24 h-270 Z',{w:1.8,stroke:'#c9c9c9'});
+      c+='<rect class="fillbar" style="animation-delay:'+(0.3+i*0.15)+'s" x="161" y="'+(y+2)+'" width="'+w.toFixed(1)+'" height="20" fill="'+(i===0?RED:ORG)+'" opacity=".8"/>';
+      c+=H(166+w,y+19,r[1].toFixed(1)+'%',i===0?RED:K,18,{dl:.6+i*.15}); });
+    c+=xh({x:452,y:266,s:.42,flip:1,r:[24,-44],l:[-14,-26]});
+    c+=H(160,264,'1 in 4: imbalanced diet',RED,19,{dl:1.4});
+    return frame(480,270,c,L);
+  };
+  SC.saltsugar=function(L){
+    var c='';
+    c+=P('M20 228 Q240 224 460 228');
+    function spoon(x,y,fill){ return E(x,y,24,11,{w:2.2})+P('M'+(x+24)+' '+y+' L'+(x+78)+' '+(y+10),{w:3})+(fill?E(x,y-2,17,5,{fill:'#fff',stroke:'#9a9a9a',w:1.4}):''); }
+    c+=H(24,40,'salt a day',K,22,{dl:.1});
+    c+='<g class="pop" style="animation-delay:.3s">'+spoon(50,82,1)+'</g><g class="pop" style="animation-delay:.6s">'+spoon(50,116,1)+'</g>'+'<g class="pop" style="animation-delay:.9s">'+P('M26 116 h48',{stroke:'#fff',w:0})+'</g>';
+    c+=H(150,92,'we eat 7.3 g',RED,21,{dl:.8})+H(150,114,'(1½ teaspoons)',RED,17,{dl:.9});
+    c+='<g class="pop" style="animation-delay:1.2s">'+spoon(50,172,1)+'</g>'+H(150,178,'limit: under 5 g',BLU,21,{dl:1.3})+H(150,198,'(1 teaspoon)',BLU,17,{dl:1.4});
+    c+=P('M292 40 Q288 150 292 236',{stroke:FAINT,w:1.4});
+    c+=P('M330 228 L320 120 H410 L400 228 Z',{w:2.4})+P('M322 140 H408',{w:1.6,stroke:'#b07a4a'});
+    for(var k=0;k<9;k++){ var cx=336+(k%3)*20, cy=206-Math.floor(k/3)*20; c+='<g class="drop" style="animation-delay:'+(0.5+k*0.22)+'s">'+P('M'+cx+' '+cy+' h16 v16 h-16 Z',{w:1.8})+P('M'+(cx+5)+' '+(cy+6)+' h1 M'+(cx+10)+' '+(cy+10)+' h1',{w:2})+'</g>'; }
+    c+=H(426,132,'teh',K,17,{dl:.2})+H(426,150,'tarik',K,17,{dl:.2});
+    c+=H(308,40,'sugar a day',K,22,{dl:.1})+H(286,254,'9 teaspoons, half from drinks',RED,18,{dl:2});
+    c+=xh({x:446,y:228,s:.55,flip:1,r:[30,-50],l:[-16,-30]});
+    return frame(480,270,c,L);
+  };
+
   SC.pawe=function(L){
     var c='';
     c+=P('M70 206 V72 H410 V206',{w:2.5})+P('M56 76 L240 26 L424 76',{w:2.6});
@@ -1145,6 +1229,15 @@ svg .badge:focus-visible .ring{stroke-width:5}
   };
   document.querySelectorAll('[data-shot]').forEach(function(a){ a.innerHTML=SHOTS[a.getAttribute('data-shot')](); });
 
+
+  /* ---------- nutrient guide ---------- */
+  var NUT=[["Calcium", "96.7% of people 60+ eat too little", "Milk or yoghurt, sardines and ikan bilis with the bones, leafy greens such as sawi.", "Calcium carbonate with a meal, or calcium citrate any time. No more than 500 mg at once.", "Keep 4 hours apart from thyroid tablets (levothyroxine) and 2 hours from some antibiotics (ciprofloxacin).", "https://ods.od.nih.gov/factsheets/Calcium-Consumer/", "NIH ODS: Calcium"], ["Vitamin D", "42% of Malaysian adults have low blood levels; 3 in 5 women", "At least 30 minutes of morning sun, mackerel (ikan kembung) and eggs.", "Only after a blood test. Adults 71+ need 800 IU a day; stay under 4,000 IU unless your doctor says so.", "With water pills (thiazides) calcium can go too high; steroids lower vitamin D.", "https://ods.od.nih.gov/factsheets/VitaminD-Consumer/", "NIH ODS: Vitamin D"], ["B1 \u00b7 B2 \u00b7 B3", "80.6%, 64.7% and 71.0% of people 60+ eat too little", "Brown rice and whole grains, fish, meat, eggs, milk, soybeans and other legumes, nuts.", "A B-complex at normal daily doses.", "Niacin (B3) at 30 mg+ can cause flushing; high doses can harm the liver. Furosemide can lower B1.", "https://ods.od.nih.gov/factsheets/Niacin-Consumer/", "NIH ODS: Niacin, Thiamin"], ["Vitamin A", "63.3% of people 60+ eat too little", "Orange and dark-green vegetables and fruit: carrot, sweet potato, papaya, mango, kangkung.", "Usually not needed: food is the safer way to fill this gap.", "Too much vitamin A from pills can cause headache, blurred vision and dizziness. Smokers: avoid high-dose beta-carotene.", "https://ods.od.nih.gov/factsheets/VitaminA-Consumer/", "NIH ODS: Vitamin A"], ["Vitamin C", "61.0% of people 60+ eat too little", "Guava, papaya, oranges. 2 servings of fruit and 3 of vegetables a day cover vitamins A and C.", "Usually not needed if you eat fruit every day.", "Food is enough for most people; ask before buying high-dose tablets.", "https://iku.nih.gov.my/nhms-2024", "NHMS 2024"]];
+  var nbtn=document.querySelectorAll('.nutri button'), ncard=document.querySelector('.ncard');
+  function nshow(i){ var n=NUT[i]; nbtn.forEach(function(b,j){ b.setAttribute('aria-selected',j===i); });
+    ncard.innerHTML='<div class="nh"><b>'+n[0]+'</b><span>'+n[1]+' <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></span></div>'+
+      '<p><b class="f">Food first:</b> '+n[2]+'</p><p><b class="s">If a supplement is advised:</b> '+n[3]+'</p><p><b class="w">Watch for:</b> '+n[4]+' <span class="cite">(<a href="'+n[5]+'" target="_blank" rel="noopener">'+n[6]+'</a>)</span></p>'; }
+  nbtn.forEach(function(b){ b.addEventListener('click',function(){ nshow(+b.getAttribute('data-n')); }); });
+  nshow(0);
 
   /* ---------- tap to zoom ---------- */
   var zd=document.getElementById('zoom'), zb=zd.querySelector('.zb');
@@ -1240,7 +1333,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   btnNext.addEventListener('click',function(){ if(current<TOTAL){ current++; } else { current=1; } show(current); });
   btnBack.addEventListener('click',function(){ if(current>1){ current--; show(current); } });
 
-  var BAT={food:0,move:0,med:0,sup:0}, TOT={food:4,move:6,med:6,sup:6}, NAMES={food:'food',move:'movement',med:'medicines',sup:'supplements'};
+  var BAT={food:0,move:0,med:0,sup:0}, TOT={food:6,move:6,med:6,sup:7}, NAMES={food:'food',move:'movement',med:'medicines',sup:'supplements'};
   document.querySelectorAll('.ck').forEach(function(b){
     b.addEventListener('click',function(){
       var on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on);
