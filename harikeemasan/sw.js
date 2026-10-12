@@ -1,5 +1,5 @@
 /* Golden Years explainer: offline cache. Bump VERSION whenever index.html or media change. */
-const VERSION = 'gy-v1';
+const VERSION = 'gy-v2';
 const CORE = [
   './', './index.html', './manifest.webmanifest',
   'media/icon-192.png', 'media/icon-512.png', 'media/apple-touch-icon.png',

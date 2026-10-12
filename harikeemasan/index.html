@@ -202,6 +202,8 @@ dialog#vplayer::backdrop{background:rgba(0,0,0,.75)}
 #vplayer .vbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px}
 #vplayer .vbar span{font-size:14px}
 #vplayer .vbar button{border:1.5px solid #fff;background:transparent;color:#fff;border-radius:8px;padding:6px 14px;min-height:40px}
+#vplayer .vcred a{color:#ddd}
+#vplayer .vcred a{color:#ddd}
 #vplayer .vcred{font-size:12px;color:#bbb;padding:0 14px 12px}
 .links a .lt{display:block;min-width:0}
 .links a .lt b,.links a .lt span{display:block}
@@ -409,10 +411,10 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow">Meet Pak Ali</div>
       <h2>Like a phone, we run on <em>batteries.</em></h2>
-      <p>Pak Ali is 68. He runs on four batteries: <strong>food, movement, medicines and supplements</strong>. Charge them a little every day and he stays independent.</p>
+      <p>Pak Ali is 73. He runs on four batteries: <strong>food, movement, medicines and supplements</strong>. Charge them a little every day and he stays independent.</p>
       <p class="small muted">Your own batteries are at the top of the screen. Tick the checklists to charge them. <span class="tag">Made-up character</span></p>
     </div>
-    <div class="art" data-scene="ali" data-label="Pak Ali, 68, waving in front of his house, next to a panel showing his four batteries."></div>
+    <div class="art" data-scene="ali" data-label="Pak Ali, 73, waving in front of his house, next to a panel showing his four batteries."></div>
   </section>
 
   <!-- 6 -->
@@ -492,7 +494,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <div class="eyebrow">Battery 2 · See it done</div>
       <h2>Real people, <em>real moves.</em></h2>
       <p>Three short clips of simple strength and balance moves you can do at home. Tap one to watch.</p>
-      <p class="small muted">Start slowly and hold a chair or a wall. If you have heart, joint or balance problems, check with your doctor first. <span class="tag">Videos: @harizfazalul &amp; Independent Motion</span></p>
+      <p class="small muted">Start slowly and hold a chair or a wall. If you have heart, joint or balance problems, check with your doctor first. <span class="tag">Videos: <a href="https://www.instagram.com/harizfazalul/" target="_blank" rel="noopener">@harizfazalul</a> &amp; <a href="https://www.instagram.com/independent.motion/" target="_blank" rel="noopener">Independent Motion</a></span></p>
     </div>
     <div class="art">
       <div class="vids">
@@ -755,7 +757,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
 <dialog id="vplayer" aria-label="Video">
   <video controls playsinline preload="none"></video>
   <div class="vbar"><span id="vtitle"></span><button type="button" id="vclose">Close</button></div>
-  <div class="vcred">Video: @harizfazalul &amp; Independent Motion (Instagram)</div>
+  <div class="vcred">Video: <a href="https://www.instagram.com/harizfazalul/" target="_blank" rel="noopener">@harizfazalul</a> &amp; <a href="https://www.instagram.com/independent.motion/" target="_blank" rel="noopener">Independent Motion</a> (Instagram)</div>
 </dialog>
 <div id="install-bg" hidden></div>
 <div id="install" role="dialog" aria-labelledby="install-h" hidden>
@@ -772,7 +774,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <h4>About this page</h4>
     <p>A plain-language companion to the talk <em>Facing the Golden Years in Good Health</em> (USIM x PAWE, 21 October 2026), written for older adults, carers and the public. It explains research simply and is not a substitute for advice from your own doctor or pharmacist. Characters and homes are made up.</p>
     <h4>Videos and screenshots</h4>
-    <p>Exercise videos by @harizfazalul and Independent Motion (Instagram). Screenshots from MyUBAT (Ministry of Health Malaysia), NPRA and QUEST3+. The MAL label image shows a real registration number as an example.</p>
+    <p>Exercise videos by <a href="https://www.instagram.com/harizfazalul/" target="_blank" rel="noopener">@harizfazalul</a> and <a href="https://www.instagram.com/independent.motion/" target="_blank" rel="noopener">Independent Motion</a> (Instagram). Screenshots from MyUBAT (Ministry of Health Malaysia), NPRA and QUEST3+. The MAL label image shows a real registration number as an example.</p>
     <h4>Illustrations</h4>
     <p>Drawn in the style of <a href="https://github.com/helloianneo/ian-xiaohei-illustrations" target="_blank" rel="noopener">Ian Xiaohei Illustrations</a> by Ian (MIT licence; English adaptation by <a href="https://github.com/tojileon/ian-xiaohei-illustrations-en" target="_blank" rel="noopener">tojileon</a>). Xiaohei is part of Ian's visual language.</p>
     <h4>Further reading</h4>
@@ -928,7 +930,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     var c='';
     c+=P('M20 244 Q140 240 250 244');
     c+=xh({x:120,y:244,s:1.55,cls:'wave',r:[38,-96],l:[-30,-32]});
-    c+=H(18,52,'Pak Ali, 68',RED,26,{dl:.2})+arrow('M70 62 Q86 76 92 96',RED,.3);
+    c+=H(18,52,'Pak Ali, 73',RED,26,{dl:.2})+arrow('M70 62 Q86 76 92 96',RED,.3);
     var rows=[['food',.72,GRN],['movement',.55,ORG],['medicines',.40,BLU],['supplements',.25,RED]];
     rows.forEach(function(r,i){ var y=46+i*52;
       c+=H(392,y+22,r[0],K,20,{a:'end',dl:.2+i*.15});
