@@ -232,6 +232,14 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
 #install [data-mode]{display:none}
 #install.android [data-mode="android"],#install.ios [data-mode="ios"],#install.other [data-mode="other"]{display:block}
 #install.android .ib .go{display:block} #install:not(.android) .ib .go{display:none}
+.sharerow{display:flex;flex-wrap:wrap;gap:6px;margin-top:.5em}
+.sharebtn{font:inherit;font-size:.85em;font-weight:600;line-height:1;padding:.55em .95em;border-radius:999px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center}
+.sharebtn[hidden]{display:none}
+.sharebtn.ghost{background:#fff;color:var(--accent)}
+.sharebtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:var(--ink);color:#fff;font-size:.9em;padding:.6em 1.1em;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:200}
+@media (max-height:720px){.sharerow{margin-top:.35em}.sharebtn{padding:.45em .85em}.twobtn .linkbtn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.86em;padding:.45em .7em}}
+#toast.on{opacity:1;transform:translate(-50%,0)}
 .twobtn{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .twobtn .linkbtn{padding:.55em .8em;font-size:.92em}
 .nutri{display:flex;gap:6px;flex-wrap:wrap}
@@ -400,6 +408,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <h1>Two people, the same age. <em>Very different golden years.</em></h1>
       <p>Both are 70. Mak Som still waters her garden every morning. Mak Yah stopped using the stairs after a fall last year.</p>
       <p>Some of the difference is luck. <strong>A lot of it is in our hands.</strong> <span class="tag">Made-up example</span></p>
+      <div class="sharerow" aria-label="Share this page"><button type="button" class="sharebtn js-share" data-umami-event="share-native-first">Share this page</button><button type="button" class="sharebtn ghost js-copy" data-umami-event="copy-link-first">Copy link</button><a class="sharebtn ghost js-wa" target="_blank" rel="noopener" data-umami-event="share-whatsapp-first">WhatsApp</a></div>
     </div>
     <div class="art" data-scene="hook" data-label="Hand-drawn sketch: Mak Som, 70, a small black character, waters her flowers. Mak Yah, 70, stands worried at the bottom of the stairs."></div>
   </section>
@@ -429,7 +438,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow">A warning</div>
-      <h2>Good habits stop, <em>benefits fade.</em></h2>
+      <h2>Habits that stop, <em>benefits that fade.</em></h2>
       <p>Even in Blue Zones, traditional meals are giving way to modern fast food. Researchers warn the long-life advantage cannot be taken for granted. <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
       <p class="small muted">Honest note: research on Blue Zones is still growing, and scientists are still weighing how strong the evidence is. <span class="cite">(<a href="https://doi.org/10.14336/AD.2025.0461" target="_blank" rel="noopener">Candal-Pedreira et al., 2026</a>)</span></p>
     </div>
@@ -440,7 +449,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow">How we compare</div>
-      <h2>Japan vs Malaysia—<em>how?</em></h2>
+      <h2>Where do the 100-year-olds <em>live today?</em></h2>
       <p><strong>Japan:</strong> 107,677 people aged 100+. The leading regions are now Shimane, Kochi and Tottori; <strong>Okinawa is no longer in the top five.</strong> <span class="cite">(<a href="https://www.nippon.com/en/japan-data/h02902/" target="_blank" rel="noopener">MHLW via Nippon.com, 2026</a>)</span></p>
       <p><strong>Malaysia:</strong> 4,287 citizens aged 100+. <span class="cite">(<a href="https://asianews.network/malaysias-centenarians-growing-in-numbers/" target="_blank" rel="noopener">DOSM, June 2025</a>)</span></p>
     </div>
@@ -455,7 +464,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow">Meet Pak Ali</div>
       <h2>Like a phone, we run on <em>batteries.</em></h2>
-      <p>Pak Ali is 73. He is powered by four batteries: <strong>food, movement, medicines and supplements</strong>. Lets see how he charges them everyday.</p>
+      <p>Pak Ali is 73. He runs on four batteries: <strong>food, movement, medicines and supplements</strong>. Charge them a little every day and he stays independent.</p>
       <p class="small muted">Your own batteries are at the top of the screen. Tick the checklists to charge them. <span class="tag">Made-up character</span></p>
     </div>
     <div class="art" data-scene="ali" data-label="Pak Ali, 73, waving in front of his house, next to a panel showing his four batteries."></div>
@@ -465,7 +474,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow">Battery 1 · Food</div>
-      <h2>Suku, suku, <em>separuh.</em></h2>
+      <h2>Quarter, quarter, <em>half.</em></h2>
       <p>Malaysia's Healthy Plate: <strong>half</strong> vegetables and fruit, a <strong>quarter</strong> rice or other grains, a <strong>quarter</strong> fish, chicken, meat or legumes such as tofu and dhal, with plain water. <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
       <p class="small muted">Yet only 12% of Malaysian adults eat 3 servings of vegetables a day, and under 3% eat a daily serving of nuts or legumes. <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024, adults 18+</a>)</span> Blue Zone meals look much the same: mostly plants. <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
     </div>
@@ -476,7 +485,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow">Battery 1 · Malaysians aged 60+</div>
-      <h2>1 in 4 older Malaysians <em>are not getting enough nutrients.</em></h2>
+      <h2>1 in 4 older Malaysians <em>eat out of balance.</em></h2>
       <p>The 2024 national survey found most people aged 60 and over were <strong>not eating enough</strong> of several nutrients, while <strong>64%</strong> ate too much fat. <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
       <p class="small muted">Based on what people said they ate, not blood tests.</p>
     </div>
@@ -512,7 +521,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide plain">
     <div class="text">
       <div class="eyebrow">Battery 1 · Checklist</div>
-      <h2>Check your <em>food battery.</em></h2>
+      <h2>Charge your <em>food battery.</em></h2>
       <div class="counter" data-for="food">Tap what you do, or will start · 0 of 6 charged</div>
     </div>
     <ul class="checklist">
@@ -529,7 +538,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow">Battery 2 · Movement</div>
-      <h2>Move every day, <em>challenge your body.</em></h2>
+      <h2>Move every day, <em>get stronger on purpose.</em></h2>
       <p>People who reach 100 in Blue Zones don't go to the gym. They walk, garden and do housework as part of daily life. <span class="cite">(<a href="https://doi.org/10.1007/s12062-022-09396-0" target="_blank" rel="noopener">Herbert et al., 2025</a>)</span></p>
     </div>
     <div class="extra"><div class="callout small"><strong>Try it now:</strong> sit on a chair, then stand up slowly. Hold the chair or a table for safety. <button type="button" class="vlink vbtn" data-src="media/moves.mp4" data-poster="media/moves.jpg" data-title="5 easy moves at home">Watch how (56 sec) →</button></div></div>
@@ -568,7 +577,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow">Battery 2 · Preventing falls</div>
       <h2>A home that is <em>safe to move in.</em></h2>
-      <p>Falls cause roughly 684,000 fatal falls globally each year, with the highest death rates among adults aged 60 and older. Falls take away independence. Guidelines say every older adult should get advice on preventing them. <span class="cite">(<a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">Montero-Odasso et al., 2022</a>)</span></p>
+      <p>Falls take away independence. Guidelines say every older adult should get advice on preventing them. <span class="cite">(<a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">Montero-Odasso et al., 2022</a>)</span></p>
       <p><strong>Pak Ali's home has 5 hazards. Tap each red number to fix it.</strong></p>
     </div>
     <div class="extra">
@@ -582,7 +591,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide plain">
     <div class="text">
       <div class="eyebrow">Battery 2 · Checklist</div>
-      <h2>Check your <em>movement battery.</em></h2>
+      <h2>Charge your <em>movement battery.</em></h2>
       <div class="counter" data-for="move">Tap what you do, or will start · 0 of 6 charged</div>
     </div>
     <ul class="checklist">
@@ -651,7 +660,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide plain">
     <div class="text">
       <div class="eyebrow">Battery 3 · Checklist</div>
-      <h2>Check your <em>medicine battery.</em></h2>
+      <h2>Charge your <em>medicine battery.</em></h2>
       <div class="counter" data-for="med">Tap what you do, or will start · 0 of 6 charged</div>
     </div>
     <ul class="checklist">
@@ -743,7 +752,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide plain">
     <div class="text">
       <div class="eyebrow">Battery 4 · Checklist</div>
-      <h2>Check your <em>supplement battery.</em></h2>
+      <h2>Charge your <em>supplement battery.</em></h2>
       <div class="counter" data-for="sup">Tap what you do, or will start · 0 of 7 charged</div>
     </div>
     <ul class="checklist">
@@ -786,7 +795,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow">Take it home</div>
       <h2>A daily card <em>for you and your carer.</em></h2>
-      <p class="small muted">Open this page and go over this checklist when necessary.</p>
+      <p class="small muted">Take a screenshot to keep it on your phone.</p>
     </div>
     <div class="tabs" role="tablist">
       <button type="button" role="tab" aria-selected="true" data-tab="0">Morning</button>
@@ -813,6 +822,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <li>Medicines and supplements: know what you take, review it with a pharmacist, and use MyUBAT and NPRA's checks.</li>
     </ol>
     <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open">Save on your phone →</button><button class="linkbtn" type="button" id="open-deeper">Sources &amp; about (21) →</button></div>
+    <div class="sharerow" aria-label="Share this page"><button type="button" class="sharebtn js-share" data-umami-event="share-native-last">Share this page</button><button type="button" class="sharebtn ghost js-copy" data-umami-event="copy-link-last">Copy link</button><a class="sharebtn ghost js-wa" target="_blank" rel="noopener" data-umami-event="share-whatsapp-last">WhatsApp</a></div>
     <div class="contact">Stay in touch
       <div class="soc"><a href="mailto:the.aufthority@gmail.com">the.aufthority@gmail.com</a><a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener">LinkedIn</a><a href="https://aufthority.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener">TikTok</a><a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener">Threads</a></div>
     </div>
@@ -1225,7 +1235,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       var fam=P('M14 114 H146')+xh({x:42,y:114,s:.56,r:[26,-34]})+xh({x:82,y:114,s:.36})+xh({x:120,y:114,s:.6,flip:1,r:[26,-34]})+heart(82,36,RED,.9);
       var sun=P('M14 114 H146')+P('M38 114 A42 42 0 0 1 122 114',{w:2.2})+P('M80 64 v-12 M108 74 l8 -8 M52 74 l-8 -8 M126 98 h10 M34 98 h-10',{stroke:ORG,w:2.2})+xh({x:80,y:114,s:.5,r:[22,-80],l:[-16,-80]});
       return '<div class="tiles">'+
-        '<div class="tile">'+mini(plants)+'<b>Eat mostly plants</b></div>'+
+        '<div class="tile">'+mini(plants)+'<b>Mostly plants</b></div>'+
         '<div class="tile">'+mini(move)+'<b>Move naturally</b></div>'+
         '<div class="tile">'+mini(fam)+'<b>Close to family and friends</b></div>'+
         '<div class="tile">'+mini(sun)+'<b>A reason to get up</b></div></div>';
@@ -1464,6 +1474,30 @@ svg .badge:focus-visible .ring{stroke-width:5}
     items.forEach(function(b){ b.addEventListener('click',function(){ current=+b.getAttribute('data-go'); show(current); close(); if(window.umami) umami.track('menu-jump',{slide:current}); }); });
   })();
   show(1);
+})();
+
+/* ---- share / copy link ---- */
+(function(){
+  var URL_='https://www.aufthority.com/edu/harikeemasan/';
+  var TITLE='Golden Years, Simply Explained';
+  var TEXT='Four batteries for staying independent in older age: food, movement, medicines and supplements.';
+  var toast=document.createElement('div');toast.id='toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');document.body.appendChild(toast);
+  var tt;
+  function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},2200)}
+  function legacyCopy(){var t=document.createElement('textarea');t.value=URL_;t.setAttribute('readonly','');t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(t);return ok}
+  function copy(){
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(URL_).then(function(){say('Link copied')},function(){say(legacyCopy()?'Link copied':URL_)})}
+    else say(legacyCopy()?'Link copied':URL_);
+  }
+  document.querySelectorAll('.js-wa').forEach(function(a){a.href='https://wa.me/?text='+encodeURIComponent(TITLE+'\n'+URL_)});
+  document.querySelectorAll('.js-copy').forEach(function(b){b.addEventListener('click',copy)});
+  document.querySelectorAll('.js-share').forEach(function(b){
+    if(!navigator.share){b.textContent='Copy link';b.nextElementSibling&&b.nextElementSibling.classList.contains('js-copy')&&(b.nextElementSibling.hidden=true)}
+    b.addEventListener('click',function(){
+      if(navigator.share){navigator.share({title:TITLE,text:TEXT,url:URL_}).catch(function(){})}
+      else copy();
+    });
+  });
 })();
 </script>
 </body>
