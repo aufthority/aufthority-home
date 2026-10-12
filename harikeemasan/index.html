@@ -47,7 +47,7 @@ a{color:var(--accent)}
 .hand{font-family:'Patrick Hand',cursive}
 
 #shell{height:100vh;height:100dvh;max-width:1120px;margin:0 auto;padding:0 clamp(14px,3vw,32px);display:flex;flex-direction:column}
-#topnav{flex:none;display:flex;align-items:center;justify-content:space-between;padding:12px 0 8px}
+#topnav{flex:none;display:flex;align-items:center;justify-content:space-between;padding:8px 0 6px}
 #topnav .logo{font-weight:500;font-size:15px;color:var(--ink);text-decoration:none}
 #topnav .logo span{color:var(--muted)}
 #progress-label{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -258,6 +258,25 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
   .ncard{padding:.55em .8em}
   .ncard p{font-size:.88em}
 }
+#topnav .tl{display:flex;align-items:center;gap:12px;min-width:0}
+#menu-btn{display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:0 11px 0 8px;min-height:36px;font-weight:500;font-size:15px}
+#menu-btn svg{width:20px;height:20px}
+@media (max-width:380px){ #topnav .logo span{display:none} }
+#drawer-bg{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:60}
+#drawer-bg[hidden]{display:none}
+#drawer{position:fixed;top:0;left:0;bottom:0;width:min(88vw,380px);background:#fff;border-right:1.5px solid var(--line);z-index:61;transform:translateX(-102%);transition:transform .28s ease;display:flex;flex-direction:column;visibility:hidden}
+#drawer.open{transform:none;visibility:visible}
+#drawer .dh{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--rule)}
+#drawer .dh b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.4rem}
+#drawer .dh button{border:1.5px solid var(--rule);background:#fff;border-radius:8px;padding:6px 14px;min-height:40px}
+#drawer .dl{overflow-y:auto;padding:6px 10px 24px;-webkit-overflow-scrolling:touch}
+#drawer .grp{font-family:'Patrick Hand',cursive;font-size:18px;color:var(--muted);padding:12px 8px 4px;display:flex;align-items:center;gap:8px}
+#drawer .grp i{width:12px;height:12px;border-radius:3px;border:1.5px solid var(--line);display:inline-block}
+#drawer .it{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:none;border:none;border-radius:10px;padding:9px 8px;min-height:46px;font-size:15.5px;line-height:1.3}
+#drawer .it:hover{background:#f4f3ef}
+#drawer .it .n{flex:none;width:26px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px;padding-top:2px}
+#drawer .it[aria-current="true"]{background:var(--accent-light);color:var(--accent);font-weight:700}
+@media (prefers-reduced-motion: reduce){ #drawer{transition:none} }
 .contact{font-size:.85em;color:var(--muted)}
 .contact .soc{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:2px}
 .signoff{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.25em}
@@ -359,7 +378,8 @@ svg .badge:focus-visible .ring{stroke-width:5}
 <body>
 <div id="shell">
   <nav id="topnav">
-    <a class="logo" href="https://www.aufthority.com">Aufthority <span>· Edu</span></a>
+    <div class="tl"><button type="button" id="menu-btn" aria-label="Open contents" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Menu</span></button>
+    <a class="logo" href="https://www.aufthority.com">Aufthority <span>· Edu</span></a></div>
     <span id="progress-label">1 / 24</span>
   </nav>
   <div id="progress-track"><div id="progress-fill"></div></div>
@@ -812,6 +832,11 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <div class="vbar"><span id="vtitle"></span><button type="button" id="vclose">Close</button></div>
   <div class="vcred">Video: <a href="https://www.instagram.com/harizfazalul/" target="_blank" rel="noopener">@harizfazalul</a> &amp; <a href="https://www.instagram.com/independent.motion/" target="_blank" rel="noopener">Independent Motion</a> (Instagram)</div>
 </dialog>
+<div id="drawer-bg" hidden></div>
+<aside id="drawer" aria-label="Contents" aria-hidden="true">
+  <div class="dh"><b>Contents</b><button type="button" id="drawer-close" aria-label="Close contents">Close</button></div>
+  <div class="dl" id="drawer-list"></div>
+</aside>
 <div id="install-bg" hidden></div>
 <div id="install" role="dialog" aria-labelledby="install-h" hidden>
   <div class="ih"><img src="media/icon-192.png" alt=""><h3 id="install-h">Save this guide on your phone</h3></div>
@@ -1413,6 +1438,31 @@ svg .badge:focus-visible .ring{stroke-width:5}
   /* offer it once per visit, after the first slide, on phones and tablets */
   var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   btnNext.addEventListener('click',function(){ if(!shown && !standalone && touch && current===3 && (deferred || isIOS)) openSheet(); });
+
+  /* ---------- contents drawer ---------- */
+  (function(){
+    var drawer=document.getElementById('drawer'), bg=document.getElementById('drawer-bg'), list=document.getElementById('drawer-list'), mbtn=document.getElementById('menu-btn');
+    var NAMES={1:['Battery 1 · Food','var(--green)'],2:['Battery 2 · Movement','var(--orange)'],3:['Battery 3 · Medicines','var(--blue)'],4:['Battery 4 · Supplements','var(--red)']};
+    var html='', last=null, seenBattery=false;
+    slides.forEach(function(sl,i){
+      var eb=(sl.querySelector('.eyebrow')||{}).textContent||'', h=sl.querySelector('h1,h2'), t=h?h.textContent.replace(/\s+/g,' ').trim():('Slide '+(i+1));
+      var m=eb.match(/^Battery (\d)/), g;
+      if(m){ g='b'+m[1]; seenBattery=true; } else g= seenBattery ? 'end' : 'start';
+      if(g!==last){ var lab = g==='start' ? ['The big picture',null] : g==='end' ? ['Bringing it together',null] : NAMES[+g.slice(1)];
+        html+='<div class="grp">'+(lab[1]?'<i style="background:'+lab[1]+'"></i>':'')+lab[0]+'</div>'; last=g; }
+      html+='<button type="button" class="it" data-go="'+(i+1)+'"><span class="n">'+(i+1)+'</span><span>'+t+'</span></button>';
+    });
+    list.innerHTML=html;
+    var items=list.querySelectorAll('.it');
+    function open(){ items.forEach(function(b){ b.setAttribute('aria-current', +b.getAttribute('data-go')===current); });
+      drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); bg.hidden=false; mbtn.setAttribute('aria-expanded','true');
+      var cur=list.querySelector('[aria-current="true"]'); if(cur) cur.scrollIntoView({block:'center'}); setTimeout(function(){ (cur||items[0]).focus({preventScroll:true}); },50);
+      if(window.umami) umami.track('menu-open'); }
+    function close(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); bg.hidden=true; mbtn.setAttribute('aria-expanded','false'); }
+    mbtn.addEventListener('click',open); bg.addEventListener('click',close); document.getElementById('drawer-close').addEventListener('click',close);
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape' && drawer.classList.contains('open')) close(); });
+    items.forEach(function(b){ b.addEventListener('click',function(){ current=+b.getAttribute('data-go'); show(current); close(); if(window.umami) umami.track('menu-jump',{slide:current}); }); });
+  })();
   show(1);
 })();
 </script>
