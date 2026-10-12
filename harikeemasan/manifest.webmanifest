@@ -1,0 +1,17 @@
+{
+  "name": "Golden Years, Simply Explained",
+  "short_name": "Golden Years",
+  "description": "Four batteries for staying independent in older age: food, movement, medicines and supplements.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "lang": "en-MY",
+  "icons": [
+    { "src": "media/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "media/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "media/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

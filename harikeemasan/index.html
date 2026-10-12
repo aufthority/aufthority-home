@@ -21,6 +21,14 @@
 <meta name="twitter:title"       content="Golden Years, Simply Explained">
 <meta name="twitter:description" content="Four batteries for staying independent in older age.">
 <meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" sizes="192x192" href="media/icon-192.png">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Golden Years">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
@@ -160,6 +168,7 @@ strong{font-weight:700}
 .score{display:flex;align-items:center;gap:12px}
 .score .big{font-family:'Patrick Hand',cursive;font-size:2.6em;line-height:1;color:var(--red)}
 .sumlist{list-style:none;counter-reset:s;display:grid;gap:.5em}
+@media (max-height:680px){.sumlist{gap:.3em}.sumlist li{font-size:.94em}}
 .sumlist li{counter-increment:s;display:flex;gap:10px;align-items:flex-start}
 .sumlist li::before{content:counter(s);flex:none;width:26px;height:26px;display:grid;place-items:center;border:1.8px solid var(--line);border-radius:50%;font-family:'Patrick Hand',cursive;font-size:16px;color:var(--red)}
 .linkbtn{display:block;width:100%;text-align:left;border:1px solid var(--rule);background:#fff;border-radius:12px;padding:.7em 1em;font-weight:500}
@@ -204,6 +213,25 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
 #zoom .zb svg,#zoom .zb img{display:block;width:max(100%,900px);height:auto;border:none;max-height:none}
 #zoom .zbar{display:flex;justify-content:flex-end;padding:8px 12px;border-top:1px solid var(--rule)}
 #zoom .zbar button{border:1.5px solid var(--rule);background:#fff;border-radius:8px;padding:6px 14px;min-height:40px}
+#install{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translate(-50%,0);width:min(94vw,440px);background:#fff;border:1.5px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:16px 16px 14px;z-index:50;animation:sheetIn .35s ease}
+#install[hidden],#install-bg[hidden]{display:none}
+#install-bg{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:49}
+@keyframes sheetIn{from{transform:translate(-50%,30px);opacity:0}}
+#install .ih{display:flex;gap:12px;align-items:center;margin-bottom:8px}
+#install .ih img{width:52px;height:52px;border-radius:12px;border:1px solid var(--rule)}
+#install h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.3rem;line-height:1.15}
+#install p{font-size:15px;color:var(--muted);margin-bottom:10px}
+#install ol{font-size:16px;padding-left:22px;margin:0 0 12px;display:grid;gap:6px}
+#install ol svg{width:18px;height:18px;vertical-align:-3px}
+#install .ib{display:flex;gap:10px}
+#install .ib button{min-height:50px;border-radius:12px;font-size:16px;font-weight:500;padding:0 16px}
+#install .go{flex:1;background:var(--ink);color:#fff;border:none}
+#install .later{background:#fff;border:1.5px solid var(--rule)}
+#install [data-mode]{display:none}
+#install.android [data-mode="android"],#install.ios [data-mode="ios"],#install.other [data-mode="other"]{display:block}
+#install.android .ib .go{display:block} #install:not(.android) .ib .go{display:none}
+.twobtn{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.twobtn .linkbtn{padding:.55em .8em;font-size:.92em}
 .contact{font-size:.85em;color:var(--muted)}
 .contact .soc{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:2px}
 .signoff{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.25em}
@@ -709,7 +737,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <li>Movement: move daily, build strength and balance, and make your home safe.</li>
       <li>Medicines and supplements: know what you take, review it with a pharmacist, and use MyUBAT and NPRA's checks.</li>
     </ol>
-    <button class="linkbtn" type="button" id="open-deeper">About this page and further reading (19) →</button>
+    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open">Save on your phone →</button><button class="linkbtn" type="button" id="open-deeper">Sources &amp; about (19) →</button></div>
     <div class="contact">Stay in touch
       <div class="soc"><a href="mailto:the.aufthority@gmail.com">the.aufthority@gmail.com</a><a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener">LinkedIn</a><a href="https://aufthority.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener">TikTok</a><a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener">Threads</a></div>
     </div>
@@ -729,6 +757,14 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <div class="vbar"><span id="vtitle"></span><button type="button" id="vclose">Close</button></div>
   <div class="vcred">Video: @harizfazalul &amp; Independent Motion (Instagram)</div>
 </dialog>
+<div id="install-bg" hidden></div>
+<div id="install" role="dialog" aria-labelledby="install-h" hidden>
+  <div class="ih"><img src="media/icon-192.png" alt=""><h3 id="install-h">Save this guide on your phone</h3></div>
+  <p>Open it from your home screen any time, like an app. Most of it works even without internet.</p>
+  <div data-mode="ios"><ol><li>Tap the Share button <svg viewBox="0 0 24 24" fill="none" stroke="#1f4aa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v10h14V11h-1"/></svg> at the bottom of the screen.</li><li>Scroll down and tap <strong>Add to Home Screen</strong> <svg viewBox="0 0 24 24" fill="none" stroke="#1f4aa8" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>.</li><li>Tap <strong>Add</strong>.</li></ol></div>
+  <div data-mode="other"><ol><li>Open your browser menu (the three dots or the Share button).</li><li>Tap <strong>Add to Home screen</strong> or <strong>Install app</strong>.</li></ol></div>
+  <div class="ib"><button type="button" class="go" id="install-go">Install</button><button type="button" class="later" id="install-later">Not now</button></div>
+</div>
 <dialog id="zoom" aria-label="Enlarged picture"><div class="zb"></div><div class="zbar"><button type="button" id="zclose">Close</button></div></dialog>
 <dialog id="deeper" aria-label="Going deeper">
   <div class="dlg-head"><h3>Going deeper</h3><button type="button" id="close-deeper">Close</button></div>
@@ -1264,6 +1300,24 @@ svg .badge:focus-visible .ring{stroke-width:5}
   document.getElementById('open-deeper').addEventListener('click',function(){ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); });
   document.getElementById('close-deeper').addEventListener('click',function(){ if(dlg.close) dlg.close(); else dlg.removeAttribute('open'); });
 
+
+  /* ---------- install as an app (PWA) ---------- */
+  if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){ window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
+  var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone===true;
+  var ua=navigator.userAgent, isIOS=/iPad|iPhone|iPod/.test(ua) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  var deferred=null, sheet=document.getElementById('install'), shown=false;
+  function openSheet(){ if(standalone) return; sheet.className = deferred ? 'android' : (isIOS ? 'ios' : 'other'); sheet.hidden=false; document.getElementById('install-bg').hidden=false; shown=true; if(window.umami) umami.track('install-sheet',{mode:sheet.className}); }
+  function closeSheet(){ sheet.hidden=true; document.getElementById('install-bg').hidden=true; }
+  document.getElementById('install-bg').addEventListener('click',function(){ closeSheet(); });
+  window.addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; });
+  window.addEventListener('appinstalled',function(){ closeSheet(); deferred=null; if(window.umami) umami.track('installed'); });
+  document.getElementById('install-go').addEventListener('click',function(){ if(!deferred) return; deferred.prompt(); deferred.userChoice.then(function(){ deferred=null; closeSheet(); }); });
+  document.getElementById('install-later').addEventListener('click',closeSheet);
+  document.getElementById('open-install').addEventListener('click',openSheet);
+  if(standalone){ document.getElementById('open-install').style.display='none'; }
+  /* offer it once per visit, after the first slide, on phones and tablets */
+  var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  btnNext.addEventListener('click',function(){ if(!shown && !standalone && touch && current===3 && (deferred || isIOS)) openSheet(); });
   show(1);
 })();
 </script>
