@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Golden Years, Simply Explained — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="Four batteries for staying independent in older age: food, movement, medicines and supplements. A plain-language companion to the talk Facing the Golden Years in Good Health.">
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Golden Years, Simply Explained">
+<meta property="og:description"  content="Four batteries for staying independent in older age: food, movement, medicines and supplements.">
+<meta property="og:url"          content="https://www.aufthority.com/edu/harikeemasan/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="en_MY">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Golden Years, Simply Explained">
+<meta name="twitter:description" content="Four batteries for staying independent in older age.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --ink:#1a1a18; --muted:#6b6b62; --accent:#2d6a4f; --accent-light:#eef6f1;
+  --rule:#e6e4de; --card-bg:#ffffff; --radius:2px; --line:#1b1b1b;
+  --red:#d93a2b; --orange:#ef7d22; --blue:#1f4aa8; --green:#3f8f4a;
+  --good:#2d6a4f; --bad:#c0392b;
+  color-scheme: light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#ffffff;color:var(--ink)}
+body{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(15.5px, calc(0.45rem + 0.6vh + 0.35vw), 20px);line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--accent)}
+.hand{font-family:'Patrick Hand',cursive}
+
+#shell{height:100vh;height:100dvh;max-width:1120px;margin:0 auto;padding:0 clamp(14px,3vw,32px);display:flex;flex-direction:column}
+#topnav{flex:none;display:flex;align-items:center;justify-content:space-between;padding:12px 0 8px}
+#topnav .logo{font-weight:500;font-size:15px;color:var(--ink);text-decoration:none}
+#topnav .logo span{color:var(--muted)}
+#progress-label{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+#progress-track{flex:none;height:3px;background:var(--rule);border-radius:2px}
+#progress-fill{height:100%;width:0;background:var(--accent);transition:width .35s ease;border-radius:2px}
+#mybat{flex:none;display:flex;align-items:center;gap:12px;padding:8px 0 2px;flex-wrap:nowrap;overflow:hidden}
+#mybat .lbl{font-family:'Patrick Hand',cursive;font-size:16px;color:var(--muted);white-space:nowrap}
+#mybat .mini{display:flex;align-items:center;gap:5px}
+#mybat .mini b{font-family:'Patrick Hand',cursive;font-weight:400;font-size:15px;color:var(--ink)}
+.mcell{width:30px;height:13px;border:1.8px solid var(--line);border-radius:3px;position:relative;overflow:hidden;background:#fff}
+.mcell::after{content:"";position:absolute;right:-5px;top:2px;width:3px;height:5px;border:1.5px solid var(--line);border-left:none}
+.mcell i{position:absolute;inset:0 auto 0 0;width:0;transition:width .6s ease}
+.mcell.pulse{animation:mpulse .6s ease}
+@keyframes mpulse{40%{transform:scale(1.3)}}
+@media (max-width:400px){ #mybat{gap:7px} #mybat .lbl{font-size:14px} .mcell{width:22px} }
+
+#stage{flex:1;min-height:0;position:relative}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;gap:clamp(6px,1.3vh,14px);padding:clamp(8px,2vh,22px) 0 clamp(6px,1vh,12px);overflow-y:auto;overflow-x:hidden}
+.slide.active{display:flex;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0}}
+.text,.extra{flex:none}
+.art{flex:1 1 0;min-height:120px;position:relative;display:flex;align-items:center;justify-content:center}
+.art > svg{width:100%;height:100%;display:block}
+.eyebrow{font-size:.78em;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.4em}
+h1,h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.08;letter-spacing:-.01em;font-size:clamp(1.5rem, calc(1.6vh + 1.4vw), 2.6rem);margin-bottom:.45em}
+h1 em,h2 em{font-style:italic;color:var(--accent)}
+.text p,.extra p{margin-bottom:.55em}
+.text p:last-child,.extra p:last-child{margin-bottom:0}
+strong{font-weight:700}
+.small{font-size:.88em}
+.muted{color:var(--muted)}
+.cite{font-size:.8em;color:var(--muted);white-space:nowrap}
+.cite a{color:var(--muted);text-underline-offset:2px}
+.tag{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--rule);border-radius:100px;padding:1px 10px;vertical-align:middle}
+.callout{border-left:3px solid var(--accent);background:var(--accent-light);padding:.55em .9em;border-radius:var(--radius)}
+.replay{position:absolute;right:4px;bottom:4px;font-family:'Patrick Hand',cursive;font-size:16px;background:#fff;color:var(--blue);border:1.5px solid var(--blue);border-radius:100px;padding:0 12px;min-height:30px;z-index:2}
+
+@media (min-aspect-ratio: 5/4) and (min-width: 760px){
+  .slide.has-art.active{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.15fr);grid-template-rows:1fr auto auto 1fr;column-gap:clamp(24px,4vw,56px);row-gap:clamp(8px,1.6vh,16px)}
+  .slide.has-art .text{grid-column:1;grid-row:2}
+  .slide.has-art .extra{grid-column:1;grid-row:3}
+  .slide.has-art .art{grid-column:2;grid-row:1 / 5;min-height:0;height:100%}
+  .slide.plain.active{justify-content:center}
+  .slide.plain > *{width:100%;max-width:880px;margin-left:auto;margin-right:auto}
+  .checklist{grid-template-columns:1fr 1fr}
+}
+
+@media (max-aspect-ratio: 5/4){ .slide:has(.reveal[aria-expanded="true"]) .art.swap{display:none} }
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.85em;border:1.5px solid var(--rule);background:#fff;border-radius:100px;padding:3px 12px;opacity:.3;transition:all .4s}
+.chip.on{opacity:1;border-color:var(--accent)}
+.stats{display:grid;gap:8px}
+.stat{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--rule);border-radius:12px;padding:.6em .9em}
+.stat .k{font-family:'DM Serif Display',serif;font-size:1.7em;line-height:1;color:var(--accent);min-width:3.3em}
+.stat p{margin:0;font-size:.92em;line-height:1.4}
+
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;height:100%;align-content:center}
+.tile{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:0}
+.tile svg{width:100%;flex:1 1 auto;min-height:0;max-height:150px}
+.tile b{font-family:'Patrick Hand',cursive;font-weight:400;font-size:1.15em;line-height:1.15;margin-top:2px}
+.tiles.three{grid-template-columns:1fr}
+.tiles.three .tile{flex-direction:row;text-align:left;gap:10px;padding:6px 12px}
+.tiles.three .tile svg{width:76px;height:64px;flex:none}
+.tiles.three .tile .k{font-family:'DM Serif Display',serif;font-size:1.5em;line-height:1;color:var(--accent)}
+.tiles.three .tile span{font-size:.92em;line-height:1.35}
+@media (min-aspect-ratio: 5/4) and (min-width: 760px){
+  .tiles.three{grid-template-columns:1fr 1fr 1fr}
+  .tiles.three .tile{flex-direction:column;text-align:center;padding:12px}
+  .tiles.three .tile svg{width:100%;height:auto;max-height:130px;flex:1 1 auto}
+}
+
+.counter{font-family:'Patrick Hand',cursive;font-size:17px;color:var(--blue)}
+.checklist{list-style:none;display:grid;gap:7px}
+.ck{width:100%;height:100%;text-align:left;display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--rule);border-radius:12px;padding:.5em .8em;min-height:48px;font-size:.95em;line-height:1.35}
+.ck .box{flex:none;width:24px;height:24px;border:2px solid var(--line);border-radius:5px;position:relative;background:#fff}
+.ck[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-light)}
+.ck[aria-pressed="true"] .box::after{content:"";position:absolute;left:6px;top:0;width:7px;height:14px;border:solid var(--red);border-width:0 3.5px 3.5px 0;transform:rotate(42deg)}
+
+.reveal{width:100%;text-align:left;border:1.5px dashed var(--accent);background:transparent;border-radius:12px;padding:.55em .9em;min-height:48px;font-weight:500}
+.reveal .rb{display:none;font-weight:400;margin-top:.4em}
+.reveal .hint{display:block;font-size:.8em;color:var(--muted);font-weight:400}
+.reveal[aria-expanded="true"]{border-style:solid;background:var(--accent-light)}
+.reveal[aria-expanded="true"] .rb{display:block}
+.reveal[aria-expanded="true"] .hint{display:none}
+
+.quiz{background:#fff;border:1.5px solid var(--rule);border-radius:14px;padding:1em 1.1em}
+.quiz .qn{font-family:'Patrick Hand',cursive;font-size:17px;color:var(--blue);margin-bottom:.3em}
+.quiz .q{font-family:'DM Serif Display',serif;font-size:1.35em;line-height:1.2;margin-bottom:.7em}
+.opts{display:flex;gap:10px}
+.opts button,.btn3d{flex:1;min-height:50px;border:1.8px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-weight:700;letter-spacing:.04em}
+.opts button:active,.btn3d:active{transform:translateY(1px)}
+.opts button.right{background:var(--accent);border-color:var(--accent);color:#fff}
+.quiz .ans{display:none;margin-top:.8em;font-size:.95em}
+.quiz.answered .ans{display:block}
+.verdict{font-weight:700}
+.verdict.ok{color:var(--good)} .verdict.no{color:var(--bad)}
+.quiz .nextq{display:none;margin-top:.8em;width:100%;flex:none}
+.quiz.answered .nextq{display:block}
+
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;height:100%}
+.choice button{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:0}
+.choice button svg{width:100%;flex:1 1 auto;min-height:0;max-height:200px}
+.choice button b{font-family:'Patrick Hand',cursive;font-weight:400;font-size:1.3em}
+.choice button.picked-right{border-color:var(--accent);background:var(--accent-light)}
+.choice button.picked-wrong{opacity:.5}
+#tofu-ans{display:none}
+#tofu-ans.show{display:block}
+
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{flex:1;min-height:44px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-weight:500;font-size:.9em;padding:0 8px}
+.tabs button[aria-selected="true"]{background:var(--line);color:#fff}
+.tabpanel{display:none;background:#fff;border:1px solid var(--rule);border-radius:14px;padding:.9em 1.1em}
+.tabpanel.on{display:block}
+.tabpanel ul{list-style:none;display:grid;gap:.6em}
+.tabpanel li{display:flex;gap:10px;align-items:flex-start}
+.tabpanel li::before{content:"";flex:none;width:18px;height:18px;border:2px solid var(--line);border-radius:4px;margin-top:3px}
+
+.score{display:flex;align-items:center;gap:12px}
+.score .big{font-family:'Patrick Hand',cursive;font-size:2.6em;line-height:1;color:var(--red)}
+.sumlist{list-style:none;counter-reset:s;display:grid;gap:.5em}
+.sumlist li{counter-increment:s;display:flex;gap:10px;align-items:flex-start}
+.sumlist li::before{content:counter(s);flex:none;width:26px;height:26px;display:grid;place-items:center;border:1.8px solid var(--line);border-radius:50%;font-family:'Patrick Hand',cursive;font-size:16px;color:var(--red)}
+.linkbtn{display:block;width:100%;text-align:left;border:1px solid var(--rule);background:#fff;border-radius:12px;padding:.7em 1em;font-weight:500}
+.links{display:grid;gap:7px}
+.links a{display:block;text-decoration:none;color:var(--ink);background:#fff;border:1.5px solid var(--rule);border-radius:12px;padding:.5em .9em;line-height:1.3}
+.links a b{display:block;color:var(--accent)}
+.links a b::after{content:" →"}
+.links a span{font-size:.85em;color:var(--muted)}
+a.linkbtn{text-decoration:none;color:var(--accent)}
+.vids{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;height:100%}
+.vbtn{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:6px;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:0;overflow:hidden}
+.vids .vbtn img{width:100%;flex:1 1 auto;min-height:0;object-fit:cover;border-radius:10px;position:relative}
+.vids .vbtn b{font-family:'Patrick Hand',cursive;font-weight:400;font-size:1.1em;line-height:1.1}
+.vids .vbtn span{font-size:.75em;color:var(--muted)}
+.vids .vbtn{position:relative}
+.vids .vbtn::after{content:"";position:absolute;left:50%;top:42%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(255,255,255,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l10 6-10 6z' fill='%23d93a2b'/%3E%3C/svg%3E") center/26px no-repeat;border:1.5px solid #1b1b1b}
+.vlink{display:inline;border:none;background:none;padding:0;color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+.shot{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px;border:1.5px solid var(--rule)}
+.art > svg.shotsvg{filter:none}
+.mal{display:flex;gap:4px;flex-wrap:wrap}
+.mal button{font-family:'Patrick Hand',cursive;font-size:1.4em;line-height:1;padding:.25em .45em;border:1.5px solid var(--line);border-radius:8px;background:#fff;min-height:44px}
+.mal button[aria-pressed="true"]{background:var(--line);color:#fff}
+.mal button:nth-child(3){color:var(--red)} .mal button:nth-child(3)[aria-pressed="true"]{color:#fff;background:var(--red);border-color:var(--red)}
+#mal-out{margin-top:.4em;min-height:2.8em}
+.links a{display:flex;gap:10px;align-items:center}
+.links a .ico{width:38px;height:38px;border-radius:50%;flex:none}
+.links a > b,.links a > span{display:block}
+dialog#vplayer{border:none;padding:0;background:#111;color:#fff;border-radius:14px;max-width:min(92vw,520px);max-height:92vh;margin:auto;overflow:hidden}
+dialog#vplayer::backdrop{background:rgba(0,0,0,.75)}
+#vplayer video{display:block;width:100%;max-height:78vh;background:#000}
+#vplayer .vbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px}
+#vplayer .vbar span{font-size:14px}
+#vplayer .vbar button{border:1.5px solid #fff;background:transparent;color:#fff;border-radius:8px;padding:6px 14px;min-height:40px}
+#vplayer .vcred{font-size:12px;color:#bbb;padding:0 14px 12px}
+.links a .lt{display:block;min-width:0}
+.links a .lt b,.links a .lt span{display:block}
+[data-shot],img.shot{cursor:zoom-in}
+.zoomhint{position:absolute;right:4px;bottom:4px;font-family:'Patrick Hand',cursive;font-size:15px;color:var(--blue);background:#fff;border:1.5px solid var(--blue);border-radius:100px;padding:0 10px;pointer-events:none}
+dialog#zoom{border:none;padding:0;background:#fff;border-radius:14px;width:min(96vw,1100px);max-height:94vh;margin:auto}
+dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
+#zoom .zb{overflow:auto;max-height:calc(94vh - 56px)}
+#zoom .zb svg,#zoom .zb img{display:block;width:max(100%,900px);height:auto;border:none;max-height:none}
+#zoom .zbar{display:flex;justify-content:flex-end;padding:8px 12px;border-top:1px solid var(--rule)}
+#zoom .zbar button{border:1.5px solid var(--rule);background:#fff;border-radius:8px;padding:6px 14px;min-height:40px}
+.contact{font-size:.85em;color:var(--muted)}
+.contact .soc{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:2px}
+.signoff{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.25em}
+
+#nav{flex:none;display:flex;gap:10px;padding:10px 0;padding-bottom:max(12px,env(safe-area-inset-bottom));border-top:1px solid var(--rule)}
+.nav-btn{min-height:50px;border-radius:10px;font-size:16px;font-weight:500;padding:0 18px}
+#btn-back{background:transparent;border:1.5px solid var(--rule);color:var(--ink)}
+#btn-back:disabled{opacity:.35;cursor:default}
+#btn-next{flex:1;background:var(--ink);color:#fff;border:none}
+
+dialog#deeper{border:none;border-radius:14px;max-width:680px;width:calc(100% - 28px);max-height:86vh;padding:0;background:#fff;color:var(--ink);margin:auto}
+dialog#deeper::backdrop{background:rgba(0,0,0,.4)}
+.dlg-head{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--rule)}
+.dlg-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.4rem}
+.dlg-head button{border:1.5px solid var(--rule);background:transparent;border-radius:8px;padding:6px 14px;min-height:40px}
+.dlg-body{padding:16px 18px 24px;font-size:15px}
+.dlg-body h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:4px 0 8px}
+.dlg-body p{margin-bottom:14px}
+.dlg-body ol{padding-left:22px;display:grid;gap:10px;line-height:1.5}
+.dlg-body a{word-break:break-all}
+
+/* ---------- hand-drawn animation ---------- */
+svg .note{animation:noteK .6s ease both}
+@keyframes noteK{from{opacity:0;transform:translateY(4px)}}
+svg .draw{stroke-dasharray:1;animation:drawK .9s ease-out both}
+@keyframes drawK{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+svg .drop{animation:drop .6s cubic-bezier(.2,.8,.3,1.25) both}
+@keyframes drop{from{transform:translateY(-34px);opacity:0}}
+svg .pop{transform-box:fill-box;transform-origin:50% 100%;animation:pop .5s ease-out both}
+@keyframes pop{from{transform:scale(.5);opacity:0}}
+svg .fadeOut{opacity:0;animation:fadeOutK 4.5s ease both .4s}
+@keyframes fadeOutK{0%,35%{opacity:1}60%,100%{opacity:0}}
+svg .fadeIn{animation:fadeInK 4.5s ease both .4s}
+@keyframes fadeInK{0%,42%{opacity:0}68%,100%{opacity:1}}
+svg .drain{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(.3);animation:drainK 4.5s ease both .4s}
+@keyframes drainK{0%,30%{transform:scaleX(1)}72%,100%{transform:scaleX(.3)}}
+svg .fillbar{transform-box:fill-box;transform-origin:0 50%;animation:fillK 1.3s ease-out both}
+@keyframes fillK{from{transform:scaleX(0)}}
+svg .flicker{transform-box:fill-box;transform-origin:50% 100%;animation:flick .35s ease-in-out infinite alternate}
+@keyframes flick{to{transform:scale(.8,1.15)}}
+svg .floaty{animation:floatyK 2.4s ease-in-out infinite alternate}
+@keyframes floatyK{to{transform:translateY(-6px)}}
+svg .pulse{transform-box:fill-box;transform-origin:center;animation:pulseK 1.3s ease-in-out infinite}
+@keyframes pulseK{50%{transform:scale(1.14)}}
+svg .water{animation:waterK .9s linear infinite}
+@keyframes waterK{0%{transform:translate(0,-4px);opacity:0}25%{opacity:1}100%{transform:translate(5px,26px);opacity:0}}
+svg .eyes{transform-box:fill-box;transform-origin:center;animation:blink 4.2s infinite}
+@keyframes blink{0%,93%,100%{transform:none}96%{transform:scaleY(.1)}}
+svg .walk .legL,svg .walk .legR{transform-box:fill-box;transform-origin:50% 0;animation:swing .42s ease-in-out infinite alternate}
+svg .walk .legR{animation-direction:alternate-reverse}
+@keyframes swing{from{transform:rotate(18deg)}to{transform:rotate(-18deg)}}
+svg .walk .upper{animation:bob .42s ease-in-out infinite alternate}
+@keyframes bob{to{transform:translateY(-2.5px)}}
+svg .wave .armR{transform-box:fill-box;transform-origin:0% 100%;animation:waveK .6s ease-in-out infinite alternate}
+@keyframes waveK{from{transform:rotate(-12deg)}to{transform:rotate(14deg)}}
+svg .squat .upper{animation:sqU 2.4s ease-in-out infinite}
+@keyframes sqU{0%,12%,100%{transform:none}45%,62%{transform:translateY(13px)}}
+svg .squat .legs{transform-box:fill-box;transform-origin:50% 100%;animation:sqL 2.4s ease-in-out infinite}
+@keyframes sqL{0%,12%,100%{transform:none}45%,62%{transform:scaleY(.5)}}
+svg .spin{transform-box:fill-box;transform-origin:center;animation:spinK 8s linear infinite}
+@keyframes spinK{to{transform:rotate(360deg)}}
+svg .bump{animation:bumpK 2.6s ease-in-out infinite}
+@keyframes bumpK{0%,100%{transform:none}45%{transform:translate(var(--tx),var(--ty))}55%{transform:translate(calc(var(--tx)*.75),calc(var(--ty)*.75))}}
+svg .sway{animation:swayK 3.2s ease-in-out infinite alternate}
+@keyframes swayK{to{transform:translate(10px,-6px)}}
+svg .chat{animation:bob 1.1s ease-in-out infinite alternate}
+svg .fly{animation:flyK .7s cubic-bezier(.3,.7,.4,1.15) both}
+@keyframes flyK{from{transform:translate(var(--dx),-50px) scale(.3);opacity:0}}
+svg .jar{animation:jarK 5s ease-in-out both .3s}
+@keyframes jarK{0%{transform:translateX(-24px)}35%,60%{transform:translateX(26px)}100%{transform:none}}
+svg .blis{animation:blisK 5s ease-in-out both .3s}
+@keyframes blisK{0%{transform:translateX(24px)}35%,60%{transform:translateX(-26px)}100%{transform:none}}
+svg .warn{opacity:0;transform-box:fill-box;transform-origin:center;animation:warnK 5s ease both .3s}
+@keyframes warnK{0%,28%{opacity:0;transform:scale(.4)}36%{opacity:1;transform:scale(1.15)}40%{transform:rotate(-9deg)}44%{transform:rotate(9deg)}48%{transform:rotate(-6deg)}52%,62%{opacity:1;transform:none}72%,100%{opacity:0}}
+svg .enter{animation:enterK 5s ease-out both .3s}
+@keyframes enterK{0%,48%{transform:translateX(160px)}74%,100%{transform:none}}
+svg .late{animation:lateK 5s ease both .3s}
+@keyframes lateK{0%,78%{opacity:0}90%,100%{opacity:1}}
+svg .across{animation:acrossK 7s ease-in-out infinite}
+@keyframes acrossK{0%,8%{transform:translateX(0)}80%,100%{transform:translateX(190px)}}
+svg .ghost{opacity:.18;animation:ghostK 6s ease both .3s}
+@keyframes ghostK{0%,30%{opacity:0}42%,62%{opacity:1}85%,100%{opacity:.18}}
+svg .night{opacity:.09;transition:opacity .6s}
+svg.f1 .night{opacity:0}
+svg .fx{opacity:0;transition:opacity .5s}
+svg.f1 .fx1,svg.f4 .fx4,svg.f5 .fx5{opacity:1}
+svg .hz{transition:opacity .5s}
+svg.f2 .hz2,svg.f3 .hz3{opacity:0}
+svg.f1 .b1,svg.f2 .b2,svg.f3 .b3,svg.f4 .b4,svg.f5 .b5{display:none}
+svg .badge{cursor:pointer}
+svg .badge:focus{outline:none}
+svg .badge:focus-visible .ring{stroke-width:5}
+
+@media (prefers-reduced-motion: reduce){
+  *, svg *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div id="shell">
+  <nav id="topnav">
+    <a class="logo" href="https://www.aufthority.com">Aufthority <span>· Edu</span></a>
+    <span id="progress-label">1 / 24</span>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+  <div id="mybat" aria-label="Your batteries">
+    <span class="lbl">your batteries</span>
+    <span class="mini"><b>food</b><span class="mcell" id="m-food"><i style="background:var(--green)"></i></span></span>
+    <span class="mini"><b>move</b><span class="mcell" id="m-move"><i style="background:var(--orange)"></i></span></span>
+    <span class="mini"><b>meds</b><span class="mcell" id="m-med"><i style="background:var(--blue)"></i></span></span>
+    <span class="mini"><b>supp</b><span class="mcell" id="m-sup"><i style="background:var(--red)"></i></span></span>
+  </div>
+
+  <main id="stage">
+
+  <!-- 1 -->
+  <section class="slide has-art active">
+    <div class="text">
+      <div class="eyebrow">Start here</div>
+      <h1>Two people, the same age. <em>Very different golden years.</em></h1>
+      <p>Both are 70. Mak Som still waters her garden every morning. Mak Yah stopped using the stairs after a fall last year.</p>
+      <p>Some of the difference is luck. <strong>A lot of it is in our hands.</strong> <span class="tag">Made-up example</span></p>
+    </div>
+    <div class="art" data-scene="hook" data-label="Hand-drawn sketch: Mak Som, 70, a small black character, waters her flowers. Mak Yah, 70, stands worried at the bottom of the stairs."></div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Proof it can be done</div>
+      <h2>Some places have many people <em>who live to 100.</em></h2>
+      <p>They are called <strong>Blue Zones</strong>. Scientists do not take ages on trust: each person's age is checked against birth, marriage and family records. <span class="cite">(<a href="https://doi.org/10.1553/populationyearbook2013s87" target="_blank" rel="noopener">Poulain et al., 2013</a>; <a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">Poulain &amp; Herm, 2025</a>)</span></p>
+    </div>
+    <div class="extra"><div class="chips" id="bz-chips"><span class="chip">Okinawa, Japan</span><span class="chip">Sardinia, Italy</span><span class="chip">Ikaria, Greece</span><span class="chip">Nicoya, Costa Rica</span><span class="chip">Martinique, France</span></div></div>
+    <div class="art" data-scene="cake" data-label="Hand-drawn sketch: a small black character checks birth records with a magnifying glass next to a birthday cake marked 100."></div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">What they share</div>
+      <h2>Four habits <em>Blue Zones have in common.</em></h2>
+      <p class="small muted">None of them need a gym or a prescription. <span class="cite">(<a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">Poulain &amp; Herm, 2025</a>)</span></p>
+    </div>
+    <div class="art" data-tiles="habits"></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">A warning</div>
+      <h2>Habits that stop, <em>benefits that fade.</em></h2>
+      <p>Even in Blue Zones, traditional meals are giving way to modern fast food. Researchers warn the long-life advantage cannot be taken for granted. <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
+      <p class="small muted">Honest note: research on Blue Zones is still growing, and scientists are still weighing how strong the evidence is. <span class="cite">(<a href="https://doi.org/10.14336/AD.2025.0461" target="_blank" rel="noopener">Candal-Pedreira et al., 2026</a>)</span></p>
+    </div>
+    <div class="art" data-scene="morph" data-label="A plate of vegetables and tofu changes into a burger, fries and a fizzy drink while the Blue Zone advantage bar drains."></div>
+  </section>
+
+  <!-- centenarians -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">How we compare</div>
+      <h2>Where do the 100-year-olds <em>live today?</em></h2>
+      <p><strong>Japan:</strong> 107,677 people aged 100+. The leading regions are now Shimane, Kochi and Tottori; <strong>Okinawa is no longer in the top five.</strong> <span class="cite">(<a href="https://www.nippon.com/en/japan-data/h02902/" target="_blank" rel="noopener">MHLW via Nippon.com, 2026</a>)</span></p>
+      <p><strong>Malaysia:</strong> 4,287 citizens aged 100+. <span class="cite">(<a href="https://asianews.network/malaysias-centenarians-growing-in-numbers/" target="_blank" rel="noopener">DOSM, June 2025</a>)</span></p>
+    </div>
+    <div class="extra">
+      <button class="reveal" type="button" aria-expanded="false">Is Japan simply healthier?<span class="hint">Tap to see</span><span class="rb">Not that simply. Malaysia is a younger country, so fewer people have reached 100 yet. Per 100,000 people: Japan about 76, Malaysia about 14. <span class="cite">(<a href="https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians" target="_blank" rel="noopener">Japan Times, 2024</a>; <a href="https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026" target="_blank" rel="noopener">DOSM, 2026</a>)</span> Records matter too: in 2015, unchecked records listed 43,599, ten times today's count. <span class="cite">(<a href="https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia" target="_blank" rel="noopener">The Star, 2015</a>)</span></span></button>
+    </div>
+    <div class="art swap" data-scene="cent" data-label="Hand-drawn headcount: 108 small figures for Japan, each standing for 1,000 people aged 100 or more. For Malaysia, 44 outlined figures from 2015 records fade away, leaving 4 checked figures."></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Meet Pak Ali</div>
+      <h2>Like a phone, we run on <em>batteries.</em></h2>
+      <p>Pak Ali is 68. He runs on four batteries: <strong>food, movement, medicines and supplements</strong>. Charge them a little every day and he stays independent.</p>
+      <p class="small muted">Your own batteries are at the top of the screen. Tick the checklists to charge them. <span class="tag">Made-up character</span></p>
+    </div>
+    <div class="art" data-scene="ali" data-label="Pak Ali, 68, waving in front of his house, next to a panel showing his four batteries."></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 1 · Food</div>
+      <h2>A plate that is <em>mostly plants.</em></h2>
+      <p>Blue Zone meals are mostly vegetables, whole grains, beans and healthy fats, with only a little meat or fish. <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
+      <p class="small muted">On a Malaysian table that could be ulam, dhal, brown rice, fish, tofu and tempeh.</p>
+    </div>
+    <div class="art" data-scene="plate" data-label="A plate filled one by one: half greens and ulam, brown rice, grilled fish, tofu and tempeh."></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 1 · Myth buster</div>
+      <h2>Does soy cause cancer? <em>Not in these studies.</em></h2>
+      <p>A common fear is that tofu and soy milk cause cancer. In a study of <strong>73,223 women</strong> in Shanghai, eating more soy foods was linked to a <strong>lower</strong>, not higher, risk of breast cancer, mainly before menopause. The link was strongest in women who ate soy as teenagers <strong>and</strong> as adults. <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.27361" target="_blank" rel="noopener">Lee et al., 2009</a>)</span></p>
+      <p class="small">So there is no need to fear tofu and tempeh. They can stay on the family table, alongside fish and chicken, from young to old.</p>
+    </div>
+    <div class="art" data-scene="soy" data-label="Hand-drawn sketch: one character shown as a teenager with soy milk, an adult and an older adult with tofu, then handing tofu to a grandchild."></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 1 · Food</div>
+      <h2>Linked to, <em>not proof of.</em></h2>
+      <p>A second study of <strong>68,412 women</strong> linked soy foods to a lower risk of bowel cancer, mainly after menopause. <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.26742" target="_blank" rel="noopener">Yang et al., 2009</a>)</span></p>
+    </div>
+    <div class="extra">
+      <button class="reveal" type="button" aria-expanded="false">Why do we say "linked to", not "prevents"?<span class="hint">Tap to see</span><span class="rb">These studies followed what people ate and how healthy they stayed over many years. They did not test soy as a treatment. So soy is <strong>linked to</strong> lower risk, but we cannot say it prevents cancer.</span></button>
+    </div>
+    <div class="art swap" data-scene="clip" data-label="A magnifying glass moving over a researcher's clipboard of notes."></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow">Battery 1 · Checklist</div>
+      <h2>Charge your <em>food battery.</em></h2>
+      <div class="counter" data-for="food">Tap what you do, or will start · 0 of 4 charged</div>
+    </div>
+    <ul class="checklist">
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Don't avoid tofu, tempeh or soy milk out of cancer fears.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Fill half your plate with vegetables or ulam.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Keep fish and chicken in moderate portions, with beans or dhal too.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span>Serve tofu and tempeh to your grandchildren too.</span></button></li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 2 · Movement</div>
+      <h2>Move every day, <em>get stronger on purpose.</em></h2>
+      <p>People who reach 100 in Blue Zones don't go to the gym. They walk, garden and do housework as part of daily life. <span class="cite">(<a href="https://doi.org/10.1007/s12062-022-09396-0" target="_blank" rel="noopener">Herbert et al., 2025</a>)</span></p>
+    </div>
+    <div class="extra"><div class="callout small"><strong>Try it now:</strong> sit on a chair, then stand up slowly. Hold the chair or a table for safety. <button type="button" class="vlink vbtn" data-src="media/moves.mp4" data-poster="media/moves.jpg" data-title="5 easy moves at home">Watch how (56 sec) →</button></div></div>
+    <div class="art" data-scene="chair" data-label="Pak Ali practising standing up from a chair and sitting down again, with a counter of repetitions."></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 2 · Movement</div>
+      <h2>What the World Health Organization <em>advises for older adults.</em></h2>
+      <p class="cite">(<a href="https://doi.org/10.1136/bjsports-2020-102955" target="_blank" rel="noopener">Bull et al., 2020</a>)</p>
+    </div>
+    <div class="art" data-tiles="who"></div>
+  </section>
+
+  <!-- videos -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 2 · See it done</div>
+      <h2>Real people, <em>real moves.</em></h2>
+      <p>Three short clips of simple strength and balance moves you can do at home. Tap one to watch.</p>
+      <p class="small muted">Start slowly and hold a chair or a wall. If you have heart, joint or balance problems, check with your doctor first. <span class="tag">Videos: @harizfazalul &amp; Independent Motion</span></p>
+    </div>
+    <div class="art">
+      <div class="vids">
+        <button type="button" class="vbtn" data-src="media/moves.mp4" data-poster="media/moves.jpg" data-title="5 easy moves at home"><img src="media/moves.jpg" alt="" loading="lazy"><b>5 easy moves</b><span>56 sec</span></button>
+        <button type="button" class="vbtn" data-src="media/weights.mp4" data-poster="media/weights.jpg" data-title="Lifting weights, together"><img src="media/weights.jpg" alt="" loading="lazy"><b>Lifting weights</b><span>13 sec</span></button>
+        <button type="button" class="vbtn" data-src="media/squats.mp4" data-poster="media/squats.jpg" data-title="Squats: 12 reps, 2 sets"><img src="media/squats.jpg" alt="" loading="lazy"><b>Squats, 12 x 2</b><span>11 sec</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 2 · Preventing falls</div>
+      <h2>A home that is <em>safe to move in.</em></h2>
+      <p>Falls take away independence. Guidelines say every older adult should get advice on preventing them. <span class="cite">(<a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">Montero-Odasso et al., 2022</a>)</span></p>
+      <p><strong>Pak Ali's home has 5 hazards. Tap each red number to fix it.</strong></p>
+    </div>
+    <div class="extra">
+      <div class="counter" id="fix-count">0 of 5 fixed</div>
+      <p class="small" id="fix-msg" aria-live="polite">It's night. Pak Ali needs the bathroom.</p>
+    </div>
+    <div class="art" data-scene="room" data-label="Pak Ali's home at night, from his bed to the bathroom, with five numbered hazards to fix."></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow">Battery 2 · Checklist</div>
+      <h2>Charge your <em>movement battery.</em></h2>
+      <div class="counter" data-for="move">Tap what you do, or will start · 0 of 6 charged</div>
+    </div>
+    <ul class="checklist">
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span>Walk or garden most days, building up to 150 minutes a week.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span>Twice a week: strength moves, like standing up from a chair.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span>Three times a week: balance practice, holding a chair.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span>Light the path from your bed to the bathroom.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span>Remove loose rugs and clutter from walkways.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span>Wear non-slip slippers at home.</span></button></li>
+    </ul>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 3 · Medicines</div>
+      <h2>Almost half of older adults <em>take 5 or more medicines.</em></h2>
+      <p><strong>45.9%</strong> of urban Malaysians aged 55 and over on long-term medicines were taking five or more, counting supplements. <span class="cite">(<a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">Lim et al., 2017</a>)</span></p>
+      <p><span class="tag">Bag contents are made up</span></p>
+    </div>
+    <div class="art" data-scene="meds" data-label="A medicine bag spilling out seven items: a pill bottle, a blister pack, cough syrup, an inhaler, eye drops, a cream and a weekly pillbox."></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow">Battery 3 · Medicines</div>
+      <h2>More medicines, <em>more chances for problems.</em></h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="k">60.6%</span><p>of older Malaysians do not take their medicines as prescribed. <span class="cite">(<a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">Chang et al., 2021</a>)</span></p></div>
+      <div class="stat"><span class="k">28.9%</span><p>are on medicines that may not suit older adults. <span class="cite">(<a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">Chang et al., 2021</a>)</span></p></div>
+      <div class="stat"><span class="k">More</span><p>medicines are linked to drug interactions and more clinic and hospital visits. <span class="cite">(<a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">Lim et al., 2017</a>)</span></p></div>
+    </div>
+    <p class="small muted">The first two figures combine many Malaysian studies.</p>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow">Battery 3 · True or false?</div>
+      <h2>Three quick questions <em>about medicines.</em></h2>
+    </div>
+    <div class="quiz" id="quiz" aria-live="polite">
+      <div class="qn" id="qn">QUESTION 1 OF 3</div>
+      <div class="q" id="qtext"></div>
+      <div class="opts"><button type="button" data-a="true">TRUE</button><button type="button" data-a="false">FALSE</button></div>
+      <div class="ans"><span class="verdict"></span> <span id="qexp"></span></div>
+      <button class="btn3d nextq" type="button" id="qnext">Next question</button>
+    </div>
+  </section>
+
+  <!-- MyUBAT -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 3 · A free tool</div>
+      <h2>MyUBAT: your medicines, <em>on your phone.</em></h2>
+      <p>If you get medicines from a Ministry of Health clinic or hospital, the free <strong>MyUBAT</strong> app shows all your prescriptions, how much medicine you have left, and your next appointments. <span class="cite">(<a href="https://myubat.pharmacy.gov.my/?lang=en#services" target="_blank" rel="noopener">MyUBAT, KKM</a>)</span></p>
+      <p class="small muted">At taking-part facilities, you can collect at the counter, by post, at a drive-through or from a medicine locker. Carers can manage several accounts on one phone. In BM, English, Mandarin and Tamil.</p>
+    </div>
+    <div class="extra"><a class="linkbtn" href="https://myubat.pharmacy.gov.my/?lang=en#services" target="_blank" rel="noopener" data-umami-event="open-myubat">Open MyUBAT →</a></div>
+    <div class="art" data-shot="myubat" data-label="Hand-drawn sketch: a small black character holds a phone showing a medicine bottle and a calendar. Arrows lead to three ways to collect medicine: by post, drive-through and a medicine locker."></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow">Battery 3 · Checklist</div>
+      <h2>Charge your <em>medicine battery.</em></h2>
+      <div class="counter" data-for="med">Tap what you do, or will start · 0 of 6 charged</div>
+    </div>
+    <ul class="checklist">
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span>Keep one list of all your medicines and supplements, with dose and time.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span>Bring all your medicines in one bag to a pharmacist for a review.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span>Never stop, cut or share a medicine without asking first.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span>Tell your doctor or pharmacist if you feel dizzy or unsteady.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span>Use a weekly pillbox, and check it against the pharmacy label.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span>Sign up for MyUBAT if you get medicines from a government clinic or hospital.</span></button></li>
+    </ul>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 4 · Supplements</div>
+      <h2>Supplements count <em>as medicines too.</em></h2>
+      <p><strong>56.9%</strong> of older adults in the same Malaysian study took supplements, adding a lot to their total pill count. <span class="cite">(<a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">Lim et al., 2017</a>)</span></p>
+      <p>About <strong>1 in 2</strong> older Malaysians use traditional or complementary medicine. Mixed with medicines without enough knowledge, these can cause serious side effects. <span class="cite">(<a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">Chang et al., 2021</a>)</span></p>
+    </div>
+    <div class="art" data-scene="supp" data-label="A supplement jar and a medicine blister pack slide together and set off a warning sign, then a pharmacist steps in to check them."></div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 4 · Supplements</div>
+      <h2>Tofu or soy capsule: <em>which one did the research study?</em></h2>
+      <p class="small muted">Tap your answer.</p>
+    </div>
+    <div class="extra"><p id="tofu-ans" aria-live="polite"></p></div>
+    <div class="art">
+      <div class="choice">
+        <button type="button" data-pick="tofu"><svg viewBox="0 0 160 120" aria-hidden="true" id="svg-tofu"></svg><b>Tofu</b></button>
+        <button type="button" data-pick="capsule"><svg viewBox="0 0 160 120" aria-hidden="true" id="svg-caps"></svg><b>Soy capsule</b></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAL -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 4 · Read the label</div>
+      <h2>The MAL number: <em>a product's ID card.</em></h2>
+      <p>Registered medicines, traditional products and health supplements in Malaysia carry a <strong>MAL number</strong> and a Ministry of Health <strong>hologram sticker</strong>. No MAL number? Don't buy it. <span class="cite">(<a href="https://pharmacy.moh.gov.my/en/faq-categories/pengguna" target="_blank" rel="noopener">MOH Pharmacy, FAQ</a>)</span></p>
+    </div>
+    <div class="extra">
+      <p class="small muted" style="margin-bottom:.35em">Tap each part of this real example:</p>
+      <div class="mal" role="group" aria-label="MAL number decoder">
+        <button type="button" data-m="0">MAL</button><button type="button" data-m="1">18086084</button><button type="button" data-m="2">T</button><button type="button" data-m="3">CR</button>
+      </div>
+      <p class="small" id="mal-out" aria-live="polite"><strong>MAL</strong>: registered in Malaysia.</p>
+    </div>
+    <div class="art"><img class="shot" src="media/mal.webp" alt="A Ministry of Health hologram sticker, and a product label showing Reg No: MAL18086084TCR." loading="lazy"></div>
+  </section>
+
+  <!-- NPRA -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Battery 4 · Check before you buy</div>
+      <h2>Ask NPRA: <em>is this product registered?</em></h2>
+      <p>NPRA, Malaysia's medicine regulator, has free tools for the public. <span class="cite">(<a href="https://www.npra.gov.my/index.php/en/consumers.html" target="_blank" rel="noopener">NPRA</a>)</span></p>
+    </div>
+    <div class="extra">
+      <div class="links">
+        <a href="https://quest3plus.bpfk.gov.my/pmo2/index.php" target="_blank" rel="noopener" data-umami-event="npra-search"><span class="lt"><b>Search a product</b><span>Is it registered? Covers medicines, traditional products and supplements.</span></span></a>
+        <a href="https://www.npra.gov.my/index.php/en/consumers/reporting/reporting-side-effects-to-medicines-conserf-or-vaccines-aefi-2.html" target="_blank" rel="noopener" data-umami-event="npra-conserf"><img src="media/conserf.webp" alt="" class="ico"><span class="lt"><b>Report a side effect</b><span>The ConSERF form, for any medicine or supplement.</span></span></a>
+        <a href="https://www.npra.gov.my/index.php/en/consumers/safety-information/adulterated-poducts-unregistered.html" target="_blank" rel="noopener" data-umami-event="npra-adulterated"><span class="lt"><b>See product warnings</b><span>Products found with hidden, unregistered ingredients.</span></span></a>
+      </div>
+    </div>
+    <div class="art" data-shot="quest" data-label="Hand-drawn sketch: a small black character holds a magnifying glass over a supplement jar's registration number, then checks it on a phone."></div>
+  </section>
+
+  <!-- 20 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow">Battery 4 · Checklist</div>
+      <h2>Charge your <em>supplement battery.</em></h2>
+      <div class="counter" data-for="sup">Tap what you do, or will start · 0 of 6 charged</div>
+    </div>
+    <ul class="checklist">
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Tell your doctor and pharmacist about every supplement, herb and traditional remedy.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Before buying, ask: "Can I get this from food instead?"</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Take a supplement only for a reason a health professional has confirmed.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Check the MAL number on NPRA's product search before buying.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Report any side effect to NPRA with the ConSERF form.</span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span>Put supplements in your medicine bag for your pharmacist review.</span></button></li>
+    </ul>
+  </section>
+
+  <!-- 21 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Putting it together</div>
+      <h2>Four batteries, <em>one goal: staying independent.</em></h2>
+      <p>Remember Mak Yah? Weak muscles. A medicine that made her dizzy. A supplement her doctor didn't know about. <strong>Each one is something you can now act on.</strong></p>
+    </div>
+    <div class="extra">
+      <div class="score"><span class="big" id="score-n">0</span><span class="small">of your 4 batteries have started charging.<br><span class="muted" id="score-low"></span></span></div>
+      <div class="callout small" style="margin-top:8px"><strong>Show of hands:</strong> how many batteries have you charged? Your lowest one is your first step.</div>
+    </div>
+    <div class="art" data-scene="shield" data-label="Pak Ali walks across a zebra crossing inside a four-colour battery shield, while weak muscles, dizzy pills and hidden supplements bounce off."></div>
+  </section>
+
+  <!-- 22 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow">Look around you</div>
+      <h2>PAWE is already <em>a small Blue Zone.</em></h2>
+      <p>Friends, a routine, and a reason to come every week. Blue Zones are built on close social ties and a sense of purpose. <span class="cite">(<a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">Poulain &amp; Herm, 2025</a>)</span></p>
+    </div>
+    <div class="art" data-scene="pawe" data-label="Four older friends chatting and laughing outside the PAWE activity centre."></div>
+  </section>
+
+  <!-- 23 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow">Take it home</div>
+      <h2>A daily card <em>for you and your carer.</em></h2>
+      <p class="small muted">Take a screenshot to keep it on your phone.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-tab="0">Morning</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="1">Midday</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="2">Evening</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="3">Weekly</button>
+    </div>
+    <div class="tabpanel on" role="tabpanel"><ul><li>Check your pillbox against your medicine list.</li><li>Stretch gently or take a short walk.</li><li>Add vegetables or ulam to your first meal if you can.</li></ul></div>
+    <div class="tabpanel" role="tabpanel"><ul><li>Fill half your plate with vegetables or ulam.</li><li>Do your strength or balance exercise.</li><li>Spend time with people, or on something that gives you purpose.</li></ul></div>
+    <div class="tabpanel" role="tabpanel"><ul><li>Check your evening medicines and supplements.</li><li>Switch on the night light and clear the path to the bathroom.</li><li>Put non-slip slippers by the bed.</li></ul></div>
+    <div class="tabpanel" role="tabpanel"><ul><li>Refill your pillbox with a family member checking the labels.</li><li>Check MyUBAT for your medicine balance and next appointment.</li><li>Join a PAWE activity or meet friends.</li></ul></div>
+  </section>
+
+  <!-- 24 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow">Your turn</div>
+      <h2>Live long. <em>Stay independent.</em></h2>
+    </div>
+    <ol class="sumlist small">
+      <li>A long, healthy life can be measured, and it is kept up by daily habits.</li>
+      <li>Food: mostly plants, with some fish and chicken. Soy foods are linked to lower, not higher, cancer risk.</li>
+      <li>Movement: move daily, build strength and balance, and make your home safe.</li>
+      <li>Medicines and supplements: know what you take, review it with a pharmacist, and use MyUBAT and NPRA's checks.</li>
+    </ol>
+    <button class="linkbtn" type="button" id="open-deeper">About this page and further reading (19) →</button>
+    <div class="contact">Stay in touch
+      <div class="soc"><a href="mailto:the.aufthority@gmail.com">the.aufthority@gmail.com</a><a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener">LinkedIn</a><a href="https://aufthority.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener">TikTok</a><a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener">Threads</a></div>
+    </div>
+    <p class="signoff">Charge a little every day. <a class="small" style="font-family:'DM Sans',sans-serif;font-style:normal" href="https://www.aufthority.com/">Made by Aufthority</a></p>
+  </section>
+
+  </main>
+
+  <div id="nav">
+    <button id="btn-back" class="nav-btn" type="button" disabled data-umami-event="nav-back">← Back</button>
+    <button id="btn-next" class="nav-btn" type="button" data-umami-event="nav-next">Next →</button>
+  </div>
+</div>
+
+<dialog id="vplayer" aria-label="Video">
+  <video controls playsinline preload="none"></video>
+  <div class="vbar"><span id="vtitle"></span><button type="button" id="vclose">Close</button></div>
+  <div class="vcred">Video: @harizfazalul &amp; Independent Motion (Instagram)</div>
+</dialog>
+<dialog id="zoom" aria-label="Enlarged picture"><div class="zb"></div><div class="zbar"><button type="button" id="zclose">Close</button></div></dialog>
+<dialog id="deeper" aria-label="Going deeper">
+  <div class="dlg-head"><h3>Going deeper</h3><button type="button" id="close-deeper">Close</button></div>
+  <div class="dlg-body">
+    <h4>About this page</h4>
+    <p>A plain-language companion to the talk <em>Facing the Golden Years in Good Health</em> (USIM x PAWE, 21 October 2026), written for older adults, carers and the public. It explains research simply and is not a substitute for advice from your own doctor or pharmacist. Characters and homes are made up.</p>
+    <h4>Videos and screenshots</h4>
+    <p>Exercise videos by @harizfazalul and Independent Motion (Instagram). Screenshots from MyUBAT (Ministry of Health Malaysia), NPRA and QUEST3+. The MAL label image shows a real registration number as an example.</p>
+    <h4>Illustrations</h4>
+    <p>Drawn in the style of <a href="https://github.com/helloianneo/ian-xiaohei-illustrations" target="_blank" rel="noopener">Ian Xiaohei Illustrations</a> by Ian (MIT licence; English adaptation by <a href="https://github.com/tojileon/ian-xiaohei-illustrations-en" target="_blank" rel="noopener">tojileon</a>). Xiaohei is part of Ian's visual language.</p>
+    <h4>Further reading</h4>
+    <ol>
+      <li>Asia News Network. (2025, December 5). Malaysia's centenarians growing in numbers [DOSM figures]. <a href="https://asianews.network/malaysias-centenarians-growing-in-numbers/" target="_blank" rel="noopener">https://asianews.network/malaysias-centenarians-growing-in-numbers/</a></li>
+      <li>Department of Statistics Malaysia. (2026). <em>Current population estimates, 2026</em>. <a href="https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026" target="_blank" rel="noopener">https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026</a></li>
+      <li>Japan Times. (2024, September 17). Japan's centenarian population hits record. <a href="https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians" target="_blank" rel="noopener">https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians</a></li>
+      <li>Nippon.com. (2026). Japan's centenarian population tops 100,000 for first time [MHLW data]. <a href="https://www.nippon.com/en/japan-data/h02902/" target="_blank" rel="noopener">https://www.nippon.com/en/japan-data/h02902/</a></li>
+      <li>The Star. (2015, November 3). Over 40,000 centenarians in Malaysia. <a href="https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia" target="_blank" rel="noopener">https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia</a></li>
+      <li>Bull, F. C., Al-Ansari, S. S., Biddle, S., et al. (2020). World Health Organization 2020 guidelines on physical activity and sedentary behaviour. <em>British Journal of Sports Medicine, 54</em>(24), 1451–1462. <a href="https://doi.org/10.1136/bjsports-2020-102955" target="_blank" rel="noopener">https://doi.org/10.1136/bjsports-2020-102955</a></li>
+      <li>Candal-Pedreira, C., Rey-Brandariz, J., Martín-Gisbert, L., Teijeiro, A., García, G., Ruano-Ravina, A., &amp; Pérez-Ríos, M. (2026). Blue Zones, an analysis of existing evidence through a scoping review. <em>Aging and Disease, 17</em>(3), 1335–1346. <a href="https://doi.org/10.14336/AD.2025.0461" target="_blank" rel="noopener">https://doi.org/10.14336/AD.2025.0461</a></li>
+      <li>Chang, C.-T., Ang, J.-Y., Islam, M. A., Chan, H.-K., Cheah, W.-K., &amp; Gan, S. H. (2021). Prevalence of drug-related problems and complementary and alternative medicine use in Malaysia: A systematic review and meta-analysis of 37,249 older adults. <em>Pharmaceuticals, 14</em>(3), 187. <a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">https://doi.org/10.3390/ph14030187</a></li>
+      <li>Herbert, C., House, M., Dietzman, R., Climstein, M., Furness, J., &amp; Kemp-Smith, K. (2025). Blue Zones: Centenarian modes of physical activity: A scoping review. <em>Journal of Population Ageing, 18</em>(1), 5–41. <a href="https://doi.org/10.1007/s12062-022-09396-0" target="_blank" rel="noopener">https://doi.org/10.1007/s12062-022-09396-0</a></li>
+      <li>Lee, S.-A., Shu, X.-O., Li, H., Yang, G., Cai, H., Wen, W., Ji, B.-T., Gao, J., Gao, Y.-T., &amp; Zheng, W. (2009). Adolescent and adult soy food intake and breast cancer risk: Results from the Shanghai Women's Health Study. <em>The American Journal of Clinical Nutrition, 89</em>(6), 1920–1926. <a href="https://doi.org/10.3945/ajcn.2008.27361" target="_blank" rel="noopener">https://doi.org/10.3945/ajcn.2008.27361</a></li>
+      <li>Lim, L. M., McStea, M., Chung, W. W., Nor Azmi, N., Abdul Aziz, S. A., Alwi, S., Kamarulzaman, A., Kamaruzzaman, S. B., Chua, S. S., &amp; Rajasuriar, R. (2017). Prevalence, risk factors and health outcomes associated with polypharmacy among urban community-dwelling older adults in multi-ethnic Malaysia. <em>PLOS ONE, 12</em>(3), e0173466. <a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">https://doi.org/10.1371/journal.pone.0173466</a></li>
+      <li>Ministry of Health Malaysia, Pharmaceutical Services Programme. (n.d.). <em>FAQ: Consumers</em> [MAL registration number and hologram]. <a href="https://pharmacy.moh.gov.my/en/faq-categories/pengguna" target="_blank" rel="noopener">https://pharmacy.moh.gov.my/en/faq-categories/pengguna</a></li>
+      <li>Ministry of Health Malaysia, Pharmacy Services Programme. (n.d.). <em>MyUBAT</em>. Retrieved October 12, 2026, from <a href="https://myubat.pharmacy.gov.my/?lang=en#services" target="_blank" rel="noopener">https://myubat.pharmacy.gov.my/?lang=en#services</a></li>
+      <li>National Pharmaceutical Regulatory Agency. (n.d.). <em>Consumers</em>. Retrieved October 12, 2026, from <a href="https://www.npra.gov.my/index.php/en/consumers.html" target="_blank" rel="noopener">https://www.npra.gov.my/index.php/en/consumers.html</a></li>
+      <li>Montero-Odasso, M., van der Velde, N., Martin, F. C., Petrovic, M., Tan, M. P., Ryg, J., et al. (2022). World guidelines for falls prevention and management for older adults: A global initiative. <em>Age and Ageing, 51</em>(9), afac205. <a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">https://doi.org/10.1093/ageing/afac205</a></li>
+      <li>Pes, G. M., Dore, M. P., Tsofliou, F., &amp; Poulain, M. (2022). Diet and longevity in the Blue Zones: A set-and-forget issue? <em>Maturitas, 164</em>, 31–37. <a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">https://doi.org/10.1016/j.maturitas.2022.06.004</a></li>
+      <li>Poulain, M., &amp; Herm, A. (2025). Blue Zone, a demographic concept and beyond. <em>American Journal of Lifestyle Medicine</em>. <a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">https://doi.org/10.1177/15598276251342502</a></li>
+      <li>Poulain, M., Herm, A., &amp; Pes, G. (2013). The Blue Zones: Areas of exceptional longevity around the world. <em>Vienna Yearbook of Population Research, 11</em>, 87–108. <a href="https://doi.org/10.1553/populationyearbook2013s87" target="_blank" rel="noopener">https://doi.org/10.1553/populationyearbook2013s87</a></li>
+      <li>Yang, G., Shu, X.-O., Li, H., Chow, W.-H., Cai, H., Zhang, X., Gao, Y.-T., &amp; Zheng, W. (2009). Prospective cohort study of soy food intake and colorectal cancer risk in women. <em>The American Journal of Clinical Nutrition, 89</em>(2), 577–583. <a href="https://doi.org/10.3945/ajcn.2008.26742" target="_blank" rel="noopener">https://doi.org/10.3945/ajcn.2008.26742</a></li>
+    </ol>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var K='#1b1b1b', RED='#d93a2b', ORG='#ef7d22', BLU='#1f4aa8', GRN='#3f8f4a', FAINT='#bdbdbd';
+
+  /* shared defs: hand-drawn line "boil" filter + arrowheads */
+  (function(){
+    var anim = RM ? '' : '<animate attributeName="seed" values="1;4;7;10" dur="0.66s" calcMode="discrete" repeatCount="indefinite"/>';
+    function mk(id,col){ return '<marker id="'+id+'" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1.2 L8 5 L1 8.8" fill="none" stroke="'+col+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>'; }
+    var d=document.createElement('div');
+    d.innerHTML='<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="boil" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="1">'+anim+'</feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.6" xChannelSelector="R" yChannelSelector="G"/></filter>'+mk('ar-r',RED)+mk('ar-o',ORG)+mk('ar-b',BLU)+mk('ar-k',K)+'</defs></svg>';
+    document.body.insertBefore(d.firstChild, document.body.firstChild);
+  })();
+
+  /* ---------- primitives ---------- */
+  function P(d,o){ o=o||{}; return '<path d="'+d+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||K)+'" stroke-width="'+(o.w||2.4)+'" stroke-linecap="round" stroke-linejoin="round"'+(o.cls?' class="'+o.cls+'"':'')+(o.dash?' stroke-dasharray="'+o.dash+'"':'')+(o.style?' style="'+o.style+'"':'')+(o.draw?' pathLength="1"':'')+(o.arrow?' marker-end="url(#ar-'+o.arrow+')"':'')+'/>'; }
+  function E(cx,cy,rx,ry,o){ o=o||{}; return '<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||K)+'" stroke-width="'+(o.w||2.4)+'"'+(o.cls?' class="'+o.cls+'"':'')+'/>'; }
+  function H(x,y,t,col,size,o){ o=o||{}; return '<text x="'+x+'" y="'+y+'" font-family="Patrick Hand, cursive" font-size="'+(size||20)+'" fill="'+(col||K)+'" text-anchor="'+(o.a||'start')+'"'+(o.rot?' transform="rotate('+o.rot+' '+x+' '+y+')"':'')+(o.cls?' class="'+o.cls+'"':' class="note"')+(o.dl!=null?' style="animation-delay:'+o.dl+'s"':'')+(o.attr||'')+'>'+t+'</text>'; }
+  function arrow(d,col,dl){ return '<g class="note" style="animation-delay:'+(dl||0)+'s">'+P(d,{stroke:col,arrow:col===RED?'r':col===ORG?'o':col===BLU?'b':'k',w:2.2})+'</g>'; }
+
+  /* Xiaohei: black bean, white dot eyes, thin legs. Feet at (x,y), facing right. */
+  function xh(o){
+    var s=o.s||1, f=o.flip?-1:1, aL=o.l||[-26,-30], aR=o.r||[28,-30], ey=o.eyeDy||0;
+    var g='<g class="xh '+(o.cls||'')+'"'+(o.style?' style="'+o.style+'"':'')+'><g transform="translate('+o.x+' '+o.y+') scale('+(s*f)+' '+s+')">';
+    g+='<g class="legs"><g class="legL">'+P('M-8 -27 Q-9 -13 -11 -1 L-18 0',{w:2.6})+'</g><g class="legR">'+(o.oneleg?P('M7 -27 Q18 -22 24 -28 L27 -34',{w:2.6}):P('M7 -27 Q8 -13 9 -1 L16 0',{w:2.6}))+'</g></g>';
+    g+='<g class="upper">';
+    g+='<g class="armL">'+P('M-20 -50 Q'+((-20+aL[0])/2-6)+' '+((-50+aL[1])/2+4)+' '+aL[0]+' '+aL[1],{w:2.3})+'</g>';
+    g+='<path d="M-26 -58 C-29 -93 19 -101 27 -67 C31 -41 17 -26 -1 -26 C-19 -25 -25 -39 -26 -58 Z" fill="#141414" stroke="#141414" stroke-width="2"/>';
+    g+='<g class="eyes"><ellipse cx="5" cy="'+(-67+ey)+'" rx="3.6" ry="4.6" fill="#fff"/><ellipse cx="17" cy="'+(-67+ey)+'" rx="3.6" ry="4.6" fill="#fff"/><circle cx="6.4" cy="'+(-67+ey+(ey<0?-1.2:0.6))+'" r="1.7" fill="#141414"/><circle cx="18.4" cy="'+(-67+ey+(ey<0?-1.2:0.6))+'" r="1.7" fill="#141414"/></g>';
+    if(o.sweat) g+=P('M-34 -82 l-6 -5 M-36 -70 l-8 -1',{stroke:RED,w:2});
+    g+='<g class="armR">'+P('M21 -50 Q'+((21+aR[0])/2+6)+' '+((-50+aR[1])/2+4)+' '+aR[0]+' '+aR[1],{w:2.3})+'</g>';
+    g+='</g></g></g>';
+    return g;
+  }
+  function frame(w,h,content,label){ return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid meet" role="img" aria-label="'+(label||'')+'"><g filter="url(#boil)">'+content+'</g></svg>'; }
+  function tofu(x,y,w){ var h=w*.62, d=w*.3; return P('M'+x+' '+y+' h'+w+' v'+(-h)+' h'+(-w)+' Z M'+x+' '+(y-h)+' l'+d+' '+(-d*.6)+' h'+w+' l'+(-d)+' '+(d*.6)+' M'+(x+w+d)+' '+(y-h-d*.6)+' v'+h+' l'+(-d)+' '+(d*.6),{w:2.2}); }
+  function leaf(cx,cy,rot,sc){ sc=sc||1; return '<g transform="translate('+cx+' '+cy+') rotate('+rot+') scale('+sc+')">'+P('M-17 0 Q0 -11 17 0 Q0 11 -17 0 Z',{w:2.1})+P('M-14 0 L13 0 M-4 0 l-4 -4 M3 0 l-4 4',{w:1.4})+'</g>'; }
+  function heart(x,y,col,sc){ sc=sc||1; return '<g transform="translate('+x+' '+y+') scale('+sc+')">'+P('M0 6 C-14 -4 -8 -16 0 -8 C8 -16 14 -4 0 6 Z',{stroke:col||RED,w:2.2})+'</g>'; }
+  function blister(x,y,w,h){ var s=P('M'+x+' '+y+' h'+w+' v'+h+' h'+(-w)+' Z',{w:2.2}); for(var i=0;i<4;i++) for(var j=0;j<2;j++) s+=E(x+w/8*(2*i+1),y+h/4*(2*j+1),w*.075,h*.15,{w:1.8}); return s; }
+  function bottle(x,y,col){ return P('M'+x+' '+y+' V'+(y-40)+' H'+(x+26)+' V'+y+' Z M'+(x-3)+' '+(y-40)+' V'+(y-51)+' H'+(x+29)+' V'+(y-40),{w:2.3})+P('M'+(x+5)+' '+(y-28)+' h16 M'+(x+5)+' '+(y-20)+' h11',{w:1.6,stroke:col||K}); }
+  function capsule(x,y,rot){ return '<g transform="translate('+x+' '+y+') rotate('+(rot||0)+')">'+P('M-14 -6 h28 a6 6 0 0 1 0 12 h-28 a6 6 0 0 1 0 -12 Z',{w:2})+P('M0 -6 h14 a6 6 0 0 1 0 12 h-14 Z',{stroke:RED,w:2})+'</g>'; }
+
+  /* ---------- scenes ---------- */
+  var SC={};
+
+  SC.hook=function(L){
+    var c='';
+    c+=P('M14 224 Q70 220 130 225 T236 222');
+    [[182,'#d93a2b'],[210,ORG]].forEach(function(f){ var x=f[0];
+      c+=P('M'+x+' 223 Q'+(x+3)+' 205 '+x+' 194')+P('M'+x+' 210 q-10 -7 -15 1 q8 5 15 -1');
+      for(var k=0;k<5;k++){ var a=k*72*Math.PI/180; c+=E(x+Math.cos(a)*6.5,186+Math.sin(a)*6.5,4.5,4.5,{w:1.8}); }
+      c+=E(x,186,2.6,2.6,{stroke:f[1],w:2}); });
+    c+=xh({x:96,y:224,s:1.05,r:[42,-38],l:[-26,-30]});
+    c+=P('M134 170 h30 v24 h-30 Z M138 170 q11 -16 22 0 M164 178 L184 164 M181 159 l7 7');
+    for(var d=0;d<4;d++) c+=P('M'+(190+d*5)+' '+(168+(d%2)*6)+' l1 6',{stroke:ORG,w:2.2,cls:'water',style:'animation-delay:'+(d*0.22)+'s'});
+    c+=H(18,78,'Mak Som, 70',BLU,23,{dl:.3})+H(18,100,'still gardening',BLU,18,{dl:.5})+arrow('M70 106 Q80 116 84 128',BLU,.5);
+    c+=P('M247 40 Q244 150 248 250',{stroke:FAINT,w:1.4});
+    c+=P('M262 224 H332 V198 H362 V172 H392 V146 H422 V120 H452 V94 H472');
+    c+=P('M330 160 L470 52',{w:2.6});
+    [[345,198],[375,172],[405,146],[435,120],[462,94]].forEach(function(p){ var ry=160-(p[0]-330)*108/140; c+=P('M'+p[0]+' '+ry+' V'+p[1],{w:1.8}); });
+    c+=xh({x:300,y:224,s:1,r:[30,-64],l:[-24,-32],eyeDy:-3,sweat:1});
+    c+='<g class="pulse">'+H(314,104,'?',RED,46,{cls:'x'})+'</g>';
+    c+=H(258,256,'Mak Yah, 70',BLU,22,{dl:.6})+H(342,216,'stopped climbing',RED,17,{dl:.9});
+    return frame(480,270,c,L);
+  };
+
+  SC.cake=function(L){
+    var c='';
+    c+=P('M24 228 Q240 224 456 228');
+    c+=P('M40 226 L44 196 L104 194 L108 224 Z')+P('M50 226 L52 202 L114 200 L116 226',{w:2});
+    c+=P('M54 206 h40 M54 214 h32 M54 220 h38',{w:1.4});
+    c+=xh({x:160,y:228,s:1,flip:1,r:[40,-34],l:[-20,-30]});
+    c+=E(104,184,13,13,{w:2.8})+P('M113 193 L121 200',{w:3});
+    c+=H(18,128,'age checked',BLU,21,{dl:.4})+H(18,150,'against records',BLU,17,{dl:.5})+arrow('M60 158 Q68 170 72 186',BLU,.6);
+    c+=P('M250 226 V172 H390 V226');
+    c+=P('M250 182 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 18 0',{w:2});
+    c+=P('M272 172 V134 H368 V172');
+    c+=P('M272 142 q8 9 16 0 q8 9 16 0 q8 9 16 0 q8 9 16 0 q8 9 16 0 q8 9 16 0',{w:2});
+    c+=H(320,216,'100',RED,40,{a:'middle',dl:.2});
+    [298,320,342].forEach(function(x,i){ c+=P('M'+(x-4)+' 134 V108 H'+(x+4)+' V134',{w:2})+P('M'+(x-4)+' 118 l8 -4 M'+(x-4)+' 126 l8 -4',{stroke:BLU,w:1.4});
+      c+='<g class="flicker" style="animation-delay:'+(i*0.12)+'s">'+P('M'+x+' 86 Q'+(x+8)+' 96 '+x+' 104 Q'+(x-8)+' 96 '+x+' 86 Z',{stroke:ORG,w:2.2})+'</g>'; });
+    [[236,110,ORG],[408,96,BLU],[420,140,ORG],[232,160,BLU],[400,190,RED]].forEach(function(p,i){ c+='<g class="floaty" style="animation-delay:'+(i*.3)+'s">'+P('M'+p[0]+' '+p[1]+' l7 -6',{stroke:p[2],w:2.4})+'</g>'; });
+    return frame(480,270,c,L);
+  };
+
+  SC.morph=function(L){
+    var c='';
+    c+=P('M20 226 Q240 222 460 226');
+    c+=xh({x:76,y:226,s:1,r:[44,-40],l:[-24,-30]});
+    c+=P('M120 186 L150 170 M150 170 l7 -7 M150 170 l9 -3 M150 170 l8 -5',{w:2});
+    c+=E(256,214,100,13);
+    var h=leaf(196,200,-15)+leaf(222,196,20)+leaf(210,206,5)+tofu(250,212,20)+tofu(276,210,18)+E(320,203,22,9)+P('M298 203 l-10 -8 v16 Z')+'<circle cx="334" cy="200" r="1.8" fill="'+K+'"/>';
+    c+='<g class="fadeOut">'+h+'</g>';
+    var j='';
+    j+=P('M206 186 Q206 150 250 150 Q294 150 294 186 Z')+P('M232 164 l3 -2 M252 160 l3 -1 M270 166 l3 -2',{w:1.8});
+    j+=P('M202 189 q8 6 16 0 q8 6 16 0 q8 6 16 0 q8 6 16 0 q8 6 16 0 q8 6 16 0',{stroke:GRN,w:2});
+    j+=P('M204 193 h92 a6 6 0 0 1 0 12 h-92 a6 6 0 0 1 0 -12 Z');
+    j+=P('M206 207 h88 q0 7 -10 7 h-68 q-10 0 -10 -7 Z');
+    j+=P('M312 212 L306 172 H340 L334 212 Z')+P('M312 172 V150 M318 172 V146 M324 172 V152 M330 172 V148 M336 172 V154',{stroke:ORG,w:2});
+    j+=P('M354 212 L350 152 H376 L372 212 Z')+P('M366 152 L374 126',{w:2});
+    c+='<g class="fadeIn">'+j+'</g>';
+    c+=P('M370 40 h86 v34 h-86 Z',{w:2.4})+P('M456 50 h6 v14 h-6',{w:2.2});
+    c+='<rect class="drain" x="374" y="44" width="78" height="26" fill="'+ORG+'" opacity=".85"/>';
+    c+=H(372,102,'advantage',RED,20,{dl:.4})+H(372,122,'fading',RED,20,{dl:.5});
+    c+=H(20,52,'old habits',BLU,19,{dl:.3})+H(20,72,'swapped out',BLU,19,{dl:.4});
+    return frame(480,270,c,L);
+  };
+
+  SC.cent=function(L){
+    var c='';
+    function ico(x,y,cls,style,ghost){ return '<g class="'+cls+'" style="'+style+'">'+(ghost?P('M'+(x-5)+' '+y+' C'+(x-6)+' '+(y-11)+' '+(x+5)+' '+(y-12)+' '+(x+6)+' '+(y-3)+' C'+(x+7)+' '+(y+4)+' '+(x-4)+' '+(y+6)+' '+(x-5)+' '+y+' Z',{w:1.4,stroke:RED}):'<path d="M'+(x-5)+' '+y+' C'+(x-6)+' '+(y-11)+' '+(x+5)+' '+(y-12)+' '+(x+6)+' '+(y-3)+' C'+(x+7)+' '+(y+4)+' '+(x-4)+' '+(y+6)+' '+(x-5)+' '+y+' Z" fill="#141414"/><circle cx="'+(x+1)+'" cy="'+(y-4)+'" r="1.1" fill="#fff"/><circle cx="'+(x+4)+'" cy="'+(y-4)+'" r="1.1" fill="#fff"/>')+'</g>'; }
+    c+=H(20,40,'Japan',K,24,{cls:'x'})+H(96,40,'107,677',RED,24,{cls:'x'});
+    for(var i=0;i<108;i++){ var col=i%12, row=Math.floor(i/12); c+=ico(28+col*17,74+row*17,'pop','animation-delay:'+(0.2+i*0.018).toFixed(2)+'s'); }
+    c+=P('M250 30 Q247 150 251 250',{stroke:FAINT,w:1.4});
+    c+=H(272,40,'Malaysia',K,24,{cls:'x'})+H(372,40,'4,287',RED,24,{cls:'x'});
+    var g='';
+    for(var j=0;j<44;j++){ var cc=j%11, rr=Math.floor(j/11); g+=ico(280+cc*17,104+rr*17,'','',1); }
+    c+='<g class="ghost">'+g+H(276,84,'2015 records: 43,599',RED,17,{cls:'x'})+'</g>';
+    for(var k=0;k<4;k++) c+=ico(282+k*17,206,'pop','animation-delay:'+(4.2+k*0.2)+'s');
+    c+=H(356,210,'checked: 4,287',BLU,18,{dl:4.6});
+    c+=H(20,252,'each figure = 1,000 people aged 100+',BLU,17,{dl:2.4});
+    return frame(480,270,c,L);
+  };
+
+  SC.ali=function(L){
+    var c='';
+    c+=P('M20 244 Q140 240 250 244');
+    c+=xh({x:120,y:244,s:1.55,cls:'wave',r:[38,-96],l:[-30,-32]});
+    c+=H(18,52,'Pak Ali, 68',RED,26,{dl:.2})+arrow('M70 62 Q86 76 92 96',RED,.3);
+    var rows=[['food',.72,GRN],['movement',.55,ORG],['medicines',.40,BLU],['supplements',.25,RED]];
+    rows.forEach(function(r,i){ var y=46+i*52;
+      c+=H(392,y+22,r[0],K,20,{a:'end',dl:.2+i*.15});
+      c+=P('M402 '+y+' h62 v30 h-62 Z',{w:2.3})+P('M464 '+(y+9)+' h5 v12 h-5',{w:2});
+      c+='<rect class="fillbar" style="animation-delay:'+(0.4+i*0.2)+'s" x="405" y="'+(y+3)+'" width="'+(56*r[1])+'" height="24" fill="'+r[2]+'" opacity=".85"/>'; });
+    c+=H(236,262,'charge a little every day',BLU,18,{dl:1.2});
+    return frame(480,270,c,L);
+  };
+
+  SC.plate=function(L){
+    var c='';
+    c+=E(262,140,98,98)+E(262,140,84,84,{stroke:FAINT,w:1.4});
+    var g1=''; [[218,100,-30],[203,128,20],[225,152,-10],[199,160,40],[236,124,60],[214,82,10],[236,184,-40],[194,108,-60],[240,98,30],[210,188,15]].forEach(function(l){ g1+=leaf(l[0],l[1],l[2]); });
+    c+='<g class="drop" style="animation-delay:.2s">'+g1+'</g>';
+    c+='<g class="drop" style="animation-delay:.8s">'+P('M272 112 Q274 70 306 68 Q340 70 342 112 Z')+P('M284 98 l4 -1 M296 88 l4 -1 M310 96 l4 -1 M322 86 l4 -1 M306 80 l4 -1 M326 102 l4 -1 M292 106 l4 -1',{w:1.6})+'</g>';
+    c+='<g class="drop" style="animation-delay:1.4s">'+E(308,152,30,13)+P('M278 152 l-14 -11 v22 Z')+'<circle cx="326" cy="149" r="2" fill="'+K+'"/>'+P('M298 142 l-5 18 M310 140 l-5 22 M322 142 l-4 18',{w:1.8,stroke:ORG})+'</g>';
+    c+='<g class="drop" style="animation-delay:2s">'+tofu(240,214,22)+tofu(270,212,20)+'</g>';
+    c+='<g class="drop" style="animation-delay:2.5s">'+P('M298 176 h28 v14 h-28 Z M302 192 h28 v14 h-28 Z',{w:2.1})+P('M304 182 h1 M312 185 h1 M320 181 h1 M308 198 h1 M316 202 h1 M324 197 h1',{w:2.6})+'</g>';
+    c+=xh({x:96,y:254,s:.9,r:[14,-104],l:[-8,-104]})+'<g transform="translate(-8 0)">'+leaf(110,150,-8,1.7)+'</g>';
+    c+=H(16,40,'half the plate:',ORG,20,{dl:.3})+H(16,62,'greens &amp; ulam',ORG,20,{dl:.4})+arrow('M130 70 Q168 78 192 96',ORG,.5);
+    c+=H(362,52,'brown rice',BLU,20,{dl:1})+arrow('M370 60 Q352 70 340 82',BLU,1.1);
+    c+=H(372,164,'fish',BLU,20,{dl:1.6})+arrow('M368 158 L342 154',BLU,1.7);
+    c+=H(334,250,'tofu &amp; tempeh',BLU,20,{dl:2.2})+arrow('M332 236 Q312 228 300 214',BLU,2.3);
+    return frame(480,270,c,L);
+  };
+
+  SC.soy=function(L){
+    var c='';
+    c+=P('M20 214 Q240 210 460 214');
+    var p0=xh({x:70,y:214,s:.58,r:[26,-40]})+P('M81 186 h14 v20 h-14 Z M81 186 l7 -7 l7 7',{w:2})+P('M84 196 h8',{stroke:BLU,w:1.6});
+    var p1=xh({x:180,y:214,s:.8,r:[34,-44]})+E(214,178,15,4,{w:2})+tofu(205,177,10)+tofu(218,176,8);
+    var p2=xh({x:300,y:214,s:.95,r:[34,-44]})+E(336,172,15,4,{w:2})+tofu(327,171,10)+tofu(340,170,8);
+    var p3=xh({x:388,y:214,s:.95,r:[38,-44]})+xh({x:456,y:214,s:.45,flip:1,r:[30,-40]})+tofu(424,178,10)+heart(454,150,RED,1.1);
+    [p0,p1,p2,p3].forEach(function(p,i){ c+='<g class="pop" style="animation-delay:'+(i*0.7)+'s">'+p+'</g>'; });
+    c+='<g class="note" style="animation-delay:2.4s">'+P('M40 234 Q240 246 452 234',{stroke:ORG,dash:'8 7',arrow:'o',w:2.2})+'</g>';
+    ['teen','adult','older','grandchild'].forEach(function(t,i){ c+=H([70,180,300,420][i],262,t,BLU,19,{a:'middle',dl:i*0.7}); });
+    c+=H(24,46,'strongest link:',RED,21,{dl:1})+H(24,68,'soy as a teen AND adult',RED,21,{dl:1.1})+arrow('M120 78 Q150 100 176 126',RED,1.2);
+    return frame(480,270,c,L);
+  };
+
+  SC.clip=function(L){
+    var c='';
+    c+=P('M250 44 h124 v186 h-124 Z',{w:2.6})+P('M292 50 v-14 h40 v14',{w:2.4})+P('M262 60 h100 v158 h-100 Z',{w:1.8});
+    for(var i=0;i<4;i++){ var y=82+i*28; c+=E(278,y-3,4,4,{w:1.8})+P('M278 '+(y+1)+' v8 M273 '+(y+5)+' h10',{w:1.6})+P('M296 '+(y-6)+' v12 M303 '+(y-6)+' v12 M310 '+(y-6)+' v12 M317 '+(y-6)+' v12 M292 '+(y+3)+' L322 '+(y-5),{w:1.6}); }
+    c+=P('M272 206 L296 192 L318 198 L350 178',{stroke:BLU,w:2.2});
+    c+='<g class="sway">'+xh({x:170,y:236,s:1.1,r:[62,-62],l:[-24,-32]})+E(270,138,24,24,{w:3})+P('M253 155 L240 168',{w:4})+'</g>';
+    c+=P('M20 236 Q130 232 236 236');
+    c+=H(20,54,'just watching what',BLU,20,{dl:.4})+H(20,76,'people eat, for years',BLU,20,{dl:.5});
+    c+=H(20,120,'not a treatment test',RED,21,{dl:.9});
+    return frame(480,270,c,L);
+  };
+
+  SC.chair=function(L){
+    var c='';
+    c+=P('M20 230 Q240 226 460 230');
+    c+=P('M126 230 L130 104 M120 104 L142 102',{w:2.6})+P('M131 130 L150 131 M131 150 L150 151',{w:2})+P('M128 178 L192 180 M128 186 L192 188',{w:2.6})+P('M188 188 L190 230',{w:2.6});
+    c+=xh({x:222,y:230,s:1.15,cls:'squat',r:[40,-44],l:[-26,-46]});
+    c+=H(340,72,'chair stands',BLU,22,{dl:.3});
+    c+='<text x="340" y="126" font-family="Patrick Hand, cursive" font-size="50" fill="'+ORG+'" class="repn">0 / 10</text>';
+    c+=H(122,82,'hold on',RED,20,{dl:.6})+arrow('M150 90 Q166 120 186 168',RED,.7);
+    c+=H(334,200,'up slowly,',BLU,19,{dl:.9})+H(334,222,'down slowly',BLU,19,{dl:1});
+    return frame(480,270,c,L);
+  };
+
+  SC.room=function(L){
+    var c='';
+    c+='<rect class="night" x="0" y="0" width="480" height="270" fill="'+BLU+'" opacity=".09"/>';
+    c+=P('M10 222 Q240 218 470 222');
+    c+=P('M24 222 V128 M24 140 h12',{w:2.6})+P('M30 168 H176 V190 H30',{w:2.4})+P('M84 166 Q130 158 176 166 V190 H84 Z',{w:2.2})+E(54,161,20,8,{w:2.2})+P('M34 190 V222 M170 190 V222',{w:2.4});
+    c+='<g class="fx fx5">'+P('M60 238 q0 -9 11 -9 h10 q5 0 5 5 v4 Z M94 240 q0 -9 11 -9 h10 q5 0 5 5 v4 Z',{stroke:GRN,w:2.2})+'</g>';
+    c+=P('M232 180 h16 v20 h-16 Z',{w:2});
+    c+='<g class="fx fx1">'+P('M240 172 v-10 M252 176 l8 -7 M228 176 l-8 -7 M256 190 h10 M224 190 h-10',{stroke:ORG,w:2.2})+P('M196 238 Q300 248 404 232',{stroke:ORG,dash:'7 7',w:2.2})+'</g>';
+    c+='<g class="hz hz2">'+P('M212 248 L226 230 H306 L292 248 Z',{w:2.4})+P('M226 230 L238 216 L246 230',{w:2.2})+P('M300 252 l-2 -4 M290 252 l-2 -4 M280 252 l-2 -4',{w:1.6})+P('M230 240 H290',{stroke:RED,dash:'6 5',w:1.8})+'</g>';
+    c+='<g class="hz hz3">'+P('M318 222 V198 H352 V222 M318 198 l8 -10 M352 198 l-6 -10',{w:2.3})+P('M356 224 q0 -10 12 -10 h8 q6 0 6 6 v4 Z',{w:2.2})+'</g>';
+    c+=P('M372 222 V70 H470 V222',{w:2.6});
+    for(var y=88;y<220;y+=18) c+=P('M374 '+y+' H468',{stroke:'#d4d4d4',w:1.2});
+    c+=P('M428 118 h36 v30 h-36 Z M420 150 h52 v8 h-52 Z M424 158 q2 22 22 24 v24 h12 v-24 q14 -4 14 -24',{w:2.3});
+    c+='<g class="fx fx4">'+P('M384 136 H420',{w:4.5,stroke:BLU})+P('M386 128 v16 M418 128 v16',{w:2.6})+'</g>';
+    c+='<g class="walker">'+xh({x:194,y:236,s:.7})+'</g>';
+    c+=H(22,46,'2 a.m.',BLU,24)+H(22,68,'needs the bathroom',BLU,18);
+    [[240,150,1],[262,212,2],[336,172,3],[402,108,4],[88,206,5]].forEach(function(b){
+      c+='<g class="badge b'+b[2]+'" data-fix="'+b[2]+'" role="button" tabindex="0" aria-label="Fix hazard '+b[2]+'"><circle cx="'+b[0]+'" cy="'+b[1]+'" r="30" fill="transparent"/><g class="pulse"><circle class="ring" cx="'+b[0]+'" cy="'+b[1]+'" r="18" fill="#fff" stroke="'+RED+'" stroke-width="3"/><text x="'+b[0]+'" y="'+(b[1]+8)+'" font-family="Patrick Hand, cursive" font-size="24" fill="'+RED+'" text-anchor="middle">'+b[2]+'</text></g></g>'; });
+    return frame(480,270,c,L);
+  };
+
+  SC.meds=function(L){
+    var c='';
+    c+=P('M20 228 Q240 224 460 228');
+    c+=xh({x:56,y:228,s:1,r:[44,-52],l:[34,-40]});
+    c+=P('M88 152 L150 138 L160 198 L98 212 Z',{w:2.6})+P('M100 150 Q112 120 130 146',{w:2.4})+P('M126 166 v18 M117 175 h18',{stroke:RED,w:3});
+    var items=[
+      bottle(178,228,RED),
+      blister(214,196,50,32),
+      P('M280 228 V184 q0 -6 6 -6 h12 q6 0 6 6 V228 Z M286 178 v-10 h12 v10',{w:2.3})+P('M284 196 h16',{stroke:BLU,w:1.6}),
+      P('M318 228 V194 H334 V212 H352 V228 Z M320 194 v-8 h12 v8',{w:2.3}),
+      P('M364 228 V204 h14 V228 Z M366 204 L371 190 L376 204',{w:2.2}),
+      P('M388 228 L430 216 L434 228 Z M430 216 l8 -2 l2 10',{w:2.2}),
+      P('M186 256 h150 v-18 h-150 Z M207 238 v18 M228 238 v18 M250 238 v18 M271 238 v18 M292 238 v18 M314 238 v18',{w:2.1})
+    ];
+    var dxs=[-90,-120,-160,-200,-240,-280,-120];
+    items.forEach(function(it,i){ c+='<g class="fly" style="--dx:'+dxs[i]+'px;animation-delay:'+(0.4+i*0.35)+'s">'+it+'</g>'; });
+    c+='<text x="352" y="86" font-family="Patrick Hand, cursive" font-size="54" fill="'+RED+'" text-anchor="end" data-count="7" data-dur="2.6" data-delay="0.6">0</text>';
+    c+=H(360,72,'items in',RED,21)+H(360,94,'one bag',RED,21);
+    c+=H(306,124,'(a made-up bag)',BLU,17);
+    return frame(480,270,c,L);
+  };
+
+  SC.supp=function(L){
+    var c='';
+    c+=P('M20 224 Q240 220 460 224');
+    c+='<g class="jar">'+P('M120 224 V152 q0 -8 8 -8 h48 q8 0 8 8 V224 Z M116 144 V128 H188 V144',{w:2.5})+P('M132 170 h40 v34 h-40 Z',{w:1.8})+leaf(152,187,-30,.8)+'</g>';
+    c+='<g class="blis">'+blister(238,186,72,38)+'</g>';
+    c+='<g class="warn">'+P('M196 120 l-12 -10 M236 120 l12 -10 M216 104 v-14',{stroke:RED,w:2.6})+H(216,154,'!',RED,52,{a:'middle',cls:'x'})+'</g>';
+    c+='<g class="enter">'+xh({x:398,y:224,s:1.1,flip:1,r:[42,-58],l:[24,-80]})+'</g>';
+    c+=H(468,92,'pharmacist',BLU,20,{a:'end'})+arrow('M428 98 Q424 112 418 124',BLU);
+    c+='<g class="late">'+H(250,62,'"let me check these together"',BLU,20,{a:'middle',cls:'x'})+'</g>';
+    c+=H(110,118,'supplement',K,18,{dl:.2})+H(240,176,'medicine',K,18,{dl:.2});
+    return frame(480,270,c,L);
+  };
+
+  SC.shield=function(L){
+    var c='';
+    for(var s=0;s<9;s++) c+=P('M'+(14+s*52)+' 216 h28 v46 h-28 Z',{stroke:FAINT,w:1.6});
+    c+='<g class="spin">'+'<circle cx="240" cy="148" r="94" fill="none" stroke="'+GRN+'" stroke-width="5" stroke-dasharray="120 28 0 443" stroke-linecap="round"/><circle cx="240" cy="148" r="94" fill="none" stroke="'+ORG+'" stroke-width="5" stroke-dasharray="0 148 120 323" stroke-linecap="round"/><circle cx="240" cy="148" r="94" fill="none" stroke="'+BLU+'" stroke-width="5" stroke-dasharray="0 296 120 175" stroke-linecap="round"/><circle cx="240" cy="148" r="94" fill="none" stroke="'+RED+'" stroke-width="5" stroke-dasharray="0 444 120 27" stroke-linecap="round"/></g>';
+    c+=xh({x:240,y:214,s:1.1,cls:'walk'});
+    c+='<g class="bump" style="--tx:40px;--ty:24px">'+capsule(72,86,-15)+P('M62 62 q8 -8 15 0 q-8 6 -15 0',{stroke:BLU,w:2})+H(70,124,'dizzy pills',RED,20,{a:'middle',cls:'x'})+'</g>';
+    c+='<g class="bump" style="--tx:-40px;--ty:24px;animation-delay:.9s">'+P('M404 74 V44 q0 -5 5 -5 h26 q5 0 5 5 V74 Z M401 39 V30 H443 V39',{w:2.3})+H(422,68,'?',RED,26,{a:'middle',cls:'x'})+H(470,98,'hidden supplements',RED,19,{a:'end',cls:'x'})+'</g>';
+    c+='<g class="bump" style="--tx:42px;--ty:-12px;animation-delay:1.6s">'+P('M40 198 v22 M48 196 v26 M82 196 v26 M90 198 v22 M48 209 h34',{w:2.6})+H(66,186,'weak muscles',RED,19,{a:'middle',cls:'x'})+'</g>';
+    return frame(480,270,c,L);
+  };
+
+  SC.myubat=function(L){
+    var c='';
+    c+=P('M20 238 Q150 234 270 238');
+    c+=xh({x:96,y:238,s:1.2,r:[42,-58],l:[34,-46]});
+    c+=P('M138 186 V90 q0 -8 8 -8 h52 q8 0 8 8 V186 q0 8 -8 8 h-52 q-8 0 -8 -8 Z',{w:2.6})+P('M164 90 h16',{w:2});
+    c+=bottle(156,140,RED);
+    c+=P('M152 152 h40 v26 h-40 Z M152 160 h40 M162 148 v8 M182 148 v8',{w:1.8})+P('M160 170 l4 4 l8 -8',{stroke:BLU,w:2});
+    c+=H(130,56,'all your prescriptions',BLU,20,{dl:.3});
+    c+='<g class="note" style="animation-delay:.6s">'+P('M214 120 Q260 92 312 74',{stroke:ORG,arrow:'o',w:2.2})+P('M214 140 Q270 140 318 142',{stroke:ORG,arrow:'o',w:2.2})+P('M214 160 Q262 196 314 214',{stroke:ORG,arrow:'o',w:2.2})+'</g>';
+    c+='<g class="pop" style="animation-delay:.8s">'+P('M332 82 V58 q0 -14 16 -14 h30 q16 0 16 14 V82 Z M362 82 V112',{w:2.3})+P('M344 60 h22',{stroke:RED,w:2})+H(400,74,'by post',K,19,{cls:'x'})+'</g>';
+    c+='<g class="pop" style="animation-delay:1.1s">'+P('M330 152 L338 132 H378 L388 152 H396 V164 H322 V152 Z',{w:2.3})+E(342,166,6,6,{w:2.2})+E(378,166,6,6,{w:2.2})+H(400,150,'drive-',K,18,{cls:'x'})+H(400,168,'through',K,18,{cls:'x'})+'</g>';
+    c+='<g class="pop" style="animation-delay:1.4s">'+P('M332 196 h56 v52 h-56 Z M350 196 v52 M370 196 v52 M332 222 h56',{w:2.2})+'<circle cx="345" cy="210" r="1.8" fill="'+K+'"/><circle cx="365" cy="210" r="1.8" fill="'+K+'"/><circle cx="385" cy="236" r="1.8" fill="'+K+'"/>'+H(398,228,'locker',K,19,{cls:'x'})+'</g>';
+    c+=H(18,262,'carers: many accounts, one phone',RED,18,{dl:1.6});
+    return frame(480,270,c,L);
+  };
+
+  SC.npra=function(L){
+    var c='';
+    c+=P('M20 230 Q240 226 460 230');
+    c+=P('M84 230 V146 q0 -8 8 -8 h56 q8 0 8 8 V230 Z M80 138 V122 H160 V138',{w:2.5})+P('M96 162 h48 v44 h-48 Z',{w:1.8})+leaf(120,180,-25,.8);
+    c+=H(120,200,'MAL',RED,15,{a:'middle',cls:'x'});
+    c+='<g class="sway">'+xh({x:230,y:230,s:1.1,flip:1,r:[62,-60],l:[-30,-40]})+E(150,176,24,24,{w:3})+P('M168 194 L178 204',{w:4})+'</g>';
+    c+=P('M330 210 V80 q0 -8 8 -8 h60 q8 0 8 8 V210 q0 8 -8 8 h-60 q-8 0 -8 -8 Z',{w:2.5});
+    c+=P('M344 100 h48 v16 h-48 Z',{w:1.8})+E(384,108,4,4,{w:1.6})+P('M387 111 l3 3',{w:1.6});
+    c+='<g class="pop" style="animation-delay:1.2s">'+P('M346 140 l10 10 l22 -24',{stroke:GRN,w:3.4})+H(368,182,'registered',GRN,18,{a:'middle',cls:'x'})+'</g>';
+    c+='<g class="note" style="animation-delay:.6s">'+P('M190 120 Q260 70 326 104',{stroke:ORG,dash:'7 6',arrow:'o',w:2.2})+'</g>';
+    c+=H(240,58,'search it on NPRA',ORG,20,{a:'middle',dl:.7});
+    c+=H(20,96,'find the number',BLU,19,{dl:.3})+H(20,116,'on the label',BLU,19,{dl:.4})+arrow('M70 124 Q84 150 100 194',BLU,.5);
+    return frame(480,270,c,L);
+  };
+
+  SC.pawe=function(L){
+    var c='';
+    c+=P('M70 206 V72 H410 V206',{w:2.5})+P('M56 76 L240 26 L424 76',{w:2.6});
+    c+=P('M172 88 h136 v34 h-136 Z',{w:2.2})+H(240,116,'PAWE',K,30,{a:'middle',cls:'x'});
+    c+=P('M216 206 V150 h48 v56 M240 150 v56',{w:2.2})+P('M96 132 h54 v34 h-54 Z M330 132 h54 v34 h-54 Z',{w:2.1});
+    c+=P('M20 238 Q240 234 460 238');
+    c+='<g class="chat">'+xh({x:110,y:238,s:.8,r:[30,-60]})+'</g>';
+    c+='<g class="chat" style="animation-delay:.3s">'+xh({x:180,y:238,s:.68})+'</g>';
+    c+='<g class="chat" style="animation-delay:.6s">'+xh({x:300,y:238,s:.8,flip:1,r:[30,-64]})+'</g>';
+    c+='<g class="chat" style="animation-delay:.9s">'+xh({x:372,y:238,s:.72,flip:1})+'</g>';
+    c+='<g class="floaty">'+heart(240,170,RED,1.3)+'</g>';
+    c+=H(56,52,'ha ha',BLU,22,{dl:.4})+H(392,22,'same time',BLU,19,{dl:.6})+H(392,42,'next week?',BLU,19,{dl:.7});
+    return frame(480,270,c,L);
+  };
+
+  function mini(inner){ return '<svg viewBox="0 0 160 120" aria-hidden="true"><g filter="url(#boil)">'+inner+'</g></svg>'; }
+  var TILES={
+    habits:function(){
+      var plants=P('M20 114 H140')+xh({x:80,y:114,s:.6,r:[14,-108],l:[-6,-108]})+leaf(86,40,-8,2.1);
+      var move=P('M20 114 H140')+xh({x:76,y:114,s:.62,cls:'walk'})+P('M24 104 H52',{stroke:ORG,dash:'5 5',arrow:'o',w:2});
+      var fam=P('M14 114 H146')+xh({x:42,y:114,s:.56,r:[26,-34]})+xh({x:82,y:114,s:.36})+xh({x:120,y:114,s:.6,flip:1,r:[26,-34]})+heart(82,36,RED,.9);
+      var sun=P('M14 114 H146')+P('M38 114 A42 42 0 0 1 122 114',{w:2.2})+P('M80 64 v-12 M108 74 l8 -8 M52 74 l-8 -8 M126 98 h10 M34 98 h-10',{stroke:ORG,w:2.2})+xh({x:80,y:114,s:.5,r:[22,-80],l:[-16,-80]});
+      return '<div class="tiles">'+
+        '<div class="tile">'+mini(plants)+'<b>Mostly plants</b></div>'+
+        '<div class="tile">'+mini(move)+'<b>Move naturally</b></div>'+
+        '<div class="tile">'+mini(fam)+'<b>Close to family and friends</b></div>'+
+        '<div class="tile">'+mini(sun)+'<b>A reason to get up</b></div></div>';
+    },
+    who:function(){
+      var w1=P('M14 114 H146')+xh({x:84,y:114,s:.62,cls:'walk'})+P('M20 104 H54',{stroke:ORG,dash:'5 5',arrow:'o',w:2});
+      var w2=P('M14 114 H146')+xh({x:80,y:114,s:.62,r:[26,-74],l:[-20,-74]})+P('M90 52 h8 v-16 h-8 Z M62 52 h8 v-16 h-8 Z',{stroke:BLU,w:2});
+      var w3=P('M14 114 H146')+P('M40 114 L42 62 M36 62 h14 M42 86 h26 M66 86 L68 114',{w:2.2})+xh({x:96,y:114,s:.62,oneleg:1,l:[-40,-44]});
+      return '<div class="tiles three">'+
+        '<div class="tile">'+mini(w1)+'<div><div class="k">150–300 min</div><span>a week of moderate activity, like brisk walking</span></div></div>'+
+        '<div class="tile">'+mini(w2)+'<div><div class="k">2 days</div><span>a week of muscle-strengthening, like lifting water bottles</span></div></div>'+
+        '<div class="tile">'+mini(w3)+'<div><div class="k">3 days</div><span>a week of balance and strength, to help prevent falls</span></div></div></div>';
+    }
+  };
+
+
+  /* ---------- annotated screenshots ---------- */
+  var SHOTS={
+    myubat:function(){ return '<svg class="shotsvg" viewBox="0 0 1100 650" role="img" aria-label="MyUBAT website showing its features, with Prescription Records and Balance Medication Supply circled."><image href="media/myubat.webp" x="0" y="48" width="1100" height="546"/><g filter="url(#boil)">'+
+      E(885,326,135,32,{stroke:RED,w:5})+E(196,560,170,32,{stroke:BLU,w:5})+
+      H(1090,36,'see all your prescriptions',RED,42,{a:'end'})+arrow('M960 44 Q930 70 905 292',RED,.3)+
+      H(20,640,'check how much medicine is left',BLU,40,{dl:.6})+'</g></svg>'; },
+    quest:function(){ return '<svg class="shotsvg" viewBox="0 0 947 700" role="img" aria-label="NPRA QUEST3+ product search, with Product Registration Number circled in the Search By menu."><image href="media/quest.webp" x="0" y="0" width="947" height="628"/><g filter="url(#boil)">'+
+      E(356,374,118,18,{stroke:RED,w:4.5})+H(696,388,'1. pick this',RED,40,{dl:.3})+arrow('M690 376 Q600 360 480 372',RED,.4)+
+      H(20,682,'2. type the full MAL number, then search',BLU,38,{dl:.8})+'</g></svg>'; }
+  };
+  document.querySelectorAll('[data-shot]').forEach(function(a){ a.innerHTML=SHOTS[a.getAttribute('data-shot')](); });
+
+
+  /* ---------- tap to zoom ---------- */
+  var zd=document.getElementById('zoom'), zb=zd.querySelector('.zb');
+  document.querySelectorAll('[data-shot], .art img.shot').forEach(function(el){
+    var host=el.matches('img')?el.parentNode:el; host.style.position='relative';
+    var h=document.createElement('span'); h.className='zoomhint'; h.textContent='tap to enlarge'; host.appendChild(h);
+    host.addEventListener('click',function(){ var src=host.querySelector('svg, img.shot'); zb.innerHTML=src.outerHTML; if(zd.showModal) zd.showModal(); else zd.setAttribute('open',''); });
+  });
+  document.getElementById('zclose').addEventListener('click',function(){ if(zd.close) zd.close(); else zd.removeAttribute('open'); });
+  /* ---------- video player ---------- */
+  var vp=document.getElementById('vplayer'), vv=vp.querySelector('video');
+  document.querySelectorAll('.vbtn').forEach(function(b){ b.addEventListener('click',function(){
+    var src=b.getAttribute('data-src'); vv.innerHTML='<source src="'+src+'" type="video/mp4"><source src="'+src.replace('.mp4','.webm')+'" type="video/webm">'; vv.poster=b.getAttribute('data-poster'); vv.load();
+    document.getElementById('vtitle').textContent=b.getAttribute('data-title');
+    if(vp.showModal) vp.showModal(); else vp.setAttribute('open','');
+    var pr=vv.play(); if(pr && pr.catch) pr.catch(function(){});
+    if(window.umami) umami.track('video',{v:b.getAttribute('data-title')});
+  }); });
+  function closeV(){ vv.pause(); vv.innerHTML=''; vv.load(); if(vp.close) vp.close(); else vp.removeAttribute('open'); }
+  document.getElementById('vclose').addEventListener('click',closeV);
+  vp.addEventListener('cancel',function(e){ e.preventDefault(); closeV(); });
+
+  /* ---------- MAL decoder ---------- */
+  var MALT=['<strong>MAL</strong>: registered in Malaysia.',
+    '<strong>18086084</strong>: an 8-digit number unique to this product. Type the whole MAL number into NPRA\'s product search to check it.',
+    '<strong>T</strong>: the product type. A = controlled medicine, X = over-the-counter, T = traditional, N = health supplement, H = veterinary. This one is traditional.',
+    '<strong>CR</strong>: extra codes may follow. C = made under contract, R = repacked.'];
+  var mb=document.querySelectorAll('.mal button');
+  mb.forEach(function(b){ b.addEventListener('click',function(){ var i=+b.getAttribute('data-m'); mb.forEach(function(x){ x.setAttribute('aria-pressed', x===b); }); document.getElementById('mal-out').innerHTML=MALT[i]+' <span class="cite">(<a href="https://pharmacy.moh.gov.my/en/faq-categories/pengguna" target="_blank" rel="noopener">MOH Pharmacy, FAQ</a>)</span>'; }); });
+  /* ---------- build ---------- */
+  var slides=document.querySelectorAll('.slide');
+  var TOTAL=slides.length, current=1;
+  function renderArt(art){
+    var key=art.getAttribute('data-scene');
+    if(key){ art.innerHTML=SC[key](art.getAttribute('data-label')||''); if(key!=='room'){ var rb=document.createElement('button'); rb.type='button'; rb.className='replay'; rb.textContent='replay'; rb.addEventListener('click',function(){ renderArt(art); runCounts(art); if(key==='chair') bindChair(); }); art.appendChild(rb); } }
+    var t=art.getAttribute('data-tiles'); if(t) art.innerHTML=TILES[t]();
+  }
+  document.querySelectorAll('.art').forEach(renderArt);
+  document.getElementById('svg-tofu').innerHTML='<g filter="url(#boil)">'+E(76,100,58,12)+tofu(44,98,54)+P('M118 30 L148 82 M128 26 L154 78',{w:2.6})+'</g>';
+  document.getElementById('svg-caps').innerHTML='<g filter="url(#boil)">'+bottle(40,106,RED)+capsule(104,72,-10)+capsule(116,96,20)+'</g>';
+
+  function runCounts(scope){
+    scope.querySelectorAll('[data-count]').forEach(function(el){
+      var to=+el.getAttribute('data-count'), dur=(+el.getAttribute('data-dur')||1)*1000, dl=(+el.getAttribute('data-delay')||0)*1000;
+      if(RM){ el.textContent=to; return; }
+      el.textContent='0'; var st=performance.now()+dl;
+      (function step(now){ var p=Math.max(0,Math.min(1,(now-st)/dur)); el.textContent=Math.round(to*p); if(p<1) requestAnimationFrame(step); })(performance.now());
+    });
+  }
+  var reps=0;
+  function bindChair(){
+    var art=document.querySelector('[data-scene="chair"]'); var up=art.querySelector('.squat .upper'), lbl=art.querySelector('.repn');
+    if(RM){ lbl.textContent='10 / 10'; return; }
+    reps=0; lbl.textContent='0 / 10';
+    if(up) up.addEventListener('animationiteration',function(){ reps=reps%10+1; lbl.textContent=reps+' / 10'; });
+  }
+  function chipsIn(){ var ch=document.querySelectorAll('#bz-chips .chip'); ch.forEach(function(c,i){ c.classList.remove('on'); setTimeout(function(){ c.classList.add('on'); }, RM?0:400+i*350); }); }
+
+  var FIXED=[false,false,false,false,false];
+  var FIXMSG=['Night light on: the path to the bathroom is lit.','Loose rug removed: nothing to trip on.','Clutter cleared from the walkway.','Grab bar fitted in the bathroom.','Non-slip slippers placed by the bed.'];
+  (function(){
+    var art=document.querySelector('[data-scene="room"]'), svg=art.querySelector('svg');
+    svg.querySelectorAll('.badge').forEach(function(b){
+      function go(e){ if(e.type==='keydown' && e.key!=='Enter' && e.key!==' ') return; e.preventDefault();
+        var i=+b.getAttribute('data-fix')-1; FIXED[i]=true; svg.classList.add('f'+(i+1));
+        var n=FIXED.filter(Boolean).length;
+        document.getElementById('fix-count').textContent=n+' of 5 fixed';
+        document.getElementById('fix-msg').textContent= n===5 ? 'All fixed. Pak Ali can walk safely to the bathroom at night.' : FIXMSG[i];
+        if(n===5){ var w=svg.querySelector('.walker'); w.classList.add('across'); w.querySelector('.xh').classList.add('walk'); }
+        if(window.umami) umami.track('fix-hazard',{n:i+1});
+      }
+      b.addEventListener('click',go); b.addEventListener('keydown',go);
+    });
+  })();
+
+  var btnBack=document.getElementById('btn-back'), btnNext=document.getElementById('btn-next');
+  var progFill=document.getElementById('progress-fill'), progLbl=document.getElementById('progress-label');
+  function show(n){
+    slides.forEach(function(s,i){ s.classList.toggle('active', i+1===n); });
+    var sl=slides[n-1];
+    runCounts(sl);
+    if(sl.querySelector('[data-scene="chair"]')) bindChair();
+    if(sl.querySelector('#bz-chips')) chipsIn();
+    if(sl.querySelector('#score-n')) updateScore();
+    progFill.style.width=((n/TOTAL)*100)+'%';
+    progLbl.textContent=n+' / '+TOTAL;
+    btnBack.disabled=n===1;
+    btnNext.textContent=n===TOTAL?'Start again':'Next →';
+    btnNext.setAttribute('data-umami-event',n===TOTAL?'carousel-restart':'nav-next');
+    sl.scrollTop=0;
+    if(window.umami) umami.track('slide-view',{slide:n});
+  }
+  btnNext.addEventListener('click',function(){ if(current<TOTAL){ current++; } else { current=1; } show(current); });
+  btnBack.addEventListener('click',function(){ if(current>1){ current--; show(current); } });
+
+  var BAT={food:0,move:0,med:0,sup:0}, TOT={food:4,move:6,med:6,sup:6}, NAMES={food:'food',move:'movement',med:'medicines',sup:'supplements'};
+  document.querySelectorAll('.ck').forEach(function(b){
+    b.addEventListener('click',function(){
+      var on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on);
+      var k=b.getAttribute('data-bat'); BAT[k]+=on?1:-1;
+      var cell=document.getElementById('m-'+k); cell.querySelector('i').style.width=(BAT[k]/TOT[k]*100)+'%';
+      cell.classList.remove('pulse'); void cell.offsetWidth; cell.classList.add('pulse');
+      document.querySelector('.counter[data-for="'+k+'"]').textContent='Tap what you do, or will start · '+BAT[k]+' of '+TOT[k]+' charged';
+      if(window.umami) umami.track('check',{battery:k,on:on});
+    });
+  });
+  function updateScore(){
+    var keys=Object.keys(BAT), n=keys.filter(function(k){return BAT[k]>0;}).length;
+    document.getElementById('score-n').textContent=n;
+    var low=keys.slice().sort(function(a,b){return BAT[a]/TOT[a]-BAT[b]/TOT[b];})[0];
+    document.getElementById('score-low').textContent=(BAT[low]===TOT[low])?'All four full. Keep going!':'Your lowest: '+NAMES[low]+'.';
+  }
+
+  var QZ=[
+    {q:'Once I feel better, I can stop my medicine.',a:'false',e:'Some medicines keep working even when you feel nothing, like blood pressure tablets. Always ask your doctor or pharmacist before stopping or cutting a dose. <span class="cite">General advice</span>'},
+    {q:'Some medicines can cause dizziness and falls.',a:'true',e:'Medicine-related falls are a recognised problem in older adults, and guidelines advise reviewing medicines that raise fall risk. <span class="cite">(<a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">Chang et al., 2021</a>; <a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">Montero-Odasso et al., 2022</a>)</span>'},
+    {q:'A medicine review with a pharmacist helps when I take many medicines.',a:'true',e:'Researchers recommend medicine reviews to reduce the problems of taking too many medicines. <span class="cite">(<a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">Lim et al., 2017</a>)</span>'}
+  ];
+  var qi=0, qscore=0, quiz=document.getElementById('quiz');
+  function loadQ(){
+    if(qi>=QZ.length){ quiz.classList.remove('answered'); document.getElementById('qn').textContent='Done';
+      document.getElementById('qtext').innerHTML='You got '+qscore+' of 3. Bring your questions to your pharmacist.'; quiz.querySelector('.opts').style.display='none'; return; }
+    quiz.classList.remove('answered'); quiz.querySelector('.opts').style.display='';
+    quiz.querySelectorAll('.opts button').forEach(function(b){ b.classList.remove('right'); b.disabled=false; });
+    document.getElementById('qn').textContent='Question '+(qi+1)+' of 3';
+    document.getElementById('qtext').textContent=QZ[qi].q;
+    document.getElementById('qnext').textContent= qi===QZ.length-1 ? 'See my score' : 'Next question';
+  }
+  quiz.querySelectorAll('.opts button').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(quiz.classList.contains('answered')) return;
+      var Q=QZ[qi], ok=b.getAttribute('data-a')===Q.a; if(ok) qscore++;
+      quiz.classList.add('answered');
+      quiz.querySelectorAll('.opts button').forEach(function(x){ x.classList.toggle('right',x.getAttribute('data-a')===Q.a); x.disabled=true; });
+      var v=quiz.querySelector('.verdict'); v.textContent=(ok?'Correct. ':'Not quite. ')+'It is '+Q.a+'.'; v.className='verdict '+(ok?'ok':'no');
+      document.getElementById('qexp').innerHTML=Q.e;
+    });
+  });
+  document.getElementById('qnext').addEventListener('click',function(){ qi++; loadQ(); });
+  loadQ();
+
+  document.querySelectorAll('.choice button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var pick=b.getAttribute('data-pick'), ans=document.getElementById('tofu-ans');
+      document.querySelectorAll('.choice button').forEach(function(x){ x.classList.remove('picked-right','picked-wrong'); x.classList.add(x.getAttribute('data-pick')==='tofu'?'picked-right':'picked-wrong'); });
+      ans.innerHTML=(pick==='tofu'?'<strong class="verdict ok">Correct: tofu.</strong> ':'<strong class="verdict no">Not quite: it was tofu.</strong> ')+'The soy findings came from soy foods in everyday meals, not capsules. Food first. <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.27361" target="_blank" rel="noopener">Lee et al., 2009</a>)</span>';
+      ans.classList.add('show');
+    });
+  });
+
+  document.querySelectorAll('.reveal').forEach(function(b){ b.addEventListener('click',function(e){ if(e.target.closest('a')) return; b.setAttribute('aria-expanded', b.getAttribute('aria-expanded')!=='true'); }); });
+  var tabs=document.querySelectorAll('.tabs button'), panels=document.querySelectorAll('.tabpanel');
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ var i=+t.getAttribute('data-tab'); tabs.forEach(function(x,j){ x.setAttribute('aria-selected',j===i); }); panels.forEach(function(p,j){ p.classList.toggle('on',j===i); }); }); });
+  var dlg=document.getElementById('deeper');
+  document.getElementById('open-deeper').addEventListener('click',function(){ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); });
+  document.getElementById('close-deeper').addEventListener('click',function(){ if(dlg.close) dlg.close(); else dlg.removeAttribute('open'); });
+
+  show(1);
+})();
+</script>
+</body>
+</html>
