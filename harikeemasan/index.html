@@ -255,4 +255,1344 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
 .nutri button[aria-selected="true"]{background:var(--line);color:#fff}
 .ncard{background:#fff;border:1.5px solid var(--rule);border-radius:14px;padding:.75em 1em}
 .ncard .nh{display:flex;flex-wrap:wrap;gap:.2em .6em;align-items:baseline;margin-bottom:.4em}
-.ncard .nh b{font-family:'DM Serif Display',serif;font-weight:400;font-size
+.ncard .nh b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.3em}
+.ncard .nh>span{font-family:'Patrick Hand',cursive;color:var(--red);font-size:1.05em}
+.ncard p{font-size:.92em;line-height:1.4;margin:0 0 .35em}
+.ncard p:last-child{margin:0}
+.ncard b.f,.ncard b.s,.ncard b.w{font-family:'Patrick Hand',cursive;font-weight:400;font-size:1.12em}
+.ncard b.f{color:var(--green)} .ncard b.s{color:var(--blue)} .ncard b.w{color:var(--red)}
+@media (max-height:720px){
+  .hide-short{display:none}
+  .art{min-height:100px}
+  .ck{min-height:42px;padding:.35em .7em;font-size:.9em}
+  .checklist{gap:5px}
+  .ncard{padding:.55em .8em}
+  .ncard p{font-size:.88em}
+}
+/* ---------- cover ---------- */
+.slide.cover.active{display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,3vh,28px)}
+.cv-event{font-size:.78em;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.cv-title{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.04;letter-spacing:-.015em;font-size:clamp(2rem, calc(2.4vh + 3vw), 4.4rem);margin:.25em 0 .35em}
+.cv-title em{font-style:italic;color:var(--accent)}
+.cv-bars{display:flex;gap:6px;margin-bottom:clamp(12px,2.4vh,24px)}
+.cv-bars i{width:38px;height:9px;border-radius:2px}
+.cv-who{border-top:1px solid var(--rule);padding-top:.7em}
+.cv-who b{display:block;font-size:1.25em}
+.cv-who span{color:var(--muted)}
+.qrcard{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 12px 10px;text-align:center;width:max-content;max-width:100%}
+.qrcard svg{display:block;width:clamp(150px,26vh,210px);height:auto;margin:0 auto}
+.qrcard b{display:block;font-family:'Patrick Hand',cursive;font-weight:400;font-size:1.15em;color:var(--blue);margin-top:4px}
+.qrcard span{font-size:.8em;color:var(--muted)}
+@media (min-aspect-ratio: 5/4) and (min-width: 760px){
+  .slide.cover.active{display:grid;grid-template-columns:minmax(0,1.35fr) auto;align-items:center;column-gap:clamp(32px,6vw,80px)}
+  .qrcard{padding:18px 18px 14px}
+  .qrcard svg{width:clamp(200px,40vh,340px)}
+}
+#topnav .tl{display:flex;align-items:center;gap:12px;min-width:0}
+#menu-btn{display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:0 11px 0 8px;min-height:36px;font-weight:500;font-size:15px}
+#menu-btn svg{width:20px;height:20px}
+@media (max-width:380px){ #topnav .logo span{display:none} #topnav .tl{gap:8px} }
+#drawer-bg{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:60}
+#drawer-bg[hidden]{display:none}
+#drawer{position:fixed;top:0;left:0;bottom:0;width:min(88vw,380px);background:#fff;border-right:1.5px solid var(--line);z-index:61;transform:translateX(-102%);transition:transform .28s ease;display:flex;flex-direction:column;visibility:hidden}
+#drawer.open{transform:none;visibility:visible}
+#drawer .dh{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--rule)}
+#drawer .dh b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.4rem}
+#drawer .dh button{border:1.5px solid var(--rule);background:#fff;border-radius:8px;padding:6px 14px;min-height:40px}
+#drawer .dl{overflow-y:auto;padding:6px 10px 24px;-webkit-overflow-scrolling:touch}
+#drawer .grp{font-family:'Patrick Hand',cursive;font-size:18px;color:var(--muted);padding:12px 8px 4px;display:flex;align-items:center;gap:8px}
+#drawer .grp i{width:12px;height:12px;border-radius:3px;border:1.5px solid var(--line);display:inline-block}
+#drawer .it{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:none;border:none;border-radius:10px;padding:9px 8px;min-height:46px;font-size:15.5px;line-height:1.3}
+#drawer .it:hover{background:#f4f3ef}
+#drawer .it .n{flex:none;width:26px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px;padding-top:2px}
+#drawer .it[aria-current="true"]{background:var(--accent-light);color:var(--accent);font-weight:700}
+@media (prefers-reduced-motion: reduce){ #drawer{transition:none} }
+.contact{font-size:.85em;color:var(--muted)}
+.contact .soc{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:2px}
+.signoff{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.25em}
+
+#nav{flex:none;display:flex;gap:10px;padding:10px 0;padding-bottom:max(12px,env(safe-area-inset-bottom));border-top:1px solid var(--rule)}
+.nav-btn{min-height:50px;border-radius:10px;font-size:16px;font-weight:500;padding:0 18px}
+#btn-back{background:transparent;border:1.5px solid var(--rule);color:var(--ink)}
+#btn-back:disabled{opacity:.35;cursor:default}
+#btn-next{flex:1;background:var(--ink);color:#fff;border:none}
+
+dialog#deeper{border:none;border-radius:14px;max-width:680px;width:calc(100% - 28px);max-height:86vh;padding:0;background:#fff;color:var(--ink);margin:auto}
+dialog#deeper::backdrop{background:rgba(0,0,0,.4)}
+.dlg-head{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--rule)}
+.dlg-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.4rem}
+.dlg-head button{border:1.5px solid var(--rule);background:transparent;border-radius:8px;padding:6px 14px;min-height:40px}
+.dlg-body{padding:16px 18px 24px;font-size:15px}
+.dlg-body h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:4px 0 8px}
+.dlg-body p{margin-bottom:14px}
+.dlg-body ol{padding-left:22px;display:grid;gap:10px;line-height:1.5}
+.dlg-body a{word-break:break-all}
+
+/* ---------- hand-drawn animation ---------- */
+svg .note{animation:noteK .6s ease both}
+@keyframes noteK{from{opacity:0;transform:translateY(4px)}}
+svg .draw{stroke-dasharray:1;animation:drawK .9s ease-out both}
+@keyframes drawK{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+svg .drop{animation:drop .6s cubic-bezier(.2,.8,.3,1.25) both}
+@keyframes drop{from{transform:translateY(-34px);opacity:0}}
+svg .pop{transform-box:fill-box;transform-origin:50% 100%;animation:pop .5s ease-out both}
+@keyframes pop{from{transform:scale(.5);opacity:0}}
+svg .fadeOut{opacity:0;animation:fadeOutK 4.5s ease both .4s}
+@keyframes fadeOutK{0%,35%{opacity:1}60%,100%{opacity:0}}
+svg .fadeIn{animation:fadeInK 4.5s ease both .4s}
+@keyframes fadeInK{0%,42%{opacity:0}68%,100%{opacity:1}}
+svg .drain{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(.3);animation:drainK 4.5s ease both .4s}
+@keyframes drainK{0%,30%{transform:scaleX(1)}72%,100%{transform:scaleX(.3)}}
+svg .fillbar{transform-box:fill-box;transform-origin:0 50%;animation:fillK 1.3s ease-out both}
+@keyframes fillK{from{transform:scaleX(0)}}
+svg .flicker{transform-box:fill-box;transform-origin:50% 100%;animation:flick .35s ease-in-out infinite alternate}
+@keyframes flick{to{transform:scale(.8,1.15)}}
+svg .floaty{animation:floatyK 2.4s ease-in-out infinite alternate}
+@keyframes floatyK{to{transform:translateY(-6px)}}
+svg .pulse{transform-box:fill-box;transform-origin:center;animation:pulseK 1.3s ease-in-out infinite}
+@keyframes pulseK{50%{transform:scale(1.14)}}
+svg .water{animation:waterK .9s linear infinite}
+@keyframes waterK{0%{transform:translate(0,-4px);opacity:0}25%{opacity:1}100%{transform:translate(5px,26px);opacity:0}}
+svg .eyes{transform-box:fill-box;transform-origin:center;animation:blink 4.2s infinite}
+@keyframes blink{0%,93%,100%{transform:none}96%{transform:scaleY(.1)}}
+svg .walk .legL,svg .walk .legR{transform-box:fill-box;transform-origin:50% 0;animation:swing .42s ease-in-out infinite alternate}
+svg .walk .legR{animation-direction:alternate-reverse}
+@keyframes swing{from{transform:rotate(18deg)}to{transform:rotate(-18deg)}}
+svg .walk .upper{animation:bob .42s ease-in-out infinite alternate}
+@keyframes bob{to{transform:translateY(-2.5px)}}
+svg .wave .armR{transform-box:fill-box;transform-origin:0% 100%;animation:waveK .6s ease-in-out infinite alternate}
+@keyframes waveK{from{transform:rotate(-12deg)}to{transform:rotate(14deg)}}
+svg .squat .upper{animation:sqU 2.4s ease-in-out infinite}
+@keyframes sqU{0%,12%,100%{transform:none}45%,62%{transform:translateY(13px)}}
+svg .squat .legs{transform-box:fill-box;transform-origin:50% 100%;animation:sqL 2.4s ease-in-out infinite}
+@keyframes sqL{0%,12%,100%{transform:none}45%,62%{transform:scaleY(.5)}}
+svg .spin{transform-box:fill-box;transform-origin:center;animation:spinK 8s linear infinite}
+@keyframes spinK{to{transform:rotate(360deg)}}
+svg .bump{animation:bumpK 2.6s ease-in-out infinite}
+@keyframes bumpK{0%,100%{transform:none}45%{transform:translate(var(--tx),var(--ty))}55%{transform:translate(calc(var(--tx)*.75),calc(var(--ty)*.75))}}
+svg .sway{animation:swayK 3.2s ease-in-out infinite alternate}
+@keyframes swayK{to{transform:translate(10px,-6px)}}
+svg .chat{animation:bob 1.1s ease-in-out infinite alternate}
+svg .fly{animation:flyK .7s cubic-bezier(.3,.7,.4,1.15) both}
+@keyframes flyK{from{transform:translate(var(--dx),-50px) scale(.3);opacity:0}}
+svg .jar{animation:jarK 5s ease-in-out both .3s}
+@keyframes jarK{0%{transform:translateX(-24px)}35%,60%{transform:translateX(26px)}100%{transform:none}}
+svg .blis{animation:blisK 5s ease-in-out both .3s}
+@keyframes blisK{0%{transform:translateX(24px)}35%,60%{transform:translateX(-26px)}100%{transform:none}}
+svg .warn{opacity:0;transform-box:fill-box;transform-origin:center;animation:warnK 5s ease both .3s}
+@keyframes warnK{0%,28%{opacity:0;transform:scale(.4)}36%{opacity:1;transform:scale(1.15)}40%{transform:rotate(-9deg)}44%{transform:rotate(9deg)}48%{transform:rotate(-6deg)}52%,62%{opacity:1;transform:none}72%,100%{opacity:0}}
+svg .enter{animation:enterK 5s ease-out both .3s}
+@keyframes enterK{0%,48%{transform:translateX(160px)}74%,100%{transform:none}}
+svg .late{animation:lateK 5s ease both .3s}
+@keyframes lateK{0%,78%{opacity:0}90%,100%{opacity:1}}
+svg .across{animation:acrossK 7s ease-in-out infinite}
+@keyframes acrossK{0%,8%{transform:translateX(0)}80%,100%{transform:translateX(190px)}}
+svg .ghost{opacity:.18;animation:ghostK 6s ease both .3s}
+@keyframes ghostK{0%,30%{opacity:0}42%,62%{opacity:1}85%,100%{opacity:.18}}
+svg .night{opacity:.09;transition:opacity .6s}
+svg.f1 .night{opacity:0}
+svg .fx{opacity:0;transition:opacity .5s}
+svg.f1 .fx1,svg.f4 .fx4,svg.f5 .fx5{opacity:1}
+svg .hz{transition:opacity .5s}
+svg.f2 .hz2,svg.f3 .hz3{opacity:0}
+svg.f1 .b1,svg.f2 .b2,svg.f3 .b3,svg.f4 .b4,svg.f5 .b5{display:none}
+svg .badge{cursor:pointer}
+svg .badge:focus{outline:none}
+svg .badge:focus-visible .ring{stroke-width:5}
+
+@media (prefers-reduced-motion: reduce){
+  *, svg *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div id="shell">
+  <nav id="topnav">
+    <div class="tl"><button type="button" id="menu-btn" aria-label="Buka kandungan" data-aria-en="Open contents" data-aria-ms="Buka kandungan" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Menu</span></button>
+    <a class="logo" href="https://www.aufthority.com">Aufthority <span>· Edu</span></a></div>
+    <div class="tr">
+      <div class="langsw" role="group" aria-label="Bahasa / Language"><button type="button" data-lang="ms" aria-pressed="true">BM</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+      <span id="progress-label">1 / 24</span>
+    </div>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+  <div id="mybat" aria-label="Bateri anda" data-aria-en="Your batteries" data-aria-ms="Bateri anda">
+    <span class="lbl"><span data-l="en">your batteries</span><span data-l="ms">bateri anda</span></span>
+    <span class="mini"><b><span data-l="en">food</span><span data-l="ms">makan</span></b><span class="mcell" id="m-food"><i style="background:var(--green)"></i></span></span>
+    <span class="mini"><b><span data-l="en">move</span><span data-l="ms">gerak</span></b><span class="mcell" id="m-move"><i style="background:var(--orange)"></i></span></span>
+    <span class="mini"><b><span data-l="en">meds</span><span data-l="ms">ubat</span></b><span class="mcell" id="m-med"><i style="background:var(--blue)"></i></span></span>
+    <span class="mini"><b><span data-l="en">supp</span><span data-l="ms">suplemen</span></b><span class="mcell" id="m-sup"><i style="background:var(--red)"></i></span></span>
+  </div>
+
+  <main id="stage">
+
+  <!-- cover -->
+  <section class="slide cover active">
+    <div class="cv-main">
+      <div class="cv-event">USIM x PAWE · <span data-l="en">21 October 2026</span><span data-l="ms">21 Oktober 2026</span></div>
+      <h1 class="cv-title">Meniti Usia Emas: <em>Sihat Dan Berkualiti</em> 2026</h1>
+      <div class="cv-bars" aria-hidden="true"><i style="background:var(--green)"></i><i style="background:var(--orange)"></i><i style="background:var(--blue)"></i><i style="background:var(--red)"></i></div>
+      <div class="cv-who"><b>Auf Ali</b><span>KPJ Healthcare University</span></div>
+    </div>
+    <div class="qrcard">
+      <svg viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="Kod QR ke www.aufthority.com/harikeemasan" data-aria-en="QR code to www.aufthority.com/harikeemasan" data-aria-ms="Kod QR ke www.aufthority.com/harikeemasan"><rect width="37" height="37" fill="#fff"/><path fill="#1a1a18" d="M4 4h7v1h-7zM12 4h2v1h-2zM15 4h1v1h-1zM17 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM20 5h3v1h-3zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h2v1h-2zM15 6h3v1h-3zM19 6h6v1h-6zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h3v1h-3zM17 7h2v1h-2zM21 7h4v1h-4zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h3v1h-3zM17 8h2v1h-2zM21 8h2v1h-2zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM20 9h2v1h-2zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM13 11h2v1h-2zM18 11h1v1h-1zM20 11h1v1h-1zM22 11h1v1h-1zM24 11h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM10 12h2v1h-2zM13 12h1v1h-1zM16 12h1v1h-1zM20 12h1v1h-1zM23 12h1v1h-1zM27 12h1v1h-1zM30 12h1v1h-1zM32 12h1v1h-1zM5 13h1v1h-1zM7 13h3v1h-3zM11 13h2v1h-2zM15 13h1v1h-1zM17 13h1v1h-1zM19 13h3v1h-3zM23 13h2v1h-2zM26 13h2v1h-2zM31 13h2v1h-2zM4 14h7v1h-7zM12 14h2v1h-2zM16 14h1v1h-1zM19 14h1v1h-1zM23 14h1v1h-1zM25 14h3v1h-3zM29 14h2v1h-2zM32 14h1v1h-1zM4 15h1v1h-1zM7 15h3v1h-3zM13 15h3v1h-3zM20 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM27 15h3v1h-3zM5 16h1v1h-1zM7 16h1v1h-1zM9 16h4v1h-4zM15 16h2v1h-2zM18 16h3v1h-3zM24 16h1v1h-1zM26 16h2v1h-2zM32 16h1v1h-1zM4 17h1v1h-1zM7 17h3v1h-3zM12 17h1v1h-1zM14 17h4v1h-4zM19 17h3v1h-3zM23 17h4v1h-4zM31 17h2v1h-2zM5 18h2v1h-2zM10 18h2v1h-2zM14 18h3v1h-3zM19 18h1v1h-1zM21 18h1v1h-1zM23 18h2v1h-2zM26 18h1v1h-1zM32 18h1v1h-1zM6 19h1v1h-1zM8 19h2v1h-2zM13 19h1v1h-1zM15 19h2v1h-2zM18 19h1v1h-1zM20 19h1v1h-1zM22 19h2v1h-2zM25 19h1v1h-1zM27 19h1v1h-1zM4 20h1v1h-1zM8 20h4v1h-4zM13 20h3v1h-3zM17 20h4v1h-4zM22 20h2v1h-2zM26 20h1v1h-1zM32 20h1v1h-1zM5 21h4v1h-4zM11 21h1v1h-1zM16 21h1v1h-1zM19 21h3v1h-3zM23 21h2v1h-2zM26 21h2v1h-2zM30 21h3v1h-3zM4 22h3v1h-3zM10 22h1v1h-1zM12 22h4v1h-4zM17 22h3v1h-3zM23 22h1v1h-1zM26 22h1v1h-1zM29 22h1v1h-1zM32 22h1v1h-1zM6 23h4v1h-4zM13 23h4v1h-4zM19 23h1v1h-1zM22 23h3v1h-3zM26 23h2v1h-2zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h2v1h-2zM17 24h2v1h-2zM20 24h1v1h-1zM24 24h6v1h-6zM31 24h1v1h-1zM12 25h1v1h-1zM14 25h2v1h-2zM17 25h1v1h-1zM19 25h3v1h-3zM24 25h1v1h-1zM28 25h3v1h-3zM32 25h1v1h-1zM4 26h7v1h-7zM12 26h2v1h-2zM19 26h1v1h-1zM21 26h2v1h-2zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM32 26h1v1h-1zM4 27h1v1h-1zM10 27h1v1h-1zM15 27h3v1h-3zM23 27h2v1h-2zM28 27h1v1h-1zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM13 28h2v1h-2zM17 28h1v1h-1zM20 28h1v1h-1zM23 28h7v1h-7zM31 28h1v1h-1zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM13 29h4v1h-4zM19 29h2v1h-2zM25 29h1v1h-1zM27 29h4v1h-4zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h1v1h-1zM15 30h1v1h-1zM18 30h6v1h-6zM28 30h1v1h-1zM31 30h2v1h-2zM4 31h1v1h-1zM10 31h1v1h-1zM16 31h1v1h-1zM18 31h2v1h-2zM22 31h1v1h-1zM24 31h2v1h-2zM27 31h3v1h-3zM4 32h7v1h-7zM12 32h1v1h-1zM14 32h1v1h-1zM18 32h2v1h-2zM24 32h3v1h-3zM28 32h1v1h-1zM32 32h1v1h-1z"/></svg>
+      <b><span data-l="en">Scan to open this guide</span><span data-l="ms">Imbas untuk buka panduan ini</span></b>
+      <span>aufthority.com/harikeemasan</span>
+    </div>
+  </section>
+
+  <!-- 1 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Start here</span><span data-l="ms">Mula di sini</span></div>
+      <h1><span data-l="en">Two people, the same age. <em>Very different golden years.</em></span><span data-l="ms">Dua orang, umur sama. <em>Hari tua yang sangat berbeza.</em></span></h1>
+      <p><span data-l="en">Both are 70. Mak Som still waters her garden every morning. Mak Yah stopped using the stairs after a fall last year.</span><span data-l="ms">Kedua-duanya berumur 70 tahun. Mak Som masih menyiram pokok bunganya setiap pagi. Mak Yah sudah tidak naik tangga sejak terjatuh tahun lalu.</span></p>
+      <p><span data-l="en">Some of the difference is luck. <strong>A lot of it is in our hands.</strong> <span class="tag">Made-up example</span></span><span data-l="ms">Sebahagiannya nasib. <strong>Banyak lagi terletak di tangan kita.</strong> <span class="tag">Contoh rekaan</span></span></p>
+      <div class="sharerow" aria-label="Kongsi halaman ini" data-aria-en="Share this page" data-aria-ms="Kongsi halaman ini"><button type="button" class="sharebtn js-share" data-umami-event="share-native-first"><span data-l="en">Share this page</span><span data-l="ms">Kongsi halaman ini</span></button><button type="button" class="sharebtn ghost js-copy" data-umami-event="copy-link-first"><span data-l="en">Copy link</span><span data-l="ms">Salin pautan</span></button><a class="sharebtn ghost js-wa" target="_blank" rel="noopener" data-umami-event="share-whatsapp-first">WhatsApp</a></div>
+    </div>
+    <div class="art" data-scene="hook" data-label="Hand-drawn sketch: Mak Som, 70, a small black character, waters her flowers. Mak Yah, 70, stands worried at the bottom of the stairs." data-label-ms="Lakaran tangan: Mak Som, 70, watak hitam kecil, menyiram bunganya. Mak Yah, 70, berdiri risau di kaki tangga."></div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Proof it can be done</span><span data-l="ms">Bukti ia boleh dicapai</span></div>
+      <h2><span data-l="en">Some places have many people <em>who live to 100.</em></span><span data-l="ms">Ada tempat yang ramai penduduknya <em>hidup hingga 100 tahun.</em></span></h2>
+      <p><span data-l="en">They are called <strong>Blue Zones</strong>. And they live high quality lives.</span><span data-l="ms">Tempat ini dipanggil <strong>Blue Zones</strong> (Zon Biru). Penduduknya juga hidup dengan kualiti yang tinggi.</span> <span class="cite">(<a href="https://doi.org/10.1553/populationyearbook2013s87" target="_blank" rel="noopener">Poulain et al., 2013</a>; <a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">Poulain &amp; Herm, 2025</a>)</span></p>
+    </div>
+    <div class="extra"><div class="chips" id="bz-chips"><span class="chip"><span data-l="en">Okinawa, Japan</span><span data-l="ms">Okinawa, Jepun</span></span><span class="chip"><span data-l="en">Sardinia, Italy</span><span data-l="ms">Sardinia, Itali</span></span><span class="chip">Ikaria, Greece</span><span class="chip">Nicoya, Costa Rica</span><span class="chip"><span data-l="en">Martinique, France</span><span data-l="ms">Martinique, Perancis</span></span></div></div>
+    <div class="art" data-scene="cake" data-label="Hand-drawn sketch: a small black character checks birth records with a magnifying glass next to a birthday cake marked 100." data-label-ms="Lakaran tangan: watak hitam kecil menyemak rekod kelahiran dengan kanta pembesar di sebelah kek hari jadi bertanda 100."></div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">What they share</span><span data-l="ms">Persamaan mereka</span></div>
+      <h2><span data-l="en">Four habits <em>Blue Zones have in common.</em></span><span data-l="ms">Empat tabiat <em>yang dikongsi Blue Zones.</em></span></h2>
+      <p class="small muted"><span data-l="en">None of them need a gym or a prescription.</span><span data-l="ms">Tiada satu pun memerlukan gim atau preskripsi.</span> <span class="cite">(<a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">Poulain &amp; Herm, 2025</a>)</span></p>
+    </div>
+    <div class="art" data-tiles="habits"></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">A warning</span><span data-l="ms">Amaran</span></div>
+      <h2><span data-l="en">Good habits stop, <em>benefits fade.</em></span><span data-l="ms">Tabiat baik berhenti, <em>manfaatnya pudar.</em></span></h2>
+      <p><span data-l="en">Even in Blue Zones, traditional meals are giving way to modern fast food. Researchers warn the long-life advantage cannot be taken for granted.</span><span data-l="ms">Di Blue Zones sendiri, hidangan tradisional semakin diganti makanan segera moden. Penyelidik memberi amaran bahawa kelebihan umur panjang ini tidak boleh dianggap kekal.</span> <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
+      <p class="small muted"><span data-l="en">Honest note: research on Blue Zones is still growing, and scientists are still weighing how strong the evidence is.</span><span data-l="ms">Nota jujur: kajian tentang Blue Zones masih berkembang, dan saintis masih menilai sejauh mana kukuhnya bukti ini.</span> <span class="cite">(<a href="https://doi.org/10.14336/AD.2025.0461" target="_blank" rel="noopener">Candal-Pedreira et al., 2026</a>)</span></p>
+    </div>
+    <div class="art" data-scene="morph" data-label="A plate of vegetables and tofu changes into a burger, fries and a fizzy drink while the Blue Zone advantage bar drains." data-label-ms="Sepinggan sayur dan tauhu bertukar menjadi burger, kentang goreng dan minuman bergas, sementara bar kelebihan Blue Zone semakin susut."></div>
+  </section>
+
+  <!-- centenarians -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">How we compare</span><span data-l="ms">Perbandingan</span></div>
+      <h2><span data-l="en">Japan vs Malaysia <em>—how?</em></span><span data-l="ms">Jepun vs Malaysia <em>—kenapa?</em></span></h2>
+      <p><span data-l="en"><strong>Japan:</strong> 107,677 people aged 100+. The leading regions are now Shimane, Kochi and Tottori; <strong>Malaysia is dwarfed.</strong></span><span data-l="ms"><strong>Jepun:</strong> 107,677 orang berumur 100 tahun ke atas. Wilayah teratas kini Shimane, Kochi dan Tottori; <strong>Malaysia jauh ketinggalan.</strong></span> <span class="cite">(<a href="https://www.nippon.com/en/japan-data/h02902/" target="_blank" rel="noopener">MHLW via Nippon.com, 2026</a>)</span></p>
+      <p><span data-l="en"><strong>Malaysia:</strong> 4,287 citizens aged 100+.</span><span data-l="ms"><strong>Malaysia:</strong> 4,287 warganegara berumur 100 tahun ke atas.</span> <span class="cite">(<a href="https://asianews.network/malaysias-centenarians-growing-in-numbers/" target="_blank" rel="noopener">DOSM, June 2025</a>)</span></p>
+    </div>
+    <div class="extra">
+      <button class="reveal" type="button" aria-expanded="false"><span data-l="en">Is Japan simply healthier?</span><span data-l="ms">Adakah Jepun memang lebih sihat?</span><span class="hint"><span data-l="en">Tap to see</span><span data-l="ms">Ketik untuk lihat</span></span><span class="rb"><span data-l="en">Not that simply. Malaysia is a younger country, so fewer people have reached 100 yet. Per 100,000 people: Japan about 76, Malaysia about 14.</span><span data-l="ms">Tidak semudah itu. Malaysia negara yang lebih muda, jadi belum ramai yang sampai umur 100. Bagi setiap 100,000 orang: Jepun sekitar 76, Malaysia sekitar 14.</span> <span class="cite">(<a href="https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians" target="_blank" rel="noopener">Japan Times, 2024</a>; <a href="https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026" target="_blank" rel="noopener">DOSM, 2026</a>)</span> <span data-l="en">Records matter too: in 2015, unchecked records listed 43,599, ten times today's count.</span><span data-l="ms">Rekod juga penting: pada 2015, rekod yang belum disemak mencatat 43,599 orang, sepuluh kali ganda jumlah hari ini.</span> <span class="cite">(<a href="https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia" target="_blank" rel="noopener">The Star, 2015</a>)</span></span></button>
+    </div>
+    <div class="art swap" data-scene="cent" data-label="Hand-drawn headcount: 108 small figures for Japan, each standing for 1,000 people aged 100 or more. For Malaysia, 44 outlined figures from 2015 records fade away, leaving 4 checked figures." data-label-ms="Kiraan lakaran tangan: 108 figura kecil untuk Jepun, setiap satu mewakili 1,000 orang berumur 100 tahun ke atas. Untuk Malaysia, 44 figura bergaris daripada rekod 2015 pudar, tinggal 4 figura yang disemak."></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Meet Pak Ali</span><span data-l="ms">Kenali Pak Ali</span></div>
+      <h2><span data-l="en">Like a phone, we are "powered" by <em>batteries.</em></span><span data-l="ms">Seperti telefon, badan kita bergantung pada <em>bateri.</em></span></h2>
+      <p><span data-l="en">Pak Ali is 73. He runs on four batteries: <strong>food, movement, medicines and supplements</strong>. Charge them a little every day and he stays independent.</span><span data-l="ms">Pak Ali berumur 73 tahun. Dia bergantung pada empat bateri: <strong>makanan, pergerakan, ubat-ubatan dan suplemen</strong>. Cas sedikit setiap hari dan dia kekal berdikari.</span></p>
+      <p class="small muted"><span data-l="en">Your own batteries are at the top of the screen. Tick the checklists to charge them. <span class="tag">Made-up character</span></span><span data-l="ms">Bateri anda sendiri ada di bahagian atas skrin. Tandakan senarai semak untuk mengecasnya. <span class="tag">Watak rekaan</span></span></p>
+    </div>
+    <div class="art" data-scene="ali" data-label="Pak Ali, 73, waving in front of his house, next to a panel showing his four batteries." data-label-ms="Pak Ali, 73, melambai di hadapan rumahnya, di sebelah panel yang menunjukkan empat baterinya."></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 1 · Food</span><span data-l="ms">Bateri 1 · Makanan</span></div>
+      <h2>Suku, suku, <em>separuh.</em></h2>
+      <p><span data-l="en">Malaysia's Healthy Plate: <strong>half</strong> vegetables and fruit, a <strong>quarter</strong> rice or other grains, a <strong>quarter</strong> fish, chicken, meat or legumes such as tofu and dhal, with plain water.</span><span data-l="ms">Pinggan Sihat Malaysia: <strong>separuh</strong> sayur-sayuran dan buah-buahan, <strong>suku</strong> nasi atau bijirin lain, <strong>suku</strong> ikan, ayam, daging atau kekacang seperti tauhu dan dhal, bersama air kosong.</span> <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
+      <p class="small muted"><span data-l="en">Yet only 12% of Malaysian adults eat 3 servings of vegetables a day, and under 3% eat a daily serving of nuts or legumes.</span><span data-l="ms">Namun hanya 12% orang dewasa Malaysia makan 3 hidangan sayur sehari, dan kurang 3% makan satu hidangan kacang atau kekacang setiap hari.</span> <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024, adults 18+</a>)</span> <span data-l="en">Blue Zone meals look much the same: mostly plants.</span><span data-l="ms">Hidangan Blue Zones lebih kurang sama: kebanyakannya tumbuhan.</span> <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
+    </div>
+    <div class="art" data-scene="plate" data-label="Hand-drawn Malaysian Healthy Plate filled one by one: half vegetables and ulam, a quarter brown rice, a quarter fish, tofu and tempeh." data-label-ms="Pinggan Sihat Malaysia lakaran tangan diisi satu demi satu: separuh sayur dan ulam, suku nasi perang, suku ikan, tauhu dan tempe."></div>
+  </section>
+
+  <!-- older eat -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 1 · Malaysians aged 60+</span><span data-l="ms">Bateri 1 · Warga Malaysia 60 tahun ke atas</span></div>
+      <h2><span data-l="en">1 in 4 older Malaysians <em>not getting enough nutrients.</em></span><span data-l="ms">1 dalam 4 warga emas Malaysia <em>tidak mendapat nutrien yang cukup.</em></span></h2>
+      <p><span data-l="en">The 2024 national survey found most people aged 60 and over were <strong>not eating enough</strong> of several nutrients, while <strong>64%</strong> ate too much fat.</span><span data-l="ms">Tinjauan kebangsaan 2024 mendapati kebanyakan orang berumur 60 tahun ke atas <strong>tidak cukup mengambil</strong> beberapa nutrien, manakala <strong>64%</strong> makan terlalu banyak lemak.</span> <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
+      <p class="small muted"><span data-l="en">Based on what people said they ate, not blood tests.</span><span data-l="ms">Berdasarkan apa yang dilaporkan dimakan, bukan ujian darah.</span></p>
+    </div>
+    <div class="art" data-scene="gaps" data-label="Hand-drawn bar chart of the share of Malaysians aged 60 and over not eating enough: calcium 96.7%, vitamin B1 80.6%, vitamin B3 71.0%, vitamin B2 64.7%, vitamin A 63.3%, vitamin C 61.0%." data-label-ms="Carta bar lakaran tangan peratusan warga Malaysia 60 tahun ke atas yang tidak cukup mengambil: kalsium 96.7%, vitamin B1 80.6%, vitamin B3 71.0%, vitamin B2 64.7%, vitamin A 63.3%, vitamin C 61.0%."></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 1 · Myth buster</span><span data-l="ms">Bateri 1 · Membongkar mitos</span></div>
+      <h2><span data-l="en">Does soy cause cancer? <em>Not in these studies.</em></span><span data-l="ms">Adakah soya menyebabkan kanser? <em>Tidak dalam kajian ini.</em></span></h2>
+      <p><span data-l="en">A common fear is that tofu and soy milk cause cancer. In a study of <strong>73,223 women</strong> in Shanghai, eating more soy foods was linked to a <strong>lower</strong>, not higher, risk of breast cancer, mainly before menopause. The link was strongest in women who ate soy as teenagers <strong>and</strong> as adults.</span><span data-l="ms">Ramai takut tauhu dan susu soya menyebabkan kanser. Dalam kajian ke atas <strong>73,223 wanita</strong> di Shanghai, lebih banyak makan makanan soya dikaitkan dengan risiko kanser payudara yang <strong>lebih rendah</strong>, bukan lebih tinggi, terutamanya sebelum menopaus. Kaitan paling kuat dilihat pada wanita yang makan soya semasa remaja <strong>dan</strong> dewasa.</span> <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.27361" target="_blank" rel="noopener">Lee et al., 2009</a>)</span></p>
+      <p class="small"><span data-l="en">So there is no need to fear tofu and tempeh. They can stay on the family table, alongside fish and chicken.</span><span data-l="ms">Jadi tidak perlu takut tauhu dan tempe. Ia boleh terus dihidang di meja keluarga, bersama ikan dan ayam.</span></p>
+    </div>
+    <div class="extra">
+      <button class="reveal" type="button" aria-expanded="false"><span data-l="en">A second study, and why we say "linked to"</span><span data-l="ms">Kajian kedua, dan kenapa kami kata "dikaitkan dengan"</span><span class="hint"><span data-l="en">Tap to see</span><span data-l="ms">Ketik untuk lihat</span></span><span class="rb"><span data-l="en">A study of <strong>68,412 women</strong> linked soy foods to a lower risk of bowel cancer, mainly after menopause.</span><span data-l="ms">Kajian ke atas <strong>68,412 wanita</strong> mengaitkan makanan soya dengan risiko kanser usus yang lebih rendah, terutamanya selepas menopaus.</span> <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.26742" target="_blank" rel="noopener">Yang et al., 2009</a>)</span> <span data-l="en">Both studies followed what people ate for years; neither tested soy as a treatment. So soy is <strong>linked to</strong> lower risk, but we can't say it prevents cancer.</span><span data-l="ms">Kedua-dua kajian memantau pemakanan peserta selama bertahun-tahun; tiada yang menguji soya sebagai rawatan. Jadi soya <strong>dikaitkan dengan</strong> risiko lebih rendah, tetapi kita tidak boleh kata ia mencegah kanser.</span></span></button>
+    </div>
+    <div class="art swap" data-scene="soy" data-label="Hand-drawn sketch: one character shown as a teenager with soy milk, an adult and an older adult with tofu, then handing tofu to a grandchild." data-label-ms="Lakaran tangan: satu watak ditunjukkan semasa remaja dengan susu soya, semasa dewasa dan warga emas dengan tauhu, kemudian memberi tauhu kepada cucu."></div>
+  </section>
+
+  <!-- salt sugar -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 1 · Hidden salt and sugar</span><span data-l="ms">Bateri 1 · Garam dan gula tersembunyi</span></div>
+      <h2><span data-l="en">Too salty, <em>too sweet.</em></span><span data-l="ms">Terlalu masin, <em>terlalu manis.</em></span></h2>
+      <p><span data-l="en"><strong>3 in 4</strong> Malaysian adults eat too much salt, which raises blood pressure: 7.3 g a day against a limit under 5 g (1 teaspoon). <strong>1 in 2</strong> eat over 7.5 teaspoons of sugar a day, half from drinks.</span><span data-l="ms"><strong>3 dalam 4</strong> orang dewasa Malaysia makan terlalu banyak garam, yang menaikkan tekanan darah: 7.3 g sehari berbanding had kurang 5 g (1 sudu teh). <strong>1 dalam 2</strong> makan lebih 7.5 sudu teh gula sehari, separuh daripadanya daripada minuman.</span> <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024, adults 18+</a>)</span></p>
+      <p class="small"><span data-l="en"><strong>40%</strong> of people aged 60+ never read food labels.</span><span data-l="ms"><strong>40%</strong> orang berumur 60 tahun ke atas tidak pernah membaca label makanan.</span> <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
+    </div>
+    <div class="art" data-scene="saltsugar" data-label="Hand-drawn: one and a half spoons of salt eaten each day against a one-spoon limit, and a glass of teh tarik with sugar spoons dropping in." data-label-ms="Lakaran tangan: satu setengah sudu garam dimakan sehari berbanding had satu sudu, dan segelas teh tarik dengan sudu gula dimasukkan."></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 1 · Checklist</span><span data-l="ms">Bateri 1 · Senarai semak</span></div>
+      <h2><span data-l="en">Check your <em>food battery.</em></span><span data-l="ms">Semak <em>bateri makanan</em> anda.</span></h2>
+      <div class="counter" data-for="food"></div>
+    </div>
+    <ul class="checklist">
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span><span data-l="en">Don't avoid tofu, tempeh or soy milk out of cancer fears.</span><span data-l="ms">Jangan elak tauhu, tempe atau susu soya kerana takut kanser.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span><span data-l="en">Fill half your plate with vegetables or ulam.</span><span data-l="ms">Isi separuh pinggan dengan sayur atau ulam.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span><span data-l="en">Keep fish and chicken in moderate portions, with beans or dhal too.</span><span data-l="ms">Ambil ikan dan ayam secara sederhana, bersama kekacang atau dhal.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span><span data-l="en">Serve tofu and tempeh to your grandchildren too.</span><span data-l="ms">Hidangkan tauhu dan tempe kepada cucu juga.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span><span data-l="en">Season with herbs and spices instead of salt.</span><span data-l="ms">Perasakan masakan dengan herba dan rempah, bukan garam.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="food"><span class="box"></span><span><span data-l="en">Order drinks "kurang manis" or "kosong".</span><span data-l="ms">Pesan minuman "kurang manis" atau "kosong".</span></span></button></li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 2 · Movement</span><span data-l="ms">Bateri 2 · Pergerakan</span></div>
+      <h2><span data-l="en">Move every day, <em>challenge the body.</em></span><span data-l="ms">Bergerak setiap hari, <em>cabar badan.</em></span></h2>
+      <p><span data-l="en">People who reach 100 in Blue Zones don't go to the gym. They walk, garden and do housework as part of daily life.</span><span data-l="ms">Mereka yang mencecah 100 tahun di Blue Zones tidak pergi ke gim. Mereka berjalan, berkebun dan membuat kerja rumah sebagai sebahagian daripada rutin harian.</span> <span class="cite">(<a href="https://doi.org/10.1007/s12062-022-09396-0" target="_blank" rel="noopener">Herbert et al., 2025</a>)</span></p>
+    </div>
+    <div class="extra"><div class="callout small"><span data-l="en"><strong>Try it now:</strong> sit on a chair, then stand up slowly. Hold the chair or a table for safety.</span><span data-l="ms"><strong>Cuba sekarang:</strong> duduk di kerusi, kemudian bangun perlahan-lahan. Pegang kerusi atau meja untuk keselamatan.</span> <button type="button" class="vlink vbtn" data-src="media/moves.mp4" data-poster="media/moves.jpg" data-title="5 easy moves at home" data-title-ms="5 gerakan mudah di rumah"><span data-l="en">Watch how (56 sec) →</span><span data-l="ms">Lihat caranya (56 saat) →</span></button></div></div>
+    <div class="art" data-scene="chair" data-label="Pak Ali practising standing up from a chair and sitting down again, with a counter of repetitions." data-label-ms="Pak Ali berlatih bangun dari kerusi dan duduk semula, dengan pengira ulangan."></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 2 · Movement</span><span data-l="ms">Bateri 2 · Pergerakan</span></div>
+      <h2><span data-l="en">What the World Health Organization <em>advises for older adults.</em></span><span data-l="ms">Nasihat Pertubuhan Kesihatan Sedunia <em>untuk warga emas.</em></span></h2>
+      <p class="small"><span data-l="en">In Malaysia, <strong>1 in 3</strong> adults isn't physically active.</span><span data-l="ms">Di Malaysia, <strong>1 dalam 3</strong> orang dewasa tidak aktif secara fizikal.</span> <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span> <span class="cite">(<a href="https://doi.org/10.1136/bjsports-2020-102955" target="_blank" rel="noopener">Bull et al., 2020</a>)</span></p>
+    </div>
+    <div class="art" data-tiles="who"></div>
+  </section>
+
+  <!-- videos -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 2 · See it done</span><span data-l="ms">Bateri 2 · Lihat caranya</span></div>
+      <h2><span data-l="en">Real people, <em>real moves.</em></span><span data-l="ms">Orang sebenar, <em>gerakan sebenar.</em></span></h2>
+      <p><span data-l="en">Three short clips of simple strength and balance moves you can do at home. Tap one to watch.</span><span data-l="ms">Tiga klip pendek gerakan kekuatan dan imbangan mudah yang boleh dibuat di rumah. Ketik untuk menonton.</span></p>
+      <p class="small muted"><span data-l="en">Start slowly and hold a chair or a wall. If you have heart, joint or balance problems, check with your doctor first.</span><span data-l="ms">Mulakan perlahan-lahan dan berpaut pada kerusi atau dinding. Jika anda ada masalah jantung, sendi atau imbangan, rujuk doktor dahulu.</span> <span class="tag">Video: <a href="https://www.instagram.com/harizfazalul/" target="_blank" rel="noopener">@harizfazalul</a> &amp; <a href="https://www.instagram.com/independent.motion/" target="_blank" rel="noopener">Independent Motion</a></span></p>
+    </div>
+    <div class="art">
+      <div class="vids">
+        <button type="button" class="vbtn" data-src="media/moves.mp4" data-poster="media/moves.jpg" data-title="5 easy moves at home" data-title-ms="5 gerakan mudah di rumah"><img src="media/moves.jpg" alt="" loading="lazy"><b><span data-l="en">5 easy moves</span><span data-l="ms">5 gerakan mudah</span></b><span><span data-l="en">56 sec</span><span data-l="ms">56 saat</span></span></button>
+        <button type="button" class="vbtn" data-src="media/weights.mp4" data-poster="media/weights.jpg" data-title="Lifting weights, together" data-title-ms="Angkat berat, bersama-sama"><img src="media/weights.jpg" alt="" loading="lazy"><b><span data-l="en">Lifting weights</span><span data-l="ms">Angkat berat</span></b><span><span data-l="en">13 sec</span><span data-l="ms">13 saat</span></span></button>
+        <button type="button" class="vbtn" data-src="media/squats.mp4" data-poster="media/squats.jpg" data-title="Squats: 12 reps, 2 sets" data-title-ms="Cangkung: 12 kali, 2 set"><img src="media/squats.jpg" alt="" loading="lazy"><b><span data-l="en">Squats, 12 x 2</span><span data-l="ms">Cangkung, 12 x 2</span></b><span><span data-l="en">11 sec</span><span data-l="ms">11 saat</span></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 2 · Preventing falls</span><span data-l="ms">Bateri 2 · Mencegah jatuh</span></div>
+      <h2><span data-l="en">A home that is <em>safe to move in.</em></span><span data-l="ms">Rumah yang <em>selamat untuk bergerak.</em></span></h2>
+      <p><span data-l="en">About 1 in 3 older adults aged 65 and older fall annually. Falls cause roughly 684,000 fatal falls each year globally, it is the second leading cause of injury deaths. Falls, also take away independence. Guidelines say every older adult should get advice on preventing them.</span><span data-l="ms">Kira-kira 1 dalam 3 warga emas berumur 65 tahun ke atas jatuh setiap tahun. Di seluruh dunia, jatuh menyebabkan kira-kira 684,000 kematian setahun, punca kedua tertinggi kematian akibat kecederaan. Jatuh juga meragut keupayaan untuk berdikari. Garis panduan menyatakan setiap warga emas patut diberi nasihat untuk mencegahnya.</span> <span class="cite">(<a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">Montero-Odasso et al., 2022</a>)</span></p>
+      <p><strong><span data-l="en">Pak Ali's home has 5 hazards. Tap each red number to fix it.</span><span data-l="ms">Rumah Pak Ali ada 5 bahaya. Ketik setiap nombor merah untuk membaikinya.</span></strong></p>
+    </div>
+    <div class="extra">
+      <div class="counter" id="fix-count"></div>
+      <p class="small" id="fix-msg" aria-live="polite"></p>
+    </div>
+    <div class="art" data-scene="room" data-label="Pak Ali's home at night, from his bed to the bathroom, with five numbered hazards to fix." data-label-ms="Rumah Pak Ali pada waktu malam, dari katil ke bilik air, dengan lima bahaya bernombor untuk dibaiki."></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 2 · Checklist</span><span data-l="ms">Bateri 2 · Senarai semak</span></div>
+      <h2><span data-l="en">Check your <em>movement battery.</em></span><span data-l="ms">Semak <em>bateri pergerakan</em> anda.</span></h2>
+      <div class="counter" data-for="move"></div>
+    </div>
+    <ul class="checklist">
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span><span data-l="en">Walk or garden most days, building up to 150 minutes a week.</span><span data-l="ms">Berjalan atau berkebun hampir setiap hari, sehingga mencapai 150 minit seminggu.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span><span data-l="en">Twice a week: strength moves, like standing up from a chair.</span><span data-l="ms">Dua kali seminggu: gerakan kekuatan, seperti bangun dari kerusi.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span><span data-l="en">Three times a week: balance practice, holding a chair.</span><span data-l="ms">Tiga kali seminggu: latihan imbangan, sambil berpaut pada kerusi.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span><span data-l="en">Light the path from your bed to the bathroom.</span><span data-l="ms">Terangkan laluan dari katil ke bilik air.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span><span data-l="en">Remove loose rugs and clutter from walkways.</span><span data-l="ms">Alihkan permaidani longgar dan barang bersepah dari laluan.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="move"><span class="box"></span><span><span data-l="en">Wear non-slip slippers at home.</span><span data-l="ms">Pakai selipar tidak licin di rumah.</span></span></button></li>
+    </ul>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 3 · Medicines</span><span data-l="ms">Bateri 3 · Ubat-ubatan</span></div>
+      <h2><span data-l="en">Almost half of older adults <em>take 5 or more medicines.</em></span><span data-l="ms">Hampir separuh warga emas <em>mengambil 5 ubat atau lebih.</em></span></h2>
+      <p><span data-l="en"><strong>45.9%</strong> of urban Malaysians aged 55 and over on long-term medicines were taking five or more, counting supplements.</span><span data-l="ms"><strong>45.9%</strong> warga bandar Malaysia berumur 55 tahun ke atas yang mengambil ubat jangka panjang menggunakan lima ubat atau lebih, termasuk suplemen.</span> <span class="cite">(<a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">Lim et al., 2017</a>)</span></p>
+      <p><span class="tag"><span data-l="en">Bag contents are made up</span><span data-l="ms">Isi beg ini rekaan</span></span></p>
+    </div>
+    <div class="art" data-scene="meds" data-label="A medicine bag spilling out seven items: a pill bottle, a blister pack, cough syrup, an inhaler, eye drops, a cream and a weekly pillbox." data-label-ms="Beg ubat yang melimpah dengan tujuh barang: botol pil, papan pil, ubat batuk, inhaler, ubat titis mata, krim dan kotak ubat mingguan."></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 3 · Medicines</span><span data-l="ms">Bateri 3 · Ubat-ubatan</span></div>
+      <h2><span data-l="en">More medicines, <em>more chances for problems.</em></span><span data-l="ms">Lebih banyak ubat, <em>lebih banyak risiko masalah.</em></span></h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="k">60.6%</span><p><span data-l="en">of older Malaysians do not take their medicines as prescribed.</span><span data-l="ms">warga emas Malaysia tidak mengambil ubat seperti yang dipreskripsi.</span> <span class="cite">(<a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">Chang et al., 2021</a>)</span></p></div>
+      <div class="stat"><span class="k">28.9%</span><p><span data-l="en">are on medicines that may not suit older adults.</span><span data-l="ms">menggunakan ubat yang mungkin tidak sesuai untuk warga emas.</span> <span class="cite">(<a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">Chang et al., 2021</a>)</span></p></div>
+      <div class="stat"><span class="k"><span data-l="en">More</span><span data-l="ms">Lebih</span></span><p><span data-l="en">medicines are linked to drug interactions and more clinic and hospital visits.</span><span data-l="ms">banyak ubat dikaitkan dengan interaksi ubat serta lebih kerap ke klinik dan hospital.</span> <span class="cite">(<a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">Lim et al., 2017</a>)</span></p></div>
+    </div>
+    <p class="small muted"><span data-l="en">The first two figures combine many Malaysian studies.</span><span data-l="ms">Dua angka pertama menggabungkan banyak kajian di Malaysia.</span></p>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 3 · True or false?</span><span data-l="ms">Bateri 3 · Betul atau salah?</span></div>
+      <h2><span data-l="en">Three quick questions <em>about medicines.</em></span><span data-l="ms">Tiga soalan ringkas <em>tentang ubat.</em></span></h2>
+    </div>
+    <div class="quiz" id="quiz" aria-live="polite">
+      <div class="qn" id="qn"></div>
+      <div class="q" id="qtext"></div>
+      <div class="opts"><button type="button" data-a="true"><span data-l="en">TRUE</span><span data-l="ms">BETUL</span></button><button type="button" data-a="false"><span data-l="en">FALSE</span><span data-l="ms">SALAH</span></button></div>
+      <div class="ans"><span class="verdict"></span> <span id="qexp"></span></div>
+      <button class="btn3d nextq" type="button" id="qnext"></button>
+    </div>
+  </section>
+
+  <!-- MyUBAT -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 3 · A free tool</span><span data-l="ms">Bateri 3 · Alat percuma</span></div>
+      <h2><span data-l="en">MyUBAT: your medicines, <em>on your phone.</em></span><span data-l="ms">MyUBAT: ubat anda, <em>di telefon anda.</em></span></h2>
+      <p><span data-l="en">If you get medicines from a Ministry of Health clinic or hospital, the free <strong>MyUBAT</strong> app shows all your prescriptions, how much medicine you have left, and your next appointments.</span><span data-l="ms">Jika anda mendapat ubat dari klinik atau hospital Kementerian Kesihatan, aplikasi percuma <strong>MyUBAT</strong> memaparkan semua preskripsi anda, baki ubat yang tinggal, dan temu janji seterusnya.</span> <span class="cite">(<a href="https://myubat.pharmacy.gov.my/?lang=en#services" target="_blank" rel="noopener">MyUBAT, KKM</a>)</span></p>
+      <p class="small muted"><span data-l="en">At taking-part facilities, you can collect at the counter, by post, at a drive-through or from a medicine locker. Carers can manage several accounts on one phone. In BM, English, Mandarin and Tamil.</span><span data-l="ms">Di fasiliti yang terlibat, anda boleh mengambil ubat di kaunter, melalui pos, pandu lalu atau loker ubat. Penjaga boleh mengurus beberapa akaun dalam satu telefon. Tersedia dalam BM, Inggeris, Mandarin dan Tamil.</span></p>
+    </div>
+    <div class="extra"><a class="linkbtn" href="https://myubat.pharmacy.gov.my/?lang=en#services" target="_blank" rel="noopener" data-umami-event="open-myubat"><span data-l="en">Open MyUBAT →</span><span data-l="ms">Buka MyUBAT →</span></a></div>
+    <div class="art" data-shot="myubat"></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 3 · Checklist</span><span data-l="ms">Bateri 3 · Senarai semak</span></div>
+      <h2><span data-l="en">Check your <em>medicine battery.</em></span><span data-l="ms">Semak <em>bateri ubat</em> anda.</span></h2>
+      <div class="counter" data-for="med"></div>
+    </div>
+    <ul class="checklist">
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span><span data-l="en">Keep one list of all your medicines and supplements, with dose and time.</span><span data-l="ms">Simpan satu senarai semua ubat dan suplemen anda, dengan dos dan masa.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span><span data-l="en">Bring all your medicines in one bag to a pharmacist for a review.</span><span data-l="ms">Bawa semua ubat anda dalam satu beg kepada ahli farmasi untuk disemak.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span><span data-l="en">Never stop, cut or share a medicine without asking first.</span><span data-l="ms">Jangan sesekali berhenti, potong atau kongsi ubat tanpa bertanya dahulu.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span><span data-l="en">Tell your doctor or pharmacist if you feel dizzy or unsteady.</span><span data-l="ms">Beritahu doktor atau ahli farmasi jika anda rasa pening atau tidak stabil.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span><span data-l="en">Use a weekly pillbox, and check it against the pharmacy label.</span><span data-l="ms">Guna kotak ubat mingguan, dan semak dengan label farmasi.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="med"><span class="box"></span><span><span data-l="en">Sign up for MyUBAT if you get medicines from a government clinic or hospital.</span><span data-l="ms">Daftar MyUBAT jika anda mendapat ubat dari klinik atau hospital kerajaan.</span></span></button></li>
+    </ul>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 4 · Supplements</span><span data-l="ms">Bateri 4 · Suplemen</span></div>
+      <h2><span data-l="en">Supplements count <em>as medicines too.</em></span><span data-l="ms">Suplemen juga <em>dikira sebagai ubat.</em></span></h2>
+      <p><span data-l="en"><strong>56.9%</strong> of older adults in the same Malaysian study took supplements, adding a lot to their total pill count.</span><span data-l="ms"><strong>56.9%</strong> warga emas dalam kajian Malaysia yang sama mengambil suplemen, menambah banyak pada jumlah pil mereka.</span> <span class="cite">(<a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">Lim et al., 2017</a>)</span></p>
+      <p><span data-l="en">About <strong>1 in 2</strong> older Malaysians use traditional or complementary medicine. Mixed with medicines without enough knowledge, these can cause serious side effects.</span><span data-l="ms">Kira-kira <strong>1 dalam 2</strong> warga emas Malaysia menggunakan perubatan tradisional atau komplementari. Jika dicampur dengan ubat tanpa pengetahuan yang cukup, ia boleh menyebabkan kesan sampingan yang serius.</span> <span class="cite">(<a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">Chang et al., 2021</a>)</span></p>
+    </div>
+    <div class="art" data-scene="supp" data-label="A supplement jar and a medicine blister pack slide together and set off a warning sign, then a pharmacist steps in to check them." data-label-ms="Balang suplemen dan papan ubat bergerak rapat dan mencetuskan tanda amaran, kemudian ahli farmasi datang menyemaknya."></div>
+  </section>
+
+  <!-- supplement guide -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 4 · Filling the gaps</span><span data-l="ms">Bateri 4 · Mengisi kekurangan</span></div>
+      <h2><span data-l="en">Food first. <em>Then ask about these.</em></span><span data-l="ms">Makanan dahulu. <em>Kemudian tanya tentang ini.</em></span></h2>
+      <p class="small muted hide-short"><span data-l="en">Tap a nutrient older Malaysians lack: foods first, the supplement a pharmacist might suggest, and what to watch for.</span><span data-l="ms">Ketik nutrien yang kurang diambil warga emas Malaysia: makanan dahulu, suplemen yang mungkin dicadangkan ahli farmasi, dan perkara yang perlu diberi perhatian.</span></p>
+    </div>
+    <div class="nutri" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-n="0"><span data-l="en">Calcium</span><span data-l="ms">Kalsium</span></button><button type="button" role="tab" aria-selected="false" data-n="1">Vitamin D</button><button type="button" role="tab" aria-selected="false" data-n="2">B1 · B2 · B3</button><button type="button" role="tab" aria-selected="false" data-n="3">Vitamin A</button><button type="button" role="tab" aria-selected="false" data-n="4">Vitamin C</button>
+    </div>
+    <div class="ncard" role="tabpanel" aria-live="polite"></div>
+    <p class="small"><span data-l="en"><strong>Before any supplement:</strong> show it to your pharmacist, especially if you take other medicines.</span><span data-l="ms"><strong>Sebelum mengambil sebarang suplemen:</strong> tunjukkan kepada ahli farmasi anda, terutamanya jika anda mengambil ubat lain.</span></p>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 4 · Supplements</span><span data-l="ms">Bateri 4 · Suplemen</span></div>
+      <h2><span data-l="en">Tofu or soy capsule: <em>which one did the research study?</em></span><span data-l="ms">Tauhu atau kapsul soya: <em>yang mana dikaji oleh penyelidik?</em></span></h2>
+      <p class="small muted"><span data-l="en">Tap your answer.</span><span data-l="ms">Ketik jawapan anda.</span></p>
+    </div>
+    <div class="extra"><p id="tofu-ans" aria-live="polite"></p></div>
+    <div class="art">
+      <div class="choice">
+        <button type="button" data-pick="tofu"><svg viewBox="0 0 160 120" aria-hidden="true" id="svg-tofu"></svg><b><span data-l="en">Tofu</span><span data-l="ms">Tauhu</span></b></button>
+        <button type="button" data-pick="capsule"><svg viewBox="0 0 160 120" aria-hidden="true" id="svg-caps"></svg><b><span data-l="en">Soy capsule</span><span data-l="ms">Kapsul soya</span></b></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAL -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 4 · Read the label</span><span data-l="ms">Bateri 4 · Baca label</span></div>
+      <h2><span data-l="en">The MAL number: <em>a product's ID card.</em></span><span data-l="ms">Nombor MAL: <em>kad pengenalan sesuatu produk.</em></span></h2>
+      <p><span data-l="en">Registered medicines, traditional products and health supplements in Malaysia carry a <strong>MAL number</strong> and a Ministry of Health <strong>hologram sticker</strong>. No MAL number? Don't buy it.</span><span data-l="ms">Ubat berdaftar, produk tradisional dan suplemen kesihatan di Malaysia mempunyai <strong>nombor MAL</strong> dan <strong>pelekat hologram</strong> Kementerian Kesihatan. Tiada nombor MAL? Jangan beli.</span> <span class="cite">(<a href="https://pharmacy.moh.gov.my/en/faq-categories/pengguna" target="_blank" rel="noopener">MOH Pharmacy, FAQ</a>)</span></p>
+    </div>
+    <div class="extra">
+      <p class="small muted" style="margin-bottom:.35em"><span data-l="en">Tap each part of this real example:</span><span data-l="ms">Ketik setiap bahagian contoh sebenar ini:</span></p>
+      <div class="mal" role="group" aria-label="Penyahkod nombor MAL" data-aria-en="MAL number decoder" data-aria-ms="Penyahkod nombor MAL">
+        <button type="button" data-m="0">MAL</button><button type="button" data-m="1">18086084</button><button type="button" data-m="2">T</button><button type="button" data-m="3">CR</button>
+      </div>
+      <p class="small" id="mal-out" aria-live="polite"></p>
+    </div>
+    <div class="art"><img class="shot" src="media/mal.webp" alt="Pelekat hologram Kementerian Kesihatan, dan label produk yang menunjukkan Reg No: MAL18086084TCR." data-alt-en="A Ministry of Health hologram sticker, and a product label showing Reg No: MAL18086084TCR." data-alt-ms="Pelekat hologram Kementerian Kesihatan, dan label produk yang menunjukkan Reg No: MAL18086084TCR." loading="lazy"></div>
+  </section>
+
+  <!-- NPRA -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 4 · Check before you buy</span><span data-l="ms">Bateri 4 · Semak sebelum beli</span></div>
+      <h2><span data-l="en">Ask NPRA: <em>is this product registered?</em></span><span data-l="ms">Tanya NPRA: <em>adakah produk ini berdaftar?</em></span></h2>
+      <p><span data-l="en">NPRA, Malaysia's medicine regulator, has free tools for the public.</span><span data-l="ms">NPRA, agensi kawal selia ubat Malaysia, menyediakan alat percuma untuk orang ramai.</span> <span class="cite">(<a href="https://www.npra.gov.my/index.php/en/consumers.html" target="_blank" rel="noopener">NPRA</a>)</span></p>
+    </div>
+    <div class="extra">
+      <div class="links">
+        <a href="https://quest3plus.bpfk.gov.my/pmo2/index.php" target="_blank" rel="noopener" data-umami-event="npra-search"><span class="lt"><b><span data-l="en">Search a product</span><span data-l="ms">Cari produk</span></b><span><span data-l="en">Is it registered? Covers medicines, traditional products and supplements.</span><span data-l="ms">Adakah ia berdaftar? Meliputi ubat, produk tradisional dan suplemen.</span></span></span></a>
+        <a href="https://www.npra.gov.my/index.php/en/consumers/reporting/reporting-side-effects-to-medicines-conserf-or-vaccines-aefi-2.html" target="_blank" rel="noopener" data-umami-event="npra-conserf"><img src="media/conserf.webp" alt="" class="ico"><span class="lt"><b><span data-l="en">Report a side effect</span><span data-l="ms">Laporkan kesan sampingan</span></b><span><span data-l="en">The ConSERF form, for any medicine or supplement.</span><span data-l="ms">Borang ConSERF, untuk sebarang ubat atau suplemen.</span></span></span></a>
+        <a href="https://www.npra.gov.my/index.php/en/consumers/safety-information/adulterated-poducts-unregistered.html" target="_blank" rel="noopener" data-umami-event="npra-adulterated"><span class="lt"><b><span data-l="en">See product warnings</span><span data-l="ms">Lihat amaran produk</span></b><span><span data-l="en">Products found with hidden, unregistered ingredients.</span><span data-l="ms">Produk yang didapati mengandungi bahan tersembunyi yang tidak berdaftar.</span></span></span></a>
+      </div>
+    </div>
+    <div class="art" data-shot="quest"></div>
+  </section>
+
+  <!-- 20 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 4 · Checklist</span><span data-l="ms">Bateri 4 · Senarai semak</span></div>
+      <h2><span data-l="en">Check your <em>supplement battery.</em></span><span data-l="ms">Semak <em>bateri suplemen</em> anda.</span></h2>
+      <div class="counter" data-for="sup"></div>
+    </div>
+    <ul class="checklist">
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Tell your doctor and pharmacist about every supplement and herb you take.</span><span data-l="ms">Beritahu doktor dan ahli farmasi tentang setiap suplemen dan herba yang anda ambil.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Before buying, ask: "Can I get this from food instead?"</span><span data-l="ms">Sebelum membeli, tanya: "Bolehkah saya dapatkan ini daripada makanan?"</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Take supplements only for a reason your doctor or pharmacist confirms.</span><span data-l="ms">Ambil suplemen hanya atas sebab yang disahkan doktor atau ahli farmasi.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Ask for a blood test before taking vitamin D.</span><span data-l="ms">Minta ujian darah sebelum mengambil vitamin D.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Check the MAL number on NPRA's product search before buying.</span><span data-l="ms">Semak nombor MAL di carian produk NPRA sebelum membeli.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Report any side effect to NPRA with the ConSERF form.</span><span data-l="ms">Laporkan sebarang kesan sampingan kepada NPRA melalui borang ConSERF.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Bring supplements to your pharmacist review.</span><span data-l="ms">Bawa suplemen anda semasa semakan ubat bersama ahli farmasi.</span></span></button></li>
+    </ul>
+  </section>
+
+  <!-- 21 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Putting it together</span><span data-l="ms">Rumusan</span></div>
+      <h2><span data-l="en">Four batteries, <em>one goal: staying independent.</em></span><span data-l="ms">Empat bateri, <em>satu matlamat: kekal berdikari.</em></span></h2>
+      <p><span data-l="en">Remember Mak Yah? Weak muscles. A medicine that made her dizzy. A supplement her doctor didn't know about. <strong>Each one is something you can now act on.</strong></span><span data-l="ms">Ingat Mak Yah? Otot lemah. Ubat yang membuatnya pening. Suplemen yang doktornya tidak tahu. <strong>Kini anda tahu apa yang boleh dibuat untuk setiap satu.</strong></span></p>
+    </div>
+    <div class="extra">
+      <div class="score"><span class="big" id="score-n">0</span><span class="small"><span data-l="en">of your 4 batteries have started charging.</span><span data-l="ms">daripada 4 bateri anda sudah mula dicas.</span><br><span class="muted" id="score-low"></span></span></div>
+      <div class="callout small" style="margin-top:8px"><span data-l="en"><strong>Show of hands:</strong> how many batteries have you charged? Your lowest one is your first step.</span><span data-l="ms"><strong>Angkat tangan:</strong> berapa bateri yang sudah anda cas? Bateri paling rendah ialah langkah pertama anda.</span></div>
+    </div>
+    <div class="art" data-scene="shield" data-label="Pak Ali walks across a zebra crossing inside a four-colour battery shield, while weak muscles, dizzy pills and hidden supplements bounce off." data-label-ms="Pak Ali melintas di lintasan zebra di dalam perisai bateri empat warna, sementara otot lemah, ubat yang memeningkan dan suplemen tersembunyi melantun pergi."></div>
+  </section>
+
+  <!-- 22 -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Look around you</span><span data-l="ms">Lihat sekeliling anda</span></div>
+      <h2><span data-l="en">PAWE is already <em>a small Blue Zone.</em></span><span data-l="ms">PAWE sudah pun <em>sebuah Blue Zone kecil.</em></span></h2>
+      <p><span data-l="en">Friends, a routine, and a reason to come every week. Blue Zones are built on close social ties and a sense of purpose.</span><span data-l="ms">Kawan-kawan, rutin, dan sebab untuk datang setiap minggu. Blue Zones dibina atas hubungan sosial yang rapat dan rasa bertujuan.</span> <span class="cite">(<a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">Poulain &amp; Herm, 2025</a>)</span></p>
+    </div>
+    <div class="art" data-scene="pawe" data-label="Four older friends chatting and laughing outside the PAWE activity centre." data-label-ms="Empat kawan warga emas berbual dan ketawa di luar pusat aktiviti PAWE."></div>
+  </section>
+
+  <!-- 23 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Take it home</span><span data-l="ms">Bawa pulang</span></div>
+      <h2><span data-l="en">A daily card <em>for you and your carer.</em></span><span data-l="ms">Kad harian <em>untuk anda dan penjaga.</em></span></h2>
+      <p class="small muted"><span data-l="en">Open this page to go over this checklist when necessary.</span><span data-l="ms">Buka halaman ini untuk menyemak senarai ini bila perlu.</span></p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-tab="0"><span data-l="en">Morning</span><span data-l="ms">Pagi</span></button>
+      <button type="button" role="tab" aria-selected="false" data-tab="1"><span data-l="en">Midday</span><span data-l="ms">Tengah hari</span></button>
+      <button type="button" role="tab" aria-selected="false" data-tab="2"><span data-l="en">Evening</span><span data-l="ms">Malam</span></button>
+      <button type="button" role="tab" aria-selected="false" data-tab="3"><span data-l="en">Weekly</span><span data-l="ms">Mingguan</span></button>
+    </div>
+    <div class="tabpanel on" role="tabpanel"><ul><li><span data-l="en">Check your pillbox against your medicine list.</span><span data-l="ms">Semak kotak ubat dengan senarai ubat anda.</span></li><li><span data-l="en">Stretch gently or take a short walk in the morning sun.</span><span data-l="ms">Buat regangan ringan atau berjalan sebentar di bawah cahaya matahari pagi.</span></li><li><span data-l="en">Add vegetables or ulam to your first meal if you can.</span><span data-l="ms">Tambah sayur atau ulam dalam hidangan pertama jika boleh.</span></li></ul></div>
+    <div class="tabpanel" role="tabpanel"><ul><li><span data-l="en">Fill half your plate with vegetables or ulam.</span><span data-l="ms">Isi separuh pinggan dengan sayur atau ulam.</span></li><li><span data-l="en">Do your strength or balance exercise.</span><span data-l="ms">Buat senaman kekuatan atau imbangan.</span></li><li><span data-l="en">Spend time with people, or on something that gives you purpose.</span><span data-l="ms">Luangkan masa bersama orang lain, atau pada sesuatu yang memberi anda tujuan.</span></li></ul></div>
+    <div class="tabpanel" role="tabpanel"><ul><li><span data-l="en">Check your evening medicines and supplements.</span><span data-l="ms">Semak ubat dan suplemen waktu malam.</span></li><li><span data-l="en">Switch on the night light and clear the path to the bathroom.</span><span data-l="ms">Hidupkan lampu malam dan kosongkan laluan ke bilik air.</span></li><li><span data-l="en">Put non-slip slippers by the bed.</span><span data-l="ms">Letak selipar tidak licin di tepi katil.</span></li></ul></div>
+    <div class="tabpanel" role="tabpanel"><ul><li><span data-l="en">Refill your pillbox with a family member checking the labels.</span><span data-l="ms">Isi semula kotak ubat dengan ahli keluarga turut menyemak label.</span></li><li><span data-l="en">Check MyUBAT for your medicine balance and next appointment.</span><span data-l="ms">Semak MyUBAT untuk baki ubat dan temu janji seterusnya.</span></li><li><span data-l="en">Join a PAWE activity or meet friends.</span><span data-l="ms">Sertai aktiviti PAWE atau berjumpa kawan.</span></li></ul></div>
+  </section>
+
+  <!-- post-talk questionnaire -->
+  <section class="slide cover">
+    <div class="cv-main">
+      <div class="eyebrow"><span data-l="en">Before you go</span><span data-l="ms">Sebelum anda pulang</span></div>
+      <h2><span data-l="en">Tell us what you <em>learned today.</em></span><span data-l="ms">Kongsi apa yang anda <em>pelajari hari ini.</em></span></h2>
+      <p><span data-l="en">A short questionnaire for those who attended the talk. Your answers help us improve this programme for older adults and carers.</span><span data-l="ms">Soal selidik ringkas untuk peserta ceramah. Jawapan anda membantu kami menambah baik program ini untuk warga emas dan penjaga.</span></p>
+      <div class="sharerow"><a class="sharebtn" href="https://docs.google.com/forms/d/e/1FAIpQLSesQWFVb4tXRuEjZcSYZCMKY6jwSc5XtcltZ0TUFItYvVMsLg/viewform?usp=pp_url" target="_blank" rel="noopener" data-umami-event="open-post-survey"><span data-l="en">Open the questionnaire →</span><span data-l="ms">Buka soal selidik →</span></a></div>
+      <p class="small muted" style="margin-top:.6em"><span data-l="en">For USIM x PAWE participants, 21 October 2026.</span><span data-l="ms">Untuk peserta USIM x PAWE, 21 Oktober 2026.</span></p>
+    </div>
+    <div class="qrcard">
+      <svg viewBox="0 0 53 53" shape-rendering="crispEdges" role="img" aria-label="Kod QR ke borang soal selidik pasca ceramah" data-aria-en="QR code to the post-talk questionnaire" data-aria-ms="Kod QR ke borang soal selidik pasca ceramah"><rect width="53" height="53" fill="#fff"/><path fill="#1a1a18" d="M4 4h7v1h-7zM13 4h3v1h-3zM19 4h1v1h-1zM21 4h6v1h-6zM29 4h2v1h-2zM33 4h3v1h-3zM40 4h1v1h-1zM42 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM23 5h2v1h-2zM26 5h1v1h-1zM32 5h4v1h-4zM39 5h1v1h-1zM42 5h1v1h-1zM48 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM17 6h2v1h-2zM20 6h1v1h-1zM25 6h2v1h-2zM29 6h3v1h-3zM33 6h3v1h-3zM39 6h1v1h-1zM42 6h1v1h-1zM44 6h3v1h-3zM48 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM21 7h1v1h-1zM24 7h3v1h-3zM28 7h3v1h-3zM39 7h2v1h-2zM42 7h1v1h-1zM44 7h3v1h-3zM48 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM18 8h3v1h-3zM24 8h5v1h-5zM33 8h8v1h-8zM42 8h1v1h-1zM44 8h3v1h-3zM48 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h4v1h-4zM19 9h2v1h-2zM23 9h2v1h-2zM28 9h3v1h-3zM33 9h1v1h-1zM35 9h2v1h-2zM42 9h1v1h-1zM48 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h1v1h-1zM32 10h1v1h-1zM34 10h1v1h-1zM36 10h1v1h-1zM38 10h1v1h-1zM40 10h1v1h-1zM42 10h7v1h-7zM18 11h2v1h-2zM23 11h2v1h-2zM28 11h4v1h-4zM35 11h2v1h-2zM38 11h1v1h-1zM4 12h1v1h-1zM7 12h1v1h-1zM9 12h2v1h-2zM12 12h4v1h-4zM17 12h1v1h-1zM19 12h4v1h-4zM24 12h5v1h-5zM30 12h1v1h-1zM32 12h4v1h-4zM38 12h1v1h-1zM41 12h1v1h-1zM43 12h1v1h-1zM4 13h1v1h-1zM7 13h3v1h-3zM14 13h4v1h-4zM20 13h1v1h-1zM24 13h1v1h-1zM27 13h1v1h-1zM35 13h1v1h-1zM39 13h1v1h-1zM41 13h1v1h-1zM44 13h1v1h-1zM46 13h1v1h-1zM48 13h1v1h-1zM4 14h1v1h-1zM6 14h2v1h-2zM9 14h5v1h-5zM15 14h2v1h-2zM18 14h3v1h-3zM22 14h3v1h-3zM26 14h2v1h-2zM29 14h1v1h-1zM31 14h1v1h-1zM33 14h2v1h-2zM38 14h2v1h-2zM45 14h1v1h-1zM48 14h1v1h-1zM4 15h4v1h-4zM9 15h1v1h-1zM11 15h1v1h-1zM13 15h4v1h-4zM20 15h3v1h-3zM28 15h1v1h-1zM30 15h2v1h-2zM33 15h2v1h-2zM36 15h2v1h-2zM42 15h1v1h-1zM44 15h2v1h-2zM47 15h2v1h-2zM4 16h1v1h-1zM7 16h1v1h-1zM10 16h1v1h-1zM13 16h2v1h-2zM16 16h1v1h-1zM18 16h2v1h-2zM22 16h1v1h-1zM26 16h2v1h-2zM30 16h1v1h-1zM32 16h2v1h-2zM35 16h6v1h-6zM43 16h2v1h-2zM5 17h1v1h-1zM9 17h1v1h-1zM14 17h2v1h-2zM17 17h2v1h-2zM21 17h6v1h-6zM29 17h1v1h-1zM31 17h2v1h-2zM35 17h2v1h-2zM38 17h1v1h-1zM41 17h1v1h-1zM46 17h1v1h-1zM48 17h1v1h-1zM4 18h2v1h-2zM7 18h1v1h-1zM9 18h3v1h-3zM15 18h1v1h-1zM17 18h3v1h-3zM21 18h1v1h-1zM24 18h3v1h-3zM28 18h2v1h-2zM32 18h1v1h-1zM38 18h3v1h-3zM43 18h1v1h-1zM46 18h2v1h-2zM5 19h4v1h-4zM11 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM17 19h4v1h-4zM25 19h1v1h-1zM27 19h5v1h-5zM34 19h3v1h-3zM39 19h1v1h-1zM41 19h4v1h-4zM6 20h1v1h-1zM9 20h2v1h-2zM13 20h1v1h-1zM15 20h2v1h-2zM19 20h1v1h-1zM21 20h5v1h-5zM27 20h2v1h-2zM30 20h2v1h-2zM33 20h1v1h-1zM36 20h2v1h-2zM41 20h1v1h-1zM43 20h1v1h-1zM46 20h2v1h-2zM4 21h1v1h-1zM9 21h1v1h-1zM12 21h6v1h-6zM19 21h1v1h-1zM21 21h1v1h-1zM30 21h1v1h-1zM33 21h1v1h-1zM35 21h1v1h-1zM39 21h1v1h-1zM42 21h4v1h-4zM47 21h2v1h-2zM5 22h1v1h-1zM10 22h1v1h-1zM16 22h2v1h-2zM19 22h1v1h-1zM21 22h1v1h-1zM23 22h2v1h-2zM27 22h3v1h-3zM31 22h2v1h-2zM35 22h1v1h-1zM37 22h3v1h-3zM41 22h1v1h-1zM43 22h6v1h-6zM5 23h1v1h-1zM7 23h3v1h-3zM11 23h1v1h-1zM13 23h1v1h-1zM15 23h6v1h-6zM22 23h2v1h-2zM26 23h1v1h-1zM35 23h4v1h-4zM40 23h1v1h-1zM43 23h2v1h-2zM47 23h2v1h-2zM5 24h1v1h-1zM7 24h9v1h-9zM20 24h1v1h-1zM22 24h8v1h-8zM32 24h1v1h-1zM35 24h1v1h-1zM37 24h1v1h-1zM40 24h5v1h-5zM5 25h4v1h-4zM12 25h1v1h-1zM14 25h1v1h-1zM16 25h1v1h-1zM22 25h1v1h-1zM24 25h1v1h-1zM28 25h2v1h-2zM31 25h2v1h-2zM35 25h1v1h-1zM40 25h1v1h-1zM44 25h1v1h-1zM47 25h2v1h-2zM5 26h1v1h-1zM8 26h1v1h-1zM10 26h1v1h-1zM12 26h2v1h-2zM15 26h1v1h-1zM18 26h4v1h-4zM23 26h2v1h-2zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h1v1h-1zM34 26h7v1h-7zM42 26h1v1h-1zM44 26h1v1h-1zM46 26h3v1h-3zM4 27h1v1h-1zM7 27h2v1h-2zM12 27h1v1h-1zM16 27h4v1h-4zM22 27h3v1h-3zM28 27h5v1h-5zM34 27h2v1h-2zM38 27h1v1h-1zM40 27h1v1h-1zM44 27h2v1h-2zM47 27h2v1h-2zM5 28h2v1h-2zM8 28h5v1h-5zM15 28h3v1h-3zM19 28h3v1h-3zM24 28h6v1h-6zM31 28h2v1h-2zM35 28h3v1h-3zM39 28h7v1h-7zM47 28h2v1h-2zM4 29h1v1h-1zM7 29h3v1h-3zM11 29h2v1h-2zM14 29h1v1h-1zM16 29h2v1h-2zM21 29h1v1h-1zM23 29h3v1h-3zM29 29h1v1h-1zM31 29h3v1h-3zM35 29h2v1h-2zM38 29h1v1h-1zM40 29h1v1h-1zM42 29h1v1h-1zM44 29h1v1h-1zM48 29h1v1h-1zM5 30h1v1h-1zM8 30h3v1h-3zM13 30h1v1h-1zM15 30h1v1h-1zM17 30h1v1h-1zM19 30h3v1h-3zM27 30h1v1h-1zM30 30h2v1h-2zM40 30h2v1h-2zM43 30h2v1h-2zM46 30h2v1h-2zM6 31h1v1h-1zM8 31h2v1h-2zM13 31h1v1h-1zM15 31h1v1h-1zM20 31h1v1h-1zM25 31h3v1h-3zM29 31h3v1h-3zM36 31h1v1h-1zM38 31h1v1h-1zM40 31h4v1h-4zM45 31h1v1h-1zM47 31h2v1h-2zM6 32h1v1h-1zM8 32h1v1h-1zM10 32h1v1h-1zM15 32h2v1h-2zM18 32h1v1h-1zM20 32h1v1h-1zM22 32h2v1h-2zM25 32h1v1h-1zM27 32h4v1h-4zM33 32h2v1h-2zM36 32h1v1h-1zM41 32h1v1h-1zM43 32h2v1h-2zM5 33h1v1h-1zM8 33h2v1h-2zM11 33h2v1h-2zM16 33h1v1h-1zM20 33h2v1h-2zM23 33h2v1h-2zM27 33h2v1h-2zM30 33h2v1h-2zM33 33h1v1h-1zM36 33h1v1h-1zM39 33h1v1h-1zM41 33h1v1h-1zM46 33h2v1h-2zM4 34h2v1h-2zM7 34h7v1h-7zM16 34h1v1h-1zM19 34h2v1h-2zM25 34h1v1h-1zM27 34h5v1h-5zM33 34h1v1h-1zM35 34h4v1h-4zM42 34h1v1h-1zM44 34h2v1h-2zM47 34h2v1h-2zM4 35h1v1h-1zM6 35h1v1h-1zM9 35h1v1h-1zM11 35h2v1h-2zM14 35h7v1h-7zM26 35h2v1h-2zM29 35h1v1h-1zM32 35h1v1h-1zM34 35h1v1h-1zM36 35h2v1h-2zM40 35h1v1h-1zM42 35h3v1h-3zM48 35h1v1h-1zM7 36h5v1h-5zM13 36h1v1h-1zM18 36h1v1h-1zM20 36h1v1h-1zM22 36h1v1h-1zM25 36h2v1h-2zM28 36h1v1h-1zM31 36h2v1h-2zM38 36h2v1h-2zM46 36h2v1h-2zM9 37h1v1h-1zM13 37h1v1h-1zM15 37h2v1h-2zM18 37h1v1h-1zM20 37h2v1h-2zM23 37h2v1h-2zM26 37h2v1h-2zM31 37h1v1h-1zM36 37h1v1h-1zM39 37h1v1h-1zM47 37h1v1h-1zM8 38h1v1h-1zM10 38h1v1h-1zM13 38h4v1h-4zM22 38h2v1h-2zM25 38h3v1h-3zM30 38h2v1h-2zM35 38h6v1h-6zM42 38h1v1h-1zM44 38h2v1h-2zM48 38h1v1h-1zM5 39h4v1h-4zM12 39h3v1h-3zM19 39h2v1h-2zM24 39h4v1h-4zM31 39h3v1h-3zM37 39h1v1h-1zM39 39h1v1h-1zM41 39h2v1h-2zM45 39h1v1h-1zM47 39h1v1h-1zM4 40h1v1h-1zM7 40h2v1h-2zM10 40h1v1h-1zM12 40h1v1h-1zM14 40h2v1h-2zM18 40h1v1h-1zM22 40h1v1h-1zM24 40h5v1h-5zM31 40h2v1h-2zM35 40h2v1h-2zM38 40h1v1h-1zM40 40h5v1h-5zM12 41h1v1h-1zM14 41h2v1h-2zM18 41h1v1h-1zM20 41h1v1h-1zM22 41h1v1h-1zM24 41h1v1h-1zM28 41h4v1h-4zM35 41h1v1h-1zM37 41h2v1h-2zM40 41h1v1h-1zM44 41h1v1h-1zM48 41h1v1h-1zM4 42h7v1h-7zM14 42h1v1h-1zM17 42h1v1h-1zM19 42h2v1h-2zM22 42h3v1h-3zM26 42h1v1h-1zM28 42h1v1h-1zM31 42h2v1h-2zM34 42h4v1h-4zM40 42h1v1h-1zM42 42h1v1h-1zM44 42h4v1h-4zM4 43h1v1h-1zM10 43h1v1h-1zM12 43h1v1h-1zM17 43h2v1h-2zM21 43h2v1h-2zM24 43h1v1h-1zM28 43h1v1h-1zM30 43h4v1h-4zM35 43h3v1h-3zM40 43h1v1h-1zM44 43h1v1h-1zM48 43h1v1h-1zM4 44h1v1h-1zM6 44h3v1h-3zM10 44h1v1h-1zM14 44h1v1h-1zM16 44h2v1h-2zM22 44h7v1h-7zM31 44h1v1h-1zM34 44h1v1h-1zM36 44h10v1h-10zM4 45h1v1h-1zM6 45h3v1h-3zM10 45h1v1h-1zM12 45h1v1h-1zM14 45h1v1h-1zM18 45h2v1h-2zM23 45h1v1h-1zM26 45h2v1h-2zM30 45h1v1h-1zM32 45h2v1h-2zM35 45h2v1h-2zM39 45h2v1h-2zM42 45h1v1h-1zM44 45h4v1h-4zM4 46h1v1h-1zM6 46h3v1h-3zM10 46h1v1h-1zM13 46h1v1h-1zM16 46h2v1h-2zM19 46h1v1h-1zM26 46h1v1h-1zM31 46h7v1h-7zM40 46h2v1h-2zM44 46h2v1h-2zM47 46h2v1h-2zM4 47h1v1h-1zM10 47h1v1h-1zM13 47h1v1h-1zM15 47h4v1h-4zM20 47h1v1h-1zM23 47h2v1h-2zM28 47h1v1h-1zM31 47h1v1h-1zM33 47h1v1h-1zM36 47h3v1h-3zM41 47h1v1h-1zM44 47h2v1h-2zM4 48h7v1h-7zM12 48h1v1h-1zM14 48h1v1h-1zM17 48h1v1h-1zM19 48h1v1h-1zM21 48h1v1h-1zM23 48h1v1h-1zM25 48h1v1h-1zM28 48h1v1h-1zM30 48h4v1h-4zM35 48h1v1h-1zM37 48h1v1h-1zM41 48h1v1h-1zM47 48h1v1h-1z"/></svg>
+      <b><span data-l="en">Scan to answer</span><span data-l="ms">Imbas untuk menjawab</span></b>
+      <span><span data-l="en">Post-talk questionnaire</span><span data-l="ms">Soal selidik pasca ceramah</span></span>
+    </div>
+  </section>
+
+  <!-- 24 -->
+  <section class="slide plain">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Your turn</span><span data-l="ms">Giliran anda</span></div>
+      <h2><span data-l="en">Live long. <em>Stay independent.</em></span><span data-l="ms">Hidup lama. <em>Kekal berdikari.</em></span></h2>
+    </div>
+    <ol class="sumlist small">
+      <li><span data-l="en">A long, healthy life can be measured, and it is kept up by daily habits.</span><span data-l="ms">Hidup panjang dan sihat boleh diukur, dan ia dikekalkan melalui tabiat harian.</span></li>
+      <li><span data-l="en">Food: quarter, quarter, half; less salt and sugar; soy is linked to lower, not higher, cancer risk.</span><span data-l="ms">Makanan: suku, suku, separuh; kurangkan garam dan gula; soya dikaitkan dengan risiko kanser yang lebih rendah, bukan lebih tinggi.</span></li>
+      <li><span data-l="en">Movement: move daily, build strength and balance, and make your home safe.</span><span data-l="ms">Pergerakan: bergerak setiap hari, bina kekuatan dan imbangan, dan jadikan rumah selamat.</span></li>
+      <li><span data-l="en">Medicines and supplements: know what you take, review it with a pharmacist, and use MyUBAT and NPRA's checks.</span><span data-l="ms">Ubat dan suplemen: ketahui apa yang anda ambil, semak bersama ahli farmasi, dan guna MyUBAT serta semakan NPRA.</span></li>
+    </ol>
+    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open"><span data-l="en">Save on your phone →</span><span data-l="ms">Simpan di telefon →</span></button><button class="linkbtn" type="button" id="open-deeper"><span data-l="en">Sources &amp; about (21) →</span><span data-l="ms">Sumber &amp; tentang (21) →</span></button></div>
+    <div class="sharerow" aria-label="Kongsi halaman ini" data-aria-en="Share this page" data-aria-ms="Kongsi halaman ini"><button type="button" class="sharebtn js-share" data-umami-event="share-native-last"><span data-l="en">Share this page</span><span data-l="ms">Kongsi halaman ini</span></button><button type="button" class="sharebtn ghost js-copy" data-umami-event="copy-link-last"><span data-l="en">Copy link</span><span data-l="ms">Salin pautan</span></button><a class="sharebtn ghost js-wa" target="_blank" rel="noopener" data-umami-event="share-whatsapp-last">WhatsApp</a></div>
+    <div class="contact"><span data-l="en">Stay in touch</span><span data-l="ms">Kekal berhubung</span>
+      <div class="soc"><a href="mailto:the.aufthority@gmail.com">the.aufthority@gmail.com</a><a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener">LinkedIn</a><a href="https://aufthority.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener">TikTok</a><a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener">Threads</a></div>
+    </div>
+    <p class="signoff"><span data-l="en">Charge a little every day.</span><span data-l="ms">Cas sedikit setiap hari.</span> <a class="small" style="font-family:'DM Sans',sans-serif;font-style:normal" href="https://www.aufthority.com/"><span data-l="en">Made by Aufthority</span><span data-l="ms">Dihasilkan oleh Aufthority</span></a></p>
+  </section>
+
+  </main>
+
+  <div id="nav">
+    <button id="btn-back" class="nav-btn" type="button" disabled data-umami-event="nav-back">← Balik</button>
+    <button id="btn-next" class="nav-btn" type="button" data-umami-event="nav-next">Seterusnya →</button>
+  </div>
+</div>
+
+<dialog id="vplayer" aria-label="Video">
+  <video controls playsinline preload="none"></video>
+  <div class="vbar"><span id="vtitle"></span><button type="button" id="vclose"><span data-l="en">Close</span><span data-l="ms">Tutup</span></button></div>
+  <div class="vcred">Video: <a href="https://www.instagram.com/harizfazalul/" target="_blank" rel="noopener">@harizfazalul</a> &amp; <a href="https://www.instagram.com/independent.motion/" target="_blank" rel="noopener">Independent Motion</a> (Instagram)</div>
+</dialog>
+<div id="drawer-bg" hidden></div>
+<aside id="drawer" aria-label="Kandungan" data-aria-en="Contents" data-aria-ms="Kandungan" aria-hidden="true">
+  <div class="dh"><b><span data-l="en">Contents</span><span data-l="ms">Kandungan</span></b><button type="button" id="drawer-close" aria-label="Tutup kandungan" data-aria-en="Close contents" data-aria-ms="Tutup kandungan"><span data-l="en">Close</span><span data-l="ms">Tutup</span></button></div>
+  <div class="dl" id="drawer-list"></div>
+</aside>
+<div id="install-bg" hidden></div>
+<div id="install" role="dialog" aria-labelledby="install-h" hidden>
+  <div class="ih"><img src="media/icon-192.png" alt=""><h3 id="install-h"><span data-l="en">Save this guide on your phone</span><span data-l="ms">Simpan panduan ini di telefon anda</span></h3></div>
+  <p><span data-l="en">Open it from your home screen any time, like an app. Most of it works even without internet.</span><span data-l="ms">Buka dari skrin utama bila-bila masa, seperti aplikasi. Kebanyakan bahagian berfungsi walaupun tanpa internet.</span></p>
+  <div data-mode="ios"><ol><li><span data-l="en">Tap the Share button</span><span data-l="ms">Ketik butang Kongsi</span> <svg viewBox="0 0 24 24" fill="none" stroke="#1f4aa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v10h14V11h-1"/></svg> <span data-l="en">at the bottom of the screen.</span><span data-l="ms">di bahagian bawah skrin.</span></li><li><span data-l="en">Scroll down and tap <strong>Add to Home Screen</strong></span><span data-l="ms">Tatal ke bawah dan ketik <strong>Tambah ke Skrin Utama</strong> (Add to Home Screen)</span> <svg viewBox="0 0 24 24" fill="none" stroke="#1f4aa8" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>.</li><li><span data-l="en">Tap <strong>Add</strong>.</span><span data-l="ms">Ketik <strong>Tambah</strong> (Add).</span></li></ol></div>
+  <div data-mode="other"><ol><li><span data-l="en">Open your browser menu (the three dots or the Share button).</span><span data-l="ms">Buka menu pelayar (tiga titik atau butang Kongsi).</span></li><li><span data-l="en">Tap <strong>Add to Home screen</strong> or <strong>Install app</strong>.</span><span data-l="ms">Ketik <strong>Tambah ke Skrin utama</strong> atau <strong>Pasang aplikasi</strong>.</span></li></ol></div>
+  <div class="ib"><button type="button" class="go" id="install-go"><span data-l="en">Install</span><span data-l="ms">Pasang</span></button><button type="button" class="later" id="install-later"><span data-l="en">Not now</span><span data-l="ms">Bukan sekarang</span></button></div>
+</div>
+<dialog id="zoom" aria-label="Gambar dibesarkan" data-aria-en="Enlarged picture" data-aria-ms="Gambar dibesarkan"><div class="zb"></div><div class="zbar"><button type="button" id="zclose"><span data-l="en">Close</span><span data-l="ms">Tutup</span></button></div></dialog>
+<dialog id="deeper" aria-label="Lebih mendalam" data-aria-en="Going deeper" data-aria-ms="Lebih mendalam">
+  <div class="dlg-head"><h3><span data-l="en">Going deeper</span><span data-l="ms">Lebih mendalam</span></h3><button type="button" id="close-deeper"><span data-l="en">Close</span><span data-l="ms">Tutup</span></button></div>
+  <div class="dlg-body">
+    <h4><span data-l="en">About this page</span><span data-l="ms">Tentang halaman ini</span></h4>
+    <p><span data-l="en">A plain-language companion to the talk <em>Facing the Golden Years in Good Health</em> (USIM x PAWE, 21 October 2026), written for older adults, carers and the public. It explains research simply and is not a substitute for advice from your own doctor or pharmacist. Characters and homes are made up.</span><span data-l="ms">Pendamping dalam bahasa mudah untuk ceramah <em>Menghadapi Hari Keemasan dengan Sihat</em> (USIM x PAWE, 21 Oktober 2026), ditulis untuk warga emas, penjaga dan orang ramai. Ia menerangkan kajian secara ringkas dan bukan pengganti nasihat doktor atau ahli farmasi anda sendiri. Watak dan rumah dalam halaman ini adalah rekaan.</span></p>
+    <h4><span data-l="en">Videos and screenshots</span><span data-l="ms">Video dan tangkapan skrin</span></h4>
+    <p><span data-l="en">Exercise videos by</span><span data-l="ms">Video senaman oleh</span> <a href="https://www.instagram.com/harizfazalul/" target="_blank" rel="noopener">@harizfazalul</a> <span data-l="en">and</span><span data-l="ms">dan</span> <a href="https://www.instagram.com/independent.motion/" target="_blank" rel="noopener">Independent Motion</a> (Instagram). <span data-l="en">Screenshots from MyUBAT (Ministry of Health Malaysia), NPRA and QUEST3+. The MAL label image shows a real registration number as an example.</span><span data-l="ms">Tangkapan skrin daripada MyUBAT (Kementerian Kesihatan Malaysia), NPRA dan QUEST3+. Imej label MAL menunjukkan nombor pendaftaran sebenar sebagai contoh.</span></p>
+    <h4><span data-l="en">Illustrations</span><span data-l="ms">Ilustrasi</span></h4>
+    <p><span data-l="en">Drawn in the style of</span><span data-l="ms">Dilukis mengikut gaya</span> <a href="https://github.com/helloianneo/ian-xiaohei-illustrations" target="_blank" rel="noopener">Ian Xiaohei Illustrations</a> <span data-l="en">by Ian (MIT licence; English adaptation by</span><span data-l="ms">oleh Ian (lesen MIT; adaptasi Inggeris oleh</span> <a href="https://github.com/tojileon/ian-xiaohei-illustrations-en" target="_blank" rel="noopener">tojileon</a>). <span data-l="en">Xiaohei is part of Ian's visual language.</span><span data-l="ms">Xiaohei ialah sebahagian daripada bahasa visual Ian.</span></p>
+    <h4><span data-l="en">Further reading</span><span data-l="ms">Bacaan lanjut</span></h4>
+    <ol>
+      <li>Asia News Network. (2025, December 5). Malaysia's centenarians growing in numbers [DOSM figures]. <a href="https://asianews.network/malaysias-centenarians-growing-in-numbers/" target="_blank" rel="noopener">https://asianews.network/malaysias-centenarians-growing-in-numbers/</a></li>
+      <li>Department of Statistics Malaysia. (2026). <em>Current population estimates, 2026</em>. <a href="https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026" target="_blank" rel="noopener">https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026</a></li>
+      <li>Institute for Public Health. (2025). <em>National Health and Morbidity Survey (NHMS) 2024: Nutrition — fact sheet and key findings</em>. National Institutes of Health, Ministry of Health Malaysia. <a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">https://iku.nih.gov.my/nhms-2024</a></li>
+      <li>National Institutes of Health, Office of Dietary Supplements. (n.d.). Consumer fact sheets: <a href="https://ods.od.nih.gov/factsheets/Calcium-Consumer/" target="_blank" rel="noopener">Calcium</a>, <a href="https://ods.od.nih.gov/factsheets/VitaminD-Consumer/" target="_blank" rel="noopener">Vitamin D</a>, <a href="https://ods.od.nih.gov/factsheets/VitaminA-Consumer/" target="_blank" rel="noopener">Vitamin A</a>, <a href="https://ods.od.nih.gov/factsheets/Thiamin-Consumer/" target="_blank" rel="noopener">Thiamin</a>, <a href="https://ods.od.nih.gov/factsheets/Niacin-Consumer/" target="_blank" rel="noopener">Niacin</a>. Retrieved October 12, 2026.</li>
+      <li>Japan Times. (2024, September 17). Japan's centenarian population hits record. <a href="https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians" target="_blank" rel="noopener">https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians</a></li>
+      <li>Nippon.com. (2026). Japan's centenarian population tops 100,000 for first time [MHLW data]. <a href="https://www.nippon.com/en/japan-data/h02902/" target="_blank" rel="noopener">https://www.nippon.com/en/japan-data/h02902/</a></li>
+      <li>The Star. (2015, November 3). Over 40,000 centenarians in Malaysia. <a href="https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia" target="_blank" rel="noopener">https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia</a></li>
+      <li>Bull, F. C., Al-Ansari, S. S., Biddle, S., et al. (2020). World Health Organization 2020 guidelines on physical activity and sedentary behaviour. <em>British Journal of Sports Medicine, 54</em>(24), 1451–1462. <a href="https://doi.org/10.1136/bjsports-2020-102955" target="_blank" rel="noopener">https://doi.org/10.1136/bjsports-2020-102955</a></li>
+      <li>Candal-Pedreira, C., Rey-Brandariz, J., Martín-Gisbert, L., Teijeiro, A., García, G., Ruano-Ravina, A., &amp; Pérez-Ríos, M. (2026). Blue Zones, an analysis of existing evidence through a scoping review. <em>Aging and Disease, 17</em>(3), 1335–1346. <a href="https://doi.org/10.14336/AD.2025.0461" target="_blank" rel="noopener">https://doi.org/10.14336/AD.2025.0461</a></li>
+      <li>Chang, C.-T., Ang, J.-Y., Islam, M. A., Chan, H.-K., Cheah, W.-K., &amp; Gan, S. H. (2021). Prevalence of drug-related problems and complementary and alternative medicine use in Malaysia: A systematic review and meta-analysis of 37,249 older adults. <em>Pharmaceuticals, 14</em>(3), 187. <a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">https://doi.org/10.3390/ph14030187</a></li>
+      <li>Herbert, C., House, M., Dietzman, R., Climstein, M., Furness, J., &amp; Kemp-Smith, K. (2025). Blue Zones: Centenarian modes of physical activity: A scoping review. <em>Journal of Population Ageing, 18</em>(1), 5–41. <a href="https://doi.org/10.1007/s12062-022-09396-0" target="_blank" rel="noopener">https://doi.org/10.1007/s12062-022-09396-0</a></li>
+      <li>Lee, S.-A., Shu, X.-O., Li, H., Yang, G., Cai, H., Wen, W., Ji, B.-T., Gao, J., Gao, Y.-T., &amp; Zheng, W. (2009). Adolescent and adult soy food intake and breast cancer risk: Results from the Shanghai Women's Health Study. <em>The American Journal of Clinical Nutrition, 89</em>(6), 1920–1926. <a href="https://doi.org/10.3945/ajcn.2008.27361" target="_blank" rel="noopener">https://doi.org/10.3945/ajcn.2008.27361</a></li>
+      <li>Lim, L. M., McStea, M., Chung, W. W., Nor Azmi, N., Abdul Aziz, S. A., Alwi, S., Kamarulzaman, A., Kamaruzzaman, S. B., Chua, S. S., &amp; Rajasuriar, R. (2017). Prevalence, risk factors and health outcomes associated with polypharmacy among urban community-dwelling older adults in multi-ethnic Malaysia. <em>PLOS ONE, 12</em>(3), e0173466. <a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">https://doi.org/10.1371/journal.pone.0173466</a></li>
+      <li>Ministry of Health Malaysia, Pharmaceutical Services Programme. (n.d.). <em>FAQ: Consumers</em> [MAL registration number and hologram]. <a href="https://pharmacy.moh.gov.my/en/faq-categories/pengguna" target="_blank" rel="noopener">https://pharmacy.moh.gov.my/en/faq-categories/pengguna</a></li>
+      <li>Ministry of Health Malaysia, Pharmacy Services Programme. (n.d.). <em>MyUBAT</em>. Retrieved October 12, 2026, from <a href="https://myubat.pharmacy.gov.my/?lang=en#services" target="_blank" rel="noopener">https://myubat.pharmacy.gov.my/?lang=en#services</a></li>
+      <li>National Pharmaceutical Regulatory Agency. (n.d.). <em>Consumers</em>. Retrieved October 12, 2026, from <a href="https://www.npra.gov.my/index.php/en/consumers.html" target="_blank" rel="noopener">https://www.npra.gov.my/index.php/en/consumers.html</a></li>
+      <li>Montero-Odasso, M., van der Velde, N., Martin, F. C., Petrovic, M., Tan, M. P., Ryg, J., et al. (2022). World guidelines for falls prevention and management for older adults: A global initiative. <em>Age and Ageing, 51</em>(9), afac205. <a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">https://doi.org/10.1093/ageing/afac205</a></li>
+      <li>Pes, G. M., Dore, M. P., Tsofliou, F., &amp; Poulain, M. (2022). Diet and longevity in the Blue Zones: A set-and-forget issue? <em>Maturitas, 164</em>, 31–37. <a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">https://doi.org/10.1016/j.maturitas.2022.06.004</a></li>
+      <li>Poulain, M., &amp; Herm, A. (2025). Blue Zone, a demographic concept and beyond. <em>American Journal of Lifestyle Medicine</em>. <a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">https://doi.org/10.1177/15598276251342502</a></li>
+      <li>Poulain, M., Herm, A., &amp; Pes, G. (2013). The Blue Zones: Areas of exceptional longevity around the world. <em>Vienna Yearbook of Population Research, 11</em>, 87–108. <a href="https://doi.org/10.1553/populationyearbook2013s87" target="_blank" rel="noopener">https://doi.org/10.1553/populationyearbook2013s87</a></li>
+      <li>Yang, G., Shu, X.-O., Li, H., Chow, W.-H., Cai, H., Zhang, X., Gao, Y.-T., &amp; Zheng, W. (2009). Prospective cohort study of soy food intake and colorectal cancer risk in women. <em>The American Journal of Clinical Nutrition, 89</em>(2), 577–583. <a href="https://doi.org/10.3945/ajcn.2008.26742" target="_blank" rel="noopener">https://doi.org/10.3945/ajcn.2008.26742</a></li>
+    </ol>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var K='#1b1b1b', RED='#d93a2b', ORG='#ef7d22', BLU='#1f4aa8', GRN='#3f8f4a', FAINT='#bdbdbd';
+
+  /* ---------- language ---------- */
+  var LANG = /[?&]lang=en\b/.test(location.search) ? 'en' : 'ms';
+  document.documentElement.lang = LANG;
+  function tr(en,ms){ return LANG==='ms' ? ms : en; }
+  function T(p){ return p[LANG==='ms'?1:0]; }
+  function vis(el){ if(!el) return ''; var s=el.querySelector('[data-l="'+LANG+'"]'); return (s||el).textContent.replace(/\s+/g,' ').trim(); }
+  function applyAttrs(){
+    document.querySelectorAll('[data-aria-ms]').forEach(function(el){ el.setAttribute('aria-label', el.getAttribute('data-aria-'+LANG)); });
+    document.querySelectorAll('[data-alt-ms]').forEach(function(el){ el.setAttribute('alt', el.getAttribute('data-alt-'+LANG)); });
+  }
+
+  /* shared defs: hand-drawn line "boil" filter + arrowheads */
+  (function(){
+    var anim = RM ? '' : '<animate attributeName="seed" values="1;4;7;10" dur="0.66s" calcMode="discrete" repeatCount="indefinite"/>';
+    function mk(id,col){ return '<marker id="'+id+'" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1.2 L8 5 L1 8.8" fill="none" stroke="'+col+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>'; }
+    var d=document.createElement('div');
+    d.innerHTML='<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="boil" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="1">'+anim+'</feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.6" xChannelSelector="R" yChannelSelector="G"/></filter>'+mk('ar-r',RED)+mk('ar-o',ORG)+mk('ar-b',BLU)+mk('ar-k',K)+'</defs></svg>';
+    document.body.insertBefore(d.firstChild, document.body.firstChild);
+  })();
+
+  /* ---------- primitives ---------- */
+  function P(d,o){ o=o||{}; return '<path d="'+d+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||K)+'" stroke-width="'+(o.w||2.4)+'" stroke-linecap="round" stroke-linejoin="round"'+(o.cls?' class="'+o.cls+'"':'')+(o.dash?' stroke-dasharray="'+o.dash+'"':'')+(o.style?' style="'+o.style+'"':'')+(o.draw?' pathLength="1"':'')+(o.arrow?' marker-end="url(#ar-'+o.arrow+')"':'')+'/>'; }
+  function E(cx,cy,rx,ry,o){ o=o||{}; return '<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||K)+'" stroke-width="'+(o.w||2.4)+'"'+(o.cls?' class="'+o.cls+'"':'')+'/>'; }
+  function H(x,y,t,col,size,o){ o=o||{}; return '<text x="'+x+'" y="'+y+'" font-family="Patrick Hand, cursive" font-size="'+(size||20)+'" fill="'+(col||K)+'" text-anchor="'+(o.a||'start')+'"'+(o.rot?' transform="rotate('+o.rot+' '+x+' '+y+')"':'')+(o.cls?' class="'+o.cls+'"':' class="note"')+(o.dl!=null?' style="animation-delay:'+o.dl+'s"':'')+(o.attr||'')+'>'+t+'</text>'; }
+  function arrow(d,col,dl){ return '<g class="note" style="animation-delay:'+(dl||0)+'s">'+P(d,{stroke:col,arrow:col===RED?'r':col===ORG?'o':col===BLU?'b':'k',w:2.2})+'</g>'; }
+
+  /* Xiaohei: black bean, white dot eyes, thin legs. Feet at (x,y), facing right. */
+  function xh(o){
+    var s=o.s||1, f=o.flip?-1:1, aL=o.l||[-26,-30], aR=o.r||[28,-30], ey=o.eyeDy||0;
+    var g='<g class="xh '+(o.cls||'')+'"'+(o.style?' style="'+o.style+'"':'')+'><g transform="translate('+o.x+' '+o.y+') scale('+(s*f)+' '+s+')">';
+    g+='<g class="legs"><g class="legL">'+P('M-8 -27 Q-9 -13 -11 -1 L-18 0',{w:2.6})+'</g><g class="legR">'+(o.oneleg?P('M7 -27 Q18 -22 24 -28 L27 -34',{w:2.6}):P('M7 -27 Q8 -13 9 -1 L16 0',{w:2.6}))+'</g></g>';
+    g+='<g class="upper">';
+    g+='<g class="armL">'+P('M-20 -50 Q'+((-20+aL[0])/2-6)+' '+((-50+aL[1])/2+4)+' '+aL[0]+' '+aL[1],{w:2.3})+'</g>';
+    g+='<path d="M-26 -58 C-29 -93 19 -101 27 -67 C31 -41 17 -26 -1 -26 C-19 -25 -25 -39 -26 -58 Z" fill="#141414" stroke="#141414" stroke-width="2"/>';
+    g+='<g class="eyes"><ellipse cx="5" cy="'+(-67+ey)+'" rx="3.6" ry="4.6" fill="#fff"/><ellipse cx="17" cy="'+(-67+ey)+'" rx="3.6" ry="4.6" fill="#fff"/><circle cx="6.4" cy="'+(-67+ey+(ey<0?-1.2:0.6))+'" r="1.7" fill="#141414"/><circle cx="18.4" cy="'+(-67+ey+(ey<0?-1.2:0.6))+'" r="1.7" fill="#141414"/></g>';
+    if(o.sweat) g+=P('M-34 -82 l-6 -5 M-36 -70 l-8 -1',{stroke:RED,w:2});
+    g+='<g class="armR">'+P('M21 -50 Q'+((21+aR[0])/2+6)+' '+((-50+aR[1])/2+4)+' '+aR[0]+' '+aR[1],{w:2.3})+'</g>';
+    g+='</g></g></g>';
+    return g;
+  }
+  function frame(w,h,content,label){ return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid meet" role="img" aria-label="'+(label||'')+'"><g filter="url(#boil)">'+content+'</g></svg>'; }
+  function tofu(x,y,w){ var h=w*.62, d=w*.3; return P('M'+x+' '+y+' h'+w+' v'+(-h)+' h'+(-w)+' Z M'+x+' '+(y-h)+' l'+d+' '+(-d*.6)+' h'+w+' l'+(-d)+' '+(d*.6)+' M'+(x+w+d)+' '+(y-h-d*.6)+' v'+h+' l'+(-d)+' '+(d*.6),{w:2.2}); }
+  function leaf(cx,cy,rot,sc){ sc=sc||1; return '<g transform="translate('+cx+' '+cy+') rotate('+rot+') scale('+sc+')">'+P('M-17 0 Q0 -11 17 0 Q0 11 -17 0 Z',{w:2.1})+P('M-14 0 L13 0 M-4 0 l-4 -4 M3 0 l-4 4',{w:1.4})+'</g>'; }
+  function heart(x,y,col,sc){ sc=sc||1; return '<g transform="translate('+x+' '+y+') scale('+sc+')">'+P('M0 6 C-14 -4 -8 -16 0 -8 C8 -16 14 -4 0 6 Z',{stroke:col||RED,w:2.2})+'</g>'; }
+  function blister(x,y,w,h){ var s=P('M'+x+' '+y+' h'+w+' v'+h+' h'+(-w)+' Z',{w:2.2}); for(var i=0;i<4;i++) for(var j=0;j<2;j++) s+=E(x+w/8*(2*i+1),y+h/4*(2*j+1),w*.075,h*.15,{w:1.8}); return s; }
+  function bottle(x,y,col){ return P('M'+x+' '+y+' V'+(y-40)+' H'+(x+26)+' V'+y+' Z M'+(x-3)+' '+(y-40)+' V'+(y-51)+' H'+(x+29)+' V'+(y-40),{w:2.3})+P('M'+(x+5)+' '+(y-28)+' h16 M'+(x+5)+' '+(y-20)+' h11',{w:1.6,stroke:col||K}); }
+  function capsule(x,y,rot){ return '<g transform="translate('+x+' '+y+') rotate('+(rot||0)+')">'+P('M-14 -6 h28 a6 6 0 0 1 0 12 h-28 a6 6 0 0 1 0 -12 Z',{w:2})+P('M0 -6 h14 a6 6 0 0 1 0 12 h-14 Z',{stroke:RED,w:2})+'</g>'; }
+
+  /* ---------- scenes ---------- */
+  var SC={};
+
+  SC.hook=function(L){
+    var c='';
+    c+=P('M14 224 Q70 220 130 225 T236 222');
+    [[182,'#d93a2b'],[210,ORG]].forEach(function(f){ var x=f[0];
+      c+=P('M'+x+' 223 Q'+(x+3)+' 205 '+x+' 194')+P('M'+x+' 210 q-10 -7 -15 1 q8 5 15 -1');
+      for(var k=0;k<5;k++){ var a=k*72*Math.PI/180; c+=E(x+Math.cos(a)*6.5,186+Math.sin(a)*6.5,4.5,4.5,{w:1.8}); }
+      c+=E(x,186,2.6,2.6,{stroke:f[1],w:2}); });
+    c+=xh({x:96,y:224,s:1.05,r:[42,-38],l:[-26,-30]});
+    c+=P('M134 170 h30 v24 h-30 Z M138 170 q11 -16 22 0 M164 178 L184 164 M181 159 l7 7');
+    for(var d=0;d<4;d++) c+=P('M'+(190+d*5)+' '+(168+(d%2)*6)+' l1 6',{stroke:ORG,w:2.2,cls:'water',style:'animation-delay:'+(d*0.22)+'s'});
+    c+=H(18,78,'Mak Som, 70',BLU,23,{dl:.3})+H(18,100,tr('still gardening','masih berkebun'),BLU,18,{dl:.5})+arrow('M70 106 Q80 116 84 128',BLU,.5);
+    c+=P('M247 40 Q244 150 248 250',{stroke:FAINT,w:1.4});
+    c+=P('M262 224 H332 V198 H362 V172 H392 V146 H422 V120 H452 V94 H472');
+    c+=P('M330 160 L470 52',{w:2.6});
+    [[345,198],[375,172],[405,146],[435,120],[462,94]].forEach(function(p){ var ry=160-(p[0]-330)*108/140; c+=P('M'+p[0]+' '+ry+' V'+p[1],{w:1.8}); });
+    c+=xh({x:300,y:224,s:1,r:[30,-64],l:[-24,-32],eyeDy:-3,sweat:1});
+    c+='<g class="pulse">'+H(314,104,'?',RED,46,{cls:'x'})+'</g>';
+    c+=H(258,256,'Mak Yah, 70',BLU,22,{dl:.6})+H(342,216,tr('stopped climbing','tak naik tangga'),RED,17,{dl:.9});
+    return frame(480,270,c,L);
+  };
+
+  SC.cake=function(L){
+    var c='';
+    c+=P('M24 228 Q240 224 456 228');
+    c+=P('M40 226 L44 196 L104 194 L108 224 Z')+P('M50 226 L52 202 L114 200 L116 226',{w:2});
+    c+=P('M54 206 h40 M54 214 h32 M54 220 h38',{w:1.4});
+    c+=xh({x:160,y:228,s:1,flip:1,r:[40,-34],l:[-20,-30]});
+    c+=E(104,184,13,13,{w:2.8})+P('M113 193 L121 200',{w:3});
+    c+=H(18,128,tr('age checked','umur disemak'),BLU,21,{dl:.4})+H(18,150,tr('against records','dengan rekod'),BLU,17,{dl:.5})+arrow('M60 158 Q68 170 72 186',BLU,.6);
+    c+=P('M250 226 V172 H390 V226');
+    c+=P('M250 182 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 17 0 q9 10 18 0',{w:2});
+    c+=P('M272 172 V134 H368 V172');
+    c+=P('M272 142 q8 9 16 0 q8 9 16 0 q8 9 16 0 q8 9 16 0 q8 9 16 0 q8 9 16 0',{w:2});
+    c+=H(320,216,'100',RED,40,{a:'middle',dl:.2});
+    [298,320,342].forEach(function(x,i){ c+=P('M'+(x-4)+' 134 V108 H'+(x+4)+' V134',{w:2})+P('M'+(x-4)+' 118 l8 -4 M'+(x-4)+' 126 l8 -4',{stroke:BLU,w:1.4});
+      c+='<g class="flicker" style="animation-delay:'+(i*0.12)+'s">'+P('M'+x+' 86 Q'+(x+8)+' 96 '+x+' 104 Q'+(x-8)+' 96 '+x+' 86 Z',{stroke:ORG,w:2.2})+'</g>'; });
+    [[236,110,ORG],[408,96,BLU],[420,140,ORG],[232,160,BLU],[400,190,RED]].forEach(function(p,i){ c+='<g class="floaty" style="animation-delay:'+(i*.3)+'s">'+P('M'+p[0]+' '+p[1]+' l7 -6',{stroke:p[2],w:2.4})+'</g>'; });
+    return frame(480,270,c,L);
+  };
+
+  SC.morph=function(L){
+    var c='';
+    c+=P('M20 226 Q240 222 460 226');
+    c+=xh({x:76,y:226,s:1,r:[44,-40],l:[-24,-30]});
+    c+=P('M120 186 L150 170 M150 170 l7 -7 M150 170 l9 -3 M150 170 l8 -5',{w:2});
+    c+=E(256,214,100,13);
+    var h=leaf(196,200,-15)+leaf(222,196,20)+leaf(210,206,5)+tofu(250,212,20)+tofu(276,210,18)+E(320,203,22,9)+P('M298 203 l-10 -8 v16 Z')+'<circle cx="334" cy="200" r="1.8" fill="'+K+'"/>';
+    c+='<g class="fadeOut">'+h+'</g>';
+    var j='';
+    j+=P('M206 186 Q206 150 250 150 Q294 150 294 186 Z')+P('M232 164 l3 -2 M252 160 l3 -1 M270 166 l3 -2',{w:1.8});
+    j+=P('M202 189 q8 6 16 0 q8 6 16 0 q8 6 16 0 q8 6 16 0 q8 6 16 0 q8 6 16 0',{stroke:GRN,w:2});
+    j+=P('M204 193 h92 a6 6 0 0 1 0 12 h-92 a6 6 0 0 1 0 -12 Z');
+    j+=P('M206 207 h88 q0 7 -10 7 h-68 q-10 0 -10 -7 Z');
+    j+=P('M312 212 L306 172 H340 L334 212 Z')+P('M312 172 V150 M318 172 V146 M324 172 V152 M330 172 V148 M336 172 V154',{stroke:ORG,w:2});
+    j+=P('M354 212 L350 152 H376 L372 212 Z')+P('M366 152 L374 126',{w:2});
+    c+='<g class="fadeIn">'+j+'</g>';
+    c+=P('M370 40 h86 v34 h-86 Z',{w:2.4})+P('M456 50 h6 v14 h-6',{w:2.2});
+    c+='<rect class="drain" x="374" y="44" width="78" height="26" fill="'+ORG+'" opacity=".85"/>';
+    c+=H(372,102,tr('advantage','kelebihan'),RED,20,{dl:.4})+H(372,122,tr('fading','makin pudar'),RED,20,{dl:.5});
+    c+=H(20,52,tr('old habits','tabiat lama'),BLU,19,{dl:.3})+H(20,72,tr('swapped out','diganti'),BLU,19,{dl:.4});
+    return frame(480,270,c,L);
+  };
+
+  SC.cent=function(L){
+    var c='';
+    function ico(x,y,cls,style,ghost){ return '<g class="'+cls+'" style="'+style+'">'+(ghost?P('M'+(x-5)+' '+y+' C'+(x-6)+' '+(y-11)+' '+(x+5)+' '+(y-12)+' '+(x+6)+' '+(y-3)+' C'+(x+7)+' '+(y+4)+' '+(x-4)+' '+(y+6)+' '+(x-5)+' '+y+' Z',{w:1.4,stroke:RED}):'<path d="M'+(x-5)+' '+y+' C'+(x-6)+' '+(y-11)+' '+(x+5)+' '+(y-12)+' '+(x+6)+' '+(y-3)+' C'+(x+7)+' '+(y+4)+' '+(x-4)+' '+(y+6)+' '+(x-5)+' '+y+' Z" fill="#141414"/><circle cx="'+(x+1)+'" cy="'+(y-4)+'" r="1.1" fill="#fff"/><circle cx="'+(x+4)+'" cy="'+(y-4)+'" r="1.1" fill="#fff"/>')+'</g>'; }
+    c+=H(20,40,tr('Japan','Jepun'),K,24,{cls:'x'})+H(96,40,'107,677',RED,24,{cls:'x'});
+    for(var i=0;i<108;i++){ var col=i%12, row=Math.floor(i/12); c+=ico(28+col*17,74+row*17,'pop','animation-delay:'+(0.2+i*0.018).toFixed(2)+'s'); }
+    c+=P('M250 30 Q247 150 251 250',{stroke:FAINT,w:1.4});
+    c+=H(272,40,'Malaysia',K,24,{cls:'x'})+H(372,40,'4,287',RED,24,{cls:'x'});
+    var g='';
+    for(var j=0;j<44;j++){ var cc=j%11, rr=Math.floor(j/11); g+=ico(280+cc*17,104+rr*17,'','',1); }
+    c+='<g class="ghost">'+g+H(276,84,tr('2015 records: 43,599','rekod 2015: 43,599'),RED,17,{cls:'x'})+'</g>';
+    for(var k=0;k<4;k++) c+=ico(282+k*17,206,'pop','animation-delay:'+(4.2+k*0.2)+'s');
+    c+=H(356,210,tr('checked: 4,287','disemak: 4,287'),BLU,18,{dl:4.6});
+    c+=H(20,252,tr('each figure = 1,000 people aged 100+','satu figura = 1,000 orang berumur 100+'),BLU,17,{dl:2.4});
+    return frame(480,270,c,L);
+  };
+
+  SC.ali=function(L){
+    var c='';
+    c+=P('M20 244 Q140 240 250 244');
+    c+=xh({x:120,y:244,s:1.55,cls:'wave',r:[38,-96],l:[-30,-32]});
+    c+=H(18,52,'Pak Ali, 73',RED,26,{dl:.2})+arrow('M70 62 Q86 76 92 96',RED,.3);
+    var rows=[[tr('food','makanan'),.72,GRN],[tr('movement','pergerakan'),.55,ORG],[tr('medicines','ubat'),.40,BLU],[tr('supplements','suplemen'),.25,RED]];
+    rows.forEach(function(r,i){ var y=46+i*52;
+      c+=H(392,y+22,r[0],K,20,{a:'end',dl:.2+i*.15});
+      c+=P('M402 '+y+' h62 v30 h-62 Z',{w:2.3})+P('M464 '+(y+9)+' h5 v12 h-5',{w:2});
+      c+='<rect class="fillbar" style="animation-delay:'+(0.4+i*0.2)+'s" x="405" y="'+(y+3)+'" width="'+(56*r[1])+'" height="24" fill="'+r[2]+'" opacity=".85"/>'; });
+    c+=H(236,262,tr('charge a little every day','cas sedikit setiap hari'),BLU,18,{dl:1.2});
+    return frame(480,270,c,L);
+  };
+
+  SC.plate=function(L){
+    var c='';
+    c+=E(262,140,98,98)+E(262,140,84,84,{stroke:FAINT,w:1.4});
+    var g1=''; [[218,100,-30],[203,128,20],[225,152,-10],[199,160,40],[236,124,60],[214,82,10],[236,184,-40],[194,108,-60],[240,98,30],[210,188,15]].forEach(function(l){ g1+=leaf(l[0],l[1],l[2]); });
+    c+='<g class="drop" style="animation-delay:.2s">'+g1+'</g>';
+    c+='<g class="drop" style="animation-delay:.8s">'+P('M272 112 Q274 70 306 68 Q340 70 342 112 Z')+P('M284 98 l4 -1 M296 88 l4 -1 M310 96 l4 -1 M322 86 l4 -1 M306 80 l4 -1 M326 102 l4 -1 M292 106 l4 -1',{w:1.6})+'</g>';
+    c+='<g class="drop" style="animation-delay:1.4s">'+E(308,152,30,13)+P('M278 152 l-14 -11 v22 Z')+'<circle cx="326" cy="149" r="2" fill="'+K+'"/>'+P('M298 142 l-5 18 M310 140 l-5 22 M322 142 l-4 18',{w:1.8,stroke:ORG})+'</g>';
+    c+='<g class="drop" style="animation-delay:2s">'+tofu(240,214,22)+tofu(270,212,20)+'</g>';
+    c+='<g class="drop" style="animation-delay:2.5s">'+P('M298 176 h28 v14 h-28 Z M302 192 h28 v14 h-28 Z',{w:2.1})+P('M304 182 h1 M312 185 h1 M320 181 h1 M308 198 h1 M316 202 h1 M324 197 h1',{w:2.6})+'</g>';
+    c+=xh({x:96,y:254,s:.9,r:[14,-104],l:[-8,-104]})+'<g transform="translate(-8 0)">'+leaf(110,150,-8,1.7)+'</g>';
+    c+=H(16,40,tr('half: vegetables','separuh: sayur'),ORG,20,{dl:.3})+H(16,62,'&amp; ulam',ORG,20,{dl:.4})+arrow('M130 70 Q168 78 192 96',ORG,.5);
+    c+=H(354,52,tr('¼ brown rice','¼ nasi perang'),BLU,20,{dl:1})+arrow('M370 60 Q352 70 340 82',BLU,1.1);
+    c+=H(334,250,tr('¼ fish, tofu, tempeh','¼ ikan, tauhu, tempe'),BLU,20,{dl:2.2})+arrow('M332 236 Q312 228 300 214',BLU,2.3);
+    return frame(480,270,c,L);
+  };
+
+  SC.soy=function(L){
+    var c='';
+    c+=P('M20 214 Q240 210 460 214');
+    var p0=xh({x:70,y:214,s:.58,r:[26,-40]})+P('M81 186 h14 v20 h-14 Z M81 186 l7 -7 l7 7',{w:2})+P('M84 196 h8',{stroke:BLU,w:1.6});
+    var p1=xh({x:180,y:214,s:.8,r:[34,-44]})+E(214,178,15,4,{w:2})+tofu(205,177,10)+tofu(218,176,8);
+    var p2=xh({x:300,y:214,s:.95,r:[34,-44]})+E(336,172,15,4,{w:2})+tofu(327,171,10)+tofu(340,170,8);
+    var p3=xh({x:388,y:214,s:.95,r:[38,-44]})+xh({x:456,y:214,s:.45,flip:1,r:[30,-40]})+tofu(424,178,10)+heart(454,150,RED,1.1);
+    [p0,p1,p2,p3].forEach(function(p,i){ c+='<g class="pop" style="animation-delay:'+(i*0.7)+'s">'+p+'</g>'; });
+    c+='<g class="note" style="animation-delay:2.4s">'+P('M40 234 Q240 246 452 234',{stroke:ORG,dash:'8 7',arrow:'o',w:2.2})+'</g>';
+    [tr('teen','remaja'),tr('adult','dewasa'),tr('older','warga emas'),tr('grandchild','cucu')].forEach(function(t,i){ c+=H([70,180,300,420][i],262,t,BLU,19,{a:'middle',dl:i*0.7}); });
+    c+=H(24,46,tr('strongest link:','kaitan paling kuat:'),RED,21,{dl:1})+H(24,68,tr('soy as a teen AND adult','soya semasa remaja DAN dewasa'),RED,21,{dl:1.1})+arrow('M120 78 Q150 100 176 126',RED,1.2);
+    return frame(480,270,c,L);
+  };
+
+  SC.chair=function(L){
+    var c='';
+    c+=P('M20 230 Q240 226 460 230');
+    c+=P('M126 230 L130 104 M120 104 L142 102',{w:2.6})+P('M131 130 L150 131 M131 150 L150 151',{w:2})+P('M128 178 L192 180 M128 186 L192 188',{w:2.6})+P('M188 188 L190 230',{w:2.6});
+    c+=xh({x:222,y:230,s:1.15,cls:'squat',r:[40,-44],l:[-26,-46]});
+    c+=H(340,72,tr('chair stands','duduk-bangun'),BLU,22,{dl:.3});
+    c+='<text x="340" y="126" font-family="Patrick Hand, cursive" font-size="50" fill="'+ORG+'" class="repn">0 / 10</text>';
+    c+=H(122,82,tr('hold on','pegang'),RED,20,{dl:.6})+arrow('M150 90 Q166 120 186 168',RED,.7);
+    c+=H(334,200,tr('up slowly,','bangun perlahan,'),BLU,19,{dl:.9})+H(334,222,tr('down slowly','duduk perlahan'),BLU,19,{dl:1});
+    return frame(480,270,c,L);
+  };
+
+  SC.room=function(L){
+    var c='';
+    c+='<rect class="night" x="0" y="0" width="480" height="270" fill="'+BLU+'" opacity=".09"/>';
+    c+=P('M10 222 Q240 218 470 222');
+    c+=P('M24 222 V128 M24 140 h12',{w:2.6})+P('M30 168 H176 V190 H30',{w:2.4})+P('M84 166 Q130 158 176 166 V190 H84 Z',{w:2.2})+E(54,161,20,8,{w:2.2})+P('M34 190 V222 M170 190 V222',{w:2.4});
+    c+='<g class="fx fx5">'+P('M60 238 q0 -9 11 -9 h10 q5 0 5 5 v4 Z M94 240 q0 -9 11 -9 h10 q5 0 5 5 v4 Z',{stroke:GRN,w:2.2})+'</g>';
+    c+=P('M232 180 h16 v20 h-16 Z',{w:2});
+    c+='<g class="fx fx1">'+P('M240 172 v-10 M252 176 l8 -7 M228 176 l-8 -7 M256 190 h10 M224 190 h-10',{stroke:ORG,w:2.2})+P('M196 238 Q300 248 404 232',{stroke:ORG,dash:'7 7',w:2.2})+'</g>';
+    c+='<g class="hz hz2">'+P('M212 248 L226 230 H306 L292 248 Z',{w:2.4})+P('M226 230 L238 216 L246 230',{w:2.2})+P('M300 252 l-2 -4 M290 252 l-2 -4 M280 252 l-2 -4',{w:1.6})+P('M230 240 H290',{stroke:RED,dash:'6 5',w:1.8})+'</g>';
+    c+='<g class="hz hz3">'+P('M318 222 V198 H352 V222 M318 198 l8 -10 M352 198 l-6 -10',{w:2.3})+P('M356 224 q0 -10 12 -10 h8 q6 0 6 6 v4 Z',{w:2.2})+'</g>';
+    c+=P('M372 222 V70 H470 V222',{w:2.6});
+    for(var y=88;y<220;y+=18) c+=P('M374 '+y+' H468',{stroke:'#d4d4d4',w:1.2});
+    c+=P('M428 118 h36 v30 h-36 Z M420 150 h52 v8 h-52 Z M424 158 q2 22 22 24 v24 h12 v-24 q14 -4 14 -24',{w:2.3});
+    c+='<g class="fx fx4">'+P('M384 136 H420',{w:4.5,stroke:BLU})+P('M386 128 v16 M418 128 v16',{w:2.6})+'</g>';
+    c+='<g class="walker">'+xh({x:194,y:236,s:.7})+'</g>';
+    c+=H(22,46,tr('2 a.m.','2 pagi'),BLU,24)+H(22,68,tr('needs the bathroom','perlu ke bilik air'),BLU,18);
+    [[240,150,1],[262,212,2],[336,172,3],[402,108,4],[88,206,5]].forEach(function(b){
+      c+='<g class="badge b'+b[2]+'" data-fix="'+b[2]+'" role="button" tabindex="0" aria-label="'+tr('Fix hazard ','Baiki bahaya ')+b[2]+'"><circle cx="'+b[0]+'" cy="'+b[1]+'" r="30" fill="transparent"/><g class="pulse"><circle class="ring" cx="'+b[0]+'" cy="'+b[1]+'" r="18" fill="#fff" stroke="'+RED+'" stroke-width="3"/><text x="'+b[0]+'" y="'+(b[1]+8)+'" font-family="Patrick Hand, cursive" font-size="24" fill="'+RED+'" text-anchor="middle">'+b[2]+'</text></g></g>'; });
+    return frame(480,270,c,L);
+  };
+
+  SC.meds=function(L){
+    var c='';
+    c+=P('M20 228 Q240 224 460 228');
+    c+=xh({x:56,y:228,s:1,r:[44,-52],l:[34,-40]});
+    c+=P('M88 152 L150 138 L160 198 L98 212 Z',{w:2.6})+P('M100 150 Q112 120 130 146',{w:2.4})+P('M126 166 v18 M117 175 h18',{stroke:RED,w:3});
+    var items=[
+      bottle(178,228,RED),
+      blister(214,196,50,32),
+      P('M280 228 V184 q0 -6 6 -6 h12 q6 0 6 6 V228 Z M286 178 v-10 h12 v10',{w:2.3})+P('M284 196 h16',{stroke:BLU,w:1.6}),
+      P('M318 228 V194 H334 V212 H352 V228 Z M320 194 v-8 h12 v8',{w:2.3}),
+      P('M364 228 V204 h14 V228 Z M366 204 L371 190 L376 204',{w:2.2}),
+      P('M388 228 L430 216 L434 228 Z M430 216 l8 -2 l2 10',{w:2.2}),
+      P('M186 256 h150 v-18 h-150 Z M207 238 v18 M228 238 v18 M250 238 v18 M271 238 v18 M292 238 v18 M314 238 v18',{w:2.1})
+    ];
+    var dxs=[-90,-120,-160,-200,-240,-280,-120];
+    items.forEach(function(it,i){ c+='<g class="fly" style="--dx:'+dxs[i]+'px;animation-delay:'+(0.4+i*0.35)+'s">'+it+'</g>'; });
+    c+='<text x="352" y="86" font-family="Patrick Hand, cursive" font-size="54" fill="'+RED+'" text-anchor="end" data-count="7" data-dur="2.6" data-delay="0.6">0</text>';
+    c+=H(360,72,tr('items in','barang dalam'),RED,21)+H(360,94,tr('one bag','satu beg'),RED,21);
+    c+=H(306,124,tr('(a made-up bag)','(beg rekaan)'),BLU,17);
+    return frame(480,270,c,L);
+  };
+
+  SC.supp=function(L){
+    var c='';
+    c+=P('M20 224 Q240 220 460 224');
+    c+='<g class="jar">'+P('M120 224 V152 q0 -8 8 -8 h48 q8 0 8 8 V224 Z M116 144 V128 H188 V144',{w:2.5})+P('M132 170 h40 v34 h-40 Z',{w:1.8})+leaf(152,187,-30,.8)+'</g>';
+    c+='<g class="blis">'+blister(238,186,72,38)+'</g>';
+    c+='<g class="warn">'+P('M196 120 l-12 -10 M236 120 l12 -10 M216 104 v-14',{stroke:RED,w:2.6})+H(216,154,'!',RED,52,{a:'middle',cls:'x'})+'</g>';
+    c+='<g class="enter">'+xh({x:398,y:224,s:1.1,flip:1,r:[42,-58],l:[24,-80]})+'</g>';
+    c+=H(468,92,tr('pharmacist','ahli farmasi'),BLU,20,{a:'end'})+arrow('M428 98 Q424 112 418 124',BLU);
+    c+='<g class="late">'+H(250,62,tr('"let me check these together"','"biar saya semak kedua-duanya"'),BLU,20,{a:'middle',cls:'x'})+'</g>';
+    c+=H(110,118,tr('supplement','suplemen'),K,18,{dl:.2})+H(240,176,tr('medicine','ubat'),K,18,{dl:.2});
+    return frame(480,270,c,L);
+  };
+
+  SC.shield=function(L){
+    var c='';
+    for(var s=0;s<9;s++) c+=P('M'+(14+s*52)+' 216 h28 v46 h-28 Z',{stroke:FAINT,w:1.6});
+    c+='<g class="spin">'+'<circle cx="240" cy="148" r="94" fill="none" stroke="'+GRN+'" stroke-width="5" stroke-dasharray="120 28 0 443" stroke-linecap="round"/><circle cx="240" cy="148" r="94" fill="none" stroke="'+ORG+'" stroke-width="5" stroke-dasharray="0 148 120 323" stroke-linecap="round"/><circle cx="240" cy="148" r="94" fill="none" stroke="'+BLU+'" stroke-width="5" stroke-dasharray="0 296 120 175" stroke-linecap="round"/><circle cx="240" cy="148" r="94" fill="none" stroke="'+RED+'" stroke-width="5" stroke-dasharray="0 444 120 27" stroke-linecap="round"/></g>';
+    c+=xh({x:240,y:214,s:1.1,cls:'walk'});
+    c+='<g class="bump" style="--tx:40px;--ty:24px">'+capsule(72,86,-15)+P('M62 62 q8 -8 15 0 q-8 6 -15 0',{stroke:BLU,w:2})+H(70,124,tr('dizzy pills','ubat buat pening'),RED,20,{a:'middle',cls:'x'})+'</g>';
+    c+='<g class="bump" style="--tx:-40px;--ty:24px;animation-delay:.9s">'+P('M404 74 V44 q0 -5 5 -5 h26 q5 0 5 5 V74 Z M401 39 V30 H443 V39',{w:2.3})+H(422,68,'?',RED,26,{a:'middle',cls:'x'})+H(470,98,tr('hidden supplements','suplemen tersembunyi'),RED,19,{a:'end',cls:'x'})+'</g>';
+    c+='<g class="bump" style="--tx:42px;--ty:-12px;animation-delay:1.6s">'+P('M40 198 v22 M48 196 v26 M82 196 v26 M90 198 v22 M48 209 h34',{w:2.6})+H(66,186,tr('weak muscles','otot lemah'),RED,19,{a:'middle',cls:'x'})+'</g>';
+    return frame(480,270,c,L);
+  };
+
+  SC.gaps=function(L){
+    var c='', rows=[[tr('calcium','kalsium'),96.7],['vitamin B1',80.6],['vitamin B3',71.0],['vitamin B2',64.7],['vitamin A',63.3],['vitamin C',61.0]];
+    c+=H(20,34,tr('not eating enough (age 60+)','tidak cukup diambil (umur 60+)'),BLU,20,{dl:.1});
+    rows.forEach(function(r,i){ var y=58+i*32, w=r[1]/100*270;
+      c+=H(150,y+19,r[0],K,19,{a:'end',dl:.1+i*.12});
+      c+=P('M160 '+y+' h270 v24 h-270 Z',{w:1.8,stroke:'#c9c9c9'});
+      c+='<rect class="fillbar" style="animation-delay:'+(0.3+i*0.15)+'s" x="161" y="'+(y+2)+'" width="'+w.toFixed(1)+'" height="20" fill="'+(i===0?RED:ORG)+'" opacity=".8"/>';
+      c+=H(166+w,y+19,r[1].toFixed(1)+'%',i===0?RED:K,18,{dl:.6+i*.15}); });
+    c+=xh({x:452,y:266,s:.42,flip:1,r:[24,-44],l:[-14,-26]});
+    c+=H(160,264,tr('1 in 4: imbalanced diet','1 dalam 4: diet tidak seimbang'),RED,19,{dl:1.4});
+    return frame(480,270,c,L);
+  };
+  SC.saltsugar=function(L){
+    var c='';
+    c+=P('M20 228 Q240 224 460 228');
+    function spoon(x,y,fill){ return E(x,y,24,11,{w:2.2})+P('M'+(x+24)+' '+y+' L'+(x+78)+' '+(y+10),{w:3})+(fill?E(x,y-2,17,5,{fill:'#fff',stroke:'#9a9a9a',w:1.4}):''); }
+    c+=H(24,40,tr('salt a day','garam sehari'),K,22,{dl:.1});
+    c+='<g class="pop" style="animation-delay:.3s">'+spoon(50,82,1)+'</g><g class="pop" style="animation-delay:.6s">'+spoon(50,116,1)+'</g>'+'<g class="pop" style="animation-delay:.9s">'+P('M26 116 h48',{stroke:'#fff',w:0})+'</g>';
+    c+=H(150,92,tr('we eat 7.3 g','kita makan 7.3 g'),RED,21,{dl:.8})+H(150,114,tr('(1½ teaspoons)','(1½ sudu teh)'),RED,17,{dl:.9});
+    c+='<g class="pop" style="animation-delay:1.2s">'+spoon(50,172,1)+'</g>'+H(150,178,tr('limit: under 5 g','had: kurang 5 g'),BLU,21,{dl:1.3})+H(150,198,tr('(1 teaspoon)','(1 sudu teh)'),BLU,17,{dl:1.4});
+    c+=P('M292 40 Q288 150 292 236',{stroke:FAINT,w:1.4});
+    c+=P('M330 228 L320 120 H410 L400 228 Z',{w:2.4})+P('M322 140 H408',{w:1.6,stroke:'#b07a4a'});
+    for(var k=0;k<9;k++){ var cx=336+(k%3)*20, cy=206-Math.floor(k/3)*20; c+='<g class="drop" style="animation-delay:'+(0.5+k*0.22)+'s">'+P('M'+cx+' '+cy+' h16 v16 h-16 Z',{w:1.8})+P('M'+(cx+5)+' '+(cy+6)+' h1 M'+(cx+10)+' '+(cy+10)+' h1',{w:2})+'</g>'; }
+    c+=H(426,132,'teh',K,17,{dl:.2})+H(426,150,'tarik',K,17,{dl:.2});
+    c+=H(308,40,tr('sugar a day','gula sehari'),K,22,{dl:.1})+H(286,254,tr('9 teaspoons, half from drinks','9 sudu teh: ½ dari minuman'),RED,18,{dl:2});
+    c+=xh({x:446,y:228,s:.55,flip:1,r:[30,-50],l:[-16,-30]});
+    return frame(480,270,c,L);
+  };
+
+  SC.pawe=function(L){
+    var c='';
+    c+=P('M70 206 V72 H410 V206',{w:2.5})+P('M56 76 L240 26 L424 76',{w:2.6});
+    c+=P('M172 88 h136 v34 h-136 Z',{w:2.2})+H(240,116,'PAWE',K,30,{a:'middle',cls:'x'});
+    c+=P('M216 206 V150 h48 v56 M240 150 v56',{w:2.2})+P('M96 132 h54 v34 h-54 Z M330 132 h54 v34 h-54 Z',{w:2.1});
+    c+=P('M20 238 Q240 234 460 238');
+    c+='<g class="chat">'+xh({x:110,y:238,s:.8,r:[30,-60]})+'</g>';
+    c+='<g class="chat" style="animation-delay:.3s">'+xh({x:180,y:238,s:.68})+'</g>';
+    c+='<g class="chat" style="animation-delay:.6s">'+xh({x:300,y:238,s:.8,flip:1,r:[30,-64]})+'</g>';
+    c+='<g class="chat" style="animation-delay:.9s">'+xh({x:372,y:238,s:.72,flip:1})+'</g>';
+    c+='<g class="floaty">'+heart(240,170,RED,1.3)+'</g>';
+    var nx=tr(392,374);
+    c+=H(56,52,'ha ha',BLU,22,{dl:.4})+H(nx,22,tr('same time','masa sama'),BLU,19,{dl:.6})+H(nx,42,tr('next week?','minggu depan?'),BLU,19,{dl:.7});
+    return frame(480,270,c,L);
+  };
+
+  function mini(inner){ return '<svg viewBox="0 0 160 120" aria-hidden="true"><g filter="url(#boil)">'+inner+'</g></svg>'; }
+  var TILES={
+    habits:function(){
+      var plants=P('M20 114 H140')+xh({x:80,y:114,s:.6,r:[14,-108],l:[-6,-108]})+leaf(86,40,-8,2.1);
+      var move=P('M20 114 H140')+xh({x:76,y:114,s:.62,cls:'walk'})+P('M24 104 H52',{stroke:ORG,dash:'5 5',arrow:'o',w:2});
+      var fam=P('M14 114 H146')+xh({x:42,y:114,s:.56,r:[26,-34]})+xh({x:82,y:114,s:.36})+xh({x:120,y:114,s:.6,flip:1,r:[26,-34]})+heart(82,36,RED,.9);
+      var sun=P('M14 114 H146')+P('M38 114 A42 42 0 0 1 122 114',{w:2.2})+P('M80 64 v-12 M108 74 l8 -8 M52 74 l-8 -8 M126 98 h10 M34 98 h-10',{stroke:ORG,w:2.2})+xh({x:80,y:114,s:.5,r:[22,-80],l:[-16,-80]});
+      return '<div class="tiles">'+
+        '<div class="tile">'+mini(plants)+'<b>'+tr('Eat mostly plants','Banyakkan makanan tumbuhan')+'</b></div>'+
+        '<div class="tile">'+mini(move)+'<b>'+tr('Move naturally','Bergerak secara semula jadi')+'</b></div>'+
+        '<div class="tile">'+mini(fam)+'<b>'+tr('Close to family and friends','Rapat dengan keluarga dan kawan')+'</b></div>'+
+        '<div class="tile">'+mini(sun)+'<b>'+tr('A reason to get up','Ada sebab untuk bangun pagi')+'</b></div></div>';
+    },
+    who:function(){
+      var w1=P('M14 114 H146')+xh({x:84,y:114,s:.62,cls:'walk'})+P('M20 104 H54',{stroke:ORG,dash:'5 5',arrow:'o',w:2});
+      var w2=P('M14 114 H146')+xh({x:80,y:114,s:.62,r:[26,-74],l:[-20,-74]})+P('M90 52 h8 v-16 h-8 Z M62 52 h8 v-16 h-8 Z',{stroke:BLU,w:2});
+      var w3=P('M14 114 H146')+P('M40 114 L42 62 M36 62 h14 M42 86 h26 M66 86 L68 114',{w:2.2})+xh({x:96,y:114,s:.62,oneleg:1,l:[-40,-44]});
+      return '<div class="tiles three">'+
+        '<div class="tile">'+mini(w1)+'<div><div class="k">'+tr('150–300 min','150–300 minit')+'</div><span>'+tr('a week of moderate activity, like brisk walking','seminggu aktiviti sederhana, seperti berjalan pantas')+'</span></div></div>'+
+        '<div class="tile">'+mini(w2)+'<div><div class="k">'+tr('2 days','2 hari')+'</div><span>'+tr('a week of muscle-strengthening, like lifting water bottles','seminggu latihan menguatkan otot, seperti mengangkat botol air')+'</span></div></div>'+
+        '<div class="tile">'+mini(w3)+'<div><div class="k">'+tr('3 days','3 hari')+'</div><span>'+tr('a week of balance and strength, to help prevent falls','seminggu latihan imbangan dan kekuatan, untuk membantu mencegah jatuh')+'</span></div></div></div>';
+    }
+  };
+
+  /* ---------- annotated screenshots ---------- */
+  var SHOTS={
+    myubat:function(){ return '<svg class="shotsvg" viewBox="0 0 1100 650" role="img" aria-label="'+tr('MyUBAT website showing its features, with Prescription Records and Balance Medication Supply circled.','Laman MyUBAT yang menunjukkan cirinya, dengan Rekod Preskripsi dan Baki Bekalan Ubat dibulatkan.')+'"><image href="media/myubat.webp" x="0" y="48" width="1100" height="546"/><g filter="url(#boil)">'+
+      E(885,326,135,32,{stroke:RED,w:5})+E(196,560,170,32,{stroke:BLU,w:5})+
+      H(1090,36,tr('see all your prescriptions','lihat semua preskripsi anda'),RED,42,{a:'end'})+arrow('M960 44 Q930 70 905 292',RED,.3)+
+      H(20,640,tr('check how much medicine is left','semak baki ubat yang tinggal'),BLU,40,{dl:.6})+'</g></svg>'; },
+    quest:function(){ return '<svg class="shotsvg" viewBox="0 0 947 700" role="img" aria-label="'+tr('NPRA QUEST3+ product search, with Product Registration Number circled in the Search By menu.','Carian produk NPRA QUEST3+, dengan Product Registration Number dibulatkan dalam menu Search By.')+'"><image href="media/quest.webp" x="0" y="0" width="947" height="628"/><g filter="url(#boil)">'+
+      E(356,374,118,18,{stroke:RED,w:4.5})+H(696,388,tr('1. pick this','1. pilih ini'),RED,40,{dl:.3})+arrow('M690 376 Q600 360 480 372',RED,.4)+
+      H(20,682,tr('2. type the full MAL number, then search','2. taip nombor MAL penuh, kemudian cari'),BLU,38,{dl:.8})+'</g></svg>'; }
+  };
+
+  /* ---------- nutrient guide ---------- */
+  var NUT={
+    en:[["Calcium", "96.7% of people 60+ eat too little", "Milk or yoghurt, sardines and ikan bilis with the bones, leafy greens such as sawi.", "Calcium carbonate with a meal, or calcium citrate any time. No more than 500 mg at once.", "Keep 4 hours apart from thyroid tablets (levothyroxine) and 2 hours from some antibiotics (ciprofloxacin).", "https://ods.od.nih.gov/factsheets/Calcium-Consumer/", "NIH ODS: Calcium"], ["Vitamin D", "42% of Malaysian adults have low blood levels; 3 in 5 women", "At least 30 minutes of sun daily, mackerel (ikan kembung) and eggs.", "Only after a blood test. Adults 71+ need 800 IU a day; stay under 4,000 IU unless your doctor says so.", "With water pills (thiazides) calcium can go too high; steroids lower vitamin D.", "https://ods.od.nih.gov/factsheets/VitaminD-Consumer/", "NIH ODS: Vitamin D"], ["B1 \u00b7 B2 \u00b7 B3", "80.6%, 64.7% and 71.0% of people 60+ eat too little", "Brown rice and whole grains, fish, meat, eggs, milk, soybeans and other legumes, nuts.", "A B-complex at normal daily doses.", "Niacin (B3) at 30 mg+ can cause flushing; high doses can harm the liver. Furosemide can lower B1.", "https://ods.od.nih.gov/factsheets/Niacin-Consumer/", "NIH ODS: Niacin, Thiamin"], ["Vitamin A", "63.3% of people 60+ eat too little", "Orange and dark-green vegetables and fruit: carrot, sweet potato, papaya, mango, kangkung.", "Usually not needed: food is the safer way to fill this gap.", "Too much vitamin A from pills can cause headache, blurred vision and dizziness. Smokers: avoid high-dose beta-carotene.", "https://ods.od.nih.gov/factsheets/VitaminA-Consumer/", "NIH ODS: Vitamin A"], ["Vitamin C", "61.0% of people 60+ eat too little", "Guava, papaya, oranges. 2 servings of fruit and 3 of vegetables a day cover vitamins A and C.", "Usually not needed if you eat fruit every day.", "Food is enough for most people; ask before buying high-dose tablets.", "https://iku.nih.gov.my/nhms-2024", "NHMS 2024"]],
+    ms:[["Kalsium", "96.7% warga 60+ tidak cukup mengambilnya", "Susu atau yogurt, sardin dan ikan bilis bersama tulangnya, sayuran berdaun seperti sawi.", "Kalsium karbonat bersama makanan, atau kalsium sitrat pada bila-bila masa. Tidak lebih 500 mg sekali ambil.", "Ambil 4 jam berasingan daripada ubat tiroid (levothyroxine) dan 2 jam daripada sesetengah antibiotik (ciprofloxacin).", "https://ods.od.nih.gov/factsheets/Calcium-Consumer/", "NIH ODS: Calcium"], ["Vitamin D", "42% orang dewasa Malaysia mempunyai paras darah rendah; 3 dalam 5 wanita", "Sekurang-kurangnya 30 minit cahaya matahari setiap hari, ikan kembung dan telur.", "Hanya selepas ujian darah. Dewasa 71 tahun ke atas perlukan 800 IU sehari; jangan melebihi 4,000 IU melainkan dinasihatkan doktor.", "Dengan ubat air (thiazide) kalsium boleh menjadi terlalu tinggi; steroid merendahkan vitamin D.", "https://ods.od.nih.gov/factsheets/VitaminD-Consumer/", "NIH ODS: Vitamin D"], ["B1 \u00b7 B2 \u00b7 B3", "80.6%, 64.7% dan 71.0% warga 60+ tidak cukup mengambilnya", "Beras perang dan bijirin penuh, ikan, daging, telur, susu, kacang soya dan kekacang lain, kacang.", "B-kompleks pada dos harian biasa.", "Niasin (B3) pada 30 mg ke atas boleh menyebabkan muka merah dan panas; dos tinggi boleh merosakkan hati. Furosemide boleh merendahkan B1.", "https://ods.od.nih.gov/factsheets/Niacin-Consumer/", "NIH ODS: Niacin, Thiamin"], ["Vitamin A", "63.3% warga 60+ tidak cukup mengambilnya", "Sayur dan buah berwarna oren dan hijau gelap: lobak merah, ubi keledek, betik, mangga, kangkung.", "Biasanya tidak perlu: makanan ialah cara lebih selamat untuk mengisi kekurangan ini.", "Terlalu banyak vitamin A daripada pil boleh menyebabkan sakit kepala, penglihatan kabur dan pening. Perokok: elakkan beta-karotena dos tinggi.", "https://ods.od.nih.gov/factsheets/VitaminA-Consumer/", "NIH ODS: Vitamin A"], ["Vitamin C", "61.0% warga 60+ tidak cukup mengambilnya", "Jambu batu, betik, oren. 2 hidangan buah dan 3 hidangan sayur sehari mencukupkan vitamin A dan C.", "Biasanya tidak perlu jika anda makan buah setiap hari.", "Makanan sudah memadai untuk kebanyakan orang; tanya dahulu sebelum membeli tablet dos tinggi.", "https://iku.nih.gov.my/nhms-2024", "NHMS 2024"]]
+  };
+  var nbtn=document.querySelectorAll('.nutri button'), ncard=document.querySelector('.ncard'), nIdx=0;
+  function nshow(i){ nIdx=i; var n=NUT[LANG][i]; nbtn.forEach(function(b,j){ b.setAttribute('aria-selected',j===i); });
+    ncard.innerHTML='<div class="nh"><b>'+n[0]+'</b><span>'+n[1]+' <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></span></div>'+
+      '<p><b class="f">'+tr('Food first:','Makanan dahulu:')+'</b> '+n[2]+'</p><p><b class="s">'+tr('If a supplement is advised:','Jika suplemen dinasihatkan:')+'</b> '+n[3]+'</p><p><b class="w">'+tr('Watch for:','Beri perhatian:')+'</b> '+n[4]+' <span class="cite">(<a href="'+n[5]+'" target="_blank" rel="noopener">'+n[6]+'</a>)</span></p>'; }
+  nbtn.forEach(function(b){ b.addEventListener('click',function(){ nshow(+b.getAttribute('data-n')); }); });
+  nshow(0);
+
+  /* ---------- render art ---------- */
+  function addHint(host){ var h=document.createElement('span'); h.className='zoomhint'; h.textContent=tr('tap to enlarge','ketik untuk besarkan'); host.appendChild(h); }
+  function renderArt(art){
+    var key=art.getAttribute('data-scene');
+    var lab=art.getAttribute(LANG==='ms'?'data-label-ms':'data-label')||art.getAttribute('data-label')||'';
+    if(key){ art.innerHTML=SC[key](lab); if(key!=='room'){ var rb=document.createElement('button'); rb.type='button'; rb.className='replay'; rb.textContent=tr('replay','ulang'); rb.addEventListener('click',function(){ renderArt(art); runCounts(art); if(key==='chair') bindChair(); }); art.appendChild(rb); } }
+    var t=art.getAttribute('data-tiles'); if(t) art.innerHTML=TILES[t]();
+    var s=art.getAttribute('data-shot'); if(s){ art.innerHTML=SHOTS[s](); addHint(art); }
+  }
+  document.querySelectorAll('.art').forEach(renderArt);
+  document.getElementById('svg-tofu').innerHTML='<g filter="url(#boil)">'+E(76,100,58,12)+tofu(44,98,54)+P('M118 30 L148 82 M128 26 L154 78',{w:2.6})+'</g>';
+  document.getElementById('svg-caps').innerHTML='<g filter="url(#boil)">'+bottle(40,106,RED)+capsule(104,72,-10)+capsule(116,96,20)+'</g>';
+
+  /* ---------- tap to zoom ---------- */
+  var zd=document.getElementById('zoom'), zb=zd.querySelector('.zb');
+  document.querySelectorAll('[data-shot], .art img.shot').forEach(function(el){
+    var isImg=el.matches('img'), host=isImg?el.parentNode:el; host.style.position='relative';
+    if(isImg) addHint(host);
+    host.addEventListener('click',function(){ var src=host.querySelector('svg, img.shot'); zb.innerHTML=src.outerHTML; if(zd.showModal) zd.showModal(); else zd.setAttribute('open',''); });
+  });
+  document.getElementById('zclose').addEventListener('click',function(){ if(zd.close) zd.close(); else zd.removeAttribute('open'); });
+
+  /* ---------- video player ---------- */
+  var vp=document.getElementById('vplayer'), vv=vp.querySelector('video');
+  document.querySelectorAll('.vbtn').forEach(function(b){ b.addEventListener('click',function(){
+    var src=b.getAttribute('data-src'); vv.innerHTML='<source src="'+src+'" type="video/mp4"><source src="'+src.replace('.mp4','.webm')+'" type="video/webm">'; vv.poster=b.getAttribute('data-poster'); vv.load();
+    document.getElementById('vtitle').textContent=b.getAttribute(LANG==='ms'?'data-title-ms':'data-title')||b.getAttribute('data-title');
+    if(vp.showModal) vp.showModal(); else vp.setAttribute('open','');
+    var pr=vv.play(); if(pr && pr.catch) pr.catch(function(){});
+    if(window.umami) umami.track('video',{v:b.getAttribute('data-title')});
+  }); });
+  function closeV(){ vv.pause(); vv.innerHTML=''; vv.load(); if(vp.close) vp.close(); else vp.removeAttribute('open'); }
+  document.getElementById('vclose').addEventListener('click',closeV);
+  vp.addEventListener('cancel',function(e){ e.preventDefault(); closeV(); });
+
+  /* ---------- MAL decoder ---------- */
+  var MALT={
+    en:['<strong>MAL</strong>: registered in Malaysia.',
+      '<strong>18086084</strong>: an 8-digit number unique to this product. Type the whole MAL number into NPRA\'s product search to check it.',
+      '<strong>T</strong>: the product type. A = controlled medicine, X = over-the-counter, T = traditional, N = health supplement, H = veterinary. This one is traditional.',
+      '<strong>CR</strong>: extra codes may follow. C = made under contract, R = repacked.'],
+    ms:['<strong>MAL</strong>: berdaftar di Malaysia.',
+      '<strong>18086084</strong>: nombor 8 digit yang unik untuk produk ini. Taip keseluruhan nombor MAL dalam carian produk NPRA untuk menyemaknya.',
+      '<strong>T</strong>: jenis produk. A = ubat terkawal, X = ubat tanpa preskripsi (OTC), T = tradisional, N = suplemen kesihatan, H = veterinar. Produk ini tradisional.',
+      '<strong>CR</strong>: kod tambahan mungkin menyusul. C = dikilang secara kontrak, R = dibungkus semula.']
+  };
+  var mb=document.querySelectorAll('.mal button'), malIdx=0, malTouched=false;
+  function malShow(i){ malIdx=i; mb.forEach(function(x,j){ x.setAttribute('aria-pressed', malTouched && j===i); }); document.getElementById('mal-out').innerHTML=MALT[LANG][i]+(malTouched?' <span class="cite">(<a href="https://pharmacy.moh.gov.my/en/faq-categories/pengguna" target="_blank" rel="noopener">MOH Pharmacy, FAQ</a>)</span>':''); }
+  mb.forEach(function(b){ b.addEventListener('click',function(){ malTouched=true; malShow(+b.getAttribute('data-m')); }); });
+  malShow(0);
+
+  /* ---------- build ---------- */
+  var slides=document.querySelectorAll('.slide');
+  var TOTAL=slides.length, current=1;
+
+  function runCounts(scope){
+    scope.querySelectorAll('[data-count]').forEach(function(el){
+      var to=+el.getAttribute('data-count'), dur=(+el.getAttribute('data-dur')||1)*1000, dl=(+el.getAttribute('data-delay')||0)*1000;
+      if(RM){ el.textContent=to; return; }
+      el.textContent='0'; var st=performance.now()+dl;
+      (function step(now){ var p=Math.max(0,Math.min(1,(now-st)/dur)); el.textContent=Math.round(to*p); if(p<1) requestAnimationFrame(step); })(performance.now());
+    });
+  }
+  var reps=0;
+  function bindChair(){
+    var art=document.querySelector('[data-scene="chair"]'); var up=art.querySelector('.squat .upper'), lbl=art.querySelector('.repn');
+    if(RM){ lbl.textContent='10 / 10'; return; }
+    reps=0; lbl.textContent='0 / 10';
+    if(up) up.addEventListener('animationiteration',function(){ reps=reps%10+1; lbl.textContent=reps+' / 10'; });
+  }
+  function chipsIn(){ var ch=document.querySelectorAll('#bz-chips .chip'); ch.forEach(function(c,i){ c.classList.remove('on'); setTimeout(function(){ c.classList.add('on'); }, RM?0:400+i*350); }); }
+
+  /* ---------- falls room ---------- */
+  var FIXED=[false,false,false,false,false], lastFix=-1;
+  var FIXMSG=[
+    ['Night light on: the path to the bathroom is lit.','Lampu malam dinyalakan: laluan ke bilik air kini terang.'],
+    ['Loose rug removed: nothing to trip on.','Permaidani longgar dialihkan: tiada apa untuk tersadung.'],
+    ['Clutter cleared from the walkway.','Barang bersepah dialihkan dari laluan.'],
+    ['Grab bar fitted in the bathroom.','Palang pemegang dipasang di bilik air.'],
+    ['Non-slip slippers placed by the bed.','Selipar tidak licin diletakkan di tepi katil.']];
+  function fixUI(){
+    var n=FIXED.filter(Boolean).length;
+    document.getElementById('fix-count').textContent=n+tr(' of 5 fixed',' daripada 5 dibaiki');
+    document.getElementById('fix-msg').textContent= n===5 ? tr('All fixed. Pak Ali can walk safely to the bathroom at night.','Semua sudah dibaiki. Pak Ali boleh berjalan dengan selamat ke bilik air pada waktu malam.') : (lastFix<0 ? tr('It\'s night. Pak Ali needs the bathroom.','Sudah malam. Pak Ali perlu ke bilik air.') : T(FIXMSG[lastFix]));
+  }
+  function bindRoom(){
+    var svg=document.querySelector('[data-scene="room"] svg');
+    FIXED.forEach(function(f,i){ if(f) svg.classList.add('f'+(i+1)); });
+    function allFixed(){ var w=svg.querySelector('.walker'); w.classList.add('across'); w.querySelector('.xh').classList.add('walk'); }
+    if(FIXED.every(Boolean)) allFixed();
+    svg.querySelectorAll('.badge').forEach(function(b){
+      function go(e){ if(e.type==='keydown' && e.key!=='Enter' && e.key!==' ') return; e.preventDefault();
+        var i=+b.getAttribute('data-fix')-1; FIXED[i]=true; lastFix=i; svg.classList.add('f'+(i+1));
+        if(FIXED.every(Boolean)) allFixed();
+        fixUI();
+        if(window.umami) umami.track('fix-hazard',{n:i+1});
+      }
+      b.addEventListener('click',go); b.addEventListener('keydown',go);
+    });
+  }
+  bindRoom(); fixUI();
+
+  var btnBack=document.getElementById('btn-back'), btnNext=document.getElementById('btn-next');
+  var progFill=document.getElementById('progress-fill'), progLbl=document.getElementById('progress-label');
+  function show(n,silent){
+    slides.forEach(function(s,i){ s.classList.toggle('active', i+1===n); });
+    var sl=slides[n-1];
+    runCounts(sl);
+    if(sl.querySelector('[data-scene="chair"]')) bindChair();
+    if(sl.querySelector('#bz-chips')) chipsIn();
+    if(sl.querySelector('#score-n')) updateScore();
+    progFill.style.width=((n/TOTAL)*100)+'%';
+    progLbl.textContent=n+' / '+TOTAL;
+    btnBack.disabled=n===1;
+    btnBack.textContent=tr('← Back','← Balik');
+    btnNext.textContent=n===TOTAL?tr('Start again','Mula semula'):tr('Next →','Seterusnya →');
+    btnNext.setAttribute('data-umami-event',n===TOTAL?'carousel-restart':'nav-next');
+    if(!silent){ sl.scrollTop=0; if(window.umami) umami.track('slide-view',{slide:n}); }
+  }
+  btnNext.addEventListener('click',function(){ if(current<TOTAL){ current++; } else { current=1; } show(current); });
+  btnBack.addEventListener('click',function(){ if(current>1){ current--; show(current); } });
+
+  /* ---------- batteries ---------- */
+  var BAT={food:0,move:0,med:0,sup:0}, TOT={food:6,move:6,med:6,sup:7}, NAMES={food:['food','makanan'],move:['movement','pergerakan'],med:['medicines','ubat-ubatan'],sup:['supplements','suplemen']};
+  function updateCounters(){ Object.keys(BAT).forEach(function(k){ document.querySelector('.counter[data-for="'+k+'"]').textContent=tr('Tap what you do, or will start · '+BAT[k]+' of '+TOT[k]+' charged','Ketik apa yang anda buat, atau akan mula · '+BAT[k]+' daripada '+TOT[k]+' dicas'); }); }
+  document.querySelectorAll('.ck').forEach(function(b){
+    b.addEventListener('click',function(){
+      var on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on);
+      var k=b.getAttribute('data-bat'); BAT[k]+=on?1:-1;
+      var cell=document.getElementById('m-'+k); cell.querySelector('i').style.width=(BAT[k]/TOT[k]*100)+'%';
+      cell.classList.remove('pulse'); void cell.offsetWidth; cell.classList.add('pulse');
+      updateCounters();
+      if(window.umami) umami.track('check',{battery:k,on:on});
+    });
+  });
+  updateCounters();
+  function updateScore(){
+    var keys=Object.keys(BAT), n=keys.filter(function(k){return BAT[k]>0;}).length;
+    document.getElementById('score-n').textContent=n;
+    var low=keys.slice().sort(function(a,b){return BAT[a]/TOT[a]-BAT[b]/TOT[b];})[0];
+    document.getElementById('score-low').textContent=(BAT[low]===TOT[low])?tr('All four full. Keep going!','Keempat-empatnya penuh. Teruskan!'):tr('Your lowest: ','Bateri paling rendah: ')+T(NAMES[low])+'.';
+  }
+
+  /* ---------- quiz ---------- */
+  var QZ=[
+    {q:['Once I feel better, I can stop my medicine.','Bila sudah rasa sihat, saya boleh berhenti makan ubat.'],a:'false',
+     e:['Some medicines keep working even when you feel nothing, like blood pressure tablets. Always ask your doctor or pharmacist before stopping or cutting a dose.','Sesetengah ubat terus bekerja walaupun anda tidak rasa apa-apa, seperti ubat darah tinggi. Sentiasa tanya doktor atau ahli farmasi sebelum berhenti atau mengurangkan dos.'],
+     c:['<span class="cite">General advice</span>','<span class="cite">Nasihat umum</span>']},
+    {q:['Some medicines can cause dizziness and falls.','Sesetengah ubat boleh menyebabkan pening dan jatuh.'],a:'true',
+     e:['Medicine-related falls are a recognised problem in older adults, and guidelines advise reviewing medicines that raise fall risk.','Jatuh berkaitan ubat ialah masalah yang diiktiraf dalam kalangan warga emas, dan garis panduan menasihatkan semakan ubat yang meningkatkan risiko jatuh.'],
+     c:'<span class="cite">(<a href="https://doi.org/10.3390/ph14030187" target="_blank" rel="noopener">Chang et al., 2021</a>; <a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">Montero-Odasso et al., 2022</a>)</span>'},
+    {q:['A medicine review with a pharmacist helps when I take many medicines.','Semakan ubat bersama ahli farmasi membantu jika saya mengambil banyak ubat.'],a:'true',
+     e:['Researchers recommend medicine reviews to reduce the problems of taking too many medicines.','Penyelidik mengesyorkan semakan ubat untuk mengurangkan masalah akibat mengambil terlalu banyak ubat.'],
+     c:'<span class="cite">(<a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">Lim et al., 2017</a>)</span>'}
+  ];
+  var qi=0, qscore=0, qpick=null, quiz=document.getElementById('quiz');
+  function renderQ(){
+    var opts=quiz.querySelector('.opts');
+    if(qi>=QZ.length){ quiz.classList.remove('answered'); document.getElementById('qn').textContent=tr('Done','Selesai');
+      document.getElementById('qtext').innerHTML=tr('You got '+qscore+' of 3. Bring your questions to your pharmacist.','Anda dapat '+qscore+' daripada 3. Bawa soalan anda kepada ahli farmasi.'); opts.style.display='none'; return; }
+    opts.style.display='';
+    var Q=QZ[qi], answered=qpick!==null;
+    document.getElementById('qn').textContent=tr('Question '+(qi+1)+' of 3','Soalan '+(qi+1)+' daripada 3');
+    document.getElementById('qtext').textContent=T(Q.q);
+    document.getElementById('qnext').textContent= qi===QZ.length-1 ? tr('See my score','Lihat markah saya') : tr('Next question','Soalan seterusnya');
+    quiz.classList.toggle('answered',answered);
+    quiz.querySelectorAll('.opts button').forEach(function(x){ x.classList.toggle('right',answered && x.getAttribute('data-a')===Q.a); x.disabled=answered; });
+    if(answered){
+      var ok=qpick===Q.a, v=quiz.querySelector('.verdict');
+      v.textContent=(ok?tr('Correct. ','Betul. '):tr('Not quite. ','Belum tepat. '))+tr('It is '+Q.a+'.','Jawapannya: '+(Q.a==='true'?'betul':'salah')+'.');
+      v.className='verdict '+(ok?'ok':'no');
+      document.getElementById('qexp').innerHTML=T(Q.e)+' '+(typeof Q.c==='string'?Q.c:T(Q.c));
+    }
+  }
+  quiz.querySelectorAll('.opts button').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(qpick!==null || qi>=QZ.length) return;
+      qpick=b.getAttribute('data-a'); if(qpick===QZ[qi].a) qscore++;
+      renderQ();
+    });
+  });
+  document.getElementById('qnext').addEventListener('click',function(){ qi++; qpick=null; renderQ(); });
+  renderQ();
+
+  /* ---------- tofu or capsule ---------- */
+  var tofuPick=null;
+  function tofuShow(){
+    if(!tofuPick) return;
+    var ans=document.getElementById('tofu-ans');
+    document.querySelectorAll('.choice button').forEach(function(x){ x.classList.remove('picked-right','picked-wrong'); x.classList.add(x.getAttribute('data-pick')==='tofu'?'picked-right':'picked-wrong'); });
+    ans.innerHTML=(tofuPick==='tofu'?'<strong class="verdict ok">'+tr('Correct: tofu.','Betul: tauhu.')+'</strong> ':'<strong class="verdict no">'+tr('Not quite: it was tofu.','Belum tepat: jawapannya tauhu.')+'</strong> ')+tr('The soy findings came from soy foods in everyday meals, not capsules. Food first.','Penemuan soya datang daripada makanan soya dalam hidangan harian, bukan kapsul. Makanan dahulu.')+' <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.27361" target="_blank" rel="noopener">Lee et al., 2009</a>)</span>';
+    ans.classList.add('show');
+  }
+  document.querySelectorAll('.choice button').forEach(function(b){ b.addEventListener('click',function(){ tofuPick=b.getAttribute('data-pick'); tofuShow(); }); });
+
+  document.querySelectorAll('.reveal').forEach(function(b){ b.addEventListener('click',function(e){ if(e.target.closest('a')) return; b.setAttribute('aria-expanded', b.getAttribute('aria-expanded')!=='true'); }); });
+  var tabs=document.querySelectorAll('.tabs button'), panels=document.querySelectorAll('.tabpanel');
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ var i=+t.getAttribute('data-tab'); tabs.forEach(function(x,j){ x.setAttribute('aria-selected',j===i); }); panels.forEach(function(p,j){ p.classList.toggle('on',j===i); }); }); });
+  var dlg=document.getElementById('deeper');
+  document.getElementById('open-deeper').addEventListener('click',function(){ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); });
+  document.getElementById('close-deeper').addEventListener('click',function(){ if(dlg.close) dlg.close(); else dlg.removeAttribute('open'); });
+
+  /* ---------- install as an app (PWA) ---------- */
+  if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){ window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
+  var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone===true;
+  var ua=navigator.userAgent, isIOS=/iPad|iPhone|iPod/.test(ua) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  var deferred=null, sheet=document.getElementById('install'), shown=false;
+  function openSheet(){ if(standalone) return; sheet.className = deferred ? 'android' : (isIOS ? 'ios' : 'other'); sheet.hidden=false; document.getElementById('install-bg').hidden=false; shown=true; if(window.umami) umami.track('install-sheet',{mode:sheet.className}); }
+  function closeSheet(){ sheet.hidden=true; document.getElementById('install-bg').hidden=true; }
+  document.getElementById('install-bg').addEventListener('click',function(){ closeSheet(); });
+  window.addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; });
+  window.addEventListener('appinstalled',function(){ closeSheet(); deferred=null; if(window.umami) umami.track('installed'); });
+  document.getElementById('install-go').addEventListener('click',function(){ if(!deferred) return; deferred.prompt(); deferred.userChoice.then(function(){ deferred=null; closeSheet(); }); });
+  document.getElementById('install-later').addEventListener('click',closeSheet);
+  document.getElementById('open-install').addEventListener('click',openSheet);
+  if(standalone){ document.getElementById('open-install').style.display='none'; }
+  /* offer it once per visit, after the first slide, on phones and tablets */
+  var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  btnNext.addEventListener('click',function(){ if(!shown && !standalone && touch && current===4 && (deferred || isIOS)) openSheet(); });
+
+  /* ---------- contents drawer ---------- */
+  var rebuildDrawer;
+  (function(){
+    var drawer=document.getElementById('drawer'), bg=document.getElementById('drawer-bg'), list=document.getElementById('drawer-list'), mbtn=document.getElementById('menu-btn');
+    var GN={1:[['Battery 1 · Food','Bateri 1 · Makanan'],'var(--green)'],2:[['Battery 2 · Movement','Bateri 2 · Pergerakan'],'var(--orange)'],3:[['Battery 3 · Medicines','Bateri 3 · Ubat-ubatan'],'var(--blue)'],4:[['Battery 4 · Supplements','Bateri 4 · Suplemen'],'var(--red)']};
+    var items=[];
+    function build(){
+      var html='', last=null, seenBattery=false;
+      slides.forEach(function(sl,i){
+        var eb=vis(sl.querySelector('.eyebrow')), h=sl.querySelector('h1,h2'), t=h?vis(h):(tr('Slide ','Slaid ')+(i+1));
+        var m=eb.match(/^(?:Battery|Bateri) (\d)/), g;
+        if(m){ g='b'+m[1]; seenBattery=true; } else g= seenBattery ? 'end' : 'start';
+        if(g!==last){ var lab = g==='start' ? [tr('The big picture','Gambaran besar'),null] : g==='end' ? [tr('Bringing it together','Merumuskan semuanya'),null] : [T(GN[+g.slice(1)][0]),GN[+g.slice(1)][1]];
+          html+='<div class="grp">'+(lab[1]?'<i style="background:'+lab[1]+'"></i>':'')+lab[0]+'</div>'; last=g; }
+        html+='<button type="button" class="it" data-go="'+(i+1)+'"><span class="n">'+(i+1)+'</span><span>'+t+'</span></button>';
+      });
+      list.innerHTML=html;
+      items=list.querySelectorAll('.it');
+      items.forEach(function(b){ b.addEventListener('click',function(){ current=+b.getAttribute('data-go'); show(current); close(); if(window.umami) umami.track('menu-jump',{slide:current}); }); });
+    }
+    function open(){ items.forEach(function(b){ b.setAttribute('aria-current', +b.getAttribute('data-go')===current); });
+      drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); bg.hidden=false; mbtn.setAttribute('aria-expanded','true');
+      var cur=list.querySelector('[aria-current="true"]'); if(cur) cur.scrollIntoView({block:'center'}); setTimeout(function(){ (cur||items[0]).focus({preventScroll:true}); },50);
+      if(window.umami) umami.track('menu-open'); }
+    function close(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); bg.hidden=true; mbtn.setAttribute('aria-expanded','false'); }
+    mbtn.addEventListener('click',open); bg.addEventListener('click',close); document.getElementById('drawer-close').addEventListener('click',close);
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape' && drawer.classList.contains('open')) close(); });
+    build(); rebuildDrawer=build;
+  })();
+
+  /* ---------- share / copy link ---------- */
+  var BASE='https://www.aufthority.com/harikeemasan/';
+  function shareURL(){ return BASE+(LANG==='en'?'?lang=en':''); }
+  function shareTitle(){ return tr('Golden Years, Simply Explained','Hari Keemasan, Dijelaskan dengan Mudah'); }
+  var toast=document.createElement('div');toast.id='toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');document.body.appendChild(toast);
+  var tt;
+  function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},2200)}
+  function legacyCopy(){var t=document.createElement('textarea');t.value=shareURL();t.setAttribute('readonly','');t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(t);return ok}
+  function copy(){
+    var done=tr('Link copied','Pautan disalin');
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(shareURL()).then(function(){say(done)},function(){say(legacyCopy()?done:shareURL())})}
+    else say(legacyCopy()?done:shareURL());
+  }
+  function setWA(){ document.querySelectorAll('.js-wa').forEach(function(a){a.href='https://wa.me/?text='+encodeURIComponent(shareTitle()+'\n'+shareURL())}); }
+  setWA();
+  document.querySelectorAll('.js-copy').forEach(function(b){b.addEventListener('click',copy)});
+  document.querySelectorAll('.js-share').forEach(function(b){
+    if(!navigator.share){ b.hidden=true; return; }
+    b.addEventListener('click',function(){
+      navigator.share({title:shareTitle(),text:tr('Four batteries for staying independent in older age: food, movement, medicines and supplements.','Empat bateri untuk kekal berdikari pada usia emas: makanan, pergerakan, ubat-ubatan dan suplemen.'),url:shareURL()}).catch(function(){});
+    });
+  });
+
+  /* ---------- language switch ---------- */
+  var langBtns=document.querySelectorAll('.langsw button');
+  function syncLangBtns(){ langBtns.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang')===LANG); }); }
+  function setLang(l){
+    if(l===LANG) return;
+    LANG=l; document.documentElement.lang=l;
+    document.title=tr('Golden Years, Simply Explained — Aufthority','Hari Keemasan, Dijelaskan dengan Mudah — Aufthority');
+    try{ history.replaceState(null,'', location.pathname+(l==='en'?'?lang=en':'')+location.hash); }catch(e){}
+    syncLangBtns(); applyAttrs();
+    document.querySelectorAll('.art[data-scene], .art[data-tiles], .art[data-shot]').forEach(renderArt);
+    document.querySelectorAll('.zoomhint').forEach(function(h){ h.textContent=tr('tap to enlarge','ketik untuk besarkan'); });
+    bindChair(); bindRoom(); fixUI();
+    nshow(nIdx); renderQ(); malShow(malIdx); tofuShow(); updateCounters(); updateScore(); rebuildDrawer(); setWA();
+    show(current,true);
+    if(window.umami) umami.track('lang',{to:l});
+  }
+  langBtns.forEach(function(b){ b.addEventListener('click',function(){ setLang(b.getAttribute('data-lang')); }); });
+  syncLangBtns(); applyAttrs();
+  if(LANG==='en') document.title='Golden Years, Simply Explained — Aufthority';
+
+  show(1);
+})();
+</script>
+</body>
+</html>
