@@ -269,6 +269,25 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
   .ncard{padding:.55em .8em}
   .ncard p{font-size:.88em}
 }
+/* ---------- cover ---------- */
+.slide.cover.active{display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,3vh,28px)}
+.cv-event{font-size:.78em;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.cv-title{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.04;letter-spacing:-.015em;font-size:clamp(2rem, calc(2.4vh + 3vw), 4.4rem);margin:.25em 0 .35em}
+.cv-title em{font-style:italic;color:var(--accent)}
+.cv-bars{display:flex;gap:6px;margin-bottom:clamp(12px,2.4vh,24px)}
+.cv-bars i{width:38px;height:9px;border-radius:2px}
+.cv-who{border-top:1px solid var(--rule);padding-top:.7em}
+.cv-who b{display:block;font-size:1.25em}
+.cv-who span{color:var(--muted)}
+.qrcard{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 12px 10px;text-align:center;width:max-content;max-width:100%}
+.qrcard svg{display:block;width:clamp(150px,26vh,210px);height:auto;margin:0 auto}
+.qrcard b{display:block;font-family:'Patrick Hand',cursive;font-weight:400;font-size:1.15em;color:var(--blue);margin-top:4px}
+.qrcard span{font-size:.8em;color:var(--muted)}
+@media (min-aspect-ratio: 5/4) and (min-width: 760px){
+  .slide.cover.active{display:grid;grid-template-columns:minmax(0,1.35fr) auto;align-items:center;column-gap:clamp(32px,6vw,80px)}
+  .qrcard{padding:18px 18px 14px}
+  .qrcard svg{width:clamp(200px,40vh,340px)}
+}
 #topnav .tl{display:flex;align-items:center;gap:12px;min-width:0}
 #menu-btn{display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:0 11px 0 8px;min-height:36px;font-weight:500;font-size:15px}
 #menu-btn svg{width:20px;height:20px}
@@ -407,12 +426,27 @@ svg .badge:focus-visible .ring{stroke-width:5}
 
   <main id="stage">
 
+  <!-- cover -->
+  <section class="slide cover active">
+    <div class="cv-main">
+      <div class="cv-event">USIM x PAWE · <span data-l="en">21 October 2026</span><span data-l="ms">21 Oktober 2026</span></div>
+      <h1 class="cv-title">Meniti Usia Emas: <em>Sihat Dan Berkualiti</em> 2026</h1>
+      <div class="cv-bars" aria-hidden="true"><i style="background:var(--green)"></i><i style="background:var(--orange)"></i><i style="background:var(--blue)"></i><i style="background:var(--red)"></i></div>
+      <div class="cv-who"><b>Auf Ali</b><span>KPJ Healthcare University</span></div>
+    </div>
+    <div class="qrcard">
+      <svg viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="Kod QR ke www.aufthority.com/harikeemasan" data-aria-en="QR code to www.aufthority.com/harikeemasan" data-aria-ms="Kod QR ke www.aufthority.com/harikeemasan"><rect width="37" height="37" fill="#fff"/><path fill="#1a1a18" d="M4 4h7v1h-7zM12 4h2v1h-2zM15 4h1v1h-1zM17 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM20 5h3v1h-3zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h2v1h-2zM15 6h3v1h-3zM19 6h6v1h-6zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h3v1h-3zM17 7h2v1h-2zM21 7h4v1h-4zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h3v1h-3zM17 8h2v1h-2zM21 8h2v1h-2zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM20 9h2v1h-2zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM13 11h2v1h-2zM18 11h1v1h-1zM20 11h1v1h-1zM22 11h1v1h-1zM24 11h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM10 12h2v1h-2zM13 12h1v1h-1zM16 12h1v1h-1zM20 12h1v1h-1zM23 12h1v1h-1zM27 12h1v1h-1zM30 12h1v1h-1zM32 12h1v1h-1zM5 13h1v1h-1zM7 13h3v1h-3zM11 13h2v1h-2zM15 13h1v1h-1zM17 13h1v1h-1zM19 13h3v1h-3zM23 13h2v1h-2zM26 13h2v1h-2zM31 13h2v1h-2zM4 14h7v1h-7zM12 14h2v1h-2zM16 14h1v1h-1zM19 14h1v1h-1zM23 14h1v1h-1zM25 14h3v1h-3zM29 14h2v1h-2zM32 14h1v1h-1zM4 15h1v1h-1zM7 15h3v1h-3zM13 15h3v1h-3zM20 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM27 15h3v1h-3zM5 16h1v1h-1zM7 16h1v1h-1zM9 16h4v1h-4zM15 16h2v1h-2zM18 16h3v1h-3zM24 16h1v1h-1zM26 16h2v1h-2zM32 16h1v1h-1zM4 17h1v1h-1zM7 17h3v1h-3zM12 17h1v1h-1zM14 17h4v1h-4zM19 17h3v1h-3zM23 17h4v1h-4zM31 17h2v1h-2zM5 18h2v1h-2zM10 18h2v1h-2zM14 18h3v1h-3zM19 18h1v1h-1zM21 18h1v1h-1zM23 18h2v1h-2zM26 18h1v1h-1zM32 18h1v1h-1zM6 19h1v1h-1zM8 19h2v1h-2zM13 19h1v1h-1zM15 19h2v1h-2zM18 19h1v1h-1zM20 19h1v1h-1zM22 19h2v1h-2zM25 19h1v1h-1zM27 19h1v1h-1zM4 20h1v1h-1zM8 20h4v1h-4zM13 20h3v1h-3zM17 20h4v1h-4zM22 20h2v1h-2zM26 20h1v1h-1zM32 20h1v1h-1zM5 21h4v1h-4zM11 21h1v1h-1zM16 21h1v1h-1zM19 21h3v1h-3zM23 21h2v1h-2zM26 21h2v1h-2zM30 21h3v1h-3zM4 22h3v1h-3zM10 22h1v1h-1zM12 22h4v1h-4zM17 22h3v1h-3zM23 22h1v1h-1zM26 22h1v1h-1zM29 22h1v1h-1zM32 22h1v1h-1zM6 23h4v1h-4zM13 23h4v1h-4zM19 23h1v1h-1zM22 23h3v1h-3zM26 23h2v1h-2zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h2v1h-2zM17 24h2v1h-2zM20 24h1v1h-1zM24 24h6v1h-6zM31 24h1v1h-1zM12 25h1v1h-1zM14 25h2v1h-2zM17 25h1v1h-1zM19 25h3v1h-3zM24 25h1v1h-1zM28 25h3v1h-3zM32 25h1v1h-1zM4 26h7v1h-7zM12 26h2v1h-2zM19 26h1v1h-1zM21 26h2v1h-2zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM32 26h1v1h-1zM4 27h1v1h-1zM10 27h1v1h-1zM15 27h3v1h-3zM23 27h2v1h-2zM28 27h1v1h-1zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM13 28h2v1h-2zM17 28h1v1h-1zM20 28h1v1h-1zM23 28h7v1h-7zM31 28h1v1h-1zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM13 29h4v1h-4zM19 29h2v1h-2zM25 29h1v1h-1zM27 29h4v1h-4zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h1v1h-1zM15 30h1v1h-1zM18 30h6v1h-6zM28 30h1v1h-1zM31 30h2v1h-2zM4 31h1v1h-1zM10 31h1v1h-1zM16 31h1v1h-1zM18 31h2v1h-2zM22 31h1v1h-1zM24 31h2v1h-2zM27 31h3v1h-3zM4 32h7v1h-7zM12 32h1v1h-1zM14 32h1v1h-1zM18 32h2v1h-2zM24 32h3v1h-3zM28 32h1v1h-1zM32 32h1v1h-1z"/></svg>
+      <b><span data-l="en">Scan to open this guide</span><span data-l="ms">Imbas untuk buka panduan ini</span></b>
+      <span>aufthority.com/harikeemasan</span>
+    </div>
+  </section>
+
   <!-- 1 -->
-  <section class="slide has-art active">
+  <section class="slide has-art">
     <div class="text">
       <div class="eyebrow"><span data-l="en">Start here</span><span data-l="ms">Mula di sini</span></div>
       <h1><span data-l="en">Two people, the same age. <em>Very different golden years.</em></span><span data-l="ms">Dua orang, umur sama. <em>Hari tua yang sangat berbeza.</em></span></h1>
-      <p><span data-l="en">Both are 70. Mak Som still waters her garden every morning. Mak Yah stopped using the stairs after a fall last year.</span><span data-l="ms">Kedua-duanya berumur 70 tahun. Mak Som masih berkebun setiap pagi. Mak Yah sudah tidak naik tangga sejak terjatuh tahun lalu.</span></p>
+      <p><span data-l="en">Both are 70. Mak Som still waters her garden every morning. Mak Yah stopped using the stairs after a fall last year.</span><span data-l="ms">Kedua-duanya berumur 70 tahun. Mak Som masih menyiram pokok bunganya setiap pagi. Mak Yah sudah tidak naik tangga sejak terjatuh tahun lalu.</span></p>
       <p><span data-l="en">Some of the difference is luck. <strong>A lot of it is in our hands.</strong> <span class="tag">Made-up example</span></span><span data-l="ms">Sebahagiannya nasib. <strong>Banyak lagi terletak di tangan kita.</strong> <span class="tag">Contoh rekaan</span></span></p>
       <div class="sharerow" aria-label="Kongsi halaman ini" data-aria-en="Share this page" data-aria-ms="Kongsi halaman ini"><button type="button" class="sharebtn js-share" data-umami-event="share-native-first"><span data-l="en">Share this page</span><span data-l="ms">Kongsi halaman ini</span></button><button type="button" class="sharebtn ghost js-copy" data-umami-event="copy-link-first"><span data-l="en">Copy link</span><span data-l="ms">Salin pautan</span></button><a class="sharebtn ghost js-wa" target="_blank" rel="noopener" data-umami-event="share-whatsapp-first">WhatsApp</a></div>
     </div>
@@ -424,7 +458,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow"><span data-l="en">Proof it can be done</span><span data-l="ms">Bukti ia boleh dicapai</span></div>
       <h2><span data-l="en">Some places have many people <em>who live to 100.</em></span><span data-l="ms">Ada tempat yang ramai penduduknya <em>hidup hingga 100 tahun.</em></span></h2>
-      <p><span data-l="en">They are called <strong>Blue Zones</strong>. And they live high quality lives.</span><span data-l="ms">Tempat ini dipanggil <strong>Blue Zones</strong> (Zon Biru). Penduduknya bukan setakat hidup lama tapi hidup lama dengan kualiti hidup lebih tinggi..</span> <span class="cite">(<a href="https://doi.org/10.1553/populationyearbook2013s87" target="_blank" rel="noopener">Poulain et al., 2013</a>; <a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">Poulain &amp; Herm, 2025</a>)</span></p>
+      <p><span data-l="en">They are called <strong>Blue Zones</strong>. And they live high quality lives.</span><span data-l="ms">Tempat ini dipanggil <strong>Blue Zones</strong> (Zon Biru). Penduduknya juga hidup dengan kualiti yang tinggi.</span> <span class="cite">(<a href="https://doi.org/10.1553/populationyearbook2013s87" target="_blank" rel="noopener">Poulain et al., 2013</a>; <a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">Poulain &amp; Herm, 2025</a>)</span></p>
     </div>
     <div class="extra"><div class="chips" id="bz-chips"><span class="chip"><span data-l="en">Okinawa, Japan</span><span data-l="ms">Okinawa, Jepun</span></span><span class="chip"><span data-l="en">Sardinia, Italy</span><span data-l="ms">Sardinia, Itali</span></span><span class="chip">Ikaria, Greece</span><span class="chip">Nicoya, Costa Rica</span><span class="chip"><span data-l="en">Martinique, France</span><span data-l="ms">Martinique, Perancis</span></span></div></div>
     <div class="art" data-scene="cake" data-label="Hand-drawn sketch: a small black character checks birth records with a magnifying glass next to a birthday cake marked 100." data-label-ms="Lakaran tangan: watak hitam kecil menyemak rekod kelahiran dengan kanta pembesar di sebelah kek hari jadi bertanda 100."></div>
@@ -445,7 +479,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow"><span data-l="en">A warning</span><span data-l="ms">Amaran</span></div>
       <h2><span data-l="en">Good habits stop, <em>benefits fade.</em></span><span data-l="ms">Tabiat baik berhenti, <em>manfaatnya pudar.</em></span></h2>
-      <p><span data-l="en">Even in Blue Zones, traditional meals are giving way to modern fast food. Researchers warn the long-life advantage cannot be taken for granted.</span><span data-l="ms">Tapi di Blue Zones sendiri pun, hidangan tradisional semakin diganti makanan segera moden. Penyelidik memberi amaran bahawa kelebihan umur panjang ini tidak boleh dianggap kekal.</span> <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
+      <p><span data-l="en">Even in Blue Zones, traditional meals are giving way to modern fast food. Researchers warn the long-life advantage cannot be taken for granted.</span><span data-l="ms">Di Blue Zones sendiri, hidangan tradisional semakin diganti makanan segera moden. Penyelidik memberi amaran bahawa kelebihan umur panjang ini tidak boleh dianggap kekal.</span> <span class="cite">(<a href="https://doi.org/10.1016/j.maturitas.2022.06.004" target="_blank" rel="noopener">Pes et al., 2022</a>)</span></p>
       <p class="small muted"><span data-l="en">Honest note: research on Blue Zones is still growing, and scientists are still weighing how strong the evidence is.</span><span data-l="ms">Nota jujur: kajian tentang Blue Zones masih berkembang, dan saintis masih menilai sejauh mana kukuhnya bukti ini.</span> <span class="cite">(<a href="https://doi.org/10.14336/AD.2025.0461" target="_blank" rel="noopener">Candal-Pedreira et al., 2026</a>)</span></p>
     </div>
     <div class="art" data-scene="morph" data-label="A plate of vegetables and tofu changes into a burger, fries and a fizzy drink while the Blue Zone advantage bar drains." data-label-ms="Sepinggan sayur dan tauhu bertukar menjadi burger, kentang goreng dan minuman bergas, sementara bar kelebihan Blue Zone semakin susut."></div>
@@ -455,12 +489,12 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow"><span data-l="en">How we compare</span><span data-l="ms">Perbandingan</span></div>
-      <h2><span data-l="en">Japan vs Malaysia <em>—how?</em></span><span data-l="ms">Jepun vs Malaysia <em>—macam mana?</em></span></h2>
-      <p><span data-l="en"><strong>Japan:</strong> 107,677 people aged 100+. The leading regions are now Shimane, Kochi and Tottori; <strong>Malaysia is dwarfed.</strong></span><span data-l="ms"><strong>Jepun:</strong> 107,677 orang berumur 100 tahun ke atas. Wilayah teratas kini Shimane, Kochi dan Tottori; <strong>Malaysia dikerdilkan.</strong></span> <span class="cite">(<a href="https://www.nippon.com/en/japan-data/h02902/" target="_blank" rel="noopener">MHLW via Nippon.com, 2026</a>)</span></p>
+      <h2><span data-l="en">Japan vs Malaysia <em>—how?</em></span><span data-l="ms">Jepun vs Malaysia <em>—kenapa?</em></span></h2>
+      <p><span data-l="en"><strong>Japan:</strong> 107,677 people aged 100+. The leading regions are now Shimane, Kochi and Tottori; <strong>Malaysia is dwarfed.</strong></span><span data-l="ms"><strong>Jepun:</strong> 107,677 orang berumur 100 tahun ke atas. Wilayah teratas kini Shimane, Kochi dan Tottori; <strong>Malaysia jauh ketinggalan.</strong></span> <span class="cite">(<a href="https://www.nippon.com/en/japan-data/h02902/" target="_blank" rel="noopener">MHLW via Nippon.com, 2026</a>)</span></p>
       <p><span data-l="en"><strong>Malaysia:</strong> 4,287 citizens aged 100+.</span><span data-l="ms"><strong>Malaysia:</strong> 4,287 warganegara berumur 100 tahun ke atas.</span> <span class="cite">(<a href="https://asianews.network/malaysias-centenarians-growing-in-numbers/" target="_blank" rel="noopener">DOSM, June 2025</a>)</span></p>
     </div>
     <div class="extra">
-      <button class="reveal" type="button" aria-expanded="false"><span data-l="en">Is Japan simply healthier?</span><span data-l="ms">Adakah Jepun memang lebih sihat?</span><span class="hint"><span data-l="en">Tap to see</span><span data-l="ms">Klik untuk lihat</span></span><span class="rb"><span data-l="en">Not that simply. Malaysia is a younger country, so fewer people have reached 100 yet. Per 100,000 people: Japan about 76, Malaysia about 14.</span><span data-l="ms">Tidak semudah itu. Malaysia negara yang lebih muda, jadi belum ramai yang sampai umur 100. Bagi setiap 100,000 orang: Jepun sekitar 76, Malaysia sekitar 14.</span> <span class="cite">(<a href="https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians" target="_blank" rel="noopener">Japan Times, 2024</a>; <a href="https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026" target="_blank" rel="noopener">DOSM, 2026</a>)</span> <span data-l="en">Records matter too: in 2015, unchecked records listed 43,599, ten times today's count.</span><span data-l="ms">Rekod juga penting: pada 2015, rekod yang belum disemak mencatat 43,599 orang, sepuluh kali ganda jumlah hari ini.</span> <span class="cite">(<a href="https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia" target="_blank" rel="noopener">The Star, 2015</a>)</span></span></button>
+      <button class="reveal" type="button" aria-expanded="false"><span data-l="en">Is Japan simply healthier?</span><span data-l="ms">Adakah Jepun memang lebih sihat?</span><span class="hint"><span data-l="en">Tap to see</span><span data-l="ms">Ketik untuk lihat</span></span><span class="rb"><span data-l="en">Not that simply. Malaysia is a younger country, so fewer people have reached 100 yet. Per 100,000 people: Japan about 76, Malaysia about 14.</span><span data-l="ms">Tidak semudah itu. Malaysia negara yang lebih muda, jadi belum ramai yang sampai umur 100. Bagi setiap 100,000 orang: Jepun sekitar 76, Malaysia sekitar 14.</span> <span class="cite">(<a href="https://japantimes.co.jp/news/2024/09/17/japan/japan-record-centenarians" target="_blank" rel="noopener">Japan Times, 2024</a>; <a href="https://www.dosm.gov.my/portal-main/release-content/current-population-estimates-2026" target="_blank" rel="noopener">DOSM, 2026</a>)</span> <span data-l="en">Records matter too: in 2015, unchecked records listed 43,599, ten times today's count.</span><span data-l="ms">Rekod juga penting: pada 2015, rekod yang belum disemak mencatat 43,599 orang, sepuluh kali ganda jumlah hari ini.</span> <span class="cite">(<a href="https://thestar.com.my/news/nation/2015/11/03/parliament-40000-centenarians-in-malaysia" target="_blank" rel="noopener">The Star, 2015</a>)</span></span></button>
     </div>
     <div class="art swap" data-scene="cent" data-label="Hand-drawn headcount: 108 small figures for Japan, each standing for 1,000 people aged 100 or more. For Malaysia, 44 outlined figures from 2015 records fade away, leaving 4 checked figures." data-label-ms="Kiraan lakaran tangan: 108 figura kecil untuk Jepun, setiap satu mewakili 1,000 orang berumur 100 tahun ke atas. Untuk Malaysia, 44 figura bergaris daripada rekod 2015 pudar, tinggal 4 figura yang disemak."></div>
   </section>
@@ -492,7 +526,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow"><span data-l="en">Battery 1 · Malaysians aged 60+</span><span data-l="ms">Bateri 1 · Warga Malaysia 60 tahun ke atas</span></div>
       <h2><span data-l="en">1 in 4 older Malaysians <em>not getting enough nutrients.</em></span><span data-l="ms">1 dalam 4 warga emas Malaysia <em>tidak mendapat nutrien yang cukup.</em></span></h2>
-      <p><span data-l="en">The 2024 national survey found most people aged 60 and over were <strong>not eating enough</strong> of several nutrients, while <strong>64%</strong> ate too much fat.</span><span data-l="ms">Tinjauan kebangsaan 2024 mendapati kebanyakan orang berumur 60 tahun ke atas <strong>tidak cukup mengambil</strong> beberapa nutrien, manakala <strong>64%</strong> makan terlalu banyak lemak-trans.</span> <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
+      <p><span data-l="en">The 2024 national survey found most people aged 60 and over were <strong>not eating enough</strong> of several nutrients, while <strong>64%</strong> ate too much fat.</span><span data-l="ms">Tinjauan kebangsaan 2024 mendapati kebanyakan orang berumur 60 tahun ke atas <strong>tidak cukup mengambil</strong> beberapa nutrien, manakala <strong>64%</strong> makan terlalu banyak lemak.</span> <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span></p>
       <p class="small muted"><span data-l="en">Based on what people said they ate, not blood tests.</span><span data-l="ms">Berdasarkan apa yang dilaporkan dimakan, bukan ujian darah.</span></p>
     </div>
     <div class="art" data-scene="gaps" data-label="Hand-drawn bar chart of the share of Malaysians aged 60 and over not eating enough: calcium 96.7%, vitamin B1 80.6%, vitamin B3 71.0%, vitamin B2 64.7%, vitamin A 63.3%, vitamin C 61.0%." data-label-ms="Carta bar lakaran tangan peratusan warga Malaysia 60 tahun ke atas yang tidak cukup mengambil: kalsium 96.7%, vitamin B1 80.6%, vitamin B3 71.0%, vitamin B2 64.7%, vitamin A 63.3%, vitamin C 61.0%."></div>
@@ -507,7 +541,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <p class="small"><span data-l="en">So there is no need to fear tofu and tempeh. They can stay on the family table, alongside fish and chicken.</span><span data-l="ms">Jadi tidak perlu takut tauhu dan tempe. Ia boleh terus dihidang di meja keluarga, bersama ikan dan ayam.</span></p>
     </div>
     <div class="extra">
-      <button class="reveal" type="button" aria-expanded="false"><span data-l="en">A second study, and why we say "linked to"</span><span data-l="ms">Kajian kedua, dan kenapa kami kata "dikaitkan dengan"</span><span class="hint"><span data-l="en">Tap to see</span><span data-l="ms">Klik untuk lihat</span></span><span class="rb"><span data-l="en">A study of <strong>68,412 women</strong> linked soy foods to a lower risk of bowel cancer, mainly after menopause.</span><span data-l="ms">Kajian ke atas <strong>68,412 wanita</strong> mengaitkan makanan soya dengan risiko kanser usus yang lebih rendah, terutamanya selepas menopaus.</span> <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.26742" target="_blank" rel="noopener">Yang et al., 2009</a>)</span> <span data-l="en">Both studies followed what people ate for years; neither tested soy as a treatment. So soy is <strong>linked to</strong> lower risk, but we can't say it prevents cancer.</span><span data-l="ms">Kedua-dua kajian memantau pemakanan peserta selama bertahun-tahun; tiada yang menguji soya sebagai rawatan. Jadi soya <strong>dikaitkan dengan</strong> risiko lebih rendah, tetapi kita tidak boleh kata ia mencegah kanser.</span></span></button>
+      <button class="reveal" type="button" aria-expanded="false"><span data-l="en">A second study, and why we say "linked to"</span><span data-l="ms">Kajian kedua, dan kenapa kami kata "dikaitkan dengan"</span><span class="hint"><span data-l="en">Tap to see</span><span data-l="ms">Ketik untuk lihat</span></span><span class="rb"><span data-l="en">A study of <strong>68,412 women</strong> linked soy foods to a lower risk of bowel cancer, mainly after menopause.</span><span data-l="ms">Kajian ke atas <strong>68,412 wanita</strong> mengaitkan makanan soya dengan risiko kanser usus yang lebih rendah, terutamanya selepas menopaus.</span> <span class="cite">(<a href="https://doi.org/10.3945/ajcn.2008.26742" target="_blank" rel="noopener">Yang et al., 2009</a>)</span> <span data-l="en">Both studies followed what people ate for years; neither tested soy as a treatment. So soy is <strong>linked to</strong> lower risk, but we can't say it prevents cancer.</span><span data-l="ms">Kedua-dua kajian memantau pemakanan peserta selama bertahun-tahun; tiada yang menguji soya sebagai rawatan. Jadi soya <strong>dikaitkan dengan</strong> risiko lebih rendah, tetapi kita tidak boleh kata ia mencegah kanser.</span></span></button>
     </div>
     <div class="art swap" data-scene="soy" data-label="Hand-drawn sketch: one character shown as a teenager with soy milk, an adult and an older adult with tofu, then handing tofu to a grandchild." data-label-ms="Lakaran tangan: satu watak ditunjukkan semasa remaja dengan susu soya, semasa dewasa dan warga emas dengan tauhu, kemudian memberi tauhu kepada cucu."></div>
   </section>
@@ -555,7 +589,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow"><span data-l="en">Battery 2 · Movement</span><span data-l="ms">Bateri 2 · Pergerakan</span></div>
-      <h2><span data-l="en">What the World Health Organization <em>advises for older adults.</em></span><span data-l="ms">Nasihat WHO <em>untuk warga emas.</em></span></h2>
+      <h2><span data-l="en">What the World Health Organization <em>advises for older adults.</em></span><span data-l="ms">Nasihat Pertubuhan Kesihatan Sedunia <em>untuk warga emas.</em></span></h2>
       <p class="small"><span data-l="en">In Malaysia, <strong>1 in 3</strong> adults isn't physically active.</span><span data-l="ms">Di Malaysia, <strong>1 dalam 3</strong> orang dewasa tidak aktif secara fizikal.</span> <span class="cite">(<a href="https://iku.nih.gov.my/nhms-2024" target="_blank" rel="noopener">NHMS 2024</a>)</span> <span class="cite">(<a href="https://doi.org/10.1136/bjsports-2020-102955" target="_blank" rel="noopener">Bull et al., 2020</a>)</span></p>
     </div>
     <div class="art" data-tiles="who"></div>
@@ -565,8 +599,8 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow"><span data-l="en">Battery 2 · See it done</span><span data-l="ms">Bateri 2 · Lihat caranya</span></div>
-      <h2><span data-l="en">Real people, <em>real moves.</em></span><span data-l="ms">Semua orang, pelbagai umur, <em>boleh bina otot.</em></span></h2>
-      <p><span data-l="en">Three short clips of simple strength and balance moves you can do at home. Tap one to watch.</span><span data-l="ms">Tiga klip pendek gerakan kekuatan dan imbangan mudah yang boleh dibuat di rumah. Klik untuk menonton.</span></p>
+      <h2><span data-l="en">Real people, <em>real moves.</em></span><span data-l="ms">Orang sebenar, <em>gerakan sebenar.</em></span></h2>
+      <p><span data-l="en">Three short clips of simple strength and balance moves you can do at home. Tap one to watch.</span><span data-l="ms">Tiga klip pendek gerakan kekuatan dan imbangan mudah yang boleh dibuat di rumah. Ketik untuk menonton.</span></p>
       <p class="small muted"><span data-l="en">Start slowly and hold a chair or a wall. If you have heart, joint or balance problems, check with your doctor first.</span><span data-l="ms">Mulakan perlahan-lahan dan berpaut pada kerusi atau dinding. Jika anda ada masalah jantung, sendi atau imbangan, rujuk doktor dahulu.</span> <span class="tag">Video: <a href="https://www.instagram.com/harizfazalul/" target="_blank" rel="noopener">@harizfazalul</a> &amp; <a href="https://www.instagram.com/independent.motion/" target="_blank" rel="noopener">Independent Motion</a></span></p>
     </div>
     <div class="art">
@@ -582,9 +616,9 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow"><span data-l="en">Battery 2 · Preventing falls</span><span data-l="ms">Bateri 2 · Mencegah jatuh</span></div>
-      <h2><span data-l="en">A home that is <em>safe to move in.</em></span><span data-l="ms">Rumah yang selamat untuk<em> dihuni.</em></span></h2>
-      <p><span data-l="en">About 1 in 3 older adults aged 65 and older fall annually. Falls cause roughly 684,000 fatal falls each year globally, it is the second leading cause of injury deaths. Falls, also take away independence. Guidelines say every older adult should get advice on preventing them.</span><span data-l="ms">Kira-kira 1 dalam 3 warga emas berumur 65 tahun ke atas jatuh setiap tahun. Di seluruh dunia, insiden terjatuh sebabkan kira-kira 684,000 kematian setahun, punca kedua tertinggi kematian akibat kecederaan. Jatuh juga meragut keupayaan untuk berdikari. Garis panduan menyatakan setiap warga emas patut diberi nasihat untuk mencegahnya.</span> <span class="cite">(<a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">Montero-Odasso et al., 2022</a>)</span></p>
-      <p><strong><span data-l="en">Pak Ali's home has 5 hazards. Tap each red number to fix it.</span><span data-l="ms">Rumah Pak Ali ada 5 bahaya. Klik setiap nombor merah untuk membaikinya.</span></strong></p>
+      <h2><span data-l="en">A home that is <em>safe to move in.</em></span><span data-l="ms">Rumah yang <em>selamat untuk bergerak.</em></span></h2>
+      <p><span data-l="en">About 1 in 3 older adults aged 65 and older fall annually. Falls cause roughly 684,000 fatal falls each year globally, it is the second leading cause of injury deaths. Falls, also take away independence. Guidelines say every older adult should get advice on preventing them.</span><span data-l="ms">Kira-kira 1 dalam 3 warga emas berumur 65 tahun ke atas jatuh setiap tahun. Di seluruh dunia, jatuh menyebabkan kira-kira 684,000 kematian setahun, punca kedua tertinggi kematian akibat kecederaan. Jatuh juga meragut keupayaan untuk berdikari. Garis panduan menyatakan setiap warga emas patut diberi nasihat untuk mencegahnya.</span> <span class="cite">(<a href="https://doi.org/10.1093/ageing/afac205" target="_blank" rel="noopener">Montero-Odasso et al., 2022</a>)</span></p>
+      <p><strong><span data-l="en">Pak Ali's home has 5 hazards. Tap each red number to fix it.</span><span data-l="ms">Rumah Pak Ali ada 5 bahaya. Ketik setiap nombor merah untuk membaikinya.</span></strong></p>
     </div>
     <div class="extra">
       <div class="counter" id="fix-count"></div>
@@ -614,7 +648,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow"><span data-l="en">Battery 3 · Medicines</span><span data-l="ms">Bateri 3 · Ubat-ubatan</span></div>
-      <h2><span data-l="en">Almost half of older adults <em>take 5 or more medicines.</em></span><span data-l="ms">Hampir separuh warga emas <em>ambil 5 jenis ubat atau lebih.</em></span></h2>
+      <h2><span data-l="en">Almost half of older adults <em>take 5 or more medicines.</em></span><span data-l="ms">Hampir separuh warga emas <em>mengambil 5 ubat atau lebih.</em></span></h2>
       <p><span data-l="en"><strong>45.9%</strong> of urban Malaysians aged 55 and over on long-term medicines were taking five or more, counting supplements.</span><span data-l="ms"><strong>45.9%</strong> warga bandar Malaysia berumur 55 tahun ke atas yang mengambil ubat jangka panjang menggunakan lima ubat atau lebih, termasuk suplemen.</span> <span class="cite">(<a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">Lim et al., 2017</a>)</span></p>
       <p><span class="tag"><span data-l="en">Bag contents are made up</span><span data-l="ms">Isi beg ini rekaan</span></span></p>
     </div>
@@ -694,8 +728,8 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide plain">
     <div class="text">
       <div class="eyebrow"><span data-l="en">Battery 4 · Filling the gaps</span><span data-l="ms">Bateri 4 · Mengisi kekurangan</span></div>
-      <h2><span data-l="en">Food first. <em>Then ask about these.</em></span><span data-l="ms">Try makanan sebenar dulu. <em>Kemudian bary try supplements.</em></span></h2>
-      <p class="small muted hide-short"><span data-l="en">Tap a nutrient older Malaysians lack: foods first, the supplement a pharmacist might suggest, and what to watch for.</span><span data-l="ms">Klik nutrien yang kurang diambil warga emas Malaysia: makanan dahulu, suplemen yang mungkin dicadangkan ahli farmasi, dan perkara yang perlu diberi perhatian.</span></p>
+      <h2><span data-l="en">Food first. <em>Then ask about these.</em></span><span data-l="ms">Makanan dahulu. <em>Kemudian tanya tentang ini.</em></span></h2>
+      <p class="small muted hide-short"><span data-l="en">Tap a nutrient older Malaysians lack: foods first, the supplement a pharmacist might suggest, and what to watch for.</span><span data-l="ms">Ketik nutrien yang kurang diambil warga emas Malaysia: makanan dahulu, suplemen yang mungkin dicadangkan ahli farmasi, dan perkara yang perlu diberi perhatian.</span></p>
     </div>
     <div class="nutri" role="tablist">
       <button type="button" role="tab" aria-selected="true" data-n="0"><span data-l="en">Calcium</span><span data-l="ms">Kalsium</span></button><button type="button" role="tab" aria-selected="false" data-n="1">Vitamin D</button><button type="button" role="tab" aria-selected="false" data-n="2">B1 · B2 · B3</button><button type="button" role="tab" aria-selected="false" data-n="3">Vitamin A</button><button type="button" role="tab" aria-selected="false" data-n="4">Vitamin C</button>
@@ -709,7 +743,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     <div class="text">
       <div class="eyebrow"><span data-l="en">Battery 4 · Supplements</span><span data-l="ms">Bateri 4 · Suplemen</span></div>
       <h2><span data-l="en">Tofu or soy capsule: <em>which one did the research study?</em></span><span data-l="ms">Tauhu atau kapsul soya: <em>yang mana dikaji oleh penyelidik?</em></span></h2>
-      <p class="small muted"><span data-l="en">Tap your answer.</span><span data-l="ms">Klik jawapan anda.</span></p>
+      <p class="small muted"><span data-l="en">Tap your answer.</span><span data-l="ms">Ketik jawapan anda.</span></p>
     </div>
     <div class="extra"><p id="tofu-ans" aria-live="polite"></p></div>
     <div class="art">
@@ -728,7 +762,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <p><span data-l="en">Registered medicines, traditional products and health supplements in Malaysia carry a <strong>MAL number</strong> and a Ministry of Health <strong>hologram sticker</strong>. No MAL number? Don't buy it.</span><span data-l="ms">Ubat berdaftar, produk tradisional dan suplemen kesihatan di Malaysia mempunyai <strong>nombor MAL</strong> dan <strong>pelekat hologram</strong> Kementerian Kesihatan. Tiada nombor MAL? Jangan beli.</span> <span class="cite">(<a href="https://pharmacy.moh.gov.my/en/faq-categories/pengguna" target="_blank" rel="noopener">MOH Pharmacy, FAQ</a>)</span></p>
     </div>
     <div class="extra">
-      <p class="small muted" style="margin-bottom:.35em"><span data-l="en">Tap each part of this real example:</span><span data-l="ms">Klik setiap bahagian contoh sebenar ini:</span></p>
+      <p class="small muted" style="margin-bottom:.35em"><span data-l="en">Tap each part of this real example:</span><span data-l="ms">Ketik setiap bahagian contoh sebenar ini:</span></p>
       <div class="mal" role="group" aria-label="Penyahkod nombor MAL" data-aria-en="MAL number decoder" data-aria-ms="Penyahkod nombor MAL">
         <button type="button" data-m="0">MAL</button><button type="button" data-m="1">18086084</button><button type="button" data-m="2">T</button><button type="button" data-m="3">CR</button>
       </div>
@@ -790,7 +824,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <section class="slide has-art">
     <div class="text">
       <div class="eyebrow"><span data-l="en">Look around you</span><span data-l="ms">Lihat sekeliling anda</span></div>
-      <h2><span data-l="en">PAWE is already <em>a small Blue Zone.</em></span><span data-l="ms">PAWE pun sebenarnya boleh dijadikan <em>sebuah Blue Zone kecil.</em></span></h2>
+      <h2><span data-l="en">PAWE is already <em>a small Blue Zone.</em></span><span data-l="ms">PAWE sudah pun <em>sebuah Blue Zone kecil.</em></span></h2>
       <p><span data-l="en">Friends, a routine, and a reason to come every week. Blue Zones are built on close social ties and a sense of purpose.</span><span data-l="ms">Kawan-kawan, rutin, dan sebab untuk datang setiap minggu. Blue Zones dibina atas hubungan sosial yang rapat dan rasa bertujuan.</span> <span class="cite">(<a href="https://doi.org/10.1177/15598276251342502" target="_blank" rel="noopener">Poulain &amp; Herm, 2025</a>)</span></p>
     </div>
     <div class="art" data-scene="pawe" data-label="Four older friends chatting and laughing outside the PAWE activity centre." data-label-ms="Empat kawan warga emas berbual dan ketawa di luar pusat aktiviti PAWE."></div>
@@ -827,7 +861,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <li><span data-l="en">Movement: move daily, build strength and balance, and make your home safe.</span><span data-l="ms">Pergerakan: bergerak setiap hari, bina kekuatan dan imbangan, dan jadikan rumah selamat.</span></li>
       <li><span data-l="en">Medicines and supplements: know what you take, review it with a pharmacist, and use MyUBAT and NPRA's checks.</span><span data-l="ms">Ubat dan suplemen: ketahui apa yang anda ambil, semak bersama ahli farmasi, dan guna MyUBAT serta semakan NPRA.</span></li>
     </ol>
-    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open"><span data-l="en">Save on your phone →</span><span data-l="ms">Download di fon anda →</span></button><button class="linkbtn" type="button" id="open-deeper"><span data-l="en">Sources &amp; about (21) →</span><span data-l="ms">Sumber &amp; bacaan (21) →</span></button></div>
+    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open"><span data-l="en">Save on your phone →</span><span data-l="ms">Simpan di telefon →</span></button><button class="linkbtn" type="button" id="open-deeper"><span data-l="en">Sources &amp; about (21) →</span><span data-l="ms">Sumber &amp; tentang (21) →</span></button></div>
     <div class="sharerow" aria-label="Kongsi halaman ini" data-aria-en="Share this page" data-aria-ms="Kongsi halaman ini"><button type="button" class="sharebtn js-share" data-umami-event="share-native-last"><span data-l="en">Share this page</span><span data-l="ms">Kongsi halaman ini</span></button><button type="button" class="sharebtn ghost js-copy" data-umami-event="copy-link-last"><span data-l="en">Copy link</span><span data-l="ms">Salin pautan</span></button><a class="sharebtn ghost js-wa" target="_blank" rel="noopener" data-umami-event="share-whatsapp-last">WhatsApp</a></div>
     <div class="contact"><span data-l="en">Stay in touch</span><span data-l="ms">Kekal berhubung</span>
       <div class="soc"><a href="mailto:the.aufthority@gmail.com">the.aufthority@gmail.com</a><a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener">LinkedIn</a><a href="https://aufthority.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener">TikTok</a><a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener">Threads</a></div>
@@ -857,8 +891,8 @@ svg .badge:focus-visible .ring{stroke-width:5}
 <div id="install" role="dialog" aria-labelledby="install-h" hidden>
   <div class="ih"><img src="media/icon-192.png" alt=""><h3 id="install-h"><span data-l="en">Save this guide on your phone</span><span data-l="ms">Simpan panduan ini di telefon anda</span></h3></div>
   <p><span data-l="en">Open it from your home screen any time, like an app. Most of it works even without internet.</span><span data-l="ms">Buka dari skrin utama bila-bila masa, seperti aplikasi. Kebanyakan bahagian berfungsi walaupun tanpa internet.</span></p>
-  <div data-mode="ios"><ol><li><span data-l="en">Tap the Share button</span><span data-l="ms">Klik butang Kongsi</span> <svg viewBox="0 0 24 24" fill="none" stroke="#1f4aa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v10h14V11h-1"/></svg> <span data-l="en">at the bottom of the screen.</span><span data-l="ms">di bahagian bawah skrin.</span></li><li><span data-l="en">Scroll down and tap <strong>Add to Home Screen</strong></span><span data-l="ms">Tatal ke bawah dan Klik <strong>Tambah ke Skrin Utama</strong> (Add to Home Screen)</span> <svg viewBox="0 0 24 24" fill="none" stroke="#1f4aa8" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>.</li><li><span data-l="en">Tap <strong>Add</strong>.</span><span data-l="ms">Klik <strong>Tambah</strong> (Add).</span></li></ol></div>
-  <div data-mode="other"><ol><li><span data-l="en">Open your browser menu (the three dots or the Share button).</span><span data-l="ms">Buka menu pelayar (tiga titik atau butang Kongsi).</span></li><li><span data-l="en">Tap <strong>Add to Home screen</strong> or <strong>Install app</strong>.</span><span data-l="ms">Klik <strong>Tambah ke Skrin utama</strong> atau <strong>Pasang aplikasi</strong>.</span></li></ol></div>
+  <div data-mode="ios"><ol><li><span data-l="en">Tap the Share button</span><span data-l="ms">Ketik butang Kongsi</span> <svg viewBox="0 0 24 24" fill="none" stroke="#1f4aa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v10h14V11h-1"/></svg> <span data-l="en">at the bottom of the screen.</span><span data-l="ms">di bahagian bawah skrin.</span></li><li><span data-l="en">Scroll down and tap <strong>Add to Home Screen</strong></span><span data-l="ms">Tatal ke bawah dan ketik <strong>Tambah ke Skrin Utama</strong> (Add to Home Screen)</span> <svg viewBox="0 0 24 24" fill="none" stroke="#1f4aa8" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>.</li><li><span data-l="en">Tap <strong>Add</strong>.</span><span data-l="ms">Ketik <strong>Tambah</strong> (Add).</span></li></ol></div>
+  <div data-mode="other"><ol><li><span data-l="en">Open your browser menu (the three dots or the Share button).</span><span data-l="ms">Buka menu pelayar (tiga titik atau butang Kongsi).</span></li><li><span data-l="en">Tap <strong>Add to Home screen</strong> or <strong>Install app</strong>.</span><span data-l="ms">Ketik <strong>Tambah ke Skrin utama</strong> atau <strong>Pasang aplikasi</strong>.</span></li></ol></div>
   <div class="ib"><button type="button" class="go" id="install-go"><span data-l="en">Install</span><span data-l="ms">Pasang</span></button><button type="button" class="later" id="install-later"><span data-l="en">Not now</span><span data-l="ms">Bukan sekarang</span></button></div>
 </div>
 <dialog id="zoom" aria-label="Gambar dibesarkan" data-aria-en="Enlarged picture" data-aria-ms="Gambar dibesarkan"><div class="zb"></div><div class="zbar"><button type="button" id="zclose"><span data-l="en">Close</span><span data-l="ms">Tutup</span></button></div></dialog>
@@ -1209,7 +1243,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       var fam=P('M14 114 H146')+xh({x:42,y:114,s:.56,r:[26,-34]})+xh({x:82,y:114,s:.36})+xh({x:120,y:114,s:.6,flip:1,r:[26,-34]})+heart(82,36,RED,.9);
       var sun=P('M14 114 H146')+P('M38 114 A42 42 0 0 1 122 114',{w:2.2})+P('M80 64 v-12 M108 74 l8 -8 M52 74 l-8 -8 M126 98 h10 M34 98 h-10',{stroke:ORG,w:2.2})+xh({x:80,y:114,s:.5,r:[22,-80],l:[-16,-80]});
       return '<div class="tiles">'+
-        '<div class="tile">'+mini(plants)+'<b>'+tr('Eat mostly plants','Makanan berasaskan tumbuhan')+'</b></div>'+
+        '<div class="tile">'+mini(plants)+'<b>'+tr('Eat mostly plants','Banyakkan makanan tumbuhan')+'</b></div>'+
         '<div class="tile">'+mini(move)+'<b>'+tr('Move naturally','Bergerak secara semula jadi')+'</b></div>'+
         '<div class="tile">'+mini(fam)+'<b>'+tr('Close to family and friends','Rapat dengan keluarga dan kawan')+'</b></div>'+
         '<div class="tile">'+mini(sun)+'<b>'+tr('A reason to get up','Ada sebab untuk bangun pagi')+'</b></div></div>';
@@ -1249,7 +1283,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   nshow(0);
 
   /* ---------- render art ---------- */
-  function addHint(host){ var h=document.createElement('span'); h.className='zoomhint'; h.textContent=tr('tap to enlarge','Klik untuk besarkan'); host.appendChild(h); }
+  function addHint(host){ var h=document.createElement('span'); h.className='zoomhint'; h.textContent=tr('tap to enlarge','ketik untuk besarkan'); host.appendChild(h); }
   function renderArt(art){
     var key=art.getAttribute('data-scene');
     var lab=art.getAttribute(LANG==='ms'?'data-label-ms':'data-label')||art.getAttribute('data-label')||'';
@@ -1372,7 +1406,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
 
   /* ---------- batteries ---------- */
   var BAT={food:0,move:0,med:0,sup:0}, TOT={food:6,move:6,med:6,sup:7}, NAMES={food:['food','makanan'],move:['movement','pergerakan'],med:['medicines','ubat-ubatan'],sup:['supplements','suplemen']};
-  function updateCounters(){ Object.keys(BAT).forEach(function(k){ document.querySelector('.counter[data-for="'+k+'"]').textContent=tr('Tap what you do, or will start · '+BAT[k]+' of '+TOT[k]+' charged','Klik apa yang anda buat, atau akan mula · '+BAT[k]+' daripada '+TOT[k]+' dicas'); }); }
+  function updateCounters(){ Object.keys(BAT).forEach(function(k){ document.querySelector('.counter[data-for="'+k+'"]').textContent=tr('Tap what you do, or will start · '+BAT[k]+' of '+TOT[k]+' charged','Ketik apa yang anda buat, atau akan mula · '+BAT[k]+' daripada '+TOT[k]+' dicas'); }); }
   document.querySelectorAll('.ck').forEach(function(b){
     b.addEventListener('click',function(){
       var on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on);
@@ -1466,7 +1500,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   if(standalone){ document.getElementById('open-install').style.display='none'; }
   /* offer it once per visit, after the first slide, on phones and tablets */
   var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-  btnNext.addEventListener('click',function(){ if(!shown && !standalone && touch && current===3 && (deferred || isIOS)) openSheet(); });
+  btnNext.addEventListener('click',function(){ if(!shown && !standalone && touch && current===4 && (deferred || isIOS)) openSheet(); });
 
   /* ---------- contents drawer ---------- */
   var rebuildDrawer;
@@ -1531,7 +1565,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     try{ history.replaceState(null,'', location.pathname+(l==='en'?'?lang=en':'')+location.hash); }catch(e){}
     syncLangBtns(); applyAttrs();
     document.querySelectorAll('.art[data-scene], .art[data-tiles], .art[data-shot]').forEach(renderArt);
-    document.querySelectorAll('.zoomhint').forEach(function(h){ h.textContent=tr('tap to enlarge','Klik untuk besarkan'); });
+    document.querySelectorAll('.zoomhint').forEach(function(h){ h.textContent=tr('tap to enlarge','ketik untuk besarkan'); });
     bindChair(); bindRoom(); fixUI();
     nshow(nIdx); renderQ(); malShow(malIdx); tofuShow(); updateCounters(); updateScore(); rebuildDrawer(); setWA();
     show(current,true);
