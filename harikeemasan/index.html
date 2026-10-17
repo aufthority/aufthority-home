@@ -270,7 +270,7 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
   .ncard p{font-size:.88em}
 }
 /* ---------- cover ---------- */
-.slide.cover.active{display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,3vh,28px)}
+.slide.cover.active{display:flex;flex-direction:column;justify-content:safe center;gap:clamp(14px,3vh,28px)}
 .cv-event{font-size:.78em;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .cv-title{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.04;letter-spacing:-.015em;font-size:clamp(2rem, calc(2.4vh + 3vw), 4.4rem);margin:.25em 0 .35em}
 .cv-title em{font-style:italic;color:var(--accent)}
@@ -288,6 +288,31 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
   .qrcard{padding:18px 18px 14px}
   .qrcard svg{width:clamp(200px,40vh,340px)}
 }
+/* ---------- speaker intro ---------- */
+.who-head{display:flex;align-items:center;gap:12px;margin-bottom:.4em}
+.who-head img{width:58px;height:58px;border-radius:50%;object-fit:cover;border:1.5px solid var(--line);flex:none}
+.who-head h2{margin:0}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:.7em 0 .5em}
+.role{border:1px solid var(--rule);border-radius:12px;padding:.5em .75em;background:#fff}
+.role b{display:block;font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:1.08em;line-height:1.15;color:var(--accent);margin-bottom:.15em}
+.role span{display:block;font-size:.84em;line-height:1.38}
+.qr-row{display:flex;gap:10px;align-items:stretch}
+.pic-phone{position:relative;flex:1;min-width:0;margin:0;border-radius:16px;overflow:hidden;border:1.5px solid var(--line)}
+.pic-phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.pic-phone figcaption{position:absolute;left:6px;right:6px;bottom:6px;background:rgba(255,255,255,.92);border-radius:8px;padding:2px 8px;font-size:12px;line-height:1.3}
+@media (min-aspect-ratio: 5/4) and (min-width: 760px){ .qr-row{display:contents} .pic-phone{display:none} }
+.pics-col{display:none}
+.pics-col figure{position:relative;margin:0;min-height:0;border-radius:14px;overflow:hidden;border:1.5px solid var(--line)}
+.pics-col img{display:block;width:100%;height:100%;object-fit:cover}
+.pics-col figcaption{position:absolute;left:6px;right:6px;bottom:6px;background:rgba(255,255,255,.92);border-radius:8px;padding:3px 8px;font-size:12px;line-height:1.3}
+@media (min-aspect-ratio: 5/4) and (min-width: 760px){
+  .slide.cover.intro.active{grid-template-columns:clamp(150px,17vw,220px) minmax(0,1fr) auto;column-gap:clamp(20px,3vw,40px)}
+  .slide.intro .pics-col{display:grid;grid-template-rows:1.15fr 1fr;gap:10px;height:min(100%,540px);align-self:center}
+    .slide.intro .qr-pending,.slide.intro .qrcard svg{width:clamp(180px,34vh,270px)}
+}
+.qr-pending{width:clamp(150px,26vh,210px);aspect-ratio:1;border:2px dashed var(--rule);border-radius:10px;display:grid;place-items:center;text-align:center;padding:12px;font-size:.8em;color:var(--muted);margin:0 auto}
+@media (min-aspect-ratio: 5/4) and (min-width: 760px){ .qr-pending{width:clamp(200px,40vh,340px)} }
+@media (max-width:420px){ .qrcard .qr-pending,.roles ~ * .qrcard svg{width:130px} .roles{gap:6px} .role{padding:.4em .6em} .role span{font-size:.8em} }
 #topnav .tl{display:flex;align-items:center;gap:12px;min-width:0}
 #menu-btn{display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:0 11px 0 8px;min-height:36px;font-weight:500;font-size:15px}
 #menu-btn svg{width:20px;height:20px}
@@ -438,6 +463,35 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <svg viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="Kod QR ke www.aufthority.com/harikeemasan" data-aria-en="QR code to www.aufthority.com/harikeemasan" data-aria-ms="Kod QR ke www.aufthority.com/harikeemasan"><rect width="37" height="37" fill="#fff"/><path fill="#1a1a18" d="M4 4h7v1h-7zM12 4h2v1h-2zM15 4h1v1h-1zM17 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM20 5h3v1h-3zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h2v1h-2zM15 6h3v1h-3zM19 6h6v1h-6zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h3v1h-3zM17 7h2v1h-2zM21 7h4v1h-4zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h3v1h-3zM17 8h2v1h-2zM21 8h2v1h-2zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM20 9h2v1h-2zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM13 11h2v1h-2zM18 11h1v1h-1zM20 11h1v1h-1zM22 11h1v1h-1zM24 11h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM10 12h2v1h-2zM13 12h1v1h-1zM16 12h1v1h-1zM20 12h1v1h-1zM23 12h1v1h-1zM27 12h1v1h-1zM30 12h1v1h-1zM32 12h1v1h-1zM5 13h1v1h-1zM7 13h3v1h-3zM11 13h2v1h-2zM15 13h1v1h-1zM17 13h1v1h-1zM19 13h3v1h-3zM23 13h2v1h-2zM26 13h2v1h-2zM31 13h2v1h-2zM4 14h7v1h-7zM12 14h2v1h-2zM16 14h1v1h-1zM19 14h1v1h-1zM23 14h1v1h-1zM25 14h3v1h-3zM29 14h2v1h-2zM32 14h1v1h-1zM4 15h1v1h-1zM7 15h3v1h-3zM13 15h3v1h-3zM20 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM27 15h3v1h-3zM5 16h1v1h-1zM7 16h1v1h-1zM9 16h4v1h-4zM15 16h2v1h-2zM18 16h3v1h-3zM24 16h1v1h-1zM26 16h2v1h-2zM32 16h1v1h-1zM4 17h1v1h-1zM7 17h3v1h-3zM12 17h1v1h-1zM14 17h4v1h-4zM19 17h3v1h-3zM23 17h4v1h-4zM31 17h2v1h-2zM5 18h2v1h-2zM10 18h2v1h-2zM14 18h3v1h-3zM19 18h1v1h-1zM21 18h1v1h-1zM23 18h2v1h-2zM26 18h1v1h-1zM32 18h1v1h-1zM6 19h1v1h-1zM8 19h2v1h-2zM13 19h1v1h-1zM15 19h2v1h-2zM18 19h1v1h-1zM20 19h1v1h-1zM22 19h2v1h-2zM25 19h1v1h-1zM27 19h1v1h-1zM4 20h1v1h-1zM8 20h4v1h-4zM13 20h3v1h-3zM17 20h4v1h-4zM22 20h2v1h-2zM26 20h1v1h-1zM32 20h1v1h-1zM5 21h4v1h-4zM11 21h1v1h-1zM16 21h1v1h-1zM19 21h3v1h-3zM23 21h2v1h-2zM26 21h2v1h-2zM30 21h3v1h-3zM4 22h3v1h-3zM10 22h1v1h-1zM12 22h4v1h-4zM17 22h3v1h-3zM23 22h1v1h-1zM26 22h1v1h-1zM29 22h1v1h-1zM32 22h1v1h-1zM6 23h4v1h-4zM13 23h4v1h-4zM19 23h1v1h-1zM22 23h3v1h-3zM26 23h2v1h-2zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h2v1h-2zM17 24h2v1h-2zM20 24h1v1h-1zM24 24h6v1h-6zM31 24h1v1h-1zM12 25h1v1h-1zM14 25h2v1h-2zM17 25h1v1h-1zM19 25h3v1h-3zM24 25h1v1h-1zM28 25h3v1h-3zM32 25h1v1h-1zM4 26h7v1h-7zM12 26h2v1h-2zM19 26h1v1h-1zM21 26h2v1h-2zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM32 26h1v1h-1zM4 27h1v1h-1zM10 27h1v1h-1zM15 27h3v1h-3zM23 27h2v1h-2zM28 27h1v1h-1zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM13 28h2v1h-2zM17 28h1v1h-1zM20 28h1v1h-1zM23 28h7v1h-7zM31 28h1v1h-1zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM13 29h4v1h-4zM19 29h2v1h-2zM25 29h1v1h-1zM27 29h4v1h-4zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h1v1h-1zM15 30h1v1h-1zM18 30h6v1h-6zM28 30h1v1h-1zM31 30h2v1h-2zM4 31h1v1h-1zM10 31h1v1h-1zM16 31h1v1h-1zM18 31h2v1h-2zM22 31h1v1h-1zM24 31h2v1h-2zM27 31h3v1h-3zM4 32h7v1h-7zM12 32h1v1h-1zM14 32h1v1h-1zM18 32h2v1h-2zM24 32h3v1h-3zM28 32h1v1h-1zM32 32h1v1h-1z"/></svg>
       <b><span data-l="en">Scan to open this guide</span><span data-l="ms">Imbas untuk buka panduan ini</span></b>
       <span>aufthority.com/harikeemasan</span>
+    </div>
+  </section>
+
+  <!-- speaker intro + pre-talk questionnaire -->
+  <section class="slide cover intro">
+    <div class="pics-col" aria-hidden="true">
+      <figure><img src="media/speaker-klsf.webp" alt="" style="object-position:78% 25%"><figcaption><span data-l="en">Pegaga poster, KLSF 2025</span><span data-l="ms">Poster pegaga, KLSF 2025</span></figcaption></figure>
+      <figure><img src="media/speaker-stage.webp" alt="" style="object-position:50% 20%"><figcaption><span data-l="en">Speaking at KPJ Healthcare University</span><span data-l="ms">Bercakap di KPJ Healthcare University</span></figcaption></figure>
+    </div>
+    <div class="cv-main">
+      <div class="eyebrow"><span data-l="en">Meet your speaker</span><span data-l="ms">Kenali penceramah</span></div>
+      <div class="who-head"><h2>Auf Ali</h2></div>
+      <p class="small muted"><span data-l="en">Lecturer, KPJ Healthcare University. Teaching since 2016.</span><span data-l="ms">Pensyarah, KPJ Healthcare University. Mengajar sejak 2016.</span></p>
+      <div class="roles">
+        <div class="role"><b><span data-l="en">Chemist</span><span data-l="ms">Ahli kimia</span></b><span><span data-l="en">A background in pharmaceutical quality control; content expert in gas chromatography.</span><span data-l="ms">Berlatar belakang kawalan kualiti farmaseutikal; pakar kandungan kromatografi gas.</span></span></div>
+        <div class="role"><b><span data-l="en">Educator</span><span data-l="ms">Pendidik</span></b><span><span data-l="en">Teaches chemistry to pharmacy and healthcare students.</span><span data-l="ms">Mengajar kimia kepada pelajar farmasi dan kesihatan.</span></span></div>
+        <div class="role"><b><span data-l="en">Science communicator</span><span data-l="ms">Komunikator sains</span></b><span><span data-l="en">Founder of Aufthority, evidence-based health explainers in Bahasa Malaysia. Book accepted by DBP: <em>Bimaristan</em>.</span><span data-l="ms">Pengasas Aufthority, penerangan kesihatan berasaskan bukti dalam Bahasa Malaysia. Buku diterima DBP: <em>Bimaristan</em>.</span></span></div>
+        <div class="role"><b><span data-l="en">Pharmaceutical technology researcher</span><span data-l="ms">Penyelidik teknologi farmaseutikal</span></b><span><span data-l="en">Studies topical formulations of pegaga (<em>Centella asiatica</em>). Best Presenter, KLSF ICPHS 2025.</span><span data-l="ms">Mengkaji formulasi topikal pegaga (<em>Centella asiatica</em>). Penyampai Terbaik, KLSF ICPHS 2025.</span></span></div>
+      </div>
+      <a class="small" href="https://www.aufthority.com/portfolio/" target="_blank" rel="noopener" data-umami-event="open-portfolio"><span data-l="en">Full portfolio →</span><span data-l="ms">Portfolio penuh →</span></a>
+    </div>
+    <div class="qr-row">
+    <figure class="pic-phone"><img src="media/speaker-stage.webp" alt="Auf Ali bercakap di KPJ Healthcare University" data-alt-en="Auf Ali speaking at KPJ Healthcare University" data-alt-ms="Auf Ali bercakap di KPJ Healthcare University"><figcaption><span data-l="en">Speaking at KPJU</span><span data-l="ms">Bercakap di KPJU</span></figcaption></figure>
+    <div class="qrcard">
+      <!-- PRE-FORM QR: replace .qr-pending with the QR svg once the form link is ready -->
+      <div class="qr-pending"><span data-l="en">Pre-talk questionnaire QR code: coming soon</span><span data-l="ms">Kod QR soal selidik pra-ceramah: akan ditambah</span></div>
+      <b><span data-l="en">Scan before we begin</span><span data-l="ms">Imbas sebelum kita mula</span></b>
+      <span><span data-l="en">Pre-talk questionnaire</span><span data-l="ms">Soal selidik pra-ceramah</span></span>
+    </div>
     </div>
   </section>
 
@@ -1516,7 +1570,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   if(standalone){ document.getElementById('open-install').style.display='none'; }
   /* offer it once per visit, after the first slide, on phones and tablets */
   var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-  btnNext.addEventListener('click',function(){ if(!shown && !standalone && touch && current===4 && (deferred || isIOS)) openSheet(); });
+  btnNext.addEventListener('click',function(){ if(!shown && !standalone && touch && current===5 && (deferred || isIOS)) openSheet(); });
 
   /* ---------- contents drawer ---------- */
   var rebuildDrawer;
