@@ -314,8 +314,8 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.7)}
 .pics-col img{display:block;width:100%;height:100%;object-fit:cover}
 .pics-col figcaption{position:absolute;left:6px;right:6px;bottom:6px;background:rgba(255,255,255,.92);border-radius:8px;padding:3px 8px;font-size:12px;line-height:1.3}
 @media (min-aspect-ratio: 5/4) and (min-width: 760px){
-  .slide.cover.intro.active{grid-template-columns:clamp(150px,17vw,220px) minmax(0,1fr) auto;column-gap:clamp(20px,3vw,40px)}
-  .slide.intro .pics-col{display:grid;grid-template-rows:1.15fr 1fr;gap:10px;height:min(100%,540px);align-self:center}
+  .slide.cover.intro.active{grid-template-columns:clamp(150px,17vw,220px) minmax(0,1fr);column-gap:clamp(20px,3vw,40px)}
+  .slide.intro .pics-col{display:grid;grid-template-rows:1fr;gap:10px;height:min(100%,540px);align-self:center}
     .slide.intro .qr-pending,.slide.intro .qrcard svg{width:clamp(180px,34vh,270px)}
 }
 .qr-pending{width:clamp(150px,26vh,210px);aspect-ratio:1;border:2px dashed var(--rule);border-radius:10px;display:grid;place-items:center;text-align:center;padding:12px;font-size:.8em;color:var(--muted);margin:0 auto}
@@ -341,6 +341,13 @@ svg .flex{transform-box:fill-box;transform-origin:center;animation:flexK 1.3s ea
 .infolink{border:none;background:none;padding:0;font:inherit;font-weight:700;color:var(--accent);text-decoration:underline dotted;text-decoration-thickness:2px;text-underline-offset:3px;cursor:pointer}
 svg .nrow{cursor:pointer;outline:none}
 svg .nrow:hover .hit,svg .nrow:focus-visible .hit{fill:rgba(45,106,79,.08)}
+.qr-laptop{display:none}
+@media (min-aspect-ratio: 5/4) and (min-width: 760px){
+  .slide.endq.active{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(28px,4vw,56px);align-content:center}
+  .slide.endq > *{grid-column:1;max-width:none}
+  .slide.endq > .qr-laptop{display:block;grid-column:2;grid-row:1 / span 7;align-self:center}
+  .slide.endq .qr-laptop svg{width:clamp(180px,34vh,260px)}
+}
 #topnav .tl{display:flex;align-items:center;gap:12px;min-width:0}
 #menu-btn{display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:0 11px 0 8px;min-height:36px;font-weight:500;font-size:15px}
 #menu-btn svg{width:20px;height:20px}
@@ -498,7 +505,6 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <!-- speaker intro + pre-talk questionnaire -->
   <section class="slide cover intro">
     <div class="pics-col" aria-hidden="true">
-      <figure><img src="media/speaker-klsf.webp" alt="" style="object-position:78% 25%"><figcaption><span data-l="en">Pegaga poster, KLSF 2025</span><span data-l="ms">Poster pegaga, KLSF 2025</span></figcaption></figure>
       <figure><img src="media/speaker-stage.webp" alt="" style="object-position:50% 20%"><figcaption><span data-l="en">Speaking at KPJ Healthcare University</span><span data-l="ms">Bercakap di KPJ Healthcare University</span></figcaption></figure>
     </div>
     <div class="cv-main">
@@ -515,11 +521,6 @@ svg .badge:focus-visible .ring{stroke-width:5}
     </div>
     <div class="qr-row">
     <figure class="pic-phone"><img src="media/speaker-stage.webp" alt="Auf Ali bercakap di KPJ Healthcare University" data-alt-en="Auf Ali speaking at KPJ Healthcare University" data-alt-ms="Auf Ali bercakap di KPJ Healthcare University"><figcaption><span data-l="en">Speaking at KPJU</span><span data-l="ms">Bercakap di KPJU</span></figcaption></figure>
-    <div class="qrcard">
-      <svg viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="Kod QR ke www.aufthority.com/harikeemasan" data-aria-en="QR code to www.aufthority.com/harikeemasan" data-aria-ms="Kod QR ke www.aufthority.com/harikeemasan"><rect width="37" height="37" fill="#fff"/><path fill="#1a1a18" d="M4 4h7v1h-7zM12 4h2v1h-2zM15 4h1v1h-1zM17 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM20 5h3v1h-3zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h2v1h-2zM15 6h3v1h-3zM19 6h6v1h-6zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h3v1h-3zM17 7h2v1h-2zM21 7h4v1h-4zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h3v1h-3zM17 8h2v1h-2zM21 8h2v1h-2zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM20 9h2v1h-2zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM13 11h2v1h-2zM18 11h1v1h-1zM20 11h1v1h-1zM22 11h1v1h-1zM24 11h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM10 12h2v1h-2zM13 12h1v1h-1zM16 12h1v1h-1zM20 12h1v1h-1zM23 12h1v1h-1zM27 12h1v1h-1zM30 12h1v1h-1zM32 12h1v1h-1zM5 13h1v1h-1zM7 13h3v1h-3zM11 13h2v1h-2zM15 13h1v1h-1zM17 13h1v1h-1zM19 13h3v1h-3zM23 13h2v1h-2zM26 13h2v1h-2zM31 13h2v1h-2zM4 14h7v1h-7zM12 14h2v1h-2zM16 14h1v1h-1zM19 14h1v1h-1zM23 14h1v1h-1zM25 14h3v1h-3zM29 14h2v1h-2zM32 14h1v1h-1zM4 15h1v1h-1zM7 15h3v1h-3zM13 15h3v1h-3zM20 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM27 15h3v1h-3zM5 16h1v1h-1zM7 16h1v1h-1zM9 16h4v1h-4zM15 16h2v1h-2zM18 16h3v1h-3zM24 16h1v1h-1zM26 16h2v1h-2zM32 16h1v1h-1zM4 17h1v1h-1zM7 17h3v1h-3zM12 17h1v1h-1zM14 17h4v1h-4zM19 17h3v1h-3zM23 17h4v1h-4zM31 17h2v1h-2zM5 18h2v1h-2zM10 18h2v1h-2zM14 18h3v1h-3zM19 18h1v1h-1zM21 18h1v1h-1zM23 18h2v1h-2zM26 18h1v1h-1zM32 18h1v1h-1zM6 19h1v1h-1zM8 19h2v1h-2zM13 19h1v1h-1zM15 19h2v1h-2zM18 19h1v1h-1zM20 19h1v1h-1zM22 19h2v1h-2zM25 19h1v1h-1zM27 19h1v1h-1zM4 20h1v1h-1zM8 20h4v1h-4zM13 20h3v1h-3zM17 20h4v1h-4zM22 20h2v1h-2zM26 20h1v1h-1zM32 20h1v1h-1zM5 21h4v1h-4zM11 21h1v1h-1zM16 21h1v1h-1zM19 21h3v1h-3zM23 21h2v1h-2zM26 21h2v1h-2zM30 21h3v1h-3zM4 22h3v1h-3zM10 22h1v1h-1zM12 22h4v1h-4zM17 22h3v1h-3zM23 22h1v1h-1zM26 22h1v1h-1zM29 22h1v1h-1zM32 22h1v1h-1zM6 23h4v1h-4zM13 23h4v1h-4zM19 23h1v1h-1zM22 23h3v1h-3zM26 23h2v1h-2zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h2v1h-2zM17 24h2v1h-2zM20 24h1v1h-1zM24 24h6v1h-6zM31 24h1v1h-1zM12 25h1v1h-1zM14 25h2v1h-2zM17 25h1v1h-1zM19 25h3v1h-3zM24 25h1v1h-1zM28 25h3v1h-3zM32 25h1v1h-1zM4 26h7v1h-7zM12 26h2v1h-2zM19 26h1v1h-1zM21 26h2v1h-2zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM32 26h1v1h-1zM4 27h1v1h-1zM10 27h1v1h-1zM15 27h3v1h-3zM23 27h2v1h-2zM28 27h1v1h-1zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM13 28h2v1h-2zM17 28h1v1h-1zM20 28h1v1h-1zM23 28h7v1h-7zM31 28h1v1h-1zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM13 29h4v1h-4zM19 29h2v1h-2zM25 29h1v1h-1zM27 29h4v1h-4zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h1v1h-1zM15 30h1v1h-1zM18 30h6v1h-6zM28 30h1v1h-1zM31 30h2v1h-2zM4 31h1v1h-1zM10 31h1v1h-1zM16 31h1v1h-1zM18 31h2v1h-2zM22 31h1v1h-1zM24 31h2v1h-2zM27 31h3v1h-3zM4 32h7v1h-7zM12 32h1v1h-1zM14 32h1v1h-1zM18 32h2v1h-2zM24 32h3v1h-3zM28 32h1v1h-1zM32 32h1v1h-1z"/></svg>
-      <b><span data-l="en">2 · Scan to open these slides</span><span data-l="ms">2 · Imbas untuk buka slaid ini</span></b>
-      <span>aufthority.com/harikeemasan</span>
-    </div>
     </div>
   </section>
 
@@ -950,7 +951,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   </section>
 
   <!-- 24 -->
-  <section class="slide plain">
+  <section class="slide plain endq">
     <div class="text">
       <div class="eyebrow"><span data-l="en">Your turn</span><span data-l="ms">Giliran anda</span></div>
       <h2><span data-l="en">Live long. <em>Stay independent.</em></span><span data-l="ms">Hidup lama. <em>Kekal berdikari.</em></span></h2>
@@ -961,12 +962,17 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <li><span data-l="en">Movement: move daily, build strength and balance, and make your home safe.</span><span data-l="ms">Pergerakan: bergerak setiap hari, bina kekuatan dan imbangan, dan jadikan rumah selamat.</span></li>
       <li><span data-l="en">Medicines and supplements: know what you take, review it with a pharmacist, and use MyUBAT and NPRA's checks.</span><span data-l="ms">Ubat dan suplemen: ketahui apa yang anda ambil, semak bersama ahli farmasi, dan guna MyUBAT serta semakan NPRA.</span></li>
     </ol>
-    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open"><span data-l="en">Save on your phone →</span><span data-l="ms">Simpan di telefon →</span></button><button class="linkbtn" type="button" id="open-deeper"><span data-l="en">Sources &amp; about (35) →</span><span data-l="ms">Sumber &amp; tentang (35) →</span></button></div>
+    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open"><span data-l="en">Save on your phone →</span><span data-l="ms">Install as app →</span></button><button class="linkbtn" type="button" id="open-deeper"><span data-l="en">Sources &amp; about (35) →</span><span data-l="ms">Bacaan lanjut (35) →</span></button></div>
     <div class="sharerow" aria-label="Kongsi halaman ini" data-aria-en="Share this page" data-aria-ms="Kongsi halaman ini"><button type="button" class="sharebtn js-share" data-umami-event="share-native-last"><span data-l="en">Share this page</span><span data-l="ms">Kongsi halaman ini</span></button><button type="button" class="sharebtn ghost js-copy" data-umami-event="copy-link-last"><span data-l="en">Copy link</span><span data-l="ms">Salin pautan</span></button><a class="sharebtn ghost js-wa" target="_blank" rel="noopener" data-umami-event="share-whatsapp-last">WhatsApp</a></div>
     <div class="contact"><span data-l="en">Stay in touch</span><span data-l="ms">Kekal berhubung</span>
       <div class="soc"><a href="mailto:the.aufthority@gmail.com">the.aufthority@gmail.com</a><a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener">LinkedIn</a><a href="https://aufthority.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener">TikTok</a><a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener">Threads</a></div>
     </div>
     <p class="signoff"><span data-l="en">Charge a little every day.</span><span data-l="ms">Cas sedikit setiap hari.</span> <a class="small" style="font-family:'DM Sans',sans-serif;font-style:normal" href="https://www.aufthority.com/"><span data-l="en">Made by Aufthority</span><span data-l="ms">Dihasilkan oleh Aufthority</span></a></p>
+    <div class="qrcard qr-laptop">
+      <svg viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="Kod QR ke www.aufthority.com/harikeemasan" data-aria-en="QR code to www.aufthority.com/harikeemasan" data-aria-ms="Kod QR ke www.aufthority.com/harikeemasan"><rect width="37" height="37" fill="#fff"/><path fill="#1a1a18" d="M4 4h7v1h-7zM12 4h2v1h-2zM15 4h1v1h-1zM17 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM20 5h3v1h-3zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h2v1h-2zM15 6h3v1h-3zM19 6h6v1h-6zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h3v1h-3zM17 7h2v1h-2zM21 7h4v1h-4zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h3v1h-3zM17 8h2v1h-2zM21 8h2v1h-2zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM20 9h2v1h-2zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM13 11h2v1h-2zM18 11h1v1h-1zM20 11h1v1h-1zM22 11h1v1h-1zM24 11h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM10 12h2v1h-2zM13 12h1v1h-1zM16 12h1v1h-1zM20 12h1v1h-1zM23 12h1v1h-1zM27 12h1v1h-1zM30 12h1v1h-1zM32 12h1v1h-1zM5 13h1v1h-1zM7 13h3v1h-3zM11 13h2v1h-2zM15 13h1v1h-1zM17 13h1v1h-1zM19 13h3v1h-3zM23 13h2v1h-2zM26 13h2v1h-2zM31 13h2v1h-2zM4 14h7v1h-7zM12 14h2v1h-2zM16 14h1v1h-1zM19 14h1v1h-1zM23 14h1v1h-1zM25 14h3v1h-3zM29 14h2v1h-2zM32 14h1v1h-1zM4 15h1v1h-1zM7 15h3v1h-3zM13 15h3v1h-3zM20 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM27 15h3v1h-3zM5 16h1v1h-1zM7 16h1v1h-1zM9 16h4v1h-4zM15 16h2v1h-2zM18 16h3v1h-3zM24 16h1v1h-1zM26 16h2v1h-2zM32 16h1v1h-1zM4 17h1v1h-1zM7 17h3v1h-3zM12 17h1v1h-1zM14 17h4v1h-4zM19 17h3v1h-3zM23 17h4v1h-4zM31 17h2v1h-2zM5 18h2v1h-2zM10 18h2v1h-2zM14 18h3v1h-3zM19 18h1v1h-1zM21 18h1v1h-1zM23 18h2v1h-2zM26 18h1v1h-1zM32 18h1v1h-1zM6 19h1v1h-1zM8 19h2v1h-2zM13 19h1v1h-1zM15 19h2v1h-2zM18 19h1v1h-1zM20 19h1v1h-1zM22 19h2v1h-2zM25 19h1v1h-1zM27 19h1v1h-1zM4 20h1v1h-1zM8 20h4v1h-4zM13 20h3v1h-3zM17 20h4v1h-4zM22 20h2v1h-2zM26 20h1v1h-1zM32 20h1v1h-1zM5 21h4v1h-4zM11 21h1v1h-1zM16 21h1v1h-1zM19 21h3v1h-3zM23 21h2v1h-2zM26 21h2v1h-2zM30 21h3v1h-3zM4 22h3v1h-3zM10 22h1v1h-1zM12 22h4v1h-4zM17 22h3v1h-3zM23 22h1v1h-1zM26 22h1v1h-1zM29 22h1v1h-1zM32 22h1v1h-1zM6 23h4v1h-4zM13 23h4v1h-4zM19 23h1v1h-1zM22 23h3v1h-3zM26 23h2v1h-2zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h2v1h-2zM17 24h2v1h-2zM20 24h1v1h-1zM24 24h6v1h-6zM31 24h1v1h-1zM12 25h1v1h-1zM14 25h2v1h-2zM17 25h1v1h-1zM19 25h3v1h-3zM24 25h1v1h-1zM28 25h3v1h-3zM32 25h1v1h-1zM4 26h7v1h-7zM12 26h2v1h-2zM19 26h1v1h-1zM21 26h2v1h-2zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM32 26h1v1h-1zM4 27h1v1h-1zM10 27h1v1h-1zM15 27h3v1h-3zM23 27h2v1h-2zM28 27h1v1h-1zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM13 28h2v1h-2zM17 28h1v1h-1zM20 28h1v1h-1zM23 28h7v1h-7zM31 28h1v1h-1zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM13 29h4v1h-4zM19 29h2v1h-2zM25 29h1v1h-1zM27 29h4v1h-4zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h1v1h-1zM15 30h1v1h-1zM18 30h6v1h-6zM28 30h1v1h-1zM31 30h2v1h-2zM4 31h1v1h-1zM10 31h1v1h-1zM16 31h1v1h-1zM18 31h2v1h-2zM22 31h1v1h-1zM24 31h2v1h-2zM27 31h3v1h-3zM4 32h7v1h-7zM12 32h1v1h-1zM14 32h1v1h-1zM18 32h2v1h-2zM24 32h3v1h-3zM28 32h1v1h-1zM32 32h1v1h-1z"/></svg>
+      <b><span data-l="en">Scan to open this guide</span><span data-l="ms">Imbas untuk buka panduan ini</span></b>
+      <span>aufthority.com/harikeemasan</span>
+    </div>
   </section>
 
   </main>
@@ -1000,8 +1006,8 @@ svg .badge:focus-visible .ring{stroke-width:5}
   <div class="dlg-head"><h3 id="info-title"></h3><button type="button" id="info-close"><span data-l="en">Close</span><span data-l="ms">Tutup</span></button></div>
   <div class="dlg-body" id="info-body"></div>
 </dialog>
-<dialog id="deeper" aria-label="Lebih mendalam" data-aria-en="Going deeper" data-aria-ms="Lebih mendalam">
-  <div class="dlg-head"><h3><span data-l="en">Going deeper</span><span data-l="ms">Lebih mendalam</span></h3><button type="button" id="close-deeper"><span data-l="en">Close</span><span data-l="ms">Tutup</span></button></div>
+<dialog id="deeper" aria-label="Sumber" data-aria-en="Going deeper" data-aria-ms="Sumber">
+  <div class="dlg-head"><h3><span data-l="en">Going deeper</span><span data-l="ms">Sumber</span></h3><button type="button" id="close-deeper"><span data-l="en">Close</span><span data-l="ms">Tutup</span></button></div>
   <div class="dlg-body">
     <h4><span data-l="en">About this page</span><span data-l="ms">Tentang halaman ini</span></h4>
     <p><span data-l="en">A plain-language companion to the talk <em>Facing the Golden Years in Good Health</em> (USIM x PAWE, 21 October 2026), written for older adults, carers and the public. It explains research simply and is not a substitute for advice from your own doctor or pharmacist. Characters and homes are made up.</span><span data-l="ms">Pendamping dalam bahasa mudah untuk ceramah <em>Menghadapi Hari Keemasan dengan Sihat</em> (USIM x PAWE, 21 Oktober 2026), ditulis untuk warga emas, penjaga dan orang ramai. Ia menerangkan kajian secara ringkas dan bukan pengganti nasihat doktor atau ahli farmasi anda sendiri. Watak dan rumah dalam halaman ini adalah rekaan.</span></p>
