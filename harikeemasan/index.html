@@ -457,6 +457,9 @@ svg .hz{transition:opacity .5s}
 svg.f2 .hz2,svg.f3 .hz3{opacity:0}
 svg.f1 .b1,svg.f2 .b2,svg.f3 .b3,svg.f4 .b4,svg.f5 .b5{display:none}
 svg .badge{cursor:pointer}
+svg .gx{opacity:0;transition:opacity .4s;pointer-events:none}
+svg.g1 .gx1,svg.g2 .gx2,svg.g3 .gx3,svg.g4 .gx4,svg.g5 .gx5,svg.g6 .gx6{opacity:1}
+svg.g1 .gb1,svg.g2 .gb2,svg.g3 .gb3,svg.g4 .gb4,svg.g5 .gb5,svg.g6 .gb6{display:none}
 svg .badge:focus{outline:none}
 svg .badge:focus-visible .ring{stroke-width:5}
 
@@ -839,6 +842,21 @@ svg .badge:focus-visible .ring{stroke-width:5}
     </div>
   </section>
 
+  <!-- red flags -->
+  <section class="slide has-art">
+    <div class="text">
+      <div class="eyebrow"><span data-l="en">Battery 4 · Spot the red flags</span><span data-l="ms">Bateri 4 · Kenal pasti tanda bahaya</span></div>
+      <h2><span data-l="en">One bottle cures everything? <em>That's a red flag.</em></span><span data-l="ms">Satu botol sembuh semua? <em>Itu tanda bahaya.</em></span></h2>
+      <p><span data-l="en">In Malaysia, the law bans ads claiming to treat serious diseases such as diabetes, high blood pressure, cancer, and heart, kidney or eye disease.</span><span data-l="ms">Di Malaysia, undang-undang melarang iklan yang mendakwa merawat penyakit serius seperti kencing manis, darah tinggi, kanser, serta penyakit jantung, buah pinggang atau mata.</span> <span class="cite">(<a href="https://pharmacy.moh.gov.my/sites/default/files/document-upload/medicine-advertisement-sale-act-1956-act-290_1.pdf" target="_blank" rel="noopener">Act 290, 1956</a>)</span></p>
+      <p><strong><span data-l="en">This ad is made up. Tap each red number to spot a red flag.</span><span data-l="ms">Iklan ini rekaan. Klik setiap nombor merah untuk mengenal pasti tanda bahaya.</span></strong></p>
+    </div>
+    <div class="extra">
+      <div class="counter" id="flag-count"></div>
+      <p class="small" id="flag-msg" aria-live="polite"></p>
+    </div>
+    <div class="art" data-scene="ad" data-label="A made-up ad for a product called AJAIB-X with six numbered red flags: it claims to cure diabetes, high blood pressure, kidney disease and cancer; says it is 100% natural with no side effects; promises healing in 7 days; shows before-and-after pictures; quotes a buyer who threw away her doctor's medicine; and says today only, limited stock." data-label-ms="Iklan rekaan untuk produk bernama AJAIB-X dengan enam tanda bahaya bernombor: mendakwa menyembuhkan kencing manis, darah tinggi, sakit buah pinggang dan kanser; mengaku 100% asli tanpa kesan sampingan; menjanjikan sembuh dalam 7 hari; menunjukkan gambar sebelum dan selepas; memetik pembeli yang membuang ubat doktornya; dan menyatakan hari ini sahaja, stok terhad."></div>
+  </section>
+
   <!-- MAL -->
   <section class="slide has-art">
     <div class="text">
@@ -885,6 +903,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Before buying, ask: "Can I get this from food instead?"</span><span data-l="ms">Sebelum membeli, tanya: "Bolehkah saya dapatkan ini daripada makanan?"</span></span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Take supplements only for a reason your doctor or pharmacist confirms.</span><span data-l="ms">Ambil suplemen hanya atas sebab yang disahkan doktor atau ahli farmasi.</span></span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Ask for a blood test before taking vitamin D.</span><span data-l="ms">Minta ujian darah sebelum mengambil vitamin D.</span></span></button></li>
+      <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Don't trust ads that promise to cure many diseases or tell you to stop your medicine.</span><span data-l="ms">Jangan percaya iklan yang menjanjikan sembuh pelbagai penyakit atau menyuruh anda berhenti ubat.</span></span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Check the MAL number on NPRA's product search before buying.</span><span data-l="ms">Semak nombor MAL di carian produk NPRA sebelum membeli.</span></span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Report any side effect to NPRA with the ConSERF form.</span><span data-l="ms">Laporkan sebarang kesan sampingan kepada NPRA melalui borang ConSERF.</span></span></button></li>
       <li><button class="ck" type="button" aria-pressed="false" data-bat="sup"><span class="box"></span><span><span data-l="en">Bring supplements to your pharmacist review.</span><span data-l="ms">Bawa suplemen anda semasa semakan ubat bersama ahli farmasi.</span></span></button></li>
@@ -962,7 +981,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <li><span data-l="en">Movement: move daily, build strength and balance, and make your home safe.</span><span data-l="ms">Pergerakan: bergerak setiap hari, bina kekuatan dan imbangan, dan jadikan rumah selamat.</span></li>
       <li><span data-l="en">Medicines and supplements: know what you take, review it with a pharmacist, and use MyUBAT and NPRA's checks.</span><span data-l="ms">Ubat dan suplemen: ketahui apa yang anda ambil, semak bersama ahli farmasi, dan guna MyUBAT serta semakan NPRA.</span></li>
     </ol>
-    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open"><span data-l="en">Save on your phone →</span><span data-l="ms">Install as app →</span></button><button class="linkbtn" type="button" id="open-deeper"><span data-l="en">Sources &amp; about (35) →</span><span data-l="ms">Bacaan lanjut (35) →</span></button></div>
+    <div class="twobtn"><button class="linkbtn" type="button" id="open-install" data-umami-event="install-open"><span data-l="en">Save on your phone →</span><span data-l="ms">Install as app →</span></button><button class="linkbtn" type="button" id="open-deeper"><span data-l="en">Sources &amp; about (37) →</span><span data-l="ms">Bacaan lanjut (37) →</span></button></div>
     <div class="sharerow" aria-label="Kongsi halaman ini" data-aria-en="Share this page" data-aria-ms="Kongsi halaman ini"><button type="button" class="sharebtn js-share" data-umami-event="share-native-last"><span data-l="en">Share this page</span><span data-l="ms">Kongsi halaman ini</span></button><button type="button" class="sharebtn ghost js-copy" data-umami-event="copy-link-last"><span data-l="en">Copy link</span><span data-l="ms">Salin pautan</span></button><a class="sharebtn ghost js-wa" target="_blank" rel="noopener" data-umami-event="share-whatsapp-last">WhatsApp</a></div>
     <div class="contact"><span data-l="en">Stay in touch</span><span data-l="ms">Kekal berhubung</span>
       <div class="soc"><a href="mailto:the.aufthority@gmail.com">the.aufthority@gmail.com</a><a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener">LinkedIn</a><a href="https://aufthority.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener">TikTok</a><a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener">Threads</a></div>
@@ -1040,6 +1059,8 @@ svg .badge:focus-visible .ring{stroke-width:5}
       <li>Lim, L. M., McStea, M., Chung, W. W., Nor Azmi, N., Abdul Aziz, S. A., Alwi, S., Kamarulzaman, A., Kamaruzzaman, S. B., Chua, S. S., &amp; Rajasuriar, R. (2017). Prevalence, risk factors and health outcomes associated with polypharmacy among urban community-dwelling older adults in multi-ethnic Malaysia. <em>PLOS ONE, 12</em>(3), e0173466. <a href="https://doi.org/10.1371/journal.pone.0173466" target="_blank" rel="noopener">https://doi.org/10.1371/journal.pone.0173466</a></li>
       <li>Lim, X. Y., Chan, J. S. W., Japri, N., Lee, J. C., &amp; Tan, T. Y. C. (2021). <em>Carica papaya</em> L. leaf: A systematic scoping review on biological safety and herb-drug interactions. <em>Evidence-Based Complementary and Alternative Medicine, 2021</em>, 5511221. <a href="https://doi.org/10.1155/2021/5511221" target="_blank" rel="noopener">https://doi.org/10.1155/2021/5511221</a></li>
       <li>Liu, C.-J., &amp; Latham, N. K. (2009). Progressive resistance strength training for improving physical function in older adults. <em>Cochrane Database of Systematic Reviews</em>, (3), CD002759. <a href="https://doi.org/10.1002/14651858.CD002759.pub2" target="_blank" rel="noopener">https://doi.org/10.1002/14651858.CD002759.pub2</a></li>
+      <li><em>Medicines (Advertisement and Sale) Act 1956</em> [Act 290] (Revised 1983). Laws of Malaysia. <a href="https://pharmacy.moh.gov.my/sites/default/files/document-upload/medicine-advertisement-sale-act-1956-act-290_1.pdf" target="_blank" rel="noopener">https://pharmacy.moh.gov.my/sites/default/files/document-upload/medicine-advertisement-sale-act-1956-act-290_1.pdf</a></li>
+      <li>Ministry of Health Malaysia, Medicine Advertisements Board. (n.d.). <em>Panduan tuntutan pengiklanan produk ubat berdaftar yang dibenarkan tanpa kelulusan Lembaga Iklan Ubat</em> [KKLIU approval number]. <a href="https://pharmacy.moh.gov.my/sites/default/files/document-upload/panduan-tuntutan-pengiklanan-produk-ubat-berdaftar-dibenarkan-tanpa-kelulusan-liu.pdf" target="_blank" rel="noopener">https://pharmacy.moh.gov.my/sites/default/files/document-upload/panduan-tuntutan-pengiklanan-produk-ubat-berdaftar-dibenarkan-tanpa-kelulusan-liu.pdf</a></li>
       <li>Ministry of Health Malaysia, Pharmaceutical Services Programme. (n.d.). <em>FAQ: Consumers</em> [MAL registration number and hologram]. <a href="https://pharmacy.moh.gov.my/en/faq-categories/pengguna" target="_blank" rel="noopener">https://pharmacy.moh.gov.my/en/faq-categories/pengguna</a></li>
       <li>Ministry of Health Malaysia, Pharmacy Services Programme. (n.d.). <em>MyUBAT</em>. Retrieved October 12, 2026, from <a href="https://myubat.pharmacy.gov.my/?lang=en#services" target="_blank" rel="noopener">https://myubat.pharmacy.gov.my/?lang=en#services</a></li>
       <li>Ministry of Health Malaysia, Non-Communicable Disease Section, &amp; Hospital Selayang. (n.d.). <em>Panduan pengiraan sodium (garam)</em> [Sodium guide booklet]. <a href="https://ezpamphlets.wordpress.com/wp-content/uploads/2020/02/garam-booklet.pdf" target="_blank" rel="noopener">https://ezpamphlets.wordpress.com/wp-content/uploads/2020/02/garam-booklet.pdf</a></li>
@@ -1361,6 +1382,34 @@ svg .badge:focus-visible .ring{stroke-width:5}
     return frame(480,270,c,L);
   };
 
+  SC.ad=function(L){
+    var c='';
+    c+=P('M14 258 Q70 255 124 258');
+    c+=xh({x:64,y:258,s:.85,r:[30,-64],l:[-24,-32],eyeDy:-3});
+    c+='<g class="pulse">'+H(84,152,'?',RED,40,{cls:'x'})+'</g>';
+    c+=H(14,40,tr('too good','terlalu indah,'),BLU,18,{dl:.3})+H(14,60,tr('to be true?','logik ke?'),BLU,18,{dl:.4});
+    c+=P('M130 10 H390 V262 H130 Z',{w:2.6,fill:'#fffdf6'});
+    c+='<path d="M136 16 H384 V46 H136 Z" fill="'+RED+'" stroke="'+K+'" stroke-width="2"/>';
+    c+=H(260,37,tr('TODAY ONLY! LIMITED STOCK','HARI INI SAHAJA! STOK TERHAD'),'#fff',16,{a:'middle',cls:'x'});
+    c+=H(232,78,'AJAIB-X',K,32,{a:'middle',cls:'x'});
+    c+=H(150,102,tr('CURES:','SEMBUH:'),K,17,{cls:'x'});
+    tr(['diabetes','high blood pressure','kidney disease','cancer'],['kencing manis','darah tinggi','sakit buah pinggang','kanser']).forEach(function(d,i){ var y=120+i*16;
+      c+=P('M150 '+(y-5)+' l4 4 l7 -8',{stroke:GRN,w:2})+H(164,y,d,K,13,{cls:'x'}); });
+    c+=P('M286 182 V122 q0 -8 8 -8 h32 q8 0 8 8 V182 Z',{w:2.4,fill:'#fff'})+P('M294 114 V102 h32 v12',{w:2.3,fill:'#fff'})+P('M291 136 h38 v30 h-38 Z',{w:1.8})+leaf(310,151,-20,.7);
+    var st='M'; for(var k=0;k<24;k++){ var a=k*Math.PI/12, r=k%2?16:23; st+=(366+Math.cos(a)*r).toFixed(1)+' '+(100+Math.sin(a)*r).toFixed(1)+(k<23?' L':' Z'); }
+    c+=P(st,{stroke:RED,w:2,fill:'#fff'})+H(366,99,'100%',RED,13,{a:'middle',cls:'x'})+H(366,111,tr('natural','asli'),RED,12,{a:'middle',cls:'x'});
+    c+=H(366,138,tr('no side','tanpa kesan'),RED,11,{a:'middle',cls:'x'})+H(366,151,tr('effects!','sampingan!'),RED,11,{a:'middle',cls:'x'});
+    c+=H(260,201,tr('Healed in 7 days!','Sembuh dalam 7 hari!'),ORG,21,{a:'middle',cls:'x'})+P('M180 207 Q260 211 340 206',{stroke:ORG,w:2});
+    c+=H(168,224,tr('before','sebelum'),K,12,{a:'middle',cls:'x'})+xh({x:166,y:256,s:.32,eyeDy:-3})+P('M182 242 h14',{w:1.8,arrow:'k'});
+    c+=H(220,224,tr('after','selepas'),K,12,{a:'middle',cls:'x'})+xh({x:218,y:256,s:.32,r:[26,-44],l:[-20,-44]});
+    c+=P('M252 220 h128 q6 0 6 6 v26 q0 6 -6 6 h-110 l-10 8 v-8 h-8 q-6 0 -6 -6 v-26 q0 -6 6 -6 Z',{w:2,fill:'#fff'});
+    c+=H(318,235,tr('"I threw away','"Saya terus buang'),K,13,{a:'middle',cls:'x'})+H(318,250,tr('my doctor\'s pills!"','ubat doktor!"'),K,13,{a:'middle',cls:'x'});
+    [[214,132,76,40],[366,118,28,40],[260,198,86,16],[194,238,46,24],[318,238,72,24],[260,31,130,19]].forEach(function(e,i){ c+='<g class="gx gx'+(i+1)+'">'+E(e[0],e[1],e[2],e[3],{stroke:RED,w:3.2})+'</g>'; });
+    [[132,122],[394,86],[140,198],[134,246],[394,224],[394,30]].forEach(function(b,i){ var n=i+1;
+      c+='<g class="badge gb'+n+'" data-flag="'+n+'" role="button" tabindex="0" aria-label="'+tr('Red flag ','Tanda bahaya ')+n+'"><circle cx="'+b[0]+'" cy="'+b[1]+'" r="28" fill="transparent"/><g class="pulse"><circle class="ring" cx="'+b[0]+'" cy="'+b[1]+'" r="16" fill="#fff" stroke="'+RED+'" stroke-width="3"/><text x="'+b[0]+'" y="'+(b[1]+7)+'" font-family="Patrick Hand, cursive" font-size="22" fill="'+RED+'" text-anchor="middle">'+n+'</text></g></g>'; });
+    return frame(480,270,c,L);
+  };
+
   SC.pawe=function(L){
     var c='';
     c+=P('M70 206 V72 H410 V206',{w:2.5})+P('M56 76 L240 26 L424 76',{w:2.6});
@@ -1431,7 +1480,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   function renderArt(art){
     var key=art.getAttribute('data-scene');
     var lab=art.getAttribute(LANG==='ms'?'data-label-ms':'data-label')||art.getAttribute('data-label')||'';
-    if(key){ art.innerHTML=SC[key](lab); if(key!=='room'){ var rb=document.createElement('button'); rb.type='button'; rb.className='replay'; rb.textContent=tr('replay','ulang'); rb.addEventListener('click',function(){ renderArt(art); runCounts(art); if(key==='chair') bindChair(); }); art.appendChild(rb); } }
+    if(key){ art.innerHTML=SC[key](lab); if(key!=='room' && key!=='ad'){ var rb=document.createElement('button'); rb.type='button'; rb.className='replay'; rb.textContent=tr('replay','ulang'); rb.addEventListener('click',function(){ renderArt(art); runCounts(art); if(key==='chair') bindChair(); }); art.appendChild(rb); } }
     var t=art.getAttribute('data-tiles'); if(t) art.innerHTML=TILES[t]();
     var s=art.getAttribute('data-shot'); if(s){ art.innerHTML=SHOTS[s](); addHint(art); }
   }
@@ -1528,6 +1577,35 @@ svg .badge:focus-visible .ring{stroke-width:5}
   }
   bindRoom(); fixUI();
 
+  /* ---------- supplement ad red flags ---------- */
+  var FLAGS=[false,false,false,false,false,false], lastFlag=-1;
+  var FLAGMSG=[
+    ['<strong>One product, many unrelated diseases.</strong> Malaysian law bans ads claiming to treat diabetes, high blood pressure, cancer, and heart, kidney or eye disease.','<strong>Satu produk, banyak penyakit yang tidak berkaitan.</strong> Undang-undang Malaysia melarang iklan yang mendakwa merawat kencing manis, darah tinggi, kanser, serta penyakit jantung, buah pinggang atau mata.'],
+    ['<strong>"100% natural, no side effects."</strong> Natural is not the same as safe. Herbs have active substances and can <button type="button" class="infolink" data-info="hdi">clash with your medicines</button>.','<strong>"100% asli, tanpa kesan sampingan."</strong> Asli tidak bermakna selamat. Herba mengandungi bahan aktif dan boleh <button type="button" class="infolink" data-info="hdi">bertembung dengan ubat anda</button>.'],
+    ['<strong>Fast, guaranteed results.</strong> Long-term conditions like diabetes or high blood pressure are not cured in 7 days.','<strong>Hasil cepat dan dijamin.</strong> Penyakit jangka panjang seperti kencing manis atau darah tinggi tidak sembuh dalam 7 hari.'],
+    ['<strong>Before-and-after pictures as the only proof.</strong> Photos and stories are easy to fake, and they are not scientific studies.','<strong>Gambar sebelum dan selepas sebagai satu-satunya bukti.</strong> Gambar dan cerita mudah dipalsukan, dan ia bukan kajian saintifik.'],
+    ['<strong>Encouraging you to stop your doctor\'s medicine.</strong> Stopping blood pressure or diabetes medicine on your own can be dangerous. Always ask first.','<strong>Menggalakkan anda berhenti ubat doktor.</strong> Berhenti ubat darah tinggi atau kencing manis sendiri boleh membahayakan. Sentiasa tanya dahulu.'],
+    ['<strong>Pressure to buy now.</strong> "Today only" and "limited stock" rush you so you buy before you check.','<strong>Desakan untuk beli sekarang.</strong> "Hari ini sahaja" dan "stok terhad" mendesak anda membeli sebelum sempat menyemak.']];
+  function flagUI(){
+    var n=FLAGS.filter(Boolean).length, out=document.getElementById('flag-msg');
+    document.getElementById('flag-count').textContent=n+tr(' of 6 red flags found',' daripada 6 tanda bahaya ditemui');
+    out.innerHTML= n===6 ? tr('<strong>All 6 found.</strong> Notice too: this ad has no MAL number for the product and no KKLIU approval number for the ad. Approved medicine ads carry one.','<strong>Kesemua 6 ditemui.</strong> Perhatikan juga: iklan ini tiada nombor MAL untuk produk dan tiada nombor kelulusan KKLIU untuk iklan. Iklan ubat yang diluluskan memaparkannya.')+' <span class="cite">(<a href="https://pharmacy.moh.gov.my/sites/default/files/document-upload/panduan-tuntutan-pengiklanan-produk-ubat-berdaftar-dibenarkan-tanpa-kelulusan-liu.pdf" target="_blank" rel="noopener">'+tr('KKM Medicine Advertisements Board','Lembaga Iklan Ubat KKM')+'</a>)</span>'
+      : (lastFlag<0 ? tr('Does anything look too good to be true?','Ada apa-apa yang nampak terlalu indah untuk jadi benar?') : T(FLAGMSG[lastFlag]));
+  }
+  function bindAd(){
+    var svg=document.querySelector('[data-scene="ad"] svg');
+    FLAGS.forEach(function(f,i){ if(f) svg.classList.add('g'+(i+1)); });
+    svg.querySelectorAll('[data-flag]').forEach(function(b){
+      function go(e){ if(e.type==='keydown' && e.key!=='Enter' && e.key!==' ') return; e.preventDefault();
+        var i=+b.getAttribute('data-flag')-1; FLAGS[i]=true; lastFlag=i; svg.classList.add('g'+(i+1));
+        flagUI();
+        if(window.umami) umami.track('spot-flag',{n:i+1});
+      }
+      b.addEventListener('click',go); b.addEventListener('keydown',go);
+    });
+  }
+  bindAd(); flagUI();
+
   var btnBack=document.getElementById('btn-back'), btnNext=document.getElementById('btn-next');
   var progFill=document.getElementById('progress-fill'), progLbl=document.getElementById('progress-label');
   function show(n,silent){
@@ -1549,7 +1627,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
   btnBack.addEventListener('click',function(){ if(current>1){ current--; show(current); } });
 
   /* ---------- batteries ---------- */
-  var BAT={food:0,move:0,med:0,sup:0}, TOT={food:6,move:6,med:6,sup:7}, NAMES={food:['food','makanan'],move:['movement','pergerakan'],med:['medicines','ubat-ubatan'],sup:['supplements','suplemen']};
+  var BAT={food:0,move:0,med:0,sup:0}, TOT={food:6,move:6,med:6,sup:8}, NAMES={food:['food','makanan'],move:['movement','pergerakan'],med:['medicines','ubat-ubatan'],sup:['supplements','suplemen']};
   function updateCounters(){ Object.keys(BAT).forEach(function(k){ document.querySelector('.counter[data-for="'+k+'"]').textContent=tr('Tap what you do, or will start · '+BAT[k]+' of '+TOT[k]+' charged','Klik apa yang anda buat, atau akan mula · '+BAT[k]+' daripada '+TOT[k]+' dicas'); }); }
   document.querySelectorAll('.ck').forEach(function(b){
     b.addEventListener('click',function(){
@@ -1748,7 +1826,7 @@ svg .badge:focus-visible .ring{stroke-width:5}
     syncLangBtns(); applyAttrs();
     document.querySelectorAll('.art[data-scene], .art[data-tiles], .art[data-shot]').forEach(renderArt);
     document.querySelectorAll('.zoomhint').forEach(function(h){ h.textContent=tr('tap to enlarge','Klik untuk besarkan'); });
-    bindChair(); bindRoom(); fixUI();
+    bindChair(); bindRoom(); fixUI(); bindAd(); flagUI();
     if(infoKey && infoDlg.open) openInfo(infoKey); nshow(nIdx); renderQ(); malShow(malIdx); tofuShow(); updateCounters(); updateScore(); rebuildDrawer(); setWA();
     show(current,true);
     if(window.umami) umami.track('lang',{to:l});
