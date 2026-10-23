@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Aufthority Edu — Plain-Language Explainers</title>
+  <meta name="description" content="Free, interactive explainers on research skills and evidence-based health, written in plain language for students at every level." />
+  <meta property="og:type"         content="website" />
+  <meta property="og:site_name"    content="Aufthority" />
+  <meta property="og:title"        content="Aufthority Edu: Plain-Language Explainers" />
+  <meta property="og:description"  content="Free, interactive explainers on research skills and evidence-based health." />
+  <meta property="og:url"          content="https://www.aufthority.com/edu/" />
+  <meta property="og:image"        content="https://www.aufthority.com/preview_v2.png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"       content="en_US" />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@theaufthority" />
+  <meta name="twitter:title"       content="Aufthority Edu: Plain-Language Explainers" />
+  <meta name="twitter:description" content="Free, interactive explainers on research skills and evidence-based health." />
+  <meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png" />
+  <link rel="canonical" href="https://www.aufthority.com/edu/" />
+  <link rel="icon" type="image/png" href="/favicon2.png" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Tokens (mirrors homepage) ── */
+    :root {
+      --yellow:      #e6e51e;
+      --blue:        #466cf3;
+      --carbon:      #000000;
+      --white:       #ffffff;
+      --canvas:      #f2f2f2;
+      --hairline:    #e6e6e6;
+
+      --font-head: 'Poppins', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-pill: 3000px;
+      --radius-card: 32px;
+      --radius-card-sm: 20px;
+      --radius-nav:  28px;
+
+      --shadow-nav: rgba(0,0,0,0.2) 0px 10px 10px -5px;
+
+      --page-w: 1080px;
+    }
+
+    /* ── Base ── */
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--canvas);
+      color: var(--carbon);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, #c8c8c8 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Nav ── */
+    .nav-wrap {
+      padding: 12px 28px;
+      position: sticky;
+      top: 12px;
+      z-index: 100;
+      max-width: var(--page-w);
+      margin: 12px auto 0;
+    }
+    nav {
+      position: relative;
+      background: var(--white);
+      border-radius: var(--radius-nav);
+      box-shadow: var(--shadow-nav);
+      padding: 10px 10px 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      color: var(--carbon);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .logo-sub { font-weight: 500; color: #888; }
+    .nav-links { display: flex; gap: 22px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--carbon);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .nav-links a:hover { opacity: 0.55; }
+    .btn-black {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--carbon);
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 10px 22px;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn-black:hover { opacity: 0.75; }
+    .btn-yellow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--yellow);
+      border-radius: var(--radius-pill);
+      padding: 14px 32px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--carbon);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-yellow:hover { opacity: 0.85; }
+    .btn-more { display: none; }
+    .more-popup {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+      overflow: hidden;
+      min-width: 190px;
+      z-index: 200;
+    }
+    .more-popup.open { display: block; }
+    .more-popup-item {
+      display: block;
+      padding: 14px 22px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--carbon);
+      text-decoration: none;
+      border-bottom: 1px solid var(--hairline);
+      transition: background 0.12s;
+    }
+    .more-popup-item:last-child { border-bottom: none; }
+    .more-popup-item:hover { background: var(--canvas); }
+
+    /* ── Hero ── */
+    .hero { padding: 80px 0 48px; max-width: 720px; }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--yellow);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      padding: 5px 14px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(2.6rem, 5.5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .accent { color: var(--blue); }
+    .hero-body {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: #444;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    /* ── Sections ── */
+    .section { padding: 64px 0; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .section-intro {
+      font-size: 0.95rem;
+      color: #555;
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+
+    /* ── Explainer cards ── */
+    .explainer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .explainer-card {
+      background: var(--white);
+      border-radius: var(--radius-card-sm);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--carbon);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .explainer-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .explainer-thumb {
+      aspect-ratio: 1200 / 630;
+      background: var(--hairline);
+      overflow: hidden;
+    }
+    .explainer-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .explainer-body {
+      padding: 22px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .explainer-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .explainer-num {
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #bbb;
+      letter-spacing: 0.04em;
+    }
+    .explainer-card:hover .explainer-num { color: var(--carbon); }
+    .pill {
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      line-height: 1.8;
+      background: var(--canvas);
+      color: #666;
+    }
+    .pill-start { background: var(--yellow); color: var(--carbon); }
+    .explainer-title {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .explainer-desc { font-size: 0.84rem; color: #555; line-height: 1.55; flex: 1; }
+    .explainer-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #888;
+    }
+    .explainer-arrow { font-size: 1rem; color: #ccc; transition: color 0.2s, transform 0.2s; }
+    .explainer-card:hover .explainer-arrow { color: var(--carbon); transform: translateX(3px); }
+
+    /* ── Coming-soon card ── */
+    .soon-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 40px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .soon-card h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .soon-card p { font-size: 0.92rem; color: #555; max-width: 520px; line-height: 1.6; }
+
+    /* ── Newsletter ── */
+    .newsletter-card {
+      background: var(--carbon);
+      border-radius: var(--radius-card);
+      padding: 52px;
+      color: var(--white);
+    }
+    .newsletter-card h2 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .newsletter-card p { font-size: 1rem; opacity: 0.7; margin-bottom: 32px; max-width: 460px; line-height: 1.65; }
+
+    /* ── Footer ── */
+    footer { padding: 48px 0 56px; }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--carbon);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .footer-logo-mark { width: 22px; height: 22px; border-radius: 5px; overflow: hidden; display: inline-flex; }
+    .footer-logo-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .socials { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
+    .social-link { font-size: 0.78rem; font-weight: 500; color: #777; text-decoration: none; transition: color 0.15s; }
+    .social-link:hover { color: var(--carbon); }
+    .footer-copy { font-size: 0.78rem; color: #aaa; }
+
+    /* ── Animations ── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .hero, .section { opacity: 0; transform: translateY(16px); animation: fadeUp 0.6s ease forwards; }
+    .hero { animation-delay: 0.05s; }
+    .section:nth-of-type(1) { animation-delay: 0.12s; }
+    .section:nth-of-type(2) { animation-delay: 0.2s; }
+    .section:nth-of-type(3) { animation-delay: 0.28s; }
+    footer { opacity: 0; animation: fadeUp 0.6s ease forwards 0.36s; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero, .section, footer { animation: none; opacity: 1; transform: none; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .explainer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .btn-more { display: inline-flex; }
+      .hero { padding: 56px 0 32px; }
+      .hero h1 { font-size: 2.4rem; }
+      .section { padding: 48px 0; }
+      .explainer-grid { grid-template-columns: 1fr; }
+      .soon-card, .newsletter-card { padding: 32px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+    @media (max-width: 380px) {
+      .logo-sub { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <div class="nav-wrap">
+    <nav>
+      <a href="/edu/" class="logo">
+        <span class="logo-mark"><img src="/favicon2.png" alt="Aufthority" /></span>
+        Aufthority <span class="logo-sub">Edu</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#research">Research skills</a></li>
+        <li><a href="#health">Health</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="/" data-umami-event="Edu nav - Main site click">Main site</a></li>
+      </ul>
+      <button class="btn-black btn-more" id="btn-more" aria-expanded="false" aria-controls="more-popup" data-umami-event="Edu nav - More click">More</button>
+      <div class="more-popup" id="more-popup">
+        <a href="#research"   class="more-popup-item">Research skills</a>
+        <a href="#health"     class="more-popup-item">Health</a>
+        <a href="#newsletter" class="more-popup-item">Newsletter</a>
+        <a href="/"           class="more-popup-item" data-umami-event="Edu nav popup - Main site click">Main site</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+
+    <!-- ── Hero ── -->
+    <header class="hero">
+      <p class="hero-eyebrow">Aufthority Edu</p>
+      <h1>Science, explained <span class="accent">one page</span> at a time.</h1>
+      <p class="hero-body">
+        Free, interactive explainers written in plain language, for students at every level.
+        Tap, try and check your understanding as you go. No background needed.
+      </p>
+      <a href="/edu/researchfundamentals/" class="btn-yellow" data-umami-event="Edu hero - Start here click">Start with the basics →</a>
+    </header>
+
+    <!-- ── Research skills ── -->
+    <section class="section" id="research">
+      <p class="section-label">Series · Research skills</p>
+      <h2 class="section-title">How research actually works.</h2>
+      <p class="section-intro">Three explainers that build on each other: what research is, how to find what is already known, and how to manage every source you cite. Best read in order.</p>
+
+      <div class="explainer-grid">
+
+        <a href="/edu/researchfundamentals/" class="explainer-card" data-umami-event="Edu card - Research Fundamentals">
+          <div class="explainer-thumb"><img src="/edu/researchfundamentals/og.png" alt="" loading="lazy" /></div>
+          <div class="explainer-body">
+            <div class="explainer-meta">
+              <span class="explainer-num">01</span>
+              <span class="pill pill-start">Start here</span>
+              <span class="pill">English</span>
+            </div>
+            <p class="explainer-title">Research, Simply Explained</p>
+            <p class="explainer-desc">What research is, why we do it, and the seven steps every study follows, from spotting a problem to writing the proposal.</p>
+            <div class="explainer-foot"><span>20 pages · Free toolkit</span><span class="explainer-arrow">→</span></div>
+          </div>
+        </a>
+
+        <a href="/edu/literaturereview/" class="explainer-card" data-umami-event="Edu card - Literature Review">
+          <div class="explainer-thumb"><img src="/edu/literaturereview/og.png" alt="" loading="lazy" /></div>
+          <div class="explainer-body">
+            <div class="explainer-meta">
+              <span class="explainer-num">02</span>
+              <span class="pill">English</span>
+            </div>
+            <p class="explainer-title">Literature Reviews, Simply Explained</p>
+            <p class="explainer-desc">Seven steps from question to synthesis, and the four ways to publish a review: narrative, scoping, systematic and meta-analysis.</p>
+            <div class="explainer-foot"><span>19 pages</span><span class="explainer-arrow">→</span></div>
+          </div>
+        </a>
+
+        <a href="/edu/research-manager/" class="explainer-card" data-umami-event="Edu card - Reference Managers">
+          <div class="explainer-thumb"><img src="/edu/research-manager/media/og-1200x630.png" alt="" loading="lazy" /></div>
+          <div class="explainer-body">
+            <div class="explainer-meta">
+              <span class="explainer-num">03</span>
+              <span class="pill">English</span>
+            </div>
+            <p class="explainer-title">Reference Managers, Explained</p>
+            <p class="explainer-desc">Save a source once, cite it anywhere. What Zotero, Mendeley and EndNote do, with Zotero step by step.</p>
+            <div class="explainer-foot"><span>26 pages · Quizzes</span><span class="explainer-arrow">→</span></div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ── Health (carousels migrate here) ──
+         When migrating: replace .soon-card with a new .explainer-grid using the
+         same .explainer-card markup. Use <span class="pill">Bahasa Melayu</span>
+         for Malay carousels. The #health nav link needs no change. -->
+    <section class="section" id="health">
+      <p class="section-label">Series · Evidence-based health</p>
+      <h2 class="section-title">Health, slide by slide.</h2>
+      <p class="section-intro">Explainers on obesity, PCOS, vaccines, liver health and more, in Bahasa Melayu.</p>
+
+      <div class="soon-card">
+        <div>
+          <h3>Moving here soon</h3>
+          <p>The health carousels currently live on the main Aufthority site. They will join this page shortly. Until then, you can read all of them there.</p>
+        </div>
+        <a href="/#carousels" class="btn-black" data-umami-event="Edu - Health carousels on main site click">Read the carousels →</a>
+      </div>
+    </section>
+
+    <!-- ── Newsletter ── -->
+    <section class="section" id="newsletter">
+      <div class="newsletter-card">
+        <h2>Get new explainers first</h2>
+        <p>The Aufthority Letter brings evidence-based health insights and new learning material straight to your inbox.</p>
+        <a href="https://aufthority.substack.com" class="btn-yellow" target="_blank" rel="noopener" data-umami-event="Edu - Newsletter subscribe click">Subscribe on Substack →</a>
+      </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer>
+      <div class="footer-inner">
+        <a href="/" class="footer-logo">
+          <span class="footer-logo-mark"><img src="/favicon2.png" alt="" /></span>
+          Aufthority
+        </a>
+        <ul class="socials">
+          <li><a href="https://www.threads.com/@aufthority" class="social-link" target="_blank" rel="noopener">Threads</a></li>
+          <li><a href="https://www.instagram.com/aufthority" class="social-link" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@aufthority" class="social-link" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.linkedin.com/in/aufbinali/" class="social-link" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:the.aufthority@gmail.com" class="social-link">Email</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Aufthority — <span style="font-style:italic;">Informed decisions, better health.</span></p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('btn-more');
+      var popup = document.getElementById('more-popup');
+      if (!btn || !popup) return;
+      function setOpen(open) {
+        popup.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!popup.classList.contains('open'));
+      });
+      popup.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('click', function () { setOpen(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    })();
+  </script>
+
+</body>
+</html>
