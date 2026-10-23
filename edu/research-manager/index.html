@@ -314,9 +314,22 @@ footer{text-align:center;font-size:.7rem;color:var(--muted);padding-top:4px}
 .doc .ref{padding-left:1.6em;text-indent:-1.6em;color:var(--ink)}
 @media (max-width:420px){.fld{grid-template-columns:5.2em 1fr 3em}}
 .back-kompas{white-space:nowrap}
+/* heart + share */
+.react{display:flex;gap:6px;align-items:center;flex:0 0 auto}
+.rbtn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--rule);background:#fff;color:var(--body);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;flex:0 0 auto}
+.rbtn svg{width:19px;height:19px;display:block}
+.rbtn:hover{border-color:var(--ink)}
+.rbtn.on{color:var(--red);border-color:var(--red);background:var(--r-bg)}
+.rbtn.on .hfill{fill:currentColor}
+.rbtn.pop{animation:pop .35s ease}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.22)}100%{transform:scale(1)}}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:#fff;font:600 .82rem 'DM Sans',sans-serif;padding:8px 14px;border-radius:100px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60;white-space:nowrap}
+#toast.show{opacity:1}
+@media (max-width:380px){.nav-btn{padding:10px 8px}}
 /* tool homepage viewer */
 .shot{margin:.45em 0 .35em;text-align:center}
-.shot img{max-width:100%;height:auto;max-height:calc(var(--k) * 30vh);max-height:calc(var(--k) * 30dvh);border:1px solid var(--rule);border-radius:8px;background:#fff;display:inline-block;vertical-align:top}
+.shot img{width:auto;max-width:100%;height:auto;object-fit:contain;max-height:calc(var(--k) * 30vh);max-height:calc(var(--k) * 30dvh);border:1px solid var(--rule);border-radius:8px;background:#fff;display:inline-block;vertical-align:top}
+@media (min-width:760px) and (orientation:landscape){.shot img{max-height:calc(var(--k) * 42vh);max-height:calc(var(--k) * 42dvh)}}
 .shot figcaption{font-size:.7em;color:var(--muted);margin-top:.25em}
 #tool-note{font-size:.9em;min-height:4.2em}
 </style>
@@ -956,11 +969,17 @@ footer{text-align:center;font-size:.7rem;color:var(--muted);padding-top:4px}
     <div id="gate-hint"></div>
     <div id="nav-wrap">
       <button id="btn-back" class="nav-btn" disabled data-umami-event="nav-back">← Back</button>
+      <div class="react">
+        <button type="button" class="rbtn" id="btn-heart" aria-pressed="false" aria-label="Love this page" title="Love this page"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="hfill" d="M12 20.5s-7.5-4.6-7.5-10.1A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.5 2.8c0 5.5-7.5 10.1-7.5 10.1Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="rbtn" id="btn-share" aria-label="Share this explainer" title="Share this explainer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8 15.8 6.7M8.2 13.2l7.6 4.1"/></svg></button>
+      </div>
       <button id="btn-next" class="nav-btn" data-umami-event="nav-next">Next →</button>
     </div>
     <footer>Informed decisions, better health.</footer>
   </div>
 </div>
+
+<div id="toast" role="status" aria-live="polite"></div>
 
 <div class="overlay" id="toc-overlay" role="dialog" aria-modal="true">
   <div class="panel">
@@ -1133,6 +1152,7 @@ footer{text-align:center;font-size:.7rem;color:var(--muted);padding-top:4px}
     fit(slides[n-1]);
     requestAnimationFrame(()=>fit(slides[n-1]));
     updateGate(false);
+    syncHeart();
     if(window.umami) umami.track('slide-view',{slide:n});
   }
 
@@ -1248,6 +1268,33 @@ footer{text-align:center;font-size:.7rem;color:var(--muted);padding-top:4px}
       :'That is more than the free 300 MB. To sync them all, you would need <b>'+plan+'</b>, or keep some files on your computer only.');
   }
   stN.addEventListener('input',calcStorage); stMb.addEventListener('input',calcStorage); calcStorage();
+
+  /* ---------- HEART + SHARE ---------- */
+  const SHARE_URL='https://www.aufthority.com/edu/research-manager/';
+  const toastEl=document.getElementById('toast'); let tT;
+  function toast(msg){ toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(tT); tT=setTimeout(()=>toastEl.classList.remove('show'),1800); }
+  const loved=new Set();
+  const btnHeart=document.getElementById('btn-heart');
+  function syncHeart(){ const on=loved.has(current); btnHeart.classList.toggle('on',on); btnHeart.setAttribute('aria-pressed',on?'true':'false'); }
+  btnHeart.addEventListener('click',()=>{
+    const on=!loved.has(current);
+    on?loved.add(current):loved.delete(current);
+    syncHeart();
+    if(on){ btnHeart.classList.remove('pop'); void btnHeart.offsetWidth; btnHeart.classList.add('pop'); toast('Thanks! Glad this page helped.'); }
+    if(window.umami) umami.track(on?'heart':'heart-undo',{slide:current,title:slides[current-1].dataset.title});
+  });
+  document.getElementById('btn-share').addEventListener('click',async()=>{
+    const data={title:'Reference Managers, Explained',text:'Save a source once, cite it anywhere: a step-by-step guide to Zotero.',url:SHARE_URL};
+    try{
+      if(navigator.share){ await navigator.share(data); if(window.umami) umami.track('share',{method:'native',slide:current}); return; }
+      await navigator.clipboard.writeText(SHARE_URL); toast('Link copied');
+      if(window.umami) umami.track('share',{method:'copy',slide:current});
+    }catch(e){
+      if(e && e.name==='AbortError') return;  /* user closed the share sheet */
+      window.prompt('Copy this link:',SHARE_URL);
+      if(window.umami) umami.track('share',{method:'prompt',slide:current});
+    }
+  });
 
   function openOv(id){ if(id==='toc-overlay') buildToc(); document.getElementById(id).classList.add('open'); }
   document.querySelectorAll('.overlay').forEach(o=>{
