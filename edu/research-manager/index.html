@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Reference Managers, Explained — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="What reference managers such as Zotero, Mendeley and EndNote do, why they matter, and how to use Zotero step by step to collect, organise, read and cite your sources.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Reference Managers, Explained">
+<meta property="og:description"  content="Save a source once, cite it anywhere. A step-by-step guide to Zotero for students and researchers at every level.">
+<meta property="og:url"          content="https://www.aufthority.com/edu/research-manager/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="en_MY">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Reference Managers, Explained">
+<meta name="twitter:description" content="Save a source once, cite it anywhere. Zotero, step by step.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c2620;--body:#3f4742;--muted:#6f7771;--accent:#2d6a4f;--accent-dark:#1f4d39;
+  --eyebrow:#9a6a1c;--g-bg:#e9f4ee;--g-line:#cfe6d9;--rule:#e4e6e3;
+  --red:#c0392b;--r-bg:#fbecea;--orange:#d9821f;--o-bg:#fdf3e6;--blue:#3a6bd1;--b-bg:#e8effc;
+  --radius:10px;--k:1;color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#fff}
+body{color:var(--body);font-family:'DM Sans',system-ui,sans-serif;line-height:1.5;overflow:hidden;-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+b,strong{color:var(--ink);font-weight:700}
+
+#shell{height:100vh;height:var(--app-h,100dvh);max-width:1120px;margin:0 auto;padding:0 16px;display:flex;flex-direction:column}
+nav{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0 8px}
+.logo{font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--muted);font-weight:500;font-size:.8rem;margin-left:4px}
+.nav-right{display:flex;align-items:center;gap:10px}
+.back-kompas{text-decoration:none;color:var(--accent-dark);border-color:var(--g-line);background:var(--g-bg)}
+@media (max-width:420px){.bk-long{display:none}.logo span{display:none}}
+.icon-btn{background:#fff;border:1px solid var(--rule);color:var(--body);font:600 .78rem 'DM Sans',sans-serif;padding:5px 10px;border-radius:100px;cursor:pointer}
+#progress-label{font-size:.78rem;color:var(--muted);min-width:44px;text-align:right}
+#progress-track{flex:0 0 3px;background:var(--rule);border-radius:3px}
+#progress-fill{height:100%;width:0;background:var(--accent);border-radius:3px;transition:width .3s}
+
+#stage{flex:1 1 auto;min-height:0;position:relative}
+.slide{position:absolute;inset:0;display:none;overflow:hidden;font-size:calc(var(--k) * 16px)}
+.slide.active{display:block}
+.si{height:100%;display:flex;flex-direction:column;justify-content:center;gap:.7em;padding:.8em 0 .4em;max-width:720px;margin:0 auto}
+.si.has-ill{max-width:none}
+.ill{flex:0 0 auto;display:flex;flex-direction:column;justify-content:center;align-items:stretch;min-height:0}
+.ill svg{width:100%;height:calc(var(--k) * 29vh);height:calc(var(--k) * 29dvh);display:block}
+.ill figcaption{font-size:.72em;color:var(--muted);text-align:center;margin-top:.25em}
+.txt{flex:0 0 auto;min-width:0}
+@media (min-width:760px) and (orientation:landscape){
+  .slide{font-size:calc(var(--k) * 17px)}
+  .si.has-ill{flex-direction:row;align-items:center;gap:2.4em;padding:1em 0}
+  .si.has-ill .ill{flex:0 0 46%}
+  .si.has-ill .ill svg{height:auto;max-height:calc(var(--k) * 64vh);max-height:calc(var(--k) * 64dvh)}
+  .si.has-ill .txt{flex:1 1 auto}
+}
+
+.eyebrow{font-size:.72em;letter-spacing:.12em;text-transform:uppercase;color:var(--eyebrow);font-weight:700;margin-bottom:.45em}
+h1,h2{color:var(--ink);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:.45em}
+h1{font-size:2.05em}
+h2{font-size:1.65em}
+@media (min-width:760px){h1{font-size:2.4em}h2{font-size:1.9em}}
+h1 .ac,h2 .ac{color:var(--accent)}
+p{margin-bottom:.6em;font-size:.97em}
+.small{font-size:.82em;color:var(--muted)}
+.cite{font-size:.78em;color:var(--muted);white-space:nowrap}
+.cite a{color:var(--muted)}
+.callout{border-left:3px solid var(--accent);background:var(--g-bg);padding:.5em .85em;margin:.55em 0;font-size:.92em;border-radius:0 8px 8px 0}
+.callout.warn{border-color:var(--red);background:var(--r-bg)}
+.callout.note{border-color:var(--orange);background:var(--o-bg)}
+.pill-list{display:flex;flex-wrap:wrap;gap:.4em;margin:.55em 0}
+.pill{background:var(--g-bg);color:var(--accent-dark);padding:.3em .8em;font-size:.82em;font-weight:500;border-radius:100px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:.5em;margin:.55em 0}
+.tile{border:1px solid var(--rule);border-radius:var(--radius);padding:.55em .75em}
+.tile .n{font-size:1.3em;font-weight:800;color:var(--accent);line-height:1.15;letter-spacing:-.02em;margin-bottom:.15em}
+.tile .l{font-size:.84em;color:var(--body)}
+.steps{list-style:none;margin:.55em 0;display:flex;flex-direction:column;gap:.45em}
+.steps li{display:flex;gap:.65em;align-items:flex-start;font-size:.92em}
+.steps .n{flex:0 0 1.65em;height:1.65em;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82em;margin-top:.05em}
+.data-table{width:100%;border-collapse:collapse;font-size:.84em;margin:.45em 0}
+.data-table th,.data-table td{border-bottom:1px solid var(--rule);padding:.4em .55em;text-align:left;vertical-align:top}
+.data-table th{font-weight:700;color:var(--muted);font-size:.8em;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--rule)}
+.data-table td:first-child{color:var(--ink);font-weight:500}
+.data-table tr.hl td{background:var(--g-bg)}
+.map3{display:grid;grid-template-columns:repeat(3,1fr);gap:.55em;margin:.55em 0}
+.box{border:1px solid var(--rule);border-radius:var(--radius);padding:.6em .75em;font-size:.86em}
+.box h3{font-size:1.1em;font-weight:800;color:var(--accent);margin-bottom:.15em}
+.box .q{font-size:.9em;color:var(--muted);margin-bottom:.3em}
+.box ul{padding-left:1.1em}
+
+/* HTML diagrams */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:.4em;margin:.6em 0}
+.node{border:1.5px solid var(--ink);border-radius:8px;padding:.35em .65em;font-size:.84em;font-weight:500;color:var(--ink);background:#fff;text-align:center}
+.node small{display:block;font-weight:400;color:var(--muted);font-size:.85em}
+.node.g{border-color:var(--accent);background:var(--g-bg);color:var(--accent-dark)}
+.node.o{border-color:var(--orange);background:var(--o-bg)}
+.node.r{border-color:var(--red);background:var(--r-bg)}
+.node.ghost{border-style:dashed;color:var(--muted)}
+.arr{color:var(--orange);font-weight:800;font-size:1em}
+.node-group{display:flex;align-items:center;gap:.35em}
+.node-group .or{color:var(--muted);font-size:.84em}
+/* flows: one straight row when it fits, otherwise a snake (→ row, turn down, ← row, turn down …) */
+.flow.row{flex-wrap:nowrap}
+.flow.row > *{flex:0 0 auto}
+.flow.snake{display:grid;align-items:stretch;gap:0}
+.flow.snake .cell{display:flex;min-width:0}
+.flow.snake .cell > .node{flex:1;display:flex;flex-direction:column;justify-content:center}
+.flow.snake .cell > .node-group{flex:1}
+.flow.snake .cell > .node-group > .node{flex:1}
+.flow.snake .arr{align-self:center;text-align:center;line-height:1}
+.flow.snake .arr.down{padding:.2em 0}
+.lane{display:grid;grid-template-columns:8.5em 1fr;gap:.6em;align-items:center;padding:.45em 0;border-bottom:1px solid var(--rule)}
+.lane:last-of-type{border-bottom:none}
+.lane .lname{font-weight:800;color:var(--ink);font-size:.9em;line-height:1.2}
+.lane .lname small{display:block;font-weight:500;color:var(--muted);font-size:.8em}
+.lane .flow{margin:0}
+.stack{display:flex;flex-direction:column;gap:.4em;margin:.6em 0}
+.layer{display:grid;grid-template-columns:2.2em 1fr;gap:.6em;align-items:center;border:1px solid var(--g-line);background:var(--g-bg);border-radius:var(--radius);padding:.5em .7em;font-size:.88em}
+.layer .ln{width:2.2em;height:2.2em;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.layer > div > b:first-child{display:block;margin-bottom:.1em}
+.htl{display:grid;grid-template-columns:repeat(4,1fr);gap:.6em;margin:.6em 0}
+.htl .ev{border-top:3px solid var(--accent);padding-top:.4em;font-size:.86em}
+.htl .yr{font-weight:800;color:var(--accent);font-size:1.25em;letter-spacing:-.02em;display:block}
+@media (max-width:520px){.htl{grid-template-columns:1fr 1fr}.map3{grid-template-columns:1fr}.lane{grid-template-columns:1fr;gap:.25em}}
+.eq{display:flex;align-items:center;justify-content:center;gap:.6em;flex-wrap:wrap;margin:.6em 0}
+.eq .term{text-align:center;font-size:.82em;color:var(--ink);font-weight:500}
+.eq .term svg{width:5.2em;height:auto;display:block;margin:0 auto .25em}
+.eq .op{font-size:1.6em;font-weight:800;color:var(--orange)}
+.forms{display:grid;grid-template-columns:repeat(3,1fr);gap:.55em;margin:.6em 0}
+.form{border:1px solid var(--rule);border-radius:var(--radius);padding:.6em .7em;font-size:.86em}
+.form svg{width:100%;height:3.4em;display:block;margin-bottom:.3em}
+.form h3{font-size:1.05em;font-weight:800;color:var(--ink);margin-bottom:.1em}
+@media (max-width:520px){.forms{grid-template-columns:1fr}.form{display:grid;grid-template-columns:4.5em 1fr;gap:.6em;align-items:center}.form svg{height:2.6em;margin:0}}
+
+/* interactions */
+.toggle-wrap{border:1px solid var(--rule);border-radius:var(--radius);margin:.45em 0;overflow:hidden}
+.toggle-btn{width:100%;background:#fff;border:none;color:var(--ink);font:600 .92em 'DM Sans',sans-serif;text-align:left;padding:.6em .85em;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:.6em}
+.toggle-btn .hint{font-weight:600;color:var(--accent);font-size:.8em;white-space:nowrap}
+.toggle-btn .hint::after{content:" +"}
+.toggle-wrap.open .toggle-btn .hint::after{content:" −"}
+.toggle-wrap.seen{border-color:var(--g-line)}
+.toggle-body{display:none;padding:0 .85em .7em;font-size:.9em}
+.toggle-wrap.open .toggle-body{display:block}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr));gap:.45em;margin:.55em 0}
+.rcard{border:1px solid var(--rule);border-radius:var(--radius);background:#fff;text-align:left;padding:.55em .7em;cursor:pointer;font:400 .84em 'DM Sans',sans-serif;color:var(--body);display:block}
+.rcard .rt{font-weight:800;color:var(--ink);display:flex;justify-content:space-between;gap:.4em}
+.rcard .rt::after{content:"Tap";font-weight:600;font-size:.8em;color:var(--accent)}
+.rcard .rb{display:none;margin-top:.3em}
+.rcard.seen{border-color:var(--accent);background:var(--g-bg)}
+.rcard.seen .rt::after{content:""}
+.rcard.seen .rb{display:block}
+.rcard svg{width:100%;height:3.2em;display:block;margin:.2em 0}
+.choice-q{font-weight:700;color:var(--ink);font-size:.95em;margin-bottom:.45em}
+.choices{display:flex;flex-wrap:wrap;gap:.4em}
+.choice{background:#fff;border:1.5px solid var(--rule);color:var(--ink);font:500 .88em 'DM Sans',sans-serif;padding:.45em .85em;border-radius:100px;cursor:pointer}
+.choice:hover{border-color:var(--ink)}
+.choice.right{border-color:var(--accent);background:var(--g-bg);color:var(--accent-dark)}
+.choice.wrong{border-color:var(--red);background:var(--r-bg);color:var(--red);text-decoration:line-through}
+.feedback{display:none;font-size:.88em;margin-top:.5em;padding:.45em .75em;border-left:3px solid var(--accent);background:var(--g-bg);border-radius:0 8px 8px 0}
+.feedback.show{display:block}
+.stepper .choice-set{display:none}
+.stepper .choice-set.cur{display:block}
+.step-count{font-size:.75em;font-weight:700;color:var(--eyebrow);letter-spacing:.08em;margin-bottom:.3em}
+.next-q{margin-top:.55em;background:#fff;border:1.5px solid var(--ink);border-radius:100px;font:600 .84em 'DM Sans',sans-serif;padding:.38em .9em;cursor:pointer;display:none}
+.choice-set.done .next-q{display:inline-block}
+.calc{border:1px solid var(--rule);border-radius:var(--radius);padding:.65em .75em;margin:.55em 0}
+.calc-row{display:flex;gap:.6em;margin-bottom:.5em;flex-wrap:wrap}
+.calc label{font-size:.76em;font-weight:600;color:var(--muted);display:flex;flex-direction:column;gap:.2em;flex:1;min-width:8em}
+.calc input,.calc select{font:500 1.05em 'DM Sans',sans-serif;padding:.32em .45em;border:1px solid var(--rule);border-radius:6px;background:#fff;color:var(--ink);width:100%}
+.calc-out{font-size:.9em;padding:.45em .75em;border-left:3px solid var(--accent);background:var(--g-bg);border-radius:0 8px 8px 0}
+.calc-out.fail{border-color:var(--red);background:var(--r-bg)}
+.btn{background:#fff;border:1.5px solid var(--ink);border-radius:100px;color:var(--ink);font:600 .84em 'DM Sans',sans-serif;padding:.4em .95em;cursor:pointer}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.range{width:100%;accent-color:var(--accent);margin:.4em 0}
+.scale-lbl{display:flex;justify-content:space-between;font-size:.74em;color:var(--muted);font-weight:600}
+.coa{display:flex;flex-direction:column;gap:.3em;margin:.45em 0}
+.coa-row{display:grid;grid-template-columns:1fr 1.3fr 4.8em;gap:.5em;align-items:center;background:#fff;border:1px solid var(--rule);border-radius:8px;color:var(--ink);font:400 .82em 'DM Sans',sans-serif;text-align:left;padding:.42em .65em;cursor:pointer}
+.coa-row b{font-weight:700}
+.coa-row .v{text-align:right;font-weight:700;color:var(--muted)}
+.coa-row.pass{border-color:var(--accent)}.coa-row.pass .v{color:var(--accent)}
+.coa-row.fail{border-color:var(--red);background:var(--r-bg)}.coa-row.fail .v{color:var(--red)}
+.coa-row.next{border-color:var(--orange);background:var(--o-bg)}.coa-row.next .v{color:var(--orange)}
+#coa-exp{min-height:2.7em;font-size:.86em;border-left:3px solid var(--rule);padding:.35em .65em}
+.coa-decision{display:none;margin-top:.5em}
+.coa-decision.show{display:block}
+.cards{display:flex;flex-direction:column;gap:.4em;margin:.55em 0}
+.card{display:flex;gap:.75em;border:1px solid var(--rule);border-radius:var(--radius);padding:.5em .75em;font-size:.88em}
+.card .cn{font-size:1.35em;font-weight:800;color:var(--accent);line-height:1}
+.madeby{border-top:1px solid var(--rule);padding-top:.6em;margin-top:.3em}
+.madeby p{font-size:.82em;color:var(--muted);margin-bottom:.45em}
+.madeby p b,.madeby p b a{color:var(--ink)}
+.socials{display:flex;flex-wrap:wrap;gap:.35em}
+.socials a{font-size:.8em;font-weight:600;color:var(--accent-dark);background:var(--g-bg);padding:.28em .75em;border-radius:100px;text-decoration:none}
+.socials a:hover{background:var(--g-line)}
+.score{font-size:1.25em;font-weight:800;color:var(--accent);margin-top:.5em}
+.pulse{animation:pulse 1s ease 2}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,130,31,0)}50%{box-shadow:0 0 0 4px rgba(217,130,31,.45)}}
+
+#bottom{flex:0 0 auto;padding:6px 0 calc(8px + env(safe-area-inset-bottom))}
+#gate-hint{font-size:.78rem;color:var(--muted);text-align:center;min-height:1.2em;margin-bottom:5px}
+#gate-hint.alert{color:var(--orange);font-weight:600}
+#gate-hint button{background:none;border:none;color:var(--accent);text-decoration:underline;font:inherit;font-weight:600;cursor:pointer;padding:0}
+#nav-wrap{display:flex;justify-content:space-between;gap:10px}
+.nav-btn{flex:1;max-width:200px;background:#fff;border:1.5px solid var(--ink);color:var(--ink);font:700 .92rem 'DM Sans',sans-serif;padding:10px 14px;border-radius:100px;cursor:pointer}
+#btn-next{background:var(--ink);color:#fff;margin-left:auto}
+#btn-next.locked{background:#fff;color:var(--muted);border-color:var(--rule)}
+.nav-btn:disabled{opacity:.3;cursor:default}
+footer{text-align:center;font-size:.7rem;color:var(--muted);padding-top:4px}
+
+.overlay{display:none;position:fixed;inset:0;z-index:50;background:rgba(20,30,25,.35);padding:16px;overflow-y:auto}
+.overlay.open{display:block}
+.panel{max-width:620px;margin:16px auto;background:#fff;border-radius:14px;padding:18px 20px}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.panel-head h3{font-weight:800;color:var(--ink);font-size:1.3rem;letter-spacing:-.02em}
+.toc-note{font-size:.82rem;color:var(--muted);margin-bottom:8px}
+.toc{list-style:none}
+.toc li{border-bottom:1px solid var(--rule)}
+.toc button{background:none;border:none;color:var(--ink);font:400 .9rem 'DM Sans',sans-serif;padding:7px 0;width:100%;text-align:left;cursor:pointer;display:flex;gap:10px}
+.toc button span{color:var(--muted);min-width:22px}
+.toc button.cur{color:var(--accent);font-weight:700}
+.toc .sec{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--eyebrow);font-weight:700;padding:12px 0 3px;border:none}
+.refs{padding-left:20px;font-size:.82rem;color:var(--body)}
+.refs li{margin-bottom:7px;word-break:break-word}
+
+/* ---------- SVG diagram + chart styling ---------- */
+.ln{fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ln.thin{stroke-width:1.2}
+.ln.g{stroke:var(--accent)}.ln.r{stroke:var(--red)}.ln.o{stroke:var(--orange)}.ln.b{stroke:var(--blue)}.ln.m{stroke:#a3aaa5}
+.dash{stroke-dasharray:4 4}
+.fg{fill:var(--g-bg)}.fgs{fill:var(--accent)}.fb{fill:var(--b-bg)}.fr{fill:var(--r-bg)}.frs{fill:var(--red)}.fo{fill:var(--o-bg)}.fos{fill:var(--orange)}.fw{fill:#fff}.fk{fill:var(--ink)}.fgr{fill:#eef0ee}.fpow{fill:#d9d4c7}
+.tx{font-family:'DM Sans',sans-serif;font-size:12px;fill:var(--body)}
+.tx.s{font-size:10.5px;fill:var(--muted)}
+.tx.b{font-weight:700;fill:var(--ink)}
+.tx.g{fill:var(--accent-dark);font-weight:700}.tx.r{fill:var(--red);font-weight:700}.tx.o{fill:#a85f10;font-weight:700}.tx.bl{fill:var(--blue);font-weight:700}
+.tx.mid{text-anchor:middle}.tx.end{text-anchor:end}
+.bar{fill:var(--accent)}.bar.hl{fill:var(--red)}
+.axis{stroke:#c9cdca;stroke-width:1;fill:none}
+.grid{stroke:#eceeec;stroke-width:1}
+
+/* animations run only on the active slide, restart on every visit */
+.slide.active .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s ease-out forwards;animation-delay:var(--d,0s)}
+.slide.active .fade{opacity:0;animation:fadeup .5s ease-out forwards;animation-delay:var(--d,.3s)}
+.slide.active .stagger > *{opacity:0;animation:fadeup .45s ease-out forwards;animation-delay:var(--d,0s)}
+.slide.active .grow-x{transform-box:fill-box;transform-origin:left center;animation:growx .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,.1s)}
+.slide.active .grow-y{transform-box:fill-box;transform-origin:center bottom;animation:growy .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,.1s)}
+.slide.active .updown{animation:updown 2s ease-in-out infinite}
+.slide.active .spin{transform-box:view-box;animation:spin 6s linear infinite}
+.slide.active .spin-r{transform-box:view-box;animation:spin 6s linear infinite reverse}
+.slide.active .drop{animation:drop 2.4s ease-in infinite}
+.slide.active .bounce{animation:bounce 1.2s ease-in-out infinite}
+.slide.active .cyc{animation:cyc 6s infinite;animation-delay:var(--d,0s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadeup{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes growx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes growy{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes updown{0%,100%{transform:translateY(0)}50%{transform:translateY(22px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}80%{opacity:1}100%{transform:translateY(46px);opacity:0}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes cyc{0%,22%{opacity:1}26%,100%{opacity:.28}}
+
+/* last resort when a page cannot fit at a readable size: the page body scrolls,
+   the Back/Next bar stays pinned, and a fade hints at more below */
+.slide.scrolly{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.slide.scrolly .si{height:auto;min-height:100%;justify-content:flex-start}
+#stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;pointer-events:none;background:linear-gradient(rgba(255,255,255,0),#fff);opacity:0;transition:opacity .2s}
+#stage.more::after{opacity:1}
+.ph-step.scrolly{overflow-y:auto;-webkit-overflow-scrolling:touch}
+.ph-step.scrolly .ph-in{height:auto;min-height:100%;justify-content:flex-start}
+@media (max-height:700px){footer{display:none}}
+@media (prefers-reduced-motion: reduce){
+  .slide.active *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important;transform:none!important}
+}
+
+/* ---------- additions for this explainer ---------- */
+.toggle-wrap.opt{border-style:dashed}
+.toggle-btn .tag{font-size:.72em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--eyebrow);background:var(--o-bg);padding:.15em .55em;border-radius:100px;margin-right:auto;margin-left:.5em;white-space:nowrap}
+.mock{border:1px solid var(--rule);border-radius:var(--radius);padding:.55em .7em;margin:.5em 0}
+.mock-title{font-size:.68em;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.4em}
+.mock-row{display:flex;flex-wrap:wrap;gap:.35em}
+.mock-btn{border:1px solid var(--rule);padding:.25em .6em;border-radius:6px;font-size:.8em;color:var(--ink);background:#fafbfa}
+.mock-btn.hl{border-color:var(--accent);color:var(--accent-dark);background:var(--g-bg);font-weight:600}
+/* spot-the-error record */
+.rec{border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;margin:.5em 0}
+.fld{display:grid;grid-template-columns:6.4em 1fr 3.6em;gap:.5em;align-items:center;width:100%;background:#fff;border:none;border-bottom:1px solid var(--rule);padding:.42em .65em;text-align:left;font:400 .84em 'DM Sans',sans-serif;color:var(--ink);cursor:pointer}
+.fld:last-child{border-bottom:none}
+.fld .k{color:var(--muted);font-size:.9em;font-weight:600}
+.fld .val{word-break:break-word}
+.fld .val.empty{color:#b5bbb7;font-style:italic}
+.fld .v{text-align:right;font-weight:700;font-size:.85em;color:var(--accent)}
+.fld .v::after{content:"Tap"}
+.fld.bad{background:var(--r-bg)}.fld.bad .v{color:var(--red)}.fld.bad .v::after{content:"Error"}
+.fld.ok{background:var(--g-bg)}.fld.ok .v::after{content:"OK"}
+#rec-exp{min-height:2.6em;font-size:.86em;border-left:3px solid var(--rule);padding:.35em .65em;margin-top:.4em}
+#rec-count{font-size:.78em;font-weight:700;color:var(--eyebrow);letter-spacing:.06em}
+/* citation-style switcher */
+.seg{display:flex;flex-wrap:wrap;gap:.35em;margin:.5em 0}
+.seg button{background:#fff;border:1.5px solid var(--rule);color:var(--ink);font:600 .84em 'DM Sans',sans-serif;padding:.4em .9em;border-radius:100px;cursor:pointer}
+.seg button.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.seg button.tried:not(.on){border-color:var(--g-line);background:var(--g-bg);color:var(--accent-dark)}
+.doc{border:1px solid var(--rule);border-radius:var(--radius);padding:.65em .8em;font-size:.86em;background:#fff}
+.doc .intext{color:var(--accent-dark);font-weight:700;background:var(--g-bg);padding:0 .2em;border-radius:3px}
+.doc .refh{font-size:.78em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:.55em 0 .25em;padding-top:.45em;border-top:1px dashed var(--rule)}
+.doc .ref{padding-left:1.6em;text-indent:-1.6em;color:var(--ink)}
+@media (max-width:420px){.fld{grid-template-columns:5.2em 1fr 3em}}
+.back-kompas{white-space:nowrap}
+/* tool homepage viewer */
+.shot{margin:.45em 0 .35em;text-align:center}
+.shot img{max-width:100%;height:auto;max-height:calc(var(--k) * 30vh);max-height:calc(var(--k) * 30dvh);border:1px solid var(--rule);border-radius:8px;background:#fff;display:inline-block;vertical-align:top}
+.shot figcaption{font-size:.7em;color:var(--muted);margin-top:.25em}
+#tool-note{font-size:.9em;min-height:4.2em}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="ar-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L8 5 L1 9 Z" fill="#c0392b"/></marker>
+    <marker id="ar-o" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L8 5 L1 9 Z" fill="#d9821f"/></marker>
+    <marker id="ar-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L8 5 L1 9 Z" fill="#2d6a4f"/></marker>
+  </defs>
+</svg>
+<script>
+/* Size the page to the visible screen. 100vh/100dvh are unreliable on many
+   Android and in-app browsers (they include the area behind the toolbar). */
+(function(){
+  function setH(){ document.documentElement.style.setProperty('--app-h', window.innerHeight + 'px'); }
+  setH();
+  window.addEventListener('resize', setH);
+  window.addEventListener('orientationchange', function(){ setTimeout(setH, 250); });
+  window.addEventListener('pageshow', setH);
+})();
+</script>
+<div id="shell">
+  <nav>
+    <a class="logo" href="https://www.aufthority.com">Aufthority<span>· Edu</span></a>
+    <div class="nav-right">
+      <a class="icon-btn back-kompas" id="btn-home" href="https://www.aufthority.com/" data-umami-event="back-to-aufthority">← <span class="bk-long">Back to </span>Aufthority</a>
+      <button class="icon-btn" id="btn-toc" data-umami-event="open-contents">Contents</button>
+      <span id="progress-label">1 / 26</span>
+    </div>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <div id="stage">
+
+<!-- ================= INTRODUCTION ================= -->
+
+<section class="slide active" data-sec="intro" data-title="Start here">
+ <div class="si has-ill">
+  <figure class="ill">
+   <svg viewBox="0 0 400 220" role="img" aria-label="The same reference shown in APA style and in Vancouver style, switched with one click">
+    <rect class="fw ln thin draw" pathLength="1" x="14" y="12" width="372" height="74" rx="8"/>
+    <text class="tx s fade" x="28" y="32" style="--d:.4s">APA 7th</text>
+    <text class="tx b fade" x="28" y="52" style="--d:.5s">Jergas, H., &amp; Baethge, C. (2015).</text>
+    <text class="tx fade" x="28" y="70" style="--d:.6s">Quotation accuracy in medical journal articles…</text>
+    <path class="ln o fade" d="M200 94 V126" marker-end="url(#ar-o)" style="--d:1s"/>
+    <text class="tx o fade" x="214" y="115" style="--d:1s">one click</text>
+    <rect class="fg ln g draw" pathLength="1" x="14" y="134" width="372" height="74" rx="8" style="--d:1.1s"/>
+    <text class="tx s fade" x="28" y="154" style="--d:1.4s">Vancouver</text>
+    <text class="tx g fade" x="28" y="174" style="--d:1.5s">1. Jergas H, Baethge C. Quotation accuracy in</text>
+    <text class="tx fade" x="28" y="192" style="--d:1.6s">medical journal articles… PeerJ. 2015;3:e1364.</text>
+   </svg>
+  </figure>
+  <div class="txt">
+   <div class="eyebrow">Start here</div>
+   <h1>Sixty references. A new style. <span class="ac">How long?</span></h1>
+   <p>Your lecturer, or the journal, asks you to change every reference from APA to Vancouver. Typed by hand, that is hours of work, and mistakes slip in. With a <b>reference manager</b>, it takes seconds.</p>
+   <p>This explainer shows what reference managers are, why they matter, and how to use one step by step, with <b>Zotero</b> as the worked example.</p>
+   <p class="small">For students and researchers at every level. Use Next to move through the pages, or Contents to jump around.</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="intro" data-title="What you will learn">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Your route</div>
+   <h2>Four sections, <span class="ac">four outcomes.</span></h2>
+   <p>By the end, you should be able to:</p>
+   <div class="stack stagger">
+    <div class="layer"><span class="ln">1</span><div><b>Explain the purpose</b>Describe what a reference manager does and which everyday problems it solves.</div></div>
+    <div class="layer"><span class="ln">2</span><div><b>Compare the tools</b>Tell Zotero, Mendeley and EndNote apart by cost, owner and how they work.</div></div>
+    <div class="layer"><span class="ln">3</span><div><b>Use Zotero</b>Collect, check, organise, read and cite sources, and switch citation styles.</div></div>
+    <div class="layer"><span class="ln">4</span><div><b>Know the limits</b>Use the safety nets, manage storage, and recognise what no tool can check for you.</div></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ================= 1 · WHY ================= -->
+
+<section class="slide" data-sec="why" data-title="The problem">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Why a reference manager</div>
+   <h2>Problems almost <span class="ac">everyone has had.</span></h2>
+   <p>Tap each card. Which of these have happened to you?</p>
+   <div class="rgrid">
+    <button class="rcard"><span class="rt">The lost PDF</span><span class="rb">Papers scattered across your Downloads folder with names like <b>article_final_v3.pdf</b>.</span></button>
+    <button class="rcard"><span class="rt">Where was that?</span><span class="rb">You remember a fact but not which paper it came from, so you search for it all over again.</span></button>
+    <button class="rcard"><span class="rt">Typing by hand</span><span class="rb">Author, year, title, journal, volume, pages and DOI, typed one reference at a time.</span></button>
+    <button class="rcard"><span class="rt">The style change</span><span class="rb">A different referencing style is required, so every reference must be reformatted.</span></button>
+    <button class="rcard"><span class="rt">The orphan reference</span><span class="rb">You delete a citation from the text, but its entry stays in the reference list.</span></button>
+   </div>
+   <p><b>None of these are about how clever you are. They are about having no system.</b></p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="why" data-title="What it is">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Definition</div>
+   <h2>What is a <span class="ac">reference manager?</span></h2>
+   <p>A <b>reference manager</b> is software that stores the details of every source you read (authors, title, journal, year, DOI) together with its PDF, in one personal library.</p>
+   <p>When you write, it inserts citations into your text and builds the reference list for you, in whatever style you choose.</p>
+   <div class="callout"><b>Think of your phone's contacts.</b> You save a number once. After that, you never need to remember or retype it to make a call.</div>
+   <p class="small">Commonly used reference managers:</p>
+   <div class="pill-list stagger"><span class="pill">Zotero</span><span class="pill">Mendeley</span><span class="pill">EndNote</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="why" data-title="Four jobs">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Key concept</div>
+   <h2>Four jobs, <span class="ac">always in this order.</span></h2>
+   <div class="flow">
+    <div class="node g">1. Collect<small>capture the source</small></div>
+    <div class="node g">2. Organise<small>file it by project</small></div>
+    <div class="node g">3. Read<small>annotate the PDF</small></div>
+    <div class="node g">4. Cite<small>insert and format</small></div>
+   </div>
+   <ol class="steps">
+    <li><span class="n">1</span><span><b>Collect:</b> capture a source's details straight from a journal page, a database or PubMed.</span></li>
+    <li><span class="n">2</span><span><b>Organise:</b> group sources by project, topic or chapter.</span></li>
+    <li><span class="n">3</span><span><b>Read and annotate:</b> highlight and take notes on the PDF itself.</span></li>
+    <li><span class="n">4</span><span><b>Cite:</b> insert citations as you write and generate the reference list.</span></li>
+   </ol>
+   <p class="small">Every major reference manager does these four jobs. What differs is the cost, the owner and the details of how each works.</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="why" data-title="Check: the basics">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Check your understanding</div>
+   <h2>Two quick <span class="ac">questions.</span></h2>
+   <div class="stepper">
+    <div class="choice-set cur" data-answer="b">
+      <div class="step-count">QUESTION 1 OF 2</div>
+      <div class="choice-q">What does a reference manager store?</div>
+      <div class="choices"><button class="choice" data-v="a">Only your PDFs</button><button class="choice" data-v="b">Source details plus files, which it uses to build citations</button><button class="choice" data-v="c">Only the finished reference list as text</button></div>
+      <div class="feedback">It stores the structured details of each source (and usually the PDF). Because the details are structured, it can format them in any style. A list saved only as text cannot be reformatted.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="c">
+      <div class="step-count">QUESTION 2 OF 2</div>
+      <div class="choice-q">You are typing your assignment in Word. Which of the four jobs happens there?</div>
+      <div class="choices"><button class="choice" data-v="a">Collect</button><button class="choice" data-v="b">Organise</button><button class="choice" data-v="c">Cite</button></div>
+      <div class="feedback">Citing happens in your word processor, through the reference manager's plugin. Collecting and organising happen earlier, in the library itself.</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ================= 2 · TOOLS ================= -->
+
+<section class="slide" data-sec="tools" data-title="Zotero, Mendeley, EndNote">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">The tools</div>
+   <h2>Three tools, <span class="ac">same idea.</span></h2>
+   <table class="data-table">
+    <tr><th>Tool</th><th>Made by</th><th>Cost</th><th>Worth knowing</th></tr>
+    <tr class="hl"><td>Zotero</td><td>Digital Scholar (non-profit)</td><td>Free, open source</td><td>300 MB of free cloud storage for files</td></tr>
+    <tr><td>Mendeley</td><td>Elsevier</td><td>Free, account required; 2 GB of free storage</td><td>The old Mendeley Desktop stopped being downloadable on 1 September 2022; it was replaced by Mendeley Reference Manager</td></tr>
+    <tr><td>EndNote</td><td>Clarivate</td><td>Paid</td><td>Check whether your institution has a licence</td></tr>
+   </table>
+   <p class="cite">(<a href="https://www.zotero.org/storage" target="_blank" rel="noopener">Zotero</a>; <a href="https://www.mendeley.com/" target="_blank" rel="noopener">Mendeley</a>; <a href="https://guides.hsict.library.utoronto.ca/SMH/Citation_Management/Mendeley" target="_blank" rel="noopener">University of Toronto Libraries</a>; <a href="https://www.find-tender.service.gov.uk/Notice/037626-2023" target="_blank" rel="noopener">Jisc, 2023</a>)</p>
+   <div class="callout"><b>The skills transfer.</b> The four jobs are the same in every tool, so what you learn with Zotero carries over. Libraries can also be exported if you switch.</div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="tools" data-title="See the three tools">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">The tools · homepages</div>
+   <h2>Three homepages, <span class="ac">one promise.</span></h2>
+   <p>Look at how each tool describes itself. Tap all three.</p>
+   <div class="seg task" id="tool-seg">
+    <button data-t="zotero" class="on tried">Zotero</button>
+    <button data-t="mendeley">Mendeley</button>
+    <button data-t="endnote">EndNote</button>
+   </div>
+   <figure class="shot">
+    <img id="tool-img" src="media/zotero-home.jpg" width="1326" height="620" alt="Zotero homepage: Your personal research assistant">
+    <figcaption id="tool-cap">Screenshot: zotero.org, October 2026.</figcaption>
+   </figure>
+   <p id="tool-note"></p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="tools" data-title="Why Zotero">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Case study</div>
+   <h2>Why we use <span class="ac">Zotero here.</span></h2>
+   <div class="tiles stagger">
+    <div class="tile"><div class="n">Free</div><div class="l">Item details, notes, tags and collections sync without limit. Only file storage above 300 MB is paid.</div></div>
+    <div class="tile"><div class="n">Open source</div><div class="l">AGPLv3 licence, developed by a non-profit organisation.</div></div>
+    <div class="tile"><div class="n">Everywhere</div><div class="l">Windows, macOS and Linux, plus iOS and Android apps.</div></div>
+    <div class="tile"><div class="n">Fits your writing</div><div class="l">Plugins for Microsoft Word, Google Docs and LibreOffice.</div></div>
+   </div>
+   <p>It is also actively developed: <b>Zotero 10</b> was released in August 2026. <span class="cite">(<a href="https://www.zotero.org/blog/zotero-10/" target="_blank" rel="noopener">Zotero, 2026</a>)</span></p>
+   <p class="small">The steps here follow the current version. Menu names may differ slightly in older versions.</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="tools" data-title="Check: the tools">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Check your understanding</div>
+   <h2>Know your <span class="ac">tools.</span></h2>
+   <div class="stepper">
+    <div class="choice-set cur" data-answer="b">
+      <div class="step-count">QUESTION 1 OF 2</div>
+      <div class="choice-q">A senior tells you to download "Mendeley Desktop". What should you know?</div>
+      <div class="choices"><button class="choice" data-v="a">It is the current Mendeley app</button><button class="choice" data-v="b">Downloads ended in 2022; the current app is Mendeley Reference Manager</button><button class="choice" data-v="c">Mendeley no longer exists</button></div>
+      <div class="feedback">Mendeley still exists, but the old Desktop app was replaced. Advice from a few years ago may point to software you can no longer install.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="a">
+      <div class="step-count">QUESTION 2 OF 2</div>
+      <div class="choice-q">Which tool is free and open source?</div>
+      <div class="choices"><button class="choice" data-v="a">Zotero</button><button class="choice" data-v="b">Mendeley</button><button class="choice" data-v="c">EndNote</button></div>
+      <div class="feedback">Zotero. Mendeley is free but owned by a commercial publisher, Elsevier, and is not open source. EndNote is paid software from Clarivate.</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ================= 3 · ZOTERO ================= -->
+
+<section class="slide" data-sec="zotero" data-title="Install three things">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Step 1 · Install</div>
+   <h2>Three things <span class="ac">to install.</span></h2>
+   <ol class="steps">
+    <li><span class="n">1</span><span><b>Zotero desktop:</b> download it from zotero.org/download. This is your library.</span></li>
+    <li><span class="n">2</span><span><b>Zotero Connector:</b> an extension for your web browser (Chrome, Firefox, Edge or Safari). This is your capture button.</span></li>
+    <li><span class="n">3</span><span><b>A free Zotero account:</b> register at zotero.org, then sign in from Zotero under <b>Settings → Sync</b>. This backs up your library and keeps your devices in step.</span></li>
+   </ol>
+   <div class="callout"><b>Writing plugins.</b> The Word and LibreOffice plugins are installed with Zotero desktop, so close Word while installing. For Google Docs, the Zotero menu appears once the Connector is installed. <span class="cite">(<a href="https://www.zotero.org/support/word_processor_plugin_usage" target="_blank" rel="noopener">Zotero Documentation</a>)</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="zotero" data-title="Three ways to collect">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Step 2 · Collect</div>
+   <h2>Three ways <span class="ac">to add a source.</span></h2>
+   <p>Open each one before moving on.</p>
+   <div class="toggle-wrap">
+    <button class="toggle-btn"><span>From a web page</span><span class="hint">Open</span></button>
+    <div class="toggle-body"><p>Open the article on PubMed or the journal's website and click the Zotero Connector icon in your browser. The details are saved at once, along with the PDF when you have access to it.</p></div>
+   </div>
+   <div class="toggle-wrap">
+    <button class="toggle-btn"><span>From an identifier</span><span class="hint">Open</span></button>
+    <div class="toggle-body"><p>In Zotero, click the magic wand (<b>Add Item by Identifier</b>) and paste a DOI, PMID or ISBN. Zotero looks up the details for you.</p></div>
+   </div>
+   <div class="toggle-wrap">
+    <button class="toggle-btn"><span>From a PDF you already have</span><span class="hint">Open</span></button>
+    <div class="toggle-body"><p>Drag the PDF into Zotero. It will try to retrieve the paper's details automatically.</p></div>
+   </div>
+   <p class="cite">(<a href="https://www.zotero.org/support/adding_items_to_zotero" target="_blank" rel="noopener">Zotero Documentation</a>)</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="zotero" data-title="Activity: choose the way">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Try it · made-up scenarios</div>
+   <h2>Which way is <span class="ac">quickest here?</span></h2>
+   <p class="small">Answer all three to continue.</p>
+   <div class="stepper">
+    <div class="choice-set cur" data-answer="web">
+      <div class="step-count">SCENARIO 1 OF 3</div>
+      <div class="choice-q">You have a paper open on PubMed in your browser.</div>
+      <div class="choices"><button class="choice" data-v="web">Connector</button><button class="choice" data-v="id">Add by identifier</button><button class="choice" data-v="pdf">Drag in a PDF</button></div>
+      <div class="feedback">The Connector. You are already on the page, so one click captures the details.</div>
+      <button class="next-q">Next scenario →</button>
+    </div>
+    <div class="choice-set" data-answer="id">
+      <div class="step-count">SCENARIO 2 OF 3</div>
+      <div class="choice-q">A reference list in a textbook gives a DOI for a paper you want.</div>
+      <div class="choices"><button class="choice" data-v="web">Connector</button><button class="choice" data-v="id">Add by identifier</button><button class="choice" data-v="pdf">Drag in a PDF</button></div>
+      <div class="feedback">Add by identifier. Paste the DOI and Zotero fetches the details, with no need to find the web page first.</div>
+      <button class="next-q">Next scenario →</button>
+    </div>
+    <div class="choice-set" data-answer="pdf">
+      <div class="step-count">SCENARIO 3 OF 3</div>
+      <div class="choice-q">A classmate emails you a PDF, with no link.</div>
+      <div class="choices"><button class="choice" data-v="web">Connector</button><button class="choice" data-v="id">Add by identifier</button><button class="choice" data-v="pdf">Drag in a PDF</button></div>
+      <div class="feedback">Drag in the PDF. Zotero tries to retrieve its details, and the file is stored with the item.</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="zotero" data-title="Activity: spot the errors">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Try it · check what you capture</div>
+   <h2>Find the <span class="ac">three errors.</span></h2>
+   <p>Captured details are not always clean, and an error in your library becomes an error in your reference list. Tap the fields that are wrong. <span id="rec-count">0 OF 3 FOUND</span></p>
+   <div class="rec task" id="rec">
+    <button class="fld" data-bad="1" data-exp="The title is in capitals. Some sites supply titles this way; fix it to sentence or title case, or it will print in capitals in your reference list."><span class="k">Title</span><span class="val">QUOTATION ACCURACY IN MEDICAL JOURNAL ARTICLES—A SYSTEMATIC REVIEW AND META-ANALYSIS</span><span class="v"></span></button>
+    <button class="fld" data-exp="Correct: first author, surname first."><span class="k">Author</span><span class="val">Jergas, Hannah</span><span class="v"></span></button>
+    <button class="fld" data-exp="Correct: second author."><span class="k">Author</span><span class="val">Baethge, Christopher</span><span class="v"></span></button>
+    <button class="fld" data-bad="1" data-exp="The publisher has been captured as an author. Delete this line, or it will appear as a third author in every citation."><span class="k">Author</span><span class="val">PeerJ Inc.</span><span class="v"></span></button>
+    <button class="fld" data-exp="Correct: the journal title."><span class="k">Publication</span><span class="val">PeerJ</span><span class="v"></span></button>
+    <button class="fld" data-exp="Correct."><span class="k">Volume</span><span class="val">3</span><span class="v"></span></button>
+    <button class="fld" data-bad="1" data-exp="The date is missing, so citations would show 'n.d.' (no date). Add the year: 2015."><span class="k">Date</span><span class="val empty">(empty)</span><span class="v"></span></button>
+    <button class="fld" data-exp="Correct. The DOI also lets Zotero check for retractions later."><span class="k">DOI</span><span class="val">10.7717/peerj.1364</span><span class="v"></span></button>
+   </div>
+   <div id="rec-exp">Tap a field to check it.</div>
+   <p class="small">The paper is real; the errors were added for practice.</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="zotero" data-title="Organise">
+ <div class="si has-ill">
+  <figure class="ill">
+   <svg viewBox="0 0 400 220" role="img" aria-label="One item in My Library linked to two collections without being copied">
+    <rect class="fg ln g draw" pathLength="1" x="130" y="16" width="140" height="52" rx="8"/>
+    <text class="tx g mid fade" x="200" y="38" style="--d:.5s">My Library</text>
+    <text class="tx s mid fade" x="200" y="56" style="--d:.5s">every item, once</text>
+    <rect class="fw ln draw" pathLength="1" x="150" y="94" width="100" height="36" rx="6" style="--d:.4s"/>
+    <text class="tx b mid fade" x="200" y="117" style="--d:.8s">Jergas 2015</text>
+    <path class="ln m fade" d="M200 68 V92" style="--d:.8s"/>
+    <path class="ln g fade" d="M178 130 L110 162" marker-end="url(#ar-g)" style="--d:1.1s"/>
+    <path class="ln g fade" d="M222 130 L290 162" marker-end="url(#ar-g)" style="--d:1.2s"/>
+    <rect class="fw ln thin fade" x="20" y="166" width="160" height="40" rx="6" style="--d:1.3s"/>
+    <text class="tx mid fade" x="100" y="191" style="--d:1.3s">Ch 2: Literature review</text>
+    <rect class="fw ln thin fade" x="220" y="166" width="160" height="40" rx="6" style="--d:1.4s"/>
+    <text class="tx mid fade" x="300" y="191" style="--d:1.4s">Ch 3: Methods</text>
+   </svg>
+   <figcaption>One item, two collections, no copy.</figcaption>
+  </figure>
+  <div class="txt">
+   <div class="eyebrow">Step 3 · Organise</div>
+   <h2>Collections work <span class="ac">like playlists.</span></h2>
+   <p><b>Collections</b> group items by project, assignment or chapter. One item can sit in several collections at once without being duplicated, just as one song can be in many playlists. Removing an item from a collection does not delete it from your library.</p>
+   <p><b>Tags</b> are free labels that cut across collections, such as <i>methods</i> or <i>to-read</i>. You can also search by author, title, tag or the full text of your PDFs.</p>
+   <p class="cite">(<a href="https://www.zotero.org/support/collections_and_tags" target="_blank" rel="noopener">Zotero Documentation</a>)</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="zotero" data-title="Read and annotate">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Step 4 · Read</div>
+   <h2>Read and annotate <span class="ac">inside Zotero.</span></h2>
+   <p>Double-click a PDF to open it in Zotero's built-in reader. Highlight key sentences and add notes. Use colours with a meaning, for example yellow for main findings and red for limitations.</p>
+   <p>Annotations are stored with the item in your library. You can turn them into a note, and quotes in that note keep a link back to their source.</p>
+   <p>Zotero 10 adds <b>Reading Mode</b>: a clean, reflowed view without two-column layouts, with adjustable font size. You can still highlight and add notes in it. <span class="cite">(<a href="https://www.zotero.org/blog/zotero-10/" target="_blank" rel="noopener">Zotero, 2026</a>)</span></p>
+   <div class="callout"><b>A habit that pays off.</b> For each paper, write one or two sentences in your own words: what it found, and why it matters to you. When you write your literature review, half the work is done.</div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="zotero" data-title="Cite in Word">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Step 5 · Cite</div>
+   <h2>Cite <span class="ac">as you write.</span></h2>
+   <div class="mock" aria-hidden="true">
+    <div class="mock-title">The Zotero tab in Microsoft Word</div>
+    <div class="mock-row"><span class="mock-btn hl">Add/Edit Citation</span><span class="mock-btn hl">Add/Edit Bibliography</span><span class="mock-btn">Document Preferences</span><span class="mock-btn">Refresh</span></div>
+   </div>
+   <ol class="steps">
+    <li><span class="n">1</span><span>Click <b>Document Preferences</b> and choose a style, such as APA or Vancouver.</span></li>
+    <li><span class="n">2</span><span>Put the cursor where the citation goes, click <b>Add/Edit Citation</b>, type an author's name or a word from the title, and press Enter.</span></li>
+    <li><span class="n">3</span><span>At the end of the document, click <b>Add/Edit Bibliography</b>. The list is built and kept up to date for you.</span></li>
+    <li><span class="n">4</span><span>To add a page number, type it after the item before pressing Enter, for example <b>p.34</b>.</span></li>
+   </ol>
+   <p class="cite">(<a href="https://www.zotero.org/support/word_processor_plugin_usage" target="_blank" rel="noopener">Zotero Documentation</a>)</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="zotero" data-title="Activity: switch the style">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Try it · Document Preferences</div>
+   <h2>Same source, <span class="ac">three styles.</span></h2>
+   <p>Changing the style in Document Preferences reformats every citation and the whole reference list at once. Try all three styles.</p>
+   <div class="seg task" id="style-seg">
+    <button data-s="apa" class="on tried">APA 7th</button>
+    <button data-s="van">Vancouver</button>
+    <button data-s="har">Harvard</button>
+   </div>
+   <div class="doc" aria-live="polite">
+    <div>A systematic review has measured how often quotations in medical journals are accurate <span class="intext" id="st-in">(Jergas &amp; Baethge, 2015)</span>.</div>
+    <div class="refh">References</div>
+    <div class="ref" id="st-ref"></div>
+   </div>
+   <p class="small">Journals and lecturers often use slightly different versions of a style. Install the exact one you need from the Zotero Style Repository.</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="zotero" data-title="Don't edit by hand">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Step 5 · Cite</div>
+   <h2>Fix the library, <span class="ac">not the document.</span></h2>
+   <div class="callout warn"><b>Do not edit citations or the reference list by hand in Word.</b> An edited citation stops updating automatically, and manual changes to the bibliography are overwritten the next time Zotero refreshes. Correct the item in Zotero, then click <b>Refresh</b>. <span class="cite">(<a href="https://www.zotero.org/support/word_processor_plugin_usage" target="_blank" rel="noopener">Zotero Documentation</a>)</span></div>
+   <div class="toggle-wrap">
+    <button class="toggle-btn"><span>My journal's style isn't in the list</span><span class="hint">Open</span></button>
+    <div class="toggle-body"><p>In Zotero, open <b>Settings → Cite</b> and click <b>Get additional styles</b>. This opens the Zotero Style Repository. Search for the journal or publisher, then click to install the style.</p></div>
+   </div>
+   <div class="toggle-wrap opt">
+    <button class="toggle-btn"><span>I use Google Docs or LibreOffice</span><span class="tag">Go deeper</span><span class="hint">Open</span></button>
+    <div class="toggle-body"><p>The workflow is the same. In Google Docs, use the Zotero menu in the top menu bar. In LibreOffice, use the Zotero toolbar. Zotero can also move a cited document between Word, Google Docs and LibreOffice.</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="zotero" data-title="Check: using Zotero">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Check your understanding</div>
+   <h2>Three questions <span class="ac">on Zotero.</span></h2>
+   <div class="stepper">
+    <div class="choice-set cur" data-answer="b">
+      <div class="step-count">QUESTION 1 OF 3</div>
+      <div class="choice-q">You add a paper to a second collection. What happens to it?</div>
+      <div class="choices"><button class="choice" data-v="a">A duplicate copy is made</button><button class="choice" data-v="b">The same item appears in both, with no copy</button><button class="choice" data-v="c">It moves out of the first collection</button></div>
+      <div class="feedback">Collections work like playlists: one item, many collections, no duplicate. Moving rather than adding needs a held modifier key while dragging.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="c">
+      <div class="step-count">QUESTION 2 OF 3</div>
+      <div class="choice-q">Where do you change the citation style of a Word document?</div>
+      <div class="choices"><button class="choice" data-v="a">Word's own References tab</button><button class="choice" data-v="b">By editing each citation</button><button class="choice" data-v="c">Zotero's Document Preferences</button></div>
+      <div class="feedback">Document Preferences, in the Zotero tab. Word's own References tab is a separate system that does not use your Zotero library.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="a">
+      <div class="step-count">QUESTION 3 OF 3</div>
+      <div class="choice-q">An author's name is misspelt in your reference list. What is the right fix?</div>
+      <div class="choices"><button class="choice" data-v="a">Correct it in Zotero, then Refresh</button><button class="choice" data-v="b">Retype it in the Word reference list</button><button class="choice" data-v="c">Ignore it; markers won't notice</button></div>
+      <div class="feedback">Fix the source of the error, the item in your library, then Refresh. Typing over it in Word is overwritten at the next refresh, and the error stays in your library for the next assignment.</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ================= 4 · SAFETY NETS AND LIMITS ================= -->
+
+<section class="slide" data-sec="limits" data-title="Retraction alerts">
+ <div class="si has-ill">
+  <figure class="ill">
+   <svg viewBox="0 0 400 210" role="img" aria-label="A Zotero items list with one retracted item flagged in red">
+    <rect class="fw ln thin" x="20" y="14" width="360" height="182" rx="8"/>
+    <text class="tx s" x="36" y="36">Title</text>
+    <text class="tx s end" x="364" y="36">Year</text>
+    <path class="ln m thin" d="M20 46 H380"/>
+    <g class="stagger">
+     <g><text class="tx" x="36" y="70">Quotation accuracy in medical journal…</text><text class="tx s end" x="364" y="70">2015</text></g>
+     <g><rect class="fr" x="21" y="84" width="358" height="34"/><path class="ln r" d="M32 92 L44 112 L20 112 Z" style="transform:translateX(4px)"/><text class="tx r" x="56" y="106">A study with a retraction notice</text><text class="tx r end" x="364" y="106">Retracted</text></g>
+     <g><text class="tx" x="36" y="142">Systematic review of quotation…</text><text class="tx s end" x="364" y="142">2025</text></g>
+     <g><text class="tx" x="36" y="176">Your next source…</text><text class="tx s end" x="364" y="176">—</text></g>
+    </g>
+   </svg>
+   <figcaption>Illustrative items list.</figcaption>
+  </figure>
+  <div class="txt">
+   <div class="eyebrow">Safety net</div>
+   <h2>A warning before you <span class="ac">cite a retracted paper.</span></h2>
+   <p>Zotero checks your library against the Retraction Watch database. Retracted items are flagged in your items list, with details of the retraction.</p>
+   <p>If you try to cite a retracted item in Word, Zotero warns you first. If a paper is retracted after you cited it, the warning appears when the document is refreshed.</p>
+   <div class="callout note"><b>The catch:</b> it only works for items with a DOI or PMID. Another reason to keep your item details complete.</div>
+   <p class="cite">(<a href="https://www.zotero.org/blog/retracted-item-notifications/" target="_blank" rel="noopener">Zotero Blog</a>)</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="limits" data-title="Storage">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Storage</div>
+   <h2>What's free, <span class="ac">and what isn't.</span></h2>
+   <div class="tiles">
+    <div class="tile"><div class="n">Unlimited</div><div class="l">Item details, notes, tags and collections sync free.</div></div>
+    <div class="tile"><div class="n">300 MB</div><div class="l">Free cloud storage for files such as PDFs. Paid plans: 2 GB, 6 GB or unlimited.</div></div>
+   </div>
+   <div class="calc">
+    <div class="calc-row">
+     <label>Number of PDFs<input id="st-n" type="number" min="0" step="1" value="150" inputmode="numeric"></label>
+     <label>Average size of one PDF (MB)<input id="st-mb" type="number" min="0" step="0.1" value="1.5" inputmode="decimal"></label>
+    </div>
+    <div class="calc-out" id="st-out"></div>
+   </div>
+   <p class="small">Check the size of a few of your own PDFs for a realistic average. If storage fills up, items and PDFs stay on your computer; only syncing files to the cloud is limited. Files in a group library count against the group owner's storage. <span class="cite">(<a href="https://www.zotero.org/storage" target="_blank" rel="noopener">Zotero</a>; <a href="https://libguides.bates.edu/zotero/storage" target="_blank" rel="noopener">Bates College Library</a>)</span></p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="limits" data-title="What it cannot do">
+ <div class="si has-ill">
+  <figure class="ill">
+   <svg id="dots" viewBox="0 0 400 230" role="img" aria-label="Out of 100 quotations, about 17 are inaccurate, about 8 of them major errors"></svg>
+   <figcaption>Each dot is one quotation, rounded to the nearest whole number.</figcaption>
+  </figure>
+  <div class="txt">
+   <div class="eyebrow">The limit</div>
+   <h2>Right format, <span class="ac">wrong claim.</span></h2>
+   <p>A meta-analysis of 46 studies, covering about 32,000 quotations in the medical literature, found that <b>16.9%</b> were inaccurate: the cited source did not support what the author wrote. About half were major errors (8.0%), and the rate has not improved over time. <span class="cite">(<a href="https://doi.org/10.1186/s41073-025-00173-z" target="_blank" rel="noopener">Baethge &amp; Jergas, 2025</a>)</span></p>
+   <p>Zotero makes sure your references are <b>formatted</b> correctly. It cannot check that a paper actually says what you claim it says.</p>
+   <div class="callout"><b>The tool manages references. Reading, understanding and citing honestly are still your job.</b></div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="limits" data-title="Check: limits">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Check your understanding</div>
+   <h2>Two questions <span class="ac">on the limits.</span></h2>
+   <div class="stepper">
+    <div class="choice-set cur" data-answer="b">
+      <div class="step-count">QUESTION 1 OF 2</div>
+      <div class="choice-q">The 16.9% figure describes:</div>
+      <div class="choices"><button class="choice" data-v="a">References with formatting mistakes</button><button class="choice" data-v="b">Quotations where the source does not support the claim</button><button class="choice" data-v="c">Papers that were later retracted</button></div>
+      <div class="feedback">These are errors of content, not formatting. A reference can be perfectly formatted and still point to a paper that does not say what the author claims.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="c">
+      <div class="step-count">QUESTION 2 OF 2</div>
+      <div class="choice-q">Your project group shares a Zotero group library and attaches many PDFs. Whose storage do the files use?</div>
+      <div class="choices"><button class="choice" data-v="a">Each member's own</button><button class="choice" data-v="b">None; group storage is unlimited</button><button class="choice" data-v="c">The group owner's</button></div>
+      <div class="feedback">Group file storage draws from the owner's account, so a busy group can fill the owner's free 300 MB quickly.</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ================= WRAP-UP ================= -->
+
+<section class="slide" data-sec="end" data-title="Quick quiz">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Check your understanding</div>
+   <h2>Five questions, <span class="ac">no marks recorded.</span></h2>
+   <div class="stepper quiz">
+    <div class="choice-set cur" data-answer="b">
+      <div class="step-count">QUESTION 1 OF 5</div>
+      <div class="choice-q">You must switch a 60-reference essay from APA to Vancouver. The best way is to:</div>
+      <div class="choices"><button class="choice" data-v="a">Retype each reference</button><button class="choice" data-v="b">Pick Vancouver in Document Preferences</button><button class="choice" data-v="c">Copy each one from Google Scholar</button></div>
+      <div class="feedback">Document Preferences reformats every citation and the reference list at once. Retyping or copying one by one is slow and reintroduces errors.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="c">
+      <div class="step-count">QUESTION 2 OF 5</div>
+      <div class="choice-q">A citation shows "n.d." instead of a year. The most likely cause is:</div>
+      <div class="choices"><button class="choice" data-v="a">The style does not use years</button><button class="choice" data-v="b">The PDF is missing</button><button class="choice" data-v="c">The Date field is empty in Zotero</button></div>
+      <div class="feedback">"n.d." means no date: the Date field was not captured. Fill it in in Zotero and Refresh. A missing PDF does not affect the citation.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="b">
+      <div class="step-count">QUESTION 3 OF 5</div>
+      <div class="choice-q">Your free 300 MB of storage is full. What happens?</div>
+      <div class="choices"><button class="choice" data-v="a">Zotero stops working</button><button class="choice" data-v="b">Items stay on your computer; file sync to the cloud is limited</button><button class="choice" data-v="c">Zotero deletes your oldest PDFs</button></div>
+      <div class="feedback">Your library keeps working and nothing is deleted. Only syncing files to the cloud is limited. Item details keep syncing, because they do not count against storage.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="a">
+      <div class="step-count">QUESTION 4 OF 5</div>
+      <div class="choice-q">Zotero's retraction alert can only check an item that has:</div>
+      <div class="choices"><button class="choice" data-v="a">A DOI or PMID</button><button class="choice" data-v="b">An attached PDF</button><button class="choice" data-v="c">A tag</button></div>
+      <div class="feedback">The check matches identifiers. Without a DOI or PMID, a retracted paper may not be flagged, even if its PDF is attached.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="c">
+      <div class="step-count">QUESTION 5 OF 5</div>
+      <div class="choice-q">Every reference in your essay is perfectly formatted by Zotero. Does that mean your citations are accurate?</div>
+      <div class="choices"><button class="choice" data-v="a">Yes, the format proves it</button><button class="choice" data-v="b">Only in Vancouver style</button><button class="choice" data-v="c">No, you must check each source supports your claim</button></div>
+      <div class="feedback">Formatting and accuracy are different things. Only reading the source tells you whether it supports what you wrote.</div>
+    </div>
+    <div class="score" id="quiz-score"></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="end" data-title="Summary">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Take home</div>
+   <h2>Save once, <span class="ac">cite anywhere.</span></h2>
+   <div class="cards stagger">
+    <div class="card"><div class="cn">1</div><div>A reference manager is a personal library and a citation engine. The four jobs are collect, organise, read and cite.</div></div>
+    <div class="card"><div class="cn">2</div><div>Zotero is free and open source, and works with Word, Google Docs and LibreOffice. The skills transfer to Mendeley and EndNote.</div></div>
+    <div class="card"><div class="cn">3</div><div>Check every item as you capture it, and fix errors in the library, never by hand in the document.</div></div>
+    <div class="card"><div class="cn">4</div><div>Use the safety nets (retraction alerts, complete identifiers), but remember: the tool checks format, not content. Read your sources.</div></div>
+   </div>
+   <div style="margin:.6em 0"><button class="btn solid" id="btn-refs" data-umami-event="open-sources">Sources and further reading (15) →</button></div>
+   <div class="madeby">
+     <p><b>Made by <a href="https://www.aufthority.com/" target="_blank" rel="noopener" data-umami-event="link-website">Aufthority</a>.</b> Learning material for students and researchers at every level. Scenarios and records marked as made up are for practice. Zotero menus may change between versions; check the official documentation.</p>
+     <div class="socials">
+       <a href="https://www.aufthority.com/" target="_blank" rel="noopener" data-umami-event="link-website">Website</a>
+       <a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener" data-umami-event="link-linkedin">LinkedIn</a>
+       <a href="https://aufthority.substack.com/" target="_blank" rel="noopener" data-umami-event="link-substack">Substack</a>
+       <a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener" data-umami-event="link-instagram">Instagram</a>
+       <a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener" data-umami-event="link-tiktok">TikTok</a>
+       <a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener" data-umami-event="link-threads">Threads</a>
+       <a href="mailto:the.aufthority@gmail.com" data-umami-event="link-email">the.aufthority@gmail.com</a>
+     </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+  </div><!-- /stage -->
+
+  <div id="bottom">
+    <div id="gate-hint"></div>
+    <div id="nav-wrap">
+      <button id="btn-back" class="nav-btn" disabled data-umami-event="nav-back">← Back</button>
+      <button id="btn-next" class="nav-btn" data-umami-event="nav-next">Next →</button>
+    </div>
+    <footer>Informed decisions, better health.</footer>
+  </div>
+</div>
+
+<div class="overlay" id="toc-overlay" role="dialog" aria-modal="true">
+  <div class="panel">
+    <div class="panel-head"><h3>Contents</h3><button class="icon-btn close-ov">Close</button></div>
+    <p class="toc-note">You can jump to any page from here, even if a page's questions are not finished.</p>
+    <ul class="toc" id="toc-list"></ul>
+  </div>
+</div>
+
+<div class="overlay" id="refs-overlay" role="dialog" aria-modal="true">
+  <div class="panel">
+    <div class="panel-head"><h3>Sources and further reading</h3><button class="icon-btn close-ov">Close</button></div>
+    <ol class="refs">
+      <li>Baethge, C., &amp; Jergas, H. (2025). Systematic review and meta-analysis of quotation inaccuracy in medicine. <i>Research Integrity and Peer Review, 10</i>(1). <a href="https://doi.org/10.1186/s41073-025-00173-z" target="_blank" rel="noopener">https://doi.org/10.1186/s41073-025-00173-z</a></li>
+      <li>Bates College Library. (n.d.). <i>Zotero: Storage</i>. Retrieved October 23, 2026, from <a href="https://libguides.bates.edu/zotero/storage" target="_blank" rel="noopener">https://libguides.bates.edu/zotero/storage</a></li>
+      <li>Clarivate. (n.d.). <i>EndNote</i>. Retrieved October 23, 2026, from <a href="https://endnote.com/" target="_blank" rel="noopener">https://endnote.com/</a></li>
+      <li>Elsevier. (n.d.). <i>Mendeley: The free all-in-one reference manager</i>. Retrieved October 23, 2026, from <a href="https://www.mendeley.com/" target="_blank" rel="noopener">https://www.mendeley.com/</a></li>
+      <li>Jergas, H., &amp; Baethge, C. (2015). Quotation accuracy in medical journal articles—a systematic review and meta-analysis. <i>PeerJ, 3</i>, e1364. <a href="https://doi.org/10.7717/peerj.1364" target="_blank" rel="noopener">https://doi.org/10.7717/peerj.1364</a></li>
+      <li>Jisc Services Limited. (2023). <i>Contract award notice: Clarivate EndNote 2024–2026</i>. Find a Tender. <a href="https://www.find-tender.service.gov.uk/Notice/037626-2023" target="_blank" rel="noopener">find-tender.service.gov.uk</a></li>
+      <li>University of Toronto Libraries. (n.d.). <i>Citation management: Mendeley</i>. Retrieved October 23, 2026, from <a href="https://guides.hsict.library.utoronto.ca/SMH/Citation_Management/Mendeley" target="_blank" rel="noopener">guides.hsict.library.utoronto.ca</a></li>
+      <li>Zotero. (n.d.). <i>Download</i>. Retrieved October 23, 2026, from <a href="https://www.zotero.org/download/" target="_blank" rel="noopener">https://www.zotero.org/download/</a></li>
+      <li>Zotero. (n.d.). <i>Zotero storage</i>. Retrieved October 23, 2026, from <a href="https://www.zotero.org/storage" target="_blank" rel="noopener">https://www.zotero.org/storage</a></li>
+      <li>Zotero. (2026, August 17). <i>Zotero 10</i>. Zotero Blog. <a href="https://www.zotero.org/blog/zotero-10/" target="_blank" rel="noopener">https://www.zotero.org/blog/zotero-10/</a></li>
+      <li>Zotero. (n.d.). <i>Retracted item notifications with Retraction Watch integration</i>. Zotero Blog. <a href="https://www.zotero.org/blog/retracted-item-notifications/" target="_blank" rel="noopener">https://www.zotero.org/blog/retracted-item-notifications/</a></li>
+      <li>Zotero Documentation. (n.d.). <i>Adding items to Zotero</i>. Retrieved October 23, 2026, from <a href="https://www.zotero.org/support/adding_items_to_zotero" target="_blank" rel="noopener">https://www.zotero.org/support/adding_items_to_zotero</a></li>
+      <li>Zotero Documentation. (2025). <i>Collections and tags</i>. <a href="https://www.zotero.org/support/collections_and_tags" target="_blank" rel="noopener">https://www.zotero.org/support/collections_and_tags</a></li>
+      <li>Zotero Documentation. (2026). <i>Using the Zotero Word plugin</i>. <a href="https://www.zotero.org/support/word_processor_plugin_usage" target="_blank" rel="noopener">https://www.zotero.org/support/word_processor_plugin_usage</a></li>
+      <li>Zotero. (n.d.). <i>Zotero Style Repository</i>. Retrieved October 23, 2026, from <a href="https://www.zotero.org/styles" target="_blank" rel="noopener">https://www.zotero.org/styles</a></li>
+    </ol>
+  </div>
+</div>
+
+<script>
+(function(){
+  const slides   = document.querySelectorAll('.slide');
+  const TOTAL    = slides.length;
+  let current = 1;
+  const btnBack  = document.getElementById('btn-back');
+  const btnNext  = document.getElementById('btn-next');
+  const progFill = document.getElementById('progress-fill');
+  const progLbl  = document.getElementById('progress-label');
+  const hint     = document.getElementById('gate-hint');
+  const NS = 'http://www.w3.org/2000/svg';
+
+  document.querySelectorAll('.stagger').forEach(c=>{
+    [...c.children].forEach((e,i)=>e.style.setProperty('--d',(0.1 + i*0.11).toFixed(2)+'s'));
+  });
+
+  function el(tag, attrs, text){
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  /* 100-dot quotation chart: 17 of 100 inaccurate (16.9%), 8 major (8.0%) */
+  function buildDots(){
+    const svg=document.getElementById('dots'); if(!svg||svg.dataset.built) return; svg.dataset.built='1';
+    const MAJOR=8, ALL=17, cols=20, r=6.2, gx=18, gy=18, x0=29, y0=22;
+    for(let i=0;i<100;i++){
+      const c=i%cols, row=Math.floor(i/cols);
+      const cls=i<MAJOR?'frs':(i<ALL?'fos':'fg');
+      svg.appendChild(el('circle',{class:cls+' fade',cx:x0+c*gx,cy:y0+row*gy,r:r,style:'--d:'+(0.05+i*0.012).toFixed(3)+'s'+(cls==='fg'?';stroke:#cfe6d9;stroke-width:1':'')}));
+    }
+    const ly=128;
+    [['frs','8 major errors','r'],['fos','9 minor errors','o'],['fg','83 accurate','g']].forEach((d,i)=>{
+      const y=ly+i*24;
+      svg.appendChild(el('circle',{class:d[0],cx:36,cy:y,r:6,style:d[0]==='fg'?'stroke:#cfe6d9;stroke-width:1':''}));
+      svg.appendChild(el('text',{class:'tx '+d[2],x:50,y:y+4},d[1]));
+    });
+    svg.appendChild(el('text',{class:'tx s',x:29,y:218},'Per 100 quotations · Baethge & Jergas, 2025'));
+  }
+  function buildCharts(n){ if(slides[n-1].querySelector('#dots')) buildDots(); }
+
+  /* ---------- AUTO-FIT: shrink a page until it fits without scrolling ---------- */
+  const MIN_K = 0.8;   /* never shrink text below 80% of normal */
+  const stageEl = document.getElementById('stage');
+  function updateMore(){
+    const s = slides[current-1];
+    const more = s && s.classList.contains('scrolly') && (s.scrollTop + s.clientHeight < s.scrollHeight - 4);
+    stageEl.classList.toggle('more', !!more);
+  }
+  /* ---------- FLOW CHARTS: straight row if it fits, otherwise snake ---------- */
+  document.querySelectorAll('.flow').forEach(f=>{
+    f._items=[...f.children].filter(c=>!c.classList.contains('arr')).map(c=>c.outerHTML);
+    f._sig=''; f._nat=0;
+  });
+  function flowDelays(f){ [...f.children].forEach((e,i)=>e.style.setProperty('--d',(0.1+i*0.08).toFixed(2)+'s')); }
+  function renderRow(f){
+    f.classList.remove('snake'); f.classList.add('row'); f.style.gridTemplateColumns='';
+    f.innerHTML=f._items.join('<span class="arr" aria-hidden="true">→</span>'); flowDelays(f);
+  }
+  function renderSnake(f,cols){
+    const it=f._items, n=it.length; let h='';
+    f.classList.remove('row'); f.classList.add('snake');
+    f.style.gridTemplateColumns=Array(cols).fill('minmax(0,1fr)').join(' 1.5em ');
+    for(let i=0;i<n;i++){
+      const r=Math.floor(i/cols), p=i%cols, rev=r%2===1;
+      const c=rev?cols-1-p:p, gr=2*r+1, gc=2*c+1;
+      h+='<div class="cell" style="grid-row:'+gr+';grid-column:'+gc+'">'+it[i]+'</div>';
+      if(i<n-1){
+        if(p<cols-1) h+='<span class="arr" aria-hidden="true" style="grid-row:'+gr+';grid-column:'+(rev?gc-1:gc+1)+'">'+(rev?'←':'→')+'</span>';
+        else h+='<span class="arr down" aria-hidden="true" style="grid-row:'+(gr+1)+';grid-column:'+gc+'">↓</span>';
+      }
+    }
+    f.innerHTML=h; flowDelays(f);
+  }
+  function layoutFlow(f,k){
+    const w=f.clientWidth; if(!w) return;
+    if(!f._nat){ renderRow(f); f._sig='row'; f._nat=f.scrollWidth/k; }
+    const fs=parseFloat(getComputedStyle(f).fontSize)||16;
+    const fitsRow=f._nat*k<=w+1;
+    const cols=Math.min(f._items.length,Math.max(2,Math.min(3,Math.floor(w/(9*fs)))));
+    const sig=fitsRow?'row':'s'+cols;
+    if(sig===f._sig) return;      /* unchanged: don't rebuild (avoids replaying animations) */
+    f._sig=sig; fitsRow?renderRow(f):renderSnake(f,cols);
+  }
+
+  function fit(slide){
+    if(!slide) return;
+    const si=slide.querySelector('.si');
+    const flows=[...slide.querySelectorAll('.flow')];
+    slide.classList.remove('scrolly'); slide.scrollTop = 0;
+    let k=1; slide.style.setProperty('--k',k); flows.forEach(f=>layoutFlow(f,k));
+    let g=0;
+    const over = () => si.scrollHeight>slide.clientHeight+1 || si.scrollWidth>slide.clientWidth+1;
+    while(g++<16 && over() && k>MIN_K){
+      k=+(k-0.03).toFixed(2); slide.style.setProperty('--k',k); flows.forEach(f=>layoutFlow(f,k));
+    }
+    if (over()) slide.classList.add('scrolly');
+    updateMore();
+  }
+  slides.forEach(s=>s.addEventListener('scroll', updateMore, {passive:true}));
+  let rT; window.addEventListener('resize',()=>{ clearTimeout(rT); rT=setTimeout(()=>fit(slides[current-1]),120); });
+
+  /* ---------- GATING ---------- */
+  function pending(slide){
+    let n=0;
+    slide.querySelectorAll('.toggle-wrap:not(.opt)').forEach(t=>{ if(!t.classList.contains('seen')) n++; });
+    slide.querySelectorAll('.rcard').forEach(t=>{ if(!t.classList.contains('seen')) n++; });
+    slide.querySelectorAll('.choice-set').forEach(s=>{ if(!s.dataset.done) n++; });
+    slide.querySelectorAll('.task').forEach(t=>{ if(!t.dataset.done) n++; });
+    return n;
+  }
+  function updateGate(alert){
+    const s=slides[current-1], n=pending(s);
+    btnNext.classList.toggle('locked', n>0);
+    if(n===0){ hint.className=''; hint.textContent=''; return; }
+    hint.className=alert?'alert':'';
+    const what=n===1?'1 item':n+' items';
+    hint.innerHTML=alert
+      ? 'Please finish the questions or open the sections on this page first ('+what+' left). Or skip ahead using <button type="button" id="hint-toc">Contents</button>.'
+      : 'Finish '+what+' on this page to continue, or use <button type="button" id="hint-toc">Contents</button>';
+    document.getElementById('hint-toc').addEventListener('click',()=>openOv('toc-overlay'));
+  }
+  function flagPending(slide){
+    [...slide.querySelectorAll('.toggle-wrap:not(.seen):not(.opt), .rcard:not(.seen), .choice-set:not([data-done]), .task:not([data-done])')]
+      .filter(e=>e.offsetParent!==null)
+      .forEach(e=>{ e.classList.remove('pulse'); void e.offsetWidth; e.classList.add('pulse'); });
+  }
+
+  function show(n){
+    slides.forEach((s,i)=>s.classList.toggle('active',i+1===n));
+    progFill.style.width=((n/TOTAL)*100)+'%';
+    progLbl.textContent=n+' / '+TOTAL;
+    btnBack.disabled=n===1;
+    btnNext.textContent=n===TOTAL?'Done':'Next →';
+    btnNext.setAttribute('data-umami-event',n===TOTAL?'carousel-selesai':'nav-next');
+    buildCharts(n);
+    fit(slides[n-1]);
+    requestAnimationFrame(()=>fit(slides[n-1]));
+    updateGate(false);
+    if(window.umami) umami.track('slide-view',{slide:n});
+  }
+
+  /* NAV BUTTONS ONLY — no swipe, no keyboard */
+  btnNext.addEventListener('click',()=>{
+    const s=slides[current-1];
+    if(pending(s)>0){ updateGate(true); flagPending(s); if(window.umami) umami.track('gate-blocked',{slide:current}); return; }
+    if(current<TOTAL){ current++; show(current); } else openOv('refs-overlay');
+  });
+  btnBack.addEventListener('click',()=>{ if(current>1){ current--; show(current); } });
+
+  document.querySelectorAll('.toggle-btn').forEach(b=>b.addEventListener('click',()=>{
+    const w=b.parentElement; w.classList.toggle('open'); w.classList.add('seen'); fit(slides[current-1]); updateGate(false);
+    if(window.umami) umami.track('toggle',{label:b.textContent.trim().slice(0,40)});
+  }));
+  document.querySelectorAll('.rcard').forEach(c=>c.addEventListener('click',()=>{ c.classList.add('seen'); fit(slides[current-1]); updateGate(false); }));
+
+  document.querySelectorAll('.choice-set').forEach(set=>{
+    const ans=set.dataset.answer;
+    set.querySelectorAll('.choice').forEach(c=>c.addEventListener('click',()=>{
+      if(set.dataset.done) return;
+      set.dataset.done='1'; set.classList.add('done');
+      const ok=c.dataset.v===ans; set.dataset.correct=ok?'1':'0';
+      set.querySelectorAll('.choice').forEach(x=>{ if(x.dataset.v===ans) x.classList.add('right'); });
+      if(!ok) c.classList.add('wrong');
+      set.querySelector('.feedback').classList.add('show');
+      if(window.umami) umami.track('choice',{correct:ok});
+      updateScore(); fit(slides[current-1]); updateGate(false);
+    }));
+    const nx=set.querySelector('.next-q');
+    if(nx) nx.addEventListener('click',()=>{
+      const nxt=set.nextElementSibling;
+      if(nxt&&nxt.classList.contains('choice-set')){ set.classList.remove('cur'); nxt.classList.add('cur'); fit(slides[current-1]); }
+    });
+  });
+  function updateScore(){
+    const q=document.querySelectorAll('.quiz .choice-set'), done=[...q].filter(s=>s.dataset.done);
+    if(done.length<q.length) return;
+    document.getElementById('quiz-score').textContent='Your score: '+done.filter(s=>s.dataset.correct==='1').length+' / '+q.length;
+  }
+
+  /* ---------- SPOT THE ERRORS (task) ---------- */
+  const rec=document.getElementById('rec'), recExp=document.getElementById('rec-exp'), recCount=document.getElementById('rec-count');
+  const recBad=rec.querySelectorAll('.fld[data-bad]').length;
+  rec.querySelectorAll('.fld').forEach(f=>f.addEventListener('click',()=>{
+    const bad=!!f.dataset.bad;
+    f.classList.add(bad?'bad':'ok');
+    recExp.innerHTML=(bad?'<b style="color:var(--red)">Error found.</b> ':'<b style="color:var(--accent)">This one is fine.</b> ')+f.dataset.exp;
+    const found=rec.querySelectorAll('.fld.bad').length;
+    recCount.textContent=found+' OF '+recBad+' FOUND';
+    if(found===recBad && !rec.dataset.done){ rec.dataset.done='1'; recExp.innerHTML+=' <b>All three found.</b>'; if(window.umami) umami.track('spot-errors-done'); }
+    if(window.umami) umami.track('spot-errors-tap',{bad:bad});
+    fit(slides[current-1]); updateGate(false);
+  }));
+
+  /* ---------- STYLE SWITCHER (task: try all three) ---------- */
+  const STYLES={
+    apa:{inText:'(Jergas &amp; Baethge, 2015)',ref:'Jergas, H., &amp; Baethge, C. (2015). Quotation accuracy in medical journal articles—a systematic review and meta-analysis. <i>PeerJ, 3</i>, e1364. https://doi.org/10.7717/peerj.1364'},
+    van:{inText:'[1]',ref:'1. Jergas H, Baethge C. Quotation accuracy in medical journal articles—a systematic review and meta-analysis. PeerJ. 2015;3:e1364. doi:10.7717/peerj.1364'},
+    har:{inText:'(Jergas and Baethge, 2015)',ref:'Jergas, H. and Baethge, C. (2015) ‘Quotation accuracy in medical journal articles—a systematic review and meta-analysis’, <i>PeerJ</i>, 3, p. e1364. Available at: https://doi.org/10.7717/peerj.1364.'}
+  };
+  const seg=document.getElementById('style-seg'), stIn=document.getElementById('st-in'), stRef=document.getElementById('st-ref');
+  function setStyle(k){
+    seg.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.s===k));
+    seg.querySelector('[data-s="'+k+'"]').classList.add('tried');
+    stIn.innerHTML=STYLES[k].inText; stRef.innerHTML=STYLES[k].ref;
+    if(seg.querySelectorAll('button.tried').length===3) seg.dataset.done='1';
+  }
+  seg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    setStyle(b.dataset.s); if(window.umami) umami.track('style-switch',{style:b.dataset.s});
+    fit(slides[current-1]); updateGate(false);
+  }));
+  setStyle('apa');
+
+  /* ---------- TOOL HOMEPAGE VIEWER (task: see all three) ---------- */
+  const TOOLS={
+    zotero:{src:'media/zotero-home.jpg',w:1326,h:620,alt:'Zotero homepage: Your personal research assistant',cap:'Screenshot: zotero.org, October 2026.',
+      note:'<b>Free.</b> Zotero lists its jobs as collect, organise, annotate, cite and share: the four jobs from this explainer, plus sharing. Apps for Mac, Windows, Linux, iOS and Android. <b>ZoteroBib</b> makes a quick one-off bibliography without an account.'},
+    mendeley:{src:'media/mendeley-home.jpg',w:1298,h:616,alt:'Mendeley homepage: The free all-in-one reference manager',cap:'Screenshot: mendeley.com, October 2026.',
+      note:'<b>Free, with 2 GB of free storage.</b> Use the desktop app or Mendeley Web in a browser. The screenshot shows the familiar layout: collections on the left, references in the middle. The page also promotes LeapSpace, a separate AI research tool.'},
+    endnote:{src:'media/endnote-home.jpg',w:1254,h:618,alt:'EndNote homepage: Building ideas, one citation at a time',cap:'Screenshot: endnote.com, October 2026.',
+      note:'<b>Paid, with a free trial.</b> EndNote now advertises summarising and translating alongside organising and citing. Many universities and organisations buy institutional licences, so check yours before paying.'}
+  };
+  const toolSeg=document.getElementById('tool-seg'), toolImg=document.getElementById('tool-img'), toolCap=document.getElementById('tool-cap'), toolNote=document.getElementById('tool-note');
+  toolImg.addEventListener('load',()=>{ if(slides[current-1].contains(toolImg)) fit(slides[current-1]); });
+  function setTool(k){
+    const t=TOOLS[k];
+    toolSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.t===k));
+    toolSeg.querySelector('[data-t="'+k+'"]').classList.add('tried');
+    toolImg.src=t.src; toolImg.width=t.w; toolImg.height=t.h; toolImg.alt=t.alt;
+    toolCap.textContent=t.cap; toolNote.innerHTML=t.note;
+    if(toolSeg.querySelectorAll('button.tried').length===3) toolSeg.dataset.done='1';
+  }
+  toolSeg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    setTool(b.dataset.t); if(window.umami) umami.track('tool-homepage',{tool:b.dataset.t});
+    fit(slides[current-1]); updateGate(false);
+  }));
+  setTool('zotero');
+  /* preload the other two so switching is instant */
+  ['mendeley','endnote'].forEach(k=>{ const i=new Image(); i.src=TOOLS[k].src; });
+
+  /* ---------- STORAGE CALCULATOR ---------- */
+  const stN=document.getElementById('st-n'), stMb=document.getElementById('st-mb'), stOut=document.getElementById('st-out');
+  function calcStorage(){
+    const n=parseFloat(stN.value), mb=parseFloat(stMb.value);
+    if(!(n>=0)||!(mb>=0)){ stOut.className='calc-out'; stOut.textContent='Enter the number of PDFs and their average size.'; return; }
+    const total=n*mb;
+    const plan= total<=300?'the free 300 MB':(total<=2048?'the 2 GB plan (USD 20 a year)':(total<=6144?'the 6 GB plan (USD 60 a year)':'the unlimited plan (USD 120 a year)'));
+    const fits=total<=300;
+    stOut.className='calc-out'+(fits?'':' fail');
+    stOut.innerHTML='About <b>'+(total>=1024?(total/1024).toFixed(1)+' GB':Math.round(total)+' MB')+'</b> of files. '+(fits
+      ?'That fits in <b>the free 300 MB</b>.'
+      :'That is more than the free 300 MB. To sync them all, you would need <b>'+plan+'</b>, or keep some files on your computer only.');
+  }
+  stN.addEventListener('input',calcStorage); stMb.addEventListener('input',calcStorage); calcStorage();
+
+  function openOv(id){ if(id==='toc-overlay') buildToc(); document.getElementById(id).classList.add('open'); }
+  document.querySelectorAll('.overlay').forEach(o=>{
+    o.addEventListener('click',e=>{ if(e.target===o) o.classList.remove('open'); });
+    o.querySelector('.close-ov').addEventListener('click',()=>o.classList.remove('open'));
+  });
+  document.getElementById('btn-toc').addEventListener('click',()=>openOv('toc-overlay'));
+  document.getElementById('btn-refs').addEventListener('click',()=>openOv('refs-overlay'));
+
+  /* contents — bypasses gating */
+  const secNames={intro:'Introduction',why:'1 · Why a reference manager',tools:'2 · The tools',zotero:'3 · Zotero, step by step',limits:'4 · Safety nets and limits',end:'Wrap-up'};
+  function buildToc(){
+    const ul=document.getElementById('toc-list'); ul.innerHTML=''; let last='';
+    slides.forEach((s,i)=>{
+      if(s.dataset.sec!==last){ const h=document.createElement('li'); h.className='sec'; h.textContent=secNames[s.dataset.sec]; ul.appendChild(h); last=s.dataset.sec; }
+      const li=document.createElement('li'), b=document.createElement('button');
+      b.innerHTML='<span>'+(i+1)+'</span>'+s.dataset.title;
+      if(i+1===current) b.className='cur';
+      b.addEventListener('click',()=>{ current=i+1; show(current); document.getElementById('toc-overlay').classList.remove('open'); if(window.umami) umami.track('toc-jump',{slide:current}); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+  }
+
+  /* Back to Aufthority: return to the exact page the reader came from when it is
+     on the same site (history.back keeps its state); otherwise open the home page. */
+  document.getElementById('btn-home').addEventListener('click',e=>{
+    try{
+      if (document.referrer && new URL(document.referrer).origin===location.origin && history.length>1){
+        e.preventDefault(); history.back();
+      }
+    }catch(_){}
+  });
+
+  buildToc();
+  show(1);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>fit(slides[current-1]));
+})();
+</script>
+</body>
+</html>
