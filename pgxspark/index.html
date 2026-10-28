@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PGx Simulation Showcase — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="An in-house virtual simulation library for KPJ: an explainer, a lab and a pharmacist simulator for clinical pharmacogenomics. SPARK Challenge 2026.">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aufthority">
+<meta property="og:title" content="Practise the decision before it matters">
+<meta property="og:description" content="In-house virtual simulation for KPJ: explainer, lab and pharmacist simulator for clinical pharmacogenomics.">
+<meta property="og:url" content="https://www.aufthority.com/pgxspark/">
+<meta property="og:image" content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:locale" content="en_MY">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#000000;--bone:#ffffff;--ash:#9a9a9a;--mist:#bdbdbd;
+  --iris:#8052ff;--saffron:#ffb829;--verdant:#15846e;
+  --font:'Inter','PPNeueMontreal',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --gutter:24px;color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--void)}
+body{background:var(--void);color:var(--bone);font-family:var(--font);font-feature-settings:"ss01" on;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;overflow-x:hidden}
+a{color:var(--saffron);text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--gutter)}
+/* nav */
+nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:24px 0}
+.brand{display:flex;align-items:center;gap:10px;color:var(--bone);font-size:15px;font-weight:600;letter-spacing:-.01em}
+.brand svg{width:22px;height:22px}
+.links{display:flex;gap:24px}
+.links a{color:var(--ash);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.025em}
+.links a:hover{color:var(--bone)}
+/* type */
+.label{display:block;color:var(--saffron);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.025em;margin-bottom:18px}
+.display{font-weight:400;font-size:clamp(48px,8.6vw,113px);line-height:.95;letter-spacing:-.04em}
+.h-lg{font-weight:400;font-size:clamp(32px,6vw,78px);line-height:1.02;letter-spacing:-.04em}
+.display,.h-lg,.h-sm{overflow-wrap:break-word;hyphens:manual}
+.h-sm{font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.04em}
+.body{font-weight:200;font-size:18px;line-height:1.5;color:var(--bone);max-width:520px}
+.body.mist{color:var(--mist)}
+.body b{font-weight:600}
+.cap{font-size:12px;line-height:1.5;color:var(--ash)}
+/* actions */
+.pill{display:inline-block;background:var(--iris);color:#fff;border-radius:24px;padding:14.4px 22px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.025em}
+.pill:hover{filter:brightness(1.1)}
+.ghost{color:var(--bone);font-size:14px;font-weight:400;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px}
+.ghost:hover{border-color:var(--bone)}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;margin-top:30px}
+/* sections */
+section{padding:60px 0}
+@media(min-width:900px){section{padding:120px 0}}
+.split{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+@media(min-width:900px){.split{grid-template-columns:1fr 1fr;gap:60px}.split.rev > :first-child{order:2}}
+.hero{padding-top:30px}
+.hero .body{margin-top:30px}
+#helix{width:100%;height:420px;display:block}
+@media(min-width:900px){#helix{height:620px}}
+.num{font-weight:200;font-size:clamp(96px,16vw,220px);line-height:.8;letter-spacing:-.06em;color:var(--iris)}
+.num.s{color:var(--saffron)}.num.v{color:#3fc4a5}
+.row-h{margin-bottom:18px}
+.big{font-weight:400;font-size:clamp(96px,17vw,230px);line-height:.85;letter-spacing:-.06em}
+.big small{display:block;font-size:clamp(22px,2.6vw,36px);letter-spacing:-.02em;color:var(--mist);margin-top:18px;line-height:1.2}
+.facts{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px 36px}
+.facts div{font-size:15px;font-weight:200;color:var(--mist)}
+.facts b{display:block;font-size:36px;font-weight:400;letter-spacing:-.03em;color:var(--bone);line-height:1.1}
+.tiers{margin-top:36px;display:flex;flex-direction:column;gap:36px}
+.tier{display:grid;grid-template-columns:1fr;gap:6px}
+@media(min-width:900px){.tier{grid-template-columns:200px 1fr 160px;gap:30px;align-items:baseline}}
+.tier .tn{font-size:14px;font-weight:600;letter-spacing:.025em;text-transform:uppercase;color:var(--ash)}
+.tier h3{font-weight:400;font-size:27px;letter-spacing:-.02em;line-height:1.15}
+.tier p{font-weight:200;font-size:16px;line-height:1.5;color:var(--mist);margin-top:6px;max-width:560px}
+.tier .st{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--saffron)}
+.fhi{margin-top:36px;display:flex;flex-direction:column;gap:24px}
+.fhi div{max-width:620px}
+.fhi b{display:block;font-weight:400;font-size:24px;letter-spacing:-.02em;line-height:1.25}
+.fhi span{font-weight:200;font-size:16px;line-height:1.5;color:var(--mist)}
+footer{padding:60px 0 48px}
+footer .refs{margin-top:24px;display:flex;flex-direction:column;gap:6px;max-width:900px}
+footer .refs a{color:var(--saffron)}
+footer .fine{margin-top:24px}
+@media(max-width:560px){.links{display:none}:root{--gutter:16px}}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="https://www.aufthority.com" data-umami-event="showcase-logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8052ff"/><stop offset="1" stop-color="#15846e"/></linearGradient></defs><path d="M3 20 L12 3 L21 20 Z" fill="none" stroke="url(#lg)" stroke-width="2.4" stroke-linejoin="round"/></svg>
+      Aufthority
+    </a>
+    <div class="links">
+      <a href="explainer/" data-umami-event="showcase-nav-explainer">Explainer</a>
+      <a href="lab.html" data-umami-event="showcase-nav-lab">Lab</a>
+      <a href="sim.html" data-umami-event="showcase-nav-sim">Simulator</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="split">
+      <div>
+        <span class="label">SPARK Challenge 2026 · KPJ Healthcare University</span>
+        <h1 class="display">Practise the decision before it matters.</h1>
+        <p class="body">An in-house library of virtual simulations for KPJ: interactive explainers, step-checked labs and a pharmacist simulator. Built by a KPJU educator, already used in pharmacy classes, and proposed as the Future Health Institute's low-cost simulation tier.</p>
+        <div class="acts">
+          <a class="pill" href="sim.html" data-umami-event="showcase-cta-sim">Play the PGx shift</a>
+          <a class="ghost" href="explainer/" data-umami-event="showcase-hero-explainer">Read the explainer</a>
+          <a class="ghost" href="lab.html" data-umami-event="showcase-hero-lab">Try the lab</a>
+        </div>
+      </div>
+      <canvas id="helix" aria-label="Animated double helix made of small coloured triangles" role="img"></canvas>
+    </div>
+  </section>
+
+  <!-- THREE WAYS IN -->
+  <section>
+    <span class="label">One topic, three ways in</span>
+    <h2 class="h-lg" style="max-width:900px">Clinical pharmaco&shy;genomics, from first idea to first patient.</h2>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="split">
+      <div class="num">01</div>
+      <div>
+        <span class="label">Explainer · 14 pages</span>
+        <h3 class="h-sm row-h">From gene to decision.</h3>
+        <p class="body mist">Gene, allele, diplotype and phenotype. Why a poor metaboliser gets <b>less</b> effect from a prodrug like clopidogrel. Why HLA-B*15:02 risk is immune, not dose. Gated checks and a quiz on every idea.</p>
+        <div class="acts"><a class="ghost" href="explainer/" data-umami-event="showcase-open-explainer">Open the explainer →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="split rev">
+      <div class="num s">02</div>
+      <div>
+        <span class="label">Lab · genotype to decision</span>
+        <h3 class="h-sm row-h">Read the report. Make the call.</h3>
+        <p class="body mist">A new patient every round. Tag each allele, assign the phenotype, predict the effect, run the simulation, then decide. Wrong reasoning is named, like the "prodrug trap", so the mistake teaches.</p>
+        <div class="acts"><a class="ghost" href="lab.html" data-umami-event="showcase-open-lab">Try the lab →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="split">
+      <div class="num v">03</div>
+      <div>
+        <span class="label">Simulator · PGx Shift</span>
+        <h3 class="h-sm row-h">One morning. Three patients. No alerts.</h3>
+        <p class="body mist">Work the outpatient counter as the pharmacist. Choose from the queue, check records, hold or dispense, phone the prescriber, counsel the patient. The shift ends with a report on every patient's outcome.</p>
+        <div class="acts"><a class="ghost" href="sim.html" data-umami-event="showcase-open-sim">Play the shift →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVIDENCE -->
+  <section>
+    <div class="split">
+      <div class="big">162<small>of 249 enrolled students opened a lab</small></div>
+      <div>
+        <span class="label">Already in class</span>
+        <p class="body">In three weeks of tracking (7 to 27 October 2026), across four cohorts and three pharmacy courses, students opened the existing Kompas Semester labs voluntarily and came back to them.</p>
+        <div class="facts">
+          <div><b>801</b>lab opens</div>
+          <div><b>86</b>returned on 2+ days</div>
+          <div><b>95</b>used 2+ labs</div>
+        </div>
+        <p class="body mist" style="margin-top:30px">This shows adoption, not yet learning. Across 51 randomised trials, virtual patients improved skills more than traditional teaching and matched it for knowledge, on low-certainty evidence. Testing that at KPJ is the evaluation we propose.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section>
+    <span class="label">A ladder, not a single tool</span>
+    <h2 class="h-lg" style="max-width:900px">Three tiers of simulation.</h2>
+    <div class="tiers">
+      <div class="tier"><span class="tn">Tier 1</span><div><h3>Explain and practise</h3><p>Paged explainers and step-checked labs, used across three pharmacy courses.</p></div><span class="st">Piloted</span></div>
+      <div class="tier"><span class="tn">Tier 2</span><div><h3>Branching simulation</h3><p>First-person shift simulators where decisions have outcomes. PGx Shift is the first.</p></div><span class="st">Prototype, tested</span></div>
+      <div class="tier"><span class="tn">Tier 3</span><div><h3>Immersive simulation</h3><p>Browser-based WebXR scenes for hands-on technique, such as aseptic handling or a QC laboratory.</p></div><span class="st">Concept</span></div>
+    </div>
+  </section>
+
+  <!-- WHAT IT COULD BECOME -->
+  <section>
+    <div class="split rev">
+      <div>
+        <span class="label">What it could become</span>
+        <h2 class="h-lg">Built, not bought.</h2>
+      </div>
+      <div>
+        <p class="body">Commercial libraries already sell this model. Virtuosi, for pharmaceutical manufacturing, offers 56 on-demand courses and 20 VR simulations, licensed from a vendor.</p>
+        <p class="body mist" style="margin-top:18px">KPJ already has the beginning of its own: owned in-house, built on KPJ's guidelines and local evidence, and growing with each new module. That is a direction, not a claim of equivalence. Today the library is a fraction of that scale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FHI -->
+  <section>
+    <span class="label">For the Future Health Institute</span>
+    <h2 class="h-lg" style="max-width:900px">Adopt. Evaluate. Scale.</h2>
+    <div class="fhi">
+      <div><b>Centre for Experiential Learning</b><span>A preparation tier before simulation sessions, so scarce room time goes to teamwork and safety practice.</span></div>
+      <div><b>Research &amp; Innovation Centre</b><span>Every module records what learners actually do, ready for a controlled study of learning outcomes.</span></div>
+      <div><b>Centre for Digital Health</b><span>A documented production process, co-designed with clinicians, that turns new guidelines into simulations quickly.</span></div>
+    </div>
+    <div class="acts" style="margin-top:48px"><a class="ghost" href="sim.html" data-umami-event="showcase-bottom-sim">Start with the simulator →</a></div>
+  </section>
+
+  <footer>
+    <p class="cap">Made by <a href="https://www.aufthority.com" data-umami-event="showcase-footer-site">Aufthority</a> (Auf Ali, School of Pharmacy, KPJ Healthcare University) for the SPARK Challenge 2026.</p>
+    <div class="refs cap">
+      <span>Sources</span>
+      <a href="https://doi.org/10.2196/14676" target="_blank" rel="noopener">Kononowicz et al. (2019). Virtual patient simulations in health professions education. JMIR, 21(7), e14676.</a>
+      <a href="https://doi.org/10.1002/cpt.2526" target="_blank" rel="noopener">Lee et al. (2022). CPIC guideline for CYP2C19 genotype and clopidogrel therapy: 2022 update.</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5847474" target="_blank" rel="noopener">Phillips et al. (2018). CPIC guideline for HLA genotype and carbamazepine and oxcarbazepine: 2017 update.</a>
+      <a href="https://www.virtuosivr.com/product" target="_blank" rel="noopener">Virtuosi. Product page (Quality Executive Partners).</a>
+    </div>
+    <p class="cap fine">Usage figures are from Kompas Semester behavioural event data; educator and test accounts excluded. Hospital, staff and patients in the simulator are made up. For learning only, not for clinical decisions. Informed decisions, better health.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const cv=document.getElementById('helix'), ctx=cv.getContext('2d');
+  const COLS=['#8052ff','#ffb829','#3fc4a5','#ff4fa3','#3d8bff','#b38cff','#15846e'];
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W=0,H=0,dpr=1,P=[],A=[],running=true,t0=performance.now();
+  function rnd(a,b){return a+Math.random()*(b-a);}
+  function build(){
+    P=[];A=[];
+    const turns=2.2, n=420;
+    for(let i=0;i<n;i++){ /* two strands */
+      const u=i/n;
+      for(const s of [0,Math.PI]) P.push({u,ph:u*turns*2*Math.PI+s,j:[rnd(-.06,.06),rnd(-.012,.012)],c:COLS[(Math.random()*COLS.length)|0],r:rnd(2.2,4.2),rot:rnd(0,6.28),kind:'strand'});
+    }
+    const rungs=34;
+    for(let k=0;k<rungs;k++){ /* base-pair rungs */
+      const u=(k+.5)/rungs, ph=u*turns*2*Math.PI;
+      for(let m=1;m<10;m++) P.push({u:u+rnd(-.003,.003),ph,lerp:m/10,j:[rnd(-.02,.02),rnd(-.006,.006)],c:COLS[(Math.random()*COLS.length)|0],r:rnd(1.6,3),rot:rnd(0,6.28),kind:'rung'});
+    }
+    for(let i=0;i<140;i++) A.push({x:Math.random(),y:Math.random(),c:COLS[(Math.random()*COLS.length)|0],r:rnd(1.4,2.6),rot:rnd(0,6.28),v:rnd(.002,.008)});
+  }
+  function size(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    const r=cv.getBoundingClientRect(); W=r.width; H=r.height;
+    cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function tri(x,y,r,rot,col,alpha){
+    ctx.globalAlpha=alpha; ctx.strokeStyle=col; ctx.lineWidth=1.3;
+    ctx.beginPath();
+    for(let k=0;k<3;k++){ const a=rot+k*2.094; const px=x+Math.cos(a)*r, py=y+Math.sin(a)*r; k?ctx.lineTo(px,py):ctx.moveTo(px,py); }
+    ctx.closePath(); ctx.stroke();
+  }
+  function draw(now){
+    const t=reduce?0:(now-t0)/1000;
+    ctx.clearRect(0,0,W,H);
+    const cx=W/2, R=Math.min(W*.30,150), top=H*.06, span=H*.88, spin=t*.35, tilt=.18;
+    A.forEach(a=>{ const y=((a.y+t*a.v*.2)%1)*H; tri(a.x*W,y,a.r,a.rot+t*.2,a.c,.28); });
+    const pts=P.map(p=>{
+      let ang=p.ph+spin, x, z;
+      if(p.kind==='rung'){ const xa=Math.cos(ang)*R, xb=Math.cos(ang+Math.PI)*R, za=Math.sin(ang), zb=Math.sin(ang+Math.PI); x=xa+(xb-xa)*p.lerp; z=za+(zb-za)*p.lerp; }
+      else { x=Math.cos(ang)*R; z=Math.sin(ang); }
+      const y=top+(p.u+p.j[1])*span + x*tilt*.35;
+      return {x:cx+x+p.j[0]*R, y, z, p};
+    }).sort((a,b)=>a.z-b.z);
+    pts.forEach(o=>{ const d=(o.z+1)/2; tri(o.x,o.y,o.p.r*(.6+.7*d),o.p.rot+t*.6,o.p.c,.25+.75*d); });
+    ctx.globalAlpha=1;
+  }
+  function loop(now){ if(running) draw(now); if(!reduce) requestAnimationFrame(loop); }
+  build(); size(); draw(performance.now());
+  window.addEventListener('resize',()=>{ size(); draw(performance.now()); });
+  if('IntersectionObserver' in window) new IntersectionObserver(e=>{ running=e[0].isIntersecting; }).observe(cv);
+  if(!reduce) requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

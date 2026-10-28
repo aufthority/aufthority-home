@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PGx Shift Simulator — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="Play the pharmacist on a morning shift: spot pharmacogenomic problems, call the prescriber and counsel patients. CYP2C19 and clopidogrel, HLA-B*15:02 and carbamazepine.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aufthority">
+<meta property="og:title" content="PGx Shift: a pharmacist simulator">
+<meta property="og:description" content="Three patients, one morning. Check, decide, call, counsel.">
+<meta property="og:url" content="https://www.aufthority.com/pgxspark/sim.html">
+<meta property="og:image" content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:locale" content="en_MY">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c2620;--body:#3f4742;--muted:#6f7771;--accent:#2d6a4f;--accent-dark:#1f4d39;
+  --eyebrow:#9a6a1c;--g-bg:#e9f4ee;--g-line:#cfe6d9;--rule:#e4e6e3;
+  --red:#c0392b;--r-bg:#fbecea;--orange:#d9821f;--o-bg:#fdf3e6;--blue:#3a6bd1;--b-bg:#e8effc;
+  --radius:10px;color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{color:var(--body);font-family:'DM Sans',system-ui,sans-serif;line-height:1.5;-webkit-text-size-adjust:100%;font-size:16px}
+a{color:var(--accent)}
+b,strong{color:var(--ink);font-weight:700}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px 28px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0 8px}
+.logo{font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+.logo span{color:var(--muted);font-weight:500;font-size:.8rem;margin-left:4px}
+.pills{display:flex;gap:8px}
+.pill-a{background:#fff;border:1px solid var(--rule);color:var(--body);font:600 .78rem 'DM Sans',sans-serif;padding:5px 11px;border-radius:100px;text-decoration:none;white-space:nowrap}
+.hud{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;border:1px solid var(--rule);border-radius:12px;padding:8px 12px;margin-bottom:10px;font-size:.84rem}
+.hud .hl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;line-height:1.2}
+.hud .hv{font-weight:800;color:var(--ink)}
+.queue{display:flex;gap:6px}
+.qdot{width:26px;height:26px;border-radius:50%;border:2px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:var(--muted);background:#fff}
+.qdot.cur{border-color:var(--ink);color:var(--ink)}
+.qdot.safe{background:var(--accent);border-color:var(--accent);color:#fff}
+.qdot.caution{background:var(--orange);border-color:var(--orange);color:#fff}
+.qdot.risk{background:var(--red);border-color:var(--red);color:#fff}
+.meter{flex:1 1 220px;min-width:200px}
+.mbar{height:10px;border-radius:10px;background:#eef0ee;overflow:hidden;margin-top:3px}
+.mfill{height:100%;width:30%;background:#c9cdca;border-radius:10px;transition:width .4s,background .4s}
+.meter[data-s="caution"] .mfill{width:60%;background:var(--orange)}
+.meter[data-s="risk"] .mfill{width:100%;background:var(--red)}
+.meter[data-s="safe"] .mfill{width:100%;background:var(--accent)}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:900px){.grid{grid-template-columns:1.25fr 1fr;align-items:start}.panel{position:sticky;top:10px}}
+.scene{border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:#f6f7f5}
+.scene svg{width:100%;height:auto;display:block}
+.hot{cursor:pointer;outline:none}
+.hot .ring{fill:none;stroke:transparent;stroke-width:4}
+.hot:hover .ring,.hot:focus-visible .ring{stroke:var(--ink)}
+.hot.glow .ring{stroke:var(--orange);animation:glow 1.3s ease-in-out infinite}
+.hot.off{opacity:.55}
+@keyframes glow{0%,100%{stroke-opacity:.25}50%{stroke-opacity:1}}
+.tx{font-family:'DM Sans',sans-serif;font-size:15px;fill:var(--body)}
+.tx.b{font-weight:800;fill:var(--ink)}
+.tx.s{font-size:12px;fill:var(--muted)}
+.tx.w{fill:#fff;font-weight:700}
+.tx.mid{text-anchor:middle}
+.lbl{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:800;fill:var(--ink);text-anchor:middle}
+.meter[data-s="done"] .mfill{width:0}
+.hint{font-size:.82rem;color:var(--muted);text-align:center;padding:6px 8px;border-top:1px solid var(--rule);background:#fff}
+.panel{border:1px solid var(--rule);border-radius:14px;padding:14px 16px;background:#fff;min-height:280px}
+.eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--eyebrow);font-weight:700;margin-bottom:.35em}
+h1{color:var(--ink);font-weight:800;line-height:1.08;letter-spacing:-.025em;font-size:1.75rem;margin-bottom:.35em}
+h1 .ac,h2 .ac{color:var(--accent)}
+h2{color:var(--ink);font-weight:800;letter-spacing:-.02em;font-size:1.3rem;line-height:1.15;margin-bottom:.4em}
+.panel p{font-size:.93rem;margin-bottom:.6em}
+.small{font-size:.82rem;color:var(--muted)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tab{background:#fff;border:1.5px solid var(--rule);border-radius:100px;font:600 .82rem 'DM Sans',sans-serif;padding:.35em .85em;cursor:pointer;color:var(--body)}
+.tab.on{border-color:var(--ink);color:var(--ink);background:#f6f7f5}
+.tab.seen::after{content:" ✓";color:var(--accent)}
+.doc{border:1.5px dashed var(--ink);border-radius:10px;padding:.7em .9em;background:#fafbfa;font-size:.9rem;margin-bottom:.6em}
+.doc .dh{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.3em}
+.doc ul{padding-left:1.1em}
+.doc li{margin-bottom:.2em}
+.flag{display:inline-block;font-size:.72rem;font-weight:800;padding:.1em .55em;border-radius:100px;letter-spacing:.04em}
+.flag.r{background:var(--r-bg);color:var(--red)}
+.flag.g{background:var(--g-bg);color:var(--accent-dark)}
+.flag.o{background:var(--o-bg);color:#a85f10}
+table{width:100%;border-collapse:collapse;font-size:.82rem;margin:.3em 0 .6em}
+th,td{border-bottom:1px solid var(--rule);padding:.35em .45em;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+.opts{display:flex;flex-direction:column;gap:.45em;margin:.4em 0}
+.opt{background:#fff;border:1.5px solid var(--rule);color:var(--ink);font:500 .9rem 'DM Sans',sans-serif;padding:.6em .85em;border-radius:10px;cursor:pointer;text-align:left;line-height:1.4}
+.opt:hover{border-color:var(--ink)}
+.btn{background:#fff;border:1.5px solid var(--ink);border-radius:100px;color:var(--ink);font:700 .88rem 'DM Sans',sans-serif;padding:.5em 1.1em;cursor:pointer}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.btns{display:flex;flex-wrap:wrap;gap:.5em;margin-top:.6em}
+.bubble{border-radius:12px;padding:.6em .85em;margin:.4em 0;font-size:.92rem;max-width:95%}
+.bubble.them{background:#f1f3f1;color:var(--ink)}
+.bubble.me{background:var(--g-bg);color:var(--accent-dark);margin-left:auto}
+.bubble .who{display:block;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.15em}
+.note{font-size:.88rem;padding:.5em .8em;border-left:3px solid var(--accent);background:var(--g-bg);border-radius:0 8px 8px 0;margin:.5em 0}
+.note.risk{border-color:var(--red);background:var(--r-bg)}
+.note.caution{border-color:var(--orange);background:var(--o-bg)}
+.rep-case{border:1px solid var(--rule);border-left-width:5px;border-radius:10px;padding:.6em .8em;margin:.5em 0;font-size:.88rem}
+.rep-case.safe{border-left-color:var(--accent)}.rep-case.caution{border-left-color:var(--orange)}.rep-case.risk{border-left-color:var(--red)}
+.rep-case h3{font-size:.98rem;color:var(--ink);margin-bottom:.2em;display:flex;justify-content:space-between;gap:.5em}
+.rep-case ul{padding-left:1.1em;margin:.2em 0}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.5em;margin:.6em 0}
+.stat{border:1px solid var(--rule);border-radius:10px;padding:.5em .7em}
+.stat .n{font-size:1.35rem;font-weight:800;color:var(--accent);line-height:1.1}
+.stat .l{font-size:.78rem;color:var(--body)}
+.grade{font-size:1.5rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.foot{text-align:center;font-size:.72rem;color:var(--muted);margin-top:16px}
+/* ---------- Ward Run-style additions ---------- */
+.hud .sub{display:block;font-size:.72rem;color:var(--muted);font-weight:600}
+.minis{display:flex;flex-wrap:wrap;gap:6px 14px;flex:1 1 100%}
+.mini{flex:1 1 130px;min-width:120px}
+.mini .hl b{color:var(--ink);margin-left:4px}
+.mf{height:100%;border-radius:10px;background:var(--accent);transition:width .4s,background .4s}
+.mf.warn{background:var(--orange)}.mf.bad{background:var(--red)}
+.jobcard{display:flex;align-items:center;gap:10px;border:1.5px solid var(--ink);border-radius:12px;padding:8px 12px;margin-bottom:10px;font-size:.86rem;background:#fff}
+.jobcard[hidden]{display:none}
+.jobcard .tag{font-size:.68rem;font-weight:800;letter-spacing:.08em;padding:.2em .6em;border-radius:6px;background:var(--r-bg);color:var(--red);white-space:nowrap}
+.jobcard .tag.rt{background:var(--b-bg);color:var(--blue)}
+.jobcard .jt{font-weight:800;color:var(--ink)}
+.jobcard .js{font-size:.78rem;color:var(--muted)}
+.paused{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;color:#fff;background:var(--ink);padding:.2em .6em;border-radius:6px;margin-bottom:.5em}
+.post{border:1.5px solid var(--ink);border-radius:12px;padding:.7em .9em;margin:.5em 0;background:#f6f7f5}
+.post .pt{font-size:1.1rem;font-weight:800;color:var(--ink)}
+.rules{list-style:none;display:flex;flex-direction:column;gap:.35em;margin:.5em 0}
+.rules li{font-size:.88rem;padding-left:.9em;border-left:3px solid var(--g-line)}
+.qgroup{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.7em 0 .3em}
+.job{display:grid;grid-template-columns:auto 1fr;gap:.6em;align-items:center;width:100%;background:#fff;border:1.5px solid var(--rule);border-radius:10px;padding:.55em .75em;margin-bottom:.4em;cursor:pointer;text-align:left;font:inherit;color:var(--body)}
+.job:hover{border-color:var(--ink)}
+.job.done{opacity:.55;cursor:default}
+.job .jn{font-weight:800;color:var(--ink);font-size:.92rem}
+.job .jm{font-size:.78rem;color:var(--muted)}
+.job .due{font-size:.76rem;font-weight:800;white-space:nowrap}
+.due.late{color:var(--red)}.due.ok{color:var(--accent)}
+.tip{font-size:.85rem;background:var(--o-bg);border-left:3px solid var(--orange);border-radius:0 8px 8px 0;padding:.45em .75em;margin-bottom:.6em}
+.tip b{color:#a85f10}
+.share{border:2px solid var(--ink);border-radius:14px;padding:.9em 1em;margin:.4em 0 .8em;background:#f6f7f5;text-align:center}
+.share .stars{font-size:1.7rem;letter-spacing:.15em;color:var(--orange);line-height:1.2}
+.share .big{font-size:1.15rem;font-weight:800;color:var(--ink);margin:.2em 0}
+.share .line{font-size:.86rem;color:var(--body)}
+@media (max-width:400px){.logo span{display:none}h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="https://www.aufthority.com">Aufthority<span>· Edu</span></a>
+    <div class="pills">
+      <a class="pill-a" href="explainer/" data-umami-event="sim-to-explainer">Explainer</a>
+      <a class="pill-a" href="lab.html" data-umami-event="sim-to-lab">Lab</a>
+    </div>
+  </nav>
+
+  <div class="hud" aria-live="polite">
+    <div><span class="hl">Time</span><span class="hv" id="clock">08:58</span><span class="sub" id="closing">Counter closes 10:00</span></div>
+    <div><span class="hl">Queue</span><div class="queue" id="queue"></div></div>
+    <div class="meter" id="meter" data-s="unknown"><span class="hl">Patient safety</span><span class="hv" id="meter-lbl" style="font-size:.84rem">Not yet assessed</span><div class="mbar"><div class="mfill"></div></div></div>
+    <div class="minis">
+      <div class="mini"><span class="hl">Queue pressure <b id="v-q">20</b></span><div class="mbar"><div class="mf" id="m-q"></div></div></div>
+      <div class="mini"><span class="hl">Patient trust <b id="v-t">70</b></span><div class="mbar"><div class="mf" id="m-t"></div></div></div>
+      <div class="mini"><span class="hl">Prescriber goodwill <b id="v-g">70</b></span><div class="mbar"><div class="mf" id="m-g"></div></div></div>
+    </div>
+  </div>
+  <div class="jobcard" id="jobcard" hidden></div>
+
+  <div class="grid">
+    <div class="scene">
+      <svg viewBox="0 0 640 380" role="img" aria-label="Your view from behind the pharmacy counter: a patient, your workstation and the phone">
+        <!-- back wall and shelves -->
+        <rect x="0" y="0" width="640" height="380" fill="#eef1ee"/>
+        <g opacity=".9">
+          <rect x="20" y="24" width="190" height="150" rx="6" fill="#fff" stroke="#d4d8d4"/>
+          <rect x="430" y="24" width="190" height="150" rx="6" fill="#fff" stroke="#d4d8d4"/>
+          <g id="shelf-items"></g>
+        </g>
+        <rect x="250" y="20" width="140" height="44" rx="8" fill="#1c2620"/>
+        <text class="tx s mid" x="320" y="38" style="fill:#9fb8aa;font-size:10px;letter-spacing:.12em">NOW SERVING</text>
+        <text class="tx mid" x="320" y="57" id="ticket" style="fill:#7ef0b4;font-weight:800;font-size:17px">—</text>
+        <!-- counter (drawn first so the patient's name label sits on it) -->
+        <rect x="0" y="300" width="640" height="80" fill="#d8cfc2"/>
+        <rect x="0" y="296" width="640" height="10" fill="#c4b9aa"/>
+        <!-- patient -->
+        <g class="hot" id="hs-patient" tabindex="0" role="button" aria-label="Talk to the patient">
+          <rect class="ring" x="232" y="80" width="176" height="270" rx="18"/>
+          <g id="patient-fig">
+            <path id="p-body" d="M250 290 Q252 196 320 192 Q388 196 390 290 Z" fill="#7aa38f"/>
+            <circle id="p-head" cx="320" cy="152" r="40" fill="#c9a27e"/>
+            <path id="p-hair" d="M280 148 Q284 106 320 108 Q356 106 360 148 Q350 124 320 124 Q290 124 280 148 Z" fill="#2b2420"/>
+            <circle cx="306" cy="156" r="3.4" fill="#1c2620"/><circle cx="334" cy="156" r="3.4" fill="#1c2620"/>
+            <path d="M308 174 Q320 181 332 174" fill="none" stroke="#1c2620" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+          <text class="lbl" x="320" y="336" id="p-name-lbl">Patient</text>
+        </g>
+        <!-- workstation -->
+        <g class="hot" id="hs-ws" tabindex="0" role="button" aria-label="Open your workstation">
+          <rect class="ring" x="16" y="186" width="200" height="176" rx="14"/>
+          <rect x="34" y="200" width="164" height="104" rx="8" fill="#1c2620"/>
+          <rect x="42" y="208" width="148" height="88" rx="4" fill="#24362c"/>
+          <text class="tx w" x="52" y="230" style="font-size:12px">Rx queue</text>
+          <text class="tx" x="52" y="252" id="ws-screen" style="fill:#7ef0b4;font-size:12px;font-weight:700">Waiting</text>
+          <rect x="104" y="304" width="24" height="16" fill="#9aa39d"/>
+          <rect x="70" y="318" width="92" height="8" rx="3" fill="#9aa39d"/>
+          <text class="lbl" x="116" y="352">Workstation</text>
+        </g>
+        <!-- phone -->
+        <g class="hot" id="hs-phone" tabindex="0" role="button" aria-label="Use the phone">
+          <rect class="ring" x="470" y="226" width="150" height="136" rx="14"/>
+          <rect x="500" y="282" width="92" height="40" rx="8" fill="#3f4742"/>
+          <path d="M498 280 Q545 236 594 280 L584 290 Q545 260 508 290 Z" fill="#1c2620"/>
+          <circle cx="532" cy="302" r="4" fill="#9aa39d"/><circle cx="546" cy="302" r="4" fill="#9aa39d"/><circle cx="560" cy="302" r="4" fill="#9aa39d"/>
+          <text class="lbl" x="545" y="352">Phone</text>
+        </g>
+      </svg>
+      <div class="hint" id="scene-hint">Tap the glowing item to act.</div>
+    </div>
+
+    <section class="panel" id="panel" aria-live="polite"></section>
+  </div>
+
+  <p class="foot">Made by Aufthority. Hospital, staff and patients are made up. Recommendations follow the CPIC guidelines for clopidogrel (2022) and carbamazepine (2017). For learning only, not for clinical decisions. Informed decisions, better health.</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const track=(n,d)=>{ try{ if(window.umami) umami.track(n,d||{}); }catch(e){} };
+  const esc=s=>s;
+
+  /* ---------- CASES ---------- */
+  const COUNSEL_CYP=[
+    {v:'best',t:'"Take your antiplatelet tablet every day. Do not stop it unless your heart doctor says so, and tell us about any unusual bleeding or bruising."'},
+    {v:'wrong',t:'"You can skip a dose on days you feel fine."'},
+    {v:'thin',t:'"Just take it as the label says."'}];
+  const CASES=[
+    { id:'cyp', name:'Mr Lim Wei Jie', short:'Mr Lim', age:61, ticket:'101',
+      look:{body:'#5b7fa6',skin:'#e0b48e',hair:'#3a3a3a'},
+      greet:'Morning. The ward sent me down with my discharge medicines. They put a stent in my heart two days ago.',
+      rx:{ward:'Cardiology ward · discharge',lines:['Aspirin 100 mg tablet: once daily','Clopidogrel 75 mg tablet: once daily','Atorvastatin 40 mg tablet: once at night'],dx:'Stent (PCI) after acute coronary syndrome',by:'Dr Tan Mei Hua, Cardiology'},
+      record:[['Allergies','No known drug allergies'],['Pharmacogenomics','<b>CYP2C19 *2/*2</b> <span class="flag r">POOR METABOLISER</span><br><span class="small">Pre-operative screening panel, 2025</span>'],['Notes','First stent. No bleeding history.']],
+      expect:'hold', prescriber:'Dr Tan (Cardiology)',
+      calls:[
+        {v:'good',t:'"Dr Tan, pharmacist here. Mr Lim\'s record shows CYP2C19 *2/*2, a poor metaboliser. CPIC advises avoiding clopidogrel after a stent and using prasugrel or ticagrelor if there is no contraindication. Would you like to change it?"',reply:'Good catch, thank you. Change clopidogrel to ticagrelor. I\'ll update the prescription now.',res:'safe'},
+        {v:'vague',t:'"Dr Tan, I\'m a bit worried about Mr Lim\'s clopidogrel. Is it OK?"',reply:'I\'m between cases in the cath lab. Worried about what, exactly?',res:'retry'},
+        {v:'wrong',t:'"Dr Tan, Mr Lim is a CYP2C19 poor metaboliser. Should we double the clopidogrel dose?"',reply:'Fine, make it 150 mg daily.',res:'risk'}],
+      outcomes:{
+        safe:'Mr Lim leaves on ticagrelor, which does not need CYP2C19 to switch it on. His platelets get the protection his stent needs.',
+        dispense:'Mr Lim leaves on clopidogrel. As a poor metaboliser he makes little of its active form, so his platelets are poorly inhibited and his risk of another heart attack or blocked stent is higher.',
+        wrongcall:'Raising the dose is not what CPIC recommends. Mr Lim stays on a drug his body cannot properly activate.'},
+      cpic:'CYP2C19 poor metaboliser after PCI: avoid clopidogrel if possible; prasugrel or ticagrelor at standard dose if no contraindication (CPIC 2022).',
+      counsel:COUNSEL_CYP,
+      counselFb:{best:'Clear, practical and safe.',wrong:'Skipping antiplatelet doses after a stent is dangerous. This advice could cause harm.',thin:'Not wrong, but he leaves without knowing the two things that matter most: never stop it, and report bleeding.'}
+    },
+    { id:'hla-new', name:'Ms Nur Aisyah binti Kamal', short:'Ms Nur Aisyah', age:24, ticket:'102',
+      look:{body:'#b56b8a',skin:'#c99a74',hair:'#6d4c8f',scarf:true},
+      greet:'Hi. I was told last week that I have epilepsy. The neurologist started me on a new tablet.',
+      rx:{ward:'Neurology clinic · new prescription',lines:['Carbamazepine 200 mg tablet: as directed (new start)'],dx:'Newly diagnosed focal epilepsy',by:'Dr Ravi Shankar, Neurology'},
+      record:[['Allergies','No known drug allergies'],['Pharmacogenomics','<b>HLA-B*15:02</b> <span class="flag o">NO RESULT ON FILE</span>'],['Medication history','Has never taken carbamazepine']],
+      expect:'hold', prescriber:'Dr Ravi (Neurology)',
+      calls:[
+        {v:'good',t:'"Dr Ravi, pharmacist here about Ms Nur Aisyah\'s new carbamazepine. There is no HLA-B*15:02 result on file. Carriers have a much higher risk of SJS/TEN, and testing is advised before starting in populations where the allele is common. Could we test first?"',reply:'Agreed. I\'ll order the HLA-B*15:02 test today and review her when the result is back.',res:'safe'},
+        {v:'vague',t:'"Dr Ravi, is carbamazepine OK for Ms Nur Aisyah?"',reply:'I prescribe it all the time. Why are you asking?',res:'retry'},
+        {v:'wrong',t:'"Dr Ravi, there is no HLA result. Shall we just start her on a lower dose to be safe?"',reply:'OK, start her lower then.',res:'risk'}],
+      outcomes:{
+        safe:'The HLA-B*15:02 test is ordered before her first dose. If positive, CPIC says avoid carbamazepine and oxcarbazepine; if negative, she can start.',
+        dispense:'She starts carbamazepine with her HLA-B*15:02 status unknown. If she carries the allele, her risk of SJS/TEN is much higher, and that could have been checked first.',
+        wrongcall:'A lower dose does not remove an immune-mediated risk. She starts carbamazepine with her HLA-B*15:02 status still unknown.'},
+      cpic:'Test for HLA-B*15:02 before starting carbamazepine in patients with ancestry where the allele may be present (US label). Positive and never exposed: do not use carbamazepine or oxcarbazepine (CPIC 2017).',
+      counsel:[
+        {v:'best',t:'"Before you start, the doctor is arranging a quick blood test. Some people carry a gene linked to a serious skin reaction with this medicine. If you do start it later, come back straight away if you notice any new rash."'},
+        {v:'wrong',t:'"You are allergic to carbamazepine, so you can never take it."'},
+        {v:'thin',t:'"The doctor will call you."'}],
+      counselFb:{best:'Explains the hold honestly and sets up rash safety-netting.',wrong:'Not true: there is no result yet, and this is not an allergy. Misinformation like this follows the patient.',thin:'She leaves confused about why her medicine was held. A one-line explanation would build trust.'}
+    },
+    { id:'hla-long', name:'Mr Arjun Pillai', short:'Mr Arjun', age:45, ticket:'103',
+      look:{body:'#8a7a4f',skin:'#9a6b4c',hair:'#1f1a17'},
+      greet:'Hello. Just collecting my usual epilepsy medicine. Same as always.',
+      rx:{ward:'Neurology clinic · repeat prescription',lines:['Carbamazepine 200 mg tablet: twice daily (repeat)'],dx:'Focal epilepsy, seizure-free for 18 months',by:'Dr Siti Hajar, Neurology'},
+      record:[['Allergies','No known drug allergies'],['Pharmacogenomics','<b>HLA-B*15:02</b> <span class="flag r">POSITIVE</span><br><span class="small">Tested this month at new-clinic registration</span>'],['Medication history','Carbamazepine every day for 2 years. <b>No rash or skin reaction recorded.</b>']],
+      expect:'dispense', prescriber:'Dr Siti (Neurology)',
+      calls:[
+        {v:'good',t:'"Dr Siti, pharmacist here. Mr Arjun\'s new HLA-B*15:02 result is positive, but he has taken carbamazepine daily for 2 years with no skin reaction. CPIC allows cautious continuation, so I plan to dispense as usual. Just keeping you informed."',reply:'Thanks, agreed. Please continue as usual.',res:'caution'},
+        {v:'vague',t:'"Dr Siti, about Mr Arjun\'s carbamazepine. I\'m not sure about it."',reply:'Not sure about what? He has been stable for two years.',res:'retry'},
+        {v:'wrong',t:'"Dr Siti, Mr Arjun is HLA-B*15:02 positive. Shall we stop his carbamazepine and switch him?"',reply:'Hmm, if you think it\'s necessary. Let\'s switch.',res:'risk'}],
+      outcomes:{
+        safe:'Mr Arjun continues the medicine that has kept him seizure-free, in line with CPIC\'s advice for patients with over 3 months of use and no skin reaction.',
+        caution:'The outcome was right, but the hold was not needed. He waited while you made a call that changed nothing.',
+        wrongcall:'An unnecessary switch. After more than 3 months of use with no skin reaction, CPIC allows cautious continuation. Changing a drug that controls his seizures carries its own risks.'},
+      cpic:'HLA-B*15:02 positive but taken consistently for over 3 months with no cutaneous reaction: cautiously consider continuing (CPIC 2017).',
+      counsel:[
+        {v:'best',t:'"Carry on as before: two years without a reaction is reassuring. Still tell us about any new rash, and show your HLA result to any new doctor, because it matters for some other epilepsy medicines."'},
+        {v:'wrong',t:'"Your test shows this medicine is dangerous for you. Stop taking it today."'},
+        {v:'thin',t:'"Nothing new to tell you, same as usual."'}],
+      counselFb:{best:'Reassuring and accurate, and protects him at his next new prescription.',wrong:'Telling him to stop could trigger seizures, and it contradicts the guideline for his situation.',thin:'He leaves unaware that his result matters for future prescriptions, such as oxcarbazepine.'}
+    }];
+
+  const SCORE={safe:3,caution:1,risk:0};
+  const SAFELBL={unknown:'Not yet assessed',caution:'Uncertain: more to do',risk:'At risk',safe:'Safe'};
+
+  /* ---------- JOBS, TIPS, METERS (interface layer; does not change scoring) ---------- */
+  const JOB={
+    'cyp':     {pri:'STAT',   due:9*60+15, from:'Staff Nurse Priya · Cardiology ward', what:'Discharge medicines'},
+    'hla-new': {pri:'STAT',   due:9*60+20, from:'Neurology clinic', what:'New prescription'},
+    'hla-long':{pri:'ROUTINE',due:9*60+40, from:'Repeat prescription box', what:'Repeat prescription'}};
+  const TIP={
+    'cyp':'Discharge prescriptions rarely carry genetic alerts. <b>Check the record</b> before you dispense.',
+    'hla-new':'A new start is the moment to ask: <b>is a test result missing?</b>',
+    'hla-long':'Not every flag needs action. <b>Read the history</b> before you intervene.'};
+  const CLOSE=10*60;
+  let M={q:20,t:70,g:70};
+  const fmt=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+  const clamp=v=>Math.max(0,Math.min(100,Math.round(v)));
+  function drawMeters(){
+    const over=CASES.reduce((a,c,i)=>a+(results[i]?0:Math.max(0,minutes-JOB[c.id].due)),0);
+    M.q=clamp(20+over*4);
+    [['q',M.q,true],['t',M.t,false],['g',M.g,false]].forEach(([k,v,inv])=>{
+      $('v-'+k).textContent=v; const f=$('m-'+k); f.style.width=v+'%';
+      const bad=inv?v>=70:v<35, warn=inv?v>=45:v<55; f.className='mf'+(bad?' bad':warn?' warn':'');
+    });
+  }
+  const adj=(k,d)=>{ M[k]=clamp(M[k]+d); drawMeters(); };
+  function dueText(c){ const d=JOB[c.id].due-minutes; return d>=0?'<span class="due ok">due '+fmt(JOB[c.id].due)+' · '+d+' min</span>':'<span class="due late">overdue '+(-d)+' min</span>'; }
+  function drawJobcard(){
+    const jc=$('jobcard');
+    if(ci<0||!st||st.stage==='done'){ jc.hidden=true; return; }
+    const c=CASES[ci], j=JOB[c.id], left=CASES.filter((x,i)=>!results[i]).length;
+    jc.hidden=false;
+    jc.innerHTML='<span class="tag'+(j.pri==='ROUTINE'?' rt':'')+'">'+j.pri+'</span><div><div class="jt">'+j.what+' · '+c.short+'</div><div class="js">'+j.from+' · '+dueText(c)+' · '+left+' on list</div></div>';
+  }
+
+  /* ---------- STATE ---------- */
+  let ci=-1, st=null, results=[], minutes=8*60+58;
+  const clockTick=m=>{ minutes+=m; $('clock').textContent=fmt(minutes); const left=CLOSE-minutes; $('closing').textContent=left>0?'Counter closes 10:00 · '+left+' min':'Past closing time'; drawMeters(); drawJobcard(); };
+  function setSafety(s){ st.safety=s; $('meter').dataset.s=s; $('meter-lbl').textContent=SAFELBL[s]; }
+  function drawQueue(){
+    $('queue').innerHTML=CASES.map((c,i)=>{ const r=results[i]; return '<span class="qdot '+(r?r.outcome:(i===ci?'cur':''))+'" title="'+c.short+'">'+(i+1)+'</span>'; }).join('');
+  }
+  function glow(){
+    const g={patient:false,ws:false,phone:false};
+    if(st){ if(st.stage==='arrive'){g.patient=true;g.ws=true;} if(st.stage==='assess')g.ws=true; if(st.stage==='call')g.phone=true; if(st.stage==='counsel')g.patient=true; }
+    ['patient','ws','phone'].forEach(k=>$('hs-'+k).classList.toggle('glow',g[k]));
+    const hint={arrive:'Greet the patient, then check the prescription at your workstation.',assess:'Check the prescription and record, then decide at the workstation.',call:'You decided to hold. Call the prescriber on the phone.',counsel:'Go back to the patient and counsel them.',done:'Patient finished. Use the panel to continue.'};
+    $('scene-hint').textContent=st?hint[st.stage]:'Read the briefing to start your shift.';
+    $('ws-screen').textContent=!st?'Waiting':st.stage==='done'?'Completed':'1 prescription';
+  }
+  function dressPatient(c){
+    $('p-body').setAttribute('fill',c.look.body); $('p-head').setAttribute('fill',c.look.skin);
+    $('p-hair').setAttribute('fill',c.look.hair);
+    $('p-hair').setAttribute('d',c.look.scarf?'M276 160 Q272 104 320 102 Q368 104 364 160 L372 206 Q320 222 268 206 Z':'M280 148 Q284 106 320 108 Q356 106 360 148 Q350 124 320 124 Q290 124 280 148 Z');
+    if(c.look.scarf){ $('patient-fig').insertBefore($('p-hair'),$('p-head')); } else { $('patient-fig').insertBefore($('p-hair'),$('p-head').nextSibling); }
+    $('p-name-lbl').textContent=c.short; $('ticket').textContent=c.ticket;
+  }
+  const P=html=>{ $('panel').innerHTML=html; };
+
+  /* ---------- SCREENS ---------- */
+  function briefing(){
+    P('<div class="eyebrow">Shift starts now</div><h1>Where are you <span class="ac">posted?</span></h1>'+
+      '<div class="post"><div class="pt">Outpatient Pharmacy · morning</div><div class="small">Seri Cendana Specialist Hospital (made up) · 08:58 to 10:00 · 3 on list</div></div>'+
+      '<div class="btns"><button class="btn solid" id="go">Take this posting</button></div>');
+    $('go').onclick=()=>{
+      P('<span class="paused">TIME IS PAUSED</span><h2>Morning <span class="ac">handover.</span></h2>'+
+        '<p>Three prescriptions are waiting. None of them carries a genetic alert. Noticing is your job.</p>'+
+        '<ul class="rules"><li><b>STAT first, then routine.</b> Overdue jobs raise queue pressure.</li><li><b>Check, then decide.</b> Open the patient record before you dispense or hold.</li><li><b>Calls cost goodwill.</b> Be specific when you phone a prescriber.</li><li><b>Counsel every patient.</b> It moves patient trust.</li><li><b>Reading pauses time.</b> The clock only moves when you act.</li></ul>'+
+        '<div class="btns"><button class="btn solid" id="hand">Take the handover</button></div>');
+      $('hand').onclick=()=>{ track('sim-start'); queueScreen(); };
+    };
+  }
+  function queueScreen(){
+    if(results.filter(Boolean).length===CASES.length) return report();
+    ci=-1; st=null; glow(); drawJobcard(); drawQueue(); setSafetyIdle();
+    const row=(c,i)=>{ const j=JOB[c.id], r=results[i];
+      return '<button class="job'+(r?' done':'')+'" data-i="'+i+'"'+(r?' disabled':'')+'><span class="flag '+(j.pri==='STAT'?'r':'o')+'">'+j.pri+'</span><span><span class="jn">'+j.what+' · '+c.name+'</span><br><span class="jm">'+j.from+'</span><br>'+(r?'<span class="due ok">done</span>':dueText(c))+'</span></button>'; };
+    const grp=p=>CASES.map((c,i)=>JOB[c.id].pri===p?row(c,i):'').join('');
+    P('<span class="paused">TIME IS PAUSED</span><div class="eyebrow">'+CASES.filter((c,i)=>!results[i]).length+' jobs · '+fmt(minutes)+'</div><h2>Your <span class="ac">list.</span></h2><p class="small">Choose who to serve next. Once you start a patient, you finish them.</p>'+
+      '<div class="qgroup">STAT</div>'+grp('STAT')+'<div class="qgroup">Routine</div>'+grp('ROUTINE')+
+      '<div class="btns"><button class="btn" id="auto">Let the queue pick</button></div>');
+    document.querySelectorAll('.job:not(.done)').forEach(b=>b.onclick=()=>{ track('sim-pick',{c:CASES[+b.dataset.i].id}); startCase(+b.dataset.i); });
+    $('auto').onclick=()=>{ const order=CASES.map((c,i)=>i).filter(i=>!results[i]).sort((a,b)=>JOB[CASES[a].id].due-JOB[CASES[b].id].due); startCase(order[0]); };
+  }
+  function setSafetyIdle(){ $('meter').dataset.s='unknown'; $('meter-lbl').textContent='Choose a patient'; }
+  function startCase(i){
+    ci=i;
+    const c=CASES[ci];
+    const shuffle=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);
+    st={stage:'arrive',checked:{rx:false,record:false},decision:null,calls:[],callOutcome:null,counsel:null,safety:'unknown',tab:'rx',greeted:false,
+        callOrder:shuffle(c.calls.slice()),counselOrder:shuffle(c.counsel.slice())};
+    setSafety('unknown'); dressPatient(c); drawQueue(); clockTick(2); glow();
+    patient();
+  }
+  function patient(){
+    const c=CASES[ci];
+    if(st.stage==='arrive'){ st.greeted=true; st.stage='assess'; glow(); }
+    if(st.stage==='counsel') return counsel();
+    let extra='';
+    if(st.stage==='call') extra='<div class="bubble them"><span class="who">'+c.short+'</span>Is there a problem with my medicine?</div><p class="small">Tell them you are checking with the doctor, then use the phone.</p>';
+    else if(st.stage==='done') extra='<p class="small">'+c.short+' has gone. Continue from the outcome screen.</p>';
+    else extra='<p class="small">Now check the prescription at your workstation.</p>';
+    P((st.stage==='assess'?'<div class="tip">'+TIP[c.id]+'</div>':'')+'<div class="eyebrow">Ticket '+c.ticket+' · '+c.age+' years old</div><h2>'+c.name+'</h2><div class="bubble them"><span class="who">'+c.short+'</span>'+c.greet+'</div>'+extra+
+      (st.stage!=='done'?'<div class="btns"><button class="btn" id="to-ws">Go to workstation</button></div>':''));
+    const b=$('to-ws'); if(b) b.onclick=workstation;
+    track('sim-hotspot',{h:'patient',c:c.id});
+  }
+  function workstation(){
+    const c=CASES[ci];
+    if(st.stage==='arrive'){ st.stage='assess'; glow(); }
+    const tabs=[['rx','Prescription'],['record','Patient record'],['ref','Guidelines']];
+    let body='';
+    if(st.tab==='rx') body='<div class="doc"><div class="dh">'+c.rx.ward+'</div><b>'+c.name+'</b>, '+c.age+'<br><span class="small">'+c.rx.dx+'</span><ul style="margin-top:.4em">'+c.rx.lines.map(l=>'<li>'+l+'</li>').join('')+'</ul><span class="small">Prescriber: '+c.rx.by+'</span></div>';
+    if(st.tab==='record') body='<div class="doc"><div class="dh">Patient record</div><table>'+c.record.map(r=>'<tr><th style="width:34%">'+r[0]+'</th><td>'+r[1]+'</td></tr>').join('')+'</table></div>';
+    if(st.tab==='ref') body='<div class="doc"><div class="dh">Quick guideline reference (CPIC)</div><table><tr><th>Gene / result</th><th>Drug</th><th>Advice</th></tr>'+
+      '<tr><td>CYP2C19 IM or PM</td><td>Clopidogrel (after ACS/PCI)</td><td>Avoid if possible; prasugrel or ticagrelor if no contraindication</td></tr>'+
+      '<tr><td>CYP2C19 NM, RM, UM</td><td>Clopidogrel</td><td>Standard dose</td></tr>'+
+      '<tr><td>HLA-B*15:02 not tested</td><td>Carbamazepine (new start)</td><td>Test first in at-risk ancestry (US label)</td></tr>'+
+      '<tr><td>HLA-B*15:02 positive, never taken</td><td>Carbamazepine</td><td>Do not use (also avoid oxcarbazepine)</td></tr>'+
+      '<tr><td>HLA-B*15:02 positive, &gt;3 months, no reaction</td><td>Carbamazepine</td><td>Cautiously consider continuing</td></tr></table></div>';
+    let act='';
+    if(st.stage==='assess') act='<p style="margin-top:.4em"><b>Your decision</b></p><div class="btns"><button class="btn solid" id="d-disp">Dispense as prescribed</button><button class="btn dark" id="d-hold">Hold and contact the prescriber</button></div>';
+    else if(st.stage==='call') act='<div class="note caution">Prescription on hold. Call '+c.prescriber+' on the phone.</div>';
+    else if(st.stage==='counsel') act='<div class="note">Prescription ready. Counsel '+c.short+' before they leave.</div>';
+    P('<div class="eyebrow">Workstation · ticket '+c.ticket+'</div><div class="tabs">'+tabs.map(t=>'<button class="tab'+(st.tab===t[0]?' on':'')+(st.checked[t[0]]?' seen':'')+'" data-t="'+t[0]+'">'+t[1]+'</button>').join('')+'</div>'+body+act);
+    if(st.tab in st.checked && !st.checked[st.tab]){ st.checked[st.tab]=true; clockTick(1); document.querySelector('.tab.on').classList.add('seen'); }
+    document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{ st.tab=t.dataset.t; workstation(); track('sim-tab',{t:t.dataset.t,c:c.id}); });
+    if($('d-disp')) $('d-disp').onclick=()=>decide('dispense');
+    if($('d-hold')) $('d-hold').onclick=()=>decide('hold');
+  }
+  function decide(d){
+    const c=CASES[ci]; st.decision=d; st.checkedAtDecision=st.checked.record; clockTick(1);
+    track('sim-decision',{c:c.id,d,checked:st.checked.record});
+    if(d==='hold'&&c.expect==='dispense') adj('t',-10);
+    if(d==='hold'){ st.stage='call'; setSafety('caution'); glow(); phone(); }
+    else { st.callOutcome=(c.expect==='dispense')?'safe':'risk'; setSafety(st.callOutcome); st.stage='counsel'; glow(); counsel(); }
+  }
+  function phone(){
+    const c=CASES[ci];
+    if(st.stage!=='call'){
+      P('<div class="eyebrow">Phone</div><h2>No call needed <span class="ac">right now.</span></h2><p>'+(st.stage==='assess'||st.stage==='arrive'?'Check the prescription first. You call the prescriber after you decide to hold.':'This patient\'s prescription is already sorted.')+'</p>');
+      return;
+    }
+    const log=st.calls.map(x=>'<div class="bubble me"><span class="who">You</span>'+x.t+'</div><div class="bubble them"><span class="who">'+c.prescriber+'</span>'+x.reply+'</div>').join('');
+    P('<div class="eyebrow">Phone · calling '+c.prescriber+'</div><h2>What do you <span class="ac">say?</span></h2>'+log+'<div class="opts">'+st.callOrder.map(o=>'<button class="opt" data-v="'+o.v+'">'+o.t+'</button>').join('')+'</div>');
+    document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      const o=c.calls.find(x=>x.v===b.dataset.v); st.calls.push(o); clockTick(3); track('sim-call',{c:c.id,v:o.v,n:st.calls.length});
+      adj('g',o.v==='vague'?-15:o.v==='wrong'?-10:(c.expect==='hold'?10:-5));
+      if(o.res==='retry'){ setSafety('caution'); phone(); return; }
+      st.callOutcome=o.res; setSafety(o.res);
+      P('<div class="eyebrow">Phone · '+c.prescriber+'</div>'+log+'<div class="bubble me"><span class="who">You</span>'+o.t+'</div><div class="bubble them"><span class="who">'+c.prescriber+'</span>'+o.reply+'</div><p class="small">Call ended. Now counsel the patient.</p><div class="btns"><button class="btn solid" id="to-pt">Go to the patient</button></div>');
+      st.stage='counsel'; glow(); $('to-pt').onclick=counsel;
+    });
+  }
+  function counsel(){
+    const c=CASES[ci];
+    P('<div class="eyebrow">Counselling · '+c.short+'</div><h2>Before '+c.short+' <span class="ac">leaves.</span></h2><p>What do you tell them?</p><div class="opts">'+st.counselOrder.map(o=>'<button class="opt" data-v="'+o.v+'">'+o.t+'</button>').join('')+'</div>');
+    document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ st.counsel=b.dataset.v; adj('t',{best:15,thin:-10,wrong:-25}[st.counsel]); clockTick(2); track('sim-counsel',{c:c.id,v:st.counsel}); finishCase(); });
+  }
+  function finishCase(){
+    const c=CASES[ci];
+    let outcome=st.callOutcome, text;
+    if(st.decision==='dispense') text=c.expect==='dispense'?c.outcomes.safe:c.outcomes.dispense;
+    else if(outcome==='risk') text=c.outcomes.wrongcall;
+    else if(outcome==='caution') text=c.outcomes.caution;
+    else text=c.outcomes.safe;
+    if(st.counsel==='wrong' && outcome==='safe') outcome='caution';
+    const firstGood=st.calls.length?st.calls[0].v==='good':null;
+    const r={id:c.id,name:c.name,outcome,text,decision:st.decision,checked:st.checkedAtDecision,firstGood,calls:st.calls.length,counsel:st.counsel,cpic:c.cpic,counselFb:c.counselFb[st.counsel]};
+    r.points=SCORE[outcome]+(r.checked?1:0)+(firstGood?1:0)+(st.counsel==='best'?1:st.counsel==='wrong'?-1:0);
+    results[ci]=r; setSafety(outcome); st.stage='done'; glow(); drawQueue();
+    track('sim-case-complete',{c:c.id,outcome,points:r.points});
+    P('<div class="eyebrow">Outcome · '+c.name+'</div><h2>'+({safe:'Safe outcome',caution:'Mixed outcome',risk:'Patient at risk'})[outcome]+'</h2>'+
+      '<div class="note '+outcome+'">'+text+'</div>'+
+      '<p class="small"><b>Counselling:</b> '+r.counselFb+'</p>'+
+      (r.checked?'':'<p class="small"><b>Note:</b> you decided without opening the patient record.</p>')+
+      '<div class="btns"><button class="btn solid" id="nx">'+(results.filter(Boolean).length<CASES.length?'Back to the list →':'See shift report →')+'</button></div>');
+    drawJobcard(); $('nx').onclick=queueScreen;
+  }
+  function report(){
+    st=null; glow(); $('ticket').textContent='—'; $('p-name-lbl').textContent='Closed'; $('meter').dataset.s='done'; $('meter-lbl').textContent='Shift over';
+    const total=results.reduce((a,r)=>a+r.points,0), max=17;
+    const harms=['cyp','hla-new'].filter(id=>results.find(r=>r.id===id).outcome==='safe').length;
+    const unneeded=results.find(r=>r.id==='hla-long').decision==='hold'?1:0;
+    const checked=results.filter(r=>r.checked).length;
+    const counselled=results.filter(r=>r.counsel==='best').length;
+    const grade=total>=15?'Ready for the ward':total>=11?'Getting there':'Needs another shift';
+    const stars=total>=15?3:total>=11?2:total>=6?1:0;
+    const harmsN=results.filter(r=>r.outcome==='risk').length;
+    $('jobcard').hidden=true;
+    track('sim-shift-complete',{total,grade,harms,unneeded});
+    const dec=r=>r.decision==='hold'?'Held and called the prescriber'+(r.calls>1?' ('+r.calls+' attempts)':'')+(r.firstGood?', with a clear recommendation':''):'Dispensed as prescribed';
+    P('<div class="share" id="share-card"><div class="eyebrow" style="margin:0">PGx Shift · Outpatient Pharmacy</div>'+
+      '<div class="stars" aria-label="'+stars+' of 3 stars">'+'★'.repeat(stars)+'☆'.repeat(3-stars)+'</div>'+
+      '<div class="big">Sent home at '+$('clock').textContent+'. '+grade+'.</div>'+
+      '<div class="line">3/3 prescriptions · '+harms+'/2 PGx problems caught · '+harmsN+' patient'+(harmsN===1?'':'s')+' at risk · '+unneeded+' unnecessary intervention'+(unneeded===1?'':'s')+'</div>'+
+      '<div class="line small" style="margin-top:.3em">Trust '+M.t+' · Goodwill '+M.g+' · Queue pressure '+M.q+'</div></div>'+
+      '<div class="eyebrow">Shift report · '+$('clock').textContent+'</div><h2>Your morning <span class="ac">in review.</span></h2>'+
+      '<div class="grade">'+grade+'</div><p class="small">'+total+' of '+max+' points</p>'+
+      '<div class="stats"><div class="stat"><div class="n">'+harms+' / 2</div><div class="l">PGx problems caught</div></div>'+
+      '<div class="stat"><div class="n">'+unneeded+'</div><div class="l">Unnecessary interventions</div></div>'+
+      '<div class="stat"><div class="n">'+checked+' / 3</div><div class="l">Records checked before deciding</div></div>'+
+      '<div class="stat"><div class="n">'+counselled+' / 3</div><div class="l">Patients counselled well</div></div></div>'+
+      results.map(r=>'<div class="rep-case '+r.outcome+'"><h3><span>'+r.name+'</span><span class="flag '+({safe:'g',caution:'o',risk:'r'})[r.outcome]+'">'+r.outcome.toUpperCase()+'</span></h3><ul><li><b>You:</b> '+dec(r)+'.</li><li><b>Outcome:</b> '+r.text+'</li><li><b>Guideline:</b> '+r.cpic+'</li></ul></div>').join('')+
+      '<div class="btns"><button class="btn solid" id="again">Play the shift again</button><a class="btn" href="explainer/" style="text-decoration:none">Back to the explainer</a></div>');
+    $('again').onclick=()=>{ ci=-1; st=null; results=[]; minutes=8*60+58; M={q:20,t:70,g:70}; clockTick(0); track('sim-replay'); queueScreen(); };
+  }
+
+  /* ---------- HOTSPOTS ---------- */
+  const act={patient:()=>st&&patient(),ws:()=>st&&workstation(),phone:()=>st&&phone()};
+  ['patient','ws','phone'].forEach(k=>{
+    const h=$('hs-'+k);
+    h.addEventListener('click',()=>{ act[k](); });
+    h.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); act[k](); } });
+  });
+  /* shelf boxes */
+  const cols=['#cfe6d9','#e8effc','#fdf3e6','#fbecea','#e4e6e3'];let sh='';
+  [[20],[430]].forEach(([x0])=>{ for(let row=0;row<3;row++){ let x=x0+10; for(let i=0;i<7;i++){ const w=18+((i*7+row*5)%3)*4; sh+='<rect x="'+x+'" y="'+(34+row*46)+'" width="'+w+'" height="34" rx="3" fill="'+cols[(i+row)%5]+'" stroke="#c9cdca"/>'; x+=w+5; } } });
+  $('shelf-items').innerHTML=sh;
+  drawQueue(); drawMeters(); glow(); briefing();
+})();
+</script>
+</body>
+</html>

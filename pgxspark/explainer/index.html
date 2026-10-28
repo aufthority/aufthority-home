@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pharmacogenomics, Explained — Aufthority</title>
+<script defer src="https://cloud.umami.is/script.js"
+  data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<meta name="description" content="How a patient's genes change their response to a drug: CYP2C19 and clopidogrel, HLA-B*15:02 and carbamazepine, with an interactive genotype-to-decision lab.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type"         content="article">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="Pharmacogenomics, Explained">
+<meta property="og:description"  content="From genotype to prescribing decision: clopidogrel, carbamazepine and a hands-on lab.">
+<meta property="og:url"          content="https://www.aufthority.com/pgxspark/explainer/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="en_MY">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="Pharmacogenomics, Explained">
+<meta name="twitter:description" content="From genotype to prescribing decision, with a hands-on lab.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --ink:#1c2620;--body:#3f4742;--muted:#6f7771;--accent:#2d6a4f;--accent-dark:#1f4d39;
+  --eyebrow:#9a6a1c;--g-bg:#e9f4ee;--g-line:#cfe6d9;--rule:#e4e6e3;
+  --red:#c0392b;--r-bg:#fbecea;--orange:#d9821f;--o-bg:#fdf3e6;--blue:#3a6bd1;--b-bg:#e8effc;
+  --radius:10px;--k:1;color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#fff}
+body{color:var(--body);font-family:'DM Sans',system-ui,sans-serif;line-height:1.5;overflow:hidden;-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+b,strong{color:var(--ink);font-weight:700}
+
+#shell{height:100vh;height:100dvh;max-width:1120px;margin:0 auto;padding:0 16px;display:flex;flex-direction:column}
+nav{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0 8px}
+.logo{font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--muted);font-weight:500;font-size:.8rem;margin-left:4px}
+.nav-right{display:flex;align-items:center;gap:10px}
+.icon-btn{background:#fff;border:1px solid var(--rule);color:var(--body);font:600 .78rem 'DM Sans',sans-serif;padding:5px 10px;border-radius:100px;cursor:pointer}
+#progress-label{font-size:.78rem;color:var(--muted);min-width:44px;text-align:right}
+#progress-track{flex:0 0 3px;background:var(--rule);border-radius:3px}
+#progress-fill{height:100%;width:0;background:var(--accent);border-radius:3px;transition:width .3s}
+
+#stage{flex:1 1 auto;min-height:0;position:relative}
+.slide{position:absolute;inset:0;display:none;overflow:hidden;font-size:calc(var(--k) * 16px)}
+.slide.active{display:block}
+.si{height:100%;display:flex;flex-direction:column;justify-content:center;gap:.7em;padding:.8em 0 .4em;max-width:720px;margin:0 auto}
+.si.has-ill{max-width:none}
+.ill{flex:0 0 auto;display:flex;flex-direction:column;justify-content:center;align-items:stretch;min-height:0}
+.ill svg{width:100%;height:calc(var(--k) * 29vh);height:calc(var(--k) * 29dvh);display:block}
+.ill figcaption{font-size:.72em;color:var(--muted);text-align:center;margin-top:.25em}
+.txt{flex:0 0 auto;min-width:0}
+@media (min-width:760px) and (orientation:landscape){
+  .slide{font-size:calc(var(--k) * 17px)}
+  .si.has-ill{flex-direction:row;align-items:center;gap:2.4em;padding:1em 0}
+  .si.has-ill .ill{flex:0 0 46%}
+  .si.has-ill .ill svg{height:auto;max-height:calc(var(--k) * 64vh);max-height:calc(var(--k) * 64dvh)}
+  .si.has-ill .txt{flex:1 1 auto}
+}
+
+.eyebrow{font-size:.72em;letter-spacing:.12em;text-transform:uppercase;color:var(--eyebrow);font-weight:700;margin-bottom:.45em}
+h1,h2{color:var(--ink);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:.45em}
+h1{font-size:2.05em}
+h2{font-size:1.65em}
+@media (min-width:760px){h1{font-size:2.4em}h2{font-size:1.9em}}
+h1 .ac,h2 .ac{color:var(--accent)}
+p{margin-bottom:.6em;font-size:.97em}
+.small{font-size:.82em;color:var(--muted)}
+.cite{font-size:.78em;color:var(--muted);white-space:nowrap}
+.cite a{color:var(--muted)}
+.callout{border-left:3px solid var(--accent);background:var(--g-bg);padding:.5em .85em;margin:.55em 0;font-size:.92em;border-radius:0 8px 8px 0}
+.callout.warn{border-color:var(--red);background:var(--r-bg)}
+.callout.note{border-color:var(--orange);background:var(--o-bg)}
+.pill-list{display:flex;flex-wrap:wrap;gap:.4em;margin:.55em 0}
+.pill{background:var(--g-bg);color:var(--accent-dark);padding:.3em .8em;font-size:.82em;font-weight:500;border-radius:100px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:.5em;margin:.55em 0}
+.tile{border:1px solid var(--rule);border-radius:var(--radius);padding:.55em .75em}
+.tile .n{font-size:1.3em;font-weight:800;color:var(--accent);line-height:1.15;letter-spacing:-.02em;margin-bottom:.15em}
+.tile .l{font-size:.84em;color:var(--body)}
+.steps{list-style:none;margin:.55em 0;display:flex;flex-direction:column;gap:.45em}
+.steps li{display:flex;gap:.65em;align-items:flex-start;font-size:.92em}
+.steps .n{flex:0 0 1.65em;height:1.65em;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82em;margin-top:.05em}
+.data-table{width:100%;border-collapse:collapse;font-size:.84em;margin:.45em 0}
+.data-table th,.data-table td{border-bottom:1px solid var(--rule);padding:.4em .55em;text-align:left;vertical-align:top}
+.data-table th{font-weight:700;color:var(--muted);font-size:.8em;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--rule)}
+.data-table td:first-child{color:var(--ink);font-weight:500}
+.data-table tr.hl td{background:var(--g-bg)}
+.map3{display:grid;grid-template-columns:repeat(3,1fr);gap:.55em;margin:.55em 0}
+.box{border:1px solid var(--rule);border-radius:var(--radius);padding:.6em .75em;font-size:.86em}
+.box h3{font-size:1.1em;font-weight:800;color:var(--accent);margin-bottom:.15em}
+.box .q{font-size:.9em;color:var(--muted);margin-bottom:.3em}
+.box ul{padding-left:1.1em}
+
+/* HTML diagrams */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:.4em;margin:.6em 0}
+.node{border:1.5px solid var(--ink);border-radius:8px;padding:.35em .65em;font-size:.84em;font-weight:500;color:var(--ink);background:#fff;text-align:center}
+.node small{display:block;font-weight:400;color:var(--muted);font-size:.85em}
+.node.g{border-color:var(--accent);background:var(--g-bg);color:var(--accent-dark)}
+.node.o{border-color:var(--orange);background:var(--o-bg)}
+.node.r{border-color:var(--red);background:var(--r-bg)}
+.node.ghost{border-style:dashed;color:var(--muted)}
+.arr{color:var(--orange);font-weight:800;font-size:1em}
+.lane{display:grid;grid-template-columns:8.5em 1fr;gap:.6em;align-items:center;padding:.45em 0;border-bottom:1px solid var(--rule)}
+.lane:last-of-type{border-bottom:none}
+.lane .lname{font-weight:800;color:var(--ink);font-size:.9em;line-height:1.2}
+.lane .lname small{display:block;font-weight:500;color:var(--muted);font-size:.8em}
+.lane .flow{margin:0}
+.stack{display:flex;flex-direction:column;gap:.4em;margin:.6em 0}
+.layer{display:grid;grid-template-columns:2.2em 1fr;gap:.6em;align-items:center;border:1px solid var(--g-line);background:var(--g-bg);border-radius:var(--radius);padding:.5em .7em;font-size:.88em}
+.layer .ln{width:2.2em;height:2.2em;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.layer > div > b:first-child{display:block;margin-bottom:.1em}
+.htl{display:grid;grid-template-columns:repeat(4,1fr);gap:.6em;margin:.6em 0}
+.htl .ev{border-top:3px solid var(--accent);padding-top:.4em;font-size:.86em}
+.htl .yr{font-weight:800;color:var(--accent);font-size:1.25em;letter-spacing:-.02em;display:block}
+@media (max-width:520px){.htl{grid-template-columns:1fr 1fr}.map3{grid-template-columns:1fr}.lane{grid-template-columns:1fr;gap:.25em}}
+.eq{display:flex;align-items:center;justify-content:center;gap:.6em;flex-wrap:wrap;margin:.6em 0}
+.eq .term{text-align:center;font-size:.82em;color:var(--ink);font-weight:500}
+.eq .term svg{width:5.2em;height:auto;display:block;margin:0 auto .25em}
+.eq .op{font-size:1.6em;font-weight:800;color:var(--orange)}
+.forms{display:grid;grid-template-columns:repeat(3,1fr);gap:.55em;margin:.6em 0}
+.form{border:1px solid var(--rule);border-radius:var(--radius);padding:.6em .7em;font-size:.86em}
+.form svg{width:100%;height:3.4em;display:block;margin-bottom:.3em}
+.form h3{font-size:1.05em;font-weight:800;color:var(--ink);margin-bottom:.1em}
+@media (max-width:520px){.forms{grid-template-columns:1fr}.form{display:grid;grid-template-columns:4.5em 1fr;gap:.6em;align-items:center}.form svg{height:2.6em;margin:0}}
+
+/* interactions */
+.toggle-wrap{border:1px solid var(--rule);border-radius:var(--radius);margin:.45em 0;overflow:hidden}
+.toggle-btn{width:100%;background:#fff;border:none;color:var(--ink);font:600 .92em 'DM Sans',sans-serif;text-align:left;padding:.6em .85em;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:.6em}
+.toggle-btn .hint{font-weight:600;color:var(--accent);font-size:.8em;white-space:nowrap}
+.toggle-btn .hint::after{content:" +"}
+.toggle-wrap.open .toggle-btn .hint::after{content:" −"}
+.toggle-wrap.seen{border-color:var(--g-line)}
+.toggle-body{display:none;padding:0 .85em .7em;font-size:.9em}
+.toggle-wrap.open .toggle-body{display:block}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr));gap:.45em;margin:.55em 0}
+.rcard{border:1px solid var(--rule);border-radius:var(--radius);background:#fff;text-align:left;padding:.55em .7em;cursor:pointer;font:400 .84em 'DM Sans',sans-serif;color:var(--body);display:block}
+.rcard .rt{font-weight:800;color:var(--ink);display:flex;justify-content:space-between;gap:.4em}
+.rcard .rt::after{content:"Tap";font-weight:600;font-size:.8em;color:var(--accent)}
+.rcard .rb{display:none;margin-top:.3em}
+.rcard.seen{border-color:var(--accent);background:var(--g-bg)}
+.rcard.seen .rt::after{content:""}
+.rcard.seen .rb{display:block}
+.rcard svg{width:100%;height:3.2em;display:block;margin:.2em 0}
+.choice-q{font-weight:700;color:var(--ink);font-size:.95em;margin-bottom:.45em}
+.choices{display:flex;flex-wrap:wrap;gap:.4em}
+.choice{background:#fff;border:1.5px solid var(--rule);color:var(--ink);font:500 .88em 'DM Sans',sans-serif;padding:.45em .85em;border-radius:100px;cursor:pointer}
+.choice:hover{border-color:var(--ink)}
+.choice.right{border-color:var(--accent);background:var(--g-bg);color:var(--accent-dark)}
+.choice.wrong{border-color:var(--red);background:var(--r-bg);color:var(--red);text-decoration:line-through}
+.feedback{display:none;font-size:.88em;margin-top:.5em;padding:.45em .75em;border-left:3px solid var(--accent);background:var(--g-bg);border-radius:0 8px 8px 0}
+.feedback.show{display:block}
+.stepper .choice-set{display:none}
+.stepper .choice-set.cur{display:block}
+.step-count{font-size:.75em;font-weight:700;color:var(--eyebrow);letter-spacing:.08em;margin-bottom:.3em}
+.next-q{margin-top:.55em;background:#fff;border:1.5px solid var(--ink);border-radius:100px;font:600 .84em 'DM Sans',sans-serif;padding:.38em .9em;cursor:pointer;display:none}
+.choice-set.done .next-q{display:inline-block}
+.calc{border:1px solid var(--rule);border-radius:var(--radius);padding:.65em .75em;margin:.55em 0}
+.calc-row{display:flex;gap:.6em;margin-bottom:.5em;flex-wrap:wrap}
+.calc label{font-size:.76em;font-weight:600;color:var(--muted);display:flex;flex-direction:column;gap:.2em;flex:1;min-width:8em}
+.calc input,.calc select{font:500 1.05em 'DM Sans',sans-serif;padding:.32em .45em;border:1px solid var(--rule);border-radius:6px;background:#fff;color:var(--ink);width:100%}
+.calc-out{font-size:.9em;padding:.45em .75em;border-left:3px solid var(--accent);background:var(--g-bg);border-radius:0 8px 8px 0}
+.calc-out.fail{border-color:var(--red);background:var(--r-bg)}
+.btn{background:#fff;border:1.5px solid var(--ink);border-radius:100px;color:var(--ink);font:600 .84em 'DM Sans',sans-serif;padding:.4em .95em;cursor:pointer}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.range{width:100%;accent-color:var(--accent);margin:.4em 0}
+.scale-lbl{display:flex;justify-content:space-between;font-size:.74em;color:var(--muted);font-weight:600}
+.coa{display:flex;flex-direction:column;gap:.3em;margin:.45em 0}
+.coa-row{display:grid;grid-template-columns:1fr 1.3fr 4.8em;gap:.5em;align-items:center;background:#fff;border:1px solid var(--rule);border-radius:8px;color:var(--ink);font:400 .82em 'DM Sans',sans-serif;text-align:left;padding:.42em .65em;cursor:pointer}
+.coa-row b{font-weight:700}
+.coa-row .v{text-align:right;font-weight:700;color:var(--muted)}
+.coa-row.pass{border-color:var(--accent)}.coa-row.pass .v{color:var(--accent)}
+.coa-row.fail{border-color:var(--red);background:var(--r-bg)}.coa-row.fail .v{color:var(--red)}
+.coa-row.next{border-color:var(--orange);background:var(--o-bg)}.coa-row.next .v{color:var(--orange)}
+#coa-exp{min-height:2.7em;font-size:.86em;border-left:3px solid var(--rule);padding:.35em .65em}
+.coa-decision{display:none;margin-top:.5em}
+.coa-decision.show{display:block}
+.cards{display:flex;flex-direction:column;gap:.4em;margin:.55em 0}
+.card{display:flex;gap:.75em;border:1px solid var(--rule);border-radius:var(--radius);padding:.5em .75em;font-size:.88em}
+.card .cn{font-size:1.35em;font-weight:800;color:var(--accent);line-height:1}
+.madeby{border-top:1px solid var(--rule);padding-top:.6em;margin-top:.3em}
+.madeby p{font-size:.82em;color:var(--muted);margin-bottom:.45em}
+.madeby p b,.madeby p b a{color:var(--ink)}
+.socials{display:flex;flex-wrap:wrap;gap:.35em}
+.socials a{font-size:.8em;font-weight:600;color:var(--accent-dark);background:var(--g-bg);padding:.28em .75em;border-radius:100px;text-decoration:none}
+.socials a:hover{background:var(--g-line)}
+.score{font-size:1.25em;font-weight:800;color:var(--accent);margin-top:.5em}
+.pulse{animation:pulse 1s ease 2}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,130,31,0)}50%{box-shadow:0 0 0 4px rgba(217,130,31,.45)}}
+
+#bottom{flex:0 0 auto;padding:6px 0 calc(8px + env(safe-area-inset-bottom))}
+#gate-hint{font-size:.78rem;color:var(--muted);text-align:center;min-height:1.2em;margin-bottom:5px}
+#gate-hint.alert{color:var(--orange);font-weight:600}
+#gate-hint button{background:none;border:none;color:var(--accent);text-decoration:underline;font:inherit;font-weight:600;cursor:pointer;padding:0}
+#nav-wrap{display:flex;justify-content:space-between;gap:10px}
+.nav-btn{flex:1;max-width:200px;background:#fff;border:1.5px solid var(--ink);color:var(--ink);font:700 .92rem 'DM Sans',sans-serif;padding:10px 14px;border-radius:100px;cursor:pointer}
+#btn-next{background:var(--ink);color:#fff;margin-left:auto}
+#btn-next.locked{background:#fff;color:var(--muted);border-color:var(--rule)}
+.nav-btn:disabled{opacity:.3;cursor:default}
+footer{text-align:center;font-size:.7rem;color:var(--muted);padding-top:4px}
+
+.overlay{display:none;position:fixed;inset:0;z-index:50;background:rgba(20,30,25,.35);padding:16px;overflow-y:auto}
+.overlay.open{display:block}
+.panel{max-width:620px;margin:16px auto;background:#fff;border-radius:14px;padding:18px 20px}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.panel-head h3{font-weight:800;color:var(--ink);font-size:1.3rem;letter-spacing:-.02em}
+.toc-note{font-size:.82rem;color:var(--muted);margin-bottom:8px}
+.toc{list-style:none}
+.toc li{border-bottom:1px solid var(--rule)}
+.toc button{background:none;border:none;color:var(--ink);font:400 .9rem 'DM Sans',sans-serif;padding:7px 0;width:100%;text-align:left;cursor:pointer;display:flex;gap:10px}
+.toc button span{color:var(--muted);min-width:22px}
+.toc button.cur{color:var(--accent);font-weight:700}
+.toc .sec{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--eyebrow);font-weight:700;padding:12px 0 3px;border:none}
+.refs{padding-left:20px;font-size:.82rem;color:var(--body)}
+.refs li{margin-bottom:7px;word-break:break-word}
+
+/* ---------- SVG diagram + chart styling ---------- */
+.ln{fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ln.thin{stroke-width:1.2}
+.ln.g{stroke:var(--accent)}.ln.r{stroke:var(--red)}.ln.o{stroke:var(--orange)}.ln.b{stroke:var(--blue)}.ln.m{stroke:#a3aaa5}
+.dash{stroke-dasharray:4 4}
+.fg{fill:var(--g-bg)}.fgs{fill:var(--accent)}.fb{fill:var(--b-bg)}.fr{fill:var(--r-bg)}.frs{fill:var(--red)}.fo{fill:var(--o-bg)}.fos{fill:var(--orange)}.fw{fill:#fff}.fk{fill:var(--ink)}.fgr{fill:#eef0ee}.fpow{fill:#d9d4c7}
+.tx{font-family:'DM Sans',sans-serif;font-size:12px;fill:var(--body)}
+.tx.s{font-size:10.5px;fill:var(--muted)}
+.tx.b{font-weight:700;fill:var(--ink)}
+.tx.g{fill:var(--accent-dark);font-weight:700}.tx.r{fill:var(--red);font-weight:700}.tx.o{fill:#a85f10;font-weight:700}.tx.bl{fill:var(--blue);font-weight:700}
+.tx.mid{text-anchor:middle}.tx.end{text-anchor:end}
+.bar{fill:var(--accent)}.bar.hl{fill:var(--red)}
+.axis{stroke:#c9cdca;stroke-width:1;fill:none}
+.grid{stroke:#eceeec;stroke-width:1}
+
+/* animations run only on the active slide, restart on every visit */
+.slide.active .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s ease-out forwards;animation-delay:var(--d,0s)}
+.slide.active .fade{opacity:0;animation:fadeup .5s ease-out forwards;animation-delay:var(--d,.3s)}
+.slide.active .stagger > *{opacity:0;animation:fadeup .45s ease-out forwards;animation-delay:var(--d,0s)}
+.slide.active .grow-x{transform-box:fill-box;transform-origin:left center;animation:growx .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,.1s)}
+.slide.active .grow-y{transform-box:fill-box;transform-origin:center bottom;animation:growy .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,.1s)}
+.slide.active .updown{animation:updown 2s ease-in-out infinite}
+.slide.active .spin{transform-box:view-box;animation:spin 6s linear infinite}
+.slide.active .spin-r{transform-box:view-box;animation:spin 6s linear infinite reverse}
+.slide.active .drop{animation:drop 2.4s ease-in infinite}
+.slide.active .bounce{animation:bounce 1.2s ease-in-out infinite}
+.slide.active .cyc{animation:cyc 6s infinite;animation-delay:var(--d,0s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadeup{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes growx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes growy{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes updown{0%,100%{transform:translateY(0)}50%{transform:translateY(22px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}80%{opacity:1}100%{transform:translateY(46px);opacity:0}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes cyc{0%,22%{opacity:1}26%,100%{opacity:.28}}
+
+@media (prefers-reduced-motion: reduce){
+  .slide.active *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important;transform:none!important}
+}
+
+/* ---------- additions for this explainer ---------- */
+.si.lab-si{justify-content:flex-start;max-width:820px;gap:.4em;padding:.5em 0 .3em}
+.lab-head h2{font-size:1.45em;margin-bottom:.2em}
+.lab-head p{font-size:.9em;margin-bottom:.2em}
+.lab-frame{flex:1 1 auto;min-height:0;border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:#fff}
+.lab-frame iframe{width:100%;height:100%;border:0;display:block}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.55em;margin:.55em 0}
+@media (max-width:520px){.vs{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="ar-o" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L8 5 L1 9 Z" fill="#d9821f"/></marker>
+  </defs>
+</svg>
+<div id="shell">
+  <nav>
+    <a class="logo" href="https://www.aufthority.com">Aufthority<span>· Edu</span></a>
+    <div class="nav-right">
+      <button class="icon-btn" id="btn-toc" data-umami-event="open-contents">Contents</button>
+      <span id="progress-label">1 / 14</span>
+    </div>
+  </nav>
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <div id="stage">
+
+<!-- ================= INTRO ================= -->
+<section class="slide active" data-sec="intro" data-title="Start here">
+ <div class="si has-ill">
+  <figure class="ill">
+   <svg viewBox="0 0 400 220" role="img" aria-label="HLA-B*1502 was found in 75 percent of Malay patients with carbamazepine-induced SJS or TEN, compared with 15.7 percent of controls">
+    <text class="tx b" x="20" y="28" style="font-size:14px">Carried HLA-B*1502</text>
+    <text class="tx s" x="20" y="46">Malaysian study, Malay participants</text>
+    <rect class="frs grow-x" x="20" y="66" width="270" height="36" rx="6" style="--d:.1s"/>
+    <text class="tx r fade" x="298" y="90" style="--d:.8s;font-size:15px">75%</text>
+    <text class="tx s fade" x="20" y="118" style="--d:.8s">patients with carbamazepine SJS/TEN (12 of 16)</text>
+    <rect class="fgs grow-x" x="20" y="134" width="57" height="36" rx="6" style="--d:.4s"/>
+    <text class="tx g fade" x="85" y="158" style="--d:1s;font-size:15px">15.7%</text>
+    <text class="tx s fade" x="20" y="186" style="--d:1s">people without the reaction (47 of 300)</text>
+    <text class="tx s fade" x="20" y="212" style="--d:1.2s">Source: Chang et al., 2011</text>
+   </svg>
+  </figure>
+  <div class="txt">
+   <div class="eyebrow">Start here</div>
+   <h1>Same drug, same dose, <span class="ac">a very different outcome.</span></h1>
+   <p>Carbamazepine is a common epilepsy medicine. In a small number of patients it triggers <b>Stevens-Johnson syndrome (SJS)</b> or <b>toxic epidermal necrolysis (TEN)</b>: severe reactions where the skin blisters and peels.</p>
+   <p>A Malaysian study found one gene variant, <b>HLA-B*1502</b>, in 75% of Malay patients who had this reaction, but in only 15.7% of people who had not. <span class="cite">(<a href="https://imr.moh.gov.my/en/research-a-publication/publication-listing/1028-p11-010" target="_blank" rel="noopener">Chang et al., 2011</a>)</span></p>
+   <p>A blood test can find that variant <b>before the first tablet</b>. Using a patient's genes to guide their medicines is called <b>pharmacogenomics (PGx)</b>.</p>
+   <p class="small">For Diploma in Pharmacy students. Use Next to move through the pages, or Contents to jump around.</p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="intro" data-title="What you will learn">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Introduction</div>
+   <h2>Three ideas, <span class="ac">one lab.</span></h2>
+   <div class="map3 stagger">
+     <div class="box"><h3>1 · Read it</h3><div class="q">What does a genotype report say?</div><ul><li>Gene, allele, diplotype</li><li>Metaboliser phenotypes</li></ul></div>
+     <div class="box"><h3>2 · Reason</h3><div class="q">Which way does the effect go?</div><ul><li>Prodrug or active drug</li><li>Dose effect or immune effect</li></ul></div>
+     <div class="box"><h3>3 · Decide</h3><div class="q">What should the prescriber do?</div><ul><li>Clopidogrel and CYP2C19</li><li>Carbamazepine and HLA-B*15:02</li></ul></div>
+   </div>
+   <p>By the end you should be able to:</p>
+   <ol class="steps">
+     <li><span class="n">1</span><span>Translate a CYP2C19 genotype into a metaboliser phenotype.</span></li>
+     <li><span class="n">2</span><span>Explain why a poor metaboliser gets <b>less</b> effect from a prodrug.</span></li>
+     <li><span class="n">3</span><span>Apply the CPIC recommendations for clopidogrel and carbamazepine to a patient case.</span></li>
+   </ol>
+   <p class="small"><b>CPIC</b>, the Clinical Pharmacogenetics Implementation Consortium, writes the guidelines that turn genotype results into prescribing advice. All patients in this course are made up.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ================= READ IT ================= -->
+<section class="slide" data-sec="read" data-title="From gene to phenotype">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Read it · the vocabulary</div>
+   <h2>Four words <span class="ac">you will meet on every report.</span></h2>
+   <div class="flow stagger">
+     <div class="node">Gene</div><span class="arr">→</span>
+     <div class="node">Allele</div><span class="arr">→</span>
+     <div class="node o">Diplotype</div><span class="arr">→</span>
+     <div class="node g">Phenotype</div>
+   </div>
+   <p>Tap each card to continue.</p>
+   <div class="rgrid">
+     <button class="rcard"><span class="rt">Gene</span><span class="rb">A stretch of DNA that codes for one protein. <b>CYP2C19</b> codes for a liver enzyme; <b>HLA-B</b> codes for an immune protein.</span></button>
+     <button class="rcard"><span class="rt">Allele</span><span class="rb">One version of a gene. Alleles are named with a star: CYP2C19 <b>*1</b>, <b>*2</b>, <b>*17</b>; HLA-B <b>*15:02</b>.</span></button>
+     <button class="rcard"><span class="rt">Diplotype</span><span class="rb">The <b>pair</b> of alleles a person carries, one from each parent, written like <b>*1/*2</b>.</span></button>
+     <button class="rcard"><span class="rt">Phenotype</span><span class="rb">What the pair <b>means</b> for the patient, such as "poor metaboliser". This is the word prescribing advice is based on.</span></button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="read" data-title="CYP2C19 alleles">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Read it · CYP2C19</div>
+   <h2>Each allele <span class="ac">has a function.</span></h2>
+   <p>CYP2C19 has many known alleles. Four cover most results you will see in practice, and each is assigned a function: <span class="cite">(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9287492" target="_blank" rel="noopener">CPIC, 2022</a>)</span></p>
+   <table class="data-table">
+     <tr><th>Allele</th><th>Function</th><th>Effect on the enzyme</th></tr>
+     <tr><td>*1</td><td>Normal</td><td>The reference version; works as expected</td></tr>
+     <tr class="hl"><td>*2, *3</td><td>No function</td><td>Makes no working enzyme</td></tr>
+     <tr><td>*17</td><td>Increased</td><td>Makes more enzyme activity than *1</td></tr>
+   </table>
+   <div class="toggle-wrap">
+     <button class="toggle-btn"><span>Why is the result written as two alleles?</span><span class="hint">Open</span></button>
+     <div class="toggle-body"><p>Everyone has two copies of CYP2C19, one from each parent. So a report gives a pair, such as <b>*1/*2</b>: one normal copy and one no-function copy. The order does not matter: *1/*2 and *2/*1 are the same result.</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="read" data-title="Metaboliser phenotypes">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Read it · phenotypes</div>
+   <h2>Two alleles, <span class="ac">five phenotypes.</span></h2>
+   <table class="data-table">
+     <tr><th>Phenotype</th><th>Alleles</th><th>Examples</th></tr>
+     <tr><td>Ultrarapid (UM)</td><td>Two increased</td><td>*17/*17</td></tr>
+     <tr><td>Rapid (RM)</td><td>One normal + one increased</td><td>*1/*17</td></tr>
+     <tr><td>Normal (NM)</td><td>Two normal</td><td>*1/*1</td></tr>
+     <tr class="hl"><td>Intermediate (IM)</td><td>One no-function + one normal or increased</td><td>*1/*2, *1/*3, *2/*17</td></tr>
+     <tr class="hl"><td>Poor (PM)</td><td>Two no-function</td><td>*2/*2, *2/*3, *3/*3</td></tr>
+   </table>
+   <div class="callout warn"><b>Watch out:</b> a *17 does not cancel out a no-function allele. CPIC classes *2/*17 as <b>intermediate</b>, not normal. <span class="cite">(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9287492" target="_blank" rel="noopener">CPIC, 2022</a>)</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="read" data-title="Check: phenotypes">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Check · made-up results</div>
+   <h2>Name <span class="ac">the phenotype.</span></h2>
+   <p class="small">Answer all three to continue. Go back one page if you need the table.</p>
+   <div class="stepper">
+    <div class="choice-set cur" data-answer="im">
+      <div class="step-count">QUESTION 1 OF 3</div>
+      <div class="choice-q">CYP2C19 *1/*3</div>
+      <div class="choices"><button class="choice" data-v="nm">Normal</button><button class="choice" data-v="im">Intermediate</button><button class="choice" data-v="pm">Poor</button></div>
+      <div class="feedback">Intermediate. One normal allele (*1) and one no-function allele (*3). One working copy is not the same as two.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="um">
+      <div class="step-count">QUESTION 2 OF 3</div>
+      <div class="choice-q">CYP2C19 *17/*17</div>
+      <div class="choices"><button class="choice" data-v="rm">Rapid</button><button class="choice" data-v="um">Ultrarapid</button><button class="choice" data-v="nm">Normal</button></div>
+      <div class="feedback">Ultrarapid: two increased-function alleles. One *17 with one *1 would be rapid.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="im">
+      <div class="step-count">QUESTION 3 OF 3</div>
+      <div class="choice-q">CYP2C19 *2/*17</div>
+      <div class="choices"><button class="choice" data-v="nm">Normal (they cancel out)</button><button class="choice" data-v="im">Intermediate</button><button class="choice" data-v="pm">Poor</button></div>
+      <div class="feedback">Intermediate. The increased-function *17 does not cancel out the no-function *2; CPIC classes this pair as intermediate.</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ================= REASON ================= -->
+<section class="slide" data-sec="reason" data-title="Prodrug or active drug?">
+ <div class="si has-ill">
+  <figure class="ill">
+   <svg viewBox="0 0 400 230" role="img" aria-label="For an active drug, slow metabolism leaves more drug; for a prodrug, slow metabolism makes less active drug">
+    <text class="tx b" x="20" y="22">Active drug</text>
+    <rect class="fb ln b" x="20" y="34" width="90" height="34" rx="6"/><text class="tx mid" x="65" y="56">drug</text>
+    <path class="ln o draw" pathLength="1" d="M114 51 H186" marker-end="url(#ar-o)"/>
+    <text class="tx s mid" x="150" y="42">enzyme</text>
+    <rect class="fgr ln" x="190" y="34" width="90" height="34" rx="6"/><text class="tx mid" x="235" y="56">cleared</text>
+    <text class="tx r fade" x="20" y="92" style="--d:.8s">Poor metaboliser: drug builds up</text>
+    <text class="tx s fade" x="20" y="108" style="--d:.8s">more effect, more risk of toxicity</text>
+    <path class="ln m" d="M20 126 H380" style="stroke-dasharray:3 4"/>
+    <text class="tx b" x="20" y="150">Prodrug (e.g. clopidogrel)</text>
+    <rect class="fgr ln" x="20" y="162" width="90" height="34" rx="6"/><text class="tx mid" x="65" y="184">prodrug</text>
+    <path class="ln o draw" pathLength="1" d="M114 179 H186" marker-end="url(#ar-o)" style="--d:.4s"/>
+    <text class="tx s mid" x="150" y="170">enzyme</text>
+    <rect class="fg ln g" x="190" y="162" width="90" height="34" rx="6"/><text class="tx g mid" x="235" y="184">active drug</text>
+    <text class="tx r fade" x="20" y="218" style="--d:1.2s">Poor metaboliser: less active drug, less effect</text>
+   </svg>
+  </figure>
+  <div class="txt">
+   <div class="eyebrow">Reason · the key idea</div>
+   <h2>Same enzyme, <span class="ac">opposite consequence.</span></h2>
+   <p>Most drugs are already active. An enzyme <b>clears</b> them, so a poor metaboliser keeps more drug in the blood.</p>
+   <p>A <b>prodrug</b> is inactive until an enzyme <b>switches it on</b>. Clopidogrel is a prodrug, and CYP2C19 is the enzyme that activates it. So the arrow flips: a poor metaboliser makes <b>less</b> active drug. <span class="cite">(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9287492" target="_blank" rel="noopener">CPIC, 2022</a>)</span></p>
+   <div class="rgrid">
+     <button class="rcard"><span class="rt">Active drug + poor metaboliser</span><span class="rb">Drug is cleared slowly, so levels rise. The worry is <b>too much</b> effect.</span></button>
+     <button class="rcard"><span class="rt">Prodrug + poor metaboliser</span><span class="rb">Drug is activated slowly, so active levels fall. The worry is <b>too little</b> effect.</span></button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="reason" data-title="Clopidogrel: the recommendation">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Decide · CYP2C19 and clopidogrel</div>
+   <h2>Too little activation means <span class="ac">too little protection.</span></h2>
+   <p>Clopidogrel stops platelets clumping, which protects patients from another heart attack or a blocked stent. Intermediate and poor metabolisers get weaker platelet inhibition and a higher risk of major cardiovascular events. <span class="cite">(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9287492" target="_blank" rel="noopener">CPIC, 2022</a>)</span></p>
+   <table class="data-table">
+     <tr><th>Phenotype</th><th>CPIC recommendation after a heart attack or stent (ACS/PCI)</th></tr>
+     <tr><td>UM, RM, NM</td><td>Standard-dose clopidogrel (75 mg a day)</td></tr>
+     <tr class="hl"><td>IM, PM</td><td>Avoid clopidogrel if possible. Use prasugrel or ticagrelor at standard dose if there is no contraindication.</td></tr>
+   </table>
+   <p class="small">Raising the clopidogrel dose is not the CPIC recommendation for IM or PM: it advises switching drug. Prasugrel and ticagrelor do not depend on CYP2C19 in the same way. <span class="cite">(<a href="https://pharmgkb.org/guidelineAnnotation/PA166104948/annotation" target="_blank" rel="noopener">PharmGKB</a>)</span></p>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="reason" data-title="HLA-B*15:02 and carbamazepine">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Reason · HLA-B and carbamazepine</div>
+   <h2>Not a dose problem: <span class="ac">an immune one.</span></h2>
+   <p><b>HLA-B</b> helps the immune system decide what to attack. In people who carry <b>HLA-B*15:02</b>, carbamazepine can trigger an immune attack on the skin, causing SJS/TEN. <span class="cite">(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3748365" target="_blank" rel="noopener">CPIC, 2013</a>)</span></p>
+   <div class="vs stagger">
+     <div class="tile"><div class="n">Positive or negative</div><div class="l">One or two copies of *15:02 is reported as <b>positive</b>. No copies is <b>negative</b>. There is no "intermediate" result.</div></div>
+     <div class="tile"><div class="n">Dose does not fix it</div><div class="l">The allele is not known to change how carbamazepine is handled by the body. A lower dose does not remove the risk.</div></div>
+   </div>
+   <div class="toggle-wrap">
+     <button class="toggle-btn"><span>Who should be tested before starting?</span><span class="hint">Open</span></button>
+     <div class="toggle-body"><p>The US drug label says patients with ancestry in populations where HLA-B*15:02 may be present should be tested before starting carbamazepine. <span class="cite">(<a href="https://www.ncbi.nlm.nih.gov/books/NBK321445/" target="_blank" rel="noopener">Medical Genetics Summaries</a>)</span> The allele is common in parts of Asia, and the Malaysian study found it in Malay, Chinese and Indian patients who had the reaction. <span class="cite">(<a href="https://imr.moh.gov.my/en/research-a-publication/publication-listing/1028-p11-010" target="_blank" rel="noopener">Chang et al., 2011</a>)</span></p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="reason" data-title="Carbamazepine: the recommendation">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Decide · HLA-B*15:02 and carbamazepine</div>
+   <h2>The result, and <span class="ac">the history.</span></h2>
+   <p>The decision depends on two things: the test result, and whether the patient has already been taking the drug. <span class="cite">(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5847474" target="_blank" rel="noopener">CPIC, 2017</a>)</span></p>
+   <table class="data-table">
+     <tr><th>Result</th><th>History</th><th>CPIC recommendation</th></tr>
+     <tr><td>Negative</td><td>Any</td><td>Use at usual dosing</td></tr>
+     <tr class="hl"><td>Positive</td><td>Never taken it</td><td>Do not use carbamazepine or oxcarbazepine</td></tr>
+     <tr><td>Positive</td><td>Taken consistently for over 3 months, no skin reaction</td><td>Cautiously consider continuing</td></tr>
+   </table>
+   <div class="callout note">A negative result lowers the risk but does not remove all of it. Every patient starting carbamazepine should be told to report any new rash.</div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="reason" data-title="Check: carbamazepine">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Check · made-up patients</div>
+   <h2>Positive, negative, <span class="ac">or something else?</span></h2>
+   <p class="small">Answer all three to continue.</p>
+   <div class="stepper">
+    <div class="choice-set cur" data-answer="pos">
+      <div class="step-count">QUESTION 1 OF 3</div>
+      <div class="choice-q">The report reads HLA-B*15:02 / HLA-B*40:01. How is it reported?</div>
+      <div class="choices"><button class="choice" data-v="pos">Positive</button><button class="choice" data-v="int">Intermediate risk</button><button class="choice" data-v="neg">Negative</button></div>
+      <div class="feedback">Positive. One copy is enough; there is no intermediate category.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="no">
+      <div class="step-count">QUESTION 2 OF 3</div>
+      <div class="choice-q">A positive patient has never taken carbamazepine. Would starting at half the usual dose make it safe?</div>
+      <div class="choices"><button class="choice" data-v="yes">Yes</button><button class="choice" data-v="no">No</button></div>
+      <div class="feedback">No. The reaction is immune-mediated, not dose-related. CPIC says do not use carbamazepine or oxcarbazepine in this patient.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="cautious">
+      <div class="step-count">QUESTION 3 OF 3</div>
+      <div class="choice-q">A positive patient has taken carbamazepine daily for 8 months with no rash. What does CPIC suggest?</div>
+      <div class="choices"><button class="choice" data-v="stop">Stop it at once</button><button class="choice" data-v="cautious">Cautiously consider continuing</button><button class="choice" data-v="down">Halve the dose</button></div>
+      <div class="feedback">Cautiously consider continuing. After more than 3 months of consistent use without a skin reaction, CPIC allows cautious continuation.</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ================= LAB ================= -->
+<section class="slide" data-sec="lab" data-title="Lab: genotype to decision">
+ <div class="si lab-si">
+  <div class="lab-head">
+   <div class="eyebrow">Try it · interactive lab</div>
+   <h2>Now you <span class="ac">make the call.</span></h2>
+   <p>Four steps per case: read, translate, predict, decide. New values give a new patient each time. <a href="../lab.html" target="_blank" rel="noopener" data-umami-event="lab-open-full">Open full screen</a></p>
+  </div>
+  <div class="lab-frame"><iframe data-src="../lab.html?embed=1" loading="lazy" title="Genotype to decision lab"></iframe></div>
+ </div>
+</section>
+
+<!-- ================= END ================= -->
+<section class="slide" data-sec="end" data-title="Quick quiz">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Check your understanding</div>
+   <h2>Five questions, <span class="ac">no marks recorded.</span></h2>
+   <div class="stepper quiz">
+    <div class="choice-set cur" data-answer="b">
+      <div class="step-count">QUESTION 1 OF 5</div>
+      <div class="choice-q">A patient's CYP2C19 result is *1/*2. What is the phenotype?</div>
+      <div class="choices"><button class="choice" data-v="a">Normal, because one normal allele is enough</button><button class="choice" data-v="b">Intermediate</button><button class="choice" data-v="c">Poor</button></div>
+      <div class="feedback">Intermediate: one normal and one no-function allele. Poor needs two no-function alleles.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="a">
+      <div class="step-count">QUESTION 2 OF 5</div>
+      <div class="choice-q">A CYP2C19 poor metaboliser takes standard-dose clopidogrel. What is the main concern?</div>
+      <div class="choices"><button class="choice" data-v="a">Weaker platelet inhibition</button><button class="choice" data-v="b">Bleeding, because the drug builds up</button><button class="choice" data-v="c">No concern</button></div>
+      <div class="feedback">Weaker platelet inhibition. "Builds up" is the prodrug trap: clopidogrel needs CYP2C19 to become active.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="c">
+      <div class="step-count">QUESTION 3 OF 5</div>
+      <div class="choice-q">A patient carries one copy of HLA-B*15:02. How is the result reported?</div>
+      <div class="choices"><button class="choice" data-v="a">Negative</button><button class="choice" data-v="b">Intermediate risk</button><button class="choice" data-v="c">Positive</button></div>
+      <div class="feedback">Positive. One or two copies both count; there is no intermediate result.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="b">
+      <div class="step-count">QUESTION 4 OF 5</div>
+      <div class="choice-q">HLA-B*15:02 positive, never taken carbamazepine. What does CPIC recommend?</div>
+      <div class="choices"><button class="choice" data-v="a">Start at a lower dose</button><button class="choice" data-v="b">Do not use carbamazepine or oxcarbazepine</button><button class="choice" data-v="c">Use at usual dosing</button></div>
+      <div class="feedback">Do not use carbamazepine or oxcarbazepine. A lower dose does not remove an immune-mediated risk.</div>
+      <button class="next-q">Next question →</button>
+    </div>
+    <div class="choice-set" data-answer="a">
+      <div class="step-count">QUESTION 5 OF 5</div>
+      <div class="choice-q">CYP2C19 *1/*17 (rapid metaboliser) after a stent. What does CPIC recommend?</div>
+      <div class="choices"><button class="choice" data-v="a">Standard-dose clopidogrel</button><button class="choice" data-v="b">Lower-dose clopidogrel, because it is activated faster</button><button class="choice" data-v="c">Switch to ticagrelor</button></div>
+      <div class="feedback">Standard-dose clopidogrel. CPIC does not link increased activation with higher bleeding risk, so no dose change is needed.</div>
+    </div>
+    <div class="score" id="quiz-score"></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-sec="end" data-title="Summary">
+ <div class="si">
+  <div class="txt">
+   <div class="eyebrow">Take home</div>
+   <h2>Read, reason, <span class="ac">then decide.</span></h2>
+   <div class="cards stagger">
+     <div class="card"><div class="cn">1</div><div>A report gives a pair of alleles. Their functions decide the phenotype, and the phenotype drives the advice.</div></div>
+     <div class="card"><div class="cn">2</div><div>For a prodrug like clopidogrel, a poor metaboliser gets <b>less</b> effect. CPIC advises prasugrel or ticagrelor for IM and PM after ACS or PCI.</div></div>
+     <div class="card"><div class="cn">3</div><div>HLA-B*15:02 risk is immune-mediated, so dose changes do not fix it. Positive and never exposed: avoid carbamazepine and oxcarbazepine.</div></div>
+   </div>
+   <div style="margin:.6em 0;display:flex;flex-wrap:wrap;gap:.5em"><a class="btn solid" href="../sim.html" style="text-decoration:none;display:inline-block" data-umami-event="open-simulator">Play the pharmacist simulator →</a><button class="btn" id="btn-refs" data-umami-event="open-sources">Sources (7)</button></div>
+   <div class="madeby">
+     <p><b>Made by <a href="https://www.aufthority.com/" target="_blank" rel="noopener" data-umami-event="link-website">Aufthority</a>.</b> Learning material for Diploma in Pharmacy students. All patients are made up and the lab charts are illustrative. Not a substitute for the current CPIC guidelines, product information or clinical judgement.</p>
+     <div class="socials">
+       <a href="https://www.aufthority.com/" target="_blank" rel="noopener" data-umami-event="link-website">Website</a>
+       <a href="https://www.linkedin.com/in/aufbinali/" target="_blank" rel="noopener" data-umami-event="link-linkedin">LinkedIn</a>
+       <a href="https://aufthority.substack.com/" target="_blank" rel="noopener" data-umami-event="link-substack">Substack</a>
+       <a href="https://www.instagram.com/aufthority/" target="_blank" rel="noopener" data-umami-event="link-instagram">Instagram</a>
+       <a href="https://www.tiktok.com/@aufthority" target="_blank" rel="noopener" data-umami-event="link-tiktok">TikTok</a>
+       <a href="https://www.threads.com/@aufthority" target="_blank" rel="noopener" data-umami-event="link-threads">Threads</a>
+       <a href="mailto:the.aufthority@gmail.com" data-umami-event="link-email">the.aufthority@gmail.com</a>
+     </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+  </div><!-- /stage -->
+
+  <div id="bottom">
+    <div id="gate-hint"></div>
+    <div id="nav-wrap">
+      <button id="btn-back" class="nav-btn" disabled data-umami-event="nav-back">← Back</button>
+      <button id="btn-next" class="nav-btn" data-umami-event="nav-next">Next →</button>
+    </div>
+    <footer>Informed decisions, better health.</footer>
+  </div>
+</div>
+
+<div class="overlay" id="toc-overlay" role="dialog" aria-modal="true">
+  <div class="panel">
+    <div class="panel-head"><h3>Contents</h3><button class="icon-btn close-ov">Close</button></div>
+    <p class="toc-note">You can jump to any page from here, even if a page's questions are not finished.</p>
+    <ul class="toc" id="toc-list"></ul>
+  </div>
+</div>
+
+<div class="overlay" id="refs-overlay" role="dialog" aria-modal="true">
+  <div class="panel">
+    <div class="panel-head"><h3>Sources and further reading</h3><button class="icon-btn close-ov">Close</button></div>
+    <ol class="refs">
+      <li>Chang, C.-C., Too, C.-L., Murad, S., &amp; Hussein, S. H. (2011). Association of HLA-B*1502 allele with carbamazepine-induced toxic epidermal necrolysis and Stevens-Johnson syndrome in the multi-ethnic Malaysian population. <i>International Journal of Dermatology, 50</i>(2), 221–224. <a href="https://imr.moh.gov.my/en/research-a-publication/publication-listing/1028-p11-010" target="_blank" rel="noopener">imr.moh.gov.my</a></li>
+      <li>Lee, C. R., Luzum, J. A., Sangkuhl, K., et al. (2022). Clinical Pharmacogenetics Implementation Consortium guideline for CYP2C19 genotype and clopidogrel therapy: 2022 update. <i>Clinical Pharmacology &amp; Therapeutics, 112</i>(5), 959–967. <a href="https://doi.org/10.1002/cpt.2526" target="_blank" rel="noopener">https://doi.org/10.1002/cpt.2526</a></li>
+      <li>Leckband, S. G., Kelsoe, J. R., Dunnenberger, H. M., et al. (2013). Clinical Pharmacogenetics Implementation Consortium guidelines for HLA-B genotype and carbamazepine dosing. <i>Clinical Pharmacology &amp; Therapeutics</i>. <a href="https://doi.org/10.1038/clpt.2013.103" target="_blank" rel="noopener">https://doi.org/10.1038/clpt.2013.103</a></li>
+      <li>Medical Genetics Summaries. (n.d.). <i>Carbamazepine therapy and HLA genotype</i>. National Center for Biotechnology Information. <a href="https://www.ncbi.nlm.nih.gov/books/NBK321445/" target="_blank" rel="noopener">ncbi.nlm.nih.gov</a></li>
+      <li>Medical Genetics Summaries. (n.d.). <i>Clopidogrel therapy and CYP2C19 genotype</i>. National Center for Biotechnology Information. <a href="https://www.ncbi.nlm.nih.gov/books/NBK84114/" target="_blank" rel="noopener">ncbi.nlm.nih.gov</a></li>
+      <li>PharmGKB. (n.d.). <i>Annotation of CPIC guideline for clopidogrel and CYP2C19</i>. <a href="https://pharmgkb.org/guidelineAnnotation/PA166104948/annotation" target="_blank" rel="noopener">pharmgkb.org</a></li>
+      <li>Phillips, E. J., Sukasem, C., Whirl-Carrillo, M., et al. (2018). Clinical Pharmacogenetics Implementation Consortium guideline for HLA genotype and use of carbamazepine and oxcarbazepine: 2017 update. <i>Clinical Pharmacology &amp; Therapeutics, 103</i>(4), 574–581. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5847474" target="_blank" rel="noopener">pmc.ncbi.nlm.nih.gov</a></li>
+    </ol>
+  </div>
+</div>
+
+<script>
+(function(){
+  const slides   = document.querySelectorAll('.slide');
+  const TOTAL    = slides.length;
+  let current = 1;
+  const btnBack  = document.getElementById('btn-back');
+  const btnNext  = document.getElementById('btn-next');
+  const progFill = document.getElementById('progress-fill');
+  const progLbl  = document.getElementById('progress-label');
+  const hint     = document.getElementById('gate-hint');
+
+  document.querySelectorAll('.stagger').forEach(c=>{
+    [...c.children].forEach((e,i)=>e.style.setProperty('--d',(0.1 + i*0.11).toFixed(2)+'s'));
+  });
+
+  /* ---------- AUTO-FIT: shrink a page until it fits without scrolling ---------- */
+  function fit(slide){
+    if(!slide) return;
+    const si=slide.querySelector('.si');
+    let k=1; slide.style.setProperty('--k',k);
+    if(si.classList.contains('lab-si')) return; /* the lab iframe fills the page and scrolls itself */
+    let g=0;
+    while(g++<16 && (si.scrollHeight>slide.clientHeight+1 || si.scrollWidth>slide.clientWidth+1) && k>0.62){
+      k=+(k-0.03).toFixed(2); slide.style.setProperty('--k',k);
+    }
+  }
+  let rT; window.addEventListener('resize',()=>{ clearTimeout(rT); rT=setTimeout(()=>fit(slides[current-1]),120); });
+
+  /* ---------- GATING ---------- */
+  function pending(slide){
+    let n=0;
+    slide.querySelectorAll('.toggle-wrap').forEach(t=>{ if(!t.classList.contains('opt') && !t.classList.contains('seen')) n++; });
+    slide.querySelectorAll('.rcard').forEach(t=>{ if(!t.classList.contains('seen')) n++; });
+    slide.querySelectorAll('.choice-set').forEach(s=>{ if(!s.dataset.done) n++; });
+    return n;
+  }
+  function updateGate(alert){
+    const s=slides[current-1], n=pending(s);
+    btnNext.classList.toggle('locked', n>0);
+    if(n===0){ hint.className=''; hint.textContent=''; return; }
+    hint.className=alert?'alert':'';
+    const what=n===1?'1 item':n+' items';
+    hint.innerHTML=alert
+      ? 'Please finish the questions or open the sections on this page first ('+what+' left). Or skip ahead using <button type="button" id="hint-toc">Contents</button>.'
+      : 'Finish '+what+' on this page to continue, or use <button type="button" id="hint-toc">Contents</button>';
+    document.getElementById('hint-toc').addEventListener('click',()=>openOv('toc-overlay'));
+  }
+  function flagPending(slide){
+    [...slide.querySelectorAll('.toggle-wrap:not(.seen):not(.opt), .rcard:not(.seen), .choice-set:not([data-done])')]
+      .filter(e=>e.offsetParent!==null)
+      .forEach(e=>{ e.classList.remove('pulse'); void e.offsetWidth; e.classList.add('pulse'); });
+  }
+
+  function show(n){
+    slides.forEach((s,i)=>s.classList.toggle('active',i+1===n));
+    progFill.style.width=((n/TOTAL)*100)+'%';
+    progLbl.textContent=n+' / '+TOTAL;
+    btnBack.disabled=n===1;
+    btnNext.textContent=n===TOTAL?'Done':'Next →';
+    btnNext.setAttribute('data-umami-event',n===TOTAL?'carousel-selesai':'nav-next');
+    const fr=slides[n-1].querySelector('iframe[data-src]');
+    if(fr && !fr.getAttribute('src')) fr.setAttribute('src',fr.dataset.src);
+    fit(slides[n-1]);
+    requestAnimationFrame(()=>fit(slides[n-1]));
+    updateGate(false);
+    if(window.umami) umami.track('slide-view',{slide:n});
+  }
+
+  /* NAV BUTTONS ONLY — no swipe, no keyboard */
+  btnNext.addEventListener('click',()=>{
+    const s=slides[current-1];
+    if(pending(s)>0){ updateGate(true); flagPending(s); if(window.umami) umami.track('gate-blocked',{slide:current}); return; }
+    if(current<TOTAL){ current++; show(current); } else openOv('refs-overlay');
+  });
+  btnBack.addEventListener('click',()=>{ if(current>1){ current--; show(current); } });
+
+  document.querySelectorAll('.toggle-btn').forEach(b=>b.addEventListener('click',()=>{
+    const w=b.parentElement; w.classList.toggle('open'); w.classList.add('seen'); fit(slides[current-1]); updateGate(false);
+    if(window.umami) umami.track('toggle',{label:b.textContent.trim().slice(0,40)});
+  }));
+  document.querySelectorAll('.rcard').forEach(c=>c.addEventListener('click',()=>{ c.classList.add('seen'); fit(slides[current-1]); updateGate(false); }));
+
+  document.querySelectorAll('.choice-set').forEach(set=>{
+    const ans=set.dataset.answer;
+    set.querySelectorAll('.choice').forEach(c=>c.addEventListener('click',()=>{
+      if(set.dataset.done) return;
+      set.dataset.done='1'; set.classList.add('done');
+      const ok=c.dataset.v===ans; set.dataset.correct=ok?'1':'0';
+      set.querySelectorAll('.choice').forEach(x=>{ if(x.dataset.v===ans) x.classList.add('right'); });
+      if(!ok) c.classList.add('wrong');
+      set.querySelector('.feedback').classList.add('show');
+      if(window.umami) umami.track('choice',{correct:ok});
+      updateScore(); fit(slides[current-1]); updateGate(false);
+    }));
+    const nx=set.querySelector('.next-q');
+    if(nx) nx.addEventListener('click',()=>{
+      const nxt=set.nextElementSibling;
+      if(nxt&&nxt.classList.contains('choice-set')){ set.classList.remove('cur'); nxt.classList.add('cur'); fit(slides[current-1]); }
+    });
+  });
+  function updateScore(){
+    const q=document.querySelectorAll('.quiz .choice-set'), done=[...q].filter(s=>s.dataset.done);
+    if(done.length<q.length) return;
+    document.getElementById('quiz-score').textContent='Your score: '+done.filter(s=>s.dataset.correct==='1').length+' / '+q.length;
+  }
+
+  /* lab events → Umami */
+  window.addEventListener('message',e=>{
+    if(e.origin!==location.origin && location.origin!=='null') return;
+    const d=e.data; if(!d||d.type!=='pgx-lab') return;
+    if(window.umami) umami.track('pgx-lab-'+d.event,{scenario:d.scenario});
+  });
+
+  function openOv(id){ if(id==='toc-overlay') buildToc(); document.getElementById(id).classList.add('open'); }
+  document.querySelectorAll('.overlay').forEach(o=>{
+    o.addEventListener('click',e=>{ if(e.target===o) o.classList.remove('open'); });
+    o.querySelector('.close-ov').addEventListener('click',()=>o.classList.remove('open'));
+  });
+  document.getElementById('btn-toc').addEventListener('click',()=>openOv('toc-overlay'));
+  document.getElementById('btn-refs').addEventListener('click',()=>openOv('refs-overlay'));
+
+  /* contents — bypasses gating */
+  const secNames={intro:'Introduction',read:'1 · Read the report',reason:'2 · Reason and decide',lab:'3 · Interactive lab',end:'Wrap-up'};
+  function buildToc(){
+    const ul=document.getElementById('toc-list'); ul.innerHTML=''; let last='';
+    slides.forEach((s,i)=>{
+      if(s.dataset.sec!==last){ const h=document.createElement('li'); h.className='sec'; h.textContent=secNames[s.dataset.sec]; ul.appendChild(h); last=s.dataset.sec; }
+      const li=document.createElement('li'), b=document.createElement('button');
+      b.innerHTML='<span>'+(i+1)+'</span>'+s.dataset.title;
+      if(i+1===current) b.className='cur';
+      b.addEventListener('click',()=>{ current=i+1; show(current); document.getElementById('toc-overlay').classList.remove('open'); if(window.umami) umami.track('toc-jump',{slide:current}); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+  }
+
+  buildToc();
+  show(1);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>fit(slides[current-1]));
+})();
+</script>
+</body>
+</html>

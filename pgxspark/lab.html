@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Genotype to Decision Lab — Aufthority</title>
+<meta name="description" content="Practise turning a pharmacogenomic test result into a prescribing decision: CYP2C19 and clopidogrel, HLA-B*15:02 and carbamazepine.">
+<meta name="theme-color" content="#ffffff">
+<script>
+(function(){
+  var emb=/[?&]embed=1/.test(location.search); try{ if(window.self!==window.top) emb=true; }catch(e){ emb=true; }
+  if(emb) document.documentElement.classList.add('embedded');
+  else{ var s=document.createElement('script'); s.defer=true; s.src='https://cloud.umami.is/script.js'; s.setAttribute('data-website-id','f79c60f1-f9e7-4170-a979-f357ba756a18'); document.head.appendChild(s); }
+})();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c2620;--body:#3f4742;--muted:#6f7771;--accent:#2d6a4f;--accent-dark:#1f4d39;
+  --eyebrow:#9a6a1c;--g-bg:#e9f4ee;--g-line:#cfe6d9;--rule:#e4e6e3;
+  --red:#c0392b;--r-bg:#fbecea;--orange:#d9821f;--o-bg:#fdf3e6;--blue:#3a6bd1;--b-bg:#e8effc;
+  --radius:10px;color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{color:var(--body);font-family:'DM Sans',system-ui,sans-serif;line-height:1.5;-webkit-text-size-adjust:100%;font-size:16px}
+a{color:var(--accent)}
+b,strong{color:var(--ink);font-weight:700}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 32px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0 8px}
+.logo{font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+.logo span{color:var(--muted);font-weight:500;font-size:.8rem;margin-left:4px}
+.pills{display:flex;gap:8px}
+.pill-a{background:#fff;border:1px solid var(--rule);color:var(--body);font:600 .78rem 'DM Sans',sans-serif;padding:5px 11px;border-radius:100px;text-decoration:none;white-space:nowrap}
+.head{padding:14px 0 6px}
+.eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--eyebrow);font-weight:700;margin-bottom:.4em}
+h1{color:var(--ink);font-weight:800;line-height:1.08;letter-spacing:-.025em;font-size:2rem;margin-bottom:.35em}
+h1 .ac{color:var(--accent)}
+.lead{font-size:.95rem}
+.madeby-line{font-size:.78rem;color:var(--muted);margin-top:.4em}
+.card{border:1px solid var(--rule);border-radius:12px;padding:14px 16px;margin-top:12px;background:#fff;transition:opacity .2s}
+.card h2{display:flex;align-items:center;gap:.55em;color:var(--ink);font-size:1.08rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.45em}
+.num{flex:0 0 1.7em;height:1.7em;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+.card.locked{opacity:.42;pointer-events:none}
+.card.locked .num{background:var(--muted)}
+.lock-note{display:none;font-size:.8rem;color:var(--muted);margin-bottom:.4em}
+.card.locked .lock-note{display:block}
+.card p{font-size:.93rem;margin-bottom:.55em}
+.small{font-size:.82rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.45em;margin:.4em 0 .6em}
+.chip{background:#fff;border:1.5px solid var(--rule);color:var(--ink);font:500 .9rem 'DM Sans',sans-serif;padding:.45em .9em;border-radius:100px;cursor:pointer;text-align:left}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{border-color:var(--accent);background:var(--g-bg);color:var(--accent-dark);font-weight:600}
+.chip .tick{color:var(--accent);font-weight:800;margin-left:.3em}
+.report{border:1.5px dashed var(--ink);border-radius:var(--radius);padding:.7em .9em;margin:.5em 0;background:#fafbfa;font-size:.92rem}
+.report .rh{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.25em}
+.report .gt{font-size:1.35rem;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.allele-row{display:flex;align-items:flex-start;gap:.7em;flex-wrap:wrap;padding:.45em 0;border-bottom:1px solid var(--rule)}
+.allele-row:last-of-type{border-bottom:none}
+.allele-row .an{flex:0 0 4.2em;font-weight:800;color:var(--ink);font-size:1.05rem;padding-top:.35em}
+.allele-row .chips{margin:0;flex:1 1 14em}
+.btns{display:flex;flex-wrap:wrap;gap:.5em;margin-top:.5em}
+.btn{background:#fff;border:1.5px solid var(--ink);border-radius:100px;color:var(--ink);font:600 .86rem 'DM Sans',sans-serif;padding:.45em 1em;cursor:pointer}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.ghost{border-color:var(--rule);color:var(--muted)}
+.msg{display:none;font-size:.9rem;margin-top:.6em;padding:.5em .8em;border-left:3px solid var(--accent);background:var(--g-bg);border-radius:0 8px 8px 0}
+.msg.show{display:block}
+.msg.good{border-color:var(--accent);background:var(--g-bg)}
+.msg.near{border-color:var(--orange);background:var(--o-bg)}
+.msg.bad{border-color:var(--red);background:var(--r-bg)}
+.working{display:none;margin-top:.6em}
+.working.show{display:block}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th,td{border-bottom:1px solid var(--rule);padding:.4em .5em;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--rule)}
+tr.hl td{background:var(--g-bg)}
+.sim{display:none;margin-top:.7em}
+.sim.show{display:block}
+.sim svg{width:100%;height:auto;display:block}
+.tx{font-family:'DM Sans',sans-serif;font-size:12px;fill:var(--body)}
+.tx.s{font-size:10.5px;fill:var(--muted)}
+.tx.b{font-weight:700;fill:var(--ink)}
+.tx.end{text-anchor:end}
+.tx.r{fill:var(--red);font-weight:700}
+.tx.g{fill:var(--accent-dark);font-weight:700}
+.range{width:100%;accent-color:var(--accent);margin:.3em 0}
+.scale-lbl{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);font-weight:600}
+.rounds{font-size:.82rem;color:var(--muted);margin-top:.6em}
+.foot{text-align:center;font-size:.72rem;color:var(--muted);margin-top:18px}
+.illus{font-size:.74rem;color:var(--muted);font-style:italic;margin-top:.3em}
+html.embedded nav,html.embedded .head,html.embedded .foot{display:none}
+html.embedded .wrap{padding:0 8px 16px}
+html.embedded .card{margin-top:8px;padding:12px 12px}
+@media (max-width:400px){h1{font-size:1.65rem}.logo span{display:none}.pill-a{padding:5px 9px}}
+@media (max-width:340px){.logo{font-size:.92rem}.pill-a{padding:4px 7px;font-size:.74rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="https://www.aufthority.com">Aufthority<span>· Edu</span></a>
+    <div class="pills">
+      <a class="pill-a" href="explainer/" data-umami-event="lab-to-explainer">Explainer</a>
+    </div>
+  </nav>
+  <header class="head">
+    <div class="eyebrow">Pharmacogenomics lab</div>
+    <h1>From genotype <span class="ac">to decision.</span></h1>
+    <p class="lead">Read a test report, work out what it means for the patient, predict the effect, then make the call. Rules follow the CPIC guidelines for clopidogrel (2022) and carbamazepine (2017). All patients are made up.</p>
+    <p class="madeby-line">Made by Aufthority. For learning only, not for clinical decisions.</p>
+  </header>
+
+  <!-- CARD 0: scenario -->
+  <section class="card" id="c0">
+    <h2>Choose a case</h2>
+    <div class="chips" id="sc-chips">
+      <button class="chip sel" data-sc="cyp">Clopidogrel · CYP2C19<span class="tick" hidden>✓</span></button>
+      <button class="chip" data-sc="hla">Carbamazepine · HLA-B*15:02<span class="tick" hidden>✓</span></button>
+    </div>
+    <p id="case-line"></p>
+    <div class="report"><div class="rh" id="rep-head">Genotype report</div><div class="gt" id="rep-gt"></div><div class="small" id="rep-sub"></div></div>
+  </section>
+
+  <!-- STEP 1 -->
+  <section class="card" id="s1">
+    <h2><span class="num">1</span><span id="s1-title">Read the report</span></h2>
+    <p id="s1-q"></p>
+    <div id="s1-body"></div>
+    <div class="btns"><button class="btn solid" id="s1-check">Check</button><button class="btn ghost" id="s1-show">Show the working</button></div>
+    <div class="msg" id="s1-msg"></div>
+    <div class="working" id="s1-work"></div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="card locked" id="s2">
+    <h2><span class="num">2</span><span id="s2-title">Translate it</span></h2>
+    <div class="lock-note">Finish step 1 to unlock.</div>
+    <p id="s2-q"></p>
+    <div class="chips" id="s2-chips"></div>
+    <div class="btns"><button class="btn solid" id="s2-check">Check</button><button class="btn ghost" id="s2-show">Show the working</button></div>
+    <div class="msg" id="s2-msg"></div>
+    <div class="working" id="s2-work"></div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="card locked" id="s3">
+    <h2><span class="num">3</span><span>Predict, then run</span></h2>
+    <div class="lock-note">Finish step 2 to unlock.</div>
+    <p id="s3-q"></p>
+    <div class="chips" id="s3-chips"></div>
+    <div class="btns"><button class="btn solid" id="s3-run">Run the simulation</button><button class="btn ghost" id="s3-show">Show the working</button></div>
+    <div class="sim" id="s3-sim"></div>
+    <div class="msg" id="s3-msg"></div>
+    <div class="working" id="s3-work"></div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="card locked" id="s4">
+    <h2><span class="num">4</span><span>Make the call</span></h2>
+    <div class="lock-note">Finish step 3 to unlock.</div>
+    <p id="s4-q"></p>
+    <div class="chips" id="s4-chips"></div>
+    <div class="btns"><button class="btn solid" id="s4-check">Check</button><button class="btn ghost" id="s4-show">Show the working</button></div>
+    <div class="msg" id="s4-msg"></div>
+    <div class="working" id="s4-work"></div>
+    <div class="btns" id="end-btns" style="margin-top:.9em;display:none">
+      <button class="btn solid" id="btn-new">New values</button>
+      <button class="btn" id="btn-next">Next case</button>
+    </div>
+    <div class="rounds">Rounds completed: <b id="rounds">0</b></div>
+  </section>
+
+  <p class="foot">Informed decisions, better health.</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const track=(n,d)=>{ try{ if(window.umami) umami.track(n,d||{}); }catch(e){} };
+  const pick=a=>a[Math.floor(Math.random()*a.length)];
+  const NAMES=['Aiman','Mei Ling','Ravi','Nurul','Kavitha','Hafiz','Siew Yen','Arjun','Farah','Daniel'];
+
+  /* ---------- RULES (mirrors the Python check) ---------- */
+  const FUNC={'*1':'normal','*2':'none','*3':'none','*17':'increased'};
+  const FLABEL={normal:'Normal function',none:'No function',increased:'Increased function'};
+  function phenotype(a,b){
+    const f=[FUNC[a],FUNC[b]].sort().join('+');
+    if(f==='increased+increased') return 'UM';
+    if(f==='increased+normal') return 'RM';
+    if(f==='normal+normal') return 'NM';
+    if(f==='none+none') return 'PM';
+    return 'IM';
+  }
+  const PNAME={UM:'Ultrarapid metaboliser',RM:'Rapid metaboliser',NM:'Normal metaboliser',IM:'Intermediate metaboliser',PM:'Poor metaboliser'};
+  const REL={UM:1.25,RM:1.12,NM:1,IM:.62,PM:.3}; /* illustrative only */
+  const CYP_REC={UM:'std',RM:'std',NM:'std',IM:'alt',PM:'alt'};
+  function hlaRec(copies,hist){ if(copies===0) return 'std'; return hist==='long'?'cautious':'avoid'; }
+
+  /* ---------- STATE ---------- */
+  let sc='cyp', S={}, rounds=0, solved={cyp:false,hla:false}, stepDone=[false,false,false,false];
+
+  function newCase(){
+    const name=pick(NAMES);
+    if(sc==='cyp'){
+      const pool=[['*1','*1'],['*1','*17'],['*17','*17'],['*1','*2'],['*1','*3'],['*2','*17'],['*3','*17'],['*2','*2'],['*2','*3'],['*3','*3']];
+      let d=pick(pool); if(S.d && d.join()===S.d.join()) d=pick(pool);
+      if(Math.random()<.5) d=[d[1],d[0]];
+      S={name,d,ph:phenotype(d[0],d[1])};
+      $('case-line').innerHTML='<b>'+name+'</b>, 58, has just had a stent placed (PCI) after a heart attack (acute coronary syndrome). The cardiologist plans an antiplatelet drug and asks you to interpret the genotype first.';
+      $('rep-head').textContent='Genotype report · CYP2C19';
+      $('rep-gt').textContent='CYP2C19 '+d[0]+'/'+d[1];
+      $('rep-sub').textContent='Diplotype: one allele from each parent.';
+    } else {
+      const others=['*40:01','*46:01','*07:02','*44:03'];
+      const copies=pick([0,1,1,2,0,1]);
+      const sh=others.slice().sort(()=>Math.random()-.5);
+      let al=copies===2?['*15:02','*15:02']:copies===1?['*15:02',sh[0]]:[sh[0],sh[1]];
+      if(Math.random()<.5) al=[al[1],al[0]];
+      const hist=copies>0?pick(['naive','long']):pick(['naive','naive','long']);
+      S={name,al,copies,hist};
+      $('case-line').innerHTML=hist==='naive'
+        ? '<b>'+name+'</b>, 29, has newly diagnosed epilepsy. The doctor is considering carbamazepine, which '+name+' has <b>never taken</b>. An HLA-B result is back.'
+        : '<b>'+name+'</b>, 41, has taken carbamazepine for epilepsy <b>every day for 8 months with no rash or skin reaction</b>. An HLA-B test was done when they transferred to a new clinic.';
+      $('rep-head').textContent='Genotype report · HLA-B';
+      $('rep-gt').textContent='HLA-B'+al[0]+' / HLA-B'+al[1];
+      $('rep-sub').textContent='Two HLA-B alleles, one from each parent.';
+    }
+    resetSteps(); render();
+  }
+
+  function resetSteps(){
+    stepDone=[false,false,false,false];
+    ['s1','s2','s3','s4'].forEach((id,i)=>{
+      $(id).classList.toggle('locked',i>0);
+      $(id+'-msg').className='msg'; $(id+'-msg').innerHTML='';
+      $(id+'-work').className='working'; $(id+'-work').innerHTML='';
+    });
+    $('s3-sim').className='sim'; $('s3-sim').innerHTML='';
+    $('end-btns').style.display='none';
+  }
+  function relockFrom(k){ /* changing step k's answer marks it undone and re-locks every later step */
+    if(stepDone[3]) return; /* round finished: answers are frozen until New values */
+    for(let j=k;j<=4;j++){
+      stepDone[j-1]=false;
+      if(j>k) $('s'+j).classList.add('locked');
+      $('s'+j+'-msg').className='msg'; $('s'+j+'-work').className='working';
+    }
+    if(k<=3) $('s3-sim').className='sim';
+  }
+
+  function chipGroup(container,opts,onPick){
+    container.innerHTML='';
+    opts.forEach(o=>{
+      const b=document.createElement('button'); b.className='chip'; b.dataset.v=o.v; b.innerHTML=o.t;
+      b.addEventListener('click',()=>{ container.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); if(onPick) onPick(o.v); });
+      container.appendChild(b);
+    });
+  }
+  const val=c=>{ const s=c.querySelector('.chip.sel'); return s?s.dataset.v:null; };
+  function say(id,cls,html){ const m=$(id+'-msg'); m.className='msg show '+cls; m.innerHTML=html; }
+  function unlock(n){ stepDone[n-1]=true; if(n<4) $('s'+(n+1)).classList.remove('locked'); }
+
+  /* ---------- RENDER STEPS ---------- */
+  function render(){
+    if(sc==='cyp'){
+      $('s1-title').textContent='Read the report';
+      $('s1-q').textContent='Tag each CYP2C19 allele with its function.';
+      const body=$('s1-body'); body.innerHTML='';
+      S.d.forEach((a,i)=>{
+        const row=document.createElement('div'); row.className='allele-row';
+        row.innerHTML='<div class="an">'+a+'</div><div class="chips" id="al'+i+'"></div>'; body.appendChild(row);
+        chipGroup(row.querySelector('.chips'),[{v:'normal',t:'Normal'},{v:'none',t:'No function'},{v:'increased',t:'Increased'}],()=>relockFrom(1));
+      });
+      $('s2-title').textContent='Assign the phenotype';
+      $('s2-q').textContent='Which metaboliser phenotype does this diplotype give?';
+      chipGroup($('s2-chips'),['UM','RM','NM','IM','PM'].map(p=>({v:p,t:PNAME[p]+' ('+p+')'})),()=>relockFrom(2));
+      $('s3-q').innerHTML='Clopidogrel is converted by CYP2C19 into its active form. Compared with a normal metaboliser, how much <b>active drug</b> will '+S.name+' make?';
+      chipGroup($('s3-chips'),[{v:'more',t:'More'},{v:'same',t:'About the same'},{v:'less',t:'Less'}],()=>relockFrom(3));
+      $('s4-q').textContent='What do you recommend to the cardiologist?';
+      chipGroup($('s4-chips'),[
+        {v:'std',t:'Standard-dose clopidogrel (75 mg daily)'},
+        {v:'up',t:'Clopidogrel at a higher dose'},
+        {v:'down',t:'Clopidogrel at a lower dose'},
+        {v:'alt',t:'Prasugrel or ticagrelor instead, if no contraindication'}]);
+    } else {
+      $('s1-title').textContent='Count the risk allele';
+      $('s1-q').textContent='How many copies of HLA-B*15:02 does '+S.name+' carry?';
+      $('s1-body').innerHTML='<div class="chips" id="cnt"></div>';
+      chipGroup($('cnt'),[{v:'0',t:'0'},{v:'1',t:'1'},{v:'2',t:'2'}],()=>relockFrom(1));
+      $('s2-title').textContent='Report the result';
+      $('s2-q').textContent='How should this HLA-B*15:02 result be reported?';
+      chipGroup($('s2-chips'),[{v:'pos',t:'Positive'},{v:'neg',t:'Negative'},{v:'int',t:'Intermediate risk'}],()=>relockFrom(2));
+      $('s3-q').innerHTML='Before you run it: is carbamazepine-induced SJS/TEN in HLA-B*15:02 carriers mainly a <b>dose-related</b> effect?';
+      chipGroup($('s3-chips'),[{v:'dose',t:'Yes, it is dose-related'},{v:'immune',t:'No, it is immune-mediated'}],()=>relockFrom(3));
+      $('s4-q').textContent='What do you recommend to the doctor?';
+      chipGroup($('s4-chips'),[
+        {v:'std',t:'Use carbamazepine at usual dosing'},
+        {v:'down',t:'Use carbamazepine at a lower dose'},
+        {v:'avoid',t:'Avoid carbamazepine (and oxcarbazepine); choose an alternative'},
+        {v:'cautious',t:'Cautiously consider continuing, with monitoring'}]);
+    }
+  }
+
+  /* ---------- STEP 1 ---------- */
+  function work1(){
+    if(sc==='cyp') return '<table><tr><th>Allele</th><th>Function</th></tr>'+['*1','*2','*3','*17'].map(a=>'<tr'+(S.d.includes(a)?' class="hl"':'')+'><td>'+a+'</td><td>'+FLABEL[FUNC[a]]+'</td></tr>').join('')+'</table>';
+    return '<table><tr><th>Allele</th><th>Is it HLA-B*15:02?</th></tr>'+S.al.map(a=>'<tr'+(a==='*15:02'?' class="hl"':'')+'><td>HLA-B'+a+'</td><td>'+(a==='*15:02'?'Yes':'No')+'</td></tr>').join('')+'<tr><td><b>Copies</b></td><td><b>'+S.copies+'</b></td></tr></table>';
+  }
+  $('s1-check').addEventListener('click',()=>{
+    if(sc==='cyp'){
+      const v=[val($('al0')),val($('al1'))];
+      if(v.includes(null)) return say('s1','near','Tag both alleles first.');
+      const wrong=S.d.filter((a,i)=>v[i]!==FUNC[a]);
+      if(!wrong.length){ say('s1','good','<b>Correct.</b> '+S.d.map(a=>a+' = '+FLABEL[FUNC[a]].toLowerCase()).join(', ')+'.'); unlock(1); track('pgx-step-solved',{sc,step:1}); }
+      else{
+        let hint='Check '+wrong.join(' and ')+'.';
+        if(wrong.includes('*17')) hint+=' *17 is the one CYP2C19 allele here with <b>increased</b> function.';
+        else if(wrong.some(a=>a==='*2'||a==='*3')) hint+=' *2 and *3 are the common <b>no-function</b> alleles.';
+        else hint+=' *1 is the reference (normal-function) allele.';
+        say('s1','bad',hint);
+      }
+    } else {
+      const v=val($('cnt'));
+      if(v===null) return say('s1','near','Pick a number first.');
+      if(+v===S.copies){ say('s1','good','<b>Correct.</b> '+S.copies+' cop'+(S.copies===1?'y':'ies')+' of HLA-B*15:02.'); unlock(1); track('pgx-step-solved',{sc,step:1}); }
+      else say('s1','bad','Not quite. Look for the exact allele name <b>*15:02</b> in each half of the report. Other *15 or other HLA-B alleles do not count here.');
+    }
+  });
+  $('s1-show').addEventListener('click',()=>{ $('s1-work').className='working show'; $('s1-work').innerHTML=work1(); if(!stepDone[0]){ unlock(1); } track('pgx-reveal',{sc,step:1}); });
+
+  /* ---------- STEP 2 ---------- */
+  function work2(){
+    if(sc==='cyp') return '<table><tr><th>Alleles</th><th>Phenotype</th></tr>'+[
+      ['Two increased (*17/*17)','UM'],['One normal + one increased (*1/*17)','RM'],['Two normal (*1/*1)','NM'],
+      ['One no-function + one normal or increased (*1/*2, *1/*3, *2/*17, *3/*17)','IM'],['Two no-function (*2/*2, *2/*3, *3/*3)','PM']]
+      .map(r=>'<tr'+(r[1]===S.ph?' class="hl"':'')+'><td>'+r[0]+'</td><td>'+PNAME[r[1]]+' ('+r[1]+')</td></tr>').join('')+'</table><p class="small">Source: CPIC 2022 genotype-to-phenotype table.</p>';
+    return '<table><tr><th>Copies of *15:02</th><th>Result</th></tr><tr'+(S.copies===0?' class="hl"':'')+'><td>0</td><td>Negative</td></tr><tr'+(S.copies>0?' class="hl"':'')+'><td>1 or 2</td><td>Positive</td></tr></table><p class="small">There is no "intermediate" category. Source: CPIC 2013/2017.</p>';
+  }
+  $('s2-check').addEventListener('click',()=>{
+    const v=val($('s2-chips')); if(v===null) return say('s2','near','Pick an answer first.');
+    if(sc==='cyp'){
+      if(v===S.ph){ say('s2','good','<b>Correct.</b> '+S.d.join('/')+' is a '+PNAME[S.ph].toLowerCase()+'.'); unlock(2); track('pgx-step-solved',{sc,step:2}); return; }
+      const fs=S.d.map(a=>FUNC[a]); let m='Not quite. ';
+      if(fs.includes('increased')&&fs.includes('none')) m+='A *17 does not cancel out a no-function allele. CPIC classes *2/*17 and *3/*17 as <b>intermediate</b>.';
+      else if(v==='UM'&&S.ph==='RM') m+='Ultrarapid needs <b>two</b> increased-function alleles. One *17 with one *1 is rapid.';
+      else if(v==='PM'&&S.ph==='IM') m+='Poor metaboliser needs <b>two</b> no-function alleles. This patient has only one.';
+      else if(v==='IM'&&S.ph==='PM') m+='Both alleles are no-function, so there is no working copy at all: <b>poor</b> metaboliser.';
+      else m+='Go back to the functions you tagged in step 1 and count them.';
+      say('s2','bad',m);
+    } else {
+      const ans=S.copies>0?'pos':'neg';
+      if(v===ans){ say('s2','good','<b>Correct.</b> '+(ans==='pos'?'Positive: one or two copies both count.':'Negative: no copies of *15:02.')); unlock(2); track('pgx-step-solved',{sc,step:2}); return; }
+      if(v==='int') say('s2','bad','<b>Common mistake.</b> HLA-B*15:02 is reported as simply <b>positive</b> (one or two copies) or <b>negative</b>. One copy is enough to carry the risk; there is no intermediate result.');
+      else say('s2','bad','Not quite. Use the copy count from step 1: one or two copies means positive, zero means negative.');
+    }
+  });
+  $('s2-show').addEventListener('click',()=>{ $('s2-work').className='working show'; $('s2-work').innerHTML=work2(); if(!stepDone[1]) unlock(2); track('pgx-reveal',{sc,step:2}); });
+
+  /* ---------- STEP 3: predict + run ---------- */
+  const NS='http://www.w3.org/2000/svg';
+  function svgEl(t,a,txt){ const e=document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); if(txt!==undefined) e.textContent=txt; return e; }
+  function drawCyp(){
+    const sim=$('s3-sim'); sim.innerHTML='';
+    const svg=svgEl('svg',{viewBox:'0 0 400 210',role:'img','aria-label':'Illustrative bars of relative active metabolite by phenotype'});
+    const L=120,W=250,bh=22,gap=10,top=14;
+    ['UM','RM','NM','IM','PM'].forEach((p,i)=>{
+      const y=top+i*(bh+gap), w=REL[p]/1.3*W, me=p===S.ph;
+      svg.appendChild(svgEl('text',{class:'tx end'+(me?' b':''),x:L-8,y:y+bh*.7},PNAME[p].replace(' metaboliser','')+' ('+p+')'));
+      svg.appendChild(svgEl('rect',{x:L,y:y,width:w,height:bh,rx:4,fill:me?'#2d6a4f':'#cfe6d9'}));
+      if(me) svg.appendChild(svgEl('text',{class:'tx g',x:L+w+6,y:y+bh*.7},S.name));
+    });
+    svg.appendChild(svgEl('line',{x1:L+W/1.3,x2:L+W/1.3,y1:8,y2:top+5*(bh+gap)-4,stroke:'#d9821f','stroke-dasharray':'4 4'}));
+    svg.appendChild(svgEl('text',{class:'tx s',x:L+W/1.3+4,y:top+5*(bh+gap)+10},'normal'));
+    svg.appendChild(svgEl('text',{class:'tx s',x:L,y:top+5*(bh+gap)+10},'relative active metabolite →'));
+    sim.appendChild(svg);
+    sim.insertAdjacentHTML('beforeend','<p class="illus">Illustrative only: bar lengths show direction, not measured patient data.</p>');
+    sim.className='sim show';
+  }
+  function drawHla(){
+    const sim=$('s3-sim');
+    sim.innerHTML='<p class="small" style="margin-bottom:.2em">Move the dose slider and watch both bars.</p><input type="range" class="range" id="dose" min="1" max="3" step="1" value="2" aria-label="Carbamazepine dose"><div class="scale-lbl"><span>Lower dose</span><span>Usual</span><span>Higher dose</span></div><div id="hla-svg"></div><p class="illus">Illustrative only: not measured data and not a dosing guide.</p>';
+    const draw=()=>{
+      const d=+$('dose').value, box=$('hla-svg'); box.innerHTML='';
+      const svg=svgEl('svg',{viewBox:'0 0 400 110',role:'img','aria-label':'Drug exposure changes with dose; the HLA-B*15:02 immune risk does not'});
+      const L=150,W=220;
+      svg.appendChild(svgEl('text',{class:'tx end',x:L-8,y:30},'Drug in the blood'));
+      svg.appendChild(svgEl('rect',{x:L,y:14,width:W*d/3,height:24,rx:4,fill:'#3a6bd1'}));
+      svg.appendChild(svgEl('text',{class:'tx end',x:L-8,y:78},'HLA-B*15:02 risk'));
+      if(S.copies>0){
+        svg.appendChild(svgEl('rect',{x:L,y:62,width:W,height:24,rx:4,fill:'#c0392b'}));
+        svg.appendChild(svgEl('text',{class:'tx',x:L+8,y:78,fill:'#fff',style:'fill:#fff;font-weight:700'},'present at every dose'));
+      } else {
+        svg.appendChild(svgEl('rect',{x:L,y:62,width:W,height:24,rx:4,fill:'none',stroke:'#c9cdca','stroke-dasharray':'4 4'}));
+        svg.appendChild(svgEl('text',{class:'tx s',x:L+8,y:78},'allele not detected'));
+      }
+      box.appendChild(svg);
+    };
+    $('dose').addEventListener('input',()=>{ draw(); track('pgx-dose-slider',{}); });
+    draw(); sim.className='sim show';
+  }
+  function work3(){
+    if(sc==='cyp') return '<p class="small"><b>Prodrug logic:</b> clopidogrel does nothing until CYP2C19 activates it. Less enzyme activity means <b>less</b> active drug and weaker platelet inhibition. For an active drug cleared by an enzyme, the arrow points the other way.</p>';
+    return '<p class="small">HLA-B*15:02 is not known to change how carbamazepine is handled by the body. The allele lets the immune system react to the drug, so the risk is <b>immune-mediated</b>, not a dose effect. Lowering the dose is not how this risk is managed.</p>';
+  }
+  $('s3-run').addEventListener('click',()=>{
+    const v=val($('s3-chips')); if(v===null) return say('s3','near','Make your prediction first, then run.');
+    track('pgx-prediction',{sc,v}); track('pgx-run',{sc});
+    if(sc==='cyp'){
+      drawCyp();
+      const ans=REL[S.ph]>1.05?'more':REL[S.ph]<.95?'less':'same';
+      const ok=v===ans||(S.ph==='RM'&&v==='same');
+      if(ok){ say('s3','good','<b>Your prediction holds.</b> '+(ans==='less'?'Less CYP2C19 activity means less active clopidogrel, so weaker platelet inhibition.':ans==='more'?'More CYP2C19 activity means as much or more active clopidogrel.':'Normal activity, normal activation.')); unlock(3); track('pgx-step-solved',{sc,step:3}); }
+      else if(ans==='less'&&v==='more') say('s3','bad','<b>Prodrug trap.</b> You treated clopidogrel as an active drug that builds up when metabolism is slow. Clopidogrel is a <b>prodrug</b>: CYP2C19 makes the active form, so less enzyme means less active drug. Re-predict and run again.');
+      else say('s3','bad','The bars disagree with your prediction. Look at where '+S.name+' sits against the normal line, then re-predict and run again.');
+    } else {
+      drawHla();
+      if(v==='immune'){ say('s3','good','<b>Your prediction holds.</b> Moving the dose changes how much drug is in the blood, but '+(S.copies>0?'the HLA-B*15:02 risk stays at every dose.':'this patient does not carry the allele at any dose.')); unlock(3); track('pgx-step-solved',{sc,step:3}); }
+      else say('s3','bad','<b>Common mistake.</b> Try the slider: the drug level moves with dose, but the HLA-B*15:02 risk bar does not. This reaction is immune-mediated. Re-predict and run again.');
+    }
+  });
+  $('s3-show').addEventListener('click',()=>{ $('s3-work').className='working show'; $('s3-work').innerHTML=work3(); if(!$('s3-sim').classList.contains('show')){ sc==='cyp'?drawCyp():drawHla(); } if(!stepDone[2]) unlock(3); track('pgx-reveal',{sc,step:3}); });
+
+  /* ---------- STEP 4 ---------- */
+  function work4(){
+    if(sc==='cyp') return '<table><tr><th>Phenotype</th><th>CPIC 2022 (ACS/PCI)</th></tr>'+['UM','RM','NM','IM','PM'].map(p=>'<tr'+(p===S.ph?' class="hl"':'')+'><td>'+p+'</td><td>'+(CYP_REC[p]==='std'?'Standard-dose clopidogrel (75 mg/day)':'Avoid clopidogrel if possible; prasugrel or ticagrelor at standard dose if no contraindication')+'</td></tr>').join('')+'</table>';
+    return '<table><tr><th>Result</th><th>History</th><th>CPIC 2017</th></tr>'+
+      '<tr'+(S.copies===0?' class="hl"':'')+'><td>Negative</td><td>Any</td><td>Use at usual dosing (a negative test lowers, but does not remove, all risk)</td></tr>'+
+      '<tr'+(S.copies>0&&S.hist==='naive'?' class="hl"':'')+'><td>Positive</td><td>Never taken it</td><td>Do not use carbamazepine or oxcarbazepine</td></tr>'+
+      '<tr'+(S.copies>0&&S.hist==='long'?' class="hl"':'')+'><td>Positive</td><td>Taken consistently for over 3 months, no skin reaction</td><td>Cautiously consider continuing</td></tr></table>';
+  }
+  function finishRound(){
+    rounds++; $('rounds').textContent=rounds; solved[sc]=true;
+    document.querySelector('.chip[data-sc="'+sc+'"] .tick').hidden=false;
+    $('end-btns').style.display='flex';
+    track('pgx-round-complete',{sc});
+    try{ if(window.parent!==window){ const o=location.origin&&location.origin!=='null'?location.origin:'*'; window.parent.postMessage({type:'pgx-lab',event:'round-complete',scenario:sc},o); } }catch(e){}
+  }
+  $('s4-check').addEventListener('click',()=>{
+    const v=val($('s4-chips')); if(v===null) return say('s4','near','Pick a recommendation first.');
+    if(stepDone[3]) return;
+    if(sc==='cyp'){
+      const ans=CYP_REC[S.ph];
+      if(v===ans){ say('s4','good','<b>Correct.</b> '+(ans==='alt'?'As a'+(S.ph==='IM'?'n intermediate':' poor')+' metaboliser, '+S.name+' would get weak protection from clopidogrel. CPIC recommends prasugrel or ticagrelor if there is no contraindication.':'CYP2C19 activity is normal or higher, so standard-dose clopidogrel is recommended.')); stepDone[3]=true; track('pgx-step-solved',{sc,step:4}); finishRound(); return; }
+      let m='Not quite. ';
+      if(v==='down'&&ans==='alt') m='<b>Prodrug trap.</b> Lowering the dose makes things worse: this patient already makes too little active drug. CPIC says avoid clopidogrel if possible and use an alternative.';
+      else if(v==='up') m+='Raising the clopidogrel dose is not what CPIC recommends'+(ans==='alt'?'. For poor and intermediate metabolisers it advises switching to prasugrel or ticagrelor.':'. This patient activates clopidogrel normally or better, so the standard dose is right.');
+      else if(v==='down') m+='Increased or normal activation is not linked to higher bleeding risk in the CPIC guideline. Standard dose.';
+      else if(v==='alt') m+='No need to switch. This phenotype activates clopidogrel normally or better.';
+      else m+='This patient makes less active clopidogrel than normal. CPIC advises avoiding standard-dose clopidogrel if possible.';
+      say('s4','bad',m);
+    } else {
+      const ans=hlaRec(S.copies,S.hist);
+      if(v===ans){ say('s4','good','<b>Correct.</b> '+({std:'Negative result: usual dosing. Still counsel the patient to report any rash, because a negative test does not remove all risk.',avoid:'Positive and never exposed: CPIC says do not start carbamazepine or oxcarbazepine. Choose an alternative.',cautious:'Positive, but over 3 months of consistent use with no skin reaction: CPIC allows cautious continuation.'})[ans]); stepDone[3]=true; track('pgx-step-solved',{sc,step:4}); finishRound(); return; }
+      let cls='bad', m='Not quite. ';
+      if(v==='down') m='<b>Common mistake.</b> A lower dose does not remove an immune-mediated risk. '+(S.copies>0?'Use the copy count and the treatment history to decide.':'This patient is negative anyway, so usual dosing applies.');
+      else if(S.copies>0&&S.hist==='naive'&&v==='std') m+='Positive and never taken carbamazepine: CPIC says <b>do not use</b> it.';
+      else if(S.copies>0&&S.hist==='naive'&&v==='cautious') m+='The cautious-continuation exception applies only to patients who have already taken it consistently for over 3 months without a skin reaction. This patient has never taken it.';
+      else if(S.copies>0&&S.hist==='long'&&v==='avoid'){ cls='near'; m='Safe, but not what CPIC recommends here. After more than 3 months of consistent use with no skin reaction, CPIC allows <b>cautious continuation</b>, because the risk window is mostly early in treatment.'; }
+      else if(S.copies>0&&S.hist==='long'&&v==='std') m+='The result is positive, so this is not plain usual dosing. CPIC allows <b>cautious</b> continuation for this patient.';
+      else if(S.copies===0&&v==='cautious'){ cls='near'; m='Close. A negative result means usual dosing, though you should still counsel the patient to report any rash.'; }
+      else if(S.copies===0&&v==='avoid') m+='The result is negative, so there is no genotype reason to avoid carbamazepine.';
+      say('s4',cls,m);
+    }
+  });
+  $('s4-show').addEventListener('click',()=>{ $('s4-work').className='working show'; $('s4-work').innerHTML=work4(); track('pgx-reveal',{sc,step:4}); if(!stepDone[3]){ stepDone[3]=true; finishRound(); } });
+
+  /* ---------- CONTROLS ---------- */
+  document.querySelectorAll('#sc-chips .chip').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('#sc-chips .chip').forEach(x=>x.classList.remove('sel')); b.classList.add('sel');
+    sc=b.dataset.sc; S={}; newCase(); track('pgx-pick',{sc});
+  }));
+  $('btn-new').addEventListener('click',()=>{ newCase(); track('pgx-new-values',{sc}); });
+  $('btn-next').addEventListener('click',()=>{ document.querySelector('#sc-chips .chip[data-sc="'+(sc==='cyp'?'hla':'cyp')+'"]').click(); });
+
+  newCase();
+})();
+</script>
+</body>
+</html>
