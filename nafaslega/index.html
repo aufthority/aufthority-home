@@ -327,7 +327,8 @@
   }
   .seg { flex: 1; display: flex; border: 1px solid var(--rule); border-radius: var(--radius); }
   .seg-btn {
-    flex: 1;
+    flex: 1 1 auto;
+    white-space: nowrap;
     background: var(--card-bg);
     border: none;
     border-right: 1px solid var(--rule);
@@ -953,27 +954,27 @@
       again: 'Again →', done: 'Done', mute: 'Mute sound'
     },
     ms: {
-      modeGroup: 'Teknik', sub478: 'Tenang mendalam', nameBox: 'Kotak', subBox: 'Fokus & seimbang',
+      modeGroup: 'Teknik', sub478: 'Tenang mendalam', nameBox: 'Box', subBox: 'Fokus & seimbang',
       eyebrow: 'Latihan Pernafasan Berasaskan Bukti',
-      tag_478: 'Teknik Pernafasan 4 · 7 · 8', tag_box: 'Pernafasan Kotak',
-      desc_478: 'Corak pernafasan perlahan dengan hembusan panjang untuk membantu anda bertenang — sebelum tidur atau selepas detik tertekan.',
-      desc_box: 'Empat kiraan sama rata untuk menstabilkan pernafasan dan kembali fokus — diamalkan atlet dan anggota tentera ketika di bawah tekanan.',
-      length: 'Tempoh', len_c4: '4 kitaran', len_m3: '3 min', len_m5: '5 min', len_open: 'Tanpa had',
+      tag_478: 'Teknik Pernafasan 4 · 7 · 8', tag_box: 'Box Breathing',
+      desc_478: 'Corak pernafasan perlahan dengan hembusan nafas yang panjang untuk membantu anda bertenang — sebelum tidur atau selepas berdepan tekanan.',
+      desc_box: 'Empat kiraan yang sama untuk menstabilkan pernafasan dan memulihkan fokus — diamalkan oleh atlet dan anggota tentera ketika berdepan tekanan.',
+      length: 'Tempoh', len_c4: '4 kitaran', len_m3: '3 minit', len_m5: '5 minit', len_open: 'Tiada had',
       pace: 'Rentak', pace_standard: 'Biasa', pace_gentle: 'Lembut',
-      safety: 'Rasa pening? Berhenti dan bernafas seperti biasa. Sukar menahan nafas? Pilih rentak Lembut.',
-      begin: 'Mula →', footnote: 'Percuma · Tiada akaun diperlukan',
-      exit: '← Keluar', pause: 'Jeda', resume: 'Sambung',
+      safety: 'Berasa pening? Berhenti dan bernafas seperti biasa. Sukar menahan nafas? Pilih rentak Lembut.',
+      begin: 'Mula →', footnote: 'Percuma · Tidak perlu akaun',
+      exit: '← Keluar', pause: 'Berhenti seketika', resume: 'Teruskan',
       ph_in: 'Tarik', ph_hold: 'Tahan', ph_out: 'Hembus', ph_holdEmpty: 'Tahan',
       in_in: 'tarik nafas perlahan-lahan', in_hold: 'tahan nafas', in_out: 'hembus sepenuhnya', in_holdEmpty: 'paru-paru kosong, tahan',
-      getReady: 'Bersedia', startingIn: 'bertenang — akan bermula',
-      paused: 'Dijeda', pausedHint: 'tekan sambung apabila anda bersedia', pausedScreen: 'dijeda semasa skrin anda dimatikan',
+      getReady: 'Bersedia', startingIn: 'tenangkan diri — sesi akan bermula',
+      paused: 'Berhenti seketika', pausedHint: 'tekan Teruskan apabila sudah bersedia', pausedScreen: 'dihentikan seketika kerana skrin anda dimatikan',
       cycleOf: (n, t) => `Kitaran ${n} daripada ${t}`, cycleN: n => `Kitaran ${n}`,
       sec: 'saat',
-      doneTitle: 'Sesi <em>selesai</em>', endTitle: 'Sesi <em>tamat</em>',
+      doneTitle: 'Sesi <em>selesai</em>', endTitle: 'Sesi <em>ditamatkan</em>',
       doneDesc: 'Syabas. Bernafas seperti biasa seketika sebelum anda bangun.',
-      endDesc: 'Setiap kitaran bermakna. Bernafas seperti biasa seketika sebelum anda bangun.',
+      endDesc: 'Setiap kitaran tetap bermakna. Bernafas seperti biasa seketika sebelum anda bangun.',
       statTime: 'Masa', statCycles: 'Kitaran', statMode: 'Teknik',
-      again: 'Ulang →', done: 'Selesai', mute: 'Senyapkan bunyi'
+      again: 'Sekali lagi →', done: 'Selesai', mute: 'Matikan bunyi'
     }
   };
 
