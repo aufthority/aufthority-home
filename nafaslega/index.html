@@ -1246,6 +1246,181 @@
   const BUZZ = { in: [60], hold: [20, 70, 20], out: [140], holdEmpty: [20, 70, 20], done: [40, 80, 40] };
   function buzz(kind) { try { if (navigator.vibrate) navigator.vibrate(BUZZ[kind]); } catch (e) {} }
 
+
+  /* ══════════════════════════════════════
+     BACKGROUND TRACK — keeps guiding with the screen off.
+     When a session starts, its whole soundtrack (rain + a chime at every
+     phase change) is rendered on the phone into one audio file and played
+     through an <audio> element. Phones keep media playing when the screen
+     locks, so the chimes carry on; the visuals follow the track's clock
+     and catch up when the screen comes back on. If rendering isn't
+     supported, the app falls back to pausing on screen-off.
+  ══════════════════════════════════════ */
+  const TRACK_RATE = 22050;          // mono 16-bit: about 2.6 MB per minute
+  const LOOP_MIN_SEC = 60;           // "No limit" plays a loop of at least this long
+  const trackEl = new Audio();
+  trackEl.preload = 'auto';
+  trackEl.setAttribute('playsinline', '');
+  let trackUrl = null, rainBuf = null, rainLoading = null;
+  const OAC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+
+  function wavBlob(samples, rate) {
+    const n = samples.length, ab = new ArrayBuffer(44 + n * 2), v = new DataView(ab);
+    const str = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+    str(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); str(8, 'WAVE'); str(12, 'fmt ');
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, rate, true); v.setUint32(28, rate * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+    str(36, 'data'); v.setUint32(40, n * 2, true);
+    for (let i = 0, o = 44; i < n; i++, o += 2) {
+      const x = Math.max(-1, Math.min(1, samples[i]));
+      v.setInt16(o, x < 0 ? x * 0x8000 : x * 0x7fff, true);
+    }
+    return new Blob([ab], { type: 'audio/wav' });
+  }
+  // A tenth of a second of silence, played inside the Begin tap so iOS
+  // allows this element to start the real track a few seconds later
+  const silentUrl = URL.createObjectURL(wavBlob(new Float32Array(TRACK_RATE / 10), TRACK_RATE));
+
+  function decodeRain() {
+    if (rainBuf) return Promise.resolve(rainBuf);
+    if (rainLoading) return rainLoading;
+    rainLoading = fetch(AMBIENT_URL)
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+      .then(b => new Promise((res, rej) => new OAC(1, 1, TRACK_RATE).decodeAudioData(b, res, rej)))
+      .then(buf => (rainBuf = buf))
+      .catch(() => null)
+      .finally(() => { rainLoading = null; });
+    return rainLoading;
+  }
+
+  function chimeAt(ctx, kind, at) {
+    const tone = TONES[kind];
+    [{ mult: 1, gain: tone.g }, { mult: 2, gain: tone.g * 0.27 }].forEach(({ mult, gain }) => {
+      const osc = ctx.createOscillator(), g = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(tone.f[0] * mult, at);
+      osc.frequency.exponentialRampToValueAtTime(tone.f[1] * mult, at + 0.35);
+      g.gain.setValueAtTime(0, at);
+      g.gain.linearRampToValueAtTime(gain, at + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + 2.2);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(at); osc.stop(at + 2.3);
+    });
+  }
+
+  // Track timeline = the breathing part of the session (t = 0 is the first inhale).
+  // Fixed lengths end with the "done" chime and a short tail; "No limit" loops.
+  async function buildTrack(s) {
+    if (!OAC) throw new Error('no OfflineAudioContext');
+    const loop = !isFinite(s.target);
+    const cycles = loop ? Math.max(1, Math.ceil(LOOP_MIN_SEC / s.cycleLen)) : s.target;
+    const body = cycles * s.cycleLen;
+    const dur = body + (loop ? 0 : 4);
+    const ctx = new OAC(1, Math.ceil(dur * TRACK_RATE), TRACK_RATE);
+    const rain = await decodeRain();
+    if (rain) {
+      const src = ctx.createBufferSource(), g = ctx.createGain();
+      src.buffer = rain; src.loop = true; src.loopStart = 0.06; src.loopEnd = rain.duration - 0.06;
+      if (loop) g.gain.value = AMBIENT_VOL;                       // steady, so the loop point is seamless
+      else {
+        g.gain.setValueAtTime(0, 0); g.gain.linearRampToValueAtTime(AMBIENT_VOL, 2);
+        g.gain.setValueAtTime(AMBIENT_VOL, dur - 3); g.gain.linearRampToValueAtTime(0, dur);
+      }
+      src.connect(g); g.connect(ctx.destination);
+      src.start(0, 0.06);
+    }
+    for (let c = 0, at = 0; c < cycles; c++) {
+      for (const p of s.phases) { chimeAt(ctx, p.kind, at); at += p.dur; }
+    }
+    if (!loop) chimeAt(ctx, 'done', body);
+    const buf = await new Promise((res, rej) => {
+      ctx.oncomplete = e => res(e.renderedBuffer);
+      const p = ctx.startRendering();
+      if (p && p.then) p.then(res, rej);
+    });
+    if (trackUrl) URL.revokeObjectURL(trackUrl);
+    trackUrl = URL.createObjectURL(wavBlob(buf.getChannelData(0), TRACK_RATE));
+    return { url: trackUrl, dur, loop };
+  }
+
+  // Called inside the Begin / Again tap
+  function unlockTrack() {
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+    trackEl.src = silentUrl;
+    trackEl.play().catch(() => {});
+  }
+
+  // Start the track at the session's current breathing position
+  function startTrack(s) {
+    if (s.trackStarted || !s.track || s.paused) return;
+    s.trackStarted = true;
+    trackEl.loop = s.track.loop;
+    trackEl.muted = muted;
+    trackEl.src = s.track.url;
+    const go = () => {
+      if (session !== s) return;
+      const sec = activeMs(performance.now()) / 1000;
+      if (!s.track.loop && sec >= s.track.dur) return;
+      try { trackEl.currentTime = s.track.loop ? sec % s.track.dur : sec; } catch (e) {}
+      if (s.paused) return;
+      trackEl.play().then(() => {
+        if (session !== s) return;
+        s.trackPlaying = true;
+        setMediaSession(s);
+      }).catch(() => trackFailed(s));
+    };
+    if (trackEl.readyState >= 1) go(); else trackEl.addEventListener('loadedmetadata', go, { once: true });
+  }
+  function trackFailed(s) {
+    if (session !== s || s.trackFailedFlag) return;
+    s.trackFailedFlag = true;
+    s.trackStarted = false; s.trackPlaying = false; s.track = null;
+    startAmbient();                              // fall back to in-page rain + chimes
+  }
+
+  // Breathing seconds according to the track (handles loop wrap-arounds while the screen was off)
+  function trackSec(s, wallSec) {
+    const ct = trackEl.currentTime;
+    if (!s.track.loop) return ct;
+    const wraps = Math.max(0, Math.round((wallSec - ct) / s.track.dur));
+    return wraps * s.track.dur + ct;
+  }
+
+  /* Lock-screen / notification controls */
+  function setMediaSession(s) {
+    if (!('mediaSession' in navigator)) return;
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: s.mode === '478' ? t('tag_478') : 'Box Breathing',
+        artist: 'NafasLega',
+        album: 'Aufthority',
+        artwork: [{ src: './icons/icon-512.png', sizes: '512x512', type: 'image/png' }]
+      });
+      navigator.mediaSession.setActionHandler('play',  () => resumeSession());
+      navigator.mediaSession.setActionHandler('pause', () => pauseSession('user'));
+      navigator.mediaSession.setActionHandler('stop',  () => finishSession(false));
+      navigator.mediaSession.playbackState = 'playing';
+    } catch (e) {}
+  }
+  function mediaState(state) {
+    try { if ('mediaSession' in navigator) navigator.mediaSession.playbackState = state; } catch (e) {}
+  }
+
+  // The track can also be paused/played from outside: lock screen, headphones, a phone call
+  trackEl.addEventListener('pause', () => {
+    const s = session;
+    if (!s || s.paused || !s.trackPlaying || trackEl.ended || trackEl.src === silentUrl) return;
+    pauseSession('user');
+  });
+  trackEl.addEventListener('play', () => {
+    const s = session;
+    if (s && s.paused && s.trackPlaying) resumeSession();
+  });
+  trackEl.addEventListener('ended', () => {
+    mediaState('none');
+    if (session && session.trackPlaying) finishSession(true);
+  });
+
   /* ══════════════════════════════════════
      MUTE
   ══════════════════════════════════════ */
@@ -1258,6 +1433,7 @@
       master.gain.cancelScheduledValues(now);
       master.gain.setTargetAtTime(val ? 0 : 1, now, 0.05);
     }
+    trackEl.muted = val;
     btnMute.classList.toggle('muted', val);
     btnMute.setAttribute('aria-pressed', String(val));
   }
@@ -1499,8 +1675,11 @@
       phases, cycleLen, target,
       stage: 'ready', accMs: 0, segStart: performance.now(),
       paused: false, pauseReason: null,
-      lastKey: null, silentNext: false, cycles: 0, t: 0
+      lastKey: null, silentNext: false, cycles: 0, t: 0,
+      track: null, trackStarted: false, trackPlaying: false, trackFailedFlag: !OAC
     };
+    const s0 = session;
+    if (OAC) buildTrack(s0).then(tr => { if (session === s0) s0.track = tr; }).catch(() => trackFailed(s0));
 
     // Show correct visualiser
     const isBox = currentMode === 'box';
@@ -1515,7 +1694,7 @@
     updatePauseBtn();
 
     getCtx();
-    startAmbient();
+    if (!OAC) startAmbient();
     keepAwake();
     raf = requestAnimationFrame(frame);
   }
@@ -1529,6 +1708,13 @@
       s.stage = 'breathe';
       s.accMs = ms - READY_MS;
       s.segStart = now;
+    }
+    if (s.track && !s.trackStarted) startTrack(s);
+    if (s.trackPlaying && !trackEl.paused) {
+      // the track is the master clock: snap to it if the visuals have drifted
+      // (e.g. after the screen was off)
+      const wall = activeMs(now) / 1000, aud = trackSec(s, wall);
+      if (Math.abs(aud - wall) > 0.12) { s.accMs = aud * 1000; s.segStart = now; }
     }
     renderBreathe(activeMs(now) / 1000);
     if (session) raf = requestAnimationFrame(frame);
@@ -1565,7 +1751,10 @@
       setText(phaseInstr, t('in_' + p.kind));
       setGuideActive(i);
       if (s.silentNext) s.silentNext = false;
-      else { playChime(p.kind); buzz(p.kind); }
+      else {
+        if (!s.trackStarted) playChime(p.kind);   // the track carries the chimes once it has started
+        buzz(p.kind);
+      }
     }
     setText(timerNum, Math.max(1, Math.ceil(p.dur - within)));
     setText(timerUnit, t('sec'));
@@ -1582,6 +1771,8 @@
     s.paused = true;
     s.pauseReason = reason;
     cancelAnimationFrame(raf);
+    if (s.trackStarted) trackEl.pause();
+    mediaState('paused');
     if (audioCtx && audioCtx.state === 'running') audioCtx.suspend().catch(() => {});
     allowSleep();
     setText(phaseName, t('paused'));
@@ -1599,6 +1790,9 @@
     s.lastKey = null;       // refresh labels on the next frame…
     s.silentNext = true;    // …without re-chiming the current phase
     getCtx();               // runs inside the tap, so iOS lets audio restart
+    if (s.trackStarted) {
+      trackEl.play().then(() => mediaState('playing')).catch(() => trackFailed(s));
+    }
     keepAwake();
     updatePauseBtn();
     raf = requestAnimationFrame(frame);
@@ -1615,8 +1809,9 @@
     btnPause.classList.toggle('is-paused', paused);
   }
 
-  function teardown() {
+  function teardown(keepTail) {
     cancelAnimationFrame(raf);
+    if (!keepTail) { trackEl.pause(); mediaState('none'); }
     session = null;
     lastVisual = null;
     stopAmbient();
@@ -1629,8 +1824,8 @@
     const cycles = completed ? s.target : s.cycles;
     const secs   = completed ? s.target * s.cycleLen : Math.floor(s.stage === 'breathe' ? s.t : 0);
     const data   = { mode: s.mode, pace: s.pace, length: s.length, cycles, seconds: secs };
-    if (completed) { getCtx(); playChime('done'); buzz('done'); }
-    teardown();
+    if (completed) { getCtx(); if (!s.trackStarted) playChime('done'); buzz('done'); }
+    teardown(completed && s.trackPlaying);   // let the track play its "done" chime and fade out
     track(completed ? 'NafasLega - Session Complete' : 'NafasLega - Session End', data);
 
     if (completed || cycles >= 1) {
@@ -1849,6 +2044,7 @@
 
   function goToTool() {
     if (session) return;
+    unlockTrack();
     showScreen('tool');
     startSession();
   }
@@ -1889,10 +2085,10 @@
     }
   });
 
-  // Screen lock / app switch: pause cleanly; the user taps Resume to continue.
-  // (Browsers freeze timers and audio while the screen is off, so carrying on
-  // in the background is not reliable — pausing keeps the session intact.)
-  function onHidden() { if (session && !session.paused) pauseSession('hidden'); }
+  // Screen lock / app switch: once the background track is playing the session
+  // carries on (the chimes keep guiding; the visuals catch up on return).
+  // Before that — or where the track can't play — pause cleanly instead.
+  function onHidden() { if (session && !session.paused && !session.trackPlaying) pauseSession('hidden'); }
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') onHidden();
     else if (session && !session.paused) keepAwake();
