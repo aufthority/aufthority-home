@@ -2,9 +2,35 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>NafasLega — Breathing Exercise · Aufthority</title>
+<meta name="description" content="Free guided breathing exercise: 4-7-8 and box breathing with a visual pacer, gentle chimes and rain sounds. No account needed. English & Bahasa Malaysia.">
+<link rel="canonical" href="https://www.aufthority.com/nafaslega/">
+<meta property="og:type"         content="website">
+<meta property="og:site_name"    content="Aufthority">
+<meta property="og:title"        content="NafasLega — Guided Breathing Exercise">
+<meta property="og:description"  content="4-7-8 and box breathing with a visual pacer, chimes and rain sounds. Free, no account needed.">
+<meta property="og:url"          content="https://www.aufthority.com/nafaslega/">
+<meta property="og:image"        content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="en_US">
+<meta property="og:locale:alternate" content="ms_MY">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@theaufthority">
+<meta name="twitter:title"       content="NafasLega — Guided Breathing Exercise">
+<meta name="twitter:description" content="4-7-8 and box breathing with a visual pacer, chimes and rain sounds. Free, no account needed.">
+<meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
+<meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="/favicon2.png">
+<link rel="apple-touch-icon" href="/icon-512.png">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="NafasLega">
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +64,6 @@
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
-    overflow: hidden;
   }
 
   .screen {
@@ -46,7 +71,13 @@
     inset: 0;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
   .screen.hidden {
     opacity: 0;
@@ -61,10 +92,11 @@
     background: var(--bg);
     align-items: center;
     justify-content: space-between;
-    padding: 44px 28px 36px;
+    padding: max(44px, env(safe-area-inset-top)) 28px 0;
   }
   .splash-top {
     width: 100%;
+    max-width: 420px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,6 +110,25 @@
     opacity: 0;
     animation: fadeUp 0.5s ease forwards 0.1s;
   }
+  .lang-toggle {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    padding: 6px 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .lang-btn[aria-pressed="true"] { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+  .lang-sep { font-size: 0.68rem; color: var(--muted); }
   .breadcrumb a {
     font-family: 'DM Serif Display', serif;
     font-size: 0.9rem;
@@ -86,7 +137,7 @@
     transition: color 0.2s;
   }
   .breadcrumb a:hover { color: var(--accent); }
-  .breadcrumb-sep { font-size: 0.75rem; color: var(--rule); }
+  .breadcrumb-sep { font-size: 0.75rem; color: var(--muted); }
   .breadcrumb strong {
     font-family: 'DM Serif Display', serif;
     font-size: 0.9rem;
@@ -120,6 +171,7 @@
     border-color: var(--accent);
     background: var(--accent-light);
   }
+  .mode-btn-label, .mode-btn-sub { display: block; }
   .mode-btn-label {
     font-family: 'DM Serif Display', serif;
     font-size: 0.95rem;
@@ -150,32 +202,23 @@
     inset: -16px;
     border-radius: 50%;
     border: 1px solid rgba(45,106,79,0.1);
-    animation: ringPulse 4s ease-in-out infinite 0.3s;
   }
   .splash-ring-inner {
     position: absolute;
     inset: 0;
     border-radius: 50%;
     border: 1px solid rgba(45,106,79,0.18);
-    animation: ringPulse 4s ease-in-out infinite;
   }
+  /* Scale is driven by JS in the real 4-7-8 rhythm (see splashPreviewFrame) */
   .splash-orb {
     width: 68px;
     height: 68px;
     border-radius: 50%;
     background: var(--accent);
     box-shadow: 0 8px 36px rgba(45,106,79,0.22);
-    animation: orbPulse 4s ease-in-out infinite;
     position: relative;
     z-index: 2;
-  }
-  @keyframes orbPulse {
-    0%,100% { transform: scale(1);     box-shadow: 0 8px 36px rgba(45,106,79,0.22); }
-    50%      { transform: scale(1.18); box-shadow: 0 12px 52px rgba(45,106,79,0.3); }
-  }
-  @keyframes ringPulse {
-    0%,100% { transform: scale(1);    opacity: 0.6; }
-    50%      { transform: scale(1.2); opacity: 0.15; }
+    will-change: transform;
   }
 
   /* Box splash preview */
@@ -260,9 +303,63 @@
     letter-spacing: 0.12em;
     color: var(--muted);
   }
-  .pill-dot { font-size: 0.75rem; color: var(--rule); }
-  .splash-bottom {
+  .pill-dot { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── Session settings ── */
+  .settings {
     width: 100%;
+    max-width: 340px;
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.52s;
+  }
+  .setting-row { display: flex; align-items: center; gap: 12px; }
+  .setting-label {
+    flex: 0 0 56px;
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .seg { flex: 1; display: flex; border: 1px solid var(--rule); border-radius: var(--radius); }
+  .seg-btn {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    background: var(--card-bg);
+    border: none;
+    border-right: 1px solid var(--rule);
+    padding: 8px 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .seg-btn:last-child { border-right: none; }
+  .seg-btn[aria-pressed="true"] { background: var(--accent-light); color: var(--accent); font-weight: 500; }
+  .safety-note {
+    max-width: 320px;
+    margin: 16px auto 0;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--muted);
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.56s;
+  }
+
+  .splash-bottom {
+    width: calc(100% + 56px);
+    margin: 8px -28px 0;
+    padding: 26px 28px max(24px, env(safe-area-inset-bottom));
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0, var(--bg) 22px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -290,7 +387,7 @@
   .btn-begin:active { transform: translateY(0); }
   .splash-footnote {
     font-size: 0.68rem;
-    color: var(--rule);
+    color: var(--muted);
     letter-spacing: 0.05em;
   }
 
@@ -303,7 +400,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 24px 16px;
+    padding: max(18px, env(safe-area-inset-top)) 24px 16px;
     border-bottom: 1px solid var(--rule);
     flex-shrink: 0;
   }
@@ -329,7 +426,10 @@
     justify-content: center;
   }
   .btn-mute:hover { border-color: var(--ink); color: var(--ink); }
-  .btn-mute.muted { opacity: 0.4; }
+  .btn-mute svg { width: 16px; height: 16px; display: block; }
+  .btn-mute .ico-off { display: none; }
+  .btn-mute.muted .ico-on  { display: none; }
+  .btn-mute.muted .ico-off { display: block; }
   .btn-exit {
     background: none;
     border: 1px solid var(--rule);
@@ -396,9 +496,12 @@
   .tool-bottom {
     flex-shrink: 0;
     border-top: 1px solid var(--rule);
-    padding: 20px 24px 28px;
+    padding: 20px 24px max(28px, env(safe-area-inset-bottom));
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
   }
   .phase-timer-row {
     display: flex;
@@ -434,6 +537,15 @@
     color: var(--muted);
     margin-bottom: 16px;
   }
+  .progress-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid var(--rule);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
   .stats-row {
     display: flex;
     justify-content: space-between;
@@ -456,7 +568,7 @@
     letter-spacing: 0.12em;
     color: var(--muted);
   }
-  .phase-guide { display: flex; margin-bottom: 14px; }
+  .phase-guide { display: flex; margin-bottom: 14px; border-top: 1px solid var(--rule); padding-top: 6px; }
   .guide-item {
     flex: 1;
     text-align: center;
@@ -469,7 +581,7 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--rule);
+    color: var(--muted);
     margin-bottom: 3px;
     transition: color 0.3s;
   }
@@ -486,6 +598,7 @@
     color: var(--muted);
     margin-left: 1px;
   }
+  .guide-item.active { background: var(--accent-light); }
   .guide-item.active .guide-phase-lbl { color: var(--accent); }
   .guide-item.active .guide-dur-val   { color: var(--accent); }
   .btn-stop {
@@ -504,21 +617,82 @@
     transition: border-color 0.2s, color 0.2s;
   }
   .btn-stop:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-stop.is-paused { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .btn-stop.is-paused:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+  /* ════════════════════════════════
+     SUMMARY
+  ════════════════════════════════ */
+  #summary {
+    background: var(--bg);
+    align-items: center;
+    justify-content: center;
+    padding: max(44px, env(safe-area-inset-top)) 28px max(28px, env(safe-area-inset-bottom));
+  }
+  .summary-inner { width: 100%; max-width: 360px; text-align: center; }
+  .summary-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--ink);
+    margin: 18px 0 8px;
+    font-weight: 400;
+  }
+  .summary-title em { font-style: italic; color: var(--accent); }
+  .summary-desc { font-size: 0.86rem; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+  .summary-inner .stats-row { margin-bottom: 24px; }
+  .summary-actions { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .summary-actions .btn-begin, .summary-actions .btn-stop { max-width: 320px; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: translateY(0); }
   }
+
+  /* Desktop / large screens: one centred column, no stretched gap */
+  @media (min-width: 700px) and (min-height: 760px) {
+    #splash { justify-content: center; }
+    .splash-bottom { position: static; margin-top: 28px; padding-bottom: 0; background: none; }
+  }
+
+  /* Phone in landscape: orb left, controls right */
+  @media (orientation: landscape) and (max-height: 520px) {
+    #tool {
+      display: grid;
+      grid-template-columns: 1fr minmax(300px, 420px);
+      grid-template-rows: auto 1fr;
+    }
+    .tool-topbar { grid-column: 1 / -1; padding-top: 10px; padding-bottom: 10px; }
+    .orb-stage { min-height: 200px; }
+    .tool-bottom {
+      border-top: none;
+      border-left: 1px solid var(--rule);
+      overflow-y: auto;
+      justify-content: center;
+      padding-top: 14px;
+      margin: 0;
+      max-width: none;
+    }
+    .splash-orb-wrap, .splash-box-wrap { display: none !important; }
+    .breadcrumb { margin-bottom: 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .screen { transition: none; }
+    .breadcrumb, .mode-selector, .splash-orb-wrap, .splash-box-wrap, .splash-text,
+    .phase-pills, .settings, .safety-note, .splash-bottom { animation: none; opacity: 1; }
+  }
+
   @media (max-height: 680px) {
-    #splash { padding: 32px 28px 28px; }
+    #splash { padding: max(32px, env(safe-area-inset-top)) 28px 0; }
     .breadcrumb { margin-bottom: 16px; }
     .splash-orb-wrap { width: 110px; height: 110px; margin-bottom: 16px; }
     .splash-orb { width: 52px; height: 52px; }
     .splash-title { font-size: 2.2rem; }
     .splash-desc { font-size: 0.82rem; }
     .splash-text { margin-bottom: 14px; }
-    .tool-bottom { padding: 14px 24px 20px; }
+    .tool-bottom { padding: 14px 24px max(20px, env(safe-area-inset-bottom)); }
     .mode-selector { margin-bottom: 16px; }
+    .splash-box-wrap { margin-bottom: 16px; }
   }
   @media (max-width: 360px) {
     .pill { min-width: 56px; padding: 8px 10px; }
@@ -535,31 +709,38 @@
       <a href="https://www.aufthority.com">Aufthority</a>
       <span class="breadcrumb-sep">/</span>
       <strong>NafasLega</strong>
+      <div class="lang-toggle" role="group" aria-label="Language / Bahasa">
+        <button class="lang-btn" data-lang="en" aria-pressed="true" lang="en"
+          data-umami-event="NafasLega - Lang EN">EN</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button class="lang-btn" data-lang="ms" aria-pressed="false" lang="ms"
+          data-umami-event="NafasLega - Lang BM">BM</button>
+      </div>
     </div>
 
     <!-- Mode selector -->
-    <div class="mode-selector">
-      <button class="mode-btn active" id="mode478" onclick="selectMode('478')"
+    <div class="mode-selector" role="group" data-i18n-label="modeGroup" aria-label="Technique">
+      <button class="mode-btn active" id="mode478" data-mode="478" aria-pressed="true"
         data-umami-event="NafasLega - Mode 478">
-        <div class="mode-btn-label">4 · 7 · 8</div>
-        <div class="mode-btn-sub">Deep calm</div>
+        <span class="mode-btn-label">4 · 7 · 8</span>
+        <span class="mode-btn-sub" data-i18n="sub478">Deep calm</span>
       </button>
-      <button class="mode-btn" id="modeBox" onclick="selectMode('box')"
+      <button class="mode-btn" id="modeBox" data-mode="box" aria-pressed="false"
         data-umami-event="NafasLega - Mode Box">
-        <div class="mode-btn-label">Box</div>
-        <div class="mode-btn-sub">Focus &amp; balance</div>
+        <span class="mode-btn-label" data-i18n="nameBox">Box</span>
+        <span class="mode-btn-sub" data-i18n="subBox">Focus &amp; balance</span>
       </button>
     </div>
 
     <!-- 478 preview -->
-    <div class="splash-orb-wrap" id="splashOrbWrap">
+    <div class="splash-orb-wrap" id="splashOrbWrap" aria-hidden="true">
       <div class="splash-ring-outer"></div>
       <div class="splash-ring-inner"></div>
-      <div class="splash-orb"></div>
+      <div class="splash-orb" id="splashOrb"></div>
     </div>
 
     <!-- Box preview -->
-    <div class="splash-box-wrap" id="splashBoxWrap">
+    <div class="splash-box-wrap" id="splashBoxWrap" aria-hidden="true">
       <svg width="100" height="100" viewBox="0 0 100 100">
         <rect x="10" y="10" width="80" height="80"
           fill="none" stroke-width="1.5"
@@ -574,35 +755,65 @@
     </div>
 
     <div class="splash-text">
-      <p class="splash-eyebrow">Evidence-Based Breathwork</p>
+      <p class="splash-eyebrow" data-i18n="eyebrow">Evidence-Based Breathwork</p>
       <h1 class="splash-title">Nafas<em>Lega</em></h1>
       <p class="splash-tagline" id="splashTagline">4 · 7 · 8 Breathing Technique</p>
       <p class="splash-desc" id="splashDesc">
-        Activates your parasympathetic nervous system —
-        calming your heart rate and cortisol in minutes.
+        A slow-breathing pattern with a long exhale to help you wind down.
       </p>
     </div>
 
     <div class="phase-pills" id="phasePills">
       <!-- filled by JS -->
     </div>
+
+    <!-- Session settings -->
+    <div class="settings">
+      <div class="setting-row">
+        <span class="setting-label" id="lblLength" data-i18n="length">Length</span>
+        <div class="seg" role="group" aria-labelledby="lblLength" id="lengthSeg">
+          <button class="seg-btn" data-length="c4" data-i18n="len_c4">4 cycles</button>
+          <button class="seg-btn" data-length="m3" data-i18n="len_m3">3 min</button>
+          <button class="seg-btn" data-length="m5" data-i18n="len_m5">5 min</button>
+          <button class="seg-btn" data-length="open" data-i18n="len_open">No limit</button>
+        </div>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label" id="lblPace" data-i18n="pace">Pace</span>
+        <div class="seg" role="group" aria-labelledby="lblPace" id="paceSeg">
+          <button class="seg-btn" data-pace="standard" data-i18n="pace_standard">Standard</button>
+          <button class="seg-btn" data-pace="gentle" data-i18n="pace_gentle">Gentle</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="safety-note" data-i18n="safety">
+      Feeling light-headed? Stop and breathe normally. Finding the hold hard? Choose Gentle pace.
+    </p>
   </div>
 
   <div class="splash-bottom">
     <button class="btn-begin" id="btnBegin"
-      data-umami-event="NafasLega - Begin">Begin →</button>
-    <p class="splash-footnote">Free · No account needed</p>
+      data-umami-event="NafasLega - Begin" data-i18n="begin">Begin →</button>
+    <p class="splash-footnote" data-i18n="footnote">Free · No account needed</p>
   </div>
 </div>
 
 <!-- TOOL -->
-<div class="screen hidden" id="tool">
+<div class="screen hidden" id="tool" inert>
   <div class="tool-topbar">
     <div class="tool-brand">Nafas<em>Lega</em></div>
     <div class="topbar-controls">
-      <button class="btn-mute" id="btnMute" title="Toggle sound">🔊</button>
+      <button class="btn-mute" id="btnMute" aria-pressed="false" aria-label="Mute sound" title="Mute sound">
+        <svg class="ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/>
+        </svg>
+        <svg class="ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M16 9.5l5 5"/><path d="M21 9.5l-5 5"/>
+        </svg>
+      </button>
       <button class="btn-exit" id="btnExit"
-        data-umami-event="NafasLega - Exit">← Exit</button>
+        data-umami-event="NafasLega - Exit" data-i18n="exit">← Exit</button>
     </div>
   </div>
 
@@ -652,167 +863,301 @@
         <line id="bSide3" x1="20" y1="140" x2="20" y2="140"
           stroke="var(--accent)" stroke-width="2"
           stroke-linecap="square" shape-rendering="crispEdges" opacity="0.55"/>
+        <!-- Dot glow (drawn first so it sits behind the dot) -->
+        <circle id="boxGlow" cx="20" cy="20" r="12" fill="var(--accent)" opacity="0.15"/>
         <!-- Dot -->
         <circle id="boxDot" cx="20" cy="20" r="6" fill="var(--accent)"/>
-        <!-- Dot glow (behind dot) -->
-        <circle id="boxGlow" cx="20" cy="20" r="12" fill="var(--accent)" opacity="0.15"/>
       </svg>
     </div>
   </div>
 
   <div class="tool-bottom">
     <div class="phase-timer-row">
-      <span class="phase-name" id="phaseName">Ready</span>
-      <div class="timer-block">
+      <span class="phase-name" id="phaseName" aria-live="polite">Get ready</span>
+      <div class="timer-block" aria-hidden="true">
         <span class="timer-num"  id="timerNum">—</span>
         <span class="timer-unit" id="timerUnit"></span>
       </div>
     </div>
-    <div class="phase-instr" id="phaseInstr">session will begin shortly</div>
+    <div class="phase-instr" id="phaseInstr"></div>
 
-    <div class="stats-row">
-      <div class="stat">
-        <span class="stat-val"   id="statDuration">0:00</span>
-        <span class="stat-label">Duration</span>
-      </div>
-      <div class="stat">
-        <span class="stat-val"   id="statCycles">0</span>
-        <span class="stat-label">Cycles</span>
-      </div>
-      <div class="stat">
-        <span class="stat-val"   id="statBreath">0s</span>
-        <span class="stat-label">Breathwork</span>
-      </div>
+    <div class="progress-row">
+      <span id="progCycle"></span>
+      <span id="progTime">0:00</span>
     </div>
 
     <div class="phase-guide" id="phaseGuide">
       <!-- filled by JS -->
     </div>
 
-    <button class="btn-stop" id="btnStop"
-      data-umami-event="NafasLega - Stop Session">Stop Session</button>
+    <button class="btn-stop" id="btnPause" data-i18n="pause">Pause</button>
   </div>
 </div>
 
-<!-- Rainfall ambient -->
-<audio id="sndAmbient" src="./416227__rasunter255__gentle-rainfall.mp3"
-  preload="auto" loop></audio>
+<!-- SUMMARY -->
+<div class="screen hidden" id="summary" inert>
+  <div class="summary-inner">
+    <div class="tool-brand">Nafas<em>Lega</em></div>
+    <h2 class="summary-title" id="summaryTitle">Session complete</h2>
+    <p class="summary-desc" id="summaryDesc">Well done. Take a moment before you get up.</p>
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-val" id="sumTime">0:00</span>
+        <span class="stat-label" data-i18n="statTime">Time</span>
+      </div>
+      <div class="stat">
+        <span class="stat-val" id="sumCycles">0</span>
+        <span class="stat-label" data-i18n="statCycles">Cycles</span>
+      </div>
+      <div class="stat">
+        <span class="stat-val" id="sumMode">4·7·8</span>
+        <span class="stat-label" data-i18n="statMode">Technique</span>
+      </div>
+    </div>
+    <div class="summary-actions">
+      <button class="btn-begin" id="btnAgain"
+        data-umami-event="NafasLega - Again" data-i18n="again">Again →</button>
+      <button class="btn-stop" id="btnDone" data-i18n="done">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- Rain loop: 42 s seamless mono cut of "gentle rainfall" by rasunter255 (freesound.org #416227).
+     Loaded on demand through Web Audio when a session starts — nothing downloads on page load. -->
 
 <script>
+  /* ══════════════════════════════════════
+     STRINGS (EN / BM)
+  ══════════════════════════════════════ */
+  const STR = {
+    en: {
+      modeGroup: 'Technique', sub478: 'Deep calm', nameBox: 'Box', subBox: 'Focus & balance',
+      eyebrow: 'Evidence-Based Breathwork',
+      tag_478: '4 · 7 · 8 Breathing Technique', tag_box: 'Box Breathing',
+      desc_478: 'A slow-breathing pattern with a long exhale, used to help you wind down — before sleep or after a stressful moment.',
+      desc_box: 'Four equal counts to steady your breathing and refocus — used by athletes and the military under pressure.',
+      length: 'Length', len_c4: '4 cycles', len_m3: '3 min', len_m5: '5 min', len_open: 'No limit',
+      pace: 'Pace', pace_standard: 'Standard', pace_gentle: 'Gentle',
+      safety: 'Feeling light-headed? Stop and breathe normally. Finding the hold hard? Choose Gentle pace.',
+      begin: 'Begin →', footnote: 'Free · No account needed',
+      exit: '← Exit', pause: 'Pause', resume: 'Resume',
+      ph_in: 'Inhale', ph_hold: 'Hold', ph_out: 'Exhale', ph_holdEmpty: 'Hold',
+      in_in: 'breathe in slowly', in_hold: 'hold the breath', in_out: 'release completely', in_holdEmpty: 'lungs empty, hold',
+      getReady: 'Get ready', startingIn: 'settle in — starting soon',
+      paused: 'Paused', pausedHint: 'tap resume when you are ready', pausedScreen: 'paused while your screen was off',
+      cycleOf: (n, t) => `Cycle ${n} of ${t}`, cycleN: n => `Cycle ${n}`,
+      sec: 'sec',
+      doneTitle: 'Session <em>complete</em>', endTitle: 'Session <em>ended</em>',
+      doneDesc: 'Well done. Breathe normally for a moment before you get up.',
+      endDesc: 'Every cycle counts. Breathe normally for a moment before you get up.',
+      statTime: 'Time', statCycles: 'Cycles', statMode: 'Technique',
+      again: 'Again →', done: 'Done', mute: 'Mute sound'
+    },
+    ms: {
+      modeGroup: 'Teknik', sub478: 'Tenang mendalam', nameBox: 'Box', subBox: 'Fokus & seimbang',
+      eyebrow: 'Latihan Pernafasan Berasaskan Bukti',
+      tag_478: 'Teknik Pernafasan 4 · 7 · 8', tag_box: 'Box Breathing',
+      desc_478: 'Corak pernafasan perlahan dengan hembusan nafas yang panjang untuk membantu anda bertenang — sebelum tidur atau selepas berdepan tekanan.',
+      desc_box: 'Empat kiraan yang sama untuk menstabilkan pernafasan dan memulihkan fokus — diamalkan oleh atlet dan anggota tentera ketika berdepan tekanan.',
+      length: 'Tempoh', len_c4: '4 kitaran', len_m3: '3 minit', len_m5: '5 minit', len_open: 'Tiada had',
+      pace: 'Rentak', pace_standard: 'Biasa', pace_gentle: 'Lembut',
+      safety: 'Berasa pening? Berhenti dan bernafas seperti biasa. Sukar menahan nafas? Pilih rentak Lembut.',
+      begin: 'Mula →', footnote: 'Percuma · Tidak perlu akaun',
+      exit: '← Keluar', pause: 'Berhenti seketika', resume: 'Teruskan',
+      ph_in: 'Tarik', ph_hold: 'Tahan', ph_out: 'Hembus', ph_holdEmpty: 'Tahan',
+      in_in: 'tarik nafas perlahan-lahan', in_hold: 'tahan nafas', in_out: 'hembus sepenuhnya', in_holdEmpty: 'paru-paru kosong, tahan',
+      getReady: 'Bersedia', startingIn: 'tenangkan diri — sesi akan bermula',
+      paused: 'Berhenti seketika', pausedHint: 'tekan Teruskan apabila sudah bersedia', pausedScreen: 'dihentikan seketika kerana skrin anda dimatikan',
+      cycleOf: (n, t) => `Kitaran ${n} daripada ${t}`, cycleN: n => `Kitaran ${n}`,
+      sec: 'saat',
+      doneTitle: 'Sesi <em>selesai</em>', endTitle: 'Sesi <em>ditamatkan</em>',
+      doneDesc: 'Syabas. Bernafas seperti biasa seketika sebelum anda bangun.',
+      endDesc: 'Setiap kitaran tetap bermakna. Bernafas seperti biasa seketika sebelum anda bangun.',
+      statTime: 'Masa', statCycles: 'Kitaran', statMode: 'Teknik',
+      again: 'Sekali lagi →', done: 'Selesai', mute: 'Matikan bunyi'
+    }
+  };
+
+  /* Saved settings (localStorage can throw in private modes — always guarded) */
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem('nafaslega.' + k); return v === null ? d : v; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem('nafaslega.' + k, v); } catch (e) {} }
+  };
+  const pick = (v, allowed, d) => allowed.includes(v) ? v : d;
+
+  let lang = pick(store.get('lang', (navigator.language || '').toLowerCase().startsWith('ms') ? 'ms' : 'en'), ['en', 'ms'], 'en');
+  const t = k => (STR[lang][k] !== undefined ? STR[lang][k] : STR.en[k]);
+
   /* ══════════════════════════════════════
      MODE DEFINITIONS
   ══════════════════════════════════════ */
   const MODES = {
-    '478': {
-      tagline: '4 · 7 · 8 Breathing Technique',
-      desc: 'Activates your parasympathetic nervous system — calming your heart rate and cortisol in minutes.',
-      pills: [
-        { num: '4', label: 'Inhale' }, null,
-        { num: '7', label: 'Hold'   }, null,
-        { num: '8', label: 'Exhale' }
-      ],
-      phases: [
-        { label: 'Inhale', instr: 'breathe in slowly',  dur: 4, ease: 'ease-in'  },
-        { label: 'Hold',   instr: 'retain the breath',  dur: 7, ease: 'linear'   },
-        { label: 'Exhale', instr: 'release completely', dur: 8, ease: 'ease-out' }
-      ],
-      breathPerCycle: 19
-    },
-    'box': {
-      tagline: 'Box Breathing · 4 · 4 · 4 · 4',
-      desc: 'Balances your nervous system — used by athletes and military for stress control and sharp focus.',
-      pills: [
-        { num: '4', label: 'Inhale' }, null,
-        { num: '4', label: 'Hold'   }, null,
-        { num: '4', label: 'Exhale' }, null,
-        { num: '4', label: 'Hold'   }
-      ],
-      phases: [
-        { label: 'Inhale', instr: 'breathe in slowly',  dur: 4, ease: 'linear' },
-        { label: 'Hold',   instr: 'retain the breath',  dur: 4, ease: 'linear' },
-        { label: 'Exhale', instr: 'release completely', dur: 4, ease: 'linear' },
-        { label: 'Hold',   instr: 'empty lungs, hold',  dur: 4, ease: 'linear' }
-      ],
-      breathPerCycle: 16
-    }
+    '478': { kinds: ['in', 'hold', 'out'],              paces: { standard: [4, 7, 8],    gentle: [3, 5, 6] } },
+    'box': { kinds: ['in', 'hold', 'out', 'holdEmpty'], paces: { standard: [4, 4, 4, 4], gentle: [3, 3, 3, 3] } }
   };
+  const LENGTHS = { c4: { cycles: 4 }, m3: { sec: 180 }, m5: { sec: 300 }, open: {} };
 
-  let currentMode = '478';
+  let currentMode   = pick(store.get('mode', '478'), ['478', 'box'], '478');
+  let currentPace   = pick(store.get('pace', 'standard'), ['standard', 'gentle'], 'standard');
+  let currentLength = pick(store.get('length', 'c4'), Object.keys(LENGTHS), 'c4');
+
+  function getPhases(mode, pace) {
+    const m = MODES[mode];
+    return m.kinds.map((kind, i) => ({ kind, dur: m.paces[pace][i] }));
+  }
 
   /* ══════════════════════════════════════
      SPLASH RENDERING
   ══════════════════════════════════════ */
-  function renderSplash(mode) {
-    const m = MODES[mode];
+  function renderSplash() {
+    const mode = currentMode;
+    const phases = getPhases(mode, currentPace);
 
-    document.getElementById('splashTagline').textContent = m.tagline;
-    document.getElementById('splashDesc').textContent    = m.desc;
+    document.getElementById('splashTagline').textContent = t('tag_' + mode);
+    document.getElementById('splashDesc').textContent    = t('desc_' + mode);
 
     // Pills
-    const pillsEl = document.getElementById('phasePills');
-    pillsEl.innerHTML = m.pills.map(p =>
-      p === null
-        ? `<span class="pill-dot">·</span>`
-        : `<div class="pill">
-             <span class="pill-num">${p.num}</span>
-             <span class="pill-label">${p.label}</span>
-           </div>`
+    document.getElementById('phasePills').innerHTML = phases.map((p, i) =>
+      (i ? `<span class="pill-dot" aria-hidden="true">·</span>` : '') +
+      `<div class="pill">
+         <span class="pill-num">${p.dur}</span>
+         <span class="pill-label">${t('ph_' + p.kind)}</span>
+       </div>`
     ).join('');
 
     // Preview visual
     const isBox = mode === 'box';
-    document.getElementById('splashOrbWrap').style.display = isBox ? 'none' : 'flex';
+    document.getElementById('splashOrbWrap').style.display = isBox ? 'none' : '';
     document.getElementById('splashBoxWrap').classList.toggle('visible', isBox);
 
-    // Mode buttons
-    document.getElementById('mode478').classList.toggle('active', mode === '478');
-    document.getElementById('modeBox').classList.toggle('active', mode === 'box');
+    // Pressed states
+    document.querySelectorAll('.mode-btn').forEach(b => {
+      const on = b.dataset.mode === mode;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+    document.querySelectorAll('[data-length]').forEach(b =>
+      b.setAttribute('aria-pressed', String(b.dataset.length === currentLength)));
+    document.querySelectorAll('[data-pace]').forEach(b =>
+      b.setAttribute('aria-pressed', String(b.dataset.pace === currentPace)));
 
-    // Phase guide
-    buildPhaseGuide(mode);
+    if (!splash.classList.contains('hidden')) splashPreview(true);
   }
 
-  function buildPhaseGuide(mode) {
-    const phases = MODES[mode].phases;
-    const el = document.getElementById('phaseGuide');
-    el.innerHTML = phases.map((p, i) =>
+  function buildPhaseGuide(phases) {
+    document.getElementById('phaseGuide').innerHTML = phases.map((p, i) =>
       `<div class="guide-item" id="g${i}">
-         <div class="guide-phase-lbl">${p.label}</div>
+         <div class="guide-phase-lbl">${t('ph_' + p.kind)}</div>
          <div class="guide-dur-val">${p.dur}<small>s</small></div>
        </div>`
     ).join('');
   }
-
-  function selectMode(mode) {
-    currentMode = mode;
-    renderSplash(mode);
+  function setGuideActive(idx) {
+    document.querySelectorAll('.guide-item').forEach((g, i) => g.classList.toggle('active', i === idx));
   }
 
-  renderSplash('478');
+  function applyLang() {
+    document.documentElement.lang = lang === 'ms' ? 'ms' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-label]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nLabel)));
+    document.querySelectorAll('.lang-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    btnMute.setAttribute('aria-label', t('mute'));
+    btnMute.title = t('mute');
+    renderSplash();
+  }
 
   /* ══════════════════════════════════════
-     WEB AUDIO — CHIME GENERATOR
+     AUDIO — one Web Audio graph for chimes + rain.
+     Mute = master gain 0, so unmuting always works mid-session.
   ══════════════════════════════════════ */
-  let audioCtx = null;
-  let muted    = false;
+  const AMBIENT_URL = './rain-loop_416227__rasunter255.mp3';
+  const AMBIENT_VOL = 0.28;
+  let audioCtx = null, master = null, ambientGain = null;
+  let ambientSrc = null, ambientBuf = null, ambientLoading = null;
+  let muted = store.get('muted', '0') === '1';
 
   function getCtx() {
-    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    if (audioCtx.state === 'suspended') audioCtx.resume();
+    if (!audioCtx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      // iOS 17+: play through the silent switch, like a media app
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+      audioCtx = new AC();
+      master = audioCtx.createGain();
+      master.gain.value = muted ? 0 : 1;
+      master.connect(audioCtx.destination);
+      ambientGain = audioCtx.createGain();
+      ambientGain.gain.value = 0;
+      ambientGain.connect(master);
+    }
+    // 'suspended' (autoplay / our pause) or 'interrupted' (iOS after screen lock)
+    if (audioCtx.state !== 'running') audioCtx.resume().catch(() => {});
     return audioCtx;
   }
 
-  function playChime() {
-    if (muted) return;
+  function loadAmbient() {
+    if (ambientBuf) return Promise.resolve(ambientBuf);
+    if (ambientLoading) return ambientLoading;
     const ctx = getCtx();
-    const now = ctx.currentTime;
-    const master = ctx.createGain();
-    master.connect(ctx.destination);
-    [{ freq: 528, gain: 0.22 }, { freq: 1056, gain: 0.06 }].forEach(({ freq, gain }) => {
-      const osc = ctx.createOscillator();
-      const g   = ctx.createGain();
+    if (!ctx) return Promise.resolve(null);
+    ambientLoading = fetch(AMBIENT_URL)
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+      .then(b => new Promise((res, rej) => ctx.decodeAudioData(b, res, rej)))
+      .then(buf => (ambientBuf = buf))
+      .catch(() => null)
+      .finally(() => { ambientLoading = null; });
+    return ambientLoading;
+  }
+
+  function startAmbient() {
+    loadAmbient().then(buf => {
+      if (!buf || !session || ambientSrc) return;
+      const now = audioCtx.currentTime;
+      const src = audioCtx.createBufferSource();
+      src.buffer = buf;
+      src.loop = true;
+      // skip MP3 encoder padding so the loop is gapless
+      src.loopStart = 0.06;
+      src.loopEnd = buf.duration - 0.06;
+      src.connect(ambientGain);
+      ambientGain.gain.cancelScheduledValues(now);
+      ambientGain.gain.setValueAtTime(0, now);
+      ambientGain.gain.linearRampToValueAtTime(AMBIENT_VOL, now + 2);
+      src.start(now, 0.06);
+      ambientSrc = src;
+    });
+  }
+
+  function stopAmbient() {
+    if (!ambientSrc) return;
+    const src = ambientSrc;
+    ambientSrc = null;
+    const now = audioCtx.currentTime;
+    ambientGain.gain.cancelScheduledValues(now);
+    ambientGain.gain.setValueAtTime(ambientGain.gain.value, now);
+    ambientGain.gain.linearRampToValueAtTime(0, now + 0.6);
+    try { src.stop(now + 0.65); } catch (e) {}
+  }
+
+  /* A different tone per phase, so eyes-closed users can follow by ear:
+     inhale glides up, exhale glides down, holds are a soft high bell. */
+  const TONES = {
+    in:        { f: [528, 660], g: 0.20 },
+    hold:      { f: [792, 792], g: 0.10 },
+    out:       { f: [528, 396], g: 0.20 },
+    holdEmpty: { f: [660, 660], g: 0.10 },
+    done:      { f: [396, 528], g: 0.16 }
+  };
+  function playChime(kind) {
+    if (muted || !audioCtx || audioCtx.state !== 'running') return;
+    const tone = TONES[kind];
+    const now = audioCtx.currentTime;
+    [{ mult: 1, gain: tone.g }, { mult: 2, gain: tone.g * 0.27 }].forEach(({ mult, gain }) => {
+      const osc = audioCtx.createOscillator();
+      const g   = audioCtx.createGain();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.setValueAtTime(tone.f[0] * mult, now);
+      osc.frequency.exponentialRampToValueAtTime(tone.f[1] * mult, now + 0.35);
       g.gain.setValueAtTime(0, now);
       g.gain.linearRampToValueAtTime(gain, now + 0.005);
       g.gain.exponentialRampToValueAtTime(0.0001, now + 2.2);
@@ -821,14 +1166,9 @@
     });
   }
 
-  /* ══════════════════════════════════════
-     AMBIENT
-  ══════════════════════════════════════ */
-  const sndAmbient = document.getElementById('sndAmbient');
-  sndAmbient.volume = 0.28;
-
-  function startAmbient() { if (muted) return; sndAmbient.currentTime = 0; sndAmbient.play().catch(() => {}); }
-  function stopAmbient()  { sndAmbient.pause(); sndAmbient.currentTime = 0; }
+  /* Haptics (Android; ignored where unsupported) */
+  const BUZZ = { in: [60], hold: [20, 70, 20], out: [140], holdEmpty: [20, 70, 20], done: [40, 80, 40] };
+  function buzz(kind) { try { if (navigator.vibrate) navigator.vibrate(BUZZ[kind]); } catch (e) {} }
 
   /* ══════════════════════════════════════
      MUTE
@@ -836,51 +1176,61 @@
   const btnMute = document.getElementById('btnMute');
   function setMuted(val) {
     muted = val;
-    sndAmbient.muted = val;
-    btnMute.textContent = muted ? '🔇' : '🔊';
-    btnMute.classList.toggle('muted', muted);
+    store.set('muted', val ? '1' : '0');
+    if (master) {
+      const now = audioCtx.currentTime;
+      master.gain.cancelScheduledValues(now);
+      master.gain.setTargetAtTime(val ? 0 : 1, now, 0.05);
+    }
+    btnMute.classList.toggle('muted', val);
+    btnMute.setAttribute('aria-pressed', String(val));
   }
   btnMute.addEventListener('click', () => setMuted(!muted));
 
   /* ══════════════════════════════════════
-     ORB (478) ANIMATION
+     SCREEN WAKE LOCK — stops the phone dimming/locking mid-session.
+     The browser drops the lock whenever the page is hidden, so it is
+     re-requested on resume.
   ══════════════════════════════════════ */
-  const SCALE_BASE = 1, SCALE_PEAK = 1.85;
+  let wakeLock = null;
+  async function keepAwake() {
+    if (!('wakeLock' in navigator) || wakeLock || document.visibilityState !== 'visible') return;
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release', () => { wakeLock = null; });
+    } catch (e) { wakeLock = null; }
+  }
+  function allowSleep() {
+    if (wakeLock) { wakeLock.release().catch(() => {}); wakeLock = null; }
+  }
+
+  /* ══════════════════════════════════════
+     ORB (478) — driven per frame so it can pause/resume exactly
+  ══════════════════════════════════════ */
+  const SCALE_BASE = 1, SCALE_PEAK = 1.6;   // 80px × 1.6 = 128px, inside the 144px ring
   const C = +(2 * Math.PI * 72).toFixed(2); // circumference for r=72
 
   const orbBall = document.getElementById('orbBall');
   const arcPath = document.getElementById('arcPath');
 
-  function orbActivatePhase(p, idx) {
-    const targetScale = (idx === 2) ? SCALE_BASE : SCALE_PEAK;
-    orbBall.style.transition = `transform ${p.dur}s ${p.ease}, box-shadow ${p.dur}s ease`;
-    orbBall.style.transform  = `scale(${targetScale})`;
-    orbBall.style.boxShadow  = idx === 1
-      ? '0 14px 56px rgba(45,106,79,0.32)'
-      : idx === 0
-        ? '0 10px 40px rgba(45,106,79,0.2)'
-        : '0 4px 18px rgba(45,106,79,0.1)';
-
-    arcPath.style.transition = 'none';
-    arcPath.setAttribute('stroke-dashoffset', C);
-    void arcPath.getBoundingClientRect();
-    arcPath.style.transition = `stroke-dashoffset ${p.dur}s linear`;
-    arcPath.setAttribute('stroke-dashoffset', '0');
+  const easeInOut = x => (1 - Math.cos(Math.PI * x)) / 2;
+  function orbScaleFor(kind, frac) {
+    if (kind === 'in')   return SCALE_BASE + (SCALE_PEAK - SCALE_BASE) * easeInOut(frac);
+    if (kind === 'hold') return SCALE_PEAK;
+    if (kind === 'out')  return SCALE_PEAK - (SCALE_PEAK - SCALE_BASE) * easeInOut(frac);
+    return SCALE_BASE;
   }
-
-  function orbReset() {
-    orbBall.style.transition = 'transform 0.7s ease, box-shadow 0.7s ease';
-    orbBall.style.transform  = `scale(${SCALE_BASE})`;
-    orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
-    arcPath.style.transition = 'none';
-    arcPath.setAttribute('stroke-dashoffset', C);
+  function orbRender(scale, arcFrac) {
+    const g = (scale - SCALE_BASE) / (SCALE_PEAK - SCALE_BASE);
+    orbBall.style.transform = `scale(${scale.toFixed(4)})`;
+    orbBall.style.boxShadow = `0 ${(6 + 8 * g).toFixed(1)}px ${(28 + 28 * g).toFixed(1)}px rgba(45,106,79,${(0.18 + 0.14 * g).toFixed(3)})`;
+    arcPath.setAttribute('stroke-dashoffset', (C * (1 - arcFrac)).toFixed(2));
   }
 
   /* ══════════════════════════════════════
      BOX ANIMATION
      Square corners (px in 160×160 SVG viewBox, margin=20):
        TL(20,20)  TR(140,20)  BR(140,140)  BL(20,140)
-     Perimeter = 480px. Each side = 120px.
      Phase → side mapping (clockwise):
        0 Inhale  → top    TL→TR
        1 Hold    → right  TR→BR
@@ -888,226 +1238,332 @@
        3 Hold    → left   BL→TL
   ══════════════════════════════════════ */
   const BOX_SIDES = [
-    // { fixed axis, moving axis, from, to, isX_moving }
     { x1:20,  y1:20,  x2:140, y2:20,  moveX:true,  fromV:20,  toV:140 }, // top
     { x1:140, y1:20,  x2:140, y2:140, moveX:false, fromV:20,  toV:140 }, // right
     { x1:140, y1:140, x2:20,  y2:140, moveX:true,  fromV:140, toV:20  }, // bottom
     { x1:20,  y1:140, x2:20,  y2:20,  moveX:false, fromV:140, toV:20  }, // left
   ];
+  const boxSides = [0, 1, 2, 3].map(i => document.getElementById('bSide' + i));
+  const boxDot  = document.getElementById('boxDot');
+  const boxGlow = document.getElementById('boxGlow');
 
-  let boxRafId     = null;
-  let boxPhaseStart = null;
-  let boxPhaseIdx   = 0;
-  let boxPhaseDur   = 4;
-
-  function boxStartPhase(idx, dur) {
-    if (boxRafId) cancelAnimationFrame(boxRafId);
-    boxPhaseIdx   = idx;
-    boxPhaseDur   = dur;
-    boxPhaseStart = performance.now();
-
-    // Draw completed sides (full bright trail for sides before this one)
+  function boxRender(idx, frac) {
+    let dx = 20, dy = 20;
     for (let i = 0; i < 4; i++) {
       const s = BOX_SIDES[i];
-      const el = document.getElementById('bSide' + i);
-      if (i < idx) {
-        // fully drawn
-        el.setAttribute('x1', s.x1); el.setAttribute('y1', s.y1);
-        el.setAttribute('x2', s.x2); el.setAttribute('y2', s.y2);
-      } else {
-        // not started yet — collapse to start point
-        el.setAttribute('x1', s.x1); el.setAttribute('y1', s.y1);
-        el.setAttribute('x2', s.x1); el.setAttribute('y2', s.y1);
+      let x2 = s.x1, y2 = s.y1;
+      if (i < idx) { x2 = s.x2; y2 = s.y2; }
+      else if (i === idx) {
+        const v = s.fromV + (s.toV - s.fromV) * frac;
+        if (s.moveX) { x2 = v; y2 = s.y2; } else { x2 = s.x2; y2 = v; }
+        dx = x2; dy = y2;
       }
-    }
-
-    boxRafFrame(performance.now());
-  }
-
-  function boxRafFrame(now) {
-    if (!running) return;
-    const elapsed = (now - boxPhaseStart) / 1000;
-    const frac    = Math.min(elapsed / boxPhaseDur, 1);
-    const s       = BOX_SIDES[boxPhaseIdx];
-
-    // Interpolate the active side
-    const v   = s.fromV + (s.toV - s.fromV) * frac;
-    const el  = document.getElementById('bSide' + boxPhaseIdx);
-    el.setAttribute('x1', s.x1); el.setAttribute('y1', s.y1);
-    if (s.moveX) {
-      el.setAttribute('x2', v);   el.setAttribute('y2', s.y2);
-    } else {
-      el.setAttribute('x2', s.x2); el.setAttribute('y2', v);
-    }
-
-    // Dot position = tip of current side
-    const dot  = document.getElementById('boxDot');
-    const glow = document.getElementById('boxGlow');
-    const dx = s.moveX ? v   : s.x2;
-    const dy = s.moveX ? s.y2 : v;
-    dot.setAttribute('cx', dx);  dot.setAttribute('cy', dy);
-    glow.setAttribute('cx', dx); glow.setAttribute('cy', dy);
-
-    if (frac < 1) {
-      boxRafId = requestAnimationFrame(boxRafFrame);
-    }
-  }
-
-  function boxReset() {
-    if (boxRafId) { cancelAnimationFrame(boxRafId); boxRafId = null; }
-    for (let i = 0; i < 4; i++) {
-      const s = BOX_SIDES[i];
-      const el = document.getElementById('bSide' + i);
+      const el = boxSides[i];
       el.setAttribute('x1', s.x1); el.setAttribute('y1', s.y1);
-      el.setAttribute('x2', s.x1); el.setAttribute('y2', s.y1);
+      el.setAttribute('x2', x2);   el.setAttribute('y2', y2);
     }
-    const dot  = document.getElementById('boxDot');
-    const glow = document.getElementById('boxGlow');
-    dot.setAttribute('cx', 20);  dot.setAttribute('cy', 20);
-    glow.setAttribute('cx', 20); glow.setAttribute('cy', 20);
+    boxDot.setAttribute('cx', dx);  boxDot.setAttribute('cy', dy);
+    boxGlow.setAttribute('cx', dx); boxGlow.setAttribute('cy', dy);
+  }
+
+  /* ══════════════════════════════════════
+     SPLASH PREVIEWS — animate in each technique's real timing
+  ══════════════════════════════════════ */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const splashOrb      = document.getElementById('splashOrb');
+  const splashBoxTrail = document.getElementById('splashBoxTrail');
+  const splashDot      = document.getElementById('splashDot');
+  let previewRaf = null, previewStart = 0;
+
+  function splashPreview(on) {
+    cancelAnimationFrame(previewRaf);
+    previewRaf = null;
+    if (on && !reduceMotion.matches) {
+      previewStart = performance.now();
+      previewRaf = requestAnimationFrame(previewFrame);
+    } else {
+      splashOrb.style.transform = 'scale(1)';
+      splashBoxTrail.setAttribute('stroke-dashoffset', 320);
+      splashDot.setAttribute('cx', 10); splashDot.setAttribute('cy', 10);
+    }
+  }
+  function previewFrame(now) {
+    const ph = getPhases(currentMode, currentPace);
+    const len = ph.reduce((a, p) => a + p.dur, 0);
+    let x = ((now - previewStart) / 1000) % len, i = 0;
+    while (x >= ph[i].dur && i < ph.length - 1) { x -= ph[i].dur; i++; }
+    const frac = Math.min(x / ph[i].dur, 1);
+    if (currentMode === 'box') {
+      const d = 320 * (i + frac) / 4;          // distance along the 80×80 square
+      const side = Math.min(Math.floor(d / 80), 3), r = d - side * 80;
+      const pts = [[10 + r, 10], [90, 10 + r], [90 - r, 90], [10, 90 - r]][side];
+      splashBoxTrail.setAttribute('stroke-dashoffset', (320 - d).toFixed(1));
+      splashDot.setAttribute('cx', pts[0].toFixed(1)); splashDot.setAttribute('cy', pts[1].toFixed(1));
+    } else {
+      const k = (orbScaleFor(ph[i].kind, frac) - SCALE_BASE) / (SCALE_PEAK - SCALE_BASE);
+      splashOrb.style.transform = `scale(${(1 + 0.3 * k).toFixed(4)})`;
+    }
+    previewRaf = requestAnimationFrame(previewFrame);
   }
 
   /* ══════════════════════════════════════
      SESSION CORE
+     Time is tracked as accumulated *active* milliseconds, so pausing
+     (manually, or because the screen locked) freezes the session exactly
+     and resuming continues mid-breath with no drift or skipped phases.
   ══════════════════════════════════════ */
-  let raf, phaseStart, sessionInterval;
-  let phaseIdx = 0, cycles = 0, sessionSec = 0, running = false;
+  const READY_MS = 3000;
+  let session = null, raf = null;
 
-  const splash       = document.getElementById('splash');
-  const tool         = document.getElementById('tool');
-  const btnBegin     = document.getElementById('btnBegin');
-  const btnExit      = document.getElementById('btnExit');
-  const btnStop      = document.getElementById('btnStop');
-  const phaseName    = document.getElementById('phaseName');
-  const phaseInstr   = document.getElementById('phaseInstr');
-  const timerNum     = document.getElementById('timerNum');
-  const timerUnit    = document.getElementById('timerUnit');
-  const statDuration = document.getElementById('statDuration');
-  const statCycles   = document.getElementById('statCycles');
-  const statBreath   = document.getElementById('statBreath');
+  const splash     = document.getElementById('splash');
+  const tool       = document.getElementById('tool');
+  const summary    = document.getElementById('summary');
+  const btnBegin   = document.getElementById('btnBegin');
+  const btnExit    = document.getElementById('btnExit');
+  const btnPause   = document.getElementById('btnPause');
+  const btnAgain   = document.getElementById('btnAgain');
+  const btnDone    = document.getElementById('btnDone');
+  const phaseName  = document.getElementById('phaseName');
+  const phaseInstr = document.getElementById('phaseInstr');
+  const timerNum   = document.getElementById('timerNum');
+  const timerUnit  = document.getElementById('timerUnit');
+  const progCycle  = document.getElementById('progCycle');
+  const progTime   = document.getElementById('progTime');
 
   function fmt(s) {
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
   }
-
-  function activatePhase(idx) {
-    phaseIdx = idx;
-    const mode   = MODES[currentMode];
-    const p      = mode.phases[idx];
-    const total  = mode.phases.length;
-
-    phaseName.textContent  = p.label;
-    phaseInstr.textContent = p.instr;
-
-    // Guide highlight
-    for (let i = 0; i < total; i++) {
-      const g = document.getElementById('g' + i);
-      if (g) g.classList.toggle('active', i === idx);
-    }
-
-    // Visual
-    if (currentMode === '478') {
-      orbActivatePhase(p, idx);
-    } else {
-      boxStartPhase(idx, p.dur);
-    }
-
-    playChime();
+  function setText(el, v) { v = String(v); if (el._v !== v) { el._v = v; el.textContent = v; } }
+  function track(name, data) {
+    try { if (window.umami && typeof window.umami.track === 'function') window.umami.track(name, data); } catch (e) {}
   }
+  function cycleLabel(n, total) { return isFinite(total) ? t('cycleOf')(n, total) : t('cycleN')(n); }
 
-  function tick(now) {
-    if (!running) return;
-    const elapsed   = (now - phaseStart) / 1000;
-    const p         = MODES[currentMode].phases[phaseIdx];
-    const remaining = Math.ceil(p.dur - elapsed);
-    timerNum.textContent  = remaining > 0 ? remaining : 1;
-    timerUnit.textContent = 'sec';
-
-    if (elapsed >= p.dur) {
-      phaseStart = now;
-      const total = MODES[currentMode].phases.length;
-      const next  = (phaseIdx + 1) % total;
-      if (next === 0) {
-        cycles++;
-        statCycles.textContent = cycles;
-        statBreath.textContent = (cycles * MODES[currentMode].breathPerCycle) + 's';
-      }
-      activatePhase(next);
-    }
-    raf = requestAnimationFrame(tick);
-  }
+  function activeMs(now) { return session.accMs + (session.paused ? 0 : now - session.segStart); }
 
   function startSession() {
-    running = true;
-    phaseIdx = 0; cycles = 0; sessionSec = 0;
-    statCycles.textContent   = '0';
-    statBreath.textContent   = '0s';
-    statDuration.textContent = '0:00';
+    const phases   = getPhases(currentMode, currentPace);
+    const cycleLen = phases.reduce((a, p) => a + p.dur, 0);
+    const L        = LENGTHS[currentLength];
+    const target   = L.cycles || (L.sec ? Math.ceil(L.sec / cycleLen) : Infinity);
+
+    session = {
+      mode: currentMode, pace: currentPace, length: currentLength,
+      phases, cycleLen, target,
+      stage: 'ready', accMs: 0, segStart: performance.now(),
+      paused: false, pauseReason: null,
+      lastKey: null, silentNext: false, cycles: 0, t: 0
+    };
 
     // Show correct visualiser
     const isBox = currentMode === 'box';
     document.getElementById('orbWrap').style.display = isBox ? 'none' : 'flex';
     document.getElementById('boxWrap').classList.toggle('visible', isBox);
+    if (isBox) boxRender(0, 0); else orbRender(SCALE_BASE, 0);
 
-    if (currentMode === '478') {
-      orbBall.style.transition = 'none';
-      orbBall.style.transform  = `scale(${SCALE_BASE})`;
-      orbBall.style.boxShadow  = '0 6px 28px rgba(45,106,79,0.18)';
-      void orbBall.getBoundingClientRect();
-    } else {
-      boxReset();
-    }
+    buildPhaseGuide(phases);
+    setGuideActive(-1);
+    setText(progCycle, cycleLabel(1, target));
+    setText(progTime, '0:00');
+    updatePauseBtn();
 
+    getCtx();
     startAmbient();
-    phaseStart = performance.now();
-    activatePhase(0);
-    raf = requestAnimationFrame(tick);
-
-    sessionInterval = setInterval(() => {
-      sessionSec++;
-      statDuration.textContent = fmt(sessionSec);
-    }, 1000);
+    keepAwake();
+    raf = requestAnimationFrame(frame);
   }
 
-  function stopSession() {
-    running = false;
+  function frame(now) {
+    const s = session;
+    if (!s || s.paused) return;
+    const ms = activeMs(now);
+    if (s.stage === 'ready') {
+      if (ms < READY_MS) { renderReady(ms); raf = requestAnimationFrame(frame); return; }
+      s.stage = 'breathe';
+      s.accMs = ms - READY_MS;
+      s.segStart = now;
+    }
+    renderBreathe(activeMs(now) / 1000);
+    if (session) raf = requestAnimationFrame(frame);
+  }
+
+  function renderReady(ms) {
+    session.silentNext = false;
+    setText(phaseName, t('getReady'));
+    setText(phaseInstr, t('startingIn'));
+    setText(timerNum, Math.max(1, Math.ceil((READY_MS - ms) / 1000)));
+    setText(timerUnit, t('sec'));
+  }
+
+  function renderBreathe(sec) {
+    const s = session;
+    const cycleIdx = Math.floor(sec / s.cycleLen);
+    if (cycleIdx >= s.target) { finishSession(true); return; }
+
+    let within = sec - cycleIdx * s.cycleLen, i = 0;
+    while (within >= s.phases[i].dur && i < s.phases.length - 1) { within -= s.phases[i].dur; i++; }
+    const p = s.phases[i];
+    const frac = Math.min(within / p.dur, 1);
+
+    s.t = sec;
+    s.cycles = cycleIdx;
+
+    const key = cycleIdx * 10 + i;
+    if (key !== s.lastKey) {
+      s.lastKey = key;
+      setText(phaseName, t('ph_' + p.kind));
+      setText(phaseInstr, t('in_' + p.kind));
+      setGuideActive(i);
+      if (s.silentNext) s.silentNext = false;
+      else { playChime(p.kind); buzz(p.kind); }
+    }
+    setText(timerNum, Math.max(1, Math.ceil(p.dur - within)));
+    setText(timerUnit, t('sec'));
+    setText(progCycle, cycleLabel(cycleIdx + 1, s.target));
+    setText(progTime, fmt(Math.floor(sec)));
+
+    if (s.mode === 'box') boxRender(i, frac);
+    else orbRender(orbScaleFor(p.kind, frac), frac);
+  }
+
+  function pauseSession(reason) {
+    const s = session;
+    if (!s || s.paused) return;
+    s.accMs += performance.now() - s.segStart;
+    s.paused = true;
+    s.pauseReason = reason;
     cancelAnimationFrame(raf);
-    clearInterval(sessionInterval);
+    if (audioCtx && audioCtx.state === 'running') audioCtx.suspend().catch(() => {});
+    allowSleep();
+    setText(phaseName, t('paused'));
+    setText(phaseInstr, t(reason === 'hidden' ? 'pausedScreen' : 'pausedHint'));
+    updatePauseBtn();
+  }
+
+  function resumeSession() {
+    const s = session;
+    if (!s || !s.paused) return;
+    s.paused = false;
+    s.pauseReason = null;
+    s.segStart = performance.now();
+    s.lastKey = null;       // refresh labels on the next frame…
+    s.silentNext = true;    // …without re-chiming the current phase
+    getCtx();               // runs inside the tap, so iOS lets audio restart
+    keepAwake();
+    updatePauseBtn();
+    raf = requestAnimationFrame(frame);
+  }
+
+  function togglePause() {
+    if (!session) return;
+    session.paused ? resumeSession() : pauseSession('user');
+  }
+
+  function updatePauseBtn() {
+    const paused = !!(session && session.paused);
+    btnPause.textContent = t(paused ? 'resume' : 'pause');
+    btnPause.classList.toggle('is-paused', paused);
+  }
+
+  function teardown() {
+    cancelAnimationFrame(raf);
+    session = null;
     stopAmbient();
+    allowSleep();
+  }
 
-    if (currentMode === '478') {
-      orbReset();
+  function finishSession(completed) {
+    const s = session;
+    if (!s) return;
+    const cycles = completed ? s.target : s.cycles;
+    const secs   = completed ? s.target * s.cycleLen : Math.floor(s.stage === 'breathe' ? s.t : 0);
+    const data   = { mode: s.mode, pace: s.pace, length: s.length, cycles, seconds: secs };
+    if (completed) { getCtx(); playChime('done'); buzz('done'); }
+    teardown();
+    track(completed ? 'NafasLega - Session Complete' : 'NafasLega - Session End', data);
+
+    if (completed || cycles >= 1) {
+      document.getElementById('summaryTitle').innerHTML  = t(completed ? 'doneTitle' : 'endTitle');
+      document.getElementById('summaryDesc').textContent = t(completed ? 'doneDesc' : 'endDesc');
+      document.getElementById('sumTime').textContent     = fmt(secs);
+      document.getElementById('sumCycles').textContent   = cycles;
+      document.getElementById('sumMode').textContent     = s.mode === '478' ? '4·7·8' : t('nameBox');
+      showScreen('summary');
     } else {
-      boxReset();
+      showScreen('splash');
     }
+  }
 
-    phaseName.textContent  = 'Ready';
-    phaseInstr.textContent = 'session will begin shortly';
-    timerNum.textContent   = '—';
-    timerUnit.textContent  = '';
-
-    const total = MODES[currentMode].phases.length;
-    for (let i = 0; i < total; i++) {
-      const g = document.getElementById('g' + i);
-      if (g) g.classList.remove('active');
-    }
+  /* ══════════════════════════════════════
+     SCREENS — hidden screens are `inert`, so they can't be
+     tabbed into or clicked (fixes the double-start bug)
+  ══════════════════════════════════════ */
+  const SCREENS = { splash, tool, summary };
+  const FOCUS   = { splash: btnBegin, tool: btnPause, summary: btnAgain };
+  function showScreen(name, focus = true) {
+    Object.entries(SCREENS).forEach(([k, el]) => {
+      const on = k === name;
+      el.classList.toggle('hidden', !on);
+      if (on) el.removeAttribute('inert'); else el.setAttribute('inert', '');
+    });
+    splashPreview(name === 'splash');
+    if (focus) setTimeout(() => FOCUS[name].focus({ preventScroll: true }), 60);
   }
 
   function goToTool() {
-    splash.classList.add('hidden');
-    tool.classList.remove('hidden');
+    if (session) return;
+    showScreen('tool');
     startSession();
   }
 
-  function goToSplash() {
-    stopSession();
-    tool.classList.add('hidden');
-    splash.classList.remove('hidden');
-  }
-
+  /* ══════════════════════════════════════
+     EVENTS
+  ══════════════════════════════════════ */
   btnBegin.addEventListener('click', goToTool);
-  btnExit.addEventListener('click',  goToSplash);
-  btnStop.addEventListener('click',  goToSplash);
+  btnAgain.addEventListener('click', goToTool);
+  btnDone.addEventListener('click', () => showScreen('splash'));
+  btnPause.addEventListener('click', togglePause);
+  btnExit.addEventListener('click', () => finishSession(false));
+
+  document.querySelectorAll('.mode-btn').forEach(b => b.addEventListener('click', () => {
+    currentMode = b.dataset.mode; store.set('mode', currentMode); renderSplash();
+  }));
+  document.querySelectorAll('[data-length]').forEach(b => b.addEventListener('click', () => {
+    currentLength = b.dataset.length; store.set('length', currentLength); renderSplash();
+  }));
+  document.querySelectorAll('[data-pace]').forEach(b => b.addEventListener('click', () => {
+    currentPace = b.dataset.pace; store.set('pace', currentPace); renderSplash();
+  }));
+  document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
+    lang = b.dataset.lang; store.set('lang', lang); applyLang();
+  }));
+
+  // Keyboard: Space = pause/resume, Esc = end session
+  document.addEventListener('keydown', e => {
+    if (!session) return;
+    if (e.key === 'Escape') { e.preventDefault(); finishSession(false); }
+    else if ((e.key === ' ' || e.code === 'Space') && !(e.target instanceof HTMLButtonElement)) {
+      e.preventDefault(); togglePause();
+    }
+  });
+
+  // Screen lock / app switch: pause cleanly; the user taps Resume to continue.
+  // (Browsers freeze timers and audio while the screen is off, so carrying on
+  // in the background is not reliable — pausing keeps the session intact.)
+  function onHidden() { if (session && !session.paused) pauseSession('hidden'); }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') onHidden();
+    else if (session && !session.paused) keepAwake();
+  });
+  window.addEventListener('pagehide', onHidden);
+
+  reduceMotion.addEventListener && reduceMotion.addEventListener('change', () =>
+    splashPreview(!splash.classList.contains('hidden')));
+
+  /* Init */
+  setMuted(muted);
+  applyLang();
+  showScreen('splash', false);
 </script>
 </body>
 </html>
