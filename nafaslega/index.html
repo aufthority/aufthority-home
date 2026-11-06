@@ -23,11 +23,14 @@
 <meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
 <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" href="/favicon2.png">
-<link rel="apple-touch-icon" href="/icon-512.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./icons/favicon-96.png">
+<link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="manifest" href="./manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="NafasLega">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -390,6 +393,29 @@
     color: var(--muted);
     letter-spacing: 0.05em;
   }
+  .link-btn {
+    background: none;
+    border: none;
+    padding: 4px 2px;
+    font: inherit;
+    letter-spacing: inherit;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  .install-hint {
+    max-width: 300px;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--ink);
+    text-align: center;
+    background: var(--accent-light);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+  }
+  .install-hint[hidden], #installWrap[hidden] { display: none; }
 
   /* ════════════════════════════════
      TOOL
@@ -795,7 +821,11 @@
   <div class="splash-bottom">
     <button class="btn-begin" id="btnBegin"
       data-umami-event="NafasLega - Begin" data-i18n="begin">Begin →</button>
-    <p class="splash-footnote" data-i18n="footnote">Free · No account needed</p>
+    <p class="splash-footnote">
+      <span data-i18n="footnote">Free · No account needed</span><span id="installWrap" hidden>
+        · <button class="link-btn" id="btnInstall" data-i18n="install">Install app</button></span>
+    </p>
+    <p class="install-hint" id="installHint" hidden></p>
   </div>
 </div>
 
@@ -951,7 +981,8 @@
       doneDesc: 'Well done. Breathe normally for a moment before you get up.',
       endDesc: 'Every cycle counts. Breathe normally for a moment before you get up.',
       statTime: 'Time', statCycles: 'Cycles', statMode: 'Technique',
-      again: 'Again →', done: 'Done', mute: 'Mute sound'
+      again: 'Again →', done: 'Done', mute: 'Mute sound',
+      install: 'Install app', iosHint: 'To install: tap the Share button, then “Add to Home Screen”.'
     },
     ms: {
       modeGroup: 'Teknik', sub478: 'Tenang mendalam', nameBox: 'Box', subBox: 'Fokus & seimbang',
@@ -974,7 +1005,8 @@
       doneDesc: 'Syabas. Bernafas seperti biasa seketika sebelum anda bangun.',
       endDesc: 'Setiap kitaran tetap bermakna. Bernafas seperti biasa seketika sebelum anda bangun.',
       statTime: 'Masa', statCycles: 'Kitaran', statMode: 'Teknik',
-      again: 'Sekali lagi →', done: 'Selesai', mute: 'Matikan bunyi'
+      again: 'Sekali lagi →', done: 'Selesai', mute: 'Matikan bunyi',
+      install: 'Pasang aplikasi', iosHint: 'Untuk memasang: tekan butang Kongsi, kemudian “Tambah ke Skrin Utama”.'
     }
   };
 
@@ -998,6 +1030,9 @@
   const LENGTHS = { c4: { cycles: 4 }, m3: { sec: 180 }, m5: { sec: 300 }, open: {} };
 
   let currentMode   = pick(store.get('mode', '478'), ['478', 'box'], '478');
+  // App shortcuts / shared links: ?mode=478 or ?mode=box
+  const urlMode = new URLSearchParams(location.search).get('mode');
+  if (urlMode === '478' || urlMode === 'box') { currentMode = urlMode; store.set('mode', urlMode); }
   let currentPace   = pick(store.get('pace', 'standard'), ['standard', 'gentle'], 'standard');
   let currentLength = pick(store.get('length', 'c4'), Object.keys(LENGTHS), 'c4');
 
@@ -1063,6 +1098,8 @@
     document.querySelectorAll('.lang-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     btnMute.setAttribute('aria-label', t('mute'));
     btnMute.title = t('mute');
+    const hint = document.getElementById('installHint');
+    if (hint && !hint.hidden) hint.textContent = t('iosHint');
     renderSplash();
   }
 
@@ -1290,7 +1327,7 @@
   function previewFrame(now) {
     const ph = getPhases(currentMode, currentPace);
     const len = ph.reduce((a, p) => a + p.dur, 0);
-    let x = ((now - previewStart) / 1000) % len, i = 0;
+    let x = (Math.max(0, now - previewStart) / 1000) % len, i = 0;
     while (x >= ph[i].dur && i < ph.length - 1) { x -= ph[i].dur; i++; }
     const frac = Math.min(x / ph[i].dur, 1);
     if (currentMode === 'box') {
@@ -1339,7 +1376,8 @@
   }
   function cycleLabel(n, total) { return isFinite(total) ? t('cycleOf')(n, total) : t('cycleN')(n); }
 
-  function activeMs(now) { return session.accMs + (session.paused ? 0 : now - session.segStart); }
+  // rAF timestamps can be a few ms earlier than performance.now(), so clamp at 0
+  function activeMs(now) { return session.accMs + (session.paused ? 0 : Math.max(0, now - session.segStart)); }
 
   function startSession() {
     const phases   = getPhases(currentMode, currentPace);
@@ -1559,6 +1597,50 @@
 
   reduceMotion.addEventListener && reduceMotion.addEventListener('change', () =>
     splashPreview(!splash.classList.contains('hidden')));
+
+  /* ══════════════════════════════════════
+     INSTALL (PWA)
+     Chrome/Edge/Android: native prompt via beforeinstallprompt.
+     iOS Safari: no prompt API, so show Add-to-Home-Screen instructions.
+  ══════════════════════════════════════ */
+  const installWrap = document.getElementById('installWrap');
+  const installHint = document.getElementById('installHint');
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  let deferredPrompt = null;
+
+  if (!isStandalone && isIOS) installWrap.hidden = false;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!isStandalone) installWrap.hidden = false;
+  });
+  document.getElementById('btnInstall').addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choice = await deferredPrompt.userChoice.catch(() => null);
+      track('NafasLega - Install prompt', { outcome: choice ? choice.outcome : 'unknown' });
+      deferredPrompt = null;
+      installWrap.hidden = true;
+    } else {
+      installHint.textContent = t('iosHint');
+      installHint.hidden = !installHint.hidden;
+      track('NafasLega - Install hint (iOS)');
+    }
+  });
+  window.addEventListener('appinstalled', () => {
+    installWrap.hidden = true;
+    installHint.hidden = true;
+    track('NafasLega - Installed');
+  });
+  if (isStandalone) track('NafasLega - Opened as app');
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {});
+    });
+  }
 
   /* Init */
   setMuted(muted);
