@@ -1,14 +1,34 @@
 {
+  "id": "/nafaslega/",
   "name": "NafasLega — Breathing Exercise",
   "short_name": "NafasLega",
-  "description": "Guided 4-7-8 and box breathing by Aufthority.",
-  "start_url": "/nafaslega/",
+  "description": "Guided 4-7-8 and box breathing with a visual pacer, chimes and rain sounds. By Aufthority.",
+  "start_url": "/nafaslega/?source=pwa",
   "scope": "/nafaslega/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "any",
   "background_color": "#f7f5f0",
-  "theme_color": "#2d6a4f",
+  "theme_color": "#f7f5f0",
+  "categories": ["health", "lifestyle"],
   "icons": [
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+    { "src": "/nafaslega/icons/icon-192.png",     "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/nafaslega/icons/icon-512.png",     "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/nafaslega/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/nafaslega/icons/icon.svg",         "sizes": "any",     "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    {
+      "name": "4-7-8 Breathing",
+      "short_name": "4-7-8",
+      "url": "/nafaslega/?mode=478&source=shortcut",
+      "icons": [{ "src": "/nafaslega/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Box Breathing",
+      "short_name": "Box",
+      "url": "/nafaslega/?mode=box&source=shortcut",
+      "icons": [{ "src": "/nafaslega/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
   ]
 }
