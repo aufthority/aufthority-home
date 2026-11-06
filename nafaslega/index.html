@@ -21,8 +21,8 @@
 <meta name="twitter:title"       content="NafasLega — Guided Breathing Exercise">
 <meta name="twitter:description" content="4-7-8 and box breathing with a visual pacer, chimes and rain sounds. Free, no account needed.">
 <meta name="twitter:image"       content="https://www.aufthority.com/preview_v2.png">
-<meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1813" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" sizes="96x96" href="./icons/favicon-96.png">
 <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
@@ -34,38 +34,60 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f79c60f1-f9e7-4170-a979-f357ba756a18"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* Palette 1 · Sage & Sand (light) */
   :root {
-    --bg: #f7f5f0;
-    --ink: #1a1a18;
-    --muted: #6b6b62;
-    --accent: #2d6a4f;
-    --accent-light: #e8f5ee;
-    --rule: #e0ddd5;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Manrope', system-ui, -apple-system, sans-serif;
+    --bg: #f6f3ec;
+    --bg-glow: #e4f0e8;
+    --ink: #1c1f1a;
+    --muted: #5d6158;
+    --accent: #2f6b55;
+    --accent-light: #e4f0e8;
+    --hold: #8f5418;
+    --rule: #e2ddd1;
     --card-bg: #ffffff;
-    --radius: 2px;
+    --radius: 12px;
+    /* visual tokens read by the globe / cube / share card renderers */
+    --dot-0: #2f6b55;  --dot-1: #a8d5bd;
+    --core-0: #ffffff; --core-1: #cde9d8; --core-2: #6fb894; --core-3: #2f6b55;
+    --halo: rgba(111,184,148,0.55);
+    --warm: rgba(233,190,140,0.7);
+    --glass: rgba(216,240,226,0.32);
+    --glass-edge: rgba(47,107,85,0.5);
   }
 
+  /* Palette 4 · Deep Forest (dark) */
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #141412;
-      --ink: #f0ede6;
-      --muted: #9a9a8e;
-      --accent: #52b788;
+      --bg: #0e1813;
+      --bg-glow: #1a2e24;
+      --ink: #e6efe9;
+      --muted: #9db3a6;
+      --accent: #8fd1ae;
       --accent-light: #1a2e24;
-      --rule: #2a2a26;
-      --card-bg: #1e1e1a;
+      --hold: #e8b46a;
+      --rule: #22362b;
+      --card-bg: #142219;
+      --dot-0: #40916c;  --dot-1: #d6f0e0;
+      --core-0: #ffffff; --core-1: #d6f0e0; --core-2: #74c69d; --core-3: #2d6a4f;
+      --halo: rgba(116,198,157,0.45);
+      --warm: rgba(232,180,106,0.55);
+      --glass: rgba(143,209,174,0.10);
+      --glass-edge: rgba(143,209,174,0.45);
     }
   }
 
   html, body {
     height: 100%;
     background: var(--bg);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
+    font-family: var(--sans);
+    font-weight: 400;
+    color: var(--ink);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -123,7 +145,7 @@
     background: none;
     border: none;
     padding: 6px 6px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--sans);
     font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -133,7 +155,7 @@
   .lang-btn[aria-pressed="true"] { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
   .lang-sep { font-size: 0.68rem; color: var(--muted); }
   .breadcrumb a {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 0.9rem;
     color: var(--muted);
     text-decoration: none;
@@ -142,7 +164,7 @@
   .breadcrumb a:hover { color: var(--accent); }
   .breadcrumb-sep { font-size: 0.75rem; color: var(--muted); }
   .breadcrumb strong {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 0.9rem;
     color: var(--ink);
     font-weight: 400;
@@ -168,7 +190,7 @@
     text-align: center;
     transition: border-color 0.2s, background 0.2s;
     color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--sans);
   }
   .mode-btn.active {
     border-color: var(--accent);
@@ -176,7 +198,7 @@
   }
   .mode-btn-label, .mode-btn-sub { display: block; }
   .mode-btn-label {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 0.95rem;
     margin-bottom: 3px;
     color: var(--ink);
@@ -191,8 +213,8 @@
 
   .splash-orb-wrap {
     position: relative;
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -200,35 +222,12 @@
     opacity: 0;
     animation: fadeUp 0.6s ease forwards 0.2s;
   }
-  .splash-ring-outer {
-    position: absolute;
-    inset: -16px;
-    border-radius: 50%;
-    border: 1px solid rgba(45,106,79,0.1);
-  }
-  .splash-ring-inner {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 1px solid rgba(45,106,79,0.18);
-  }
-  /* Scale is driven by JS in the real 4-7-8 rhythm (see splashPreviewFrame) */
-  .splash-orb {
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 8px 36px rgba(45,106,79,0.22);
-    position: relative;
-    z-index: 2;
-    will-change: transform;
-  }
 
   /* Box splash preview */
   .splash-box-wrap {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     display: none;
     align-items: center;
     justify-content: center;
@@ -253,7 +252,7 @@
     margin-bottom: 10px;
   }
   .splash-title {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 2.6rem;
     line-height: 1.05;
     color: var(--ink);
@@ -294,7 +293,7 @@
     min-width: 66px;
   }
   .pill-num {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 1.3rem;
     color: var(--ink);
     line-height: 1;
@@ -336,7 +335,7 @@
     border: none;
     border-right: 1px solid var(--rule);
     padding: 8px 4px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--sans);
     font-size: 0.72rem;
     font-weight: 400;
     color: var(--muted);
@@ -378,7 +377,7 @@
     color: var(--bg);
     border: none;
     border-radius: var(--radius);
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--sans);
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -431,7 +430,7 @@
     flex-shrink: 0;
   }
   .tool-brand {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 1rem;
     color: var(--ink);
   }
@@ -461,7 +460,7 @@
     border: 1px solid var(--rule);
     border-radius: var(--radius);
     padding: 6px 14px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--sans);
     font-size: 0.66rem;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -483,30 +482,12 @@
   /* ── Orb visualiser (478) ── */
   .orb-wrap {
     position: relative;
-    width: 160px;
-    height: 160px;
+    width: min(300px, 78vw, 46vh);
+    height: min(300px, 78vw, 46vh);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-  }
-  .orb-ring-svg {
-    position: absolute;
-    top: 0; left: 0;
-    width: 160px; height: 160px;
-    transform: rotate(-90deg);
-    overflow: visible;
-  }
-  .orb-ball {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 6px 28px rgba(45,106,79,0.18);
-    position: relative;
-    z-index: 2;
-    transform: scale(1);
-    will-change: transform;
   }
 
   /* ── Box visualiser ── */
@@ -517,7 +498,6 @@
     flex-shrink: 0;
   }
   .box-wrap.visible { display: flex; }
-  #boxSvg { overflow: visible; }
 
   .tool-bottom {
     flex-shrink: 0;
@@ -536,7 +516,7 @@
     margin-bottom: 4px;
   }
   .phase-name {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 1.6rem;
     font-style: italic;
     color: var(--accent);
@@ -544,7 +524,7 @@
   }
   .timer-block { display: flex; align-items: baseline; gap: 3px; }
   .timer-num {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 1.6rem;
     color: var(--ink);
     line-height: 1;
@@ -583,7 +563,7 @@
   .stat { text-align: center; flex: 1; }
   .stat-val {
     display: block;
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 1.1rem;
     color: var(--ink);
   }
@@ -612,13 +592,13 @@
     transition: color 0.3s;
   }
   .guide-dur-val {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 1.05rem;
     color: var(--ink);
     transition: color 0.3s;
   }
   .guide-dur-val small {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--sans);
     font-size: 0.6rem;
     font-weight: 300;
     color: var(--muted);
@@ -634,7 +614,7 @@
     color: var(--muted);
     border: 1px solid var(--rule);
     border-radius: var(--radius);
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--sans);
     font-size: 0.74rem;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -657,7 +637,7 @@
   }
   .summary-inner { width: 100%; max-width: 360px; text-align: center; }
   .summary-title {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--serif); font-variation-settings: 'SOFT' 100;
     font-size: 2rem;
     color: var(--ink);
     margin: 18px 0 8px;
@@ -673,6 +653,72 @@
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: translateY(0); }
   }
+
+  /* ════════════════════════════════
+     ORB 6 · PARTICLE GLOBE  /  BOX 4 · GLASS CUBE
+  ════════════════════════════════ */
+  .globe-canvas { display: block; width: 100%; height: 100%; }
+  .box-wrap { --s: min(180px, 46vw, 26vh); }
+  .cube-scene { width: var(--s); height: var(--s); perspective: calc(var(--s) * 5); }
+  .cube-tilt { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateX(-18deg); }
+  .cube { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY(-25deg); }
+  .cube-face {
+    position: absolute; inset: 0;
+    border-radius: 6px;
+    border: 1.5px solid var(--glass-edge);
+    background: var(--glass);
+  }
+  .cube-bottom { background: var(--accent-light); opacity: 0.7; }
+  /* The orb box is large enough to contain its own glow: in a 3D scene the
+     browser clips anything that spills above/left of an element's box */
+  .cube-orb {
+    position: absolute; left: 50%; top: 50%;
+    width: calc(var(--s) * 0.8); height: calc(var(--s) * 0.8);
+    margin: calc(var(--s) * -0.4) 0 0 calc(var(--s) * -0.4);
+    transform: translateY(calc(var(--s) * var(--lift, 0.32))) scale(var(--orb-scale, 0.82));
+  }
+  .cube-halo, .cube-warm { position: absolute; inset: 0; border-radius: 50%; }
+  .cube-halo { background: radial-gradient(circle closest-side, var(--halo) 0%, transparent 100%); opacity: var(--halo-o, 0.35); }
+  .cube-warm { background: radial-gradient(circle closest-side, var(--warm) 0%, transparent 100%); opacity: var(--warm-o, 0); }
+  .cube-core {
+    position: absolute; inset: 31.25%; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--core-0) 0%, var(--core-1) 28%, var(--core-2) 64%, var(--core-3) 100%);
+  }
+
+  /* ── Chosen design: Font B, pill controls ── */
+  .btn-begin, .btn-stop {
+    border-radius: 999px;
+    min-height: 52px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .btn-mute { width: 44px; height: 44px; padding: 0; border-radius: 999px; }
+  .btn-exit {
+    min-height: 44px; padding: 0 18px; border-radius: 999px;
+    text-transform: none; letter-spacing: 0; font-size: 0.86rem; font-weight: 500;
+  }
+  .seg { overflow: hidden; }
+  .phase-name { font-weight: 300; font-size: 2.4rem; }
+  .phase-name.is-hold { color: var(--hold); }
+  .timer-num { font-family: var(--sans); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .splash-title em, .tool-brand em, .summary-title em { font-weight: 300; }
+
+  /* ── Share card ── */
+  #summary { justify-content: flex-start; }
+  .summary-inner { margin: auto 0; }
+  .share-panel { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .share-seg { width: 100%; max-width: 320px; }
+  .share-preview {
+    display: block;
+    width: auto; height: auto;
+    max-width: min(240px, 100%); max-height: 240px;
+    border-radius: 14px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+  .share-preview:not([src]) { visibility: hidden; }
 
   /* Desktop / large screens: one centred column, no stretched gap */
   @media (min-width: 700px) and (min-height: 760px) {
@@ -712,7 +758,6 @@
     #splash { padding: max(32px, env(safe-area-inset-top)) 28px 0; }
     .breadcrumb { margin-bottom: 16px; }
     .splash-orb-wrap { width: 110px; height: 110px; margin-bottom: 16px; }
-    .splash-orb { width: 52px; height: 52px; }
     .splash-title { font-size: 2.2rem; }
     .splash-desc { font-size: 0.82rem; }
     .splash-text { margin-bottom: 14px; }
@@ -758,26 +803,26 @@
       </button>
     </div>
 
-    <!-- 478 preview -->
+    <!-- 4-7-8 preview: particle globe (Orb 6) -->
     <div class="splash-orb-wrap" id="splashOrbWrap" aria-hidden="true">
-      <div class="splash-ring-outer"></div>
-      <div class="splash-ring-inner"></div>
-      <div class="splash-orb" id="splashOrb"></div>
+      <canvas class="globe-canvas" id="splashGlobe"></canvas>
     </div>
 
-    <!-- Box preview -->
-    <div class="splash-box-wrap" id="splashBoxWrap" aria-hidden="true">
-      <svg width="100" height="100" viewBox="0 0 100 100">
-        <rect x="10" y="10" width="80" height="80"
-          fill="none" stroke-width="1.5"
-          stroke="var(--rule)" shape-rendering="crispEdges"/>
-        <rect id="splashBoxTrail" x="10" y="10" width="80" height="80"
-          fill="none" stroke-width="1.5"
-          stroke="var(--accent)" shape-rendering="crispEdges"
-          stroke-dasharray="320" stroke-dashoffset="320"
-          style="opacity:0.45"/>
-        <circle id="splashDot" cx="10" cy="10" r="5" fill="var(--accent)"/>
-      </svg>
+    <!-- Box preview: glass cube (Box 4) -->
+    <div class="splash-box-wrap" id="splashBoxWrap" aria-hidden="true" style="--s: 88px">
+      <div class="cube-scene" aria-hidden="true">
+        <div class="cube-tilt">
+          <div class="cube">
+            <div class="cube-face" style="transform: rotateY(0deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face" style="transform: rotateY(90deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face" style="transform: rotateY(180deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face" style="transform: rotateY(-90deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face cube-top" style="transform: rotateX(90deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face cube-bottom" style="transform: rotateX(-90deg) translateZ(calc(var(--s) / 2))"></div>
+          </div>
+          <div class="cube-orb"><div class="cube-halo"></div><div class="cube-warm"></div><div class="cube-core"></div></div>
+        </div>
+      </div>
     </div>
 
     <div class="splash-text">
@@ -822,7 +867,9 @@
     <button class="btn-begin" id="btnBegin"
       data-umami-event="NafasLega - Begin" data-i18n="begin">Begin →</button>
     <p class="splash-footnote">
-      <span data-i18n="footnote">Free · No account needed</span><span id="installWrap" hidden>
+      <span data-i18n="footnote">Free · No account needed</span>
+      · <button class="link-btn" id="btnShareApp" data-i18n="shareApp"
+          data-umami-event="NafasLega - Share app">Share app</button><span id="installWrap" hidden>
         · <button class="link-btn" id="btnInstall" data-i18n="install">Install app</button></span>
     </p>
     <p class="install-hint" id="installHint" hidden></p>
@@ -848,56 +895,26 @@
   </div>
 
   <div class="orb-stage">
-    <!-- 478 orb -->
+    <!-- 4-7-8: particle globe (Orb 6), drawn on a canvas each frame -->
     <div class="orb-wrap" id="orbWrap">
-      <svg class="orb-ring-svg" viewBox="0 0 160 160">
-        <circle cx="80" cy="80" r="72"
-          fill="none" stroke="var(--rule)" stroke-width="1"/>
-        <circle id="arcPath" cx="80" cy="80" r="72"
-          fill="none" stroke="var(--accent)" stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-dasharray="452.39" stroke-dashoffset="452.39"/>
-      </svg>
-      <div class="orb-ball" id="orbBall"></div>
+      <canvas class="globe-canvas" id="sessionGlobe" aria-hidden="true"></canvas>
     </div>
 
-    <!-- Box SVG -->
+    <!-- Box: glass cube (Box 4) with a light that rises and falls -->
     <div class="box-wrap" id="boxWrap">
-      <!--
-        Square: 160×160 canvas, 20px margin → 120×120 inner square.
-        Perimeter = 4 × 120 = 480px.
-        Corners: TL(20,20) TR(140,20) BR(140,140) BL(20,140)
-        Path starts at TL, goes clockwise: top → right → bottom → left.
-      -->
-      <svg id="boxSvg" width="160" height="160" viewBox="0 0 160 160">
-        <!-- Dim track -->
-        <polyline id="boxTrackTL"
-          points="20,20 140,20 140,140 20,140 20,20"
-          fill="none" stroke="var(--rule)" stroke-width="1.5"
-          stroke-linejoin="miter" shape-rendering="crispEdges"/>
-        <!-- Bright trail (drawn via JS canvas-style on a single path element) -->
-        <!-- We use four separate line segments, toggled active by JS -->
-        <!-- Top side -->
-        <line id="bSide0" x1="20" y1="20" x2="20" y2="20"
-          stroke="var(--accent)" stroke-width="2"
-          stroke-linecap="square" shape-rendering="crispEdges" opacity="0.55"/>
-        <!-- Right side -->
-        <line id="bSide1" x1="140" y1="20" x2="140" y2="20"
-          stroke="var(--accent)" stroke-width="2"
-          stroke-linecap="square" shape-rendering="crispEdges" opacity="0.55"/>
-        <!-- Bottom side -->
-        <line id="bSide2" x1="140" y1="140" x2="140" y2="140"
-          stroke="var(--accent)" stroke-width="2"
-          stroke-linecap="square" shape-rendering="crispEdges" opacity="0.55"/>
-        <!-- Left side -->
-        <line id="bSide3" x1="20" y1="140" x2="20" y2="140"
-          stroke="var(--accent)" stroke-width="2"
-          stroke-linecap="square" shape-rendering="crispEdges" opacity="0.55"/>
-        <!-- Dot glow (drawn first so it sits behind the dot) -->
-        <circle id="boxGlow" cx="20" cy="20" r="12" fill="var(--accent)" opacity="0.15"/>
-        <!-- Dot -->
-        <circle id="boxDot" cx="20" cy="20" r="6" fill="var(--accent)"/>
-      </svg>
+      <div class="cube-scene" aria-hidden="true">
+        <div class="cube-tilt">
+          <div class="cube">
+            <div class="cube-face" style="transform: rotateY(0deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face" style="transform: rotateY(90deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face" style="transform: rotateY(180deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face" style="transform: rotateY(-90deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face cube-top" style="transform: rotateX(90deg) translateZ(calc(var(--s) / 2))"></div>
+            <div class="cube-face cube-bottom" style="transform: rotateX(-90deg) translateZ(calc(var(--s) / 2))"></div>
+          </div>
+          <div class="cube-orb"><div class="cube-halo"></div><div class="cube-warm"></div><div class="cube-core"></div></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -944,10 +961,19 @@
         <span class="stat-label" data-i18n="statMode">Technique</span>
       </div>
     </div>
+    <div class="share-panel">
+      <div class="seg share-seg" role="group" data-i18n-label="cardFormat" aria-label="Card format">
+        <button class="seg-btn" data-card="story" aria-pressed="true" data-i18n="cardStory">Story (9:16)</button>
+        <button class="seg-btn" data-card="square" aria-pressed="false" data-i18n="cardSquare">Square (1:1)</button>
+      </div>
+      <img class="share-preview" id="sharePreview" alt="" width="1080" height="1920">
+    </div>
     <div class="summary-actions">
-      <button class="btn-begin" id="btnAgain"
+      <button class="btn-begin" id="btnShare" data-i18n="share">Share</button>
+      <button class="link-btn" id="btnSave" data-i18n="saveImage">Save image</button>
+      <button class="btn-stop" id="btnAgain"
         data-umami-event="NafasLega - Again" data-i18n="again">Again →</button>
-      <button class="btn-stop" id="btnDone" data-i18n="done">Done</button>
+      <button class="link-btn" id="btnDone" data-i18n="done">Done</button>
     </div>
   </div>
 </div>
@@ -982,6 +1008,12 @@
       endDesc: 'Every cycle counts. Breathe normally for a moment before you get up.',
       statTime: 'Time', statCycles: 'Cycles', statMode: 'Technique',
       again: 'Again →', done: 'Done', mute: 'Mute sound',
+      shareApp: 'Share app', linkCopied: 'Link copied', shareAppText: 'A free guided breathing exercise. Try NafasLega:',
+      share: 'Share', saveImage: 'Save image', cardFormat: 'Card format', cardStory: 'Story (9:16)', cardSquare: 'Square (1:1)',
+      cardAlt: 'Preview of your share card', cardJust: 'Just breathed with', cardInvite: 'Breathe with me. It’s free.',
+      cardCycles: n => `${n} ${n === 1 ? 'cycle' : 'cycles'}`, cardSub: (time, mode) => `${time} of ${mode}`,
+      card478: '4-7-8 breathing', card478Label: '4-7-8 Breathing',
+      shareText: 'Breathe with me on NafasLega. Free: https://www.aufthority.com/nafaslega/',
       install: 'Install app', iosHint: 'To install: tap the Share button, then “Add to Home Screen”.'
     },
     ms: {
@@ -1006,6 +1038,12 @@
       endDesc: 'Setiap kitaran tetap bermakna. Bernafas seperti biasa seketika sebelum anda bangun.',
       statTime: 'Masa', statCycles: 'Kitaran', statMode: 'Teknik',
       again: 'Sekali lagi →', done: 'Selesai', mute: 'Matikan bunyi',
+      shareApp: 'Kongsi aplikasi', linkCopied: 'Pautan disalin', shareAppText: 'Latihan pernafasan berpandu secara percuma. Cuba NafasLega:',
+      share: 'Kongsi', saveImage: 'Simpan imej', cardFormat: 'Format kad', cardStory: 'Story (9:16)', cardSquare: 'Segi empat (1:1)',
+      cardAlt: 'Pratonton kad untuk dikongsi', cardJust: 'Baru sahaja bernafas bersama', cardInvite: 'Jom bernafas bersama. Percuma.',
+      cardCycles: n => `${n} kitaran`, cardSub: (time, mode) => `${time} ${mode}`,
+      card478: 'pernafasan 4-7-8', card478Label: 'Pernafasan 4-7-8',
+      shareText: 'Jom bernafas bersama NafasLega. Percuma: https://www.aufthority.com/nafaslega/',
       install: 'Pasang aplikasi', iosHint: 'Untuk memasang: tekan butang Kongsi, kemudian “Tambah ke Skrin Utama”.'
     }
   };
@@ -1100,6 +1138,7 @@
     btnMute.title = t('mute');
     const hint = document.getElementById('installHint');
     if (hint && !hint.hidden) hint.textContent = t('iosHint');
+    if (typeof refreshShareCard === 'function') refreshShareCard();
     renderSplash();
   }
 
@@ -1242,76 +1281,144 @@
   }
 
   /* ══════════════════════════════════════
-     ORB (478) — driven per frame so it can pause/resume exactly
+     BREATH LEVEL — 0 = lungs empty, 1 = lungs full
   ══════════════════════════════════════ */
-  const SCALE_BASE = 1, SCALE_PEAK = 1.6;   // 80px × 1.6 = 128px, inside the 144px ring
-  const C = +(2 * Math.PI * 72).toFixed(2); // circumference for r=72
-
-  const orbBall = document.getElementById('orbBall');
-  const arcPath = document.getElementById('arcPath');
-
   const easeInOut = x => (1 - Math.cos(Math.PI * x)) / 2;
-  function orbScaleFor(kind, frac) {
-    if (kind === 'in')   return SCALE_BASE + (SCALE_PEAK - SCALE_BASE) * easeInOut(frac);
-    if (kind === 'hold') return SCALE_PEAK;
-    if (kind === 'out')  return SCALE_PEAK - (SCALE_PEAK - SCALE_BASE) * easeInOut(frac);
-    return SCALE_BASE;
+  function breathLevel(kind, frac) {
+    if (kind === 'in')   return easeInOut(frac);
+    if (kind === 'hold') return 1;
+    if (kind === 'out')  return 1 - easeInOut(frac);
+    return 0;
   }
-  function orbRender(scale, arcFrac) {
-    const g = (scale - SCALE_BASE) / (SCALE_PEAK - SCALE_BASE);
-    orbBall.style.transform = `scale(${scale.toFixed(4)})`;
-    orbBall.style.boxShadow = `0 ${(6 + 8 * g).toFixed(1)}px ${(28 + 28 * g).toFixed(1)}px rgba(45,106,79,${(0.18 + 0.14 * g).toFixed(3)})`;
-    arcPath.setAttribute('stroke-dashoffset', (C * (1 - arcFrac)).toFixed(2));
+  // Warm glow fades in and out across the full-lungs hold
+  function warmFor(kind, frac) {
+    return kind === 'hold' ? Math.max(0, Math.min(1, frac * 4, (1 - frac) * 4)) : 0;
   }
 
   /* ══════════════════════════════════════
-     BOX ANIMATION
-     Square corners (px in 160×160 SVG viewBox, margin=20):
-       TL(20,20)  TR(140,20)  BR(140,140)  BL(20,140)
-     Phase → side mapping (clockwise):
-       0 Inhale  → top    TL→TR
-       1 Hold    → right  TR→BR
-       2 Exhale  → bottom BR→BL
-       3 Hold    → left   BL→TL
+     THEME — colours are read from the CSS tokens, so light (Sage & Sand)
+     and dark (Deep Forest) live in one place
   ══════════════════════════════════════ */
-  const BOX_SIDES = [
-    { x1:20,  y1:20,  x2:140, y2:20,  moveX:true,  fromV:20,  toV:140 }, // top
-    { x1:140, y1:20,  x2:140, y2:140, moveX:false, fromV:20,  toV:140 }, // right
-    { x1:140, y1:140, x2:20,  y2:140, moveX:true,  fromV:140, toV:20  }, // bottom
-    { x1:20,  y1:140, x2:20,  y2:20,  moveX:false, fromV:140, toV:20  }, // left
-  ];
-  const boxSides = [0, 1, 2, 3].map(i => document.getElementById('bSide' + i));
-  const boxDot  = document.getElementById('boxDot');
-  const boxGlow = document.getElementById('boxGlow');
+  let theme = null;
+  const hexRgb = h => { h = h.replace('#', ''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+  function readTheme() {
+    const cs = getComputedStyle(document.documentElement);
+    const v = n => cs.getPropertyValue(n).trim();
+    theme = {
+      bg: v('--bg'), bgGlow: v('--bg-glow'), ink: v('--ink'), muted: v('--muted'),
+      accent: v('--accent'), rule: v('--rule'),
+      dot0: hexRgb(v('--dot-0')), dot1: hexRgb(v('--dot-1')),
+      core: [v('--core-0'), v('--core-1'), v('--core-2'), v('--core-3')],
+      halo: v('--halo'), warm: v('--warm')
+    };
+  }
+  readTheme();
 
-  function boxRender(idx, frac) {
-    let dx = 20, dy = 20;
-    for (let i = 0; i < 4; i++) {
-      const s = BOX_SIDES[i];
-      let x2 = s.x1, y2 = s.y1;
-      if (i < idx) { x2 = s.x2; y2 = s.y2; }
-      else if (i === idx) {
-        const v = s.fromV + (s.toV - s.fromV) * frac;
-        if (s.moveX) { x2 = v; y2 = s.y2; } else { x2 = s.x2; y2 = v; }
-        dx = x2; dy = y2;
-      }
-      const el = boxSides[i];
-      el.setAttribute('x1', s.x1); el.setAttribute('y1', s.y1);
-      el.setAttribute('x2', x2);   el.setAttribute('y2', y2);
-    }
-    boxDot.setAttribute('cx', dx);  boxDot.setAttribute('cy', dy);
-    boxGlow.setAttribute('cx', dx); boxGlow.setAttribute('cy', dy);
+  /* ══════════════════════════════════════
+     ORB 6 · PARTICLE GLOBE — a Fibonacci sphere of 90 dots around a
+     glowing core, drawn on a canvas each frame (cheap on any phone, and
+     the same function draws the globe on the share card)
+  ══════════════════════════════════════ */
+  const GLOBE_N = 90, GOLDEN = Math.PI * (3 - Math.sqrt(5)), TILT = -16 * Math.PI / 180;
+  const GLOBE_PTS = Array.from({ length: GLOBE_N }, (_, i) => {
+    const y = 1 - 2 * (i + 0.5) / GLOBE_N, r = Math.sqrt(1 - y * y), th = GOLDEN * i;
+    return { x: Math.cos(th) * r, y, z: Math.sin(th) * r, big: i % 3 === 0 };
+  });
+  const mixRgb = (a, b, t) => `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',')})`;
+  const clearOf = c => c.replace(/[\d.]+\)\s*$/, '0)');   // same rgba, alpha 0 (no grey fringe)
+
+  function glow(ctx, cx, cy, r, color, alpha) {
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+    g.addColorStop(0, color);
+    g.addColorStop(0.65, clearOf(color));
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  // size = the 300-px design box; scale = breath (0.6–1); spin = seconds; warm = 0–1
+  function drawGlobe(ctx, cx, cy, size, scale, spin, warm) {
+    const u = size / 300;
+    const R = 115 * u * scale, coreR = 40 * u * scale;
+    const a = spin * 2 * Math.PI / 24;                    // one turn every 24 s
+    const ca = Math.cos(a), sa = Math.sin(a), ct = Math.cos(TILT), st = Math.sin(TILT);
+    const pts = GLOBE_PTS.map(p => {
+      const x1 = p.x * ca + p.z * sa, z1 = -p.x * sa + p.z * ca;   // spin about Y
+      return { x: x1, y: p.y * ct - z1 * st, z: p.y * st + z1 * ct, y0: p.y, big: p.big };
+    }).sort((p, q) => p.z - q.z);
+    const dot = p => {
+      const d = (p.z + 1) / 2;
+      ctx.globalAlpha = 0.3 + 0.7 * d;
+      ctx.fillStyle = mixRgb(theme.dot0, theme.dot1, (p.y0 + 1) / 2);
+      ctx.beginPath();
+      ctx.arc(cx + p.x * R, cy + p.y * R, (p.big ? 4.5 : 3.5) * u * (0.6 + 0.6 * d), 0, 2 * Math.PI);
+      ctx.fill();
+    };
+    ctx.save();
+    pts.filter(p => p.z < 0).forEach(dot);              // back half behind the core
+    ctx.globalAlpha = 1;
+    glow(ctx, cx, cy, coreR * 2.6, theme.halo, 1);
+    if (warm > 0) glow(ctx, cx, cy, coreR * 2.6, theme.warm, warm);
+    const g = ctx.createRadialGradient(cx - coreR * 0.3, cy - coreR * 0.4, 0, cx, cy, coreR);
+    g.addColorStop(0, theme.core[0]); g.addColorStop(0.28, theme.core[1]);
+    g.addColorStop(0.64, theme.core[2]); g.addColorStop(1, theme.core[3]);
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(cx, cy, coreR, 0, 2 * Math.PI); ctx.fill();
+    pts.filter(p => p.z >= 0).forEach(dot);             // front half over it
+    ctx.restore();
+  }
+
+  function paintGlobe(cv, scale, spin, warm) {
+    const r = cv.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.round(r.width * dpr), h = Math.round(r.height * dpr);
+    if (!w || !h) return;
+    if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+    const ctx = cv.getContext('2d');
+    ctx.clearRect(0, 0, w, h);
+    drawGlobe(ctx, w / 2, h / 2, Math.min(w, h), scale, spin, warm);
   }
 
   /* ══════════════════════════════════════
-     SPLASH PREVIEWS — animate in each technique's real timing
+     BOX 4 · GLASS CUBE — turns a quarter per phase; the light inside
+     rises on the inhale, floats, sinks on the exhale, rests
   ══════════════════════════════════════ */
+  function cubeRefs(scene) {
+    return { cube: scene.querySelector('.cube'), orb: scene.querySelector('.cube-orb') };
+  }
+  function paintCube(c, level, turn, warm) {
+    c.cube.style.transform = `rotateY(${(-25 - turn * 360).toFixed(2)}deg)`;
+    const o = c.orb.style;
+    o.setProperty('--lift', ((0.5 - level) * 0.64).toFixed(4));
+    o.setProperty('--orb-scale', (0.82 + 0.24 * level).toFixed(4));
+    o.setProperty('--halo-o', (0.35 + 0.65 * level).toFixed(3));
+    o.setProperty('--warm-o', warm.toFixed(3));
+  }
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const splashOrb      = document.getElementById('splashOrb');
-  const splashBoxTrail = document.getElementById('splashBoxTrail');
-  const splashDot      = document.getElementById('splashDot');
+  const splashGlobe  = document.getElementById('splashGlobe');
+  const sessionGlobe = document.getElementById('sessionGlobe');
+  const splashCube   = cubeRefs(document.querySelector('#splashBoxWrap .cube-scene'));
+  const sessionCube  = cubeRefs(document.querySelector('#boxWrap .cube-scene'));
+  let lastVisual = null;
+
+  // One call draws the session visual for the current mode
+  function renderVisual(mode, kind, frac, sec, cyclePos) {
+    lastVisual = [mode, kind, frac, sec, cyclePos];
+    const level = breathLevel(kind, frac), warm = warmFor(kind, frac);
+    if (mode === 'box') paintCube(sessionCube, level, reduceMotion.matches ? 0 : cyclePos, warm);
+    else paintGlobe(sessionGlobe, 0.6 + 0.4 * level, reduceMotion.matches ? 0 : sec, warm);
+  }
+
+  /* ══════════════════════════════════════
+     SPLASH PREVIEWS — the same visuals, in each technique's real timing
+  ══════════════════════════════════════ */
   let previewRaf = null, previewStart = 0;
 
+  function drawIdlePreview() {
+    paintGlobe(splashGlobe, 0.8, 3, 0);
+    paintCube(splashCube, 0.5, 0, 0);
+  }
   function splashPreview(on) {
     cancelAnimationFrame(previewRaf);
     previewRaf = null;
@@ -1319,29 +1426,31 @@
       previewStart = performance.now();
       previewRaf = requestAnimationFrame(previewFrame);
     } else {
-      splashOrb.style.transform = 'scale(1)';
-      splashBoxTrail.setAttribute('stroke-dashoffset', 320);
-      splashDot.setAttribute('cx', 10); splashDot.setAttribute('cy', 10);
+      drawIdlePreview();
     }
   }
   function previewFrame(now) {
     const ph = getPhases(currentMode, currentPace);
     const len = ph.reduce((a, p) => a + p.dur, 0);
-    let x = (Math.max(0, now - previewStart) / 1000) % len, i = 0;
+    const tsec = Math.max(0, now - previewStart) / 1000;
+    let x = tsec % len, i = 0;
     while (x >= ph[i].dur && i < ph.length - 1) { x -= ph[i].dur; i++; }
-    const frac = Math.min(x / ph[i].dur, 1);
-    if (currentMode === 'box') {
-      const d = 320 * (i + frac) / 4;          // distance along the 80×80 square
-      const side = Math.min(Math.floor(d / 80), 3), r = d - side * 80;
-      const pts = [[10 + r, 10], [90, 10 + r], [90 - r, 90], [10, 90 - r]][side];
-      splashBoxTrail.setAttribute('stroke-dashoffset', (320 - d).toFixed(1));
-      splashDot.setAttribute('cx', pts[0].toFixed(1)); splashDot.setAttribute('cy', pts[1].toFixed(1));
-    } else {
-      const k = (orbScaleFor(ph[i].kind, frac) - SCALE_BASE) / (SCALE_PEAK - SCALE_BASE);
-      splashOrb.style.transform = `scale(${(1 + 0.3 * k).toFixed(4)})`;
-    }
+    const frac = Math.min(x / ph[i].dur, 1), kind = ph[i].kind;
+    if (currentMode === 'box') paintCube(splashCube, breathLevel(kind, frac), (tsec % len) / len, warmFor(kind, frac));
+    else paintGlobe(splashGlobe, 0.6 + 0.4 * breathLevel(kind, frac), tsec, warmFor(kind, frac));
     previewRaf = requestAnimationFrame(previewFrame);
   }
+
+  // Repaint canvases after a resize/rotation or a light/dark switch
+  function repaintAll() {
+    readTheme();
+    if (!splash.classList.contains('hidden') && !previewRaf) drawIdlePreview();
+    if (lastVisual && !tool.classList.contains('hidden')) renderVisual(...lastVisual);
+    if (typeof refreshShareCard === 'function') refreshShareCard();
+  }
+  window.addEventListener('resize', () => { if (lastVisual && !tool.classList.contains('hidden')) renderVisual(...lastVisual); });
+  const darkMQ = window.matchMedia('(prefers-color-scheme: dark)');
+  if (darkMQ.addEventListener) darkMQ.addEventListener('change', repaintAll);
 
   /* ══════════════════════════════════════
      SESSION CORE
@@ -1397,7 +1506,7 @@
     const isBox = currentMode === 'box';
     document.getElementById('orbWrap').style.display = isBox ? 'none' : 'flex';
     document.getElementById('boxWrap').classList.toggle('visible', isBox);
-    if (isBox) boxRender(0, 0); else orbRender(SCALE_BASE, 0);
+    renderVisual(currentMode, 'holdEmpty', 0, 0, 0);
 
     buildPhaseGuide(phases);
     setGuideActive(-1);
@@ -1431,6 +1540,8 @@
     setText(phaseInstr, t('startingIn'));
     setText(timerNum, Math.max(1, Math.ceil((READY_MS - ms) / 1000)));
     setText(timerUnit, t('sec'));
+    phaseName.classList.remove('is-hold');
+    renderVisual(session.mode, 'holdEmpty', 0, ms / 1000, 0);
   }
 
   function renderBreathe(sec) {
@@ -1450,6 +1561,7 @@
     if (key !== s.lastKey) {
       s.lastKey = key;
       setText(phaseName, t('ph_' + p.kind));
+      phaseName.classList.toggle('is-hold', p.kind === 'hold' || p.kind === 'holdEmpty');
       setText(phaseInstr, t('in_' + p.kind));
       setGuideActive(i);
       if (s.silentNext) s.silentNext = false;
@@ -1460,8 +1572,7 @@
     setText(progCycle, cycleLabel(cycleIdx + 1, s.target));
     setText(progTime, fmt(Math.floor(sec)));
 
-    if (s.mode === 'box') boxRender(i, frac);
-    else orbRender(orbScaleFor(p.kind, frac), frac);
+    renderVisual(s.mode, p.kind, frac, sec, (sec % s.cycleLen) / s.cycleLen);
   }
 
   function pauseSession(reason) {
@@ -1474,6 +1585,7 @@
     if (audioCtx && audioCtx.state === 'running') audioCtx.suspend().catch(() => {});
     allowSleep();
     setText(phaseName, t('paused'));
+    phaseName.classList.remove('is-hold');
     setText(phaseInstr, t(reason === 'hidden' ? 'pausedScreen' : 'pausedHint'));
     updatePauseBtn();
   }
@@ -1506,6 +1618,7 @@
   function teardown() {
     cancelAnimationFrame(raf);
     session = null;
+    lastVisual = null;
     stopAmbient();
     allowSleep();
   }
@@ -1526,9 +1639,195 @@
       document.getElementById('sumTime').textContent     = fmt(secs);
       document.getElementById('sumCycles').textContent   = cycles;
       document.getElementById('sumMode').textContent     = s.mode === '478' ? '4·7·8' : t('nameBox');
+      lastResult = { mode: s.mode, pace: s.pace, cycles, secs };
+      sharePreview.removeAttribute('src');
       showScreen('summary');
+      buildCard();
     } else {
       showScreen('splash');
+    }
+  }
+
+
+  /* ══════════════════════════════════════
+     SHARE CARD — drawn on the phone in the active palette and language.
+     Story 1080×1920 (Instagram / TikTok / WhatsApp status) or
+     Square 1080×1080 (feeds, chats). Built when the summary opens, so the
+     Share tap can open the share sheet immediately.
+  ══════════════════════════════════════ */
+  const APP_URL  = 'https://www.aufthority.com/nafaslega/';
+  const URL_TEXT = 'aufthority.com/nafaslega';
+  const CARD     = { story: [1080, 1920], square: [1080, 1080] };
+  const SERIF = "Fraunces, Georgia, serif", SANS = "Manrope, system-ui, sans-serif";
+  const sharePreview = document.getElementById('sharePreview');
+  let lastResult = null, cardBlob = null, cardUrl = null, cardToken = 0;
+  let cardFormat = pick(store.get('card', 'story'), ['story', 'square'], 'story');
+
+  async function fontsReady() {
+    if (!document.fonts || !document.fonts.load) return;
+    const specs = [`400 132px ${SERIF}`, `300 150px ${SERIF}`, `italic 300 46px ${SERIF}`, `400 40px ${SANS}`, `600 36px ${SANS}`];
+    try { await Promise.all(specs.map(f => document.fonts.load(f))); } catch (e) {}
+  }
+  function spaced(ctx, px) { if ('letterSpacing' in ctx) ctx.letterSpacing = px + 'px'; }
+  function fitFont(ctx, text, maxW, weightStyle, family, startPx) {
+    let px = startPx;
+    for (; px > 16; px -= 4) {
+      ctx.font = `${weightStyle} ${px}px ${family}`;
+      if (ctx.measureText(text).width <= maxW) break;
+    }
+    return px;
+  }
+  function cardBackground(ctx, w, h, gx, gy, r) {
+    ctx.fillStyle = theme.bg;
+    ctx.fillRect(0, 0, w, h);
+    const g = ctx.createRadialGradient(gx, gy, 0, gx, gy, r);
+    g.addColorStop(0, theme.bgGlow);
+    g.addColorStop(1, theme.bg);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, w, h);
+  }
+  function wordmark(ctx, x, y, px, align) {
+    ctx.textAlign = 'left';
+    ctx.font = `400 ${px}px ${SERIF}`;          const a = ctx.measureText('Nafas').width;
+    ctx.font = `italic 300 ${px}px ${SERIF}`;   const b = ctx.measureText('Lega').width;
+    const x0 = align === 'center' ? x - (a + b) / 2 : x;
+    ctx.fillStyle = theme.ink;    ctx.font = `400 ${px}px ${SERIF}`;        ctx.fillText('Nafas', x0, y);
+    ctx.fillStyle = theme.accent; ctx.font = `italic 300 ${px}px ${SERIF}`; ctx.fillText('Lega', x0 + a, y);
+  }
+  function urlPill(ctx, cx, cy, px) {
+    ctx.font = `600 ${px}px ${SANS}`;
+    const w = ctx.measureText(URL_TEXT).width + px * 3, h = px * 2.4;
+    ctx.fillStyle = theme.ink;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(cx - w / 2, cy - h / 2, w, h, h / 2); else ctx.rect(cx - w / 2, cy - h / 2, w, h);
+    ctx.fill();
+    ctx.fillStyle = theme.bg;
+    ctx.textAlign = 'center';
+    ctx.fillText(URL_TEXT, cx, cy + px * 0.36);
+  }
+  function cardCopy(r) {
+    const modeName = r.mode === '478' ? t('card478') : 'Box Breathing';
+    return {
+      modeName,
+      modeLabel: r.mode === '478' ? t('card478Label') : 'Box Breathing',
+      cycles: t('cardCycles')(r.cycles),
+      time: fmt(r.secs),
+      durs: getPhases(r.mode, r.pace).map(p => p.dur).join(' · ')
+    };
+  }
+
+  function drawStory(ctx, r) {
+    const W = 1080, H = 1920, c = cardCopy(r);
+    cardBackground(ctx, W, H, W / 2, H * 0.42, H * 0.6);
+    ctx.textBaseline = 'alphabetic';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = theme.accent;
+    ctx.font = `600 30px ${SANS}`; spaced(ctx, 5);
+    ctx.fillText(t('cardJust').toUpperCase(), W / 2, 200);
+    spaced(ctx, 0);
+    wordmark(ctx, W / 2, 350, 132, 'center');
+    drawGlobe(ctx, W / 2, 800, 720, 1, 3.2, 0);
+    ctx.textAlign = 'center';
+    ctx.fillStyle = theme.ink;
+    fitFont(ctx, c.cycles, 900, '300', SERIF, 150);
+    ctx.fillText(c.cycles, W / 2, 1340);
+    ctx.fillStyle = theme.muted;
+    fitFont(ctx, t('cardSub')(c.time, c.modeName), 900, '400', SANS, 40);
+    ctx.fillText(t('cardSub')(c.time, c.modeName), W / 2, 1420);
+    ctx.fillStyle = theme.ink;
+    fitFont(ctx, t('cardInvite'), 900, 'italic 300', SERIF, 46);
+    ctx.fillText(t('cardInvite'), W / 2, 1650);
+    urlPill(ctx, W / 2, 1770, 36);
+  }
+
+  function drawSquare(ctx, r) {
+    const W = 1080, H = 1080, c = cardCopy(r), tx = 580, maxW = W - tx - 90;
+    cardBackground(ctx, W, H, 300, 450, 640);
+    drawGlobe(ctx, 310, 450, 440, 1, 3.2, 0);
+    ctx.textBaseline = 'alphabetic';
+    ctx.textAlign = 'left';
+    ctx.fillStyle = theme.accent;
+    ctx.font = `600 24px ${SANS}`; spaced(ctx, 4);
+    ctx.fillText(c.modeLabel.toUpperCase(), tx, 360);
+    spaced(ctx, 0);
+    ctx.fillStyle = theme.ink;
+    fitFont(ctx, c.time, maxW, '300', SERIF, 132);
+    ctx.fillText(c.time, tx, 500);
+    ctx.fillStyle = theme.muted;
+    const sub = `${c.cycles} · ${c.durs}`;
+    fitFont(ctx, sub, maxW, '400', SANS, 34);
+    ctx.fillText(sub, tx, 568);
+    ctx.strokeStyle = theme.rule; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(90, 880); ctx.lineTo(W - 90, 880); ctx.stroke();
+    wordmark(ctx, 90, 975, 54, 'left');
+    ctx.textAlign = 'right';
+    ctx.fillStyle = theme.accent;
+    ctx.font = `600 30px ${SANS}`;
+    ctx.fillText(URL_TEXT, W - 90, 968);
+  }
+
+  async function buildCard() {
+    if (!lastResult) return;
+    const token = ++cardToken;
+    cardBlob = null;
+    await fontsReady();
+    const [w, h] = CARD[cardFormat];
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    (cardFormat === 'story' ? drawStory : drawSquare)(cv.getContext('2d'), lastResult);
+    const blob = await new Promise(res => cv.toBlob(res, 'image/png'));
+    if (token !== cardToken || !blob) return;
+    cardBlob = blob;
+    if (cardUrl) URL.revokeObjectURL(cardUrl);
+    cardUrl = URL.createObjectURL(blob);
+    sharePreview.width = w; sharePreview.height = h;
+    sharePreview.alt = t('cardAlt');
+    sharePreview.src = cardUrl;
+  }
+  function refreshShareCard() { if (lastResult && !summary.classList.contains('hidden')) buildCard(); }
+
+  function saveCard() {
+    if (!cardUrl) return;
+    const a = document.createElement('a');
+    a.href = cardUrl;
+    a.download = `nafaslega-${cardFormat}.png`;
+    document.body.appendChild(a); a.click(); a.remove();
+    track('NafasLega - Share card', { format: cardFormat, method: 'download' });
+  }
+  async function shareCard() {
+    if (!cardBlob) return;
+    const file = new File([cardBlob], `nafaslega-${cardFormat}.png`, { type: 'image/png' });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({ files: [file], text: t('shareText') });
+        track('NafasLega - Share card', { format: cardFormat, method: 'share' });
+      } catch (e) {
+        if (e && e.name !== 'AbortError') saveCard();
+      }
+    } else {
+      saveCard();
+    }
+  }
+  function setCardFormat(f) {
+    cardFormat = f;
+    store.set('card', f);
+    document.querySelectorAll('[data-card]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.card === f)));
+    buildCard();
+  }
+
+  /* "Share app" on the start screen: native share sheet, else copy the link */
+  async function shareApp() {
+    if (navigator.share) {
+      try { await navigator.share({ title: 'NafasLega', text: t('shareAppText'), url: APP_URL }); } catch (e) {}
+      return;
+    }
+    const btn = document.getElementById('btnShareApp');
+    try {
+      await navigator.clipboard.writeText(APP_URL);
+      btn.textContent = t('linkCopied');
+      setTimeout(() => { btn.textContent = t('shareApp'); }, 2000);
+    } catch (e) {
+      window.open(APP_URL, '_blank', 'noopener');
     }
   }
 
@@ -1537,7 +1836,7 @@
      tabbed into or clicked (fixes the double-start bug)
   ══════════════════════════════════════ */
   const SCREENS = { splash, tool, summary };
-  const FOCUS   = { splash: btnBegin, tool: btnPause, summary: btnAgain };
+  const FOCUS   = { splash: btnBegin, tool: btnPause, summary: document.getElementById('btnShare') };
   function showScreen(name, focus = true) {
     Object.entries(SCREENS).forEach(([k, el]) => {
       const on = k === name;
@@ -1560,6 +1859,11 @@
   btnBegin.addEventListener('click', goToTool);
   btnAgain.addEventListener('click', goToTool);
   btnDone.addEventListener('click', () => showScreen('splash'));
+  document.getElementById('btnShare').addEventListener('click', shareCard);
+  document.getElementById('btnSave').addEventListener('click', saveCard);
+  document.getElementById('btnShareApp').addEventListener('click', shareApp);
+  document.querySelectorAll('[data-card]').forEach(b => b.addEventListener('click', () => setCardFormat(b.dataset.card)));
+  document.querySelectorAll('[data-card]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.card === cardFormat)));
   btnPause.addEventListener('click', togglePause);
   btnExit.addEventListener('click', () => finishSession(false));
 

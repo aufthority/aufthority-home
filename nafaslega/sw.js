@@ -7,7 +7,7 @@
    - Google Fonts: stale-while-revalidate, so text looks right offline.
    Bump VERSION whenever this file's caching rules change. */
 
-const VERSION    = 'nafaslega-v1';
+const VERSION    = 'nafaslega-v2';
 const FONT_CACHE = 'nafaslega-fonts';
 const SCOPE      = self.registration.scope;              // https://…/nafaslega/
 const PAGE_KEY   = new URL('./', SCOPE).href;
