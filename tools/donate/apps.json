@@ -32,7 +32,7 @@
       "url": "https://www.aufthority.com/boroi/",
       "out": "aufthority-home/boroi/donate",
       "umami": "7c961c49-4871-4b9d-b031-d9b95d4e4a68",
-      "defaultLang": "ms", "langKey": "",
+      "defaultLang": "en", "langKey": "",
       "tag_en": "What is really driving your weight gain", "tag_ms": "Punca sebenar berat badan naik"
     },
     {
@@ -56,7 +56,7 @@
       "url": "https://kansercheck.aufthority.com/",
       "out": "kansercheck/donate",
       "umami": "7c961c49-4871-4b9d-b031-d9b95d4e4a68",
-      "defaultLang": "ms", "langKey": "",
+      "defaultLang": "en", "langKey": "",
       "tag_en": "Lifestyle risk audit for six major cancers", "tag_ms": "Audit risiko gaya hidup bagi enam kanser utama"
     }
   ]
