@@ -1,0 +1,63 @@
+{
+  "payee": "Abdur Rahman Auf Ali",
+  "toyyibpay": "https://toyyibpay.com/Fund-Aufthority-Projects",
+  "bmc": "https://buymeacoffee.com/aufali",
+  "apps": [
+    {
+      "slug": "cermindiri", "name": "CerminDiri",
+      "url": "https://cermindiri.aufthority.com/",
+      "out": "cermindiri/donate",
+      "umami": "7c961c49-4871-4b9d-b031-d9b95d4e4a68",
+      "defaultLang": "ms", "langKey": "",
+      "tag_en": "Know your health numbers", "tag_ms": "Kenali angka kesihatan anda"
+    },
+    {
+      "slug": "nafaslega", "name": "NafasLega",
+      "url": "https://www.aufthority.com/nafaslega/",
+      "out": "aufthority-home/nafaslega/donate",
+      "umami": "f79c60f1-f9e7-4170-a979-f357ba756a18",
+      "defaultLang": "en", "langKey": "nafaslega.lang",
+      "tag_en": "Guided breathing exercise", "tag_ms": "Latihan pernafasan berpandu"
+    },
+    {
+      "slug": "mytdee", "name": "MyTDEE",
+      "url": "https://mytdee.aufthority.com/",
+      "out": "mytdee/donate",
+      "umami": "7c961c49-4871-4b9d-b031-d9b95d4e4a68",
+      "defaultLang": "ms", "langKey": "",
+      "tag_en": "Calorie calculator calibrated for Malaysians", "tag_ms": "Kalkulator kalori yang ditentukur untuk rakyat Malaysia"
+    },
+    {
+      "slug": "boroi", "name": "Why The Belly?",
+      "url": "https://www.aufthority.com/boroi/",
+      "out": "aufthority-home/boroi/donate",
+      "umami": "7c961c49-4871-4b9d-b031-d9b95d4e4a68",
+      "defaultLang": "ms", "langKey": "",
+      "tag_en": "What is really driving your weight gain", "tag_ms": "Punca sebenar berat badan naik"
+    },
+    {
+      "slug": "energy-audit", "name": "Energy Audit",
+      "url": "https://www.aufthority.com/energy-audit/",
+      "out": "aufthority-home/energy-audit/donate",
+      "umami": "7c961c49-4871-4b9d-b031-d9b95d4e4a68",
+      "defaultLang": "ms", "langKey": "",
+      "tag_en": "Find out which type of tiredness you have", "tag_ms": "Kenal pasti jenis penat anda"
+    },
+    {
+      "slug": "rancangdiri", "name": "RancangDiri",
+      "url": "https://www.aufthority.com/rancangdiri/",
+      "out": "aufthority-home/rancangdiri/donate",
+      "umami": "f79c60f1-f9e7-4170-a979-f357ba756a18",
+      "defaultLang": "ms", "langKey": "",
+      "tag_en": "A simple activity and meal plan", "tag_ms": "Pelan aktiviti dan pemakanan yang mudah diikuti"
+    },
+    {
+      "slug": "kansercheck", "name": "KanserCheck",
+      "url": "https://kansercheck.aufthority.com/",
+      "out": "kansercheck/donate",
+      "umami": "7c961c49-4871-4b9d-b031-d9b95d4e4a68",
+      "defaultLang": "ms", "langKey": "",
+      "tag_en": "Lifestyle risk audit for six major cancers", "tag_ms": "Audit risiko gaya hidup bagi enam kanser utama"
+    }
+  ]
+}

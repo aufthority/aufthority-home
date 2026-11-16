@@ -7,7 +7,7 @@
    - Google Fonts: stale-while-revalidate, so text looks right offline.
    Bump VERSION whenever this file's caching rules change. */
 
-const VERSION    = 'nafaslega-v2';
+const VERSION    = 'nafaslega-v3';
 const FONT_CACHE = 'nafaslega-fonts';
 const SCOPE      = self.registration.scope;              // https://…/nafaslega/
 const PAGE_KEY   = new URL('./', SCOPE).href;
@@ -47,7 +47,8 @@ async function pageNetworkFirst(request) {
   const cache = await caches.open(VERSION);
   try {
     const res = await Promise.race([fetch(request), timeout(5000)]);
-    if (res && res.ok) cache.put(PAGE_KEY, res.clone());
+    // Only the app page itself is cached as PAGE_KEY (not /nafaslega/donate/ etc.)
+    if (res && res.ok && new URL(request.url).pathname === new URL(SCOPE).pathname) cache.put(PAGE_KEY, res.clone());
     return res;
   } catch (e) {
     return (await cache.match(PAGE_KEY)) || Response.error();
